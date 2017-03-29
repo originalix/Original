@@ -1,0 +1,127 @@
+header
+{
+    background: url('../img/1.jpg');
+    min-height: 350px;
+}
+
+header p
+{
+    margin: 0;
+}
+
+html, body
+{
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper
+{
+    min-height: 100%;
+    margin-bottom: -80px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+header .cover
+{
+    background: rgba(0, 0, 0, 0.6);
+    min-height: 350px;
+}
+
+header .avatar
+{
+    padding: 60px;
+    padding-left: 200px;
+    float: left;
+}
+
+header .avatar img
+{
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 80px;
+    -webkit-border-radius: 80px;
+    border-radius: 80px;
+}
+
+header .description
+{
+    max-width: 600px;
+    display: block;
+    float: right;
+    padding: 60px;
+}
+
+header .description h1
+{
+    color: #fff;
+}
+
+header .description p
+{
+    color: #fff;
+    letter-spacing: 1.5px;
+}
+
+header .personal-info
+{
+    background: #000;
+    min-height: 50px;
+}
+
+header .personal-info p
+{
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 20px;
+    font-size: 12px;
+    margin-left: 50px;
+}
+
+header .email
+{
+    float: left;
+}
+
+header .contact-way ul
+{
+    display: inline-block;
+    list-style-type: none;
+    margin: 0px;
+}
+
+header .contact-way li
+{
+    margin-right: 20px;
+    display: inline;
+}
+
+header .contact-way
+{
+    margin: 10px;
+    margin-right: 100px;
+    float: right;
+}
+
+header .item a
+{
+    color: #fff;
+}
+
+footer .explain
+{
+
+    max-width: 1280px
+    background: #000;
+    height: 50px;
+    margin-top: -50px;
+    margin: 0 auto;
+}
+
+footer .explain p
+{
+    color: #fff;
+    margin: 0px;
+    text-align: center;
+}

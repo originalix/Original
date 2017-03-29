@@ -1,0 +1,47 @@
+#artical-list
+{
+    padding: 30px;
+    max-width: 850px;
+}
+
+.artical-ul
+{
+    list-style-type: none;
+}
+
+.artical-li a
+{
+    text-decoration: none;
+}
+
+.artical-date
+{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+.artical-detail
+{
+    margin-top: 0px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+.read-more
+{
+    border: 1px solid #a7a3a3;
+    width: 120px;
+    height: 40px;
+}
+
+.read-more p
+{
+    text-align: center;
+    margin: 10px auto;
+}
+
+#artical-list hr
+{
+    margin: 30px auto;
+}
