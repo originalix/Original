@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom test</title>
+</head>
+<body>
+    <header>Header</header>
+    <div id="content">
+        Content
+        <p id="deleteDom">测试删除节点</p>
+    </div>
+    <footer>Footer</footer>
+</body>
+
+<script>
+    window.onload = function() {
+        var dom = document.getElementById('content');
+        var newDom = document.createElement("p");
+        var node = document.createTextNode("test new dom");
+        newDom.appendChild(node);
+        dom.appendChild(newDom);
+        console.log("content . id ===== " + dom);
+
+        var deleteDom = document.getElementById('deleteDom');
+        dom.removeChild(deleteDom);
+
+        setTimeout(function() {
+            newDom.innerHTML = "修改了dom值";
+        }, 3000);
+
+        //网络请求AJAX
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState === 4) {1
+                if (request.status === 200) {
+                    console.log("请求返回数据" + request.responseText);
+                    var data = request.responseText;
+                    data = JSON.parse(data);
+                    console.log("JSON : " + data);
+                    console.log("object code " + data.code );
+                    console.log("object message " + data.message);
+                    printDOM(data);
+                } else {
+                    alert('请求失败');1
+                }
+            } else {
+                //还在请求
+            }
+        }
+
+        request.open('GET', 'http://local.lix.com/running/public/httptest');
+        request.send();
+
+        function printDOM(object) {
+            var dom = document.getElementById('content');
+            var newDom = document.createElement("p");
+            var node = document.createTextNode(object.code + "  & ...  " + object.message);
+            newDom.appendChild(node);
+            dom.appendChild(newDom);
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,12 @@
+.static{
+    background: #123455;
+}
+
+.active {
+    font-size: 30px;
+}
+
+.text-danger {
+    color: #fff;
+    background: #123455;
+}
