@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Vue</title>
+</head>
+<body>
+    <div id="example-1">
+        <input v-model="message" placeholder="edit me">
+        <p>Message is {{ message }}</p>
+    </div>
+
+    <div id="example-2">
+        <span>Multiline messsage is :</span>
+        <p style="white-space: pre"> {{ message }}</p>
+        <br>
+        <textarea v-model="message" placeholder="add some text"></textarea>
+    </div>
+
+    <div id="example-3">
+        <input type="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+    </div>
+
+    <div id="example-4" class="demo">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+    </div>
+
+    <div id="example-5">
+        <select v-model="selected">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
+
+    <div id="example-6">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <span>Seleced: {{ selected }}</span>
+    </div>
+
+    <div id="example-7">
+        <input type="radio" v-model="picked" value="a">
+        <input type="checkbox" v-model="toggle">
+        <select v-model="selected">
+            <option value="abc">ABC</option>
+            <option value="def">DEF</option>
+        </select>
+    </div>
+
+    <!-- 修饰符 -->
+    <div id="example-8">
+        <input v-model.lazy="msg">
+        <p> Message is {{ msg }} </p>
+        <input type="number" v-model.number="age">
+        <p> Age is {{ age }} </p>
+        <input type="text" v-model.trim="message">
+        <p> this message is {{ message }} </p>
+    </div>
+
+
+
+    <script src="js/vue.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

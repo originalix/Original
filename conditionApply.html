@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition Apply</title>
+</head>
+<body>
+    <div id="example-1">
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <template v-else>
+            <h1>Title no</h1>
+            <p>Paragraph 1 no</p>
+            <p>Paragraph 2 no</p>
+        </template>
+    </div>
+
+    <div id="example-2">
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+    </div>
+
+    <div id="example-3">
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="enter your username">
+        </template>
+        <template v-else>
+            <label>email</label>
+            <input placeholder="enter your email">
+        </template>
+        <button v-on:click="doThis">loginType</button>
+    </div>
+
+    <div id="example-4">
+        <h1 v-show="ok">Hello Origin!</h1>
+    </div>
+
+    <div id="example-5">
+        <ul>
+            <li v-for="item in items">
+                {{ item.message }}
+            </li>
+        </ul>
+    </div>
+
+    <div id="example-6">
+        <ul>
+            <li v-for="(item, index) in items">
+                {{ parentMessage }} - {{ index }} - {{ item.message }}
+            </li>
+        </ul>
+    </div>
+
+    <div id="example-7">
+        <ul>
+            <template v-for="item in items">
+                <li>{{ item.msg }}</li>
+                <li class="divider">你好啊</li>
+            </template>
+        </ul>
+    </div>
+
+    <div id="example-8">
+        <ul>
+            <li v-for="(value, key, index) in object">
+                {{ index }} - {{ key }} : {{ value }}
+            </li>
+        </ul>
+    </div>
+
+    <div id="example-9">
+        <span v-for="n in 10">{{ n }}</span>
+    </div>
+
+
+    <script src="js/vue.js"></script>
+    <script src="js/conditionApply.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+</head>
+<body>
+    <div id="example-1">
+        <button @click="counter += 1">增加1</button>
+        <p>这个按钮被点击了 {{ counter }} 次</p>
+    </div>
+    <div id="example-2">
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <div id="example-3">
+        <button @click="say( 'hi' )">Say Hi</button>
+        <button @click="say( 'What')">Say what</button>
+    </div>
+    <div id="example-4" v-on:click="howtodo">
+        你好
+        <a v-on:click.stop="doThis">doThis</a>
+        <a v-on:click.stop="doThat">doThat</a>
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit">不重载</form>
+    </div>
+
+    <!-- 添加事件侦听器时使用事件捕获模式 -->
+    <div v-on:click.capture="doThis" id="example-5">
+        doThis is a thing
+        <a v-on:click.stop="doThat">doThat</a>
+        <a v-on:click.once="doThat">once click</a>
+    </div>
+
+    <div id="example-6">
+        <input v-on:keyup.enter="submit">
+    </div>
+    <div @click.shift="doSomething" id="examplr-7">Do something</div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/event.js"></script>
+</body>
+</html>
