@@ -31,3 +31,43 @@ var example2 = new Vue({
 var example3 = new Vue({
     el: '#example-3'
 })
+
+Vue.component('example4', {
+    props: ['message'],
+    template: '<span>{{ message }}</span>'
+})
+
+var exampleFour = new Vue({
+    el: '#example-4'
+})
+
+Vue.component('example5', {
+    props: ['myMessage'],
+    template: '<span>{{ myMessage }}</span>'
+})
+
+var exampleFive = new Vue({
+    el: '#example-5',
+    data: {
+        parentMsg: '组件消息传递'
+    }
+})
+
+Vue.component('valid', {
+    props: {
+        propA: Number,
+        propB: [String, Number],
+        propC: {
+            type:String,
+            required: true
+        }
+    },
+    template: '<span>{{ propC }}</span>'
+})
+
+var example6 = new Vue({
+    el: '#example-6',
+    data: {
+        propC: 400
+    }
+})

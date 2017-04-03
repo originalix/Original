@@ -20,7 +20,19 @@
         <simple-counter></simple-counter>
     </div>
 
-    <img src="img/1.jpg">
+    <div id="example-4">
+        <example4 message='hello world'></example4>
+    </div>
+
+    <div id="example-5">
+        <input v-model="parentMsg">
+        <br>
+        <example5 v-bind:my-message="parentMsg"></example5>
+    </div>
+
+    <div id="example-6">
+        <valid v-bind:prop-c='propC'></valid>
+    </div>
 
     <script src="js/vue.js"></script>
     <script src="js/component.js"></script>
