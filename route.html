@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Router</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>hello app!</h1>
+        <p>
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+            <router-link to="/user/12">Show User id</router-link>
+            <router-link to="/user/21">Show User id</router-link>
+            <router-link to="/user/1000/posts">User Post</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+
+<script src="js/route.js"></script>
+
+</body>
+</html>
