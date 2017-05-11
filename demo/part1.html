@@ -8,7 +8,7 @@
 <body>
 
 <h1 class="title">let's learn jquery</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -27,6 +27,10 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     // $(".title").hide();
     // $("p.testp").hide();
 		//    $("#test").hide();
+	  $("button").click(function () {
+			$(".desc").hide();
+      $("#test").fadeOut();
+    })
   })
 </script>
 </body>
