@@ -22,14 +22,21 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <button>点我</button>
 
+<p class="tap">test taps</p>
+
 <script>
   $(function () {
     // $(".title").hide();
     // $("p.testp").hide();
 		//    $("#test").hide();
 	  $("button").click(function () {
-			$(".desc").hide();
-      $("#test").fadeOut();
+		$(".desc").hide();
+        $("#test").fadeOut();
+    });
+
+    $(".tap").click(function() {
+        var txt2 = $("<p></p>").text("Text.");
+        $(".tap").add("test something");
     })
   })
 </script>
