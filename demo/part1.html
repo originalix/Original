@@ -36,9 +36,13 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     $(".tap").click(function() {
         var txt2 = $("<p></p>").text("Text.");
-        $(".tap").add("test something");
+        var txt1 = "<p>Text.</p>";               // Create element with HTML
+        var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
+        var txt3 = document.createElement("p");  // Create with DOM
+        txt3.innerHTML = "Text.";   Q`
+        $(".tap").append(txt1, txt2, txt3);
     })
   })
 </script>
 </body>
-</html>
+</html>  Q`
