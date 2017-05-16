@@ -35,6 +35,8 @@ class Constants
     {
         echo '<br> function name ', __FUNCTION__;
         echo '<br> class name ', __CLASS__;
+        echo '<br> trait name ', __TRAIT__;
+        echo '<br> method name ', __METHOD__;
     }
 
     public static function toString()
@@ -58,5 +60,6 @@ echo '<br> dirname ', __DIR__;
 // echo '<br> function name ', __FUNCTION__;
 // echo '<br> class name ', __CLASS__;
 Constants::logFunction();
+echo '<br> namespace name ', __NAMESPACE__;
 
 ?>
