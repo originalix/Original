@@ -31,6 +31,12 @@ class Constants
         return self::max_value;
     }
 
+    public static function logFunction()
+    {
+        echo '<br> function name ', __FUNCTION__;
+        echo '<br> class name ', __CLASS__;
+    }
+
     public static function toString()
     {
         echo '<br>min = ', self::getMinValue(), ' max = ', self::getMaxValue();
@@ -39,9 +45,18 @@ class Constants
 
 Constants::toString();
 
-include('call.php');
-if (testDebug) {
-    echo '<br>test debug false';
-}
+// include('call.php');
+// if (testDebug) {
+//     echo '<br>test debug false';
+// }
+
+// Magic Constants
+
+echo '<br> now line ', __LINE__;
+echo '<br> file path ', __FILE__;
+echo '<br> dirname ', __DIR__;
+// echo '<br> function name ', __FUNCTION__;
+// echo '<br> class name ', __CLASS__;
+Constants::logFunction();
 
 ?>
