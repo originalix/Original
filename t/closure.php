@@ -39,4 +39,9 @@ class Constants
 
 Constants::toString();
 
+include('call.php');
+if (testDebug) {
+    echo '<br>test debug false';
+}
+
 ?>
