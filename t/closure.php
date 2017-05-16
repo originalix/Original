@@ -62,4 +62,12 @@ echo '<br> dirname ', __DIR__;
 Constants::logFunction();
 echo '<br> namespace name ', __NAMESPACE__;
 
+$a = 3;
+$b = &$a;
+
+$a = 54;
+
+print "$a\n";
+print "$b\n";
+
 ?>
