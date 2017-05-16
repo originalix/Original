@@ -66,8 +66,13 @@ $a = 3;
 $b = &$a;
 
 $a = 54;
+$b = 100;
 
 print "$a\n";
 print "$b\n";
+
+echo '<br>', preg_replace_callback('~([a-z])~', function($match) {
+    return strtoupper($match[1]);
+}, 'hello-phpppp');
 
 ?>
