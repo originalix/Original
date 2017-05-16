@@ -41,3 +41,13 @@ class B extends A
 
 call_user_func(array('B', 'parent::who'));
 
+class C
+{
+    public function __invoke($name)
+    {
+        echo 'Hello ', $name, "\n";
+    }
+}
+
+$c = new C();
+call_user_func($c, 'PHP!');
