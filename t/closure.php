@@ -18,14 +18,17 @@ echo(' '. MIN_VALUE . ' ' . MAX_VALUE);
 
 class Constants
 {
+    const min_value = 0.1;
+    const max_value = 9.9;
+
     public static function getMinValue()
     {
-        return MIN_VALUE;
+        return self::min_value;
     }
 
     public static function getMaxValue()
     {
-        return MAX_VALUE;
+        return self::max_value;
     }
 
     public static function toString()
