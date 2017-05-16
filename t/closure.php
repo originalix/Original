@@ -75,4 +75,31 @@ echo '<br>', preg_replace_callback('~([a-z])~', function($match) {
     return strtoupper($match[1]);
 }, 'hello-phpppp');
 
+$greet = function($name)
+{
+    printf("</br>Hello %s\r\n", $name);
+};
+
+$greet('World');
+$greet('PHP');
+
+$message = 'hello';
+
+$example = function() use ($message)
+{
+    var_dump($message);
+};
+
+echo '<br>', $example();
+
+$message = 'world';
+echo '<br>', $example();
+
+$example = function($arg) use ($message)
+{
+    var_dump($arg . ' '. $message);
+};
+
+$example("hello");
+
 ?>
