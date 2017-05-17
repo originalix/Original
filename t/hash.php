@@ -21,3 +21,9 @@ var_dump(hash_equals($expected, $correct));
 file_put_contents('example.txt', 'The fuck');
 
 echo hash_file('md5', 'example.txt');
+
+echo '</br>';
+
+$ctx = hash_init("sha1");
+hash_update($ctx, 'the quick brown fox jumped over the lazy dog.');
+echo hash_final($ctx);
