@@ -17,3 +17,7 @@ $incorrect = crypt('apple', '$2a$07$usesomesillystringforsalt$');
 
 var_dump(hash_equals($expected, $incorrect));
 var_dump(hash_equals($expected, $correct));
+
+file_put_contents('example.txt', 'The fuck');
+
+echo hash_file('md5', 'example.txt');
