@@ -27,3 +27,17 @@ echo '</br>';
 $ctx = hash_init("sha1");
 hash_update($ctx, 'the quick brown fox jumped over the lazy dog.');
 echo hash_final($ctx);
+
+echo '</br>';
+
+$pwd = password_hash("123456", PASSWORD_DEFAULT);
+echo $pwd;
+echo '</br>';
+var_dump(password_get_info($pwd));
+// echo password_get_info($pwd);
+//
+echo '</br>';
+
+if (password_verify('123456', $pwd)) {
+    echo "验证成功";
+}
