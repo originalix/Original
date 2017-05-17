@@ -1,8 +1,21 @@
 body {
-    /*background: #000;*/
+    background: #00334b;
+    color: #fff;
 }
 
 .continer {
     max-width: 600px;
     margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.task-item {
+    padding: 10px;
+    background: #fff;
+    color: #333;
+    margin-bottom: 2px;
+    border-radius: 3px;
 }
