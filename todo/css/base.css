@@ -12,8 +12,14 @@ h1 {
     text-align: center;
 }
 
-input {
+input, .task-item {
+border-radius: 3px;
+padding: 10px;
+}
 
+input[type=text][type=date] {
+    display: block;
+    width: 100%;
 }
 
 .task-item {
