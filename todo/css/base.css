@@ -1,3 +1,15 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: background .1s;
+    -moz-transition: background .1s;
+    -ms-transition: background .1s;
+    -o-transition: background .1s;
+    transition: background .1s;
+    outline: 0;
+}
+
 body {
     background: #00334b;
     color: #fff;
@@ -21,17 +33,26 @@ input[type=text], input[type=date] {
     border: 0;
     display: block;
     width: 100%;
+    background: #ddd;
+}
+
+input[type=text]:hover,
+input[type=date]:hover
+input[type=text]:focus,
+input[type=date]:focus {
+    background: #fff;
 }
 
 button {
     display: inline-block;
     cursor: pointer;
     border: 0;
+    color: #333;
 }
 
 .add-task input[type=text] {
     float: left;
-    width: 81%;
+    width: 84%;
     margin-right: 4px;
 }
 
@@ -51,7 +72,7 @@ button {
 }
 
 .tasks-list {
-    margin-top: 4px;
+    margin: 10px 0;
 }
 
 .task-item {
@@ -59,11 +80,7 @@ button {
     color: #333;
     margin-bottom: 2px;
     cursor: pointer;
-    -webkit-transition: background .1s;
-    -moz-transition: background .1s;
-    -ms-transition: background .1s;
-    -o-transition: background .1s;
-    transition: background .1s;
+
 }
 
 .task-item:hover {
