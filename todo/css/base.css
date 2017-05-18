@@ -12,10 +12,27 @@ h1 {
     text-align: center;
 }
 
+input {
+
+}
+
 .task-item {
     padding: 10px;
     background: #fff;
     color: #333;
     margin-bottom: 2px;
     border-radius: 3px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+    cursor: pointer;
+    -webkit-transition: background .1s;
+    -moz-transition: background .1s;
+    -ms-transition: background .1s;
+    -o-transition: background .1s;
+    transition: background .1s;
+}
+
+.task-item:hover {
+    background: #ddd;
 }
