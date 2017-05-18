@@ -12,22 +12,25 @@ h1 {
     text-align: center;
 }
 
-input, .task-item {
+input, .task-item, button {
 border-radius: 3px;
 padding: 10px;
 }
 
-input[type=text][type=date] {
+input[type=text], input[type=date] {
+    border: 0;
     display: block;
     width: 100%;
 }
 
+button {
+    display: inline-block;
+}
+
 .task-item {
-    padding: 10px;
     background: #fff;
     color: #333;
     margin-bottom: 2px;
-    border-radius: 3px;
     -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
     -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
     box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
