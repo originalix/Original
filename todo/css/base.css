@@ -25,15 +25,39 @@ input[type=text], input[type=date] {
 
 button {
     display: inline-block;
+    cursor: pointer;
+    border: 0;
+}
+
+.add-task input[type=text] {
+    float: left;
+    width: 81%;
+    margin-right: 4px;
+}
+
+.add-task [type=submit] {
+    background: #46b1e4;
+    width: 15%;
+}
+
+.add-task [type=submit], .task-item {
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+}
+
+.add-task [type=submit]:hover {
+    background: #5fb0e4;
+}
+
+.tasks-list {
+    margin-top: 4px;
 }
 
 .task-item {
     background: #fff;
     color: #333;
     margin-bottom: 2px;
-    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
-    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
     cursor: pointer;
     -webkit-transition: background .1s;
     -moz-transition: background .1s;
