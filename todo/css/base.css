@@ -18,22 +18,35 @@ body {
 .continer {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
 }
 
 h1 {
     text-align: center;
 }
 
-input, .task-item, button {
+input, .task-item, .task-detail-mask, button, textarea {
 border-radius: 3px;
 padding: 10px;
 }
 
-input[type=text], input[type=date] {
+textarea,
+button,
+input[type=text],
+input[type=date] {
+    border: 0;
+}
+
+textarea,
+input[type=text],
+input[type=date] {
     border: 0;
     display: block;
     width: 100%;
     background: #ddd;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
 
 input[type=text]:hover,
@@ -41,6 +54,13 @@ input[type=date]:hover
 input[type=text]:focus,
 input[type=date]:focus {
     background: #fff;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+textarea {
+    height: 100px;
 }
 
 button {
@@ -85,4 +105,37 @@ button {
 
 .task-item:hover {
     background: #ddd;
+}
+
+.task-detail-mask,
+.task-detail {
+    position: absolute;
+}
+
+.task-detail {
+    padding: 10px;
+    width: 50%;
+    height: 100%;
+    color: #333;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+}
+
+.task-detail .content {
+    padding: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.task-detail > * {
+    margin-bottom: 10px;
+}
+
+.task-detail-mask {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(30, 30, 30, .6);
 }
