@@ -41,8 +41,8 @@
       <file leaf-file-name="digest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/t/digest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="147">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -235,12 +235,12 @@
       <workItem from="1495072622787" duration="4179000" />
       <workItem from="1495078955015" duration="2784000" />
       <workItem from="1495093050896" duration="4794000" />
-      <workItem from="1495185567274" duration="1904000" />
+      <workItem from="1495185567274" duration="2342000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17759000" />
+    <option name="totallyTimeSpent" value="18197000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -489,8 +489,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/t/digest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="147">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -1,4 +1,5 @@
 <?php
+
 $realm = 'Restricted area';
 
 //user => password
@@ -27,5 +28,14 @@ echo 'Your are logged in as: ' . $data['username'];
 
 function http_digest_parse($txt)
 {
+    $needed_parts = array('nonce'=>1, 'nc'=>1, 'conoce'=>1, 'qop'=>1, 'username'=>1, 'uri'=>1, 'response'=>1);
+    $data = array();
 
+    preg_match_all('@(\w+)=([\'"]?)([a-zA-Z0-9=./\_-]+)\2@', $txt, $matches, PERG_SET_ORDER);
+    foreach ($matches as $m) {
+        $data[$m[1]] = $m[3];
+        unset($needed_parts[$m[1]]);
+    }
+
+    return $needed_parts ? false : $data;
 }
