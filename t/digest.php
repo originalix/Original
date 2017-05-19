@@ -9,3 +9,8 @@ if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
     die('Text to send if user hits Cancel button');
 }
 
+//analyze the PHP_AUTH_DIGEST variable
+if (!($data = http_digest_parse($_SERVER['PHP_AUTH_DIGEST'])) || !isset($users[$data['username']])) {
+    die('Wrong Credentials!');
+}
+
