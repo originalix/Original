@@ -2,13 +2,19 @@
 
 echo '<h1>PDO</h1>';
 
-try {
+// try {
+//     $dbh = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
+//     foreach ($dbh->query('SELECT * from test_main') as $row) {
+//         print_r($row);
+//     }
+//     $dbh = null;
+// } catch (PDOException $e) {
+//     print "error! : " . $e->getMessage() . "</br>";
+//     die();
+// }
+
     $dbh = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
-    foreach ($dbh->query('SELECT * from test_main') as $row) {
-        print_r($row);
-    }
+    // 在此使用连接
+
+    // 现在运行完成,在此关闭连接
     $dbh = null;
-} catch (PDOException $e) {
-    print "error! : " . $e->getMessage() . "</br>";
-    die();
-}
