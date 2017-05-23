@@ -27,7 +27,7 @@ try {
     $dbh = new PDO('mysql:host=localhost;dbname=blog', 'root', '', array(
         PDO::ATTR_PERSISTENT => true  //连接持久化
     ));
-    echo "Connected\n";
+    echo "Connected </br>";
 } catch (Exception $e) {
     die("Unable to connect: " . $e->getMessage());
 }
@@ -36,5 +36,10 @@ try {
     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $dbh->beginTransaction();
-
+    $dbh->exec("insert into test_main (nikename, mobile, password) values ('transation', '18866668788', '2150')");
+    $dbh->exec("insert into test_belong (main_id, content) values (3, 'pdopdopdo')");
+    $dbh->commit();
+} catch (Exception $e) {
+    $dbh->rollback();
+    echo "Failed: " . $e->getMessage();
 }
