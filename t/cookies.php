@@ -1,5 +1,5 @@
 <?php
 
-setcookie("Original", "Wsx21", time()+60);
+// setcookie("Original", "Wsx21", time()+60);
 
-// echo $_COOKIE["Original"];
+echo $_COOKIE["Original"];
