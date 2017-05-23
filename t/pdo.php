@@ -32,14 +32,28 @@ try {
     die("Unable to connect: " . $e->getMessage());
 }
 
-try {
-    $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// try {
+//     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $dbh->beginTransaction();
-    $dbh->exec("insert into test_main (nikename, mobile, password) values ('transation', '18866668788', '2150')");
-    $dbh->exec("insert into test_belong (main_id, content) values (3, 'pdopdopdo')");
-    $dbh->commit();
-} catch (Exception $e) {
-    $dbh->rollback();
-    echo "Failed: " . $e->getMessage();
-}
+//     $dbh->beginTransaction();
+//     $dbh->exec("insert into test_main (nikename, mobile, password) values ('transation', '18866668788', '2150')");
+//     $dbh->exec("insert into test_belong (main_id, content) values (3, 'pdopdopdo')");
+//     $dbh->commit();
+// } catch (Exception $e) {
+//     $dbh->rollback();
+//     echo "Failed: " . $e->getMessage();
+// }
+
+/* 用预处理语句进行重复插入 */
+$stmt = $dbh->prepare("INSERT INTO test_main (nikename, mobile, password) VALUES (:nikename, :mobile, :password)");
+$stmt->bindParam(':nikename', $nickname);
+$stmt->bindParam(':mobile', $mobile);
+$stmt->bindParam(':password', $password);
+
+//插入一行
+$nickname = 'wsx';
+$mobile = '13566885986';
+$password = '2150';
+$stmt->execute();
+
+//用不同的值 插入另一行
