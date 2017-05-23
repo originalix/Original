@@ -106,28 +106,44 @@ try {
 
 //下面例子获取数据基于键值已提供的形式。用户的输入被自动用引号括起来，因此不会有 SQL 注入攻击的危险。
 $params = array(
-    "nickname" => "wsxxxx",
+    "nickname" => "xx",
     "mobile" => "13566994477",
     "password" => "1201"
 );
+
+// try {
+//     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//     $dbh->beginTransaction();
+
+//     /* 用预处理语句进行重复插入 */
+//     $stmt = $dbh->prepare("SELECT * FROM test_main where mobile = ?");
+
+//     if ($stmt->execute(array($params["mobile"]))) {
+//         while ($row = $stmt->fetch()) {
+//             print_r($row);
+//         }
+//     }
+
+//     $dbh->commit();
+// } catch (Exception $e) {
+//     $dbh->rollback();
+//     echo "Failed: " . $e->getMessage();
+// }
 
 try {
     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $dbh->beginTransaction();
 
-    /* 用预处理语句进行重复插入 */
-    $stmt = $dbh->prepare("SELECT * FROM test_main where mobile = ?");
-
-    if ($stmt->execute(array($params["mobile"]))) {
+    $stmt = $dbh->prepare("SELECT * FROM test_main where nikename LIKE '%?%'");
+    if ($stmt->execute(array("%$params[nickname]%"))) {
         while ($row = $stmt->fetch()) {
-            print_r($row);
+           print_r($row);
         }
     }
-
     $dbh->commit();
 } catch (Exception $e) {
     $dbh->rollback();
     echo "Failed: " . $e->getMessage();
 }
-
