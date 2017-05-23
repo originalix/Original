@@ -44,16 +44,32 @@ try {
 //     echo "Failed: " . $e->getMessage();
 // }
 
-/* 用预处理语句进行重复插入 */
-$stmt = $dbh->prepare("INSERT INTO test_main (nikename, mobile, password) VALUES (:nikename, :mobile, :password)");
-$stmt->bindParam(':nikename', $nickname);
-$stmt->bindParam(':mobile', $mobile);
-$stmt->bindParam(':password', $password);
+//通过用 name 和 value 替代相应的命名占位符来执行一个插入查询
+try {
+    $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//插入一行
-$nickname = 'wsx';
-$mobile = '13566885986';
-$password = '2150';
-$stmt->execute();
+    $dbh->beginTransaction();
 
-//用不同的值 插入另一行
+    /* 用预处理语句进行重复插入 */
+    $stmt = $dbh->prepare("INSERT INTO test_main (nikename, mobile, password) VALUES (:nikename, :mobile, :password)");
+    $stmt->bindParam(':nikename', $nickname);
+    $stmt->bindParam(':mobile', $mobile);
+    $stmt->bindParam(':password', $password);
+
+    //插入一行
+    $nickname = 'wsx';
+    $mobile = '13566885986';
+    $password = '2150';
+    $stmt->execute();
+
+    //用不同的值 插入另一行
+    $nickname = 'xxx';
+    $mobile = '13566994477';
+    $password = '5021121';
+    $stmt->execute();
+
+    $dbh->commit();
+} catch (Exception $e) {
+    $dbh->rollback();
+    echo "Failed: " . $e->getMessage();
+}
