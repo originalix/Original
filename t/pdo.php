@@ -75,31 +75,59 @@ try {
 // }
 
 //通过用 name 和 value 取代 ? 占位符的位置来执行一条插入查询。
+// try {
+//     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//     $dbh->beginTransaction();
+
+//     /* 用预处理语句进行重复插入 */
+//     $stmt = $dbh->prepare("INSERT INTO test_main (nikename, mobile, password) VALUES (?, ?, ?)");
+//     $stmt->bindParam(1, $nickname);
+//     $stmt->bindParam(2, $mobile);
+//     $stmt->bindParam(3, $password);
+
+//     //插入一行
+//     $nickname = 'wsx';
+//     $mobile = '13566885986';
+//     $password = '2150';
+//     $stmt->execute();
+
+//     //用不同的值 插入另一行
+//     $nickname = 'xxx';
+//     $mobile = '13566994477';
+//     $password = '5021121';
+//     $stmt->execute();
+
+//     $dbh->commit();
+// } catch (Exception $e) {
+//     $dbh->rollback();
+//     echo "Failed: " . $e->getMessage();
+// }
+
+//下面例子获取数据基于键值已提供的形式。用户的输入被自动用引号括起来，因此不会有 SQL 注入攻击的危险。
+$params = array(
+    "nickname" => "wsxxxx",
+    "mobile" => "13566994477",
+    "password" => "1201"
+);
+
 try {
     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $dbh->beginTransaction();
 
     /* 用预处理语句进行重复插入 */
-    $stmt = $dbh->prepare("INSERT INTO test_main (nikename, mobile, password) VALUES (?, ?, ?)");
-    $stmt->bindParam(1, $nickname);
-    $stmt->bindParam(2, $mobile);
-    $stmt->bindParam(3, $password);
+    $stmt = $dbh->prepare("SELECT * FROM test_main where mobile = ?");
 
-    //插入一行
-    $nickname = 'wsx';
-    $mobile = '13566885986';
-    $password = '2150';
-    $stmt->execute();
-
-    //用不同的值 插入另一行
-    $nickname = 'xxx';
-    $mobile = '13566994477';
-    $password = '5021121';
-    $stmt->execute();
+    if ($stmt->execute(array($params["mobile"]))) {
+        while ($row = $stmt->fetch()) {
+            print_r($row);
+        }
+    }
 
     $dbh->commit();
 } catch (Exception $e) {
     $dbh->rollback();
     echo "Failed: " . $e->getMessage();
 }
+
