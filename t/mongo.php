@@ -28,10 +28,4 @@ $options = [
     'sort' => ['x' => -1],
 ];
 
-// 查询数据
-$query = new MongoDB\Driver\Query($filter, $options);
-$cursor = $manager->executeQuery('test.sites', $query);
 
-foreach ($cursor as $document) {
-    print_r($document);
-}
