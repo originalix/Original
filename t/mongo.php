@@ -61,3 +61,12 @@ $bulk->update(
 $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
 $result = $manager->executeBulkWrite('test.sites', $bulk, $writeConcern);
+
+//delete
+$bulk = new MongoDB\Driver\BulkWrite;
+$bulk->delete(['x' => 1], ['limit' => 1]);   // limit 为 1 时，删除第一条匹配数据
+$bulk->delete(['x' => 2], ['limit' => 0]);   // limit 为 0 时，删除所有匹配数据
+
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
+$result = $manager->executeBulkWrite('test.sites', $bulk, $writeConcern);
