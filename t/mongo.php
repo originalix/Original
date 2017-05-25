@@ -35,3 +35,16 @@ $cursor = $manager->executeQuery('test.sites', $query);
 foreach ($cursor as $document) {
     print_r($document);
 }
+
+// stdClass Object
+// (
+//     [x] => 3
+//     [name] => taobao
+//     [url] => http://www.taobao.com
+// )
+// stdClass Object
+// (
+//     [x] => 2
+//     [name] => Google
+//     [url] => http://www.google.com
+// )
