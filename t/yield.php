@@ -1,4 +1,5 @@
 <?php
+
 function gen_one_to_three() {
     for ($i = 1; $i <= 3; $i++) {
         //注意变量$i的值在不同的yield之间是保持传递的。
@@ -20,3 +21,18 @@ $input = <<<'EOF'
 2;Python;Likes whitespace
 3;Ruby;Likes blocks
 EOF;
+
+function input_parser($input) {
+    foreach (explode("\n", $input) as $line) {
+        $fields = explode(';', $line);
+        $id = array_shift($fields);
+
+        yield $id => $fields;
+    }
+}
+
+foreach (input_parser($input) as $id => $fields) {
+    echo "$id:\n";
+    echo "    $fields[0]\n";
+    echo "    $fields[1]\n";
+}
