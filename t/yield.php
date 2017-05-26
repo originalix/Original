@@ -33,6 +33,16 @@ function input_parser($input) {
 
 foreach (input_parser($input) as $id => $fields) {
     echo "$id:\n";
+
     echo "    $fields[0]\n";
     echo "    $fields[1]\n";
 }
+
+function gen_three_nulls() {
+    foreach (range(1, 3) as $i) {
+        yield;
+    }
+}
+
+var_dump(iterator_to_array(gen_three_nulls()));
+
