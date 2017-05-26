@@ -51,6 +51,7 @@ function custom_error_handler($number, $string, $file, $line, $context)
     }
 }
 
+/*E_USER_WARNING, E_USER_NOTICE, and any other non-terminating error codes, are useless and act like E_USER_ERROR (which terminate) when you combine a custom ERROR_HANDLER with ErrorException and do not CATCH the error. There is NO way to return execution to the parent scope in the EXCEPTION_HANDLER.*/
 error_reporting(E_ALL);
     define('DEBUG', true);
     define('LINEBREAK', "\r\n");
