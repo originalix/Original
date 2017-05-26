@@ -5,3 +5,8 @@ function gen_one_to_three() {
         yield $i;
     }
 }
+
+$generator = gen_one_to_three();
+foreach ($generator as $value) {
+    echo "$value\n";
+}
