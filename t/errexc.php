@@ -18,3 +18,14 @@ final public string Exception::getTraceAsString ( void )
 public string Exception::__toString ( void )
 final private void Exception::__clone ( void )
 }
+>
+
+<?php
+function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+}
+set_error_handler("exception_error_handler");
+
+/* Trigger exception */
+strpos();
+?>
