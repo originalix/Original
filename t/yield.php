@@ -10,3 +10,13 @@ $generator = gen_one_to_three();
 foreach ($generator as $value) {
     echo "$value\n";
 }
+
+/*
+ * 下面每一行是用分号分割的字段组合，第一个字段将被用作键名。
+ */
+
+$input = <<<'EOF'
+1;PHP;Likes dollar signs
+2;Python;Likes whitespace
+3;Ruby;Likes blocks
+EOF;
