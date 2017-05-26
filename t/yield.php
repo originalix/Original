@@ -46,3 +46,13 @@ function gen_three_nulls() {
 
 var_dump(iterator_to_array(gen_three_nulls()));
 
+//使用引用来生成值
+
+function &gen_reference() {
+    $value = 3;
+
+    while ($value > 0) {
+        yield $value;
+    }
+}
+
