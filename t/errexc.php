@@ -176,3 +176,25 @@ try {
 }
 
  ?>
+
+ <?php
+  set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+  });
+
+  class MyClass {
+    public function methodA() {
+      echo("methodA:\n");
+      strpos();
+    }
+
+    public function methodB() {
+      echo("methodB:\n");
+      trigger_error("warning message form methodB", E_WARNING);
+    }
+
+    public function methodC() {
+      echo("methodC:\n");
+      throw new ErrorException();
+    }
+}
