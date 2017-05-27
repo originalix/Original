@@ -10,3 +10,4 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     echo "<p>You entered {$_SERVER['PHP_AUTH_PW']} as your password.</p>";
 }
 
+//PHP_AUTH_USER
