@@ -155,4 +155,18 @@ class ErrorHandler extends Exception {
     }
 }
 
+function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+    throw new ErrorHandler($errstr, 0, $errno, $errfile, $errline);
+}
+
+set_error_handler("exception_error_handler", E_ALL);
+
+function A() {
+    $foo->bar; // Purposely cause error
+}
+
+function B($c) {
+    A();
+}
+
  ?>
