@@ -169,4 +169,10 @@ function B($c) {
     A();
 }
 
+try {
+    B('foobar');
+} catch (Exception $e) {
+    var_dump($e->getTrace());
+}
+
  ?>
