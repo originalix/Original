@@ -216,4 +216,20 @@ E_WARNING);
         }
     }
 
-}
+    public function test() {
+      for ($i = 0; $i < 4; ++$i) {
+        try {
+            $this->run($i);
+        } catch (ErrorException $e) {
+          if ($e->getSeverity() === E_ERROR) {
+            echo("E_ERROR triggered.\n");
+          } else if ($e->getSeverity() === E_WARNING) {
+            echo("E_WARNING triggered.\n");
+          }
+        }
+      }
+    }
+  }
+
+  $myClass = new MyClass();
+  $myClass->test();
