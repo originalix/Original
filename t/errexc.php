@@ -197,4 +197,23 @@ try {
       echo("methodC:\n");
       throw new ErrorException();
     }
+
+      public function methodD() {
+      echo("methodD:\n");
+      throw new ErrorException('warning message from methodD', 0,
+E_WARNING);
+    }
+
+    public function run($i) {
+        if ($i === 0) {
+          $this->methodA();
+        } else if ($i === 1) {
+          $this->methodB();
+        } else if ($i === 2) {
+          $this->methodC();
+        } else {
+          $this->methodD();
+        }
+    }
+
 }
