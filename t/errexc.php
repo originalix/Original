@@ -149,5 +149,10 @@ class ErrorHandler extends Exception {
         $this->file = $filename;
         $this->line = $lineno;
     }
+
+    public function getSeverity() {
+        return $this->severity;
+    }
 }
+
  ?>
