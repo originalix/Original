@@ -20,3 +20,20 @@ abstract public void offsetSet ( mixed $offset , mixed $value )
 abstract public void offsetUnset ( mixed $offset )
 }
 
+class obj implements arrayaccess {
+    private $container = array();
+    public function __construct() {
+        $this->container = array(
+            "one"   => 1,
+            "two"   => 2,
+            "three" => 3,
+        );
+    }
+    public function offsetSet($offset, $value) {
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
+    }
+}
