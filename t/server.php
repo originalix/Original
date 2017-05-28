@@ -36,4 +36,14 @@ class obj implements arrayaccess {
             $this->container[$offset] = $value;
         }
     }
+
+    public function offsetExists($offset) {
+        return isset($this->container[$offset]);
+    }
+    public function offsetUnset($offset) {
+        unset($this->container[$offset]);
+    }
+    public function offsetGet($offset) {
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+    }
 }
