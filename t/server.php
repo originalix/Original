@@ -11,3 +11,12 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 }
 
 //PHP_AUTH_USER
+
+ArrayAccess {
+/* 方法 */
+abstract public boolean offsetExists ( mixed $offset )
+abstract public mixed offsetGet ( mixed $offset )
+abstract public void offsetSet ( mixed $offset , mixed $value )
+abstract public void offsetUnset ( mixed $offset )
+}
+
