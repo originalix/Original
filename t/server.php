@@ -47,3 +47,16 @@ class obj implements arrayaccess {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 }
+
+$obj = new obj;
+
+var_dump(isset($obj["two"]));
+var_dump($obj["two"]);
+unset($obj["two"]);
+var_dump(isset($obj["two"]));
+$obj["two"] = "A value";
+var_dump($obj["two"]);
+$obj[] = 'Append 1';
+$obj[] = 'Append 2';
+$obj[] = 'Append 3';
+print_r($obj);
