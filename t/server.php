@@ -92,3 +92,20 @@ var_dump(empty($obj["foobar"]));
 
 echo "\nRuns obj::offsetExists(), *not* obj:offsetGet() as there is nothing to get\n";
 var_dump(empty($obj["foobaz"]));
+
+class obj implements Serializable {
+    private $data;
+    public function __construct() {
+        $this->data = "My private data";
+    }
+    public function serialize() {
+        return serialize($this->data);
+    }
+    public function unserialize($data) {
+        $this->data = unserialize($data);
+    }
+    public function getData() {
+        return $this->data;
+    }
+}
+
