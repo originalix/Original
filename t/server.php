@@ -80,3 +80,15 @@ class obj implements arrayaccess {
         return "value";
     }
 }
+
+
+$obj = new obj;
+
+echo "Runs obj::offsetExists()\n";
+var_dump(isset($obj["foobar"]));
+
+echo "\nRuns obj::offsetExists() and obj::offsetGet()\n";
+var_dump(empty($obj["foobar"]));
+
+echo "\nRuns obj::offsetExists(), *not* obj:offsetGet() as there is nothing to get\n";
+var_dump(empty($obj["foobaz"]));
