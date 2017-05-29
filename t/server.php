@@ -148,3 +148,65 @@ class Example implements \Serializable
     }
 
 }
+
+class MyClass implements Serializable {
+    private $data;
+
+    public function __construct($data) {
+        $this->data = $data;
+    }
+
+    public function getData() {
+        return $this->data;
+    }
+
+    public function serialize() {
+        echo "Serializing MyClass...\n";
+        return serialize($this->data);
+    }
+
+    public function unserialize($data) {
+        echo "Unserializing MyClass...\n";
+        $this->data = unserialize($data);
+    }
+}
+
+class MyChildClass extends MyClass {
+    private $id;
+    private $name;
+
+    public function __construct($id, $name, $data) {
+        parent::__construct($data);
+        $this->id = $id;
+        $this->name = $name;
+    }
+
+    public function serialize() {
+        echo "Serializing MyChildClass...\n";
+        return serialize(
+            array(
+                'id' => $this->id,
+                'name' => $this->name,
+                'parentData' => parent::serialize()
+            )
+        );
+    }
+
+    public function unserialize($data) {
+        echo "Unserializing MyChildClass...\n";
+        $data = unserialize($data);
+
+        $this->id = $data['id'];
+        $this->name = $data['name'];
+        parent::unserialize($data['parentData']);
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+}
+
