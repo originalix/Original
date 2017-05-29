@@ -210,3 +210,11 @@ class MyChildClass extends MyClass {
     }
 }
 
+$obj = new MyChildClass(15, 'My class name', 'My data');
+
+$serial = serialize($obj);
+$newObject = unserialize($serial);
+
+echo $newObject->getId() . PHP_EOL;
+echo $newObject->getName() . PHP_EOL;
+echo $newObject->getData() . PHP_EOL;
