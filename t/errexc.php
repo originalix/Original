@@ -29,3 +29,10 @@ class Cart{
         return round($total, 2);
     }
 }
+
+$my_cart = new Cart;
+$my_cart->add('butter', 1);
+$my_cart->add('milk', 3);
+$my_cart->add('eggs', 6);
+
+print $my_cart->getTotal(0.05) . "\n";
