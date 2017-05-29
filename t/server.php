@@ -109,3 +109,9 @@ class obj implements Serializable {
     }
 }
 
+$obj = new obj;
+$ser = serialize($obj);
+
+$newobj = unserialize($ser);
+
+var_dump($newobj->getData());
