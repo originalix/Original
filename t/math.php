@@ -71,3 +71,14 @@ printf("BCAdd(%s,%s);\r\n// %s\r\n\r\n",$A,$B,BCAdd($A,$B));
   BCAdd(5650175242.508133742,308437806.831153821478770);
   // 5958613049
 */
+
+$exp1 = "1E5";
+$exp2 = "2E4";
+
+$ans1 = bcadd((float)$exp1, (float)$exp2, 3);
+$ans2 = bcadd((int)$exp1, (int)$exp2, 3);
+$ans3 = bcadd($exp1, $exp2, 3);
+
+echo "1: $exp1 + $exp2 = $ans1\r\n";
+echo "2: $exp1 + $exp2 = $ans2\r\n";
+echo "3: $exp1 + $exp2 = $ans3\r\n";
