@@ -82,3 +82,9 @@ $ans3 = bcadd($exp1, $exp2, 3);
 echo "1: $exp1 + $exp2 = $ans1\r\n";
 echo "2: $exp1 + $exp2 = $ans2\r\n";
 echo "3: $exp1 + $exp2 = $ans3\r\n";
+
+/*
+1: 1E5 + 2E4 = 120000.000
+2: 1E5 + 2E4 = 3.000
+3: 1E5 + 2E4 = 0.000
+ */
