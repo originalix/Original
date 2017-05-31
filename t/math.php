@@ -56,3 +56,18 @@ function Add($Num1, $Num2, $Scale=null)
     $Output.=(($Scale>0)?".{$Decimal}":'');
     return($Output);
 }
+
+$A="5650175242.508133742";
+$B="308437806.831153821478770";
+
+printf("  Add(%s,%s);\r\n// %s\r\n\r\n",$A,$B,  Add($A,$B));
+printf("BCAdd(%s,%s);\r\n// %s\r\n\r\n",$A,$B,BCAdd($A,$B));
+
+/*
+  This will produce the following..
+    Add(5650175242.508133742,308437806.831153821478770);
+  // 5958613049.33928756347877
+
+  BCAdd(5650175242.508133742,308437806.831153821478770);
+  // 5958613049
+*/
