@@ -34,4 +34,9 @@ echo "Hello World \n";
     var_dump($req);
     eio_cancel($req);
 
-    
+    //This time eio_nop() will be processed
+    eio_nop(EIO_PRI_DEFAULT, "my_nop_cb", "2");
+
+    //Process requests
+    eio_event_loop();
+?>
