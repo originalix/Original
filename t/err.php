@@ -19,3 +19,14 @@ try {
 }
 
 echo "Hello World \n";
+
+?>
+
+<?php
+    /* Is called when eio_nop() finished */
+    function my_nop_cb($data, $result)
+    {
+        echo "my_nop ", $data, "\n";
+    }
+
+?>
