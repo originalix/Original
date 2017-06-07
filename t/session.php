@@ -16,3 +16,15 @@
 
     // Work & modify the global & private context (be ware of changing the global context!)
  ?>
+
+ <html>
+     <body>
+         <h1>Test 2: Global Count is: <?=++$a?></h1>
+         <h1>Test 2: Your Count is: <?=++$b?></h1>
+         <h1>Private ID is <?=$private_id?></h1>
+         <h1>Gloabl ID is <?=session_id()?></h1>
+         <pre>
+         <?php print_r($_SESSION); ?>
+         </pre>
+     </body>
+ </html> 
