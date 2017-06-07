@@ -24,12 +24,12 @@
          <h1>Private ID is <?=$private_id?></h1>
          <h1>Gloabl ID is <?=session_id()?></h1>
          <pre>
-         <?php print_r($_SESSION); ?>
+         <?php var_dump($_SESSION); ?>
          </pre>
      </body>
  </html>
 
-<<?php
+<?php
 
     // Store it back
     session_name('Private');
