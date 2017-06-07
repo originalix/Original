@@ -38,5 +38,9 @@
     $_SESSION['pr_key'] = $b;
     session_write_close();
 
-    
+    session_name('Global');
+    session_id('TEST');
+    session_start();
+    $_SESSION['key'] = $a;
+    session_write_close();
  ?>
