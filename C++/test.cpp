@@ -11,6 +11,10 @@ enum star
 
 int a = 20;
 
+void func(void);
+
+static int count123 = 10;
+
 int main()
 {
     cout << "Size of char : " << sizeof(char) << endl;
@@ -40,5 +44,16 @@ int main()
     i = j;
     cout << i << " " << j << endl;
 
+    while(count123--) {
+        func();
+    }
     return 0;
+}
+
+void func( void )
+{
+    static int i = 5;
+    i++;
+    std::cout << "变量 i 为" << i;
+    std::cout << "， 变量count为 " << count123 << std::endl;
 }
