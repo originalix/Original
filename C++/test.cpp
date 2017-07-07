@@ -9,6 +9,8 @@ enum star
     klay
 };
 
+int a = 20;
+
 int main()
 {
     cout << "Size of char : " << sizeof(char) << endl;
@@ -26,5 +28,10 @@ int main()
     } else {
         cout << "this is " << somebody << " shot" <<endl;
     }
+
+    int a = 21;
+    cout << a <<endl;
+
+    cout << "Hello\tWorld\n\n";
     return 0;
 }
