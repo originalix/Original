@@ -11,16 +11,16 @@
 function readFileByLine($filename)
 {
     $file = fopen($filename, "r");
-    $lineArray=array();
-    $i=0;
-//輸出文本中所有的行，直到文件結束為止。
+    $lineArray = array();
+    $i = 0;
+    //输出文本中所有的行，直到文件結束為止。
     while(! feof($file))
     {
-        $lineArray[$i]= fgets($file);//fgets()函數從文件指針中讀取一行
+        $lineArray[$i] = fgets($file);//fgets()函數從文件指針中讀取一行
         $i++;
     }
     fclose($file);
-    $lineArray=array_filter($lineArray);
+    $lineArray = array_filter($lineArray);
     return $lineArray;
 }
 
@@ -42,9 +42,9 @@ function dump($vars, $label = '', $return = false) {
 
 $filename = "2017-06-27.txt";
 $fileArray = readFileByLine($filename);
-// dump($fileArray);
-$strArr = explode("|", $fileArray[0]);
-dump($strArr);
+dump($fileArray);
+// $strArr = explode("|", $fileArray[0]);
+// dump($strArr);
 
 ?>
 
