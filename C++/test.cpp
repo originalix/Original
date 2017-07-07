@@ -33,5 +33,12 @@ int main()
     cout << a <<endl;
 
     cout << "Hello\tWorld\n\n";
+
+    short int i;
+    short unsigned int j;
+    j = 50000;
+    i = j;
+    cout << i << " " << j << endl;
+
     return 0;
 }
