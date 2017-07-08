@@ -183,6 +183,18 @@ void String()
     cout << "str3 size = " << len << endl;
 }
 
+void Pointer()
+{
+    int var1;
+    char var2[10];
+
+    cout << "var1 address : ";
+    cout << &var1 << endl;
+
+    cout << "Var2 address : ";
+    cout << &var2 << endl;
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -215,7 +227,9 @@ int main()
 
     // charString();
 
-    String();
+    // String();
+
+    Pointer();
 
     cout << "Hello wsx" << endl;
     return 0;
