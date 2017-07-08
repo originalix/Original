@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 #include <iomanip>
@@ -125,6 +127,20 @@ double getAverage(int arr[], int size)
     return avg;
 }
 
+int * getRandom()
+{
+    static int r[10];
+
+    srand( (unsigned)time( NULL ) );
+    for (int i = 0; i < 10; i++)
+    {
+        r[i] = rand();
+        cout << r[i] <<endl;
+    }
+
+    return r;
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -146,6 +162,14 @@ int main()
     avg = getAverage(balance, 5);
 
     cout << "数组平均值是 : " << avg << endl;
+
+    int *p;
+    p = getRandom();
+    for (int i = 0; i < 10; i++)
+    {
+        cout << "*(p + " << i << ") = ";
+        cout << *(p + i) << endl;
+    }
 
     cout << "Hello wsx" << endl;
     return 0;
