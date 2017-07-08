@@ -4,6 +4,8 @@ using namespace std;
 #include <iomanip>
 using std::setw;
 
+double getAverage(int arr[], int size);
+
 void BinaryCalculate(void)
 {
     unsigned int a = 30;
@@ -108,6 +110,21 @@ void PointerArray()
     }
 }
 
+double getAverage(int arr[], int size)
+{
+    int i, sum = 0;
+    double avg;
+
+    for (i = 0; i < size; i++)
+    {
+        sum += arr[i];
+    }
+
+    avg = double(sum) / size;
+
+    return avg;
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -121,7 +138,14 @@ int main()
 
     // MoreDimensionArray();
 
-    PointerArray();
+    // PointerArray();
+
+    int balance[5] = {1000, 1024, 1201, 21, 121};
+    double avg;
+
+    avg = getAverage(balance, 5);
+
+    cout << "数组平均值是 : " << avg << endl;
 
     cout << "Hello wsx" << endl;
     return 0;
