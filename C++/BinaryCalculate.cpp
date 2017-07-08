@@ -146,6 +146,26 @@ void charString()
     char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
     cout << "Greeting message: ";
     cout << greeting << endl;
+
+    char str1[11] = "Hello";
+    char str2[11] = "World";
+    char str3[11];
+    int len;
+
+    cout << "Str1 = " << str1 << endl;
+    cout << "Str2 = " << str2 << endl;
+    cout << "Str3 = " << str3 << endl;
+
+    strcpy(str3, str1);
+    cout << "strcpy(str3, str1) : " << str3 << endl;
+
+    strcat(str1, str2);
+    cout << "strcat(str1, str2) : " << str1 << endl;
+
+    len = strlen(str1);
+    cout << "strlen(str1) : " << len << endl;
+    int a = strcmp(str1, str2);
+    cout << "strcmp(str1, str2) : " << a << endl;
 }
 
 int main()
