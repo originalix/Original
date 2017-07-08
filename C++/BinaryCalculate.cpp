@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+#include <iomanip>
+using std::setw;
+
 void BinaryCalculate(void)
 {
     unsigned int a = 30;
@@ -51,6 +54,21 @@ void swap(int &x, int &y)
     return;
 }
 
+void printArray()
+{
+    int n[10];
+    for (int i = 0; i < 10; i++)
+    {
+        n[i] = i + 100;
+    }
+    cout << "Element" << setw(13) << "Value" << endl;
+
+    for (int j = 0; j < 10; j++)
+    {
+        cout << setw(7) << j << setw(13) << n[j] << endl;
+    }
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -59,6 +77,8 @@ int main()
     cout << "交换前的值 a = " << a << " , b = " << b <<endl;
     swap(a, b);
     cout << "交换后的值 a = " << a << " , b = " << b <<endl;
+
+    printArray();
 
     cout << "Hello wsx" << endl;
     return 0;
