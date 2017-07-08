@@ -195,6 +195,18 @@ void Pointer()
     cout << &var2 << endl;
 }
 
+void CheckAddress(int *x, int *y)
+{
+    int temp;
+    temp = *x;
+
+    cout << "X address is: " << &*x << endl;
+    cout << "Y address is: " << &*y << endl;
+
+    *x = *y;
+    *y = temp;
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -230,6 +242,12 @@ int main()
     // String();
 
     Pointer();
+
+    int x = 100;
+    int y = 200;
+    cout << "Before swap X address is: " << &x << endl;
+    cout << "Before swap Y address is: " << &y << endl;
+    CheckAddress(&x, &y);
 
     cout << "Hello wsx" << endl;
     return 0;
