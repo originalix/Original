@@ -87,6 +87,27 @@ void MoreDimensionArray()
     }
 }
 
+void PointerArray()
+{
+    double balance[5] = {1000.0, 1024.0, 2048.0, 21.0, 1201.0};
+    double *p;
+    p = balance;
+
+    cout << "使用指针的数组值" << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "*(p + " << i << ") = ";
+        cout << *(p + i) << endl;
+    }
+
+    cout << "使用 balance 作为地址的数组值" << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "*(balance + " << i << ") = ";
+        cout << *(balance + i) << endl;
+    }
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -96,9 +117,11 @@ int main()
     swap(a, b);
     cout << "交换后的值 a = " << a << " , b = " << b <<endl;
 
-    printArray();
+    // printArray();
 
-    MoreDimensionArray();
+    // MoreDimensionArray();
+
+    PointerArray();
 
     cout << "Hello wsx" << endl;
     return 0;
