@@ -141,6 +141,13 @@ int * getRandom()
     return r;
 }
 
+void charString()
+{
+    char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+    cout << "Greeting message: ";
+    cout << greeting << endl;
+}
+
 int main()
 {
     // BinaryCalculate();
@@ -170,6 +177,8 @@ int main()
         cout << "*(p + " << i << ") = ";
         cout << *(p + i) << endl;
     }
+
+    charString();
 
     cout << "Hello wsx" << endl;
     return 0;
