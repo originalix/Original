@@ -29,13 +29,13 @@ void BinaryCalculate(void)
     cout << "Line 7 - C 的值是 " << c << endl;
 }
 
-void swap(int x, int y)
+void swap(int *x, int *y)
 {
     int temp;
 
-    temp = x;
-    x = y;
-    y = temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
 
     return;
 }
@@ -46,7 +46,7 @@ int main()
     int a = 100;
     int b = 200;
     cout << "交换前的值 a = " << a << " , b = " << b <<endl;
-    swap(a, b);
+    swap(&a, &b);
     cout << "交换后的值 a = " << a << " , b = " << b <<endl;
 
     cout << "Hello wsx" << endl;
