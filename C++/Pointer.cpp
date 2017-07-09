@@ -20,10 +20,19 @@ void testPointerValue()
     cout << *ip << endl;
 }
 
+void NullPointer()
+{
+    int *ptr = NULL;
+
+    cout << "ptr 的值是 " << ptr << endl;
+}
+
 int main()
 {
 
     testPointerValue();
+
+    NullPointer();
 
     cout << "Hello wsx" << endl;
     return 0;
