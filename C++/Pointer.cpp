@@ -50,7 +50,24 @@ void ArrayPointer()
 
         ptr++;
     }
+}
 
+void DestArrayPointer()
+{
+    int var[MAX] = {10, 21, 1201};
+    int *ptr;
+
+    ptr = &var[MAX - 1];
+    for (int i = MAX; i > 0; i--)
+    {
+        cout << "Address of var[" << i << "] = ";
+        cout << ptr << endl;
+
+        cout << "Value of var [" << i << "] = ";
+        cout << *ptr << endl;
+
+        ptr--;
+    }
 }
 
 int main()
@@ -60,7 +77,9 @@ int main()
 
     NullPointer();
 
-    ArrayPointer();
+    // ArrayPointer();
+
+    DestArrayPointer();
 
     cout << "Hello wsx" << endl;
     return 0;
