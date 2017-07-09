@@ -25,6 +25,11 @@ void NullPointer()
     int *ptr = NULL;
 
     cout << "ptr 的值是 " << ptr << endl;
+
+    if (ptr)
+        cout << "ptr 非空" << endl;
+    if (!ptr)
+        cout << "ptr 为空" << endl;
 }
 
 int main()
