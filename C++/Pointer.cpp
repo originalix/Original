@@ -32,12 +32,35 @@ void NullPointer()
         cout << "ptr 为空" << endl;
 }
 
+const int MAX = 3;
+
+void ArrayPointer()
+{
+    int var[MAX] = {10, 21, 1201};
+    int *ptr;
+
+    ptr = var;
+    for (int i = 0; i < MAX; i++)
+    {
+        cout << "Address of var[" << i << "] = ";
+        cout << ptr << endl;
+
+        cout << "Value of var [" << i << "] = ";
+        cout << *ptr << endl;
+
+        ptr++;
+    }
+
+}
+
 int main()
 {
 
     testPointerValue();
 
     NullPointer();
+
+    ArrayPointer();
 
     cout << "Hello wsx" << endl;
     return 0;
