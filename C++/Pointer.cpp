@@ -70,6 +70,25 @@ void DestArrayPointer()
     }
 }
 
+void comparePointer()
+{
+    int var[MAX] = {10, 21, 1201};
+    int *ptr;
+
+    ptr = var;
+    int i = 0;
+    while(ptr <= &var[MAX - 1]) {
+        cout << "Address of var[" << i << "] = ";
+        cout << ptr << endl;
+
+        cout << "Value of var [" << i << "] = ";
+        cout << *ptr << endl;
+
+        ptr++;
+        i++;
+    }
+}
+
 int main()
 {
 
@@ -79,7 +98,9 @@ int main()
 
     // ArrayPointer();
 
-    DestArrayPointer();
+    // DestArrayPointer();
+
+    comparePointer();
 
     cout << "Hello wsx" << endl;
     return 0;
