@@ -89,6 +89,23 @@ void comparePointer()
     }
 }
 
+void PointerArray()
+{
+    int var[MAX] = {21, 1201, 121};
+    int *ptr[MAX];
+
+    for (int i = 0; i < MAX; i++)
+    {
+        ptr[i] = &var[i];
+    }
+
+    for (int i = 0; i < MAX; i++)
+    {
+        cout << "Value of ptr[" << i << "] = ";
+        cout << *ptr[i] << endl;
+    }
+}
+
 int main()
 {
 
@@ -100,7 +117,9 @@ int main()
 
     // DestArrayPointer();
 
-    comparePointer();
+    // comparePointer();
+
+    PointerArray();
 
     cout << "Hello wsx" << endl;
     return 0;
