@@ -11,12 +11,20 @@ void CinFunc()
     cout << "您的名称是: " << name << "年龄: " << age << endl;
 }
 
+void CerrFunc()
+{
+    char str[] = "Unable to read ...";
+    cerr << "Error message : " << str << endl;
+}
+
 int main()
 {
     char str[] = "Hello wsx";
     cout << "Value of str is " << str << endl;
 
-    CinFunc();
+    // CinFunc();
+
+    CerrFunc();
 
     return 0;
 }
