@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main()
+void TimeAndUTC()
 {
     time_t now = time(0);
     char *dt = ctime(&now);
@@ -13,4 +13,10 @@ int main()
     tm *gmtm = gmtime(&now);
     dt = asctime(gmtm);
     cout << "UTC时间" << dt << endl;
+}
+
+int main()
+{
+    cout << "Hello wxs" << endl;
+    return 0;
 }
