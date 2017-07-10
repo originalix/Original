@@ -17,6 +17,12 @@ void CerrFunc()
     cerr << "Error message : " << str << endl;
 }
 
+void ClogFunc()
+{
+    char str[] = "Unable to read ...";
+    clog << "Error message : " << str << endl;
+}
+
 int main()
 {
     char str[] = "Hello wsx";
@@ -24,7 +30,9 @@ int main()
 
     // CinFunc();
 
-    CerrFunc();
+    // CerrFunc();
+
+    ClogFunc();
 
     return 0;
 }
