@@ -9,6 +9,14 @@ double& setValues (int i)
     return vals[i];
 }
 
+int & func()
+{
+    // int q;
+    // return q;
+    static int x; // 安全，x 在函数作用域外依然是有效的
+    return x;
+}
+
 int main()
 {
     cout << "改变前的值 : " << endl;
@@ -27,6 +35,8 @@ int main()
         cout << "Vals[" << i <<"] : ";
         cout << vals[i] << endl;
     }
+
+    func();
 
     cout << "Hello wsx" << endl;
 
