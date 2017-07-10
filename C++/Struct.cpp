@@ -11,6 +11,14 @@ struct Books
     int book_id;
 };
 
+void printBook( struct Books book)
+{
+    cout << "书标题: " << book.title << endl;
+    cout << "书作者: " << book.author << endl;
+    cout << "书类目: " << book.subject << endl;
+    cout << "书ID: " << book.book_id << endl;
+}
+
 int main()
 {
     Books Book1;
@@ -26,16 +34,9 @@ int main()
     strcpy( Book2.subject, "前端技术");
     Book2.book_id = 12346;
 
-    //输出第一本书信息
-    cout << "第一本书标题: " << Book1.title << endl;
-    cout << "第一本书作者: " << Book1.author << endl;
-    cout << "第一本书类目: " << Book1.subject << endl;
-    cout << "第一本书ID: " << Book1.book_id << endl;
+    printBook( Book1 );
 
-    cout << "第二本书标题: " << Book2.title << endl;
-    cout << "第二本书作者: " << Book2.author << endl;
-    cout << "第二本书类目: " << Book2.subject << endl;
-    cout << "第二本书ID: " << Book2.book_id << endl;
+    printBook( Book2 );
 
     return 0;
 }
