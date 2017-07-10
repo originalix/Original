@@ -11,5 +11,24 @@ double& setValues (int i)
 
 int main()
 {
+    cout << "改变前的值 : " << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "Vals[" << i <<"] : ";
+        cout << vals[i] << endl;
+    }
+
+    setValues(2) = 120.1;
+    setValues(4) = 215.01;
+
+    cout << "改变后的值 : " << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "Vals[" << i <<"] : ";
+        cout << vals[i] << endl;
+    }
+
     cout << "Hello wsx" << endl;
+
+    return 0;
 }
