@@ -20,6 +20,23 @@ int * getRandom()
     return r;
 }
 
+void Reference()
+{
+    int i;
+    double d;
+
+    int &r = i;
+    double &s = d;
+
+    i = 5;
+    cout << "Value of i : " << i << endl;
+    cout << "Value of reference : " << r << endl;
+
+    d = 21.50;
+    cout << "Value of d : " << d << endl;
+    cout << "Value of reference : " << s << endl;
+}
+
 int main()
 {
     unsigned long sec;
@@ -38,6 +55,8 @@ int main()
         cout << "*(p + " << i << ") = " ;
         cout << *(p + i) << endl;
     }
+
+    Reference();
 
     cout << "Hello wxs" << endl;
 }
