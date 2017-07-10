@@ -28,7 +28,7 @@ int main()
     cout << "Day: " << ltm->tm_mday << endl;
     cout << "Time: " <<  ltm->tm_hour << ":";
     cout << ltm->tm_min << ":";
-    cout << ltm->tm_sec << endl;
+cout << ltm->tm_sec << endl;
 
     cout << "Hello wxs" << endl;
     return 0;
