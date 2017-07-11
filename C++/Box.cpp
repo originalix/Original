@@ -6,44 +6,31 @@ class Box
 {
     public:
         double length;
-        double breadth;
-        double height;
-
-        double getVolume(void);
-        void setLength(double len);
-        void setBreadth(double bre);
-        void setHeight(double hei);
+        void setWidth( double wid );
+        double getWidth( void );
+    private:
+        double width;
 };
 
-double Box::getVolume()
+double Box::getWidth(void)
 {
-    return length * breadth * height;
+    return width;
 }
 
-void Box::setLength(double len)
+void Box::setWidth( double wid )
 {
-    length = len;
-}
-
-void Box::setBreadth(double bre)
-{
-    breadth = bre;
-}
-
-void Box::setHeight(double hei)
-{
-    height = hei;
+    width = wid;
 }
 
 int main()
 {
-    Box Box1;
-    double volume = 0.0;
+    Box box;
 
-    Box1.setLength(5.0);
-    Box1.setHeight(4.0);
-    Box1.setBreadth(3.0);
+    box.length = 10.0;
+    cout << "Length of box: " << box.length << endl;
 
-    volume = Box1.getVolume();
-    cout << "Box1体积: " << volume << endl;
+    box.setWidth(10.0);
+    cout << "Width of box: " << box.getWidth() << endl;
+
+    return 0;
 }
