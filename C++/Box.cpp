@@ -4,33 +4,33 @@ using namespace std;
 
 class Box
 {
-    public:
-        double length;
-        void setWidth( double wid );
-        double getWidth( void );
-    private:
+    protected:
         double width;
 };
 
-double Box::getWidth(void)
+class SmallBox:Box
+{
+    public:
+        void setSmallWidth( double wid );
+        double getSmallWidth( void );
+};
+
+double SmallBox::getSmallWidth(void)
 {
     return width;
 }
 
-void Box::setWidth( double wid )
+void SmallBox::setSmallWidth( double wid )
 {
     width = wid;
 }
 
 int main()
 {
-    Box box;
+    SmallBox box;
+    box.setSmallWidth(5.0);
 
-    box.length = 10.0;
-    cout << "Length of box: " << box.length << endl;
-
-    box.setWidth(10.0);
-    cout << "Width of box: " << box.getWidth() << endl;
+    cout << "Width of box : " << box.getSmallWidth() << endl;
 
     return 0;
 }
