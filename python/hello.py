@@ -41,4 +41,32 @@ extra = {'job': 'developer', 'city': 'Hangzhou'}
 
 # 高级特性 切片
 L = ['Michael', 'Sarah', 'Tracy']
-print(L[0:1])
+# print(L[0:1])
+
+# 列表生成式
+L = list(range(1, 11))
+# print(L)
+
+L = [x * x for x in range(1, 11)]
+# print(L)
+
+# 生成器
+g = (x * x for x in range(1, 11))
+# print(g)
+for n in g:
+    pass
+    # print(n)
+
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        # print(b)
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+
+f = fib(6)
+for n in f:
+    print(n)
+
