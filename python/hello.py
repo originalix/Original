@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+'a test module'
+__author__ = 'Lix'
+
+import sys
 import math
 
 def my_abs(x):
@@ -68,5 +75,17 @@ def fib(max):
 
 f = fib(6)
 for n in f:
-    print(n)
+    pass
+    # print(n)
 
+def test():
+    args = sys.argv
+    if len(args) == 1:
+        print('Hello, world!')
+    elif len(args)==2:
+        print('Hello, %s!' % args[1])
+    else:
+        print('Too many arguments!')
+
+if __name__ == '__main__':
+    test()
