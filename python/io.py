@@ -17,5 +17,21 @@ with open('/Users/Lix/Documents/www/htdocs/origin/img/1.jpg', 'rb') as f:
     pass
 
 with open('/Users/Lix/Documents/www/htdocs/origin/python/hello.py', 'a') as f:
-    f.write('Print(\'Hello World!\')')
+    # f.write('Print(\'Hello World!\')')
+    pass
+
+from io import StringIO
+
+# f = StringIO()
+# f.write('hello')
+# f.write(' ')
+# f.write('world!')
+# print(f.getvalue())
+
+f = StringIO('Hello\nHi\nWsx!')
+while True:
+    s = f.readline()
+    if s == '':
+        break
+    print(s.strip())
 
