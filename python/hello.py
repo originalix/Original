@@ -18,5 +18,13 @@ def move(x, y, step, angle=0):
     ny = y - step * math.sin(angle)
     return nx, ny
 
-x, y= move(100, 100, 60, math.pi / 6)
-print(x, y)
+# x, y= move(100, 100, 60, math.pi / 6)
+# print(x, y)
+
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+
+print(calc(1, 2))
