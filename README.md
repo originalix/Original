@@ -1,3 +1,4 @@
-# LearnVue
+# Introduction
 
-Some Vue.js demo in this respository
+可能是一个比较脏兮兮的代码库，放着学习各种语言语法练习阶段的代码，比如C++、PHP、前端三件套、Python等，学习的初期并不会过多的在意代码的优雅，可能有很多很多的注释，很多很多的尝试，所以名字叫做脏兮兮。
+
