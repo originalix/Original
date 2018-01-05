@@ -81,7 +81,8 @@ for n in f:
 def test():
     args = sys.argv
     if len(args) == 1:
-        print('Hello, world!')
+        # print('Hello, world!')
+        pass
     elif len(args)==2:
         print('Hello, %s!' % args[1])
     else:
@@ -99,8 +100,27 @@ class Student(object):
     def print_score(self):
         print('%s: %s' % (self.name, self.score))
 
-lix = Student('Lix', 99)
-wxx = Student('Wsx', 100)
+# lix = Student('Lix', 99)
+# wxx = Student('Wsx', 100)
 
-lix.print_score()
-wxx.print_score()
+# lix.print_score()
+# wxx.print_score()
+
+# 面向对象高级编程 —— 使用元类
+# class Hello(object):
+#     def hello(self, name='world'):
+#         print('Hello, %s.' % name)
+
+# h = Hello()
+# h.hello()
+# print(type(Hello))
+# print(type(h))
+
+def fn(self, name='world'):
+    print('Hello, %s.' % name)
+
+Hello = type('Hello', (object,), dict(hello=fn))
+h = Hello()
+h.hello()
+print(type(Hello))
+print(type(h))
