@@ -71,7 +71,7 @@ def fib(max):
         yield b
         a, b = b, a + b
         n = n + 1
-    return 'done'
+
 
 f = fib(6)
 for n in f:
@@ -89,3 +89,18 @@ def test():
 
 if __name__ == '__main__':
     test()
+
+class Student(object):
+
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def print_score(self):
+        print('%s: %s' % (self.name, self.score))
+
+lix = Student('Lix', 99)
+wxx = Student('Wsx', 100)
+
+lix.print_score()
+wxx.print_score()
