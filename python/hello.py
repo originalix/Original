@@ -142,3 +142,4 @@ def foo(s):
     return 10 / n
 a = foo(0)
 print(a)
+Print('Hello World!')
