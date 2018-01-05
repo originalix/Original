@@ -122,5 +122,23 @@ def fn(self, name='world'):
 Hello = type('Hello', (object,), dict(hello=fn))
 h = Hello()
 h.hello()
-print(type(Hello))
-print(type(h))
+# print(type(Hello))
+# print(type(h))
+
+try:
+    print('try...')
+    r = 10 / 0
+    print('result: ', r)
+except ZeroDivisionError as e:
+    print('except: ', e)
+finally:
+    print('finally...')
+print('End')
+
+def foo(s):
+    n = int(s)
+    if n == 0:
+        raise ValueError('invalid value : %s' % s)
+    return 10 / n
+a = foo(0)
+print(a)
