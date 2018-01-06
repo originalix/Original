@@ -40,7 +40,31 @@ from io import BytesIO
 
 f = BytesIO()
 f.write('中文'.encode('utf-8'))
-print(f.getvalue())
+# print(f.getvalue())
 
 f = BytesIO(b'\xe4\xb8\xad\xe6\x96\x87')
-print(f.read())
+# print(f.read())
+
+import os
+print(os.path.abspath('.'))
+os.path.join('/Users/Lix/Documents/www/htdocs/origin', 'testdir')
+# os.mkdir('/Users/Lix/Documents/www/htdocs/origin/testdir')
+# os.rmdir('/Users/Lix/Documents/www/htdocs/origin/testdir')
+
+import json
+d = dict(name='wsx', age=21, score=99)
+a = json.dumps(d)
+# print(a)
+
+json_str = '{"name": "wsx", "age": 21, "score": 99}'
+a = json.loads(json_str)
+# print(a)
+
+class Student(object):
+    def __init__(self, name, age, score):
+        self.name = name
+        self.age = age
+        self.score = score
+
+s = Student('Bob', 20, 88)
+print(json.dumps(s, default=lambda obj: obj.__dict__))
