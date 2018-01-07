@@ -93,22 +93,36 @@ s = Student('Bob', 20, 88)
 #     print('Child process end.')
 
 # Pool 使用进程池的方式批量创建子进程:
-from multiprocessing import Pool
-import os, time, random
+# from multiprocessing import Pool
+# import os, time, random
 
-def long_time_task(name):
-    print('Run task %s (%s)...' % (name, os.getpid()))
-    start = time.time()
-    time.sleep(random.random() * 3)
-    end = time.time()
-    print('Task %s runs %0.2f seconds.' % (name, (end - start)))
+# def long_time_task(name):
+#     print('Run task %s (%s)...' % (name, os.getpid()))
+#     start = time.time()
+#     time.sleep(random.random() * 3)
+#     end = time.time()
+#     print('Task %s runs %0.2f seconds.' % (name, (end - start)))
 
-if __name__ == '__main__':
-    print('Parent process %s.' % os.getpid())
-    p = Pool(4)
-    for i in range(5):
-        p.apply_async(long_time_task, args=(i,))
-    print('Waiting for all subprocesses done...')
-    p.close()
-    p.join()
-    print('All subprocesses done.')
+# if __name__ == '__main__':
+#     print('Parent process %s.' % os.getpid())
+#     p = Pool(4)
+#     for i in range(5):
+#         p.apply_async(long_time_task, args=(i,))
+#     print('Waiting for all subprocesses done...')
+#     p.close()
+#     p.join()
+#     print('All subprocesses done.')
+
+# 使用子进程控制输入输出
+import subprocess
+# 子进程输出
+# print('$ nslookup www.python.org')
+# r = subprocess.call(['nslookup', 'www.python.org'])
+# print('Exit code:', r)
+
+# 子进程输入
+print('$ nslookup')
+p = subprocess.Popen(['nslookup'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+output, err = p.communicate(b'set q=mx\npython.org\nexit\n')
+print(output.decode('utf-8'))
+print('Exit code:', p.returncode)
