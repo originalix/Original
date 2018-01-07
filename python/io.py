@@ -46,6 +46,7 @@ f = BytesIO(b'\xe4\xb8\xad\xe6\x96\x87')
 # print(f.read())
 
 import os
+from multiprocessing import Process
 # print(os.path.abspath('.'))
 os.path.join('/Users/Lix/Documents/www/htdocs/origin', 'testdir')
 # os.mkdir('/Users/Lix/Documents/www/htdocs/origin/testdir')
@@ -70,9 +71,35 @@ s = Student('Bob', 20, 88)
 # print(json.dumps(s, default=lambda obj: obj.__dict__))
 
 # 多进程
-print('Process (%s) start...' % os.getpid())
-pid = os.fork()
-if pid == 0:
-    print('i m child process (%s) and my parent is %s.' % (os.getpid(), os.getppid()))
-else:
-    print('I (%s) just created a child process (%s).' % (os.getpid(), pid))
+# print('Process (%s) start...' % os.getpid())
+# pid = os.fork()
+# if pid == 0:
+#     # print('i m child process (%s) and my parent is %s.' % (os.getpid(), os.getppid()))
+#     pass
+# else:
+#     # print('I (%s) just created a child process (%s).' % (os.getpid(), pid))
+#     pass
+
+# multiprocessing
+# def run_proc(name):
+#     print('Run child process %s (%s)...' % (name, os.getpid()))
+
+# if __name__ == '__main__':
+#     print('Parent process %s.' % os.getpid())
+#     p = Process(target=run_proc, args=('test',))
+#     print('Child process will start.')
+#     p.start()
+#     p.join()
+#     print('Child process end.')
+
+# Pool 使用进程池的方式批量创建子进程:
+from multiprocessing import Pool
+import os, time, random
+
+def long_time_task(name):
+    print('Run task %s (%s)...' % (name, os.getpid()))
+    start = time.time()
+    time.sleep(random.random() * 3)
+    end = time.time()
+    print('Task %s runs %0.2f seconds.' % (name, (end - start)))
+
