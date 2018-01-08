@@ -18,10 +18,10 @@ try:
     content = response.read().decode('utf-8')
     # pattern = re.compile('h2>(.*?)</h2.*?content">(.*?)</.*?number">(.*?)</',re.S)
     # pattern = re.compile('<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">(.*?)</div></a>', re.S)
-    pattern = re.compile(r'<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">.*?an>(.*?)</.*?', re.S)
+    pattern = re.compile(r'<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">.*?an>(.*?)</.*?number">(.*?)</', re.S)
     items = re.findall(pattern, content)
     for item in items:
-        print item[0], item[1]
+        print item[0], item[1], item[2]
 except urllib2.URLError, e:
     if hasattr(e, "code"):
         print e.code
