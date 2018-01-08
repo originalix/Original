@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello world'
+    t = {
+        'code' : 200,
+        'msg' : 'Hello world',
+    }
+    return jsonify(t)
 
 @app.route('/user/<username>')
 def show_user_profile(username):
