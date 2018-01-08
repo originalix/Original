@@ -16,11 +16,12 @@ try:
     request = urllib2.Request(url, headers=headers)
     response = urllib2.urlopen(request)
     content = response.read().decode('utf-8')
-    pattern = re.compile(r'<div.*?clearfix">.*?<h2>(.*?)</h2>', re.S)
+    # pattern = re.compile('h2>(.*?)</h2.*?content">(.*?)</.*?number">(.*?)</',re.S)
+    # pattern = re.compile('<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">(.*?)</div></a>', re.S)
+    pattern = re.compile(r'<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">.*?an>(.*?)</.*?', re.S)
     items = re.findall(pattern, content)
-    print items
     for item in items:
-        print item
+        print item[0], item[1]
 except urllib2.URLError, e:
     if hasattr(e, "code"):
         print e.code
