@@ -5,6 +5,7 @@ __author__ = 'Lix'
 
 import urllib
 import urllib2
+import re
 
 page = 1
 url = 'https://www.qiushibaike.com/hot/page/' + str(page)
@@ -14,7 +15,13 @@ headers = { 'User-Agent' : user_agent }
 try:
     request = urllib2.Request(url, headers=headers)
     response = urllib2.urlopen(request)
-    print response.read()
+    content = response.read().decode('utf-8')
+    # str1 = r'<div class=article.*?<h2>(.*?)</h2>.*?<span>(.*?)</span>.*?<span class=stats-vote><i class=number>(.*?)</i>'
+    pattern = re.compile('<div.*?clearfix">.*?<h2>(.*?)</h2>')
+    items = re.findall(pattern, content)
+    print items
+    for item in items:
+        print item[0], item[1], item[2]
 except urllib2.URLError, e:
     if hasattr(e, "code"):
         print e.code
