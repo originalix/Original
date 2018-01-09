@@ -10,6 +10,21 @@ import re
 import thread
 import time
 
+# 糗事百科爬虫类
+class QSBK:
+
+    # 初始化方法，定义一些变量
+    def __init__(self):
+        self.pageIndex = 1
+        self.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36'
+        # 初始化headers
+        self.headers = { 'User-Agent' : self.user_agent }
+        # 存放段子的变量，每一个元素是每一页的段子们
+        self.stories = []
+        # 存放程序是否继续运行的变量
+        self.enable = False
+    
+        
 
 # page = 1
 # url = 'https://www.qiushibaike.com/hot/page/' + str(page)
