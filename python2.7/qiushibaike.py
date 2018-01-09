@@ -83,36 +83,25 @@ class QSBK:
                 return
             print u'第%d页\t发布人:%s\t赞:%s\n%s' % (page, story[0], story[2], story[1])
 
+    # 开始方法
     def start(self):
         print u'正在读取糗事百科，按回车查看新段子，Q退出'
+        # 使变量为True, 程序可以正常运行
         self.enable = True
+        # 先加载一页内容
         self.loadPage()
+        # 局部变量，控制当前读到了第几页
         nowPage = 0
         while self.enable:
             if len(self.stories) > 0:
+                # 从全局的list中获取一页的段子
                 pageStories = self.stories[0]
+                # 当前读到的页数加一
                 nowPage += 1
+                # 将全局list中第一个元素删除，因为已经取出 
                 del self.stories[0]
+                # 输出该页的段子
                 self.getOneStory(pageStories, nowPage)
 
 spider = QSBK()
 spider.start()
-
-# page = 1
-# url = 'https://www.qiushibaike.com/hot/page/' + str(page)
-# user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36'
-# headers = { 'User-Agent' : user_agent }
-
-# try:
-#     request = urllib2.Request(url, headers=headers)
-#     response = urllib2.urlopen(request)
-#     content = response.read().decode('utf-8')
-#     pattern = re.compile(r'<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">.*?an>(.*?)</.*?number">(.*?)</', re.S)
-#     items = re.findall(pattern, content)
-#     for item in items:
-#         print item[0], item[1], item[2]
-# except urllib2.URLError, e:
-#     if hasattr(e, "code"):
-#         print e.code
-#     if hasattr(e, "reason"):
-#         print 'reason ---->' + e.reason
