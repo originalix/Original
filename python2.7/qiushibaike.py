@@ -68,6 +68,36 @@ class QSBK:
                     self.stories.append(pageStories)
                     # 获取完之后页码索引加一，表示下次读取下一页
                     self.pageIndex += 1
+    
+    # 调用该方法，每次敲回车打印输出一个段子
+    def getOneStory(self, pageStories, page):
+        # 遍历一页的段子
+        for story in pageStories:
+            # 等待用户输入
+            input = raw_input()
+            # 每当输入回车一次，判断一下是否要加载新页面
+            self.loadPage()
+            # 如果输入Q则程序结束
+            if input == "Q":
+                self.enable = False
+                return
+            print u'第%d页\t发布人:%s\t赞:%s\n%s' % (page, story[0], story[2], story[1])
+
+    def start(self):
+        print u'正在读取糗事百科，按回车查看新段子，Q退出'
+        self.enable = True
+        self.loadPage()
+        nowPage = 0
+        while self.enable:
+            if len(self.stories) > 0:
+                pageStories = self.stories[0]
+                nowPage += 1
+                del self.stories[0]
+                self.getOneStory(pageStories, nowPage)
+
+spider = QSBK()
+spider.start()
+
 # page = 1
 # url = 'https://www.qiushibaike.com/hot/page/' + str(page)
 # user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36'
