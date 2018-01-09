@@ -105,5 +105,6 @@ class QSBK:
                 # 输出该页的段子
                 self.getOneStory(pageStories, nowPage)
 
-spider = QSBK()
-spider.start()
+# spider = QSBK()
+# spider.start()
+print '中国'
