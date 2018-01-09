@@ -1,6 +1,6 @@
-__author__ = 'Lix'
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+__author__ = 'Lix'
 
 import urllib
 import urllib2
@@ -21,5 +21,9 @@ class BDTB:
             return response 
         except urllib2.URLError, e:
             if hasattr(e, 'reason'):
-                print u'连接百度贴吧错误， 错误原因：', e.reason
+                print u'连接百度贴吧失败，错误原因: ', e.reason
                 return None
+
+baseURL = 'https://tieba.baidu.com/p/3138733512'
+bdtb = BDTB(baseURL, 1)
+bdtb.getPage(1)
