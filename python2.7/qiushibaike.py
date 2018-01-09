@@ -28,8 +28,11 @@ class QSBK:
     def getPage(self, pageIndex):
         try:
             url = 'https://www.qiushibaike.com/hot/page/' + str(pageIndex)
+            # 构建请求的request
             request = urllib2.Request(url, headers = self.headers)
+            # 利用urlopen获取页面代码
             response = urllib2.urlopen(request)
+            # 将页面转化为UTF-8编码
             pageCode = response.read().decode('utf-8')
             return pageCode
         
@@ -37,7 +40,34 @@ class QSBK:
             if hasattr(e, "reason"):
                 print u"连接糗事百科失败，错误原因：", e.reason
     
-
+    # 传入某一页代码，返回本页的用户昵称、内容、点赞数
+    def getPageItems(self, pageIndex):
+        pageCode = self.getPage(pageIndex)
+        if not pageCode:
+            print "页面加载失败..."
+            return None
+        pattern = re.compile(r'<div.*?clearfix">.*?<h2>(.*?)</h2.*?content">.*?an>(.*?)</.*?number">(.*?)</', re.S)
+        items = re.findall(pattern, pageCode)
+        # 用来存储每页的段子们
+        pageStories = []
+        # 遍历正则表达式匹配的信息
+        for item in items:
+            # item[0]是段子作者 item[1]是内容 item[2]是点赞数
+            pageStories.append([item[0].strip(), item[1].strip(), item[2].strip()])
+        return pageStories
+    
+    # 加载并提取页面的内容，加入到列表中
+    def loadPage(self):
+        # 如果当前未看的页数少于2页，则加载新一页
+        if self.enable == True:
+            # 获取新一页
+            if len(self.stories) < 2:
+                # 将该页的段子存放到全局的list中
+                pageStories = self.getPageItems(self.pageIndex)
+                if pageStories:
+                    self.stories.append(pageStories)
+                    # 获取完之后页码索引加一，表示下次读取下一页
+                    self.pageIndex += 1
 # page = 1
 # url = 'https://www.qiushibaike.com/hot/page/' + str(page)
 # user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36'
