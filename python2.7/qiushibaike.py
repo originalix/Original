@@ -24,7 +24,19 @@ class QSBK:
         # 存放程序是否继续运行的变量
         self.enable = False
     
+    # 传入某一页的索引获得页面代码
+    def getPage(self, pageIndex):
+        try:
+            url = 'https://www.qiushibaike.com/hot/page/' + str(pageIndex)
+            request = urllib2.Request(url, headers = self.headers)
+            response = urllib2.urlopen(request)
+            pageCode = response.read().decode('utf-8')
+            return pageCode
         
+        except urllib2.URLError, e:
+            if hasattr(e, "reason"):
+                print u"连接糗事百科失败，错误原因：", e.reason
+    
 
 # page = 1
 # url = 'https://www.qiushibaike.com/hot/page/' + str(page)
