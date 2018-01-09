@@ -52,8 +52,10 @@ class QSBK:
         pageStories = []
         # 遍历正则表达式匹配的信息
         for item in items:
+            replaceBR = re.compile('<br/>')
+            text = re.sub(replaceBR, "\n", item[1])
             # item[0]是段子作者 item[1]是内容 item[2]是点赞数
-            pageStories.append([item[0].strip(), item[1].strip(), item[2].strip()])
+            pageStories.append([item[0].strip(), text.strip(), item[2].strip()])
         return pageStories
     
     # 加载并提取页面的内容，加入到列表中
