@@ -6,6 +6,24 @@ import urllib
 import urllib2
 import re
 
+class Tool:
+    removeImg = re.compile(r'<img.*?>| {7}|')
+    removeAddr = re.compile(r'<a.*?>|</a>')
+    replaceLine = re.compile(r'<tr>|<div>|</div>|</p>')
+    replaceTD = re.compile(r'<td>')
+    replacePara = re.compile(r'<p.*?>')
+    replaceBR = re.compile(r'<br><br>|<br>')
+    removeExtraTag = re.compile(r'<.*?>')
+    def replace(self):
+        x = re.sub(self.removeImg, "", x)
+        x = re.sub(self.removeAddr, "", x)
+        x = re.sub(self.replaceLine, "\n", x)
+        x = re.sub(self.replaceTD, "\t", x)
+        x = re.sub(self.replacePara, "\n", x)
+        x = re.sub(self.replaceBR, "\n", x)
+        x = re.sub(self.removeExtraTag, "", x)
+        return x.strip()
+
 class BDTB:
 
     def __init__(self, baseUrl, seeLZ):
@@ -46,7 +64,6 @@ class BDTB:
     def getContent(self):
         pageCode = self.getPage(1)
         pattern = re.compile(r'<div id="post_content_.*?>(.*?)</div>', re.S)
-        # result = re.search(pattern, pageCode)
         items = re.findall(pattern, pageCode)
         for item in items:
             print item
