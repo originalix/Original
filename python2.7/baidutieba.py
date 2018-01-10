@@ -43,6 +43,14 @@ class BDTB:
         else:
             return None
 
+    def getContent(self):
+        pageCode = self.getPage(1)
+        pattern = re.compile(r'<div id="post_content_.*?>(.*?)</div>', re.S)
+        # result = re.search(pattern, pageCode)
+        items = re.findall(pattern, pageCode)
+        for item in items:
+            print item
+
 baseURL = 'https://tieba.baidu.com/p/3138733512'
 bdtb = BDTB(baseURL, 1)
-bdtb.getPageNum()
+bdtb.getContent()
