@@ -9,7 +9,7 @@ import cookielib
 
 class TBMM:
     def getPage(self):
-        url = 'https://mm.taobao.com/search_tstar_model.htm'
+        url = 'https://mm.taobao.com/search_tstar_model.htm?style=&place=city%3A%E5%B9%BF%E5%B7%9E'
         request = urllib2.Request(url, headers = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'})
         response = urllib2.urlopen(request)
         pageCode = response.read().decode('gbk')
