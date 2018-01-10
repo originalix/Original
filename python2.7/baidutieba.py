@@ -36,10 +36,20 @@ class Tool:
 # 百度贴吧爬虫类
 class BDTB:
     # 初始化，传入url地址，是否只看楼主参数
-    def __init__(self, baseUrl, seeLZ):
+    def __init__(self, baseUrl, seeLZ, floorTag):
         self.baseURL = baseUrl
+        # 是否只看楼主
         self.seeLZ = '?see_lz=' + str(seeLZ)
+        # Html标签剔除类
         self.tool = Tool()
+        # 全局file变量，文件写入操作对象
+        self.file = None
+        # 楼层标号，初始为1
+        self.floor = 1
+        # 默认的标题，如果没有成功获取到标题的话会用这个标题
+        self.defaultTitle = u'百度贴吧'
+        # 是否写入楼层分隔标记
+        self.floorTag = floorTag
 
     # 传入页码， 获取该页帖子的代码
     def getPage(self, pageNum):
@@ -55,36 +65,42 @@ class BDTB:
                 return None
 
     # 获取帖子标题
-    def getTitle(self):
-        pageCode = self.getPage(1)
+    def getTitle(self, pageCode):
         pattern = re.compile(r'<h3 class="core_title_txt.*?>(.*?)</h3>', re.S)
         result = re.search(pattern, pageCode)
         if result:
-            # print result.group(1).strip() # 测试输出
             return result.group(1).strip()
         else:
             return None
     
     # 获取帖子总页数
-    def getPageNum(self):
-        pageCode = self.getPage(1)
+    def getPageNum(self, pageCode):
         pattern = re.compile(r'<li class="l_reply_num.*?</span>.*?<span.*?>(.*?)</span>', re.S)
         result = re.search(pattern, pageCode)
         if result:
-            # print result.group(1).strip() # 测试输出
             return result.group(1).strip()
         else:
             return None
     
     # 获取帖子内容
-    def getContent(self):
-        pageCode = self.getPage(1)
+    def getContent(self, pageCode):
         pattern = re.compile(r'<div id="post_content_.*?>(.*?)</div>', re.S)
         items = re.findall(pattern, pageCode)
-        # for item in items:
-            # print item
-        print self.tool.replace(items[1])
+        contents = []
+        for item in items:
+            content = '\n' + self.tool.replace(item) + '\n'
+            contents.append(content.encode('utf-8'))
+        return contents
+
+    # 设置写入文件的标题
+    def setFileTitle(self, title):
+        # 如果标题不是none，即为成功获取到标题
+        if title is not None:
+            self.file = open(title + '.txt', 'w+')
+        else:
+            self.file = open(self.defaultTitle + '.txt', 'w+')
+    
 
 baseURL = 'https://tieba.baidu.com/p/3138733512'
-bdtb = BDTB(baseURL, 1)
-bdtb.getContent()
+bdtb = BDTB(baseURL, 1, 1)
+bdtb.getContent(bdtb.getPage(1))
