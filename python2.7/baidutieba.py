@@ -103,12 +103,37 @@ class BDTB:
     def writeData(self, contents):
         for item in contents:
             if self.floorTag == '1':
-                floorLine = "\n" + u'----------------------------------------------' + str(self.floor) + u'----------------------------------------------'
+                floorLine = "\n" + u'----------------------------------------------' + str(self.floor) + u"楼----------------------------------------------"
+                # 加入中文字后，编码为utf-8，否则运行报错
+                floorLine = floorLine.encode('utf-8')
                 self.file.write(floorLine)
             self.file.write(item)
             self.floor += 1
 
-        
-baseURL = 'https://tieba.baidu.com/p/3138733512'
-bdtb = BDTB(baseURL, 1, 1)
-bdtb.getContent(bdtb.getPage(1))
+    def start(self):
+        indexPage = self.getPage(1)
+        pageNum = self.getPageNum(indexPage)
+        title = self.getTitle(indexPage)
+        self.setFileTitle(title)
+        if pageNum == None:
+            print 'URL已失效，请重试'
+            return
+        try:
+            print '该帖子共有' + str(pageNum) + '页'
+            for i in range(1, int(pageNum)+1):
+                print '正在写入第' + str(i) + '页数据'
+                pageCode = self.getPage(i)
+                contents = self.getContent(pageCode)
+                self.writeData(contents)
+        # 出现写入异常
+        except IOError, e:
+            print "写入异常， 原因：" + e.message
+        finally:
+            print "写入任务完成"
+
+print u'请输入帖子代号'
+baseURL = 'https://tieba.baidu.com/p/' + str(raw_input(u'https://tieba.baidu.com/p/'))
+seeLZ = raw_input('是否只获取楼主发言，是输入1，否输入0\n')
+floorTag = raw_input('是否写入楼层信息，是输入1，否输入0\n')
+bdtb = BDTB(baseURL, seeLZ, floorTag)
+bdtb.start()
