@@ -100,7 +100,15 @@ class BDTB:
         else:
             self.file = open(self.defaultTitle + '.txt', 'w+')
     
+    def writeData(self, contents):
+        for item in contents:
+            if self.floorTag == '1':
+                floorLine = "\n" + u'----------------------------------------------' + str(self.floor) + u'----------------------------------------------'
+                self.file.write(floorLine)
+            self.file.write(item)
+            self.floor += 1
 
+        
 baseURL = 'https://tieba.baidu.com/p/3138733512'
 bdtb = BDTB(baseURL, 1, 1)
 bdtb.getContent(bdtb.getPage(1))
