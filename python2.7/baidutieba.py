@@ -32,8 +32,17 @@ class BDTB:
             # print result.group(1).strip()
             return result.group(1).strip()
         else:
-            print 'none'
+            return None
+
+    def getPageNum(self):
+        pageCode = self.getPage(1)
+        pattern = re.compile(r'<li class="l_reply_num.*?</span>.*?<span.*?>(.*?)</span>', re.S)
+        result = re.search(pattern, pageCode)
+        if result:
+            print result.group(1).strip()
+        else:
+            return None
 
 baseURL = 'https://tieba.baidu.com/p/3138733512'
 bdtb = BDTB(baseURL, 1)
-bdtb.getTitle()
+bdtb.getPageNum()
