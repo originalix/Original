@@ -14,7 +14,7 @@ class Tool:
     replacePara = re.compile(r'<p.*?>')
     replaceBR = re.compile(r'<br><br>|<br>')
     removeExtraTag = re.compile(r'<.*?>')
-    def replace(self):
+    def replace(self, x):
         x = re.sub(self.removeImg, "", x)
         x = re.sub(self.removeAddr, "", x)
         x = re.sub(self.replaceLine, "\n", x)
@@ -29,6 +29,7 @@ class BDTB:
     def __init__(self, baseUrl, seeLZ):
         self.baseURL = baseUrl
         self.seeLZ = '?see_lz=' + str(seeLZ)
+        self.tool = Tool()
 
     def getPage(self, pageNum):
         try:
@@ -47,7 +48,7 @@ class BDTB:
         pattern = re.compile(r'<h3 class="core_title_txt.*?>(.*?)</h3>', re.S)
         result = re.search(pattern, pageCode)
         if result:
-            # print result.group(1).strip()
+            # print result.group(1).strip() # 测试输出
             return result.group(1).strip()
         else:
             return None
@@ -57,7 +58,8 @@ class BDTB:
         pattern = re.compile(r'<li class="l_reply_num.*?</span>.*?<span.*?>(.*?)</span>', re.S)
         result = re.search(pattern, pageCode)
         if result:
-            print result.group(1).strip()
+            # print result.group(1).strip() # 测试输出
+            return result.group(1).strip()
         else:
             return None
 
@@ -65,8 +67,9 @@ class BDTB:
         pageCode = self.getPage(1)
         pattern = re.compile(r'<div id="post_content_.*?>(.*?)</div>', re.S)
         items = re.findall(pattern, pageCode)
-        for item in items:
-            print item
+        # for item in items:
+            # print item
+        print self.tool.replace(items[1])
 
 baseURL = 'https://tieba.baidu.com/p/3138733512'
 bdtb = BDTB(baseURL, 1)
