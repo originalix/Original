@@ -3,6 +3,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
 
 def practice_requests():
     """Requests 练习
@@ -66,7 +67,12 @@ def practice_beautiful_soup_tag():
     css_soup.p['class'] = ['wsx', 'lix']
     print css_soup
 
+def practice_selenium():
+    browser = webdriver.Chrome()
+    browser.get('http://www.baidu.com')
+
 if __name__ == '__main__':
     # practice_requests()
     # practice_beautiful_soup()
-    practice_beautiful_soup_tag()
+    # practice_beautiful_soup_tag()
+    practice_selenium()
