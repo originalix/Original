@@ -35,15 +35,15 @@ def practice_beautiful_soup():
     <p class="story">...</p>
     """
     soup = BeautifulSoup(html_doc, 'html.parser')
-    # print soup.prettify()
-    # print soup.title
-    # print soup.title.name
-    # print soup.title.string
-    # print soup.p['class']
-    # print soup.find_all('a')
-    # print soup.find(id='link3')
-    # for link in soup.find_all('a'):
-    #     print link.get('href')
+    print soup.prettify()
+    print soup.title
+    print soup.title.name
+    print soup.title.string
+    print soup.p['class']
+    print soup.find_all('a')
+    print soup.find(id='link3')
+    for link in soup.find_all('a'):
+        print link.get('href')
     print soup.get_text()
 
 def practice_beautiful_soup_tag():
@@ -52,14 +52,14 @@ def practice_beautiful_soup_tag():
 
     soup = BeautifulSoup('<b class="boldest">Extremely bold</b>', "lxml")
     tag = soup.b
-    # print type(tag)
-    # print tag.name
-    # tag.name = 'blockquote'
-    # print tag
-    # print tag.attrs
-    # tag['class'] = 'verygood'
-    # tag['id'] = 1
-    # print tag.get('class')
+    print type(tag)
+    print tag.name
+    tag.name = 'blockquote'
+    print tag
+    print tag.attrs
+    tag['class'] = 'verygood'
+    tag['id'] = 1
+    print tag.get('class')
 
     css_soup = BeautifulSoup('<p class="body strikeout"></p>', 'lxml')
     print css_soup.p['class']
