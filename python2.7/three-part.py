@@ -5,6 +5,9 @@ import requests
 from bs4 import BeautifulSoup
 
 def practice_requests():
+    """Requests 练习
+    """
+
     r = requests.get('http://httpbin.org/ip')
     data = {'data' : 'lix'}
     r = requests.post('http://httpbin.org/post', data = data)
@@ -15,6 +18,9 @@ def practice_requests():
     print r.json()
 
 def practice_beautiful_soup():
+    """BeautifulSoup4 练习
+    """
+
     html_doc = """
     <html><head><title>The Dormouse's story</title></head>
     <body>
@@ -40,8 +46,27 @@ def practice_beautiful_soup():
     #     print link.get('href')
     print soup.get_text()
 
+def practice_beautiful_soup_tag():
+    """针对BeautifulSoup4文档的对象的种类
+    """
 
+    soup = BeautifulSoup('<b class="boldest">Extremely bold</b>', "lxml")
+    tag = soup.b
+    # print type(tag)
+    # print tag.name
+    # tag.name = 'blockquote'
+    # print tag
+    # print tag.attrs
+    # tag['class'] = 'verygood'
+    # tag['id'] = 1
+    # print tag.get('class')
+
+    css_soup = BeautifulSoup('<p class="body strikeout"></p>', 'lxml')
+    print css_soup.p['class']
+    css_soup.p['class'] = ['wsx', 'lix']
+    print css_soup
 
 if __name__ == '__main__':
     # practice_requests()
-    practice_beautiful_soup()
+    # practice_beautiful_soup()
+    practice_beautiful_soup_tag()
