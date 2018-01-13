@@ -5,6 +5,9 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def practice_requests():
     """Requests 练习
@@ -80,8 +83,19 @@ def practice_selenium():
     assert "No results found." not in driver.page_source
     driver.close()
 
+def practice_taobaomm():
+    driver = webdriver.Chrome()
+    driver.get("https://mm.taobao.com/search_tstar_model.htm")
+    try:
+        element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "J_Error"))
+        )
+    finally:
+        driver.quit()
+
 if __name__ == '__main__':
     # practice_requests()
     # practice_beautiful_soup()
     # practice_beautiful_soup_tag()
-    practice_selenium()
+    # practice_selenium()
+    practice_taobaomm()
