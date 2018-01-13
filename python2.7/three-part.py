@@ -91,6 +91,7 @@ def practice_taobaomm():
             EC.presence_of_element_located((By.CLASS_NAME, "item-wrap"))
         )
     finally:
+        driver.save_screenshot('screenshot.png')
         driver.quit()
 
 if __name__ == '__main__':
