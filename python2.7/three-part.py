@@ -72,7 +72,7 @@ def practice_selenium():
     browser.get('http://www.baidu.com')
 
 if __name__ == '__main__':
-    # practice_requests()
-    # practice_beautiful_soup()
-    # practice_beautiful_soup_tag()
+    practice_requests()
+    practice_beautiful_soup()
+    practice_beautiful_soup_tag()
     practice_selenium()
