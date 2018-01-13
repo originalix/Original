@@ -4,6 +4,7 @@
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 def practice_requests():
     """Requests 练习
@@ -68,11 +69,19 @@ def practice_beautiful_soup_tag():
     print css_soup
 
 def practice_selenium():
-    browser = webdriver.Chrome()
-    browser.get('http://www.baidu.com')
+    driver = webdriver.Chrome()
+    driver.get("https://www.baidu.com/")
+    title = u'百度'
+    assert title in driver.title
+    elem = driver.find_element_by_name("wd")
+    elem.clear()
+    elem.send_keys("pycon")
+    elem.send_keys(Keys.RETURN)
+    assert "No results found." not in driver.page_source
+    driver.close()
 
 if __name__ == '__main__':
-    practice_requests()
-    practice_beautiful_soup()
-    practice_beautiful_soup_tag()
+    # practice_requests()
+    # practice_beautiful_soup()
+    # practice_beautiful_soup_tag()
     practice_selenium()
