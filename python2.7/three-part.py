@@ -85,10 +85,10 @@ def practice_selenium():
 
 def practice_taobaomm():
     driver = webdriver.Chrome()
-    driver.get("https://mm.taobao.com/search_tstar_model.htm")
+    driver.get("https://mm.taobao.com/search_tstar_model.htm?spm=5679.126488.640745.2.45914c54V0T6ut")
     try:
         element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "J_Error"))
+            EC.presence_of_element_located((By.CLASS_NAME, "item-wrap"))
         )
     finally:
         driver.quit()
