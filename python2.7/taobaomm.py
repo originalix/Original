@@ -13,11 +13,20 @@ import re
 
 class TBMM:
     def __init__(self):
+        """淘女郎爬虫类初始化函数
+        """
+
         self.site_url = 'https://mm.taobao.com/search_tstar_model.htm'
         self.driver = webdriver.PhantomJS()
         self.sleep_time = 3
 
     def getPage(self):
+        """获取淘女郎页面HTML内容
+        
+        Returns:
+            <soup> -- <BeautifulSoup库解析的html数据>
+        """
+
         self.driver.get(self.site_url)
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
@@ -26,6 +35,13 @@ class TBMM:
         return soup
     
     def getContent(self, soup):
+        """ 获取淘女郎中，列表的数据，
+            包括封面图，姓名，城市，身高体重
+        
+        Arguments:
+            soup {bp4库解析出的默认格式} -- [html数据]
+        """
+
         items = soup.find_all(class_='item')
         for item in items:
             print item
@@ -33,17 +49,22 @@ class TBMM:
             page_code = str(item)
             name = item.find(class_='name').text
             city = item.find(class_='city').text
-            pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
-            result = re.search(pattern, page_code)
-            if result:
-                print 'http:' + result.group(1).strip()
-                print name
-                print city
-            else:
-                print 'not found img src'            
+            img = item.img['src']
+            print img
+            # pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
+            # result = re.search(pattern, page_code)
+            # if result:
+            #     print 'http:' + result.group(1).strip()
+            #     print name
+            #     print city
+            # else:
+            #     print 'not found img src'            
             print '----------------------------------'
     
     def start(self):
+        """ 淘女郎爬虫类执行函数
+        """
+
         soup = self.getPage()
         self.getContent(soup)
 
