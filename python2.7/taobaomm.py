@@ -56,12 +56,19 @@ class TBMM:
                 img = 'http:' + result.group(1).strip()
             else:
                 if item.img['src'] is not None:
-                    img = item.img['src']
+                    img = 'http:' + item.img['src']
                 else:    
                     pass
+            pattern = re.compile(r'<span>(.*?)</span>', re.S)
+            result = re.search(pattern, page_code)
+            if result:
+                height_wight = result.group(1).strip()
+            else:
+                print u'身高体重未找到'
             print name
             print city
-            print img            
+            print img
+            print height_wight
             print '----------------------------------'
     
     def start(self):
