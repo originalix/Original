@@ -12,32 +12,37 @@ import time
 import re
 
 class TBMM:
+    def __init__(self):
+        self.site_url = 'https://mm.taobao.com/search_tstar_model.htm'
+        self.driver = webdriver.PhantomJS()
+        self.sleep_time = 3
+
     def getPage(self):
-        url = 'https://mm.taobao.com/search_tstar_model.htm'
-        driver = webdriver.PhantomJS()
-        driver.get(url)
-        time.sleep(3)
-        content = driver.page_source.encode('utf-8')
-        # with open('tbmm.html', 'w') as f:
-            # f.write(content)
+        self.driver.get(url)
+        time.sleep(self.sleep_time)
+        content = self.driver.page_source.encode('utf-8')
         driver.quit()
         soup = BeautifulSoup(content, 'html.parser')
-        items = soup.find_all(class_='item')
-        for item in items:
-            print item
-            print u'----分割线---'
-            page_code = str(item)
-            name = item.find(class_='name').text
-            city = item.find(class_='city').text
-            pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
-            result = re.search(pattern, page_code)
-            if result:
-                print 'http:' + result.group(1).strip()
-                print name
-                print city
-            else:
-                print 'not found img src'            
-            print '----------------------------------'
+        return soup
+    
+    def getContent(self):
+        pass
+        # items = soup.find_all(class_='item')
+        # for item in items:
+        #     print item
+        #     print u'----分割线---'
+        #     page_code = str(item)
+        #     name = item.find(class_='name').text
+        #     city = item.find(class_='city').text
+        #     pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
+        #     result = re.search(pattern, page_code)
+        #     if result:
+        #         print 'http:' + result.group(1).strip()
+        #         print name
+        #         print city
+        #     else:
+        #         print 'not found img src'            
+        #     print '----------------------------------'
         
 
 tbmm = TBMM()
