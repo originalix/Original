@@ -21,7 +21,11 @@ class TBMM:
             # f.write(content)
         driver.quit()
         soup = BeautifulSoup(content, 'html.parser')
-        print soup.find(id='J_GirlsList')
+        items = soup.find_all(class_='item')
+        for item in items:
+            print item.find(class_='name')
+            print '----------------------------------'
+        
 
 tbmm = TBMM()
 tbmm.getPage()
