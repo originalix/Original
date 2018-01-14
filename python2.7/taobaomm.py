@@ -9,15 +9,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import io
 
 class TBMM:
     def getPage(self):
         url = 'https://mm.taobao.com/search_tstar_model.htm'
-        driver = webdriver.Chrome()
+        driver = webdriver.PhantomJS()
         driver.get(url)
-        time.sleep(10)
-        with open('tbmm.html', 'w', 'utf-8') as f:
-            f.write(driver.page_source)
+        time.sleep(5)
+        with open('tbmm.html', 'w') as f:
+            content = driver.page_source.encode('utf-8')
+            f.write(content)
         driver.quit()
 
 tbmm = TBMM()
