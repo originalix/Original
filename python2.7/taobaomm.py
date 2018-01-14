@@ -18,32 +18,34 @@ class TBMM:
         self.sleep_time = 3
 
     def getPage(self):
-        self.driver.get(url)
+        self.driver.get(self.site_url)
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
-        driver.quit()
+        self.driver.quit()
         soup = BeautifulSoup(content, 'html.parser')
         return soup
     
-    def getContent(self):
-        pass
-        # items = soup.find_all(class_='item')
-        # for item in items:
-        #     print item
-        #     print u'----分割线---'
-        #     page_code = str(item)
-        #     name = item.find(class_='name').text
-        #     city = item.find(class_='city').text
-        #     pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
-        #     result = re.search(pattern, page_code)
-        #     if result:
-        #         print 'http:' + result.group(1).strip()
-        #         print name
-        #         print city
-        #     else:
-        #         print 'not found img src'            
-        #     print '----------------------------------'
-        
+    def getContent(self, soup):
+        items = soup.find_all(class_='item')
+        for item in items:
+            print item
+            print u'----分割线---'
+            page_code = str(item)
+            name = item.find(class_='name').text
+            city = item.find(class_='city').text
+            pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
+            result = re.search(pattern, page_code)
+            if result:
+                print 'http:' + result.group(1).strip()
+                print name
+                print city
+            else:
+                print 'not found img src'            
+            print '----------------------------------'
+    
+    def start(self):
+        soup = self.getPage()
+        self.getContent(soup)
 
 tbmm = TBMM()
-tbmm.getPage()
+tbmm.start()
