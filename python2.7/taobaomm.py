@@ -9,7 +9,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import io
 
 class TBMM:
     def getPage(self):
@@ -17,10 +16,12 @@ class TBMM:
         driver = webdriver.PhantomJS()
         driver.get(url)
         time.sleep(5)
-        with open('tbmm.html', 'w') as f:
-            content = driver.page_source.encode('utf-8')
-            f.write(content)
+        content = driver.page_source.encode('utf-8')
+        # with open('tbmm.html', 'w') as f:
+            # f.write(content)
         driver.quit()
+        soup = BeautifulSoup(content, 'html.parser')
+        print soup.find(id='J_GirlsList')
 
 tbmm = TBMM()
 tbmm.getPage()
