@@ -44,25 +44,28 @@ class TBMM:
 
         items = soup.find_all(class_='item')
         for item in items:
-            print item
+            # print item
             print u'----分割线---'
             page_code = str(item)
             name = item.find(class_='name').text
             city = item.find(class_='city').text
-            img = item.img['src']
-            print img
-            # pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
-            # result = re.search(pattern, page_code)
-            # if result:
-            #     print 'http:' + result.group(1).strip()
-            #     print name
-            #     print city
-            # else:
-            #     print 'not found img src'            
+            img = ''
+            pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
+            result = re.search(pattern, page_code)
+            if result:
+                img = 'http:' + result.group(1).strip()
+            else:
+                if item.img['src'] is not None:
+                    img = item.img['src']
+                else:    
+                    pass
+            print name
+            print city
+            print img            
             print '----------------------------------'
     
     def start(self):
-        """ 淘女郎爬虫类执行函数
+        """ 淘女郎爬虫类执行函数0p-oo
         """
 
         soup = self.getPage()
