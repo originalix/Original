@@ -2,19 +2,23 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Lix'
 
-import urllib
-import urllib2
-import re
-import cookielib
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
 class TBMM:
     def getPage(self):
-        url = 'https://mm.taobao.com/search_tstar_model.htm?style=&place=city%3A%E5%B9%BF%E5%B7%9E'
-        request = urllib2.Request(url, headers = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'})
-        response = urllib2.urlopen(request)
-        pageCode = response.read().decode('gbk')
-        print pageCode
-        return pageCode
+        url = 'https://mm.taobao.com/search_tstar_model.htm'
+        driver = webdriver.Chrome()
+        driver.get(url)
+        time.sleep(10)
+        with open('tbmm.html', 'w', 'utf-8') as f:
+            f.write(driver.page_source)
+        driver.quit()
 
 tbmm = TBMM()
 tbmm.getPage()
