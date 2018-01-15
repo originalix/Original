@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import re
+import requests
 
 class TBMM:
     def __init__(self):
@@ -69,8 +70,13 @@ class TBMM:
             print city
             print img
             print height_wight
+            with open(r'/Users/Lix/Documents/www/htdocs/origin/tbmm/' + name + '.jpg', 'wb') as f:
+                f.write(requests.get(img).content)
             print '----------------------------------'
     
+    def saveImg(self, imageURL, fileName):
+        pass
+
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
         """
