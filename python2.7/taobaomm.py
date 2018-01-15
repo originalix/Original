@@ -90,7 +90,15 @@ class TBMM:
         # 去除路径首尾空格
         path = path.strip()
         path = path.rstrip('\\')
-        
+        isExists = os.path.exists(path)
+
+        if not isExists:
+            print path + ' 创建成功'
+            os.makedirs(path)
+            return True
+        else:
+            print path + ' 目录已存在'
+            return False
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
