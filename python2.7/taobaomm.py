@@ -20,6 +20,7 @@ class TBMM:
         self.site_url = 'https://mm.taobao.com/search_tstar_model.htm'
         self.driver = webdriver.PhantomJS()
         self.sleep_time = 1
+        self.save_img_path = '/Users/Lix/Documents/www/htdocs/origin/tbmm/'
 
     def getPage(self):
         """获取淘女郎页面HTML内容
@@ -70,12 +71,19 @@ class TBMM:
             print city
             print img
             print height_wight
-            with open('/Users/Lix/Documents/www/htdocs/origin/tbmm/' + name + '.png', 'wb') as f:
-                f.write(requests.get(img).content)
+            self.saveImg(img, name)
             print '----------------------------------'
     
     def saveImg(self, imageURL, fileName):
-        pass
+        """存储图片方法
+        
+        Arguments:
+            imageURL <string> -- 图片的url
+            fileName <string> -- 用于存储的文件名
+        """
+
+        with open(self.save_img_path + fileName + '.png', 'wb') as f:
+            f.write(requests.get(imageURL).content)
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
