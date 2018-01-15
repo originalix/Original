@@ -70,17 +70,20 @@ class TBMM:
             # 去除身高体重里的空格、斜线符号
             if result:
                 height_wight = result.group(1).strip()
+                print height_wight
                 height_wight = height_wight.replace(' ', '')
-                height_wight = height_wight.replace('\', '-')
+                height_wight = height_wight.replace('\\', '-')
+                print height_wight
+                print type(height_wight)
             else:
                 print u'身高体重未找到'
-            print name
-            print city
-            print img
-            print height_wight
-            img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
-            self.mkdir(img_dir_path)
-            self.saveImg(img_dir_path, img, name)
+            # print name
+            # print city
+            # print img
+            # print height_wight
+            # img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
+            # self.mkdir(img_dir_path)
+            # self.saveImg(img_dir_path, img, name)
             print '----------------------------------'
     
     def saveImg(self, savePath, imageURL, fileName):
