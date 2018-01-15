@@ -67,15 +67,10 @@ class TBMM:
             # 正则匹配身高体重
             pattern = re.compile(r'<span>(.*?)</span>', re.S)
             result = re.search(pattern, page_code)
-            # 去除身高体重里的空格、斜线符号
+            # 去除身高体重里的斜线符号
             if result:
                 height_wight = result.group(1).strip()
-                # print height_wight
                 height_wight = height_wight.replace('/', '-')
-                # print height_wight
-                # arr = list(height_wight)
-                # print arr
-                # print type(height_wight)
             else:
                 print u'身高体重未找到'
             print name
@@ -94,7 +89,6 @@ class TBMM:
             imageURL <string> -- 图片的url
             fileName <string> -- 用于存储的文件名
         """
-        # print savePath + '/' + fileName.encode('utf-8') + '.png'
         with open(savePath + '/' + fileName.encode('utf-8') + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
 
@@ -127,12 +121,6 @@ class TBMM:
 
         soup = self.getPage()
         self.getContent(soup)
-
-    def string_test(self):
-        a = '166CM / 55KG'
-        a =a.replace(' ', '')
-        a = a.replace('/', '-')
-        print a
 
 tbmm = TBMM()
 tbmm.start()
