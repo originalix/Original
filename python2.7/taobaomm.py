@@ -19,7 +19,7 @@ class TBMM:
 
         self.site_url = 'https://mm.taobao.com/search_tstar_model.htm'
         self.driver = webdriver.PhantomJS()
-        self.sleep_time = 3
+        self.sleep_time = 1
 
     def getPage(self):
         """获取淘女郎页面HTML内容
@@ -70,7 +70,7 @@ class TBMM:
             print city
             print img
             print height_wight
-            with open(r'/Users/Lix/Documents/www/htdocs/origin/tbmm/' + name + '.jpg', 'wb') as f:
+            with open('/Users/Lix/Documents/www/htdocs/origin/tbmm/' + name + '.png', 'wb') as f:
                 f.write(requests.get(img).content)
             print '----------------------------------'
     
