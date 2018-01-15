@@ -127,5 +127,12 @@ class TBMM:
         soup = self.getPage()
         self.getContent(soup)
 
+    def string_test(self):
+        a = '166CM / 55KG'
+        a =a.replace(' ', '')
+        a = a.replace('/', '-')
+        print a
+
 tbmm = TBMM()
-tbmm.start()
+# tbmm.start()
+tbmm.string_test()
