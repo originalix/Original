@@ -72,10 +72,13 @@ class TBMM:
             print city
             print img
             print height_wight
-            self.saveImg(img, name)
+            img_dir_path = self.save_img_path + name.decode('utf-8') + '-' + height_wight.decode('utf-8')
+            print img_dir_path
+            # self.mkdir(img_dir_path.encode('utf-8'))
+            # self.saveImg(img_dir_path, img, name)
             print '----------------------------------'
     
-    def saveImg(self, imageURL, fileName):
+    def saveImg(self, savePath, imageURL, fileName):
         """存储图片方法
         
         Arguments:
@@ -83,10 +86,19 @@ class TBMM:
             fileName <string> -- 用于存储的文件名
         """
 
-        with open(self.save_img_path + fileName + '.png', 'wb') as f:
+        with open(savePath + fileName + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
 
     def mkdir(self, path):
+        """创建文件夹
+        
+        Arguments:
+            path <String> -- 需要创建的文件夹路径
+        
+        Returns:
+            <Bool> -- 是否创建成功
+        """
+
         # 去除路径首尾空格
         path = path.strip()
         path = path.rstrip('\\')
