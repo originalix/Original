@@ -68,14 +68,18 @@ class TBMM:
                 height_wight = result.group(1).strip()
             else:
                 print u'身高体重未找到'
-            print name
-            print city
-            print img
-            print height_wight
-            img_dir_path = self.save_img_path + name.decode('utf-8') + '-' + height_wight.decode('utf-8')
-            print img_dir_path
+            # print name
+            # print city
+            # print img
+            # print height_wight
+            # img_dir_path = self.save_img_path + name + '-' + height_wight
+            # print img_dir_path
             # self.mkdir(img_dir_path.encode('utf-8'))
             # self.saveImg(img_dir_path, img, name)
+            print type(self.save_img_path)
+            print type(name)
+            print type(height_wight)
+            print type('-')
             print '----------------------------------'
     
     def saveImg(self, savePath, imageURL, fileName):
