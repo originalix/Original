@@ -68,18 +68,14 @@ class TBMM:
                 height_wight = result.group(1).strip()
             else:
                 print u'身高体重未找到'
-            # print name
-            # print city
-            # print img
-            # print height_wight
-            # img_dir_path = self.save_img_path + name + '-' + height_wight
-            # print img_dir_path
-            # self.mkdir(img_dir_path.encode('utf-8'))
-            # self.saveImg(img_dir_path, img, name)
-            print type(self.save_img_path)
-            print type(name)
-            print type(height_wight)
-            print type('-')
+            print name
+            print city
+            print img
+            print height_wight
+            img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
+            print img_dir_path
+            self.mkdir(img_dir_path)
+            self.saveImg(img_dir_path, img, name)
             print '----------------------------------'
     
     def saveImg(self, savePath, imageURL, fileName):
@@ -89,8 +85,11 @@ class TBMM:
             imageURL <string> -- 图片的url
             fileName <string> -- 用于存储的文件名
         """
-
-        with open(savePath + fileName + '.png', 'wb') as f:
+        print '--------saveImage start-----------'
+        # print type(savePath)
+        # print type(fileName)
+        print '--------saveImage end-----------'
+        with open(savePath + fileName.encode('utf-8') + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
 
     def mkdir(self, path):
