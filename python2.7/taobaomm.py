@@ -94,8 +94,8 @@ class TBMM:
             imageURL <string> -- 图片的url
             fileName <string> -- 用于存储的文件名
         """
-
-        with open(savePath + fileName.encode('utf-8') + '.png', 'wb') as f:
+        # print savePath + '/' + fileName.encode('utf-8') + '.png'
+        with open(savePath + '/' + fileName.encode('utf-8') + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
 
     def mkdir(self, path):
