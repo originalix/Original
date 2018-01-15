@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import re
 import requests
+import os
 
 class TBMM:
     def __init__(self):
@@ -84,6 +85,12 @@ class TBMM:
 
         with open(self.save_img_path + fileName + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
+
+    def mkdir(self, path):
+        # 去除路径首尾空格
+        path = path.strip()
+        path = path.rstrip('\\')
+        
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
