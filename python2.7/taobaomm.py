@@ -55,17 +55,23 @@ class TBMM:
             img = ''
             pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
             result = re.search(pattern, page_code)
+            # 解析封面图URL
             if result:
                 img = 'http:' + result.group(1).strip()
             else:
+                # 若不是懒加载的图片 提取img的src属性当做url
                 if item.img['src'] is not None:
                     img = 'http:' + item.img['src']
                 else:    
                     pass
+            # 正则匹配身高体重
             pattern = re.compile(r'<span>(.*?)</span>', re.S)
             result = re.search(pattern, page_code)
+            # 去除身高体重里的空格、斜线符号
             if result:
                 height_wight = result.group(1).strip()
+                height_wight = height_wight.replace(' ', '')
+                height_wight = height_wight.replace('\', '-')
             else:
                 print u'身高体重未找到'
             print name
@@ -73,7 +79,6 @@ class TBMM:
             print img
             print height_wight
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
-            print img_dir_path
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
             print '----------------------------------'
@@ -85,10 +90,7 @@ class TBMM:
             imageURL <string> -- 图片的url
             fileName <string> -- 用于存储的文件名
         """
-        print '--------saveImage start-----------'
-        # print type(savePath)
-        # print type(fileName)
-        print '--------saveImage end-----------'
+
         with open(savePath + fileName.encode('utf-8') + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
 
