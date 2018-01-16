@@ -53,7 +53,7 @@ class TBMM:
             name = item.find(class_='name').text
             city = item.find(class_='city').text
             img = ''
-            link = item.a['href']
+            link = 'http:' + item.a['href']
             pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
             result = re.search(pattern, page_code)
             # 解析封面图URL
@@ -83,6 +83,7 @@ class TBMM:
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
             print '----------------------------------'
+            break
     
     def saveImg(self, savePath, imageURL, fileName):
         """存储图片方法
@@ -116,6 +117,11 @@ class TBMM:
         else:
             print path + ' 目录已存在'
             return False
+
+    def go2ContentPage(self, url):
+        self.driver.navigate().to(url)
+        content = self.driver.page_source.encode('utf-8')
+        print content
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
