@@ -47,12 +47,13 @@ class TBMM:
 
         items = soup.find_all(class_='item')
         for item in items:
-            # print item
+            print item
             print u'----分割线---'
             page_code = str(item)
             name = item.find(class_='name').text
             city = item.find(class_='city').text
             img = ''
+            link = item.a['href']
             pattern = re.compile(r'data-ks-lazyload="(.*?)"', re.S)
             result = re.search(pattern, page_code)
             # 解析封面图URL
@@ -77,6 +78,7 @@ class TBMM:
             print city
             print img
             print height_wight
+            print link
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
