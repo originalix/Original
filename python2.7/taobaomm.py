@@ -82,6 +82,7 @@ class TBMM:
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
+            self.go2ContentPage(link)
             print '----------------------------------'
             break
     
@@ -119,9 +120,13 @@ class TBMM:
             return False
 
     def go2ContentPage(self, url):
-        self.driver.navigate().to(url)
-        content = self.driver.page_source.encode('utf-8')
-        print content
+        print url
+        self.driver.get('http://baidu.com')
+        # time.sleep(self.sleep_time)
+        # content = self.driver.page_source.encode('utf-8')
+        # self.driver.quit()
+        # soup = BeautifulSoup(content, 'html.parser')
+        # print soup.prettify()
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
