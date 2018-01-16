@@ -120,13 +120,13 @@ class TBMM:
             return False
 
     def go2ContentPage(self, url):
-        print url
-        self.driver.get('http://baidu.com')
-        # time.sleep(self.sleep_time)
-        # content = self.driver.page_source.encode('utf-8')
-        # self.driver.quit()
-        # soup = BeautifulSoup(content, 'html.parser')
-        # print soup.prettify()
+        self.driver = webdriver.PhantomJS()
+        self.driver.get(url)
+        time.sleep(self.sleep_time)
+        content = self.driver.page_source.encode('utf-8')
+        self.driver.quit()
+        soup = BeautifulSoup(content, 'html.parser')
+        print soup.prettify()
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
