@@ -33,6 +33,7 @@ class TBMM:
         self.driver.get(self.site_url)
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
+        print self.driver.title
         self.driver.quit()
         soup = BeautifulSoup(content, 'html.parser')
         return soup
@@ -47,7 +48,7 @@ class TBMM:
 
         items = soup.find_all(class_='item')
         for item in items:
-            print item
+            # print item
             print u'----分割线---'
             page_code = str(item)
             name = item.find(class_='name').text
@@ -74,11 +75,11 @@ class TBMM:
                 height_wight = height_wight.replace('/', '-')
             else:
                 print u'身高体重未找到'
-            print name
-            print city
-            print img
-            print height_wight
-            print link
+            # print name
+            # print city
+            # print img
+            # print height_wight
+            # print link
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
@@ -122,11 +123,12 @@ class TBMM:
     def go2ContentPage(self, url):
         self.driver = webdriver.PhantomJS()
         self.driver.get(url)
-        time.sleep(self.sleep_time)
-        content = self.driver.page_source.encode('utf-8')
+        # time.sleep(self.sleep_time)
+        # content = self.driver.page_source.encode('utf-8')
         self.driver.quit()
-        soup = BeautifulSoup(content, 'html.parser')
-        print soup.prettify()
+        print self.driver.title
+        # soup = BeautifulSoup(content, 'html.parser')
+        # print soup.prettify()
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
