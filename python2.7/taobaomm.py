@@ -19,7 +19,7 @@ class TBMM:
         """
 
         self.site_url = 'https://mm.taobao.com/search_tstar_model.htm'
-        self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.Chrome()
         self.sleep_time = 1
         self.save_img_path = '/Users/Lix/Documents/www/htdocs/origin/tbmm/'
 
@@ -34,7 +34,6 @@ class TBMM:
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
         print self.driver.title
-        self.driver.quit()
         soup = BeautifulSoup(content, 'html.parser')
         return soup
     
@@ -121,12 +120,12 @@ class TBMM:
             return False
 
     def go2ContentPage(self, url):
-        self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.Chrome()
         self.driver.get(url)
         # time.sleep(self.sleep_time)
         # content = self.driver.page_source.encode('utf-8')
-        self.driver.quit()
         print self.driver.title
+        self.driver.quit()
         # soup = BeautifulSoup(content, 'html.parser')
         # print soup.prettify()
 
