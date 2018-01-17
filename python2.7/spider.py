@@ -3,6 +3,8 @@
 
 import urllib2
 import cookielib
+from bs4 import BeautifulSoup
+from selenium import webdriver
 
 # request = urllib2.Request("http://baidu.com")
 # response = urllib2.urlopen(request)
@@ -32,3 +34,13 @@ import cookielib
 # opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
 # response = opener.open(req)
 # print response.read()
+
+def navigationForSelenium():
+    driver = webdriver.PhantomJS()
+    driver.get('http://www.baidu.com')
+    print driver.title
+    driver.get('http://www.qq.com')
+    print driver.title
+
+if __name__ == '__main__':
+    navigationForSelenium()
