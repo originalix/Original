@@ -41,6 +41,8 @@ def navigationForSelenium():
     print driver.title
     driver.get('http://www.qq.com')
     print driver.title
-
+    driver.back()
+    print driver.title
+    
 if __name__ == '__main__':
     navigationForSelenium()
