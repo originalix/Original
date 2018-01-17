@@ -120,14 +120,10 @@ class TBMM:
             return False
 
     def go2ContentPage(self, url):
-        self.driver = webdriver.Chrome()
         self.driver.get(url)
-        # time.sleep(self.sleep_time)
-        # content = self.driver.page_source.encode('utf-8')
-        print self.driver.title
-        self.driver.quit()
-        # soup = BeautifulSoup(content, 'html.parser')
-        # print soup.prettify()
+        content = self.driver.page_source.encode('utf-8')
+        soup = BeautifulSoup(content, 'html.parser')
+        print soup.prettify()
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
