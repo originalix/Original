@@ -125,8 +125,9 @@ class TBMM:
         index = 0;
         for img in allImgs:
             index += 1
-            imgurl = 'http:' + img['src']
-            self.saveImg(save_url, imgurl, str(index))
+            if img['src'] is not None:
+                imgurl = 'http:' + img['src']
+                self.saveImg(save_url, imgurl, str(index))
             print imgurl
 
     def start(self):
