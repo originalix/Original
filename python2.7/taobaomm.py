@@ -74,17 +74,11 @@ class TBMM:
                 height_wight = height_wight.replace('/', '-')
             else:
                 print u'身高体重未找到'
-            # print name
-            # print city
-            # print img
-            # print height_wight
-            # print link
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
             self.go2ContentPage(link, img_dir_path)
             print '----------------------------------'
-            break
     
     def saveImg(self, savePath, imageURL, fileName):
         """存储图片方法
