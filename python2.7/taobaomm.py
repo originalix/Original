@@ -75,9 +75,9 @@ class TBMM:
             else:
                 print u'身高体重未找到'
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
-            self.mkdir(img_dir_path)
-            self.saveImg(img_dir_path, img, name)
-            self.go2ContentPage(link, img_dir_path)
+            if True == self.mkdir(img_dir_path):
+                self.saveImg(img_dir_path, img, name)
+                self.go2ContentPage(link, img_dir_path)
             print '----------------------------------'
     
     def saveImg(self, savePath, imageURL, fileName):
@@ -87,6 +87,7 @@ class TBMM:
             imageURL <string> -- 图片的url
             fileName <string> -- 用于存储的文件名
         """
+        print '开始保存图片' + fileName.encode('utf-8')
         with open(savePath + '/' + fileName.encode('utf-8') + '.png', 'wb') as f:
             f.write(requests.get(imageURL).content)
 
@@ -108,12 +109,13 @@ class TBMM:
         if not isExists:
             print path + ' 创建成功'
             os.makedirs(path)
+            return True
         else:
             print path + ' 目录已存在'
-        
-        return True
+            return False
 
     def go2ContentPage(self, url, save_url):
+        print '开始查看详情' + url.encode('utf-8')
         self.driver.get(url)
         content = self.driver.page_source.encode('utf-8')
         soup = BeautifulSoup(content, 'html.parser')
