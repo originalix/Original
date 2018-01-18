@@ -123,7 +123,9 @@ class TBMM:
         self.driver.get(url)
         content = self.driver.page_source.encode('utf-8')
         soup = BeautifulSoup(content, 'html.parser')
-        print soup.prettify()
+        aixiucontent = soup.find(id="J_ScaleImg")
+        allImgs = aixiucontent.find_all('img')
+        print allImgs
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
