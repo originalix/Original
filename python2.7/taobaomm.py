@@ -125,6 +125,7 @@ class TBMM:
         index = 0;
         for img in allImgs:
             index += 1
+            # 这里src属性判断出了问题
             if img['src'] is not None:
                 imgurl = 'http:' + img['src']
                 self.saveImg(save_url, imgurl, str(index))
