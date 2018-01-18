@@ -1,6 +1,7 @@
-git add .
+#!/bin/bash
+#author: Lix
+
+echo "请输入本次commit信息:";
 read commitString
-git commit -m commitString
-git push -u origin
-git push -u os
+echo "this is commitString : $commitString"
 
