@@ -82,7 +82,7 @@ class TBMM:
             img_dir_path = self.save_img_path + name.encode('utf-8') + '-' + height_wight
             self.mkdir(img_dir_path)
             self.saveImg(img_dir_path, img, name)
-            self.go2ContentPage(link)
+            self.go2ContentPage(link, img_dir_path)
             print '----------------------------------'
             break
     
@@ -114,18 +114,24 @@ class TBMM:
         if not isExists:
             print path + ' 创建成功'
             os.makedirs(path)
-            return True
         else:
             print path + ' 目录已存在'
-            return False
+        
+        return True
 
-    def go2ContentPage(self, url):
+    def go2ContentPage(self, url, save_url):
         self.driver.get(url)
         content = self.driver.page_source.encode('utf-8')
         soup = BeautifulSoup(content, 'html.parser')
         aixiucontent = soup.find(id="J_ScaleImg")
         allImgs = aixiucontent.find_all('img')
         print allImgs
+        index = 0;
+        for img in allImgs:
+            index += 1
+            imgurl = 'http:' + img['src']
+            self.saveImg(save_url, imgurl, str(index))
+            print imgurl
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
