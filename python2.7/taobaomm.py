@@ -115,18 +115,24 @@ class TBMM:
             return False
 
     def go2ContentPage(self, url, save_url):
+        """进入淘女郎的详情页 并爬取页面里的所有图片
+        
+        Arguments:
+            url <String> -- 妹子详情页的url
+            save_url <String> -- 保存到本地的路径
+        """
+
         print '开始查看详情' + url.encode('utf-8')
         self.driver.get(url)
         content = self.driver.page_source.encode('utf-8')
         soup = BeautifulSoup(content, 'html.parser')
         aixiucontent = soup.find(id="J_ScaleImg")
         allImgs = aixiucontent.find_all('img')
-        print allImgs
         index = 0;
         for img in allImgs:
             index += 1
             # 这里src属性判断出了问题
-            if img['src'] is not None:
+            if img.get('src') is not None:
                 imgurl = 'http:' + img['src']
                 self.saveImg(save_url, imgurl, str(index))
             print imgurl
