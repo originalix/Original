@@ -10,17 +10,19 @@ readCommitMessage() {
 }
 
 demoFunc() {
-    if [ "$commitString" = "" ]
+    echo "获取到的commit message: $1" 
+    if [ "$1" = "" ]
     then
         echo "commit message 为空， 请重新输入"
+        demoFunc $(readCommitMessage)
     else
         echo "执行git提交过程.............."
     fi
 }
 
 echo "-----函数执行-----"
-# demoFunc $commitString
+demoFunc $(readCommitMessage)
 # readCommitMessage
-echo "获取到的commit message 是 $(readCommitMessage)" 
+#echo "获取到的commit message 是 $(readCommitMessage)" 
 echo "-----函数结束-----"
 
