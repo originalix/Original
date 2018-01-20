@@ -6,7 +6,7 @@
 
 readCommitMessage() {
     read -p "enter commit message: " commitString
-    return "$commitString"
+    echo "$commitString"
 }
 
 demoFunc() {
@@ -20,7 +20,7 @@ demoFunc() {
 
 echo "-----函数执行-----"
 # demoFunc $commitString
-readCommitMessage
-echo "获取到的commit message 是 $? !"
+# readCommitMessage
+echo "获取到的commit message 是 $(readCommitMessage)" 
 echo "-----函数结束-----"
 
