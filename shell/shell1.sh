@@ -2,7 +2,12 @@
 
 # Shell 函数写法
 
-read -p "enter params :" commitString
+# read -p "enter params :" commitString
+
+readCommitMessage() {
+    read -p "enter commit message: " commitString
+    return "$commitString"
+}
 
 demoFunc() {
     if [ "$commitString" = "" ]
@@ -14,6 +19,8 @@ demoFunc() {
 }
 
 echo "-----函数执行-----"
-demoFunc $commitString
+# demoFunc $commitString
+readCommitMessage
+echo "获取到的commit message 是 $? !"
 echo "-----函数结束-----"
 
