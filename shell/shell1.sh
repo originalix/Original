@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "请输入测试字符串:\n";
-read str
-echo "$str";
+echo Please enter your name
+read NAME
+echo "Hi! $NAME !"
+
+exit 0
 
