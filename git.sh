@@ -13,4 +13,5 @@ else
     git add .
     git commit -m "[$commitString]"
     git push -u origin
+    git push -u os
 fi
