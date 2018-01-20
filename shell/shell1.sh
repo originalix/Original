@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo Please enter your name
-read NAME
+read -p "Enter your name: " NAME
 echo "Hi! $NAME !"
 
 exit 0
