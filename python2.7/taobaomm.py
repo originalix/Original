@@ -145,8 +145,9 @@ class TBMM:
             soup <BeautifulSoup> -- [解析好的html]
         """
 
-        page = soup.find_all('a')
-        print page
+        pageClass = soup.find(class_="page-next").text
+        # pageLink = pageClass.find_all('a')
+        print pageClass
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
