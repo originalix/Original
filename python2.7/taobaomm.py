@@ -135,16 +135,17 @@ class TBMM:
                 self.saveImg(save_url, imgurl, str(index))
             print imgurl
     
-    def go2NextPage(self, soup):
-        """淘女郎页面跳转
-        
-        Arguments:
-            soup <BeautifulSoup> -- [解析好的html]
+    def go2NextPage(self):
+        """准备打造一个去任意页码的跳转函数
         """
+
 
         page = self.driver.find_element_by_css_selector(".page")
         nextLink = self.driver.find_element_by_class_name("page-next")
         ActionChains(self.driver).move_to_element(page).click(nextLink).perform()
+        time.sleep(self.sleep_time)
+        content = self.driver.page_source.encode('utf-8')
+        print content
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
