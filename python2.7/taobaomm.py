@@ -19,7 +19,7 @@ class TBMM:
         self.driver = webdriver.Chrome()
         self.sleep_time = 1
         self.save_img_path = '/Users/Lix/Documents/www/htdocs/origin/tbmm/'
-
+        self.total_page = 1
     def getPage(self):
         """获取淘女郎页面HTML内容
         
@@ -32,8 +32,20 @@ class TBMM:
         content = self.driver.page_source.encode('utf-8')
         print self.driver.title
         soup = BeautifulSoup(content, 'html.parser')
+        self.getTotalPage(soup)
         return soup
-    
+
+    def getTotalPage(self, pageCode):
+        pageTotal = pageCode.find_all(class_="page-total")[0]
+        print pageTotal
+        pattern = re.compile(r'<span.*?page-total-disabled">共(.*?)页</span>', re.S)
+        result = re.search(pattern, pageTotal)
+        if result:
+            page = result.group(1).strip()
+            print page
+        else:
+            print '未分析到页码'
+
     def getContent(self, soup):
         """ 获取淘女郎中，列表的数据，
             包括封面图，姓名，城市，身高体重
@@ -41,7 +53,7 @@ class TBMM:
         Arguments:
             soup {bp4库解析出的默认格式} -- [html数据]
         """
-        self.go2NextPage("2")
+        self.go2NextPage("5")
         return
         items = soup.find_all(class_='item')
         for item in items:
@@ -145,7 +157,7 @@ class TBMM:
         ActionChains(self.driver).click(pageBtn).perform()
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
-        print content
+        # print content
 
     def start(self):
         """ 淘女郎爬虫类执行函数
