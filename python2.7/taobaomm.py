@@ -44,7 +44,8 @@ class TBMM:
         Arguments:
             soup {bp4库解析出的默认格式} -- [html数据]
         """
-
+        self.go2NextPage(soup)
+        return
         items = soup.find_all(class_='item')
         for item in items:
             # print item
@@ -136,6 +137,16 @@ class TBMM:
                 imgurl = 'http:' + img['src']
                 self.saveImg(save_url, imgurl, str(index))
             print imgurl
+    
+    def go2NextPage(self, soup):
+        """淘女郎页面跳转
+        
+        Arguments:
+            soup <BeautifulSoup> -- [解析好的html]
+        """
+
+        page = soup.find_all('a')
+        print page
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
