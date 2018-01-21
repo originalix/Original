@@ -4,10 +4,7 @@ __author__ = 'Lix'
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 import re
 import requests
@@ -145,9 +142,9 @@ class TBMM:
             soup <BeautifulSoup> -- [解析好的html]
         """
 
-        pageClass = soup.find(class_="page-next").text
-        # pageLink = pageClass.find_all('a')
-        print pageClass
+        page = self.driver.find_element_by_css_selector(".page")
+        nextLink = self.driver.find_element_by_class_name("page-next")
+        ActionChains(self.driver).move_to_element(page).click(nextLink).perform()
 
     def start(self):
         """ 淘女郎爬虫类执行函数0p-oo
