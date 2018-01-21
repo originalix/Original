@@ -20,6 +20,8 @@ class TBMM:
         self.sleep_time = 1
         self.save_img_path = '/Users/Lix/Documents/www/htdocs/origin/tbmm/'
         self.total_page = 1
+        self.current_page = 1
+
     def getPage(self):
         """获取淘女郎页面HTML内容
         
@@ -36,6 +38,12 @@ class TBMM:
         return soup
 
     def getTotalPage(self, pageCode):
+        """获取淘女郎页面总页数
+        
+        Arguments:
+            pageCode <str> -- [首页html字符串]
+        """
+
         pageTotal = str(pageCode.find_all(class_="page-total")[0])
         try:
             pattern = re.compile(r'<span.*?page-total-disabled">共(.*?)页</span>', re.S)
@@ -54,11 +62,8 @@ class TBMM:
         Arguments:
             soup {bp4库解析出的默认格式} -- [html数据]
         """
-        self.go2NextPage("5")
-        return
         items = soup.find_all(class_='item')
         for item in items:
-            # print item
             print u'----分割线---'
             page_code = str(item)
             name = item.find(class_='name').text
@@ -90,6 +95,8 @@ class TBMM:
                 self.saveImg(img_dir_path, img, name)
                 self.go2ContentPage(link, img_dir_path)
             print '----------------------------------'
+        if self.current_page <= self.total_page:
+            self.getContent(str(self.go2Page(self.current_page += 1))
     
     def saveImg(self, savePath, imageURL, fileName):
         """存储图片方法
@@ -148,8 +155,8 @@ class TBMM:
                 self.saveImg(save_url, imgurl, str(index))
             print imgurl
     
-    def go2NextPage(self, page):
-        """准备打造一个去任意页码的跳转函数
+    def go2Page(self, page):
+        """一个去任意页码的跳转函数
         """
         
         pageInput = self.driver.find_element_by_class_name("page-skip")
@@ -158,7 +165,8 @@ class TBMM:
         ActionChains(self.driver).click(pageBtn).perform()
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
-        # print content
+        soup = BeautifulSoup(content, 'html.parser')
+        return soup
 
     def start(self):
         """ 淘女郎爬虫类执行函数
