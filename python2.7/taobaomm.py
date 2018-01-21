@@ -96,7 +96,9 @@ class TBMM:
                 self.go2ContentPage(link, img_dir_path)
             print '----------------------------------'
         if self.current_page <= self.total_page:
-            self.getContent(str(self.go2Page(self.current_page += 1))
+            self.current_page += 1
+            next_page_code = self.go2Page(str(self.current_page))
+            self.getContent(next_page_code)
     
     def saveImg(self, savePath, imageURL, fileName):
         """存储图片方法
