@@ -41,11 +41,11 @@ class TBMM:
             pattern = re.compile(r'<span.*?page-total-disabled">共(.*?)页</span>', re.S)
             result = re.search(pattern, pageTotal)
             self.total_page = result.group(1).strip()
-        except ValueError, e:
+        except StandardError, e:
             print '获取总页码错误: ', e
             raise
         finally:
-            print 'now page total is : ' + self.total_page
+            pass
 
     def getContent(self, soup):
         """ 获取淘女郎中，列表的数据，
