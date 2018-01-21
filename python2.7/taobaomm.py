@@ -41,7 +41,7 @@ class TBMM:
         Arguments:
             soup {bp4库解析出的默认格式} -- [html数据]
         """
-        self.go2NextPage(soup)
+        self.go2NextPage("2")
         return
         items = soup.find_all(class_='item')
         for item in items:
@@ -135,20 +135,20 @@ class TBMM:
                 self.saveImg(save_url, imgurl, str(index))
             print imgurl
     
-    def go2NextPage(self):
+    def go2NextPage(self, page):
         """准备打造一个去任意页码的跳转函数
         """
-
-
-        page = self.driver.find_element_by_css_selector(".page")
-        nextLink = self.driver.find_element_by_class_name("page-next")
-        ActionChains(self.driver).move_to_element(page).click(nextLink).perform()
+        
+        pageInput = self.driver.find_element_by_class_name("page-skip")
+        pageInput.send_keys(page)
+        pageBtn = self.driver.find_element_by_class_name("page-btn")
+        ActionChains(self.driver).click(pageBtn).perform()
         time.sleep(self.sleep_time)
         content = self.driver.page_source.encode('utf-8')
         print content
 
     def start(self):
-        """ 淘女郎爬虫类执行函数0p-oo
+        """ 淘女郎爬虫类执行函数
         """
 
         soup = self.getPage()
