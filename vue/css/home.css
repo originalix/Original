@@ -1,4 +1,47 @@
-.title {
-    font-size: 3rem;
-    background-color: aqua;
+/* 全局样式 */
+html {font-size: 100px; width: 100%;}
+body {margin: 0;}
+
+.header {
+    margin: 0;
+    width: 100%;
+    height: 2rem;
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516611774613&di=eee7e87af0600585c829d43464c97d2a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F34fae6cd7b899e5125cfbf3349a7d933c8950d57.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -webkit-background-origin:content-box; /* Safari */
+    background-origin:content-box;
+    text-align: right;
+}
+
+.weather-title {
+    display: inline-block;
+    padding-top: 0.6rem;
+    padding-left: 0.28rem;
+    font-size: 0.62rem;
+    color: white;
+    text-align: left;
+}
+
+.header p {
+    margin: 0;
+    /* padding: 0; */
+}
+
+.pm25 {
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+}
+
+.temperature {
+    display: inline-block;
+    font-size: 0.65rem;
+    color: white;
+}
+
+.tips {
+    display: inline-block;
+    padding-right: 0.25rem;
+    font-size: 0.29rem;
+    color: white;
 }
