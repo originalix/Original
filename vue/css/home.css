@@ -1,0 +1,103 @@
+/* 全局样式 */
+html {font-size: 100px; width: 100%;}
+body {margin: 0;}
+
+.header {
+    margin: 0;
+    width: 100%;
+    height: 2rem;
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516611774613&di=eee7e87af0600585c829d43464c97d2a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F34fae6cd7b899e5125cfbf3349a7d933c8950d57.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -webkit-background-origin:content-box; /* Safari */
+    background-origin:content-box;
+    font-size: 0;
+}
+
+.weather {
+    position: relative;
+    width: 98%;
+    height: 0.65rem;
+    padding-top: 0.6rem;
+    padding-left: 0.28rem;
+    margin-bottom: 0.1rem;
+}
+
+.weather-title {
+    display: inline-block;
+    margin: 0;
+    margin-right: 0.15rem;
+    font-size: 0.65rem;
+    color: white;
+}
+
+.temperature {
+    display: inline-block;
+    margin-left: 0.16rem;
+    margin: 0;
+    font-size: 0.65rem;
+    color: white;
+}
+
+.tips {
+    float: right;
+    margin: 0;
+    margin-right: 0.3rem;
+    margin-top: 0.15rem;
+    width: 50%;
+    font-size: 0.26rem;
+    text-align: right;
+    color: white;
+}
+
+.pm25 {
+    margin-left: 0.28rem;
+    color: #b9b7b5;
+    font-size: 0.24rem;
+}
+
+.pm-value {
+    color: #ffffff;
+}
+
+.statistic {
+    display: -webkit-flex;
+    margin-top: 0.63rem;
+    margin-right: 0.26rem;
+    margin-left: 0.26rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    font-size: 0;
+}
+
+.item {
+    width: 46%;
+    height: 3.21rem;
+    flex-grow: 0;
+    font-size: 0.36rem;
+    border-style: solid;
+    border-color: #d6d6d7;
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+}
+
+.item p {
+    margin: 0;
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+    margin-bottom: 1.19rem;
+    font-size: 0.37rem;
+    color: #5d5c61;
+}
+
+.item > p > span {
+    font-size: 0.26rem;
+}
+
+.item-icon {
+    margin-left: 0.25rem;
+    font-size: 0.9rem;
+    color: #eaeaea;
+}
