@@ -77,14 +77,27 @@ body {margin: 0;}
     height: 3.21rem;
     flex-grow: 0;
     font-size: 0.36rem;
-    background-color: red;
     border-style: solid;
     border-color: #d6d6d7;
     border-width: 0.1rem;
     border-radius: 0.1rem;
 }
 
+.item p {
+    margin: 0;
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+    margin-bottom: 1.19rem;
+    font-size: 0.37rem;
+    color: #5d5c61;
+}
+
+.item > p > span {
+    font-size: 0.26rem;
+}
+
 .item-icon {
+    margin-left: 0.25rem;
     font-size: 0.9rem;
     color: #eaeaea;
 }
