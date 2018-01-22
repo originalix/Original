@@ -62,17 +62,20 @@ body {margin: 0;}
 
 .statistic {
     display: -webkit-flex;
+    margin-top: 0.63rem;
     margin-right: 0.26rem;
     margin-left: 0.26rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around; 
+    justify-content: space-around;
+    font-size: 0;
 }
 
-.one {
+.item {
     width: 46%;
     height: 3.21rem;
     flex-grow: 0;
     background-color: red;
+    font-size: 0.36rem;
 }
