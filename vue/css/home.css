@@ -11,37 +11,51 @@ body {margin: 0;}
     background-size:100% 100%;
     -webkit-background-origin:content-box; /* Safari */
     background-origin:content-box;
-    text-align: right;
+    font-size: 0;
+}
+
+.weather {
+    position: relative;
+    width: 98%;
+    height: 0.65rem;
+    padding-top: 0.6rem;
+    padding-left: 0.28rem;
+    margin-bottom: 0.1rem;
 }
 
 .weather-title {
     display: inline-block;
-    padding-top: 0.6rem;
-    padding-left: 0.28rem;
-    font-size: 0.62rem;
-    color: white;
-    text-align: left;
-}
-
-.header p {
     margin: 0;
-    /* padding: 0; */
-}
-
-.pm25 {
-    margin-top: 0.2rem;
-    font-size: 0.24rem;
+    margin-right: 0.15rem;
+    font-size: 0.65rem;
+    color: white;
 }
 
 .temperature {
     display: inline-block;
+    margin-left: 0.16rem;
+    margin: 0;
     font-size: 0.65rem;
     color: white;
 }
 
 .tips {
-    display: inline-block;
-    padding-right: 0.25rem;
-    font-size: 0.29rem;
+    float: right;
+    margin: 0;
+    margin-right: 0.3rem;
+    margin-top: 0.15rem;
+    width: 50%;
+    font-size: 0.26rem;
+    text-align: right;
     color: white;
+}
+
+.pm25 {
+    margin-left: 0.28rem;
+    color: #b9b7b5;
+    font-size: 0.24rem;
+}
+
+.pm-value {
+    color: #ffffff;
 }
