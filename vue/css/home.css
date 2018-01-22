@@ -76,6 +76,15 @@ body {margin: 0;}
     width: 46%;
     height: 3.21rem;
     flex-grow: 0;
-    background-color: red;
     font-size: 0.36rem;
+    background-color: red;
+    border-style: solid;
+    border-color: #d6d6d7;
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+}
+
+.item-icon {
+    font-size: 0.9rem;
+    color: #eaeaea;
 }
