@@ -18,7 +18,7 @@ class DmozSpider(scrapy.Spider):
         for sel in response.xpath('//div[@class="site-item "]'):
             item = DmozItem()
             item['title'] = sel.xpath('//div[@class="site-title"]/text()').extract()[index]
-            # item['link'] = sel.xpath('a/@href').extract()
+            item['link'] = sel.xpath('//div[@class="title-and-desc"]/a/@href').extract()[index]
             # item['desc'] = sel.xpath('text()').extract()
             yield item
             index += 1
