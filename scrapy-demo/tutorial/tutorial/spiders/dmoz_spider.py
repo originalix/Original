@@ -16,10 +16,10 @@ class DmozSpider(scrapy.Spider):
     def parse(self, response):
         index = 0
         for sel in response.xpath('//div[@class="site-item "]'):
-            # print sel
             item = DmozItem()
-            item['title'] = sel.xpath('/div').extract()
+            item['title'] = sel.xpath('//div[@class="site-title"]/text()').extract()[index]
             # item['link'] = sel.xpath('a/@href').extract()
             # item['desc'] = sel.xpath('text()').extract()
-            # yield item
+            yield item
+            index += 1
     
