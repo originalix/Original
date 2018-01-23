@@ -6,6 +6,7 @@
     <script>
         !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
     </script>
+    <script src="js/vue.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="css/normailze.css">
     <link rel="stylesheet" href="css/iconfont.css">
@@ -15,33 +16,70 @@
     <div id="app">
         <div class="header">
             <div class="weather">
-                <p class="weather-title">多云</p
-                ><p class="temperature">-10℃</p
-                ><p class="tips">雾霾严重，今日不适合户外运动哦!</p>
+                <p class="weather-title">{{data.weather}}</p
+                ><p class="temperature">{{data.temperature}}℃</p
+                ><p class="tips">{{data.tips}}</p>
             </div>
-            <span class="pm25">PM2.5 <span class="pm-value">106</span></span>
+            <span class="pm25">PM2.5 <span class="pm-value">{{data.pm25}}</span></span>
         </div>
         <div class="statistic">
             <div class="item">
                 <p>总跑量 <span>/KM</span></p>
                 <i class="iconfont item-icon">&#xe60d;</i>
-                <span>0.15</span>
+                <span class="item-value">{{data.run_mileage}}</span>
             </div>
             <div class="item">
                 <p>总次数 <span>/次</span></p>
                 <i class="iconfont item-icon">&#xe620;</i>
-                <span>0.15</span>
+                <span class="item-value">{{data.run_count}}</span>
             </div>
         </div>
-        <div class="start"></div>
+        <div class="start">
+            <div class="avatar-collect">
+                <img src="img/avatar_collect.png" alt="">
+            </div>
+            <p class="start-tips">
+                您当前已经超越<span>{{data.rank}}</span>的职工，继续加油哦！
+            </p>
+            <div class="start-btn">
+                <a href="#">开始跑步</a>
+            </div>
+        </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/axios.js"></script>
 <script>
-    var data = { title : 'Hello wsx'}
     var vm = new Vue({
-        el: '#example',
-        data: data
+        el: '#app',
+        data () {
+            return {
+                data: { 
+                    weather : '',
+                    temperature: '',
+                    pm25: '',
+                    tips: '',
+                    run_mileage: 0,
+                    run_count: 0,
+                    rank: '',
+                },
+            }
+        },
+        created () {
+            axios.get('http://localhost/yiidemo/basic/web/index.php?r=site/weather')
+            .then(function (response) {
+                console.log(response);
+                responseData = response.data.data;
+                vm.data = responseData;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        methods: {
+            test () {
+                console.log('hello world');
+            }
+        }
     })
 </script>
 </html>

@@ -2,6 +2,17 @@
 html {font-size: 100px; width: 100%;}
 body {margin: 0;}
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: #1c1c1c;    
+}
+
+
 .header {
     margin: 0;
     width: 100%;
@@ -98,6 +109,62 @@ body {margin: 0;}
 
 .item-icon {
     margin-left: 0.25rem;
-    font-size: 0.9rem;
+    font-size: 0.91rem;
     color: #eaeaea;
+}
+
+.item-value {
+    float: right;
+    margin-right: 0.24rem;
+    font-family: Verdana;
+    font-size: 0.7rem;
+    color: #6b6d6f;
+}
+
+.start {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.avatar-collect {
+    margin: 0 auto;
+    width: 2.75rem;
+}
+
+.start-tips {
+    margin: 0;
+    width: 100%;
+    font-size: 0.31rem;
+    text-align: center;
+}
+
+.start-tips span {
+    color: #f47b10;
+}
+
+.avatar-collect img {
+    width: 100%;
+}
+
+.start-btn {
+    margin-top: 0.95rem;
+    width: 100%;
+    /* height: 1.03rem; */
+}
+
+.start a {
+    display: block;
+    padding-top: 0.28rem;
+    margin: 0 auto;
+    margin-bottom: 0.8rem;
+    font-size: 0.38rem;
+    color: #ffffff;
+    background-color: #f47b10;
+    width: 49.6%;
+    height: 0.71rem;
+    text-align: center;
+    border-radius: 0.5rem;
 }
