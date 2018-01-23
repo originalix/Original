@@ -15,22 +15,22 @@
     <div id="app">
         <div class="header">
             <div class="weather">
-                <p class="weather-title">多云</p
-                ><p class="temperature">-10℃</p
-                ><p class="tips">雾霾严重，今日不适合户外运动哦!</p>
+                <p class="weather-title">{{data.weather}}</p
+                ><p class="temperature">{{data.temperature}}℃</p
+                ><p class="tips">{{data.tips}}</p>
             </div>
-            <span class="pm25">PM2.5 <span class="pm-value">106</span></span>
+            <span class="pm25">PM2.5 <span class="pm-value">{{data.pm25}}</span></span>
         </div>
         <div class="statistic">
             <div class="item">
                 <p>总跑量 <span>/KM</span></p>
                 <i class="iconfont item-icon">&#xe60d;</i>
-                <span class="item-value">151.4</span>
+                <span class="item-value">{{data.run_mileage}}</span>
             </div>
             <div class="item">
                 <p>总次数 <span>/次</span></p>
                 <i class="iconfont item-icon">&#xe620;</i>
-                <span class="item-value">1005</span>
+                <span class="item-value">{{data.run_count}}</span>
             </div>
         </div>
         <div class="start">
@@ -38,7 +38,7 @@
                 <img src="img/avatar_collect.png" alt="">
             </div>
             <p class="start-tips">
-                您当前已经超越<span>80%</span>的职工，继续加油哦！
+                您当前已经超越<span>{{data.rank}}</span>的职工，继续加油哦！
             </p>
             <div class="start-btn">
                 <a href="#">开始跑步</a>
@@ -48,9 +48,17 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
-    var data = { title : 'Hello wsx'}
+    var data = { 
+            weather : '晴',
+            temperature: '-11',
+            pm25: '250',
+            tips: '雾霾严重，去跑步就是找死!',
+            run_mileage: 250.5,
+            run_count: 2150,
+            rank: '1%',
+        }
     var vm = new Vue({
-        el: '#example',
+        el: '#app',
         data: data
     })
 </script>
