@@ -154,3 +154,7 @@ a:hover, a:visited, a:link, a:active {
 .record-wrap > div {
     background-color: #cfcfd0;
 }
+
+.test {
+    font-size: 1rem;
+}
