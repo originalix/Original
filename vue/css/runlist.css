@@ -5,6 +5,10 @@ body {
     font-size: 0;
 }
 
+p {
+    margin: 0;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -59,18 +63,29 @@ a:hover, a:visited, a:link, a:active {
     background-color: #d7d7d8;
 }
 
-.content p {
-    margin: 0;
-    font-size: 0.29rem;
-}
-
 .content {
     font-size: 0;
 }
 
 .month-list li {
     margin-top: 0.2rem;
+    /* margin-left: 0.3rem;
+    margin-right: 0.3rem; */
+}
+
+.month-li-left-fix {
     margin-left: 0.3rem;
+}
+
+.month-record-bottom-margin {
+    margin-bottom: 0.24rem;
+}
+
+.month-record-top-margin {
+    margin-top: 0.35rem;
+}
+
+.month-li-right-fix {
     margin-right: 0.3rem;
 }
 
@@ -79,7 +94,6 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .month-list > li > span {
-    margin: 0;
     font-size: 0.27rem;
     color: #797979;
 }
@@ -89,7 +103,37 @@ a:hover, a:visited, a:link, a:active {
     font-size: 0.27rem;
 }
 
+.record-list {
+    background-color: #f5f5f5;
+}
+
 .record-list li {
     margin: 0;
     padding: 0;
+}
+
+.record-wrap p {
+    padding-top: 0.4rem;
+    margin-left: 0.3rem;
+    margin-bottom: 0.34rem;
+    font-size: 0.24rem;
+    color: #9c9ba1;
+}
+
+.distance-val {
+    padding-left: 0.27rem;
+    font-size: 0.48rem;
+    color: #7f7f84;
+}
+
+.distance-unit {
+    margin-left: 0.2rem;
+    font-size: 0.33rem;
+    color: #9c9ba1;
+}
+
+.record-time {
+    margin-left: 0.38rem;
+    font-size: 0.33rem;
+    color: #b0afb5;
 }
