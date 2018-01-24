@@ -64,6 +64,10 @@ a:hover, a:visited, a:link, a:active {
     font-size: 0.29rem;
 }
 
+.content {
+    font-size: 0;
+}
+
 .month-list li {
     margin-top: 0.2rem;
     margin-left: 0.3rem;
@@ -78,4 +82,14 @@ a:hover, a:visited, a:link, a:active {
     margin: 0;
     font-size: 0.27rem;
     color: #797979;
+}
+
+.month-list > li > ul > li {
+    list-style: none;
+    font-size: 0.27rem;
+}
+
+.record-list li {
+    margin: 0;
+    padding: 0;
 }
