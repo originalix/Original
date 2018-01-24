@@ -120,6 +120,19 @@ a:hover, a:visited, a:link, a:active {
     color: #9c9ba1;
 }
 
+.record-wrap {
+    position: relative;
+}
+
+.icon-arrow {
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
+    transform: translateY(-50%);
+    font-size: 0.4rem;
+    color: #bcbbbf;
+}
+
 .distance-val {
     padding-left: 0.27rem;
     font-size: 0.48rem;
@@ -136,4 +149,8 @@ a:hover, a:visited, a:link, a:active {
     margin-left: 0.38rem;
     font-size: 0.33rem;
     color: #b0afb5;
+}
+
+.record-wrap > div {
+    background-color: #cfcfd0;
 }
