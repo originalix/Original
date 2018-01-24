@@ -14,21 +14,33 @@
 </head>
 <body>
     <div id="app">
-        
+        <h1>Hello world</h1>
     </div>
 </body>
 <script src="js/axios.js"></script>
 <script>
+    // var model = {
+    //     'month' : 1,
+    //     'total_distance' : 0,
+    //     'data' : [],
+    //     'total_count' : 0,
+    // }
+
+    // var modelArr = []
+
     var vm = new Vue({
         el: '#app',
         data () {
             return {
-                data: { 
+                data: {
+                    'modelArr' : [],
                 },
             }
         },
         created () {
-            
+            var data = { 'year' : 2017 };
+            var bridge = window.webkit.messageHandlers.getListData;
+            bridge.postMessage(data);
         },
         methods: {
             test () {
@@ -36,5 +48,14 @@
             }
         }
     })
+
+    function getListData(data) {
+        var currentDataArray = JSON.parse(data.data);
+        for (var i = 0; i < currentDataArray.length; i++) {
+            var obj = currentDataArray[i];
+            vm.data.modelArr[i] = obj;
+        }
+        console.log(vm.data.modelArr);
+    }
 </script>
 </html>
