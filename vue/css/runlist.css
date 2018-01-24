@@ -1,6 +1,9 @@
 /* 全局样式 */
 html {font-size: 100px; width: 100%;}
-body {margin: 0;}
+body {
+    margin: 0;
+    font-size: 0;
+}
 
 ul {
     margin: 0;
@@ -13,7 +16,7 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .header {
-    position: absolute;
+    position: relative;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -22,13 +25,13 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .header-wrap {
-    margin-top: 0.48rem;
+    padding-top: 0.48rem;
     margin-bottom: 0.2rem;
     margin-right: 0.3rem;
     margin-left: 0.3rem;
 }
 
-.header-wrap p {
+.list-title {
     display: inline-block;
     margin: 0;
     font-size: 0.29rem;
@@ -54,4 +57,25 @@ a:hover, a:visited, a:link, a:active {
     width: 100%;
     height: 0.01rem;
     background-color: #d7d7d8;
+}
+
+.content p {
+    margin: 0;
+    font-size: 0.29rem;
+}
+
+.month-list li {
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.month-list > li > p > span {
+    color: #fc9504;
+}
+
+.month-list > li > span {
+    margin: 0;
+    font-size: 0.27rem;
+    color: #797979;
 }
