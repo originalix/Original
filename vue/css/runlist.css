@@ -12,3 +12,46 @@ a:hover, a:visited, a:link, a:active {
     color: #1c1c1c;    
 }
 
+.header {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 1rem;
+    font-size: 0;
+}
+
+.header-wrap {
+    margin-top: 0.48rem;
+    margin-bottom: 0.2rem;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+}
+
+.header-wrap p {
+    display: inline-block;
+    margin: 0;
+    font-size: 0.29rem;
+    color: #797979;
+}
+
+.header-wrap > p > span {
+    color: #fc9504;
+}
+
+.header span {
+    margin: 0;
+    font-size: 0.27rem;
+    color: #797979;
+}
+
+.total_count {
+    float: right;
+}
+
+.separate {
+    display: block;
+    width: 100%;
+    height: 0.01rem;
+    background-color: #d7d7d8;
+}

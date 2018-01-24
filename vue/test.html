@@ -13,42 +13,10 @@
     <link rel="stylesheet" href="css/runlist.css">
 </head>
 <body>
-    <div id="app">
-        <div class="header">
-            <div class="header-wrap">
-                <p>2018年度总里程：<span>35.6</span> KM</p>
-                <span class="total_count">2条记录</span>
-            </div>
-            <div class="separate"></div>
-        </div>
-    </div>
+
 </body>
 <script src="js/axios.js"></script>
 <script>
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            'modelArr' : [],
-        },
-        created () {
-            var data = { 'year' : 2017 };
-            var bridge = window.webkit.messageHandlers.getListData;
-            bridge.postMessage(data);
-        },
-        methods: {
-            test () {
-                console.log('hello world');
-            }
-        }
-    })
 
-    function getListData(data) {
-        var currentDataArray = JSON.parse(data.data);
-        for (var i = 0; i < currentDataArray.length; i++) {
-            var obj = currentDataArray[i];
-            vm.modelArr.push(obj);
-        }
-        console.log(vm.modelArr);
-    }
 </script>
 </html>
