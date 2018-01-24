@@ -14,28 +14,26 @@
 </head>
 <body>
     <div id="app">
-        <h1>Hello world</h1>
+        <ul>
+            <li v-for="model in modelArr">
+                <p>当前月份: {{model.month}}</p>
+                <p>总距离: {{model.total_distance}}</p>
+                <p>总次数: {{model.total_count}}</p>
+                <ul>
+                    <li v-for="data in model.data">
+                        <p>{{ data.run_id }}</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </body>
 <script src="js/axios.js"></script>
 <script>
-    // var model = {
-    //     'month' : 1,
-    //     'total_distance' : 0,
-    //     'data' : [],
-    //     'total_count' : 0,
-    // }
-
-    // var modelArr = []
-
     var vm = new Vue({
         el: '#app',
-        data () {
-            return {
-                data: {
-                    'modelArr' : [],
-                },
-            }
+        data: {
+            'modelArr' : [],
         },
         created () {
             var data = { 'year' : 2017 };
@@ -53,9 +51,9 @@
         var currentDataArray = JSON.parse(data.data);
         for (var i = 0; i < currentDataArray.length; i++) {
             var obj = currentDataArray[i];
-            vm.data.modelArr[i] = obj;
+            vm.modelArr.push(obj);
         }
-        console.log(vm.data.modelArr);
+        console.log(vm.modelArr);
     }
 </script>
 </html>
