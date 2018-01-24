@@ -30,7 +30,7 @@
                     <ul class="record-list">
                         <li class="record-li" v-for="data in model.data">
                             <div class="record-wrap">
-                                <p>{{data.start_time}}</p>
+                                <p>{{timestampFormat(data.start_time)}}</p>
                                 <span class="distance-val">{{data.distance}}</span>
                                 <span class="distance-unit">KM</span>
                                 <span class="record-time">{{data.duration}}</span>
@@ -80,6 +80,11 @@
                 this.year_total_distance = data.year_total_distance;
                 this.year = data.year;
             },
+            timestampFormat (timestamp) {
+                var newDate = new Date();
+                newDate.setTime(timestamp * 1000);
+                return newDate.format('yyyy-MM-dd hh:mm:ss');
+            }
         }
     })
 
@@ -104,25 +109,6 @@
        }
        return format;
     }
-    var timestamp3 = 1403058804;
-    var newDate = new Date();
-    newDate.setTime(timestamp3 * 1000);
-    console.log(newDate.toDateString());
-    console.log(newDate.format('yyyy-MM-dd h:m:s'));
-    // function getListData(data) {
-    //     console.log(data);
-    //     var currentDataArray = JSON.parse(data.data);
-    //     for (var i = 0; i < currentDataArray.length; i++) {
-    //         var obj = currentDataArray[i];
-    //         vm.modelArr.push(obj);
-    //     }
-    //     console.log(vm.modelArr);
-    //     year();
-    // }
 
-    // function year() {
-    //     // vm.msg = 'hello world!';
-    //     vm.test();
-    // }
 </script>
 </html>
