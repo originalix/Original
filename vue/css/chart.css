@@ -1,0 +1,54 @@
+/* 全局样式 */
+html {font-size: 100px; width: 100%;}
+body {
+    margin: 0;
+    font-size: 0;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: #1c1c1c;    
+}
+
+.title {
+    position: relative;
+    font-size: 0.34rem;
+    height: 0.86rem;
+    background-color: #f5f5f5;
+}
+
+.seperate {
+    display: block;
+    margin-top: 0.41rem;
+    height: 0.01rem;
+    background-color: #aeadb1;
+    width: 35.6%;
+}
+
+.float-left {
+    float: left;
+    margin-left: 3.5%;
+}
+
+.float-right {
+    float: right;
+    margin-right: 3.5%;
+}
+
+.title > p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 21.8%;
+    text-align: center;
+}
