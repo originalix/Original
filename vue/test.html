@@ -21,85 +21,33 @@
     <a href="#", onclick="refresh()">刷新连接</a>
 </body>
 <script src="js/axios.js"></script>
-<script src="js/chartkick.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+<script src="js/echarts.js"></script>
 <script>
-    data = [{
-            name: "1",
-            data: {
-                "1": 180,
-            }
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('area'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: 'ECharts 入门示例'
         },
-        {
-            name: "2",
-            data: {
-                "2": 200,
-            }
+        tooltip: {},
+        legend: {
+            data:['销量']
         },
-        {
-            name: "3",
-            data: {
-                "3": 150,
-                "4": 300,
-            }
-        }
-    ]
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
 
-    // new Chartkick.LineChart("chart-1", data, {colors: ["#b00", "#666"]});
-    // new Chartkick.LineChart("chart-1", data, {discrete: true})
-    // new Chartkick.LineChart("chart-1", data, {xtitle: "Time", ytitle: "Population"})
-    // new Chartkick.LineChart("chart-1", data, {curve: true})
-    // new Chartkick.LineChart("chart-1", data, {points: false})
-    // new Chartkick.LineChart("chart-1", data, {legend: false})
-    // new Chartkick.LineChart("chart-1", data, {legend: "bottom"})
-    // new Chartkick.PieChart("chart-1", data, {donut: true})
-    // add 
-    var chart = new Chartkick.ColumnChart("area", data, {
-        points: true,
-        colors: ["#66e2c3", "#fc7b85", "#b8b7be"],
-        messages: {empty: "No data"},
-        discrete: true,
-        legend: false,
-        xtitle: "Time", 
-        ytitle: "Population"
-    },);
-
-    function refresh() {
-        // var newData = [{
-        //         name: "Workout",
-        //         data: {
-        //             "2017-01-01": 3000,
-        //             "2017-01-02": 4000,
-        //             "2017-01-05": 1000,
-        //             "2017-02-03" : 4444,
-        //         }
-        //     },
-        //     {
-        //         name: "Call parents",
-        //         data: {
-        //             "2017-01-01": 1000,
-        //             "2017-01-02": 2200
-        //         }
-        //     }
-        // ]
-        // chart.updateData(newData);
-        var obj = chart.getChartObject();
-        console.log(obj);
-        var element = chart.getScales();
-        console.log(element);
-
-      };
-        
-        // var newData = [
-        //     {
-        //         name: "3",
-        //         data: {
-        //             "3": 150,
-        //             "4": 300,
-        //         }
-        //     }
-        // ]
-        // chart.updateData(newData)
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
 </script>
 
 </html>
