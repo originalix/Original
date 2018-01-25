@@ -15,9 +15,25 @@
 </head>
 <body>
     <div id="app">
-        <p>配速：分钟/公里</p>
-        <div id="chart"></div>
-        <p>跑步里程：公里</p>
+        <div class="chart-wrap">
+            <p class="xUnit">配速：分钟/公里</p>
+            <div id="chart"></div>
+            <p class="yUnit">跑步里程：公里</p>
+        </div>
+        <div class="pace-value">
+            <div class="pace-left">
+                <div class="cycle-icon"></div>
+                <span>平均：11'23"</span>
+            </div>
+            <div class="pace-right">
+                <div class="cycle-icon"></div>
+                <span>最快：3'23"</span>
+            </div>
+            <div class="pace-right">
+                <div class="cycle-icon"></div>
+                <span>最慢：15'23"</span>
+            </div>
+         </div>
     </div>
 </body>
 <script src="js/axios.js"></script>

@@ -20,7 +20,48 @@ a:hover, a:visited, a:link, a:active {
     color: #1c1c1c;    
 }
 
+.chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 3.6rem;
+}
+
 #chart {
     width: 100%;
     height: 2.38rem;
+}
+
+.xUnit {
+    margin-top: 0.28rem;
+    margin-left: 0.2rem;
+    font-size: 0.2rem;
+    color: #a2a3a8;
+}
+
+.yUnit {
+    float: right;
+    margin-right: 0.3rem;
+    margin-top: 0.24rem;
+    font-size: 0.2rem;
+    color: #a2a3a8;
+}
+
+.pace-value {
+    font-size: 0.2rem;
+}
+
+.cycle-icon {
+    display: inline-block;
+    width: 0.17rem;
+    height: 0.17rem;
+    border-radius: 0.2rem;
+    background-color: red;
+}
+
+.pace-left {
+    display: inline-block;
+}
+
+.pace-right {
+    float: right;
 }
