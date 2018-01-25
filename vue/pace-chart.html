@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="user-scalable=no"/>
     <script>
-        // !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
     </script>
     <script src="js/vue.js"></script>
     <title>跑步详情</title>
@@ -15,7 +15,9 @@
 </head>
 <body>
     <div id="app">
+        <p>配速：分钟/公里</p>
         <div id="chart"></div>
+        <p>跑步里程：公里</p>
     </div>
 </body>
 <script src="js/axios.js"></script>
@@ -59,9 +61,9 @@
                 },
                 axisLabel: {
                     interval: 0,
-                    fontSize: '18',
+                    fontSize: '25',
                 },
-                max: 20,
+                max: 15,
             }
         ],
         yAxis: [
@@ -73,12 +75,14 @@
                 },
                 axisLine: {
                     lineStyle: {
-                        color: "#ff9c01"
+                        color: "#000000"
                     }
                 },
                 axisLabel: {
-                    formatter: '{value} ml',
-                    fontSize: '20',
+                    formatter: function (value) {
+                        return getTimeFromSeconds(value);
+                    },
+                    fontSize: '25',
                 }
             }
         ],
@@ -100,14 +104,36 @@
                     }  
                 },  
                 type: 'bar',
-                barWidth: '60%',
+                barWidth: '90%',
                 data: data1,
-                // barGap: '30%',
                 max: 100,
             }
         ]
     }
     echart.setOption(option);
+
+    function getTimeFromSeconds(totalSeconds) {
+        if (totalSeconds < 86400) {
+            var dt = new Date("01/01/2000 0:00");
+            dt.setSeconds(totalSeconds);
+            return formatTime(dt);
+        } else {
+            return null;
+        }
+    }
+
+    function formatTime(dt) {
+        var h = dt.getHours(),
+            m = dt.getMinutes(),
+            s = dt.getSeconds(),
+            r = "";
+        if (h > 0) {
+            r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+        }
+        r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
+        r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
+        return r;
+    }
 
 </script>
 </html>
