@@ -27,23 +27,24 @@
     data = [{
             name: "1",
             data: {
-                "1": "05:03",
+                "1": 180,
             }
         },
         {
             name: "2",
             data: {
-                "2": "08:03",
+                "2": 200,
             }
         },
         {
             name: "3",
             data: {
-                "3": "05:03",
-                "4": "05:03",
+                "3": 150,
+                "4": 300,
             }
         }
     ]
+
     // new Chartkick.LineChart("chart-1", data, {colors: ["#b00", "#666"]});
     // new Chartkick.LineChart("chart-1", data, {discrete: true})
     // new Chartkick.LineChart("chart-1", data, {xtitle: "Time", ytitle: "Population"})
@@ -53,7 +54,7 @@
     // new Chartkick.LineChart("chart-1", data, {legend: "bottom"})
     // new Chartkick.PieChart("chart-1", data, {donut: true})
     // add 
-    new Chartkick.ColumnChart("area", data, {
+    var chart = new Chartkick.ColumnChart("area", data, {
         points: true,
         colors: ["#66e2c3", "#fc7b85", "#b8b7be"],
         messages: {empty: "No data"},
@@ -64,25 +65,113 @@
     },);
 
     function refresh() {
-        var newData = [{
-                name: "Workout",
-                data: {
-                    "2017-01-01": 3000,
-                    "2017-01-02": 4000,
-                    "2017-01-05": 1000,
-                    "2017-02-03" : 4444,
-                }
-            },
-            {
-                name: "Call parents",
-                data: {
-                    "2017-01-01": 1000,
-                    "2017-01-02": 2200
-                }
-            }
-        ]
-        chart.updateData(newData);
-    }
+        // var newData = [{
+        //         name: "Workout",
+        //         data: {
+        //             "2017-01-01": 3000,
+        //             "2017-01-02": 4000,
+        //             "2017-01-05": 1000,
+        //             "2017-02-03" : 4444,
+        //         }
+        //     },
+        //     {
+        //         name: "Call parents",
+        //         data: {
+        //             "2017-01-01": 1000,
+        //             "2017-01-02": 2200
+        //         }
+        //     }
+        // ]
+        // chart.updateData(newData);
+        var obj = chart.getChartObject();
+        console.log(obj);
+        var element = chart.getScales();
+        console.log(element);
+
+      };
+        
+        // var newData = [
+        //     {
+        //         name: "3",
+        //         data: {
+        //             "3": 150,
+        //             "4": 300,
+        //         }
+        //     }
+        // ]
+        // chart.updateData(newData)
 </script>
 
 </html>
+
+<script>
+    app.title = '坐标轴刻度与标签对齐';
+
+option = {
+    color: ['#3398DB'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : { 
+                formatter : function(value) {
+                    return getTimeFromSeconds(value);
+                }
+                
+            }, 
+        }
+    ],
+    series : [
+        {
+            name:'直接访问',
+            type:'bar',
+            barWidth: '60%',
+            data:[10, 52, 200, 334, 390, 330, 220]
+        }
+    ]
+};
+
+function getTimeFromSeconds(totalSeconds) {
+    if (totalSeconds < 86400) {
+        var dt = new Date("01/01/2000 0:00");
+        dt.setSeconds(totalSeconds);
+        return formatTime(dt);
+    } else {
+        return null;
+    }
+}
+
+function formatTime(dt) {
+    var h = dt.getHours(),
+        m = dt.getMinutes(),
+        s = dt.getSeconds(),
+        r = "";
+    if (h > 0) {
+    }
+    r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+    r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+    r += (s > 9 ? s.toString() : "0" + s.toString());
+    return r;
+}
+
+</script>

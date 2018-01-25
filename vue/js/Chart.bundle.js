@@ -11471,6 +11471,7 @@
              * @since 2.7
              */
             getTicks: function() {
+                console.log('1231231231');
                 return this._ticks;
             },
     

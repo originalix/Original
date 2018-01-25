@@ -136,6 +136,7 @@ a:hover, a:visited, a:link, a:active {
 .distance-val {
     padding-left: 0.27rem;
     font-size: 0.48rem;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
     color: #7f7f84;
 }
 
@@ -143,6 +144,7 @@ a:hover, a:visited, a:link, a:active {
     margin-left: 0.2rem;
     font-size: 0.33rem;
     color: #9c9ba1;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .record-time {

@@ -1745,6 +1745,12 @@
     chart.getAdapter = function () {
       return chart.adapter;
     };
+    chart.getScales = function() {
+      return chart.chart;
+      // return chart.scales.getTicks();
+      // return 'hello world';
+    }
+  
 
     var callback = function () {
       chart.data = processData(chart);
