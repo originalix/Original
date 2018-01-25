@@ -110,6 +110,7 @@
     }
     echart.setOption(option);
 
+    // 配速秒数转化成分秒格式化
     function getTimeFromSeconds(totalSeconds) {
         if (totalSeconds < 86400) {
             var dt = new Date("01/01/2000 0:00");
@@ -131,6 +132,14 @@
         r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
         r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
         return r;
+    }
+
+    // 获取配速数组最大最小值
+    Array.prototype.max = function () { 
+        return Math.max.apply({},this); 
+    } 
+    Array.prototype.min = function () { 
+        return Math.min.apply({},this); 
     }
 
 </script>
