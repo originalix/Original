@@ -23,11 +23,11 @@ a:hover, a:visited, a:link, a:active {
 .chart-wrap {
     position: relative;
     width: 100%;
-    height: 3.6rem;
+    height: 3.3rem;
 }
 
 #chart {
-    width: 100%;
+    width: 95%;
     height: 2.38rem;
 }
 
@@ -48,6 +48,7 @@ a:hover, a:visited, a:link, a:active {
 
 .pace-value {
     font-size: 0.2rem;
+    color: #555558;
 }
 
 .cycle-icon {
@@ -60,8 +61,12 @@ a:hover, a:visited, a:link, a:active {
 
 .pace-left {
     display: inline-block;
+    margin-left: 0.2rem;
 }
 
 .pace-right {
     float: right;
+    margin-right: 0.3rem;
 }
+
+.
