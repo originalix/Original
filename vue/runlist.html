@@ -31,9 +31,9 @@
                         <li class="record-li" v-for="data in model.data">
                             <div class="record-wrap">
                                 <p>{{timestampFormat(data.start_time)}}</p>
-                                <span class="distance-val">{{data.distance}}</span>
+                                <span class="distance-val">{{ distanceUnitConvert(data.distance) }}</span>
                                 <span class="distance-unit">KM</span>
-                                <span class="record-time">{{data.duration}}</span>
+                                <span class="record-time">{{ getTimeFromSeconds(data.duration) }}</span>
                                 <i class="iconfont icon-arrow">&#xe610;</i>
                                 <div class="separate month-li-left-fix month-record-top-margin"></div>
                             </div>
@@ -68,6 +68,7 @@
             msg1() {
                 return this.msg = 'lixxxxx';
             },
+            // 获取列表的数据
             getListData(data) {
                 console.log(data);
                 var currentDataArray = data.data;
@@ -80,11 +81,26 @@
                 this.year_total_distance = data.year_total_distance;
                 this.year = data.year;
             },
+            // 列表里开始时间戳格式化
             timestampFormat (timestamp) {
                 var newDate = new Date();
                 newDate.setTime(timestamp * 1000);
                 return newDate.format('yyyy-MM-dd hh:mm:ss');
-            }
+            },
+            // 列表的距离单位米 转化为千米
+            distanceUnitConvert(distance) {
+                return distance / 1000;
+            },
+            // duration转换成 hh:mm:ss
+            getTimeFromSeconds(totalSeconds) {
+                if (totalSeconds < 86400) {
+                    var dt = new Date("01/01/2000 0:00");
+                    dt.setSeconds(totalSeconds);
+                    return formatTime(dt);
+                } else {
+                    return null;
+                }
+            },
         }
     })
 
@@ -108,6 +124,19 @@
               }
        }
        return format;
+    }
+
+    function formatTime(dt) {
+        var h = dt.getHours(),
+            m = dt.getMinutes(),
+            s = dt.getSeconds(),
+            r = "";
+        if (h > 0) {
+        }
+        r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+        r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+        r += (s > 9 ? s.toString() : "0" + s.toString());
+        return r;
     }
 
 </script>
