@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="user-scalable=no"/>
     <script>
-        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
+        // !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
     </script>
     <script src="js/vue.js"></script>
     <title>跑步详情</title>
@@ -35,6 +35,7 @@
     })
 
     var echart = echarts.init(document.getElementById('chart'));
+    var data1 = [180, 200, 210, 300, 400];
     var option = {
         color: ['#3398DB'],
         tooltip: {
@@ -58,13 +59,27 @@
                 },
                 axisLabel: {
                     interval: 0,
+                    fontSize: '18',
                 },
                 max: 20,
             }
         ],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                // 控制网格线是否显示
+                splitLine: {
+                    show: false, 
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ff9c01"
+                    }
+                },
+                axisLabel: {
+                    formatter: '{value} ml',
+                    fontSize: '20',
+                }
             }
         ],
         series: [
@@ -72,11 +87,13 @@
                 name: '直接访问',
                 itemStyle: {  
                     normal: {  
-                        color: function(params) {  
+                        color: function(params) {
+                            console.log(params);
+                            // console.log(data);
                             var colorList = [  
                                 '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',  
                                 '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',  
-                                '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'  
+                                '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0' 
                             ];  
                             return colorList[params.dataIndex]   
                         }  
@@ -84,13 +101,12 @@
                 },  
                 type: 'bar',
                 barWidth: '60%',
-                data: [180, 200, 210, 300, 400],
+                data: data1,
                 // barGap: '30%',
                 max: 100,
             }
         ]
     }
-
     echart.setOption(option);
 
 </script>
