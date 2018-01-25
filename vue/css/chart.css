@@ -55,6 +55,7 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .container-fluid {
+    position: relative;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -65,12 +66,29 @@ a:hover, a:visited, a:link, a:active {
     font-size: 0.5rem;
 }
 
-#step-frequency {
+.step-chart {
     margin-left: 3.5%;
     width: 93%;
     height: 3.96rem;
 }
 
-#step-frequency > canvas {
+.step-chart > canvas {
     font-size: 0.4rem;
+}
+
+.container-fluid  p {
+    font-size: 0.21rem;
+    color: #b0b1b5;
+}
+
+.yUnit {
+    margin-top: 0.18rem;
+    margin-left: 0.3rem;
+    margin-bottom: 0.16rem;
+}
+
+.xUnit {
+    float: right;
+    margin-top: 0.18rem;
+    margin-right: 0.3rem;
 }

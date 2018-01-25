@@ -20,14 +20,26 @@
             <div class="seperate float-right"></div>            
         </div>
         <div class="container-fluid">
-            <div id="step-frequency"></div>
+            <p class="yUnit">步频：步/分钟</p>
+            <div id="step-frequency" class="step-chart"></div>
+            <p class="xUnit">时间：分钟</p>
+        </div>
+
+        <div class="title">
+            <div class="seperate float-left"></div>
+            <p>海拔曲线</p>
+            <div class="seperate float-right"></div>            
+        </div>
+        <div class="container-fluid">
+            <p class="yUnit">步频：步/分钟</p>
+            <div id="step-stride" class="step-chart"></div>
+            <p class="xUnit">时间：分钟</p>
         </div>
     </div>
 </body>
 <script src="js/axios.js"></script>
 <script src="js/chartkick.js"></script>
 <script src="js/Chart.bundle.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script> -->
 <script>
     var vm = new Vue({
         el: '#app',
@@ -38,7 +50,6 @@
         },
         methods: {
             test () {
-                // console.log('hello world');
                 this.msg = 'lixxxxxxxx!';
             },
             stepFrequencyChart () {
@@ -54,6 +65,17 @@
         "5": 33,
         "6": 55,
     };
+
+    var data1 = {
+        "1": 100,
+        "2": 60,
+        "3": 30,
+        "4": 200,
+        "5": 330,
+        "6": 550,
+        "7": 1000,
+        "8": 100
+    };
     
     var chartConfig = {
         points: false,
@@ -63,6 +85,7 @@
     };
 
     var stepFrequency = new Chartkick.AreaChart("step-frequency", data, chartConfig);
+    var stepStride = new Chartkick.AreaChart("step-stride", data1, chartConfig);
 
 </script>
 </html>
