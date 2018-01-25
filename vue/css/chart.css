@@ -50,5 +50,27 @@ a:hover, a:visited, a:link, a:active {
     transform: translateY(-50%);
     display: inline-block;
     width: 21.8%;
+    color: #a2a3a8;
     text-align: center;
+}
+
+.container-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-fluid > h1 {
+    margin: 0;
+    font-size: 0.5rem;
+}
+
+#step-frequency {
+    margin-left: 3.5%;
+    width: 93%;
+    height: 3.96rem;
+}
+
+#step-frequency > canvas {
+    font-size: 0.4rem;
 }
