@@ -14,9 +14,8 @@
 </head>
 
 <body>
-    <div id="chart-1" style="height: 300px"></div>
     <div class="container-fluid">
-        <h1>Area Chart</h1>
+        <h1>Bar Chart</h1>
         <div id="area" style="height: 300px; width: 80%; margin-left: 10%;"></div>
     </div>
     <a href="#", onclick="refresh()">刷新连接</a>
@@ -26,25 +25,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
 <script>
     data = [{
-            name: "Workout",
+            name: "1",
             data: {
-                "2017-01-01": 3000,
-                "2017-01-02": 4000,
-                "2017-01-05": 1000
+                "1": "05:03",
             }
         },
         {
-            name: "Call parents",
+            name: "2",
             data: {
-                "2017-01-01": 1000,
-                "2017-01-02": 2200
+                "2": "08:03",
+            }
+        },
+        {
+            name: "3",
+            data: {
+                "3": "05:03",
+                "4": "05:03",
             }
         }
     ]
-    var chart = new Chartkick.LineChart("chart-1", data, {
-        min: 1000,
-        max: 5000
-    })
     // new Chartkick.LineChart("chart-1", data, {colors: ["#b00", "#666"]});
     // new Chartkick.LineChart("chart-1", data, {discrete: true})
     // new Chartkick.LineChart("chart-1", data, {xtitle: "Time", ytitle: "Population"})
@@ -54,18 +53,14 @@
     // new Chartkick.LineChart("chart-1", data, {legend: "bottom"})
     // new Chartkick.PieChart("chart-1", data, {donut: true})
     // add 
-    new Chartkick.AreaChart("area", {
-        "1": 11,
-        "2": 6,
-        "3": 3,
-        "4": 20,
-        "5": 33,
-        "6": 55,
-    }, {
-        points: false,
-        colors: ["#fb8398"],
+    new Chartkick.ColumnChart("area", data, {
+        points: true,
+        colors: ["#66e2c3", "#fc7b85", "#b8b7be"],
         messages: {empty: "No data"},
-        backgroundColor: "pink"
+        discrete: true,
+        legend: false,
+        xtitle: "Time", 
+        ytitle: "Population"
     },);
 
     function refresh() {

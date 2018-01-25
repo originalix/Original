@@ -59,6 +59,7 @@ a:hover, a:visited, a:link, a:active {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    height: 3.96rem;
 }
 
 .container-fluid > h1 {
@@ -69,7 +70,7 @@ a:hover, a:visited, a:link, a:active {
 .step-chart {
     margin-left: 3.5%;
     width: 93%;
-    height: 3.96rem;
+    height: 2.90rem;
 }
 
 .step-chart > canvas {
