@@ -1,22 +1,106 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
-        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
     </script>
     <script src="js/vue.js"></script>
     <title>数据统计</title>
     <link rel="stylesheet" href="css/normailze.css">
     <link rel="stylesheet" href="css/iconfont.css">
-    <link rel="stylesheet" href="css/runlist.css">
+    <link rel="stylesheet" href="css/test.css">
 </head>
-<body>
 
+<body>
+    <div id="chart-1" style="height: 300px"></div>
+    <div class="container-fluid">
+        <h1>Area Chart</h1>
+        <div id="area" style="height: 300px;"></div>
+    </div>
+    <a href="#", onclick="refresh()">刷新连接</a>
 </body>
 <script src="js/axios.js"></script>
+<script src="js/chartkick.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
 <script>
+    data = [{
+            name: "Workout",
+            data: {
+                "2017-01-01": 3000,
+                "2017-01-02": 4000,
+                "2017-01-05": 1000
+            }
+        },
+        {
+            name: "Call parents",
+            data: {
+                "2017-01-01": 1000,
+                "2017-01-02": 2200
+            }
+        }
+    ]
+    var chart = new Chartkick.LineChart("chart-1", data, {
+        min: 1000,
+        max: 5000
+    })
+    // new Chartkick.LineChart("chart-1", data, {colors: ["#b00", "#666"]});
+    // new Chartkick.LineChart("chart-1", data, {discrete: true})
+    // new Chartkick.LineChart("chart-1", data, {xtitle: "Time", ytitle: "Population"})
+    // new Chartkick.LineChart("chart-1", data, {curve: true})
+    // new Chartkick.LineChart("chart-1", data, {points: false})
+    // new Chartkick.LineChart("chart-1", data, {legend: false})
+    // new Chartkick.LineChart("chart-1", data, {legend: "bottom"})
+    // new Chartkick.PieChart("chart-1", data, {donut: true})
+    // add 
+    new Chartkick.AreaChart("area", {
+        "2013-02-10": 11,
+        "2013-02-11": 6,
+        "2013-02-12": 3,
+        "2013-02-13": 2,
+        "2013-02-14": 5,
+        "2013-02-15": 3,
+        "2013-02-16": 8,
+        "2013-02-17": 6,
+        "2013-02-18": 6,
+        "2013-02-19": 12,
+        "2013-02-20": 5,
+        "2013-02-21": 5,
+        "2013-02-22": 3,
+        "2013-02-23": 1,
+        "2013-02-24": 10,
+        "2013-02-25": 1,
+        "2013-02-26": 3,
+        "2013-02-27": 2,
+        "2013-02-28": 3,
+        "2013-03-01": 2,
+        "2013-03-02": 8
+    }, {
+        points: false,
+        colors: ["#fb8398"]
+    },);
 
+    function refresh() {
+        var newData = [{
+                name: "Workout",
+                data: {
+                    "2017-01-01": 3000,
+                    "2017-01-02": 4000,
+                    "2017-01-05": 1000,
+                    "2017-02-03" : 4444,
+                }
+            },
+            {
+                name: "Call parents",
+                data: {
+                    "2017-01-01": 1000,
+                    "2017-01-02": 2200
+                }
+            }
+        ]
+        chart.updateData(newData);
+    }
 </script>
+
 </html>
