@@ -69,4 +69,14 @@ a:hover, a:visited, a:link, a:active {
     margin-right: 0.3rem;
 }
 
-.
+.average {
+    background-color: #b8b7be;
+}
+
+.fast {
+    background-color: #62ddbd;
+}
+
+.slow {
+    background-color: #fb7e8b;
+}

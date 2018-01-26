@@ -22,15 +22,15 @@
         </div>
         <div class="pace-value">
             <div class="pace-left">
-                <div class="cycle-icon"></div>
+                <div class="cycle-icon average"></div>
                 <span>平均：11'23"</span>
             </div>
             <div class="pace-right">
-                <div class="cycle-icon"></div>
+                <div class="cycle-icon fast"></div>
                 <span>最快：3'23"</span>
             </div>
             <div class="pace-right">
-                <div class="cycle-icon"></div>
+                <div class="cycle-icon slow"></div>
                 <span>最慢：15'23"</span>
             </div>
          </div>
@@ -39,6 +39,15 @@
 <script src="js/axios.js"></script>
 <script src="js/echarts.js"></script>
 <script>
+
+    // 获取配速数组最大最小值
+    Array.prototype.max = function () { 
+        return Math.max.apply({},this); 
+    } 
+    Array.prototype.min = function () { 
+        return Math.min.apply({},this); 
+    }
+
     var vm = new Vue({
         el: '#app',
         data: {
@@ -53,14 +62,21 @@
     })
 
     var echart = echarts.init(document.getElementById('chart'));
-    var data1 = [180, 200, 210, 300, 400];
+    var dataSource = [180, 200, 210, 300, 400];
     var option = {
         color: ['#3398DB'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
                 type: 'shadow',
-            }
+            },
+            textStyle: {
+                fontSize: '30',
+            },
+            formatter: function (params) {
+                var value = params[0].value;
+                return '配速时间: </br>' + getTimeFromSeconds(value);
+            },
         },
         grid: {
             left: '3%',
@@ -75,11 +91,17 @@
                 axisTick: {
                     alignWithLabel: true
                 },
-                axisLabel: {
-                    interval: 0,
-                    fontSize: '20',
+                axisLine: {
+                    lineStyle: {
+                        color: "#c7c8cb"
+                    }
                 },
-                max: 15,
+                axisLabel: {
+                    color: "#555558",
+                    interval: 0,
+                    fontSize: '30',
+                },
+                max: 10,
             }
         ],
         yAxis: [
@@ -91,35 +113,44 @@
                 },
                 axisLine: {
                     lineStyle: {
-                        color: "#000000"
+                        color: "#c7c8cb"
                     }
                 },
                 axisLabel: {
                     formatter: function (value) {
                         return getTimeFromSeconds(value);
                     },
-                    fontSize: '20',
+                    fontSize: '30',
+                    color: "#555558",
                 }
             }
         ],
         series: [
             {
-                name: '直接访问',
+                name: '配速时间',
                 itemStyle: {  
                     normal: {  
                         color: function(params) {
                             console.log(params);
                             // console.log(data);
-                            var colorList = [  
+                            var colorList = [
+                                // 平均 ，最快， 最慢  
                                 '#b8b7be', '#62ddbd', '#fb7e8b',
                             ];  
-                            return colorList[params.dataIndex]   
-                        }  
+                            if (dataSource[params.dataIndex] === dataSource.min()) {
+                                return colorList[1];
+                            }
+
+                            if (dataSource[params.dataIndex] === dataSource.max()) {
+                                return colorList[2];
+                            }
+                            return colorList[0];
+                        }
                     }  
                 },  
                 type: 'bar',
                 barWidth: '90%',
-                data: data1,
+                data: dataSource,
                 max: 100,
             }
         ]
@@ -148,14 +179,6 @@
         r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
         r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
         return r;
-    }
-
-    // 获取配速数组最大最小值
-    Array.prototype.max = function () { 
-        return Math.max.apply({},this); 
-    } 
-    Array.prototype.min = function () { 
-        return Math.min.apply({},this); 
     }
 
 </script>
