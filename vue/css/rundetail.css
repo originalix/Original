@@ -55,3 +55,40 @@ a:hover, a:visited, a:link, a:active {
     margin-top: 0.39rem;
     font-size: 0.24rem;
 }
+
+.top-item {
+    display: inline-block;
+    /* margin-top: 0.55rem; */
+    height: 1.98rem;
+    width: 49.9%;
+}
+
+.top-item p {
+    margin-top: 0.55rem;
+    font-size: 0.54rem;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #60616a;
+}
+
+.top-item i {
+    margin-right: 0.08rem;
+    font-size: 0.3rem;
+    color: #c2c2c2;
+}
+
+.top-item span {
+    color: #4b4b4b;
+    font-size: 0.22rem;
+}
+
+.top-item div {
+    margin-top: 0.15rem;
+    text-align: center;
+}
+
+.right-border {
+    border-right: solid;
+    border-right-color: #bdbec3;
+    border-right-width: 0.01rem;
+}
