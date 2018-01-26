@@ -59,6 +59,10 @@ a:hover, a:visited, a:link, a:active {
     color: #35404a;
 }
 
+.type {
+    margin-top: 0.67rem;
+}
+
 .type a {
     display: block;
     margin-left: 5%;
