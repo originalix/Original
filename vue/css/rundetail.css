@@ -24,6 +24,8 @@ a:hover, a:visited, a:link, a:active {
     width: 100%;
     height: 3.47rem;
     background: url("../img/bg-img.png");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
 }
 
 .portrait img {
@@ -91,4 +93,56 @@ a:hover, a:visited, a:link, a:active {
     border-right: solid;
     border-right-color: #bdbec3;
     border-right-width: 0.01rem;
+}
+
+.item {
+    display: inline-block;
+    height: 2.84rem;
+    width: 33.2%;
+}
+
+.value {
+    margin-top: 0.55rem;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 0.39rem;
+    color: #91929c;
+}
+
+.unit {
+    margin-top: 0.26rem;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #a2a3a8;
+}
+
+.item i {
+    font-size: 0.5rem;
+    text-align: center;
+    color: #908f95;
+}
+
+.item div {
+    margin-top: 0.35rem;
+    margin-bottom: 0.42rem;
+    text-align: center;
+}
+
+.right-border {
+    border-right: solid;
+    border-right-color: #bdbec3;
+    border-right-width: 0.01rem;
+}
+
+.top-border {
+    border-top: solid;
+    border-top-color: #bdbec3;
+    border-top-width: 0.01rem;
+}
+
+.bottom-border {
+    border-bottom: solid;
+    border-bottom-color: #bdbec3;
+    border-bottom-width: 0.01rem;
 }
