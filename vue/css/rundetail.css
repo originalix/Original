@@ -19,3 +19,21 @@ a:hover, a:visited, a:link, a:active {
     text-decoration: none;
     color: #1c1c1c;    
 }
+
+.header {
+    width: 100%;
+    height: 3.47rem;
+    background: url("../img/bg-img.png");
+}
+
+.portrait img {
+    margin-top: 0.52rem;
+    width: 1.18rem;
+    height: 1.18rem;
+}
+
+.portrait {
+    width: 1.18rem;
+    margin: 0 auto;
+    border-radius: 0.59rem;
+}
