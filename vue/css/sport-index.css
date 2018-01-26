@@ -1,0 +1,99 @@
+/* 全局样式 */
+html {
+    font-size: 100px;
+    width: 100%;
+    height: 100%;
+}
+
+* { padding: 0; margin: 0; }
+
+html, body, #app {
+    min-height: 100% !important;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: 0;
+}
+
+p {
+    margin: 0;
+    font-size: 0.24rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: #1c1c1c;    
+}
+
+#app {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../img/index-bg.png");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+
+.tips {
+    padding-top: 1.39rem;
+    margin-left: 0.41rem;
+}
+
+.tips h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 0.5rem;
+    color: #35404a;
+}
+
+.tips p {
+    margin-top: 0.26rem;
+    font-size: 0.3rem;
+    color: #35404a;
+}
+
+.type a {
+    display: block;
+    margin-left: 5%;
+    width: 90%;
+    height: 2.9rem;
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+
+.steps {
+    background: url("../img/step.png");
+}
+
+.run {
+    background: url("../img/run.png");
+}
+
+.bike {
+    background: url("../img/bike.png");
+}
+
+.type h1 {
+    padding-top: 0.7rem;
+    margin-left: 0.58rem;
+    color: #35404a;
+    font-size: 0.42rem;
+}
+
+.type p {
+    margin-top: 0.15rem;
+    margin-left: 0.58rem;
+    font-size: 0.24rem;
+    color: #aaacae;
+}
+
+.unavailable {
+    color: #979a9e;
+}
