@@ -19,3 +19,22 @@ a:hover, a:visited, a:link, a:active {
     text-decoration: none;
     color: #1c1c1c;    
 }
+
+.title-date {
+    margin-left: 0.13rem;
+    margin-top: 0.25rem;
+    height: 0.45rem;
+    width: 2.29rem;
+    background-color: #a9aab2;
+    border-style: none;
+    border-radius: 0.225rem;
+}
+
+.date {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 0.21rem;
+    color: #ffffff;
+}
