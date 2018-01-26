@@ -30,10 +30,28 @@ a:hover, a:visited, a:link, a:active {
     margin-top: 0.52rem;
     width: 1.18rem;
     height: 1.18rem;
+    border-style: solid;
+    border-width: 0.02rem;
+    border-radius: 0.59rem;
+    border-color: #d0d1d9;
 }
 
 .portrait {
     width: 1.18rem;
     margin: 0 auto;
-    border-radius: 0.59rem;
+}
+
+.header p {
+    color: #e7e7e7;
+    text-align: center;
+}
+
+.nickname {
+    margin-top: 0.26rem;
+    font-size: 0.3rem;
+}
+
+.starttime {
+    margin-top: 0.39rem;
+    font-size: 0.24rem;
 }
