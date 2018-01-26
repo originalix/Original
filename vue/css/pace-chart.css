@@ -80,3 +80,17 @@ a:hover, a:visited, a:link, a:active {
 .slow {
     background-color: #fb7e8b;
 }
+
+.content-list {
+    font-size: 0.3rem;
+}
+
+.list-header table {
+    width: 100%;
+}
+
+.list-header p {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+}

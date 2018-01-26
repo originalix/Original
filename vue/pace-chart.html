@@ -34,6 +34,13 @@
                 <span>最慢：15'23"</span>
             </div>
          </div>
+         <div class="content-list">
+             <div class="list-header">
+                <p>公里</p>
+                <p>累计耗时</p>
+                <p>每公里耗时</p>
+             </div>
+         </div>
     </div>
 </body>
 <script src="js/axios.js"></script>
@@ -131,8 +138,6 @@
                 itemStyle: {  
                     normal: {  
                         color: function(params) {
-                            console.log(params);
-                            // console.log(data);
                             var colorList = [
                                 // 平均 ，最快， 最慢  
                                 '#b8b7be', '#62ddbd', '#fb7e8b',
