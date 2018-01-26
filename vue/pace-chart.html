@@ -10,7 +10,8 @@
     <script src="js/vue.js"></script>
     <title>跑步详情</title>
     <link rel="stylesheet" href="css/normailze.css">
-    <link rel="stylesheet" href="css/iconfont.css">
+    <!-- <link rel="stylesheet" href="css/iconfont.css"> -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_534623_vnqqnuy11lvrt3xr.css">
     <link rel="stylesheet" href="css/pace-chart.css">
 </head>
 <body>
@@ -36,10 +37,33 @@
          </div>
          <div class="content-list">
              <div class="list-header">
-                <p>公里</p>
-                <p>累计耗时</p>
-                <p>每公里耗时</p>
+                 <div class="header-item p-left">
+                    <i class="iconfont table-icon table-left-margin">&#xe60b;</i>
+                    <p>公里</p>
+                 </div>
+                 <div class="header-item p-center">
+                    <i class="iconfont table-icon">&#xe6ba;</i>
+                    <p>累计耗时</p>
+                </div>
+                <div class="header-item p-right">
+                    <i class="iconfont table-icon">&#xe64c;</i>
+                    <p class="table-right-margin">每公里耗时</p>
+                </div>
              </div>
+             <ul>
+                <li class="list-li">
+                    <div class="header-item p-left">
+                        <div class="cycle-icon table-icon table-left-margin"></div>
+                        <p>1</p><span>KM</span>
+                        </div>
+                        <div class="header-item p-center">
+                        <p>00:24:20</p>
+                    </div>
+                    <div class="header-item p-center">
+                        <p>11'23"</p>
+                    </div>
+                </li>
+            </ul>
          </div>
     </div>
 </body>
