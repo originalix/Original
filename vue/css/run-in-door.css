@@ -38,3 +38,12 @@ a:hover, a:visited, a:link, a:active {
     font-size: 0.21rem;
     color: #ffffff;
 }
+
+.content {
+    width: 100%;
+}
+
+#chart {
+    width: 100%;
+    height: 2rem;
+}
