@@ -64,16 +64,22 @@
             max: 400
         }],
 
-        title: [{
-            left: 'center',
-            text: 'Gradient along the y axis'
-        }],
+        // title: [{
+        //     left: 'center',
+        //     text: 'Gradient along the y axis'
+        // }],
         tooltip: {
             // trigger: 'axis'
         },
         xAxis: [{
             splitLine: {show: true},
             data: dateList,
+            axisLabel: {
+                formatter: function (value) {
+                    return value + 'LM';
+                },
+                // interval:10,
+            },
             // max: 50,
         }],
         yAxis: [{
