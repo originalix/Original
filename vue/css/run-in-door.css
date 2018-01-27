@@ -46,11 +46,24 @@ a:hover, a:visited, a:link, a:active {
 
 .content {
     width: 100%;
-    /* height: 100%; */
+    height: 57.1%;
 }
 
 #chart {
     width: 100%;
-    height: 7.61rem;
-    /* height: 100%; */
+    /* height: 7.61rem; */
+    height: 100%;
+}
+
+.show-detail {
+    display: block;
+    margin-left: 0.23rem;
+    margin-right: 0.23rem;
+    background-color: #949498;
+    height: 2.20rem;
+    width: 94%;
+}
+
+.top-wrap span {
+    font-size: 0.4rem;
 }
