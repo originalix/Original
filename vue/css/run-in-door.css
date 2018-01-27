@@ -8,6 +8,7 @@ body {
 html, body, #app {
     min-height: 100% !important;
     height: 100%;
+    background-color: #f9f9f9;
 }
 
 p {
@@ -62,8 +63,95 @@ a:hover, a:visited, a:link, a:active {
     background-color: #949498;
     height: 2.20rem;
     width: 94%;
+    border-style: none;
+    border-radius: 0.3rem;
 }
 
 .top-wrap span {
-    font-size: 0.4rem;
+    width: 45%;
+    color: #ffffff;
+}
+
+.top-wrap {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 1.49rem;
+}
+
+.duration {
+    float: left;
+    width: 45%;
+    margin-top: 0.21rem;
+    margin-left: 0.24rem;
+    color: #ffffff;
+    font-size: 0.48rem;
+}
+
+.distance {
+    float: right;
+    width: 45%;
+    margin-top: 0.21rem;
+    margin-right: 0.24rem;
+    color: #ffffff;
+    text-align: right;
+    font-size: 0.48rem;
+}
+
+.time-unit {
+    float: left;
+    width: 45%;
+    margin-top: 0.21rem;
+    margin-left: 0.24rem;
+    color: #ffffff;
+    font-size: 0.25rem;
+}
+
+.dist-unit {
+    float: right;
+    width: 45%;
+    margin-top: 0.21rem;
+    margin-right: 0.24rem;
+    color: #ffffff;
+    text-align: right;
+    font-size: 0.25rem;
+}
+
+.unit-icon {
+    font-size: 0.25rem;
+    margin-right: 0.05rem;
+    color: #c2c2c2;
+}
+
+.seperate {
+    width: 100%;
+    height: 0.01rem;
+    background-color: #c0c0c0;
+}
+
+.all-value p {
+    display: inline-block;
+    width: 33.3333%;
+    font-size: 0.24rem;
+    color: #ffffff;
+}
+
+.all-value {
+    margin-top: 0.24rem;
+    margin-bottom: 0.2rem;
+    margin-left: 0.27rem;
+    margin-right: 0.27rem;
+}
+
+.slow {
+    text-align: left;
+}
+
+.fast {
+    text-align: right;
+}
+
+.average {
+    text-align: center;
 }
