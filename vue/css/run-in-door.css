@@ -46,9 +46,15 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .content {
+    /* position: absolute; */
+    /* bottom: 3,58rem; */
+    /* left: 0; */
+    /* right: 0; */
+    /* top: 0.77rem; */
     width: 100%;
-    height: 57.1%;
+    height: 68.1%;
 }
+
 
 #chart {
     width: 100%;
@@ -58,8 +64,12 @@ a:hover, a:visited, a:link, a:active {
 
 .show-detail {
     display: block;
-    margin-left: 0.23rem;
-    margin-right: 0.23rem;
+    position: absolute;
+    bottom: 1.11rem;
+    left: 0.23rem;
+    right: 0.23rem;
+    /* margin-left: 0.23rem; */
+    /* margin-right: 0.23rem; */
     background-color: #949498;
     height: 2.20rem;
     width: 94%;
