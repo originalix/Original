@@ -21,11 +21,11 @@
             <p>请选择您的运动类型：</p>
         </div>
         <div class="type">
-            <a href="#" class="steps" @click="go2StepController">
+            <a href="" class="steps" @click="go2StepController">
                 <h1>计步</h1>
                 <p>今日步数：5601步</p>
             </a>
-            <a href="#" class="run">
+            <a href="#" class="run" @click="go2RunController">
                 <h1>跑步</h1>
                 <p>2018总跑量：56.25KM</p>
             </a>
@@ -52,7 +52,12 @@
                 var data = { 'data' : 1 };
                 var bridge = window.webkit.messageHandlers.go2StepController;
                 bridge.postMessage(data);
-            }
+            },
+            go2RunController () {
+                var data = { 'data' : 1};
+                var bridge = window.webkit.messageHandlers.go2RunController;
+                bridge.postMessage(data);
+            },
         }
     })
 </script>
