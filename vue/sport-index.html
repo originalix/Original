@@ -23,11 +23,11 @@
         <div class="type">
             <a href="" class="steps" @click="go2StepController">
                 <h1>计步</h1>
-                <p>今日步数：5601步</p>
+                <p>今日步数：{{sportsData.steps}}步</p>
             </a>
             <a href="" class="run" @click="go2RunController">
                 <h1>跑步</h1>
-                <p>2018总跑量：56.25KM</p>
+                <p>2018总跑量：{{sportsData.distance}}KM</p>
             </a>
             <a href="#" class="bike">
                 <h1 class="unavailable">骑行</h1>
@@ -38,11 +38,21 @@
 </body>
 <script src="js/axios.js"></script>
 <script>
+    var sportsData = {
+        distance: '',
+        count: '',
+        steps: '',
+        percent: '',
+    }
     var vm = new Vue({
         el: '#app',
         data: {
+            sportsData : sportsData 
         },
         created () {
+            var data = { 'url' : 'https://daas.lunengsports.com/api/v1/sports/run/home' };
+            var bridge = window.webkit.messageHandlers.getAPIHeaders;
+            bridge.postMessage(data);
         },
         methods: {
             test () {
@@ -54,10 +64,29 @@
                 bridge.postMessage(data);
             },
             go2RunController () {
-                var data = { 'data' : 1};
+                var data = {
+                    'count' : this.sportsData.count,
+                    'distance' : this.sportsData.distance,
+                };
                 var bridge = window.webkit.messageHandlers.go2RunController;
                 bridge.postMessage(data);
             },
+            getHeaders (data) {
+                this.getSportsData(data);
+            },
+            getSportsData (headers) {
+                axios.get('https://daas.lunengsports.com/api/v1/sports/run/home', {
+                    headers: headers,
+                }).then(function (response) {
+                    vm.setSportsData(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            setSportsData (data) {
+                this.sportsData = data;
+            }
         }
     })
 </script>
