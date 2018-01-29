@@ -57,7 +57,7 @@
         },
         created () {
             var data = { 'year' : 2017 };
-            var bridge = window.webkit.messageHandlers.getListData;
+            var bridge = window.webkit.messageHandlers.setListYear;
             bridge.postMessage(data);
         },
         methods: {
@@ -70,7 +70,9 @@
             },
             // native设置year
             setYear (year) {
-                alert(year);
+                var data = { 'year' : year };
+                var bridge = window.webkit.messageHandlers.getListData;
+                bridge.postMessage(data);
             },
             // 获取列表的数据
             getListData(data) {
