@@ -25,7 +25,7 @@
         </div>        
         <div class="detail">
             <i class="iconfont calendar">&#xe645;</i><p class="year">2018</p>
-            <i class="iconfont right-arrow">&#xe610;</i><p class="detail-data">详细数据</p>
+            <i class="iconfont right-arrow" @click="go2ListController">&#xe610;</i><p class="detail-data" @click="go2ListController">详细数据</p>
         </div>
         <div class="statistic">
             <div class="distance">
@@ -80,10 +80,12 @@
             test () {
                 console.log('hello world');
             },
+            // 设置天气数据
             setWeather(weather) {
                 console.log('set' + weather);
                 this.weather = weather;
             },
+            // 跟native通信获取天气数据
             getWeatherData (data) {
                 console.log(data.url);
                 var url = data.url;
@@ -101,9 +103,15 @@
                     console.log(error);
                 });
             },
+            // 点击开始跑步 进入跑步页面
             startRun () {
                 var data = { 'data' : 1 };
                 var bridge = window.webkit.messageHandlers.startRun;
+                bridge.postMessage(data);
+            },
+            go2ListController () {
+                var data = { 'data' : 1 };
+                var bridge = window.webkit.messageHandlers.go2ListController;
                 bridge.postMessage(data);
             }
         }
