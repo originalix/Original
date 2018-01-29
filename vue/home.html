@@ -30,12 +30,12 @@
         <div class="statistic">
             <div class="distance">
                 <p class="dist-unit">总跑量</p><span>/KM</span>
-                <p class="dist-val">100.15</p>
+                <p class="dist-val">{{run_mileage}}</p>
             </div>
             <div class="seperate-line"></div>
             <div class="distance count">
                 <p class="dist-unit count-unit">总次数</p><span>/次</span>
-                <p class="dist-val count-val">26</p>
+                <p class="dist-val count-val">{{run_count}}</p>
             </div>
 
         </div>
@@ -89,6 +89,9 @@
                 console.log(data.url);
                 var url = data.url;
                 var headers = data.headers
+                this.run_mileage = data.run_mileage;
+                this.run_count = data.run_count;
+                this.rank = data.rank;
                 axios.get(url, {
                     headers : headers
                 }).then(function (response) {

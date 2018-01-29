@@ -67,6 +67,7 @@
                 var data = {
                     'count' : this.sportsData.count,
                     'distance' : this.sportsData.distance,
+                    'rank' : this.sportsData.percent,
                 };
                 var bridge = window.webkit.messageHandlers.go2RunController;
                 bridge.postMessage(data);
