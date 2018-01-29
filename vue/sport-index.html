@@ -21,7 +21,7 @@
             <p>请选择您的运动类型：</p>
         </div>
         <div class="type">
-            <a href="#" class="steps">
+            <a href="#" class="steps" @click="go2StepController">
                 <h1>计步</h1>
                 <p>今日步数：5601步</p>
             </a>
@@ -48,6 +48,11 @@
             test () {
                 this.msg = 'lixxxxxxxx!';
             },
+            go2StepController () {
+                var data = { 'data' : 1 };
+                var bridge = window.webkit.messageHandlers.go2StepController;
+                bridge.postMessage(data);
+            }
         }
     })
 </script>
