@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import urllib2
-import cookielib
-from bs4 import BeautifulSoup
-from selenium import webdriver
+# import urllib2
+# import cookielib
+# from bs4 import BeautifulSoup
+# from selenium import webdriver
 
 # request = urllib2.Request("http://baidu.com")
 # response = urllib2.urlopen(request)
@@ -35,14 +35,8 @@ from selenium import webdriver
 # response = opener.open(req)
 # print response.read()
 
-def navigationForSelenium():
-    driver = webdriver.PhantomJS()
-    driver.get('http://www.baidu.com')
-    print driver.title
-    driver.get('http://www.qq.com')
-    print driver.title
-    driver.back()
-    print driver.title
-    
-if __name__ == '__main__':
-    navigationForSelenium()
+# 
+import urllib2
+ 
+response = urllib2.urlopen("http://www.baidu.com")
+print(response.read().decode('utf-8'))
