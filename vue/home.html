@@ -9,7 +9,8 @@
     <script src="js/vue.js"></script>
     <title>跑步</title>
     <link rel="stylesheet" href="css/normailze.css">
-    <link rel="stylesheet" href="css/iconfont.css">
+    <!-- <link rel="stylesheet" href="css/iconfont.css"> -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_534623_00gtwe4fyem0wwmi.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
@@ -57,7 +58,7 @@
         el: '#app',
         data () {
             return {
-                data: { 
+                data: {
                     weather : '',
                     temperature: '',
                     pm25: '',
@@ -69,15 +70,20 @@
             }
         },
         created () {
-            axios.get('http://192.168.0.117/yiidemo/basic/web/index.php?r=site/weather')
-            .then(function (response) {
-                console.log(response);
-                responseData = response.data.data;
-                vm.data = responseData;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            var data = {
+                'url' : 'https://daas.lunengsports.com/api/v1/sports/run/home'
+                };
+            var bridge = window.webkit.messageHandlers.getAPIHeaders;
+            bridge.postMessage(data);
+            // axios.get('http://192.168.0.117/yiidemo/basic/web/index.php?r=site/weather')
+            // .then(function (response) {
+            //     console.log(response);
+            //     responseData = response.data.data;
+            //     vm.data = responseData;
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
+            // });
         },
         methods: {
             test () {
