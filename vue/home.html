@@ -17,11 +17,11 @@
     <div id="app">
         <div class="header">
             <div class="weather">
-                <p class="weather-title">{{data.weather}}</p
-                ><p class="temperature">{{data.temperature}}℃</p
-                ><p class="tips">{{data.tips}}</p>
+                <p class="weather-title">{{weather.weather}}</p
+                ><p class="temperature">{{weather.temperature}}℃</p
+                ><p class="tips">{{weather.tips}}</p>
             </div>
-            <span class="pm25">PM2.5 <span class="pm-value">{{data.pm25}}</span></span>
+            <span class="pm25">PM2.5 <span class="pm-value">{{weather.pm25}}</span></span>
         </div>        
         <div class="detail">
             <i class="iconfont calendar">&#xe645;</i><p class="year">2018</p>
@@ -44,30 +44,29 @@
                 <img src="img/avatar_collect.png" alt="">
             </div>
             <p class="start-tips">
-                您当前已经超越<span>{{data.rank}}</span>的职工，继续加油哦！
+                您当前已经超越<span>{{rank}}</span>的职工，继续加油哦！
             </p>
             <div class="start-btn">
-                <a href="#">开始跑步</a>
+                <a href="#" @click="test">开始跑步</a>
             </div>
         </div>
     </div>
 </body>
 <script src="js/axios.js"></script>
 <script>
+    var weatherObj = {
+        weather: '',
+        temperature: '',
+        pm25: '',
+        tips: '',
+    };
     var vm = new Vue({
         el: '#app',
-        data () {
-            return {
-                data: {
-                    weather : '',
-                    temperature: '',
-                    pm25: '',
-                    tips: '',
-                    run_mileage: 0,
-                    run_count: 0,
-                    rank: '',
-                },
-            }
+        data: {
+            weather : weatherObj,
+            run_mileage: 0,
+            run_count: 0,
+            rank: '',
         },
         created () {
             var data = {
@@ -75,19 +74,30 @@
                 };
             var bridge = window.webkit.messageHandlers.getAPIHeaders;
             bridge.postMessage(data);
-            // axios.get('http://192.168.0.117/yiidemo/basic/web/index.php?r=site/weather')
-            // .then(function (response) {
-            //     console.log(response);
-            //     responseData = response.data.data;
-            //     vm.data = responseData;
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
+
         },
         methods: {
             test () {
                 console.log('hello world');
+            },
+
+            setWeather(weather) {
+                console.log('set' + weather);
+                this.weather = weather;
+            },
+            getWeatherData (data) {
+                console.log(data.url);
+                var url = data.url;
+                var headers = data.headers
+                axios.get(url, {
+                    headers : headers
+                }).then(function (response) {
+                    console.log(response);
+                    vm.setWeather(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             }
         }
     })
