@@ -44,10 +44,10 @@
                 <img src="img/avatar_collect.png" alt="">
             </div>
             <p class="start-tips">
-                您当前已经超越<span>{{rank}}</span>的职工，继续加油哦！
+                您当前已经超越<span>{{rank}}%</span>的职工，继续加油哦！
             </p>
             <div class="start-btn">
-                <a href="#" @click="test">开始跑步</a>
+                <a href="#" @click="startRun">开始跑步</a>
             </div>
         </div>
     </div>
@@ -80,7 +80,6 @@
             test () {
                 console.log('hello world');
             },
-
             setWeather(weather) {
                 console.log('set' + weather);
                 this.weather = weather;
@@ -101,6 +100,11 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+            },
+            startRun () {
+                var data = { 'data' : 1 };
+                var bridge = window.webkit.messageHandlers.startRun;
+                bridge.postMessage(data);
             }
         }
     })
