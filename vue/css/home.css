@@ -12,6 +12,14 @@ a:hover, a:visited, a:link, a:active {
     color: #1c1c1c;    
 }
 
+div,a,img {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
+
+
 
 .header {
     margin: 0;
@@ -71,7 +79,7 @@ a:hover, a:visited, a:link, a:active {
     color: #ffffff;
 }
 
-.statistic {
+/* .statistic {
     display: -webkit-flex;
     margin-top: 0.63rem;
     margin-right: 0.26rem;
@@ -119,7 +127,7 @@ a:hover, a:visited, a:link, a:active {
     font-family: Verdana;
     font-size: 0.7rem;
     color: #6b6d6f;
-}
+} */
 
 .start {
     position: absolute;

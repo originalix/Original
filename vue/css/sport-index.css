@@ -41,6 +41,13 @@ a:hover, a:visited, a:link, a:active {
     background-size:100% 100%;
 }
 
+div,a,img {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
+
 .tips {
     padding-top: 1.0rem;
     margin-left: 0.41rem;
