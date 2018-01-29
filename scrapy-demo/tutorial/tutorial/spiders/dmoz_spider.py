@@ -15,12 +15,22 @@ class DmozSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        for item in response.xpath('//div[@class="cat-item"]'):
-            print item
+        for href in response.css(".cat-item > a::attr('href')"):
+            url = response.urljoin(href.extract())
+            print url./
+            # yield scrapy.Request(url, callback=self.parse_dir_contents)
+
+    def parse_dir_contents(self, response):
+        for sel in response.xpath('//ul/li'):
+            item = DmozItem()
+            item['title'] = sel.xpath('a/text()').extract()
+            item['link'] = sel.xpath('a/@href').extract()
+            item['desc'] = sel.xpath('text()').extract()
+            yield item
 
     # def parse(self, response):
     #     index = 0
-    #     for sel in response.xpath('//div[@class="site-item "]'):
+        # for sel in response.xpath('//div[@class="site-item "]'):
     #         item = DmozItem()
     #         item['title'] = sel.xpath('//div[@class="site-title"]/text()').extract()[index]
     #         item['link'] = sel.xpath('//div[@class="title-and-desc"]/a/@href').extract()[index]
