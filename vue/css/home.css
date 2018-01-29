@@ -124,6 +124,64 @@ div,a,img {
     color: #6c6e70;
 }
 
+.statistic {
+    display: block;
+    margin-top: 0.3rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    height: 4rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #d6d6d7;
+    border-radius: 0.15rem;
+}
+
+.distance p {
+    display: inline-block;
+}
+
+.distance span {
+    margin-left: 0.22rem;
+    font-size: 0.22rem;
+    color: #5d5c61;
+}
+
+.dist-unit {
+    margin: 0;
+    margin-top: 1.03rem;
+    margin-left: 0.25rem;
+    font-size: 0.36rem;
+    color: #4c4b51;
+}
+
+.dist-val {
+    float: right;
+    margin: 0;
+    margin-top: 0.49rem;
+    margin-right: 0.23rem;
+    font-size: 0.95rem;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #6b6d6f;
+}
+
+.seperate-line {
+    display: block;
+    margin-top: 0.46rem;
+    margin-left: 0.25rem;
+    margin-right: 0.23rem;
+    height: 0.01rem;
+    background-color: #acadae;
+}
+
+.count-unit {
+    margin-top: 0.82rem;
+}
+
+.count-val {
+    margin-top: 0.35rem;
+    margin-bottom: 0.48rem;
+}
+
 
 .start {
     position: absolute;
