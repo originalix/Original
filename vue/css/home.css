@@ -23,6 +23,7 @@ div,a,img {
 
 .header {
     margin: 0;
+    margin-bottom: 0.44rem;
     width: 100%;
     height: 2rem;
     background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516611774613&di=eee7e87af0600585c829d43464c97d2a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F34fae6cd7b899e5125cfbf3349a7d933c8950d57.jpg");
@@ -128,6 +129,51 @@ div,a,img {
     font-size: 0.7rem;
     color: #6b6d6f;
 } */
+
+.detail {
+    position: relative;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    height: 0.4rem;
+}
+
+.detail p {
+    display: inline-block;
+    line-height: 0.4rem;
+    font-size: 0.25rem;
+}
+
+.detail i {
+    font-size: 0.4rem;
+}
+
+.year {
+    float: left;
+    margin: 0;
+    margin-top: 0.03rem;
+    margin-left: 0.14rem;
+    color: #6b6d6f;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.detail-data {
+    float: right;
+    margin: 0;
+    margin-top: 0.03rem;
+    margin-right: 0.10rem;
+    color: #bbbcbc;
+}
+
+.calendar {
+    float: left;
+    color: #b6b7b7;
+}
+
+.right-arrow {
+    float: right;
+    color: #6c6e70;
+}
+
 
 .start {
     position: absolute;
