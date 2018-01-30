@@ -22,4 +22,3 @@ echo "确认提交请输入commit信息"
 echo "如需要取消本次提交，请按ctrl+c"
 
 pushFunc $(readCommitMessage)
-
