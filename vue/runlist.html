@@ -28,7 +28,7 @@
                     <p class="list-title month-li-left-fix month-record-bottom-margin">{{model.month}}月总里程：<span>{{model.total_distance/1000}}</span> KM</p>
                     <span class="total_count month-li-right-fix">{{model.total_count}}条记录</span>
                     <ul class="record-list">
-                        <li class="record-li" v-for="data in model.data">
+                        <li class="record-li" v-for="data in model.data" @click="cellDidSelect(data.run_id)">
                             <div class="record-wrap">
                                 <p>{{timestampFormat(data.start_time)}}</p>
                                 <span class="distance-val">{{ distanceUnitConvert(data.distance) }}</span>
@@ -106,6 +106,12 @@
                 } else {
                     return null;
                 }
+            },
+            // cell的点击事件
+            cellDidSelect (id) {
+                var data = { 'id' : id };
+                var bridge = window.webkit.messageHandlers.go2DetailController;
+                bridge.postMessage(data);
             },
         }
     })
