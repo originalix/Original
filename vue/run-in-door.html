@@ -16,15 +16,15 @@
 <body>
     <div id="app">
         <div class="title-date">
-            <p class="date">2018-01-12 15:22</p>
+            <p class="date">{{ timestampFormat(start_time) }}</p>
         </div>
         <div class="content">
             <div id="chart"></div>
         </div>
         <div class="show-detail">
             <div class="top-wrap">
-                <span class="duration">00:33:33</span>
-                <span class="distance">2.94</span>
+                <span class="duration">{{ getTimeFromSeconds(duration) }}</span>
+                <span class="distance">{{ distanceUnitConvert(distance) }}</span>
                 <span class="time-unit"><i class="iconfont unit-icon">&#xe72f;</i>总计时间</span>
                 <span class="dist-unit"><i class="iconfont unit-icon">&#xe606;</i>全程距离：公里</span>
             </div>
@@ -40,16 +40,67 @@
 <script src="js/axios.js"></script>
 <script src="js/echarts.js"></script>
 <script>
+
+    // 时间转换
+    Date.prototype.format = function(format) {
+       var date = {
+              "M+": this.getMonth() + 1,
+              "d+": this.getDate(),
+              "h+": this.getHours(),
+              "m+": this.getMinutes(),
+              "s+": this.getSeconds(),
+              "q+": Math.floor((this.getMonth() + 3) / 3),
+              "S+": this.getMilliseconds()
+       };
+       if (/(y+)/i.test(format)) {
+              format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+       }
+       for (var k in date) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+            }
+       }
+       return format;
+    }
+
+    function formatTime(dt) {
+        var h = dt.getHours(),
+            m = dt.getMinutes(),
+            s = dt.getSeconds(),
+            r = "";
+        if (h > 0) {
+        }
+        r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+        r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+        r += (s > 9 ? s.toString() : "0" + s.toString());
+        return r;
+    }
+
+    // Vue Object
     var vm = new Vue({
         el: '#app',
         data: {
+            points : [],
+            distance: '',
+            duration: '',
+            start_time: '',
         },
         created () {
-            this.createECharts();
+            // this.createECharts();
+            var data = { 'data' : 1 };
+            var bridge = window.webkit.messageHandlers.getMainChartData;
+            bridge.postMessage(data);
         },
         methods: {
             test () {
                 this.msg = 'lixxxxxxxx!';
+            },
+            receiveData (data) {
+                console.log(data);
+                this.distance = data.distance;
+                this.duration = data.duration;
+                this.start_time = data.start_time;
             },
             createECharts () {
                 option = {
@@ -106,7 +157,7 @@
                                         offset: 1,  
                                         color: 'red'  
                                     }]),//线条渐变色  
-                                }  
+                                }
                             },
                         }
                     }]
@@ -114,7 +165,28 @@
 
                 var eCharts = echarts.init(document.getElementById('chart'));
                 eCharts.setOption(option);
-            }
+            },
+            // 列表里开始时间戳格式化
+            timestampFormat (timestamp) {
+                var newDate = new Date();
+                newDate.setTime(timestamp * 1000);
+                return newDate.format('yyyy-MM-dd hh:mm:ss');
+            },
+            // 列表的距离单位米 转化为千米
+            distanceUnitConvert(distance) {
+                var num = new Number(distance / 1000);
+                return num.toFixed(2);
+            },
+            // duration转换成 hh:mm:ss
+            getTimeFromSeconds(totalSeconds) {
+                if (totalSeconds < 86400) {
+                    var dt = new Date("01/01/2000 0:00");
+                    dt.setSeconds(totalSeconds);
+                    return formatTime(dt);
+                } else {
+                    return null;
+                }
+            },
         }
     });
 
@@ -137,69 +209,6 @@
     var valueList = data.map(function (item) {
         return item[1];
     });
-
-    // option = {
-    //     // Make gradient line here
-    //     visualMap: [{
-    //         show: false,
-    //         type: 'continuous',
-    //         seriesIndex: 0,
-    //         min: 0,
-    //         max: 400
-    //     }],
-    //     xAxis: [{
-    //         splitLine: {show: true},
-    //         data: [],
-    //         axisLabel: {
-    //             formatter: function (value) {
-    //                 // 坐标轴转换km 保留两位小数
-    //                 var num = new Number(value);
-    //                 return num.toFixed(2) + 'KM';
-    //             },
-    //             interval: data.length / 5,
-    //             fontSize: "30",
-    //         },
-    //         // max: 50,
-    //     }],
-    //     yAxis: [{
-    //         show: false,
-    //         splitLine: {show: false},
-    //     }],
-    //     grid: [{
-    //         // bottom: '40%'
-    //     }],
-    //     series: [{
-    //         type: 'line',
-    //         showSymbol: false,
-    //         data: [],
-    //         smooth: true,
-    //         animation: false,
-    //         itemStyle: {  
-    //             normal: {  
-    //                 color: 'red',  
-    //                 lineStyle: {        // 系列级个性化折线样式  
-    //                     width: 15,  
-    //                     type: 'solid',  
-    //                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
-    //                         offset: 0,  
-    //                         color: 'green'
-    //                     }, 
-    //                     {  
-    //                         offset: 0.5,  
-    //                         color: 'yellow'  
-    //                     },
-    //                     {  
-    //                         offset: 1,  
-    //                         color: 'red'  
-    //                     }]),//线条渐变色  
-    //                 }  
-    //             },
-    //         }
-    //     }]
-    // };
-
-    // var eCharts = echarts.init(document.getElementById('chart'));
-    // eCharts.setOption(option);
 
 </script>
 </html>
