@@ -16,7 +16,7 @@
     <div id="app">
         <div class="header">
             <div class="header-wrap">
-                <p class="list-title">{{year}}年度总里程：<span>{{year_total_distance}}</span> KM</p>
+                <p class="list-title">{{year}}年度总里程：<span>{{year_total_distance/1000}}</span> KM</p>
                 <span class="total_count">{{year_total_count}}条记录</span>
             </div>
             <div class="separate"></div>
@@ -25,7 +25,7 @@
             <ul class="month-list">
                 <!-- row -->
                 <li class="month-li" v-for="model in modelArr">
-                    <p class="list-title month-li-left-fix month-record-bottom-margin">{{model.month}}月总里程：<span>{{model.total_distance}}</span> KM</p>
+                    <p class="list-title month-li-left-fix month-record-bottom-margin">{{model.month}}月总里程：<span>{{model.total_distance/1000}}</span> KM</p>
                     <span class="total_count month-li-right-fix">{{model.total_count}}条记录</span>
                     <ul class="record-list">
                         <li class="record-li" v-for="data in model.data">
