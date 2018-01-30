@@ -41,10 +41,6 @@
 <script src="js/echarts.js"></script>
 <script>
 
-    // 生成图表对象
-    var eCharts = echarts.init(document.getElementById('chart'));
-    eCharts.showLoading();
-
     // 时间转换
     Date.prototype.format = function(format) {
        var date = {
@@ -95,7 +91,6 @@
             var data = { 'data' : 1 };
             var bridge = window.webkit.messageHandlers.getMainChartData;
             bridge.postMessage(data);
-            this.createECharts();
         },
         methods: {
             test () {
@@ -117,7 +112,7 @@
                 });
                 console.log(distanceList);
                 console.log(speedList);
-                
+                this.createECharts(distanceList, speedList);
             },
             createECharts (xData, yData) {
                 option = {
@@ -135,10 +130,10 @@
                         axisLabel: {
                             formatter: function (value) {
                                 // 坐标轴转换km 保留两位小数
-                                var num = new Number(value);
+                                var num = new Number(value / 1000);
                                 return num.toFixed(2) + 'KM';
                             },
-                            // interval: data.length / 5,
+                            interval: xData.length / 5,
                             fontSize: "30",
                         },
                         // max: 50,
@@ -180,6 +175,7 @@
                         }
                     }]
                 };
+                console.log(eCharts);
                 eCharts.setOption(option);
             },
             // 列表里开始时间戳格式化
@@ -206,5 +202,25 @@
         }
     });
 
+    // 生成图表对象
+    var eCharts = echarts.init(document.getElementById('chart'));
+    // eCharts.setOption({
+    //     title: {
+    //         text: '异步数据加载示例'
+    //     },
+    //     tooltip: {},
+    //     legend: {
+    //         data:['销量']
+    //     },
+    //     xAxis: {
+    //         data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+    //     },
+    //     yAxis: {},
+    //     series: [{
+    //         name: '销量',
+    //         type: 'bar',
+    //         data: [5, 20, 36, 10, 10, 20]
+    //     }]
+    // });
 </script>
 </html>
