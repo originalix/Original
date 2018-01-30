@@ -16,7 +16,7 @@
     <div id="app">
         <div class="header">
             <div class="header-wrap">
-                <p class="list-title">{{year}}年度总里程：<span>{{year_total_distance}}</span> KM</p>
+                <p class="list-title">{{year}}年度总里程：<span>{{year_total_distance/1000}}</span> KM</p>
                 <span class="total_count">{{year_total_count}}条记录</span>
             </div>
             <div class="separate"></div>
@@ -25,10 +25,10 @@
             <ul class="month-list">
                 <!-- row -->
                 <li class="month-li" v-for="model in modelArr">
-                    <p class="list-title month-li-left-fix month-record-bottom-margin">{{model.month}}月总里程：<span>{{model.total_distance}}</span> KM</p>
+                    <p class="list-title month-li-left-fix month-record-bottom-margin">{{model.month}}月总里程：<span>{{model.total_distance/1000}}</span> KM</p>
                     <span class="total_count month-li-right-fix">{{model.total_count}}条记录</span>
                     <ul class="record-list">
-                        <li class="record-li" v-for="data in model.data">
+                        <li class="record-li" v-for="data in model.data" @click="cellDidSelect(data.run_id)">
                             <div class="record-wrap">
                                 <p>{{timestampFormat(data.start_time)}}</p>
                                 <span class="distance-val">{{ distanceUnitConvert(data.distance) }}</span>
@@ -107,6 +107,12 @@
                     return null;
                 }
             },
+            // cell的点击事件
+            cellDidSelect (id) {
+                var data = { 'id' : id };
+                var bridge = window.webkit.messageHandlers.go2DetailController;
+                bridge.postMessage(data);
+            },
         }
     })
 
@@ -124,10 +130,10 @@
               format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
        }
        for (var k in date) {
-              if (new RegExp("(" + k + ")").test(format)) {
-                     format = format.replace(RegExp.$1, RegExp.$1.length == 1
-                            ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
-              }
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+            }
        }
        return format;
     }
