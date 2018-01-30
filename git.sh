@@ -4,13 +4,13 @@ readCommitMessage() {
 }
  
 pushFunc() {
-    if [ "$1" = "" ]
+    if [ "$*" = "" ]
     then
         echo "commit message为空，请重新输入"
         pushFunc $(readCommitMessage)
     else
         git add .
-        git commit -m "[$1]"
+        git commit -m "[$*]"
         git push -u origin
         git push -u os
     fi
