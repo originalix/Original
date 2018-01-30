@@ -4,7 +4,7 @@ readCommitMessage() {
 }
  
 pushFunc() {
-    if [ "$*" = "" ]
+    if [ "$1" = "" ]
     then
         echo "commit message为空，请重新输入"
         pushFunc $(readCommitMessage)
