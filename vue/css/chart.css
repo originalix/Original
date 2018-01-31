@@ -93,3 +93,16 @@ a:hover, a:visited, a:link, a:active {
     margin-top: 0.18rem;
     margin-right: 0.3rem;
 }
+
+.error-tips {
+    width: 100%;
+    height: 100%;
+}
+
+.error-tips p {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}

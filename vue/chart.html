@@ -21,9 +21,14 @@
             <div class="seperate float-right"></div>            
         </div>
         <div class="container-fluid">
-            <p class="yUnit">步频：步/分钟</p>
-            <div id="step-frequency" class="step-chart"></div>
-            <p class="xUnit">时间：分钟</p>
+            <div v-if="showChart">
+                <p class="yUnit">步频：步/分钟</p>
+                <div id="step-frequency" class="step-chart"></div>
+                <p class="xUnit">时间：分钟</p>
+            </div>
+            <div v-if="!showChart" class="error-tips">
+                <p class="error-tips-text">您的跑步数据不足，图表无法绘制</p>
+            </div>
         </div>
 
         <div class="title">
@@ -32,9 +37,15 @@
             <div class="seperate float-right"></div>            
         </div>
         <div class="container-fluid">
-            <p class="yUnit">步幅：米/步</p>
-            <div id="step-stride" class="step-chart"></div>
-            <p class="xUnit">时间：分钟</p>
+            <div v-if="showChart">
+                <p class="yUnit">步幅：米/步</p>
+                <div id="step-stride" class="step-chart"></div>
+                <p class="xUnit">时间：分钟</p>
+            </div>
+
+            <div v-if="!showChart" class="error-tips">
+                    <p class="error-tips-text">您的跑步数据不足，图表无法绘制</p>
+                </div>
         </div>
     </div>
 </body>
@@ -47,7 +58,8 @@
         data: {
             step_stride: '',
             step_frequency: '',
-            xData: '',
+            showChart: true,
+            count : '',
         },
         created () {
             // this.stepFrequencyChart();
@@ -65,7 +77,13 @@
                 console.log(data);
                 this.step_stride = data.step_stride;
                 this.step_frequency = data.step_frequency;
-                this.xData = data.xData;
+                this.count = data.count;
+        
+                this.showChart = this.count < 6 ? false : true;
+                
+                // 更新图表数据
+                stepFrequency.updateData(this.step_frequency);
+                stepStride.updateData(this.step_stride);
             }
         }
     })
@@ -104,8 +122,8 @@
         backgroundColor: "pink",
     };
 
-    var stepFrequency = new Chartkick.AreaChart("step-frequency", data, chartConfig1);
-    var stepStride = new Chartkick.AreaChart("step-stride", data1, chartConfig);
+    var stepFrequency = new Chartkick.AreaChart("step-frequency", [], chartConfig1);
+    var stepStride = new Chartkick.AreaChart("step-stride", [], chartConfig);
 
 </script>
 </html>
