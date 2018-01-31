@@ -51,22 +51,17 @@
                 </div>
              </div>
              <ul>
-                <!-- <li class="list-li" v-for="model in paceArr"> -->
-                <li class="list-li">
+                <li class="list-li" v-for="model in paceArr">
                     <div class="header-item p-left">
-                        <div class="cycle-icon table-icon table-left-margin min-icon"></div>
-                        <!-- <div v-bind:class="cycleIconClass(model.pace)"></div> -->
-                        <!-- <p v-if="model.distance_index === paceArr.length">≤</p> -->
-                        <!-- <p>{{ model.distance_index }}</p><span>KM</span> -->
-                        <p>1</p><span>KM</span>
+                        <div v-bind:class="cycleIconClass(model.pace)"></div>
+                        <p v-if="model.distance_index === paceArr.length">≤</p>
+                        <p>{{ model.distance_index }}</p><span>KM</span>
                         </div>
                         <div class="header-item p-center">
-                        <!-- <p>{{ getTimeFromSeconds(model.total_time, true) }}</p> -->
-                        <p>00:04:06</p>
+                        <p>{{ getTimeFromSeconds(model.total_time, true) }}</p>
                     </div>
                     <div class="header-item p-center">
-                        <!-- <p>{{ getTimeFromSeconds(model.pace, false) }}</p> -->
-                        <p>05'33"</p>
+                        <p>{{ getTimeFromSeconds(model.pace, false) }}</p>
                     </div>
                 </li>
             </ul>
@@ -92,9 +87,12 @@
             r = "";
         if (hasHour) {
             r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+            r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+            r += (s > 9 ? s.toString() : "0" + s.toString());
+        } else {
+            r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
+            r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
         }
-        r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
-        r += (s > 9 ? s.toString() : "0" + s.toString());
         return r;
     }
 
@@ -228,55 +226,26 @@
                 }
             },
             cycleIconClass (pace) {
-                console.log(pace);
-                var isCommon = true;
                 var isMax = false;
                 var isMin = false;
                 if (pace === this.yData.min()) {
-                    isCommon = false;
                     isMin = true;
                 }
 
                 if (pace === this.yData.max()) {
-                    isCommon = false;
                     isMax = true;
                 }
 
-                return {
-                    
-                    'cycle-icon' : isCommon,
-                    'max-icon' : isMax,
-                    'min-icon' : isMin,
+                return {    
+                    'cycle-icon' : true,
+                    'fast' : isMin,
+                    'slow' : isMax,
                     'table-icon' : true,
                     'table-left-margin' : true,
                 }
             }
         }
     })
-
-    // // 配速秒数转化成分秒格式化
-    // function getTimeFromSeconds(totalSeconds) {
-    //     if (totalSeconds < 86400) {
-    //         var dt = new Date("01/01/2000 0:00");
-    //         dt.setSeconds(totalSeconds);
-    //         return formatTime(dt);
-    //     } else {
-    //         return null;
-    //     }
-    // }
-
-    // function formatTime(dt) {
-    //     var h = dt.getHours(),
-    //         m = dt.getMinutes(),
-    //         s = dt.getSeconds(),
-    //         r = "";
-    //     if (h > 0) {
-    //         r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
-    //     }
-    //     r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
-    //     r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
-    //     return r;
-    // }
 
     // 生成图表对象
     var eCharts = echarts.init(document.getElementById('chart'));
