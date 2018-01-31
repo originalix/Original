@@ -59,6 +59,14 @@ a:hover, a:visited, a:link, a:active {
     background-color: #b8b7be;
 }
 
+.max-icon {
+    background-color: #62ddbd;
+}
+
+.min-icon {
+    background-color: #fb7e8b;
+}
+
 .pace-left {
     display: inline-block;
     margin-left: 0.2rem;

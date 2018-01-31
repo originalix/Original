@@ -51,16 +51,22 @@
                 </div>
              </div>
              <ul>
-                <li class="list-li" v-for="model in paceArr">
+                <!-- <li class="list-li" v-for="model in paceArr"> -->
+                <li class="list-li">
                     <div class="header-item p-left">
-                        <div class="cycle-icon table-icon table-left-margin"></div>
-                        <p>{{ model.distance_index }}</p><span>KM</span>
+                        <div class="cycle-icon table-icon table-left-margin min-icon"></div>
+                        <!-- <div v-bind:class="cycleIconClass(model.pace)"></div> -->
+                        <!-- <p v-if="model.distance_index === paceArr.length">≤</p> -->
+                        <!-- <p>{{ model.distance_index }}</p><span>KM</span> -->
+                        <p>1</p><span>KM</span>
                         </div>
                         <div class="header-item p-center">
-                        <p>{{ getTimeFromSeconds(model.total_time, true) }}</p>
+                        <!-- <p>{{ getTimeFromSeconds(model.total_time, true) }}</p> -->
+                        <p>00:04:06</p>
                     </div>
                     <div class="header-item p-center">
-                        <p>{{ getTimeFromSeconds(model.pace, false) }}</p>
+                        <!-- <p>{{ getTimeFromSeconds(model.pace, false) }}</p> -->
+                        <p>05'33"</p>
                     </div>
                 </li>
             </ul>
@@ -221,6 +227,30 @@
                     return null;
                 }
             },
+            cycleIconClass (pace) {
+                console.log(pace);
+                var isCommon = true;
+                var isMax = false;
+                var isMin = false;
+                if (pace === this.yData.min()) {
+                    isCommon = false;
+                    isMin = true;
+                }
+
+                if (pace === this.yData.max()) {
+                    isCommon = false;
+                    isMax = true;
+                }
+
+                return {
+                    
+                    'cycle-icon' : isCommon,
+                    'max-icon' : isMax,
+                    'min-icon' : isMin,
+                    'table-icon' : true,
+                    'table-left-margin' : true,
+                }
+            }
         }
     })
 
