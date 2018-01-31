@@ -24,15 +24,15 @@
         <div class="pace-value">
             <div class="pace-left">
                 <div class="cycle-icon average"></div>
-                <span>平均：11'23"</span>
+                <span>平均：{{ avgPace }}</span>
             </div>
             <div class="pace-right">
                 <div class="cycle-icon fast"></div>
-                <span>最快：3'23"</span>
+                <span>最快：{{ maxPace }}</span>
             </div>
             <div class="pace-right">
                 <div class="cycle-icon slow"></div>
-                <span>最慢：15'23"</span>
+                <span>最慢：{{ minPace }}</span>
             </div>
          </div>
          <div class="content-list">
@@ -51,16 +51,16 @@
                 </div>
              </div>
              <ul>
-                <li class="list-li">
+                <li class="list-li" v-for="model in paceArr">
                     <div class="header-item p-left">
                         <div class="cycle-icon table-icon table-left-margin"></div>
-                        <p>1</p><span>KM</span>
+                        <p>{{ model.distance_index }}</p><span>KM</span>
                         </div>
                         <div class="header-item p-center">
-                        <p>00:24:20</p>
+                        <p>{{ model.total_time }}</p>
                     </div>
                     <div class="header-item p-center">
-                        <p>11'23"</p>
+                        <p>{{ model.pace }}</p>
                     </div>
                 </li>
             </ul>
@@ -79,19 +79,44 @@
         return Math.min.apply({},this); 
     }
 
-    // var echart = echarts.init(document.getElementById('chart'));
-
+    function formatTime(dt) {
+        var h = dt.getHours(),
+            m = dt.getMinutes(),
+            s = dt.getSeconds(),
+            r = "";
+        if (h > 0) {
+        }
+        r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+        r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+        r += (s > 9 ? s.toString() : "0" + s.toString());
+        return r;
+    }
+    
     var vm = new Vue({
         el: '#app',
         data: {
+            paceArr: [],
+            xData: [],
+            yData: [],
+            maxPace: '-',
+            minPace: '-',
+            avgPace: '-',
         },
         created () {
+            var data = { 'data' : 1 };
+            var bridge = window.webkit.messageHandlers.getPaceChartData;
+            bridge.postMessage(data);
         },
         methods: {
-            test () {
-                var ydata = [180, 200, 210, 300, 400];
-                var xdata = [1, 2, 3, 4, 5];
-                this.createECharts(xdata, ydata);
+            setPaceChartData (data) {
+                console.log(data);
+                this.xData = data.xData;
+                this.yData = data.yData;
+                this.paceArr = data.paceArr;
+                this.maxPace = data.paceData.maxValue;
+                this.minPace = data.paceData.minValue;
+                this.avgPace = data.paceData.avgValue;
+                this.createECharts(this.xData, this.yData);
             },
             createECharts (xData, yData) {
                 option = {
