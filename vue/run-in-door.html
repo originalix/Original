@@ -30,9 +30,9 @@
             </div>
             <div class="seperate"></div>
             <div class="all-value">
-                <p class="slow">最慢：<span>08'50"</span></p>
-                <p class="average">平均：<span>07'30"</span></p>
-                <p class="fast">最快：<span>06'44"</span></p>
+                <p class="slow">最慢：<span>{{ minPace }}</span></p>
+                <p class="average">平均：<span>{{ avgPace }}</span></p>
+                <p class="fast">最快：<span>{{ maxPace }}</span></p>
             </div>
         </div>
     </div>
@@ -85,6 +85,9 @@
             distance: '',
             duration: '',
             start_time: '',
+            maxPace: '',
+            minPace: '',
+            avgPace: '',
         },
         created () {
             // this.createECharts();
@@ -101,6 +104,9 @@
                 this.distance = data.distance;
                 this.duration = data.duration;
                 this.start_time = data.start_time;
+                this.maxPace = data.pace.maxValue;
+                this.minPace = data.pace.minValue;
+                this.avgPace = data.pace.avgValue;
                 this.setChartOptions(data.points);
             },
             setChartOptions (data) {
