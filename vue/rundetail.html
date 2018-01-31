@@ -156,6 +156,16 @@
                 var num = new Number(value);
                 return num.toFixed(params);
             },
+            // duration转换成 hh:mm:ss
+            getTimeFromSeconds(totalSeconds) {
+                if (totalSeconds < 86400) {
+                    var dt = new Date("01/01/2000 0:00");
+                    dt.setSeconds(totalSeconds);
+                    return formatTime(dt);
+                } else {
+                    return null;
+                }
+            },
             
         }
     })
