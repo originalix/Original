@@ -47,7 +47,7 @@
                 </div>
                 <div class="header-item p-right">
                     <i class="iconfont table-icon">&#xe64c;</i>
-                    <p class="table-right-margin" @click="test">每公里耗时</p>
+                    <p class="table-right-margin">每公里耗时</p>
                 </div>
              </div>
              <ul>
@@ -57,10 +57,10 @@
                         <p>{{ model.distance_index }}</p><span>KM</span>
                         </div>
                         <div class="header-item p-center">
-                        <p>{{ model.total_time }}</p>
+                        <p>{{ getTimeFromSeconds(model.total_time, true) }}</p>
                     </div>
                     <div class="header-item p-center">
-                        <p>{{ model.pace }}</p>
+                        <p>{{ getTimeFromSeconds(model.pace, false) }}</p>
                     </div>
                 </li>
             </ul>
@@ -79,19 +79,19 @@
         return Math.min.apply({},this); 
     }
 
-    function formatTime(dt) {
+    function formatTime(dt, hasHour) {
         var h = dt.getHours(),
             m = dt.getMinutes(),
             s = dt.getSeconds(),
             r = "";
-        if (h > 0) {
+        if (hasHour) {
+            r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
         }
-        r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
         r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
         r += (s > 9 ? s.toString() : "0" + s.toString());
         return r;
     }
-    
+
     var vm = new Vue({
         el: '#app',
         data: {
@@ -131,7 +131,7 @@
                         },
                         formatter: function (params) {
                             var value = params[0].value;
-                            return '配速时间: </br>' + getTimeFromSeconds(value);
+                            return '配速时间: </br>' + vm.getTimeFromSeconds(value);
                         },
                     },
                     grid: {
@@ -174,7 +174,7 @@
                             },
                             axisLabel: {
                                 formatter: function (value) {
-                                    return getTimeFromSeconds(value);
+                                    return vm.getTimeFromSeconds(value);
                                 },
                                 fontSize: '30',
                                 color: "#555558",
@@ -211,32 +211,42 @@
                 }
                 eCharts.setOption(option);
             },
+            // duration转换成 hh:mm:ss
+            getTimeFromSeconds(totalSeconds, hasHour) {
+                if (totalSeconds < 86400) {
+                    var dt = new Date("01/01/2000 0:00");
+                    dt.setSeconds(totalSeconds);
+                    return formatTime(dt, hasHour);
+                } else {
+                    return null;
+                }
+            },
         }
     })
 
-    // 配速秒数转化成分秒格式化
-    function getTimeFromSeconds(totalSeconds) {
-        if (totalSeconds < 86400) {
-            var dt = new Date("01/01/2000 0:00");
-            dt.setSeconds(totalSeconds);
-            return formatTime(dt);
-        } else {
-            return null;
-        }
-    }
+    // // 配速秒数转化成分秒格式化
+    // function getTimeFromSeconds(totalSeconds) {
+    //     if (totalSeconds < 86400) {
+    //         var dt = new Date("01/01/2000 0:00");
+    //         dt.setSeconds(totalSeconds);
+    //         return formatTime(dt);
+    //     } else {
+    //         return null;
+    //     }
+    // }
 
-    function formatTime(dt) {
-        var h = dt.getHours(),
-            m = dt.getMinutes(),
-            s = dt.getSeconds(),
-            r = "";
-        if (h > 0) {
-            r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
-        }
-        r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
-        r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
-        return r;
-    }
+    // function formatTime(dt) {
+    //     var h = dt.getHours(),
+    //         m = dt.getMinutes(),
+    //         s = dt.getSeconds(),
+    //         r = "";
+    //     if (h > 0) {
+    //         r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+    //     }
+    //     r += (m > 9 ? m.toString() : "0" + m.toString()) + "'"
+    //     r += (s > 9 ? s.toString() : "0" + s.toString()) + '"';
+    //     return r;
+    // }
 
     // 生成图表对象
     var eCharts = echarts.init(document.getElementById('chart'));
