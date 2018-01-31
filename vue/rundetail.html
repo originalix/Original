@@ -18,10 +18,10 @@
     <div id="app">
         <div class="header">
             <div class="portrait">
-                <img src="http://img0.pconline.com.cn/pconline/1611/01/8519002_004_thumb.jpg" alt="" class="portrait">
+                <img v-bind:src="portrait" alt="" class="portrait">
             </div>
             <p class="nickname">{{username}}</p>
-            <p class="starttime">{{start_time}}</p>
+            <p class="starttime">{{ timestampFormat(start_time) }}</p>
         </div>
         <div class="center-wrap">
             <div class="top-item right-border">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="top-item">
-                <p>{{duration}}</p>
+                <p>{{ getTimeFromSeconds(duration) }}</p>
                 <div>
                     <i class="iconfont">&#xe72f;</i>
                     <span>总计时间</span>
@@ -156,6 +156,12 @@
                 var num = new Number(value);
                 return num.toFixed(params);
             },
+            // 列表里开始时间戳格式化
+            timestampFormat (timestamp) {
+                var newDate = new Date();
+                newDate.setTime(timestamp * 1000);
+                return newDate.format('yyyy-MM-dd hh:mm:ss');
+            },
             // duration转换成 hh:mm:ss
             getTimeFromSeconds(totalSeconds) {
                 if (totalSeconds < 86400) {
@@ -166,7 +172,7 @@
                     return null;
                 }
             },
-            
+
         }
     })
 </script>
