@@ -20,15 +20,23 @@ class ToScrapeXpathSpider(scrapy.Spider):
         if next_page_url is not None:
             yield scrapy.Request(response.urljoin(next_page_url))
 
-class MySpider(scrapy.Spider):
-    name = 'myspider'
+from scrapy.spiders import SitemapSpider
+
+class MySpider(SitemapSpider):
+    sitemap_urls = ['http://www.example.com/robots.txt']
+    sitemap_rules = [
+        ('/shop/', 'parse_shop'),
+    ]
+
+    other_urls = ['http://www.example.com/about']
 
     def start_requests(self):
-        return [scrapy.FormRequest("http://www.example.com/login",
-                                   formdata={'user': 'john', 'pass': 'secret'},
-                                   callback=self.logged_in)]
+        requests = list(super(MySpider, self).start_requests())
+        requests += [scrapy.Request(x, self.parse_other) for x in self.other_urls]
+        return requests
 
-    def logged_in(self, response):
-        # here you would extract links to follow and return Requests for
-        # each of them, with another callback
-        pass
+    def parse_shop(self, response):
+        pass # ... scrape shop here ...
+
+    def parse_other(self, response):
+        pass # ... scrape other here ...
