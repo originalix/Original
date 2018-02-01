@@ -26,7 +26,7 @@ div,a,img {
     margin-bottom: 0.44rem;
     width: 100%;
     height: 2rem;
-    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516611774613&di=eee7e87af0600585c829d43464c97d2a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F34fae6cd7b899e5125cfbf3349a7d933c8950d57.jpg");
+    background:url("../img/weather-bg.png");
     background-repeat:no-repeat;
     background-size:100% 100%;
     -webkit-background-origin:content-box; /* Safari */
@@ -38,9 +38,31 @@ div,a,img {
     position: relative;
     width: 98%;
     height: 0.65rem;
-    padding-top: 0.6rem;
-    padding-left: 0.28rem;
+    padding-top: 0.57rem;
+    /* padding-left: 0.28rem; */
     margin-bottom: 0.1rem;
+}
+
+.weather-content {
+    display: inline-block;
+    /* margin-left: 1.5rem; */
+}
+
+.weather-img {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-left: 0.3rem;
+    width: 18.5%;
+    height: 100%;
+}
+
+.weather-img img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 70%;
 }
 
 .weather-title {
@@ -71,7 +93,7 @@ div,a,img {
 }
 
 .pm25 {
-    margin-left: 0.28rem;
+    /* margin-left: 0.28rem; */
     color: #b9b7b5;
     font-size: 0.24rem;
 }
