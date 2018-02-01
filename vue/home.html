@@ -16,10 +16,10 @@
 <body>
     <div id="app">
         <div class="header">
-            <div class="weather-img">
+            <div class="weather-img" v-show="weather.weather.length >= 1">
                 <img v-bind:src="weather.icon" alt="">
             </div>
-            <div class="weather-content">
+            <div class="weather-content" v-show="weather.weather.length >= 1">
                 <div class="weather">
                     <p class="weather-title">{{weather.weather}}</p
                     ><p class="temperature">{{weather.temperature}}</p
@@ -27,7 +27,7 @@
                 </div>
                 <span class="pm25">PM2.5 <span class="pm-value">{{weather.pm25}}</span></span>
             </div>
-        </div>
+        </div> 
         <div class="detail">
             <i class="iconfont calendar">&#xe645;</i><p class="year">2018</p>
             <i class="iconfont right-arrow" @click="go2ListController">&#xe610;</i><p class="detail-data" @click="go2ListController">详细数据</p>
