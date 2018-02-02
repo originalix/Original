@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="user-scalable=no"/>
+    <script>
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);  flex(100, 1);
+    </script>
+    <script src="js/vue.js"></script>
+    <title>跑步详情</title>
+    <link rel="stylesheet" href="css/normailze.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/run-in-door.css">
+</head>
+<body>
+    <div id="app">
+        <!-- <div class="title-date">
+            <p class="date">{{ timestampFormat(start_time) }}</p>
+        </div> -->
+        <div class="content">
+            <div id="chart"></div>
+        </div>
+        <!-- <div class="show-detail">
+            <div class="top-wrap">
+                <span class="duration">{{ getTimeFromSeconds(duration) }}</span>
+                <span class="distance">{{ distanceUnitConvert(distance) }}</span>
+                <span class="time-unit"><i class="iconfont unit-icon">&#xe72f;</i>总计时间</span>
+                <span class="dist-unit"><i class="iconfont unit-icon">&#xe606;</i>全程距离：公里</span>
+            </div>
+            <div class="seperate"></div>
+            <div class="all-value">
+                <p class="slow">最慢：<span>{{ minPace }}</span></p>
+                <p class="average">平均：<span>{{ avgPace }}</span></p>
+                <p class="fast">最快：<span>{{ maxPace }}</span></p>
+            </div>
+        </div> -->
+    </div>
+</body>
+<script src="js/axios.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+
+    // 时间转换
+    Date.prototype.format = function(format) {
+       var date = {
+              "M+": this.getMonth() + 1,
+              "d+": this.getDate(),
+              "h+": this.getHours(),
+              "m+": this.getMinutes(),
+              "s+": this.getSeconds(),
+              "q+": Math.floor((this.getMonth() + 3) / 3),
+              "S+": this.getMilliseconds()
+       };
+       if (/(y+)/i.test(format)) {
+              format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+       }
+       for (var k in date) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+            }
+       }
+       return format;
+    }
+
+    function formatTime(dt) {
+        var h = dt.getHours(),
+            m = dt.getMinutes(),
+            s = dt.getSeconds(),
+            r = "";
+        if (h > 0) {
+        }
+        r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+        r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+        r += (s > 9 ? s.toString() : "0" + s.toString());
+        return r;
+    }
+
+    // Vue Object
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            points : [],
+            distance: '',
+            duration: '',
+            start_time: '',
+            maxPace: '',
+            minPace: '',
+            avgPace: '',
+        },
+        created () {
+            // this.createECharts();
+            var data = { 'data' : 1 };
+            var bridge = window.webkit.messageHandlers.getMainChartData;
+            bridge.postMessage(data);
+        },
+        methods: {
+            test () {
+                this.msg = 'lixxxxxxxx!';
+            },
+            receiveData (data) {
+                console.log(data);
+                this.distance = data.distance;
+                this.duration = data.duration;
+                this.start_time = data.start_time;
+                this.maxPace = data.pace.maxValue;
+                this.minPace = data.pace.minValue;
+                this.avgPace = data.pace.avgValue;
+                this.setChartOptions(data.points);
+            },
+            setChartOptions (data) {
+                var distanceList = data.map(function (item) {
+                    return item[0];
+                });
+                var speedList = data.map(function (item) {
+                    return item[1];
+                });
+                console.log(distanceList);
+                console.log(speedList);
+                this.createECharts(distanceList, speedList);
+            },
+            createECharts (xData, yData) {
+                option = {
+                    // Make gradient line here
+                    visualMap: [{
+                        show: false,
+                        type: 'continuous',
+                        seriesIndex: 0,
+                        min: 0,
+                        max: 400
+                    }],
+                    xAxis: [{
+                        splitLine: {show: true},
+                        data: xData,
+                        axisLabel: {
+                            formatter: function (value) {
+                                // 坐标轴转换km 保留两位小数
+                                var num = new Number(value / 1000);
+                                return num.toFixed(2) + 'KM';
+                            },
+                            interval: xData.length / 5,
+                            fontSize: "30",
+                        },
+                        // max: 50,
+                    }],
+                    yAxis: [{
+                        show: false,
+                        splitLine: {show: false},
+                    }],
+                    grid: [{
+                        // bottom: '40%'
+                    }],
+                    series: [{
+                        type: 'line',
+                        showSymbol: false,
+                        name: 'speed',
+                        data: yData,
+                        smooth: true,
+                        animation: false,
+                        itemStyle: {  
+                            normal: {  
+                                color: 'red',  
+                                lineStyle: {        // 系列级个性化折线样式  
+                                    width: 15,  
+                                    type: 'solid',  
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+                                        offset: 0,  
+                                        color: 'green'
+                                    }, 
+                                    {  
+                                        offset: 0.5,  
+                                        color: 'yellow'  
+                                    },
+                                    {  
+                                        offset: 1,  
+                                        color: 'red'  
+                                    }]),//线条渐变色  
+                                }
+                            },
+                        }
+                    }]
+                };
+                console.log(eCharts);
+                eCharts.setOption(option);
+            },
+            // 列表里开始时间戳格式化
+            timestampFormat (timestamp) {
+                var newDate = new Date();
+                newDate.setTime(timestamp * 1000);
+                return newDate.format('yyyy-MM-dd hh:mm:ss');
+            },
+            // 列表的距离单位米 转化为千米
+            distanceUnitConvert(distance) {
+                var num = new Number(distance / 1000);
+                return num.toFixed(2);
+            },
+            // duration转换成 hh:mm:ss
+            getTimeFromSeconds(totalSeconds) {
+                if (totalSeconds < 86400) {
+                    var dt = new Date("01/01/2000 0:00");
+                    dt.setSeconds(totalSeconds);
+                    return formatTime(dt);
+                } else {
+                    return null;
+                }
+            },
+        }
+    });
+
+    // 生成图表对象
+    var eCharts = echarts.init(document.getElementById('chart'));
+    var xData = ['1', '2', '3', '4', '5', '6', '7', '8'];
+    var yData = [100, 200, 300, 400, 500, 600, 700, 800];
+    option = {
+        // Make gradient line here
+        visualMap: [{
+            show: false,
+            type: 'continuous',
+            seriesIndex: 0,
+            min: 0,
+            max: 400
+        }],
+        xAxis: [{
+            splitLine: {show: true},
+            data: xData,
+            axisLabel: {
+                formatter: function (value) {
+                    // 坐标轴转换km 保留两位小数
+                    var num = new Number(value / 1000);
+                    return num.toFixed(2) + 'KM';
+                },
+                interval: xData.length / 5,
+                fontSize: "30",
+            },
+            // max: 50,
+        }],
+        yAxis: [{
+            show: false,
+            splitLine: {show: false},
+        }],
+        grid: [{
+            // bottom: '40%'
+        }],
+        series: [{
+            type: 'line',
+            showSymbol: false,
+            name: 'speed',
+            data: yData,
+            smooth: true,
+            animation: false,
+            itemStyle: {  
+                normal: {  
+                    color: 'red',  
+                    lineStyle: {        // 系列级个性化折线样式  
+                        width: 15,  
+                        type: 'solid',  
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+                            offset: 0,  
+                            color: 'green'
+                        }, 
+                        {  
+                            offset: 0.5,  
+                            color: 'yellow'  
+                        },
+                        {  
+                            offset: 1,  
+                            color: 'red'  
+                        }]),//线条渐变色  
+                    }
+                },
+            }
+        }]
+    };
+    console.log(eCharts);
+    eCharts.setOption(option);
+</script>
+</html>

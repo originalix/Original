@@ -1,0 +1,39 @@
+/* 全局样式 */
+html {font-size: 100px; width: 100%;}
+body {
+    margin: 0;
+    font-size: 0;
+}
+
+html, body, #app {
+    min-height: 100% !important;
+    height: 100%;
+    background-color: #f9f9f9;
+}
+
+p {
+    margin: 0;
+    font-size: 0.24rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: #1c1c1c;    
+}
+
+.content {
+    width: 100%;
+    /* height: 100%; */
+    height: 6.57rem;
+}
+
+
+#chart {
+    width: 100%;
+    height: 100%;
+}
