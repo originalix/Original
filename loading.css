@@ -10,8 +10,8 @@
 }
 
 .rubik-loader {
-    width: 64px;
-    height: 64px;
+    width: 0.64rem;
+    height: 0.64rem;
     position: absolute;
     left: 50%;
     top: 50%;

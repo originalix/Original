@@ -16,8 +16,24 @@
 </head>
 <body>
     <div id="app">
-        <div class="wrapper" v-show="! show">
-            <div class="rubik-loader"></div>
+        <div class="loader" v-show="! show">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
         </div>
         <div v-show="show">
             <div class="header">
