@@ -12,47 +12,53 @@
     <link rel="stylesheet" href="css/iconfont.css">
     <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_534623_00gtwe4fyem0wwmi.css"> -->
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/loading.css">
 </head>
 <body>
     <div id="app">
-        <div class="header">
-            <div class="weather-img" v-show="weather.weather.length >= 1">
-                <img v-bind:src="weather.icon" alt="">
-            </div>
-            <div class="weather-content" v-show="weather.weather.length >= 1">
-                <div class="weather">
-                    <p class="weather-title">{{weather.weather}}</p
-                    ><p class="temperature">{{weather.temperature}}℃</p
-                    ><p class="tips"></p>
+        <div class="wrapper" v-show="! show">
+            <div class="rubik-loader"></div>
+        </div>
+        <div v-show="show">
+            <div class="header">
+                <div class="weather-img" v-show="weather.weather.length >= 1">
+                    <img v-bind:src="weather.icon" alt="">
                 </div>
-                <span class="pm25">PM2.5 <span class="pm-value">{{weather.pm25}}</span></span>
+                <div class="weather-content" v-show="weather.weather.length >= 1">
+                    <div class="weather">
+                        <p class="weather-title">{{weather.weather}}</p
+                        ><p class="temperature">{{weather.temperature}}℃</p
+                        ><p class="tips"></p>
+                    </div>
+                    <span class="pm25">PM2.5 <span class="pm-value">{{weather.pm25}}</span></span>
+                </div>
+            </div> 
+            <div class="detail">
+                <i class="iconfont calendar">&#xe645;</i><p class="year">2018</p>
+                <i class="iconfont right-arrow" @click="go2ListController">&#xe610;</i><p class="detail-data" @click="go2ListController">详细数据</p>
             </div>
-        </div> 
-        <div class="detail">
-            <i class="iconfont calendar">&#xe645;</i><p class="year">2018</p>
-            <i class="iconfont right-arrow" @click="go2ListController">&#xe610;</i><p class="detail-data" @click="go2ListController">详细数据</p>
-        </div>
-        <div class="statistic">
-            <div class="distance">
-                <p class="dist-unit">总跑量</p><span>/KM</span>
-                <p class="dist-val">{{run_mileage}}</p>
+            <div class="statistic">
+                <div class="distance">
+                    <p class="dist-unit">总跑量</p><span>/KM</span>
+                    <p class="dist-val">{{run_mileage}}</p>
+                </div>
+                <div class="seperate-line"></div>
+                <div class="distance count">
+                    <p class="dist-unit count-unit">总次数</p><span>/次</span>
+                    <p class="dist-val count-val">{{run_count}}</p>
+                </div>
+    
             </div>
-            <div class="seperate-line"></div>
-            <div class="distance count">
-                <p class="dist-unit count-unit">总次数</p><span>/次</span>
-                <p class="dist-val count-val">{{run_count}}</p>
-            </div>
-
-        </div>
-        <div class="start">
-            <div class="avatar-collect">
-                <img src="img/avatar_collect.png" alt="">
-            </div>
-            <p class="start-tips">
-                您当前已经超越<span>{{rank}}%</span>的职工，继续加油哦！
-            </p>
-            <div class="start-btn">
-                <a href="#" @click="startRun">开始跑步</a>
+            <div class="start">
+                <div class="avatar-collect">
+                    <img src="img/avatar_collect.png" alt="">
+                </div>
+                <p class="start-tips">
+                    您当前已经超越<span>{{rank}}%</span>的职工，继续加油哦！
+                </p>
+                <div class="start-btn">
+                    <a href="#" @click="startRun">开始跑步</a>
+                </div>
             </div>
         </div>
     </div>
@@ -72,6 +78,7 @@
             run_mileage: 0,
             run_count: 0,
             rank: '',
+            show: false,
         },
         created () {
             var data = {
