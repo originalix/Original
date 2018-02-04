@@ -1,0 +1,22 @@
+* { box-sizing: border-box }
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.rubik-loader {
+    width: 0.64rem;
+    height: 0.64rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(http://i.giphy.com/3og0ISeflb7vrNzy2A.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
