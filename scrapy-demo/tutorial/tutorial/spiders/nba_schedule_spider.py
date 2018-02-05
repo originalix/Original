@@ -9,4 +9,5 @@ class NBAScheduleSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        pass
+        title = response.xpath('//td[@class="left"]/text()').extract_first()
+        print title
