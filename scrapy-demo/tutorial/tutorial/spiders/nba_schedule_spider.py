@@ -9,5 +9,8 @@ class NBAScheduleSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        title = response.xpath('//td[@class="left"]/text()').extract_first()
-        print title
+        title = response.xpath('//tr[@class="title"]//td/text()').extract()
+        
+        for t in title:
+            print t.encode('utf-8')
+            
