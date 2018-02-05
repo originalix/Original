@@ -14,9 +14,7 @@ class NBAScheduleSpider(scrapy.Spider):
         for t in title:
             print t.encode('utf-8')
         
-        date = response.xpath('//tr[contains(@class, "left")]//td/text()').extract()
+        data = response.xpath('//tr[contains(@class, "left")]//td')
 
-        print date
-
-        for d in date:
-            print d.encode('utf-8')
+        for detail in data:
+            print detail.xpath('./td[@"class=left"]/text()')
