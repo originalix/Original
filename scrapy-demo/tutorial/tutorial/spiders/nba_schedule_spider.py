@@ -12,11 +12,16 @@ class NBAScheduleSpider(scrapy.Spider):
 
         players_table = response.xpath('//table[@class="players_table"]/tbody/tr[contains(@class, "left")]')
 
+        current_time = ""
         for item in players_table:
             # a = item.xpath('./tr[contains(@class, "left") and contains(@class, "linglei")]')
             # print a
-            a = item.xpath('//tr[contains(@class, "linglei")]')
-            print len(a)
+            if len(item.xpath('./td[@colspan="3"]')) > 0:
+                print u'比赛日期: ' + item.xpath('./td[@colspan="3"]/text()').extract_first()                
+            else:
+                print u'比赛日子'
+            # print len(a)
+            # print a
             print '\n'
 
         # print players_table
