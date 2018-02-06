@@ -9,6 +9,15 @@ class NBAScheduleSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
+
+        players_table = response.xpath('//table[@class="players_table"]/tbody/tr')
+
+        for item in players_table:
+            a = item.xpath('./tr[contains(@class, "left") and contains(@class, "linglei")]').extract_first()
+            print a
+
+        # print players_table
+
         # 暂时不需要title
         # titleContent = response.xpath('//tr[@class="title"]//td/text()').extract()
         # title = ""
@@ -20,11 +29,11 @@ class NBAScheduleSpider(scrapy.Spider):
         # data = response.xpath('//tr[contains(@class, "left")]')
 
         # 获取当前页面比赛日期
-        dateOrigin = response.xpath('//tr[contains(@class, "linglei")]')
+        # dateOrigin = response.xpath('//tr[contains(@class, "linglei")]')
         
-        for row in dateOrigin:
-            date = row.xpath('./td/text()').extract_first()
-            print date
+        # for row in dateOrigin:
+        #     date = row.xpath('./td/text()').extract_first()
+        #     print date
 
             # for text in date:
             #     print text
