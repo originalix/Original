@@ -10,11 +10,14 @@ class NBAScheduleSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        players_table = response.xpath('//table[@class="players_table"]/tbody/tr')
+        players_table = response.xpath('//table[@class="players_table"]/tbody/tr[contains(@class, "left")]')
 
         for item in players_table:
-            a = item.xpath('./tr[contains(@class, "left") and contains(@class, "linglei")]').extract_first()
-            print a
+            # a = item.xpath('./tr[contains(@class, "left") and contains(@class, "linglei")]')
+            # print a
+            a = item.xpath('//tr[contains(@class, "linglei")]')
+            print len(a)
+            print '\n'
 
         # print players_table
 
