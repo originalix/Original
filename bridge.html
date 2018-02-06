@@ -40,7 +40,7 @@ $(function(){
 
 	// function htmlCallApp(a, b) {}
 	// window.htmlCallApp = function(a, b) {}
-	
+
 	window.jsCallApp = function(a,b){
 	    if(window.android){
 	        android.htmlCallApp(a,b);
@@ -55,9 +55,11 @@ $(function(){
 
 	// var a = window.lix("123", "");
 	// alert(a);
-	var dummyAppInfo = window.jsCallApp("getUserAgent","");
-	// var appInfo = dummyAppInfo ? JSON.stringify(dummyAppInfo) : "appToken未取到值";
-    var appInfo = dummyAppInfo;
+	// var dummyAppInfo = window.jsCallApp("getUserAgent", "");
+	var dummyAppInfo = window.htmlCallApp("getUserAgent", "");
+	// console.log(window.htmlCallApp("getUserAgent", ""))
+	var appInfo = dummyAppInfo ? JSON.stringify(dummyAppInfo) : "appToken未取到值";
+    // var appInfo = dummyAppInfo ? dummyAppInfo : "appToken未取到值";
     // console.log(dummyAppInfo);
 	// alert(dummyAppInfo);
 
