@@ -5,13 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/todc-bootstrap/3.1.1-3.2.1/todc-bootstrap.min.css">
+    <style type="text/css">
+    	*{
+    		margin: 0;
+    		padding: 0;
+    	}
+    </style>
 </head>
 <body>
-    <div onclick="bridge();">测试APPBridge</div>
-</body>
-<script>
-    function bridge() {
-        alert(1);
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-primary getToken">获取token</button>
+		<button class="btn btn-primary toLogin">唤起登陆</button>
+        <button class="btn btn-primary toPay">唤起支付</button>
+        <button class="btn btn-primary" onclick="buttonClick()">点击这里</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 infoShow">
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+    function buttonClick() {
+        var ocReturnValue = ocAlert("js ahhh")
+        alert("oc return value is " + ocReturnValue)
     }
+
+$(function(){
+
+	// function htmlCallApp(a, b) {}
+	// window.htmlCallApp = function(a, b) {}
+
+	window.jsCallApp = function(a,b){
+	    if(window.android){
+	        android.htmlCallApp(a,b);
+	    }
+	    if(window.htmlCallApp){
+		    console.log('htmlCallApp');
+	        htmlCallApp(a,b);
+	    }
+
+		console.log('jsCallApp');
+	}
+
+	// var a = window.lix("123", "");
+	// alert(a);
+	// var dummyAppInfo = window.jsCallApp("getUserAgent", "");
+	var dummyAppInfo = window.htmlCallApp("getUserAgent", "");
+	// console.log(window.htmlCallApp("getUserAgent", ""))
+	var appInfo = dummyAppInfo ? JSON.stringify(dummyAppInfo) : "appToken未取到值";
+    // var appInfo = dummyAppInfo ? dummyAppInfo : "appToken未取到值";
+    // console.log(dummyAppInfo);
+	// alert(dummyAppInfo);
+
+	$(".getToken").on('click',function(){
+        // var appToken = window.jsCallApp("getUserAgent","");
+	    // appInfo = appToken ? appToken : "没有值";
+		$('.infoShow').html('获取appToken。。。');
+		$('.infoShow').append('<p>appToken为：</p>');
+		$('.infoShow').append('<p>' + appInfo + '</p>');
+	})
+
+	$('.toPay').on('click',function(){
+		$('.infoShow').html('唤起支付中。。。');
+		window.jsCallApp(
+			"pay",
+			JSON.stringify({
+				orderId : '',
+				type : '',
+				handlerClassName : ''
+			})
+		);
+		// jsCallApp(
+		// 	"pay",
+		// 	JSON.stringify({
+		// 		orderId: r.orderId,
+		// 		type: params.orderPayType,
+		// 		handlerClassName:_this.onlinePayStyle.payHandlerObj.payHandler
+		// 	})
+		// );
+	})
+
+	$('.toLogin').on('click',function(){
+		$('.infoShow').html('唤起登陆中。。。');
+		window.jsCallApp('login',JSON.stringify({
+            "status":200,
+            "code":null,
+            "msg":null,
+            "data":{
+                "url":location.href
+            }
+        }))
+	})
+})
 </script>
+</body>
 </html>
