@@ -20,6 +20,9 @@ class NBAScheduleSpider(scrapy.Spider):
             x = detail.xpath('./td[@class="left"]/text()').extract()
             for text in x:
                 print text
+            y = detail.xpath('./td[2]/text()').extract()
+            for text in y:
+                print text            
             a = detail.xpath('./td/a/text()').extract()
             # print a
             for t in a:
