@@ -21,4 +21,10 @@ body.ie #content aside { color: green; }
 
 nav a, aside a { color: blue; }
 
+article ~ article { border-top: 1px dashed #ccc; }
+article > section { background: #eee; }
+article dl > dt { color: #333; }
+article dl > dd { color: #555; }
+nav + article { margin-top: 0; }
+
 /*# sourceMappingURL=output.css.map */

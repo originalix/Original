@@ -53,3 +53,13 @@ nav, aside {
     a { color: blue }
 }
 
+// 子选择器和同层组合选择器：~ + >
+article {
+    ~ article { border-top: 1px dashed #ccc }
+    > section { background: #eee }
+    dl > {
+        dt { color: #333 }
+        dd { color: #555 }
+    }
+    nav + & { margin-top: 0 }
+}
