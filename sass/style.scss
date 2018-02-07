@@ -1,5 +1,8 @@
+// 声明变量
 $highlight-color: #ffffff;
 $nav-color: #F90;
+
+// 变量引用
 nav {
     $width: 100px;
     width: $width;
@@ -10,3 +13,8 @@ nav {
     border: 1px solid $highlight-color;
 }
 
+// 变量名用中划线和下划线分隔 等效
+$link-color: blue;
+a {
+    color: $link_color;
+}
