@@ -12,6 +12,9 @@ a { color: blue; }
 #content aside { background-color: #eee; }
 
 article a { color: blue; }
-article a :hover { color: red; }
+article a:hover { color: red; }
+
+#content aside { color: red; }
+body.ie #content aside { color: green; }
 
 /*# sourceMappingURL=output.css.map */

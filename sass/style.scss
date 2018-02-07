@@ -33,7 +33,13 @@ a {
     aside { background-color: #eee }
 }
 
+// 父选择器的标识符&
 article a {
     color: blue;
-    :hover { color: red; }
+    &:hover { color: red; }
+}
+
+#content aside {
+    color: red;
+    body.ie & { color: green; }
 }
