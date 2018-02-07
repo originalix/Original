@@ -16,12 +16,20 @@ class NBAScheduleSpider(scrapy.Spider):
         for item in players_table:
 
             if len(item.xpath('./td[@colspan="3"]')) > 0:
-                print u'比赛日期: ' + item.xpath('./td[@colspan="3"]/text()').extract_first()                
+                current_time = item.xpath('./td[@colspan="3"]/text()').extract_first()
+                print u'比赛日期: ' + current_time
             else:
                 time = item.xpath('./td[@class="left"]/text()').extract_first()
                 guest = item.xpath('./td/a[1]/text()').extract_first()
                 home = item.xpath('./td/a[2]/text()').extract_first()
 
-                print time + " " + guest + "vs" + home
+                # print time + " " + guest + "vs" + home
+                # print u'now date: ' + current_time
+                yield {
+                    'date' : current_time,
+                    'time' : time,
+                    'guest' : guest,
+                    'home' : home
+                }
 
-            print '\n'
+            # print '\n'
