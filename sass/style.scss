@@ -1,0 +1,12 @@
+$highlight-color: #ffffff;
+$nav-color: #F90;
+nav {
+    $width: 100px;
+    width: $width;
+    color: $nav-color;
+}
+
+.selected {
+    border: 1px solid $highlight-color;
+}
+
