@@ -18,3 +18,8 @@ class DmozItem(scrapy.Item):
     link = scrapy.Field()
     desc = scrapy.Field()
 
+class ScheduleItem(scrapy.Item):
+    date = scrapy.Field()
+    time = scrapy.Field()
+    guest = scrapy.Field()
+    home = scrapy.Field()
