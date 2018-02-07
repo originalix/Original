@@ -4,4 +4,14 @@ nav { width: 100px; color: #F90; }
 
 a { color: blue; }
 
+#content article h1 { color: #333; }
+#content article p { margin-bottom: 1.4rem; }
+#content aside { background-color: #EEE; }
+
+#content { background-color: #f5f5f5; }
+#content aside { background-color: #eee; }
+
+article a { color: blue; }
+article a :hover { color: red; }
+
 /*# sourceMappingURL=output.css.map */

@@ -18,3 +18,22 @@ $link-color: blue;
 a {
     color: $link_color;
 }
+
+// 嵌套CSS规则
+#content {
+    article {
+        h1 { color: #333 }
+        p { margin-bottom: 1.4rem; }
+    }
+    aside { background-color: #EEE; }
+}
+
+#content {
+    background-color: #f5f5f5;
+    aside { background-color: #eee }
+}
+
+article a {
+    color: blue;
+    :hover { color: red; }
+}
