@@ -27,4 +27,6 @@ class NBAScheduleSpider(scrapy.Spider):
                 item['home'] = data.xpath('./td/a[2]/text()').extract_first()
                 
                 yield item
-
+        next_page_url = response.xpath('//div[@class="a"]/b/a[@class="t3"]/@href').extract_first()
+        if next_page_url is not None:
+            yield scrapy.Request(response.urljoin(next_page_url))
