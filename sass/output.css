@@ -33,4 +33,6 @@ nav { border-style: solid; border-width: 1px; border-color: #ccc; }
 
 nav { border: 1px solid #ccc; border-left: 0px; border-right: 0px; }
 
+.fancybox { width: 2150px; }
+
 /*# sourceMappingURL=output.css.map */
