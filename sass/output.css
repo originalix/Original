@@ -1,3 +1,5 @@
+.wrapper { background-color: #ccc; }
+
 nav { width: 100px; color: #F90; }
 
 .selected { border: 1px solid #ffffff; }
