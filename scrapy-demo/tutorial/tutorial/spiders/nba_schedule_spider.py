@@ -20,9 +20,6 @@ class NBAScheduleSpider(scrapy.Spider):
                 current_time = data.xpath('./td[@colspan="3"]/text()').extract_first()
 
             else:
-                # time = data.xpath('./td[@class="left"]/text()').extract_first()
-                # guest = data.xpath('./td/a[1]/text()').extract_first()
-                # home = data.xpath('./td/a[2]/text()').extract_first()
                 item = ScheduleItem()
                 item['date'] = current_time
                 item['time'] = data.xpath('./td[@class="left"]/text()').extract_first()
@@ -30,9 +27,4 @@ class NBAScheduleSpider(scrapy.Spider):
                 item['home'] = data.xpath('./td/a[2]/text()').extract_first()
                 
                 yield item
-                # yield {
-                #     'date' : current_time,
-                #     'time' : time,
-                #     'guest' : guest,
-                #     'home' : home
-                # }
+
