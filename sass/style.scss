@@ -63,3 +63,19 @@ article {
     }
     nav + & { margin-top: 0 }
 }
+
+// 嵌套属性
+nav {
+    border: {
+    style: solid;
+    width: 1px;
+    color: #ccc;
+    }
+}
+
+nav {
+    border: 1px solid #ccc {
+    left: 0px;
+    right: 0px;
+    }
+}
