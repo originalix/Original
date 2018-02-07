@@ -17,4 +17,8 @@ article a:hover { color: red; }
 #content aside { color: red; }
 body.ie #content aside { color: green; }
 
+.container h1, .container h2, .container h3 { margin-bottom: 0.8rem; }
+
+nav a, aside a { color: blue; }
+
 /*# sourceMappingURL=output.css.map */

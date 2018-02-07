@@ -36,10 +36,20 @@ a {
 // 父选择器的标识符&
 article a {
     color: blue;
-    &:hover { color: red; }
+    &:hover { color: red }
 }
 
 #content aside {
     color: red;
-    body.ie & { color: green; }
+    body.ie & { color: green }
 }
+
+// 群组选择器的嵌套
+.container {
+    h1, h2, h3 { margin-bottom: .8rem }
+}
+
+nav, aside {
+    a { color: blue }
+}
+
