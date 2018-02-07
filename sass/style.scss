@@ -1,4 +1,4 @@
-@import "_night-sky";
+@import "night-sky";
 
 // 声明变量
 $highlight-color: #ffffff;
@@ -86,3 +86,6 @@ $fancybox-width: 400px !default;
 .fancybox {
     width: $fancybox-width;
 }
+
+// 导入blue-theme主题
+.blue-theme { @import "blue-theme"; }

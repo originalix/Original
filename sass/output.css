@@ -35,4 +35,6 @@ nav { border: 1px solid #ccc; border-left: 0px; border-right: 0px; }
 
 .fancybox { width: 2150px; }
 
+.blue-theme aside { background: blue; color: white; }
+
 /*# sourceMappingURL=output.css.map */
