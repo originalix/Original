@@ -39,4 +39,11 @@ class SaveScheduleItemPipeline(object):
         self.table = db[settings['MONGODB_TABLE']]
     
     def process_item(self, item, spider):
-        pass
+        """处理item
+        """
+        
+        # item转dic 然后插入数据库
+        schedule_info = dict(item)
+        self.table.insert(schedule_info)
+        return item
+    

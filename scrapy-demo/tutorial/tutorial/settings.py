@@ -16,6 +16,7 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 
 ITEM_PIPELINES = {
     'tutorial.pipelines.JsonWritePipeline' : 800,
+    'tutorial.pipelines.ScheduleItemPipeline' : 300,
 }
 
 # MONGODB 配置信息
