@@ -7,6 +7,8 @@
 
 import json
 import codecs
+from scrapy.conf import settings
+import pymongo
 
 class JsonWritePipeline(object):
     def __init__(self):
@@ -23,8 +25,18 @@ class JsonWritePipeline(object):
 
 class SaveScheduleItemPipeline(object):
     def __init__(self):
-        pass
+        """连接mongodb数据库
+        """
+
+        # 连接数据库
+        host = settings['MONGODB_HOST']
+        port = settings['MONGODB_PORT']
+        dbname = settings['MONGODB_DBNAME']
+        client = pymongo.MongoClient(host=host, port=port)
+
+        # 定义数据库
+        db = client[dbname]
+        self.table = db[settings['MONGODB_TABLE']]
     
     def process_item(self, item, spider):
         pass
-        
