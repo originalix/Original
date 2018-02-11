@@ -18,6 +18,12 @@ ITEM_PIPELINES = {
     'tutorial.pipelines.JsonWritePipeline' : 800,
 }
 
+# MONGODB 配置信息
+MONGODB_HOST = 'localhost'
+MONGODB_PORT = 27017
+MONGODB_DBNAME = 'test'
+MONGODB_TABLE = 'runoob'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
