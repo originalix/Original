@@ -40,5 +40,12 @@ collection.insert_many(many)
 
 # 删除记录
 collection.remove({ 'name' : 'wsxxxxxx' })
-show(collection)
+# show(collection)
 
+# 更新记录
+# Method one
+collection.update({'name' : 'lixxxxx'}, {'$set': {'name': "cute's lix"}})
+# show(collection)
+
+collection.update_one({'name' : "cute's lix"}, { '$set': {'name' : 'wsx' }})
+show(collection)
