@@ -20,3 +20,11 @@ class JsonWritePipeline(object):
 # class TutorialPipeline(object):
 #     def process_item(self, item, spider):
 #         return item
+
+class SaveScheduleItemPipeline(object):
+    def __init__(self):
+        pass
+    
+    def process_item(self, item, spider):
+        pass
+        
