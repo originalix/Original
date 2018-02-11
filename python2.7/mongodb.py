@@ -39,7 +39,7 @@ collection.insert_many(many)
 # show(collection)
 
 # 删除记录
-collection.remove({ 'name' : 'wsxxxxxx' })
+# collection.remove({ 'name' : 'wsxxxxxx' })
 # show(collection)
 
 # 更新记录
@@ -48,4 +48,8 @@ collection.update({'name' : 'lixxxxx'}, {'$set': {'name': "cute's lix"}})
 # show(collection)
 
 collection.update_one({'name' : "cute's lix"}, { '$set': {'name' : 'wsx' }})
-show(collection)
+# show(collection)
+
+items = collection.find( {'age' : { '$ne': 10 }} )
+for item in items:
+    print item
