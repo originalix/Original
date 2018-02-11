@@ -50,3 +50,15 @@ dump($fileArray);
 
 </body>
 </html>
+
+<!-- db.createUser({
+  user: "test",
+  pwd: "123456",
+  roles: [{
+      role: "readWrite", 
+      db: "test",
+  }]
+})
+
+mongo -u root -p 123456 --authenticationDatabase admin
+mongo -u test -p 123456 --authenticationDatabase test -->
