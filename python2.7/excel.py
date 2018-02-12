@@ -3,6 +3,7 @@
 
 import xlrd
 import xlwt
+from datetime import date,datetime
 
 def read_exc():
     workbook = xlrd.open_workbook(r'/Users/Lix/Desktop/test.xlsx')
@@ -17,6 +18,20 @@ def read_exc():
     cols = main_sheet.col_values(2) # 获取第三列内容
     print rows
     print cols
+
+    # 获取单元格内容
+    print main_sheet.cell(1,1).value.encode('utf-8')
+    print main_sheet.cell_value(1,1).encode('utf-8')
+    print main_sheet.row(1)[1].value.encode('utf-8')
+
+
+    # 获取单元格内容的数据类型
+    print main_sheet.cell(1,1).ctype
+
+    # 时间格式格式化
+    date_value = xlrd.xldate_as_tuple(main_sheet.cell_value(1, 0), workbook.datemode)
+    print date(*date_value[:3]).strftime('%Y/%m/%d')
+
 
 def main():
     read_exc()
