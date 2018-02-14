@@ -32,6 +32,16 @@ def read_exc():
     date_value = xlrd.xldate_as_tuple(main_sheet.cell_value(1, 0), workbook.datemode)
     print date(*date_value[:3]).strftime('%Y/%m/%d')
 
+def xlwings():
+    import xlwings as xw
+    #连接到excel
+    workbook = xw.Book(r'path/myexcel.xlsx')#连接excel文件
+    #连接到指定单元格
+    data_range = workbook.sheets('Sheet1').range('A1')
+    #写入数据
+    data_range.value = [1,2,3]
+    #保存
+    workbook.save()
 
 def main():
     read_exc()
