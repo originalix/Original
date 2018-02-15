@@ -24,7 +24,6 @@ def read_exc():
     print main_sheet.cell_value(1,1).encode('utf-8')
     print main_sheet.row(1)[1].value.encode('utf-8')
 
-
     # 获取单元格内容的数据类型
     print main_sheet.cell(1,1).ctype
 
@@ -42,6 +41,17 @@ def xlwings():
     data_range.value = [1,2,3]
     #保存
     workbook.save()
+
+def xlswriter():
+    import xlsxwriter as xw
+    #新建excel
+    workbook  = xw.Workbook('myexcel.xlsx')
+    #新建工作薄
+    worksheet = workbook.add_worksheet()
+    #写入数据
+    worksheet.wirte('A1',1)
+    #关闭保存
+    workbook.close()
 
 def main():
     read_exc()
