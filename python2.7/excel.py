@@ -54,6 +54,9 @@ def xlswriter():
     workbook.close()
 
 def xlutils():
+    """xlutils基本代码import xlrd 读取数据
+    """
+
     import xlwt #写入数据
     import xlutils #操作excel
     #----xlrd库
