@@ -87,6 +87,17 @@ def xlutils():
     #保存
     new_book.save()
 
+def openpyxl():
+    """openpyxl基本代码 
+    """
+    import openpyxl
+    # 新建文件
+    workbook = openpyxl.Workbook() 
+    # 写入文件
+    sheet = workbook.activesheet['A1']='data'
+    # 保存文件 
+    workbook.save('test.xlsx')
+
 def main():
     read_exc()
 
