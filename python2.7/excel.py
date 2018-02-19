@@ -98,6 +98,14 @@ def openpyxl():
     # 保存文件 
     workbook.save('test.xlsx')
 
+def dataNitro():
+    """DataNitro基本代码
+    """
+    #单一单元格赋值
+    Cell('A1').value = 'data'
+    #单元区域赋值
+    CellRange('A1:B2').value = 'data'
+    
 def main():
     read_exc()
 
