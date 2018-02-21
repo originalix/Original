@@ -125,7 +125,39 @@ class taobaoShop:
 
         newDriver.quit()
 
-        # time.sleep(self.sleep_time)        
+    def saveImg(self, savePath, imageURL, fileName):
+        """存储图片方法
+        
+        Arguments:
+            imageURL <string> -- 图片的url
+            fileName <string> -- 用于存储的文件名
+        """
+        print '开始保存图片' + fileName.encode('utf-8')
+        with open(savePath + '/' + fileName.encode('utf-8') + '.png', 'wb') as f:
+            f.write(requests.get(imageURL).content)
+
+    def mkdir(self, path):
+        """创建文件夹
+        
+        Arguments:
+            path <String> -- 需要创建的文件夹路径
+        
+        Returns:
+            <Bool> -- 是否创建成功
+        """
+
+        # 去除路径首尾空格
+        path = path.strip()
+        path = path.rstrip('\\')
+        isExists = os.path.exists(path)
+
+        if not isExists:
+            print path + ' 创建成功'
+            os.makedirs(path)
+            return True
+        else:
+            print path + ' 目录已存在'
+            return False
 
 def main():
     tb = taobaoShop()
