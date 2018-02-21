@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding=utf-8 -*-
+# -*- coding: utf-8 -*-
 
 __author__ = 'Lix'
 
@@ -12,6 +12,12 @@ import time
 import re
 import requests
 import os
+import sys
+
+sys_encoding = sys.getfilesystemencoding()
+def printcn(msg):
+    print(msg.decode('utf-8').encode(sys_encoding))
+
 
 class taobaoShop:
     def __init__(self):
@@ -35,7 +41,7 @@ class taobaoShop:
         content = self.driver.page_source.encode('utf-8')
         print self.driver.title
         
-        self.saveHtml('taobaoshop', content)
+        # self.saveHtml('taobaoshop', content)
         self.getItem()
 
     def saveHtml(self, file_name, file_content):  
@@ -57,24 +63,49 @@ class taobaoShop:
         for item3line1 in itemList:
             dl = item3line1.xpath("./dl")
             for item in dl:
-                link = item.xpath("./dt/a/@href")[0]
-                photo = item.xpath("./dt/a/img/@src")[0]
+                link = 'https:' + item.xpath("./dt/a/@href")[0]
+                photo = 'https:' + item.xpath("./dt/a/img/@src")[0]
+                title = item.xpath("./dd/a/text()")[0]
+        
                 res = {
                     'link' : link,
-                    'photo' : photo
+                    'photo' : photo,
+                    'title' : title
                 }
+
                 print res
+                # 进入宝贝详情页 开始爬取里面的图片资料
+
         
-        # 获取分页信息
-        pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
-        print pagination
-        if len(pagination) == 0:
-            print '没有下一页了'
-        else:
-            print '加载下一页内容'
-            self.site_url = 'https:' + pagination[0]
-            print self.site_url
-            self.getPage()
+        # # 获取分页信息
+        # pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
+        # print pagination
+        # if len(pagination) == 0:
+        #     print '没有下一页了'
+        # else:
+        #     print '加载下一页内容'
+        #     self.site_url = 'https:' + pagination[0]
+        #     print self.site_url
+        #     self.getPage()
+
+    def getItemDetail(self, link):
+        """从宝贝的详情链接里 爬取图片
+        
+        Arguments:
+            link {String} -- [宝贝详情链接]
+        """
+        
+        self.driver.get(link)
+        time.sleep(self.sleep_time)
+        content = self.driver.page_source.encode('utf-8')
+        print self.driver.title
+        self.saveHtml('taobaoshop-detail', content)
+
+        html = self.driver.page_source.encode('utf-8')
+        selector = etree.HTML(html)
+
+
+        
 
 def main():
     tb = taobaoShop()
