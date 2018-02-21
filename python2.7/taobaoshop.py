@@ -110,8 +110,12 @@ class taobaoShop:
         for li in J_ULThumb:
             # 替换图片 从50*50 至 400 * 400
             small_pic = li.xpath("./div/a/img/@data-src")[0]
-            common_pic = pic.replace('50x50', '400x400')
+            common_pic = small_pic.replace('50x50', '400x400')
             print common_pic
+
+        # 里面所有图片
+        sub_wrap = selector.xpath("//div[@class='sub-wrap']")
+        print sub_wrap
 
         newDriver.quit()
 
