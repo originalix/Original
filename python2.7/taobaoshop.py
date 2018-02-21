@@ -24,8 +24,9 @@ class taobaoShop:
         """初始化构造函数
         """
 
-        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
-        # self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.112.73264e25rQGjKe&_ksTS=1519215108692_208&callback=jsonp209&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=4#anchor'
+        # self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
+        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.112.32b14e25ysYrLk&_ksTS=1519223445392_177&callback=jsonp178&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=4#anchor'
+
         self.driver = webdriver.Chrome()
         self.sleep_time = 3
         self.save_img_path = '/Users/Lix/Documents/tbshop/'
@@ -115,6 +116,8 @@ class taobaoShop:
         index = 0
         for li in J_ULThumb:
             # 替换图片 从50*50 至 400 * 400
+            if len(li.xpath("./div/a/img/@data-src")) < 1:
+                continue
             small_pic = li.xpath("./div/a/img/@data-src")[0]
             common_pic = 'https:' + small_pic.replace('50x50', '400x400')
             print common_pic
