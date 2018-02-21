@@ -44,6 +44,9 @@ class SaveScheduleItemPipeline(object):
         
         # item转dic 然后插入数据库
         schedule_info = dict(item)
-        self.table.insert(schedule_info)
+        # self.table.insert(schedule_info)
+        result = self.table.find_one(schedule_info)
+        print '查询到已存在的结果' + result
+
         return item
     
