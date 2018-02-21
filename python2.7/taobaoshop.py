@@ -113,9 +113,15 @@ class taobaoShop:
             common_pic = small_pic.replace('50x50', '400x400')
             print common_pic
 
-        # 里面所有图片
-        sub_wrap = selector.xpath("//div[@class='sub-wrap']")
-        print sub_wrap
+        # 爬取里面所有图片
+        sub_wrap = selector.xpath("//div[@class='sub-wrap']")[0]
+        all_img = sub_wrap.xpath("//img/@src")
+        
+        for img in all_img:
+            if img.startswith('http') is True:
+                print img
+            else:
+                print 'https:' + img
 
         newDriver.quit()
 
