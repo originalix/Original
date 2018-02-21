@@ -9,6 +9,9 @@ class TBShopSpider(scrapy.Spider):
         "https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y",
     ]
 
+    def __init__(self):
+        print 'hello world'
+
     def parse(self, response):
         print "打印响应"
         print response
