@@ -17,8 +17,15 @@ def scrapyTB():
 # import urllib.request 
   
 def getHtml(url):  
-    html = urllib.request.urlopen(url).read()  
-    return html  
+    # html = urllib.request.urlopen(url).read()  
+    # return html  
+    url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.6b466fcctorM7s&search=y'
+    # req = urllib2.Request(url)
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36'  
+    headers = { 'User-Agent' : user_agent }
+    req = urllib2.Request(url, None, headers)
+    response = urllib2.urlopen(req).read()
+    return response
   
 def saveHtml(file_name, file_content):  
     #    注意windows文件命名的禁用符，比如 /  
