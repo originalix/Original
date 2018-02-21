@@ -25,13 +25,12 @@ class taobaoShop:
         """
 
         # self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
-        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.112.32b14e25ysYrLk&_ksTS=1519223445392_177&callback=jsonp178&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=4#anchor'
+        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.59.23574e25e2WwBE&_ksTS=1519224120283_191&callback=jsonp192&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=2#anchor'
 
         self.driver = webdriver.Chrome()
         self.sleep_time = 3
         self.save_img_path = '/Users/Lix/Documents/tbshop/'
-        self.total_page = 1
-        self.current_page = 1
+
 
     def getPage(self):
         """获取淘宝店铺页面代码
@@ -61,7 +60,12 @@ class taobaoShop:
         itemList = selector.xpath("//div[@class='item3line1']")
         
         # 循环遍历该页所有商品
+        index = 0
         for item3line1 in itemList:
+            if index < 6:
+                index += 1
+                continue
+
             dl = item3line1.xpath("./dl")
             for item in dl:
                 link = 'https:' + item.xpath("./dt/a/@href")[0]
@@ -74,11 +78,8 @@ class taobaoShop:
                     'title' : title
                 }
 
-                # print res
-
                 # 进入宝贝详情页 开始爬取里面的图片资料
                 self.getItemDetail(link, '')
-                # time.sleep(7)
         
         # # 获取分页信息
         # pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
@@ -105,8 +106,7 @@ class taobaoShop:
 
         img_dir_path = self.save_img_path + newDriver.title.encode('utf-8')
         if True == self.mkdir(img_dir_path):
-            # self.saveImg(img_dir_path, photo, title)
-            print '创建目录成功'
+            print '创建宝贝目录成功'
 
         html = newDriver.page_source.encode('utf-8')
         selector = etree.HTML(html)
