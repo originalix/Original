@@ -73,9 +73,20 @@ class taobaoShop:
                     'title' : title
                 }
 
-                print res
+                # print res
                 # 进入宝贝详情页 开始爬取里面的图片资料
+                # self.getItemDetail(link)
+                # return
 
+                self.driver.get(link)
+                time.sleep(self.sleep_time)
+
+                detail_html = self.driver.page_source.encode('utf-8')
+                detail_selector = etree.HTML(detail_html)
+
+                # 封面图
+                J_ULThumb = detail_selector.xpath("//div[@id='content']")
+                print J_ULThumb
         
         # # 获取分页信息
         # pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
@@ -97,15 +108,15 @@ class taobaoShop:
         
         self.driver.get(link)
         time.sleep(self.sleep_time)
-        content = self.driver.page_source.encode('utf-8')
-        print self.driver.title
-        self.saveHtml('taobaoshop-detail', content)
 
         html = self.driver.page_source.encode('utf-8')
         selector = etree.HTML(html)
 
+        # 封面图
+        J_ULThumb = selector.xpath("//div[@id='content']")
+        print J_ULThumb
 
-        
+        # time.sleep(self.sleep_time)        
 
 def main():
     tb = taobaoShop()
