@@ -27,7 +27,7 @@ class taobaoShop:
         self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
         # self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.112.73264e25rQGjKe&_ksTS=1519215108692_208&callback=jsonp209&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=4#anchor'
         self.driver = webdriver.Chrome()
-        self.sleep_time = 1
+        self.sleep_time = 3
         self.save_img_path = '/Users/Lix/Documents/www/htdocs/origin/tbmm/'
         self.total_page = 1
         self.current_page = 1
@@ -75,18 +75,9 @@ class taobaoShop:
 
                 # print res
                 # 进入宝贝详情页 开始爬取里面的图片资料
-                # self.getItemDetail(link)
-                # return
-
-                self.driver.get(link)
-                time.sleep(self.sleep_time)
-
-                detail_html = self.driver.page_source.encode('utf-8')
-                detail_selector = etree.HTML(detail_html)
-
-                # 封面图
-                J_ULThumb = detail_selector.xpath("//div[@id='content']")
-                print J_ULThumb
+                self.getItemDetail(link)
+                # time.sleep(7)
+                return
         
         # # 获取分页信息
         # pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
@@ -105,16 +96,24 @@ class taobaoShop:
         Arguments:
             link {String} -- [宝贝详情链接]
         """
-        
-        self.driver.get(link)
+        newDriver = webdriver.Chrome()
+        newDriver.get(link)
         time.sleep(self.sleep_time)
 
-        html = self.driver.page_source.encode('utf-8')
+        print newDriver.title
+
+        html = newDriver.page_source.encode('utf-8')
         selector = etree.HTML(html)
 
         # 封面图
-        J_ULThumb = selector.xpath("//div[@id='content']")
-        print J_ULThumb
+        J_ULThumb = selector.xpath("//div[@class='tb-gallery']/ul/li")
+        for li in J_ULThumb:
+            # 替换图片 从50*50 至 400 * 400
+            small_pic = li.xpath("./div/a/img/@data-src")[0]
+            common_pic = pic.replace('50x50', '400x400')
+            print common_pic
+
+        newDriver.quit()
 
         # time.sleep(self.sleep_time)        
 
