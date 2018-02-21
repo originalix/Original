@@ -35,6 +35,7 @@ class taobaoShop:
         print self.driver.title
         
         self.saveHtml('taobaoshop', content)
+        self.getItem()
 
     def saveHtml(self, file_name, file_content):  
         #    注意windows文件命名的禁用符，比如 /  
@@ -42,7 +43,26 @@ class taobaoShop:
             #   写文件用bytes而不是str，所以要转码  
             f.write(file_content)
     
-    
+    def getItem(self):
+        """爬取当前页面的每个宝贝，
+           提取宝贝名字，价格，标题等信息
+        """
+
+        html = self.driver.page_source.encode('utf-8')
+        selector = etree.HTML(html)
+        itemList = selector.xpath("//div[@class='item3line1']")
+        
+        for item3line1 in itemList:
+            dl = item3line1.xpath("./dl")
+            for item in dl:
+                link = item.xpath("./dt/a/@href")[0]
+                photo = item.xpath("./dt/a/img/@src")[0]
+                res = {
+                    'link' : link,
+                    'photo' : photo
+                }
+                print res
+            
 
 def main():
     tb = taobaoShop()
