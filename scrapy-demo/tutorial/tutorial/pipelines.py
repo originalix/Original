@@ -46,7 +46,7 @@ class SaveScheduleItemPipeline(object):
         schedule_info = dict(item)
         # self.table.insert(schedule_info)
         result = self.table.find_one(schedule_info)
-        print '查询到已存在的结果' + result
-
+        if result is None:
+            self.table.insert(schedule_info)
+            print '插入新的比赛场次'
         return item
-    
