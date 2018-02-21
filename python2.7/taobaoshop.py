@@ -18,7 +18,8 @@ class taobaoShop:
         """初始化构造函数
         """
 
-        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
+        # self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
+        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.112.73264e25rQGjKe&_ksTS=1519215108692_208&callback=jsonp209&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=4#anchor'
         self.driver = webdriver.Chrome()
         self.sleep_time = 1
         self.save_img_path = '/Users/Lix/Documents/www/htdocs/origin/tbmm/'
@@ -52,6 +53,7 @@ class taobaoShop:
         selector = etree.HTML(html)
         itemList = selector.xpath("//div[@class='item3line1']")
         
+        # 循环遍历该页所有商品
         for item3line1 in itemList:
             dl = item3line1.xpath("./dl")
             for item in dl:
@@ -62,7 +64,15 @@ class taobaoShop:
                     'photo' : photo
                 }
                 print res
-            
+        
+        # 获取分页信息
+        pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
+        print pagination
+        if len(pagination) == 0:
+            print '没有下一页了'
+        else:
+            print '加载下一页内容'
+    
 
 def main():
     tb = taobaoShop()
