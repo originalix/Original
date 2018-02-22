@@ -60,10 +60,6 @@ class taobaoShop:
         # 循环遍历该页所有商品
         index = 0
         for item3line1 in itemList:
-            if index < 6:
-                index += 1
-                continue
-
             dl = item3line1.xpath("./dl")
             for item in dl:
                 link = 'https:' + item.xpath("./dt/a/@href")[0]
@@ -79,16 +75,17 @@ class taobaoShop:
                 # 进入宝贝详情页 开始爬取里面的图片资料
                 self.getItemDetail(link, '')
         
-        # # 获取分页信息
-        # pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
-        # print pagination
-        # if len(pagination) == 0:
-        #     print '没有下一页了'
-        # else:
-        #     print '加载下一页内容'
-        #     self.site_url = 'https:' + pagination[0]
-        #     print self.site_url
-        #     self.getPage()
+        # 获取分页信息
+        pagination = selector.xpath("//div[@class='pagination']/a[contains(@class, 'J_SearchAsync') and contains(@class, 'next')]/@href")
+        print pagination
+        print '正在准备切换分页'
+        if len(pagination) == 0:
+            print '没有下一页了'
+        else:
+            print '加载下一页内容'
+            self.site_url = 'https:' + pagination[0]
+            print self.site_url
+            self.getPage()
 
     def getItemDetail(self, link, save_img_path):
         """从宝贝的详情链接里 爬取图片
@@ -118,15 +115,13 @@ class taobaoShop:
                 continue
             small_pic = li.xpath("./div/a/img/@data-src")[0]
             common_pic = 'https:' + small_pic.replace('50x50', '400x400')
-            print common_pic
             thumb_title = str('封面图') + str(index)
-            print type(thumb_title)
             print thumb_title
-            self.saveImg(img_dir_path, common_pic, thumb_title.decode('utf-8'))
+            # self.saveImg(img_dir_path, common_pic, thumb_title.decode('utf-8'))
             index += 1
 
         # 爬取里面所有图片
-        sub_wrap = selector.xpath("//div[@class='sub-wrap']")[0]
+        sub_wrap = selector.xpath("//div[@class='content']")[0]
         all_img = sub_wrap.xpath("//img/@src")
         
         index = 0
@@ -137,7 +132,7 @@ class taobaoShop:
             else:
                 imglink = 'https:' + img
 
-            self.saveImg(img_dir_path, imglink, str(index))
+            # self.saveImg(img_dir_path, imglink, str(index))
             index += 1
 
         newDriver.quit()
