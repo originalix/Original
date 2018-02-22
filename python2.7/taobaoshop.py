@@ -12,21 +12,15 @@ import time
 import re
 import requests
 import os
-import sys
-
-sys_encoding = sys.getfilesystemencoding()
-def printcn(msg):
-    print(msg.decode('utf-8').encode(sys_encoding))
-
 
 class taobaoShop:
     def __init__(self):
         """初始化构造函数
         """
 
-        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
+        self.site_url = 'https://s-nicole.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.264eeb69k5l6oP&search=y'
         self.driver = webdriver.Chrome()
-        self.sleep_time = 3
+        self.sleep_time = 10
         self.save_img_path = '/Users/Lix/Documents/tbshop/'
 
 
@@ -121,9 +115,9 @@ class taobaoShop:
             index += 1
 
         # 爬取里面所有图片
-        sub_wrap = selector.xpath("//div[@class='content']")[0]
-        all_img = sub_wrap.xpath("//img/@src")
-        
+        all_img = selector.xpath("//div[@id='J_DivItemDesc']//descendant::img/@src")
+        print all_img
+
         index = 0
         for img in all_img:
             imglink = img
@@ -132,7 +126,7 @@ class taobaoShop:
             else:
                 imglink = 'https:' + img
 
-            # self.saveImg(img_dir_path, imglink, str(index))
+            self.saveImg(img_dir_path, imglink, str(index))
             index += 1
 
         newDriver.quit()
