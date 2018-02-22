@@ -3,15 +3,22 @@
 
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
 
-# img = cv2.imread('/Users/Lix/Documents/tbshop/2017冬装棉衣毛领徽章中长款加厚冬季棉服外套防寒服工装棉衣女-淘宝网/110.png', 0)
-# plt.imshow(img, cmap='gray', interpolation='bicubic')
-# plt.xticks([]), plt.yticks([]) # to hide tick values on X and Y axis
-# plt.show()
+# 膨胀算法 Kernel
+_DILATE_KERNEL = np.array([[0, 0, 1, 0, 0],
+                           [0, 0, 1, 0, 0],
+                           [1, 1, 1, 1, 1],
+                           [0, 0, 1, 0, 0],
+                           [0, 0, 1, 0, 0]], dtype=np.uint8)
 
-img = cv2.imread("/Users/Lix/Documents/tbshop/2017冬装棉衣毛领徽章中长款加厚冬季棉服外套防寒服工装棉衣女-淘宝网/110.png")   
-cv2.namedWindow("Image")   
-cv2.imshow("Image", img)   
-cv2.waitKey (0)  
-cv2.destroyAllWindows()
+class WatermarkRemover(object):
+    """"
+    去除图片中的水印(Remove Watermark)
+    """
+    
+    def __init__(self, verbose=True):
+        self.verbose = verbose
+        self.watermark_template_gray_img = None
+        self.watermark_template_mask_img = None
+        self.watermark_template_h = 0
+        self.watermark_template_w = 0
