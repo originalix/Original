@@ -24,9 +24,7 @@ class taobaoShop:
         """初始化构造函数
         """
 
-        # self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
-        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.3-c-s.w4002-14473867114.59.23574e25e2WwBE&_ksTS=1519224120283_191&callback=jsonp192&mid=w-14473867114-0&wid=14473867114&path=%2Fsearch.htm&search=y&pageNo=2#anchor'
-
+        self.site_url = 'https://elcjstyle.taobao.com/search.htm?spm=a1z10.1-c-s.0.0.68616fccLXsimv&search=y'
         self.driver = webdriver.Chrome()
         self.sleep_time = 3
         self.save_img_path = '/Users/Lix/Documents/tbshop/'
