@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 const $ = __webpack_require__(1);
-$('h1').css({ color: 'red' });
+$('h1').css({ color: 'green' });
 
 
 /***/ }),
