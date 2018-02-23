@@ -7,6 +7,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var port = process.env.PORT || 8080;
 var router = express.Router();
 
+router.use(function(req, res, next) {
+    console.log('There is a requesting.');
+    next();
+});
+
 router.get('/', function(req, res) {
     res.send('<h1>Hello World</h1>');
 });
