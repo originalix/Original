@@ -19,7 +19,9 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-    res.send('<h1>Hello World</h1>');
+    var name = req.query.name;
+    name = name === undefined ? 'World' : name;
+    res.send('<h1>Hello ' + name + '</h1>' );
 });
 
 router.get('/:name', function(req, res) {
