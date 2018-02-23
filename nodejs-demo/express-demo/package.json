@@ -1,16 +1,16 @@
 {
-  "name": "rest-api-demo",
+  "name": "express-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "json-server db.json"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.12.1"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
   }
 }
