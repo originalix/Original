@@ -12,6 +12,12 @@ router.use(function(req, res, next) {
     next();
 });
 
+router.use(function(req, res, next) {
+    var timestamp = new Date().getTime();
+    console.log('this request time - ' + timestamp);
+    next();
+});
+
 router.get('/', function(req, res) {
     res.send('<h1>Hello World</h1>');
 });
