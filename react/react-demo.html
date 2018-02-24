@@ -313,6 +313,23 @@
             return <GuestGreeting />;
         }
 
+        // 元素变量
+        function LoginButton(props) {
+            return (
+                <button onClick={props.onClick}>
+                    Login
+                </button>
+            );
+        }
+
+        function LogoutButton(props) {
+            return (
+                <button onClick={props.onClick}>
+                    Logout
+                </button>                
+            );
+        }
+
         ReactDOM.render(
             <Greeting isLoggedIn={true} />,
             document.getElementById('render-condition')
