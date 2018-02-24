@@ -1,2 +1,5 @@
-var hello = require('./hello');
-hello.world();
+var Hello = require('./hello');
+// hello.world();
+hello = new Hello();
+hello.setName('Lixxxxxx');
+hello.sayHello();
