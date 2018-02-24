@@ -230,5 +230,32 @@
             document.getElementById('event')
         );
     </script>
+
+    <!-- 事件处理的绑定和传参 -->
+    <div id="event-bind"></div>
+    <script type="text/babel">
+        class LoggingButton extends React.Component {
+            // handleClick = () => {
+            //     console.log('this is: ', this);
+            // }
+
+            handleClick() {
+                console.log('this is: ', this );
+            }
+
+            render() {
+                return (
+                    <button onClick={(e) => this.handleClick(e)}>
+                        ClickMe
+                    </button>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <LoggingButton />,
+            document.getElementById('event-bind')
+        )
+    </script>
   </body>
 </html>
