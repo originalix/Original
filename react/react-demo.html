@@ -1,6 +1,11 @@
 <!DOCTYPE html>
+<html lang="en"></html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <script src="../react/build/react.js"></script>
     <script src="../react/build/react-dom.js"></script>
     <script src="../react/build/browser.min.js"></script>
@@ -235,9 +240,6 @@
     <div id="event-bind"></div>
     <script type="text/babel">
         class LoggingButton extends React.Component {
-            // handleClick = () => {
-            //     console.log('this is: ', this);
-            // }
 
             handleClick() {
                 console.log('this is: ', this );
@@ -252,10 +254,41 @@
             }
         }
 
+        // ReactDOM.render(
+        //     <LoggingButton />,
+        //     document.getElementById('event-bind')
+        // )
+    </script>
+
+    <script type="text/babel">
+        class Popper extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {name: 'Hello World!'};
+            }
+
+            preventPop(name, e) {
+                e.preventDefault();
+                alert(name);
+            }
+    
+            render() {
+                return (
+                    <div>
+                        <p>hello</p>
+                        <p>第一种方式点击传参</p>
+                        <a href="https://reactjs.org" onClick={this.preventPop.bind(this,this.state.name)}>Click</a>
+                    </div>
+                );
+            }
+
+        }
+
         ReactDOM.render(
-            <LoggingButton />,
+            <Popper />,
             document.getElementById('event-bind')
         )
+
     </script>
   </body>
 </html>
