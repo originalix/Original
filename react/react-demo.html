@@ -277,7 +277,9 @@
                     <div>
                         <p>hello</p>
                         <p>第一种方式点击传参</p>
-                        <a href="https://reactjs.org" onClick={this.preventPop.bind(this,this.state.name)}>Click</a>
+                        <a href="https://reactjs.org" onClick={this.preventPop.bind(this,this.state.name)}>Click method 3</a>
+                        <p>第二种方式点击传参</p>
+                        <a href="https://reactjs.org" onClick={(e) => this.preventPop(this.state.name, e)}>Click method 2</a>
                     </div>
                 );
             }
