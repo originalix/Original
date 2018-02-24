@@ -201,6 +201,7 @@
         );
     </script>
 
+    <!-- 事件处理 -->
     <div id="event"></div>
     <script type="text/babel">        
         class Toggle extends React.Component {
@@ -290,7 +291,32 @@
             <Popper />,
             document.getElementById('event-bind')
         )
+    </script>
 
+    <!-- 条件渲染 -->
+    <div id="render-condition"></div>
+    <script type="text/babel">
+        function UserGreeting(props) {
+            return <h1>Welcome back!</h1>;
+        }
+
+        function GuestGreeting(props) {
+            return <h1>Please sign up.</h1>;
+        }
+
+        function Greeting(props) {
+            const isLoggedIn = props.isLoggedIn;
+
+            if (isLoggedIn) {
+                return <UserGreeting />;
+            }
+            return <GuestGreeting />;
+        }
+
+        ReactDOM.render(
+            <Greeting isLoggedIn={true} />,
+            document.getElementById('render-condition')
+        );
     </script>
   </body>
 </html>
