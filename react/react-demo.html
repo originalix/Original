@@ -6,12 +6,46 @@
     <script src="../react/build/browser.min.js"></script>
   </head>
   <body>
+    <!-- example Hello World -->
     <div id="example"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+        );
+    </script>
+
+    <!-- 在JSX中使用表达式 -->
+    <div id="root"></div>
+    <script type="text/babel">
+        function formatName(user) {
+            return user.firstName + '-' + user.lastName;
+        }
+        
+        function getGreeting(user) {
+            if (user) {
+                return <h1>Hello, {formatName(user)}!</h1>;
+            }
+            return <h1>Hello, Stranger.</h1>;
+        }
+        
+        const user = {
+            firstName: 'Harper',
+            lastName: 'Perez'
+        };
+
+        const element = (
+            <h1>
+                Hello {formatName(user)}!
+            </h1>
+        );
+
+        ReactDOM.render(
+            getGreeting(user),
+            document.getElementById('root')
+        );
+    </script>
+
+
   </body>
-  <script type="text/babel">
-    ReactDOM.render(
-      <h1>Hello, world!</h1>,
-      document.getElementById('example')
-    );
-  </script>
 </html>
