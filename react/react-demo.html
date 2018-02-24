@@ -40,12 +40,52 @@
             </h1>
         );
 
+        const element1 = (
+            <div>
+                <h1>Hello!</h1>
+                <h2>Good to see you here.</h2>
+            </div>
+        );
+
         ReactDOM.render(
-            getGreeting(user),
+            element1,
             document.getElementById('root')
         );
     </script>
 
+    <!-- 更新元素渲染 -->
+    <div id="update-dom"></div>
+    <script type="text/babel">
+        function tick() {
+            const element = (
+                <div>
+                    <h1>Hello, World!</h1>
+                    <h2>It is {new Date().toLocaleTimeString()}.</h2>
+                </div>
+            );
 
+            ReactDOM.render(
+                element,
+                document.getElementById('update-dom')
+            );
+        }
+
+        setInterval(tick, 1000);
+    </script>
+
+    <!-- 组件渲染 -->
+    <div id="render-dom"></div>
+    <script type="text/babel">
+        function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+        }
+
+        const element = <Welcome name="Sara" />;
+        ReactDOM.render(
+            element,
+            document.getElementById('render-dom')
+        );
+        
+    </script>
   </body>
 </html>
