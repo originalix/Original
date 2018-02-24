@@ -199,14 +199,36 @@
     <div id="event"></div>
     <script type="text/babel">        
         class Toggle extends React.Component {
+            constructor(props, context) {
+                super(props, context)
+                this.state = {isToggleOn: true};
+
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick() {
+                // 箭头函数改写
+                // this.setState(prevState => ({
+                //     isToggleOn: !prevState.isToggleOn
+                // }));
+                this.setState(function(prevState) {
+                    return ({ isToggleOn: !prevState.isToggleOn });
+                });
+            }
+            
             render() {
                 return (
-                    <div>
-                        
-                    </div>
+                    <button onClick={this.handleClick}>
+                        {this.state.isToggleOn ? 'ON' : 'OFF'}    
+                    </button>
                 );
             }
         }
+
+        ReactDOM.render(
+            <Toggle />,
+            document.getElementById('event')
+        );
     </script>
   </body>
 </html>
