@@ -80,12 +80,21 @@
             return <h1>Hello, {props.name}</h1>;
         }
 
-        const element = <Welcome name="Sara" />;
+        function App() {
+            return (
+                <div>
+                    <Welcome name="Sara" />
+                    <Welcome name="Lixxxxx" />
+                    <Welcome name="Wsxxxxxx" />
+                </div>
+            );
+        }
+
+        // const element = <Welcome name="Sara" />;
         ReactDOM.render(
-            element,
+            <App />,
             document.getElementById('render-dom')
         );
-        
     </script>
   </body>
 </html>
