@@ -47,6 +47,32 @@ class ProductTable extends React.Component {
     }
 }
 
+class SearchBar extends React.Component {
+    render() {
+        return (
+            <form>
+                <input type="text" plactholder="Search..." />
+                <p>
+                    <input type="checkbox" />
+                    {' '}
+                    Only show products in stock
+                </p>
+            </form>
+        );
+    }
+}
+
+class FilterableProductTable extends React.Component {
+    render() {
+        return (
+            <div>
+                <SearchBar />
+                <ProductTable products={this.props.products} />,
+            </div>
+        );
+    }
+}
+
 const PRODUCTS = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
     {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
@@ -57,6 +83,6 @@ const PRODUCTS = [
 ];
 
 ReactDOM.render(
-    <ProductTable products={PRODUCTS} />,
+    <FilterableProductTable products={PRODUCTS} />,
     document.getElementById('root')
 );
