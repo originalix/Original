@@ -635,6 +635,8 @@
 
     <!-- 组合 VS 继承 -->
     <div id="group"></div>
+    
+    <!-- 特殊组件 -->
     <script type="text/babel">
         function FancyBorder(props) {
             return (
@@ -655,6 +657,43 @@
                         Thank you for visiting our spacecraft!
                     </p>
                 </FancyBorder>
+            );
+        }
+
+        // ReactDOM.render(
+        //     <WelcomeDialog />,
+        //     document.getElementById('group')
+        // );
+    </script>
+
+    <!-- 通过配置属性用较特殊的组件来渲染较通用的组件 -->
+    <script type="text/babel">
+        function FancyBorder(props) {
+            return (
+                <div className={'FancyBorder FancyBorder-' + props.color}>
+                    {props.children}
+                </div>
+            );
+        }
+        
+        function Dialog(props) {
+            return (
+                <FancyBorder color="blue">
+                    <h1 className="Dialog-title">
+                        {props.title}
+                    </h1>
+                    <p className="Dialog-message">
+                        {props.message}
+                    </p>
+                </FancyBorder>
+            );
+        }
+
+        function WelcomeDialog() {
+            return (
+                <Dialog
+                    title="Welcome"
+                    message="Thank you for visiting our spacecraft!" />
             );
         }
 
