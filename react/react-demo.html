@@ -531,5 +531,22 @@
             document.getElementById('name-form')
         );
     </script>
+
+    <!-- 温度联动效果 -->
+    <div id="temperature"></div>
+    <script type="text/babel">
+        const scaleNames = {
+            c: 'Celsius',
+            f: 'Fahrenheit'
+        };
+
+        function toCelsius(fahrenheit) {
+            return (fahrenheit - 32) * 5 / 9;
+        }
+
+        function toFahrenheit(celsius) {
+            return (celsius * 9 / 5) + 32;
+        }
+    </script>
   </body>
 </html>
