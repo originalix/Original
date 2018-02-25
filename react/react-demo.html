@@ -554,7 +554,7 @@
                 return '';
             }
             const output = convert(input);
-            const rounded = Math.rount(output * 1000) / 1000;
+            const rounded = Math.round(output * 1000) / 1000;
             return rounded.toString();
         }
 
@@ -580,7 +580,7 @@
                 const scale = this.props.scale;
                 return (
                     <fieldset>
-                        <legend>Enter temperature in {sclaeNames[scale]}:</legend>
+                        <legend>Enter temperature in {scaleNames[scale]}:</legend>
                         <input value={temperature} onChange={this.handleChange} />
                     </fieldset>
                 );
@@ -619,14 +619,18 @@
                         <TemperatureInput 
                             scale="f"
                             temperature={fahrenheit}
-                            onTemperatureChange={this.handleFahrenheit} />
+                            onTemperatureChange={this.handleFahrenheitChange} />
                         <BoilingVerdict 
                             celsius={celsius} />
                     </div>
                 );
             }
         }
-        
+
+        ReactDOM.render(
+            <Calculator />,
+            document.getElementById('temperature')
+        );
     </script>
   </body>
 </html>
