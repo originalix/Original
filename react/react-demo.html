@@ -370,5 +370,99 @@
             document.getElementById('render-condition')
         );
     </script>
+
+    <!-- 与运算符 && -->
+    <div id="use-operator"></div>
+    <script type="text/babel">
+        function Mailbox(props) {
+            const unreadMessage = props.unredMessages;
+            return (
+                <div>
+                    <h1>Hello!</h1>
+                    {unreadMessage.length > 0 &&
+                        <h2>
+                            You have {unreadMessage.length} unread messages.
+                        </h2>
+                    }
+                </div>
+            );
+        }
+
+        const messages = ['React', 'Re: React', 'Re: Re: Lixxxx'];
+
+        ReactDOM.render(
+            <Mailbox unredMessages={messages} />,
+            document.getElementById('use-operator')
+        );
+    </script>
+
+    <!-- 阻止组件渲染  -->
+    <div id="didNot-render"></div>
+    <script type="text/babel">
+        function WarnningBanner(props) {
+            if (!props.warn) {
+                return null;
+            }
+
+            return (
+                <div className="warning">
+                    Warning!
+                </div>
+            );
+        }
+        
+        class Page extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {showWarning: true};
+                this.handleToggleClick = this.handleToggleClick.bind(this);
+            }
+
+            handleToggleClick() {
+                this.setState(prevState => ({
+                    showWarning: !prevState.showWarning
+                }));
+            }
+            
+            render() {
+                return (
+                    <div>
+                        <WarnningBanner warn={this.state.showWarning} />
+                        <button onClick={this.handleToggleClick}>
+                            {this.state.showWarning ? 'Hide' : 'Show'}
+                        </button>           
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Page />,
+            document.getElementById('didNot-render')
+        );
+    </script>
+
+    <!-- 渲染多个组件 -->
+    <div id="listItems"></div>
+    <script type="text/babel">
+        function NumberList(props) {
+            const numbers = props.numbers;
+            const listItems = numbers.map((number) =>
+                <li key={number.toString()}>
+                    {number}
+                </li>
+            );
+
+            return (
+                <ul>{listItems}</ul>
+            );
+        }
+
+        const numbers = [1, 2, 3, 4, 5];
+        ReactDOM.render(
+            <NumberList numbers={numbers} />,
+            document.getElementById('listItems')
+        );
+    </script>
   </body>
 </html>
