@@ -493,8 +493,8 @@
     </script>
 
     <!-- 表单 -->
-    <div id="form"></div>
-    <script>
+    <div id="name-form"></div>
+    <script type="text/babel">
         class NameForm extends React.Component {
             constructor(props) {
                 super(props);
@@ -526,7 +526,10 @@
             }
         }
 
-        
+        ReactDOM.render(
+            <NameForm />,
+            document.getElementById('name-form')
+        );
     </script>
   </body>
 </html>
