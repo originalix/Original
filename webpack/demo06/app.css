@@ -1,0 +1,8 @@
+/* local scope */
+.h1 {
+    color: red;
+}
+
+:global(.h2) {
+    color: blue;
+}
