@@ -16,4 +16,3 @@ ReactDOM.render(
     <Greeting />,
     document.getElementById('root')
 );
-
