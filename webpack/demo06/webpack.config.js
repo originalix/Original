@@ -1,3 +1,7 @@
+var webpace = require('webpack')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+
 module.exports = {
     entry: './main.jsx',
     output: {
@@ -30,5 +34,8 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin()
+    ]
 };
