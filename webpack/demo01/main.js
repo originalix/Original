@@ -1,1 +1,1 @@
-document.write('<h1>Hello Lixxxxx</h1>')；
+document.write('<h1>Hello Lixxxxx</h1>');
