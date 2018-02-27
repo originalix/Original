@@ -64,4 +64,4 @@ render((
     <BrowserRouter>
         <Route path='/' component={App}/>
     </BrowserRouter>
-)), document.querySelector('#app');
+), document.querySelector('#app'));
