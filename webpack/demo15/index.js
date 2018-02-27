@@ -30,3 +30,38 @@ class App extends React.Component {
     }
 };
 
+class Dashboard extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Dashboard</p>
+            </div>
+        );
+    }
+};
+
+class Inbox extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Inbox</p>                
+            </div>
+        );
+    }
+};
+
+class Calendar extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Calendar</p>
+            </div>
+        );
+    }
+};
+
+render((
+    <BrowserRouter>
+        <Route path='/' component={App}/>
+    </BrowserRouter>
+)), document.querySelector('#app');
