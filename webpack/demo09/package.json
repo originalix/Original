@@ -4,11 +4,10 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-      "dev": "cross-env DEBUG=true webpack-dev-server --open",
-      "build": "webpack -p"
+        "dev": "webpack-dev-server --open",
+        "build": "webpack -p"
     },
     "keywords": [],
     "author": "",
     "license": "ISC"
 }
-  
