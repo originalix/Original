@@ -4,7 +4,7 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-      "dev": "webpack-dev-server --open",
+      "dev": "cross-env DEBUG=true webpack-dev-server --open",
       "build": "webpack -p"
     },
     "keywords": [],
