@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import NavLink from './NavLink';
+import Home from './Home';
 
 export default class App extends React.Component {
     render() {
