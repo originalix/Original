@@ -3,6 +3,14 @@ import NavLink from './NavLink';
 
 
 export default class Repos extends React.Component {
+    handleSubmit(event) {
+        event.preventDefault();
+        const userName = event.target.elements[0].value;
+        const repo = event.target.elements[1].value;
+        const path = `/repos/${userName}/${repo}`;
+        console.log(path);
+    };
+
     render() {
         return (
             <div>
