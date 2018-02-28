@@ -1,5 +1,6 @@
 import React from 'react';
 import NavLink from './NavLink';
+import { browserHistory } from 'react-router';
 
 
 export default class Repos extends React.Component {
@@ -9,6 +10,7 @@ export default class Repos extends React.Component {
         const repo = event.target.elements[1].value;
         const path = `/repos/${userName}/${repo}`;
         console.log(path);
+        browserHistory.push(path);
     };
 
     render() {
