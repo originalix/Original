@@ -2,15 +2,22 @@ import React from 'react';
 import NavLink from './NavLink';
 import { browserHistory } from 'react-router';
 
+const PropTypes = require('prop-types');
 
 export default class Repos extends React.Component {
+    constructor(props) {
+        super(props)
+        // context.router;
+    }
+    
     handleSubmit(event) {
         event.preventDefault();
         const userName = event.target.elements[0].value;
         const repo = event.target.elements[1].value;
         const path = `/repos/${userName}/${repo}`;
         console.log(path);
-        browserHistory.push(path);
+        // browserHistory.push(path);
+        this.context.router.push(path);
     };
 
     render() {
@@ -32,4 +39,8 @@ export default class Repos extends React.Component {
             </div>
         );
     }
+}
+
+Repos.contextTypes = {
+    router: PropTypes.object
 }
