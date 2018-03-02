@@ -2,12 +2,12 @@ var React = require('react');
 
 var MyButton = function (props) {
     var items = props.items;
-    // var itemHtml = items.map(function (listItem, i) {
-    //     return <li key={i}>{listItem}</li>;
-    // });
+    var itemHtml = items.map(function (listItem, i) {
+        return <li key={i}>{listItem}</li>;
+    });
 
     return <div>
-        {/* <ul>{itemHtml}</ul> */}
+        <ul>{itemHtml}</ul>
         <h1>Hello world</h1>
         <button onClick={props.onClick}>New Item</button>
     </div>;
