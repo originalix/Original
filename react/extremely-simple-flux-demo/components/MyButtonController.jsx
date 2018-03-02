@@ -1,12 +1,16 @@
 var React = require('react');
+var MyButton = require('./MyButton');
 
 var MyButtonController = React.createClass({
+    createNewItem: function (event) {
+        console.log('Hello world');
+    },
+
     render: function () {
-        return  <div>
-                    <h1>Hello world</h1>
-                    <button>New Item</button>
-                </div>
-        
+        return  <MyButton
+            // items={this.state.items}
+            onClick={this.createNewItem}
+        />;
     }
 });
 
