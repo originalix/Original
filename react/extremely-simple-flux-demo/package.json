@@ -1,0 +1,30 @@
+{
+  "name": "extremely-simple-flux-demo",
+  "version": "1.0.0",
+  "description": "an extremely simple demo for the Flux architecture",
+  "main": "index.jsx",
+  "scripts": {
+    "start": "webpack-dev-server --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Demo",
+    "Flux",
+    "React"
+  ],
+  "author": "Lix",
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "~5.3.2",
+    "flux": "~2.0.3",
+    "jsx-loader": "^0.13.2",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "webpack": "^1.11.0"
+  },
+  "devDependencies": {
+    "open-browser-webpack-plugin": "0.0.2",
+    "webpack-dev-server": "~1.10.1"
+  }
+}
