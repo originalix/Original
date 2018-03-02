@@ -11,12 +11,10 @@ var MyButtonController = React.createClass({
     },
 
     componentDidMount: function () {
-        console.log('Did Mount');
         ListStore.addChangeListener(this._onChange);
     },
     
     componentWillUnmount: function () {
-        console.log('Will Unmount');
         ListStore.removeChangeListener(this._onChange);
     },
 
@@ -27,8 +25,7 @@ var MyButtonController = React.createClass({
     },
     
     createNewItem: function (event) {
-        console.log('Hello world');
-        console.log(this.state.items);
+        ButtonActions.addNewItem('new item');
     },
 
     render: function () {;

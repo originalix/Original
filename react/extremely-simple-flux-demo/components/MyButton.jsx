@@ -8,7 +8,6 @@ var MyButton = function (props) {
 
     return <div>
         <ul>{itemHtml}</ul>
-        <h1>Hello world</h1>
         <button onClick={props.onClick}>New Item</button>
     </div>;
 };

@@ -7,6 +7,7 @@ AppDispatcher.register(function (action) {
         case 'ADD_NEW_ITEM':
             ListStore.addNewItemHandler(action.text);
             ListStore.emitChange();
+            console.log('ADD_NEW_ITEM');
             break;
         default:
             // pass
