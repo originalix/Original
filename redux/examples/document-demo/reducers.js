@@ -5,12 +5,13 @@ const initialState = {
     todos: []
 };
 
-function todoApp(state, action) {
-    if (typeof state === 'undefined') {
-        return initialState;
+function todoApp(state = initialState, action) {
+    switch (action.type) {
+        case SET_VISIBILITY_FILTER:
+            return Object.assign({}, state, {
+                visibilityFilter: action.filter
+            });
+        default:
+            return state;
     }
-
-    // 这里暂不处理任何action
-    // 仅返回传入的state
-    return state;
 }
