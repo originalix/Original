@@ -1,8 +1,8 @@
 import React from 'react'
 import FilterLink from '../containers/FilterLink'
-import { VisibilityFilter } from '../actions'
+import { VisibilityFilters } from '../actions'
 
-const Footer = () => {
+const Footer = () => (
     <p>
         Show:
         {" "}
@@ -18,6 +18,6 @@ const Footer = () => {
             Completed
         </FilterLink>
     </p>
-}
+)
 
 export default Footer;

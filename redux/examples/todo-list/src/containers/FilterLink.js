@@ -6,9 +6,9 @@ const mapStateToProps = (state, ownProps) => ({
     active: ownProps.filter === state.visibilityFilter
 })
 
-const mapDispatchToPorps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
     onClick: () => {
-        dispatch(setVisibityFilter(ownProps.filter))
+        dispatch(setVisibilityFilter(ownProps.filter))
     }
 })
 
