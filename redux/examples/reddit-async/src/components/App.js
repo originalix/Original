@@ -12,8 +12,7 @@ class App extends Component {
     componentDidMount() {
         const { dispatch } = this.props
         console.log(this.props.selectedSubreddit);
-        dispatch(selectSubreddit('React'))
-        dispatch(fetchPostsIfNeeded('Kobe'))
+        dispatch(fetchPostsIfNeeded('Reactjs'))
     }
 
     handleChange = nextSubreddit => {
@@ -22,9 +21,10 @@ class App extends Component {
 
     render() {
         const { selectedSubreddit } = this.props;
+        const options = ['Reactjs', 'redux', 'Python', 'Objective-C', 'Swift']
         return (
             <div>
-                <Picker value={selectedSubreddit} onChange={this.handleChange} options={[ 'reactjs', 'Kobe' ]}/>
+                <Picker value={selectedSubreddit} onChange={this.handleChange} options={options}/>
                 <h1>Hello world</h1>
             </div>
         );
@@ -35,7 +35,5 @@ const mapStateToProps = (state) => {
     console.log('Hello world');
     return state
 }
-
-
 
 export default connect(mapStateToProps)(App);
