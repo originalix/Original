@@ -8,7 +8,6 @@ import Posts from './Posts'
 class App extends Component {
     constructor(props) {
         super(props);
-        
     }
 
     static propTypes = {
@@ -25,13 +24,27 @@ class App extends Component {
         dispatch(fetchPostsIfNeeded(selectedSubreddit))
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.selectedSubreddit !== this.props.selectedSubreddit) {
+            const { dispatch, selectedSubreddit } = nextProps
+            dispatch(fetchPostsIfNeeded(selectedSubreddit))
+        }
+    }
+
     handleChange = nextSubreddit => {
         this.props.dispatch(selectSubreddit(nextSubreddit))
     }
 
+    handleRefreshClick = e => {
+        e.preventDefault();
+        const {dispatch, selectedSubreddit } = this.props
+        dispatch(invalidateSubreddit(selectedSubreddit))
+        dispatch(fetchPostsIfNeeded(selectedSubreddit))
+    }
+
     render() {
         const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
-        const options = ['reactjs', 'redux', 'Python', 'Objective-C', 'Swift']
+        const options = ['reactjs', 'javascript', 'Python', 'iOS', 'Swift']
         const isEmpty = posts.length === 0
 
         return (
@@ -47,12 +60,18 @@ class App extends Component {
                         </span>
                     }
                     { !isFetching &&
-                        <button onClick={function(){}}>
+                        <button onClick={this.handleRefreshClick}>
                             Refresh
                         </button>
                     }
                 </p>
-                <Posts posts={posts} />
+                {isEmpty
+                    ? (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                    : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+                          <Posts posts={posts} />
+                      </div>
+
+                }
             </div>
         );
     }
