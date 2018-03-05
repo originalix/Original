@@ -34,7 +34,7 @@ export function invalidateSubreddit (subreddit) {
     }
 }
 
-function fetchPosts(subreddit) {
+export function fetchPosts(subreddit) {
     return dispatch => {
         dispatch(requestPosts(subreddit))
         return fetch(`http://www.reddit.com/r/${subreddit}.json`)
