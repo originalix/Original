@@ -10,7 +10,7 @@ class App extends Component {
         super(props);
         
     }
-    
+
     static propTypes = {
         selectedSubreddit: PropTypes.string.isRequired,
         posts: PropTypes.array.isRequired,
@@ -20,9 +20,9 @@ class App extends Component {
     }
     
     componentDidMount() {
-        const { dispatch } = this.props
+        const { dispatch, selectedSubreddit } = this.props
         console.log(this.props.selectedSubreddit);
-        dispatch(fetchPostsIfNeeded('Reactjs'))
+        dispatch(fetchPostsIfNeeded(selectedSubreddit))
     }
 
     handleChange = nextSubreddit => {
@@ -33,7 +33,7 @@ class App extends Component {
         const { selectedSubreddit, posts } = this.props;
 
         console.log('posts: ' + posts);
-        const options = ['Reactjs', 'redux', 'Python', 'Objective-C', 'Swift']
+        const options = ['reactjs', 'redux', 'Python', 'Objective-C', 'Swift']
         return (
             <div>
                 <Picker value={selectedSubreddit} onChange={this.handleChange} options={options}/>
@@ -43,9 +43,24 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     console.log('Hello world');
-    return state
+    const { selectedSubreddit, postsBySubreddit } = state
+    const {
+        isFetching,
+        lastUpdated,
+        items: posts
+    } = postsBySubreddit[selectedSubreddit] || {
+        isFetching: true,
+        items: []
+    }
+
+    return {
+        selectedSubreddit,
+        posts,
+        isFetching,
+        lastUpdated
+    }
 }
 
 export default connect(mapStateToProps)(App);
