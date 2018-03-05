@@ -30,14 +30,29 @@ class App extends Component {
     }
 
     render() {
-        const { selectedSubreddit, posts } = this.props;
-
-        console.log('posts: ' + posts);
+        const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
         const options = ['reactjs', 'redux', 'Python', 'Objective-C', 'Swift']
+        const isEmpty = posts.length === 0
+
         return (
             <div>
-                <Picker value={selectedSubreddit} onChange={this.handleChange} options={options}/>
-                {/* <Posts  /> */}
+                <Picker value={selectedSubreddit} 
+                        onChange={this.handleChange} 
+                        options={options} />
+                <p>
+                    { lastUpdated &&
+                        <span>
+                            Last Updated at {new Date(lastUpdated).toLocaleTimeString()}.
+                            {' '}
+                        </span>
+                    }
+                    { !isFetching &&
+                        <button onClick={function(){}}>
+                            Refresh
+                        </button>
+                    }
+                </p>
+                <Posts posts={posts} />
             </div>
         );
     }
