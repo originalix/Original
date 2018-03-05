@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPostsIfNeeded } from '../actions'
+import Picker from './Picker'
 
 class App extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Picker value='Kobe' onChange={function(){}} options={[ 'reactjs', 'Kobe' ]}/>
                 <h1>Hello world</h1>
             </div>
         );
