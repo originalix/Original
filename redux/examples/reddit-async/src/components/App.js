@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchPostsIfNeeded } from '../actions'
 
 class App extends Component {
     constructor(props) {
@@ -7,7 +9,9 @@ class App extends Component {
     }
     
     componentDidMount() {
+        const { dispatch } = this.props
         console.log(this.props);
+        dispatch(fetchPostsIfNeeded('Kobe'))
     }
 
     render() {
@@ -19,4 +23,11 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    console.log('Hello world');
+    return state
+}
+
+
+
+export default connect(mapStateToProps)(App);
