@@ -34,7 +34,7 @@ export const fetchPosts = subreddit => dispatch => {
         .then(json => dispatch(receivePosts(subreddit, json)))
 }
 
-function shouldFetchPosts(state, subreddit) {
+const shouldFetchPosts = (state, subreddit) => {
     const posts = state.postsBySubreddit[subreddit]
     if (!posts) {
         return true
@@ -45,23 +45,13 @@ function shouldFetchPosts(state, subreddit) {
     }
 }
 
-export function fetchPostsIfNeeded(subreddit) {
-
+export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
     // 注意这个函数也接收了 getState()方法
     // 它让你选择接下来dispatch什么
     
     // 当缓存的值是可用时，
     // 减少网络请求很有用
-
-    return (dispatch, getState) => {
-        if (shouldFetchPosts(getState(), subreddit)) {
-            
-            // 在一个thunk 里 dispatch 另一个 thunk!
-            return dispatch(fetchPosts(subreddit))
-        } else {
-
-            // 告诉调用代码不需要等待
-            return Promise.resolve()
-        }
+    if (shouldFetchPosts(getState(), subreddit)) {
+        return dispatch(fetchPosts(subreddit))
     }
 }
