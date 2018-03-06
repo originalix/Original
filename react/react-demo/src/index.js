@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { DatePicker, version } from 'antd'
+import Button from 'antd/lib/button'
 import 'antd/dist/antd.css'
 
 {/* antd test */}
@@ -15,11 +16,11 @@ ReactDOM.render(
             Current antd version: {version} <br/>
             You can change antd version.
         </p>
+        <Button type="primary">Button</Button>
         <DatePicker />
     </div>,
     document.getElementById('root')
 );
-
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
