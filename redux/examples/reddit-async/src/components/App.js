@@ -44,7 +44,7 @@ class App extends Component {
 
     render() {
         const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
-        const options = ['reactjs', 'javascript', 'Python', 'iOS', 'Swift']
+        const options = ['reactjs', 'Javascript', 'Python', 'iOS', 'Swift']
         const isEmpty = posts.length === 0
 
         return (
