@@ -9,9 +9,14 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2"
   }
 }

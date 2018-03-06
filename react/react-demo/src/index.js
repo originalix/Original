@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import './test.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -12,6 +13,7 @@ import 'antd/dist/antd.css'
 
 ReactDOM.render(
     <div style={{ margin: 24 }}>
+        <h1>Test Sass</h1>
         <p style={{ marginBottom: 24 }}>
             Current antd version: {version} <br/>
             You can change antd version.
