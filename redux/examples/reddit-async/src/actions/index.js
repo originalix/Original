@@ -15,28 +15,17 @@ const requestPosts = subreddit => ({
     subreddit
 })
 
-const receivePosts = ({subreddit, json}) => ({
+const receivePosts = (subreddit, json) => ({
     type: RECEIVE_POSTS,
     subreddit,
     posts: json.data.children.map( child => child.data ),
     receivedAt: Date.now()
 })
 
-// function receivePosts(subreddit, json) {
-//     return {
-//         type: RECEIVE_POSTS,
-//         subreddit,
-//         posts: json.data.children.map( child => child.data ),
-//         receivedAt: Date.now()
-//     }
-// }
-
-export function invalidateSubreddit (subreddit) {
-    return {
-        type: INVALIDATE_SUBREDDIT,
-        subreddit
-    }
-}
+export const invalidateSubreddit = subreddit => ({
+    type: INVALIDATE_SUBREDDIT,
+    subreddit
+})
 
 export function fetchPosts(subreddit) {
     return dispatch => {
@@ -46,6 +35,7 @@ export function fetchPosts(subreddit) {
             .then(json => dispatch(receivePosts(subreddit, json)))
     }
 }
+
 
 function shouldFetchPosts(state, subreddit) {
     const posts = state.postsBySubreddit[subreddit]
