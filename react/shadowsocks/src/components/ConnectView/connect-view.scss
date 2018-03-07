@@ -1,0 +1,10 @@
+$content-width: 100%;
+$content-height: 40%;
+// $content-color: #4895dc;
+$content-color: #108ee9;
+
+.wrap {
+    width: $content-width;
+    height: $content-height;
+    background-color: $content-color;
+}
