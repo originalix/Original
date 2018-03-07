@@ -4,6 +4,8 @@ import { List, InputItem } from 'antd-mobile';
 // import { createForm } from 'rc-form';
 import NormalNavigation from '../NavBar/NormalNavigation';
 
+const Item = List.Item;
+
 class ManualAddProxy extends Component {
 
     render() {
@@ -15,11 +17,7 @@ class ManualAddProxy extends Component {
 
                 <List renderHeader={() => ''}>
 
-                    <InputItem
-                        placeholder="选择国家"
-                    >
-                        国家
-                    </InputItem>
+                    <Item extra={<img src="/img/flag/default.png" />}>国家</Item>
 
                     <InputItem
                         placeholder="代理名称"
