@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { List } from 'antd-mobile';
+import history from '../../history/history';
 
 const Item = List.Item;
 
 class AddLineList extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+    }
 
-        const { manualAdd, goBack } = this.props;
+    pushToManualAddProxy() {
+        history.push('/addmanual')
+    }
+
+    render() {
 
         return (
             <div>
@@ -14,7 +21,7 @@ class AddLineList extends Component {
                     <Item 
                         thumb="/img/cloud.png"
                         arrow="horizontal"
-                        onClick={ () => manualAdd() }
+                        onClick={ () => this.pushToManualAddProxy() }
                     >
                         手动添加线路
                     </Item>

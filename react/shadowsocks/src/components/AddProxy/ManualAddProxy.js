@@ -12,8 +12,8 @@ class ManualAddProxy extends Component {
             <div>
                 <NormalNavigation 
                     title="选择线路"
-                    goBack={ () => history.goBack() }
                 />
+                
                 <List renderHeader={() => ''}>
 
                     <InputItem

@@ -9,22 +9,12 @@ import { goBack } from 'history';
 class SelectLine extends Component {
     constructor(props) {
         super(props);
-        this.goBack = this.goBack.bind(this);
-        this.pushToManualAddProxy = this.pushToManualAddProxy.bind(this);
-    }
-
-    goBack() {
-        this.props.history.goBack();
-    }
-
-    pushToManualAddProxy() {
-        this.props.history.push('/addmanual')
     }
     
     render() {
         return (
             <div>
-                <NormalNavigation title="选择线路" goBack={this.goBack} />
+                <NormalNavigation title="选择线路" />
                 <AddLineList
                     manualAdd={this.pushToManualAddProxy}
                 />
