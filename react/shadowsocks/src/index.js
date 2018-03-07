@@ -4,8 +4,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import { Router, Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+// import { Router } from 'react-router';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import './index.css';
 import App from './components/App/App';
@@ -19,14 +20,18 @@ const store = createStore(
     })
 );
 
+const history = syncHistoryWithStore(createBrowserHistory(), store);
+
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <Route path='/' component={App}>
+    <Router>
+        <Switch>
+            <Route exact path='/' component={App}>
+            </Route>
                 <Route path='/home' component={HomePage}/>
                 <Route path='/select' component={SelectLine}/>
-            </Route>
-        </BrowserRouter>
+        </Switch>
+    </Router>
     </Provider>,
     document.getElementById('root')
 );
