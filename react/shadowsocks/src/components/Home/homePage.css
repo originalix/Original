@@ -1,2 +1,5 @@
 .home-wrap {
   height: 100%; }
+
+.am-list-extra {
+  flex-basis: 50% !important; }

@@ -3,3 +3,7 @@ $wrap-height: 100%;
 .home-wrap {
     height: $wrap-height;
 }
+
+.am-list-extra {
+    flex-basis: 50% !important;
+}
