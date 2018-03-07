@@ -5,8 +5,9 @@ import './test.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { DatePicker, version } from 'antd'
-import Button from 'antd/lib/button'
+import { version } from 'antd'
+// import Button from 'antd/lib/button'
+import { WingBlank, WhiteSpace, Button, DatePicker } from 'antd-mobile';
 import 'antd/dist/antd.css'
 
 {/* antd test */}
@@ -18,8 +19,12 @@ ReactDOM.render(
             Current antd version: {version} <br/>
             You can change antd version.
         </p>
-        <Button type="primary">Button</Button>
-        <DatePicker />
+        {/* <Button type="primary">Button</Button> */}
+        {/* <Button type="primary" size="small" inline>small</Button> */}
+        <WingBlank>
+            <Button>default</Button><WhiteSpace />
+            <Button type="warning" disabled>warning disabled</Button><WhiteSpace />
+        </WingBlank>
     </div>,
     document.getElementById('root')
 );
