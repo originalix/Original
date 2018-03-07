@@ -8,6 +8,7 @@ class Navigation extends Component {
             <NavBar 
                 mode="dark"
                 icon={<i className="iconfont left-item">&#xe62f;</i>}
+                rightContent={<i className="iconfont left-item">&#xe629;</i>}
             >
                 ShadowSocks
             </NavBar>
