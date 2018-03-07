@@ -5,10 +5,6 @@ import history from '../../history/history';
 const Item = List.Item;
 
 class HomeList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     pushToSetting() {
         history.push('/select');
     }
@@ -17,10 +13,7 @@ class HomeList extends Component {
         history.push('/selectmode');
     }
     
-    render() {
-
-        const { settingClick, modeClick } = this.props;
-        
+    render() {        
         return (
             <div>
                 <List renderHeader={() => ''} className="home-list">

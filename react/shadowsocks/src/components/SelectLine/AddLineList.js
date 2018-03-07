@@ -5,16 +5,11 @@ import history from '../../history/history';
 const Item = List.Item;
 
 class AddLineList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     pushToManualAddProxy() {
         history.push('/addmanual')
     }
 
     render() {
-
         return (
             <div>
                 <List renderHeader={() => '添加线路'} className="home-list">

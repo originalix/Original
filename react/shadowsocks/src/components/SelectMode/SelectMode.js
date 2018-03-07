@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './selectMode.css';
 import NormalNavigation from '../NavBar/NormalNavigation';
-import { goBack } from 'history';
 import { List, Radio } from 'antd-mobile';
 
 const RadioItem = Radio.RadioItem;
@@ -12,15 +11,6 @@ class SelectMode extends Component {
         value2: 1,
     };
 
-    constructor(props) {
-        super(props);
-        this.goBack = this.goBack.bind(this);
-    }
-
-    goBack() {
-        this.props.history.goBack();
-    }
-
     onChange = (value) => {
         console.log('checkbox');
         this.setState({
@@ -30,7 +20,7 @@ class SelectMode extends Component {
     
     render() {
         const { value } = this.state;
-        
+
         const data = [
             { value: 0, label: '自动代理模式' },
             { value: 1, label: '全局代理模式' }
@@ -38,7 +28,7 @@ class SelectMode extends Component {
 
         return (
             <div>
-                <NormalNavigation title="代理模式" goBack={this.goBack} />
+                <NormalNavigation title="代理模式" />
                 <List renderHeader={() => '选择代理模式'} className="home-list">
                     {data.map( i => (
                         <RadioItem 

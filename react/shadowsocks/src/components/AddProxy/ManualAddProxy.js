@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './manualAddProxy.css';
 import { List, InputItem } from 'antd-mobile';
-import { createForm } from 'rc-form';
+// import { createForm } from 'rc-form';
 import NormalNavigation from '../NavBar/NormalNavigation';
-import history from '../../history/history';
 
 class ManualAddProxy extends Component {
 
@@ -13,7 +12,7 @@ class ManualAddProxy extends Component {
                 <NormalNavigation 
                     title="选择线路"
                 />
-                
+
                 <List renderHeader={() => ''}>
 
                     <InputItem

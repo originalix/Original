@@ -4,11 +4,6 @@ import './navigation.css';
 import history from '../../history/history';
 
 class NormalNavigation extends Component {
-    constructor(props) {
-        super(props);
-        
-    }
-
     goBack() {
         history.goBack();
     }
