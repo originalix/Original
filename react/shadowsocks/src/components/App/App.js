@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-        <SelectLine />
-        {/* <HomePage /> */}
+        {/* <SelectLine /> */}
+        <HomePage />
       </div>
     );
   }

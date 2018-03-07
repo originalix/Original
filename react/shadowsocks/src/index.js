@@ -3,15 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
+import { Router, Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
-const store = createStore(reducers);
+const store = createStore(
+    combineReducers({
+        ...reducers,
+        routing: routerReducer
+    })
+);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App /> 
+        <BrowserRouter>
+            <App /> 
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );
