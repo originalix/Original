@@ -10,26 +10,13 @@ import SelectMode from '../SelectMode/SelectMode';
 class App extends Component {
   constructor(props) {
       super(props);
-      this.pushToSetting = this.pushToSetting.bind(this);
-      this.pushToSelectMode = this.pushToSelectMode.bind(this);
-  }
-
-  pushToSetting() {
-      this.props.history.push('/select');
-  }
-
-  pushToSelectMode() {
-      this.props.history.push('/selectmode');
   }
 
   render() {
       return (
           <div className="App">
               <Navigation />
-              <HomePage 
-                  settingClick={this.pushToSetting}
-                  modeClick={this.pushToSelectMode}
-              />
+              <HomePage />
           </div>
     );
   }

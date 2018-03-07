@@ -4,12 +4,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-
-// import createBrowserHistory from 'history/createBrowserHistory'
 import history from './history/history';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter, routerReducer } from 'react-router-redux';
-
 
 import './index.css';
 import App from './components/App/App';
@@ -24,8 +21,6 @@ const store = createStore(
         routing: routerReducer
     })
 );
-
-// const history = createBrowserHistory()
 
 ReactDOM.render(
     <Provider store={store}>

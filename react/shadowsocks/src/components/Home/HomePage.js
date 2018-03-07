@@ -5,15 +5,10 @@ import './homePage.css';
 
 class HomePage extends Component {
     render() {
-        const { settingClick, modeClick } = this.props;
-
         return (
             <div className="home-wrap">
                 <ConnectView />
-                <List 
-                    settingClick={settingClick}
-                    modeClick={modeClick}
-                />
+                <List />
             </div>
         );
     }
