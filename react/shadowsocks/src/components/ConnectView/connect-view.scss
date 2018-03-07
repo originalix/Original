@@ -8,3 +8,23 @@ $content-color: #108ee9;
     height: $content-height;
     background-color: $content-color;
 }
+
+$logo-width: 130.5px;
+.logo {
+    position: relative;
+    top: 14%;
+    font-size: 80px !important;
+    color: white;
+    
+}
+
+.content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    width: $logo-width;
+    height: $logo-width;
+    margin: 0 auto;
+    border-radius: 85px;
+}
