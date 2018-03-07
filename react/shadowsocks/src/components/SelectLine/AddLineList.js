@@ -5,12 +5,16 @@ const Item = List.Item;
 
 class AddLineList extends Component {
     render() {
+
+        const { manualAdd, goBack } = this.props;
+
         return (
             <div>
                 <List renderHeader={() => '添加线路'} className="home-list">
                     <Item 
                         thumb="/img/cloud.png"
                         arrow="horizontal"
+                        onClick={ () => manualAdd() }
                     >
                         手动添加线路
                     </Item>
