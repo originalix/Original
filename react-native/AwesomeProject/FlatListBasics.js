@@ -14,10 +14,10 @@ class FlatListBasics extends Component {
       {key: 'Julie'},
     ];
     return (
-      <View>
-        <FlatList 
+      <View style={styles.container}>
+        <FlatList
           data={data}
-          renderItem={(item) => <Text>{item.key}</Text>}
+          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
         />
       </View>
     );
@@ -25,3 +25,15 @@ class FlatListBasics extends Component {
 }
 
 export default FlatListBasics;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  }
+});
