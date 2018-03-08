@@ -23,7 +23,7 @@ class ManualAddProxy extends Component {
                 <List renderHeader={() => ''}>
 
                     <Item 
-                        extra={<img src="/img/flag/default.png" />}
+                        extra={<img src="/img/flag/flag.png" />}
                         onClick={() => this.pushToSelectCountry()}
                     >
                         国家
