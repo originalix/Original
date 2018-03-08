@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View, SectionList } from 'react-native';
+import { StackNavigation } from 'react-navigation';
 
 class FlatListBasics extends Component {
   getMoviesFromApiAsync() {
