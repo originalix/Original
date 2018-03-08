@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View, SectionList } from 'react-native';
 
 class FlatListBasics extends Component {
+  getMoviesFromApiAsync() {
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => {
+        // alert(response.json());
+        response.json()
+      })
+      .then((responseJson) => {
+        alert(responseJson.movies);
+        return responseJson.movies;
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
   render() {
     const data = [
       {key: 'Devin'},
@@ -13,13 +27,14 @@ class FlatListBasics extends Component {
       {key: 'Jimmy'},
       {key: 'Julie'},
     ];
+    this.getMoviesFromApiAsync();
     return (
       <View style={styles.container}>
         {/* <FlatList
           data={data}
           renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
         /> */}
-
+        
         <SectionList
           sections={[
             {title: 'D', data: ['Devin']},
