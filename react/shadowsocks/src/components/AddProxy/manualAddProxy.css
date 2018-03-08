@@ -1,2 +1,7 @@
 .am-input-control > input {
   text-align: right; }
+
+.am-list-thumb > img {
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px; }

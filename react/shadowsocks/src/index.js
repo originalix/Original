@@ -14,7 +14,7 @@ import HomePage from './components/Home/HomePage';
 import SelectLine from './components/SelectLine/SelectLine';
 import SelectMode from './components/SelectMode/SelectMode';
 import ManualAddProxy from './components/AddProxy/ManualAddProxy';
-
+import SelectCountry from './components/AddProxy/SelectCountry';
 const store = createStore(
     combineReducers({
         ...reducers,
@@ -31,6 +31,7 @@ ReactDOM.render(
         <Route path="/select" component={SelectLine}/>
         <Route path="/selectmode" component={SelectMode}/>
         <Route path="/addmanual" component={ManualAddProxy}/>
+        <Route path='/selectcountry' component={SelectCountry}/>
     </Switch>
     </ConnectedRouter>
     </Provider>,
