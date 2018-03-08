@@ -3,3 +3,9 @@ $input-item-algin: right;
 .am-input-control > input {
     text-align: $input-item-algin;
 }
+
+.am-list-thumb > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}

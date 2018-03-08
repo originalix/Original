@@ -3,10 +3,15 @@ import './manualAddProxy.css';
 import { List, InputItem } from 'antd-mobile';
 // import { createForm } from 'rc-form';
 import NormalNavigation from '../NavBar/NormalNavigation';
+import SelectCountry from './SelectCountry';
+import history from '../../history/history';
 
 const Item = List.Item;
 
 class ManualAddProxy extends Component {
+    pushToSelectCountry() {
+        history.push('/selectcountry');
+    }
 
     render() {
         return (
@@ -17,7 +22,12 @@ class ManualAddProxy extends Component {
 
                 <List renderHeader={() => ''}>
 
-                    <Item extra={<img src="/img/flag/default.png" />}>国家</Item>
+                    <Item 
+                        extra={<img src="/img/flag/default.png" />}
+                        onClick={() => this.pushToSelectCountry()}
+                    >
+                        国家
+                    </Item>
 
                     <InputItem
                         placeholder="代理名称"
