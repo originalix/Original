@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, Image, StyleSheet } from 'react-native'
+import { Text, View, Image, StyleSheet, AppRegistry } from 'react-native'
 
-export default class App extends Component {
+class App extends Component {
     render() {
         let pic = {
             uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
@@ -21,6 +21,8 @@ export default class App extends Component {
         )
     }
 }
+
+export default App;
 
 const styles = StyleSheet.create({
     wrap: {
@@ -49,4 +51,16 @@ class Greeting extends Component {
             <Text>Hello {this.props.name}!</Text>
         );
     }
+}
+
+class FlexDimensionsBasics extends Component {
+  render() {
+    return (
+        <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+            <View style={{flex: 2, backgroundColor: 'skyblue'}} />
+            <View style={{flex: 3, backgroundColor: 'steelblue'}} />
+        </View>
+    )
+  }
 }
