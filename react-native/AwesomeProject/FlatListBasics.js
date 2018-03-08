@@ -2,20 +2,32 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View, SectionList } from 'react-native';
 
 class FlatListBasics extends Component {
+  // getMoviesFromApiAsync() {
+  //   return fetch('https://facebook.github.io/react-native/movies.json')
+  //     .then((response) => {
+  //       console.log(response.json());
+  //       response.json()
+  //     })
+  //     .then((responseJson) => {
+  //       console.log(responseJson.movies);
+  //       return responseJson.movies;
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+
   getMoviesFromApiAsync() {
     return fetch('https://facebook.github.io/react-native/movies.json')
-      .then((response) => {
-        // alert(response.json());
-        response.json()
-      })
+      .then((response) => response.json())
       .then((responseJson) => {
-        alert(responseJson.movies);
         return responseJson.movies;
       })
       .catch((error) => {
-        alert(error);
+        console.error(error);
       });
   }
+  
   render() {
     const data = [
       {key: 'Devin'},
