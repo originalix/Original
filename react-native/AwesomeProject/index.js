@@ -1,5 +1,6 @@
 import { AppRegistry } from 'react-native';
 import App from './App';
-import FlexDimensionsBasics from './FlexDimensionsBasics';
+// import FlexDirectionBasics from './FlexDirectionBasics';
+import JustifyContentBasics from './JustifyContentBasics';
 
-AppRegistry.registerComponent('AwesomeProject', () => FlexDimensionsBasics);
+AppRegistry.registerComponent('AwesomeProject', () => JustifyContentBasics);
