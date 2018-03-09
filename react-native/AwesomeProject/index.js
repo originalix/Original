@@ -4,7 +4,7 @@ import App from './App';
 // import JustifyContentBasics from './JustifyContentBasics';
 // import PizzaTranslator from './PizzaTranslator';
 // import FlatListBasics from './FlatListBasics';
-// import RootStack from './RootStack';
-import TabStack from './RootStack';
+// import TabStack from './RootStack';
+import RootStack from './RootStack';
 
-AppRegistry.registerComponent('AwesomeProject', () => TabStack);
+AppRegistry.registerComponent('AwesomeProject', () => RootStack);
