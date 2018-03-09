@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, Image } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons'; // Version can be specified in package.json
 
 class LogoTitle extends Component {
   render() {
@@ -14,28 +15,28 @@ class LogoTitle extends Component {
 }
 
 class HomeScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    // title: 'Home',
-    const params = navigation.state.params || {};
-    return {
-      headerTitle: <LogoTitle />,
-      headerRight: (
-        <Button
-          onPress={params.increaseCount}
-          title="+1"
-          color="#fff"
-        />
-      ),
-      headerLeft: (
-        <Button
-          onPress={() => navigation.navigate('MyModal')}
-          title="Modal"
-          color="#fff"
-        />
-      ),
-      headerBackTitle: "",
-    }
-  };
+  // static navigationOptions = ({ navigation }) => {
+  //   // title: 'Home',
+  //   const params = navigation.state.params || {};
+  //   return {
+  //     headerTitle: <LogoTitle />,
+  //     headerRight: (
+  //       <Button
+  //         onPress={params.increaseCount}
+  //         title="+1"
+  //         color="#fff"
+  //       />
+  //     ),
+  //     headerLeft: (
+  //       <Button
+  //         onPress={() => navigation.navigate('MyModal')}
+  //         title="Modal"
+  //         color="#fff"
+  //       />
+  //     ),
+  //     headerBackTitle: "",
+  //   }
+  // };
 
   componentWillMount() {
     this.props.navigation.setParams({ increaseCount: this._increaseCount });
@@ -69,17 +70,17 @@ class HomeScreen extends Component {
 }
 
 class DetailsScreen extends Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
-    const { params } = navigation.state;
+  // static navigationOptions = ({ navigation, navigationOptions }) => {
+  //   const { params } = navigation.state;
     
-    return {
-      title: params ? params.otherParams : 'A Nested Details Screen',
-      headerStyle: {
-        backgroundColor: navigationOptions.headerTintColor,
-      },
-      headerTintColor: navigationOptions.headerStyle.backgroundColor,
-    }
-  };
+  //   return {
+  //     title: params ? params.otherParams : 'A Nested Details Screen',
+  //     headerStyle: {
+  //       backgroundColor: navigationOptions.headerTintColor,
+  //     },
+  //     headerTintColor: navigationOptions.headerStyle.backgroundColor,
+  //   }
+  // };
   
   render() {
     const { params } = this.props.navigation.state;
@@ -162,3 +163,46 @@ const RootStack = StackNavigator(
 
 // export default RootStack;
 
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings!</Text>
+      </View>
+    );
+  }
+}
+
+const TabStack = TabNavigator(
+  {
+    Home: { screen: HomeScreen },
+    Settings: { screen: SettingsScreen },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Settings') {
+          iconName = `ios-options${focused ? '' : '-outline'}`;
+        }
+
+        // You can return any component that you like here! We usually use an
+        // icon component from react-native-vector-icons
+        return <Ionicons name={iconName} size={25} color={tintColor} />;
+      },
+    }),
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+    animationEnabled: false,
+    swipeEnabled: false,
+  }
+);
+
+export default TabStack;
