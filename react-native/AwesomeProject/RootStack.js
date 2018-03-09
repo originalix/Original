@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Image } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+
+class LogoTitle extends Component {
+  render() {
+    return (
+      <Image
+        source={require('./favicon.png')}
+        style={{ width: 30, height: 30 }}
+      />
+    );
+  }
+}
 
 class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Home',
-    headerStyle: {
-      backgroundColor: '#f4511e'
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-      fontSize: 18
-    },
+    // headerTitle: <LogoTitle />,
   }
 
   render() {
@@ -34,11 +38,15 @@ class HomeScreen extends Component {
 }
 
 class DetailsScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
     
     return {
-      title: params ? params.otherParams : 'A Nested Details Screen'
+      title: params ? params.otherParams : 'A Nested Details Screen',
+      headerStyle: {
+        backgroundColor: navigationOptions.headerTintColor,
+      },
+      headerTintColor: navigationOptions.headerStyle.backgroundColor,
     }
   };
   
@@ -80,6 +88,15 @@ const RootStack = StackNavigator(
   },
   {
     initialRouteName: 'Home',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
   },
 );
 
