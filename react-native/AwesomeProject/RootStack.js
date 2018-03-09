@@ -15,8 +15,15 @@ class LogoTitle extends Component {
 
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: 'Home',
-    // headerTitle: <LogoTitle />,
+    // title: 'Home',
+    headerTitle: <LogoTitle />,
+    headerRight: (
+      <Button
+        onPress={() => alert('This is a button!')}
+        title="Info"
+        color="#fff"
+      />
+    ),
   }
 
   render() {
