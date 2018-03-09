@@ -3,6 +3,18 @@ import { View, Text, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    title: 'Home',
+    headerStyle: {
+      backgroundColor: '#f4511e'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 18
+    },
+  }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -22,6 +34,14 @@ class HomeScreen extends Component {
 }
 
 class DetailsScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state;
+    
+    return {
+      title: params ? params.otherParams : 'A Nested Details Screen'
+    }
+  };
+  
   render() {
     const { params } = this.props.navigation.state;
     const itemId = params ? params.itemId : null;
@@ -39,6 +59,10 @@ class DetailsScreen extends Component {
         <Button
           title="Go back"
           onPress={() => this.props.navigation.goBack()}
+        />
+        <Button 
+          title="Update the title"
+          onPress={() => this.props.navigation.setParams({otherParams: 'Updated!'})}
         />
       </View>
     );
