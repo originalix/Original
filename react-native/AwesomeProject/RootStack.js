@@ -26,6 +26,14 @@ class HomeScreen extends Component {
           color="#fff"
         />
       ),
+      headerLeft: (
+        <Button
+          onPress={() => navigation.navigate('MyModal')}
+          title="Modal"
+          color="#fff"
+        />
+      ),
+      headerBackTitle: "",
     }
   };
 
@@ -100,7 +108,21 @@ class DetailsScreen extends Component {
   }
 }
 
-const RootStack = StackNavigator(
+class ModalScreen extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+        <Button 
+          onPress={() => this.props.navigation.goBack()}
+          title="Dismiss"
+        />
+      </View>
+    );
+  }
+}
+
+const MainStack = StackNavigator(
   {
     Home: {
       screen: HomeScreen
@@ -123,4 +145,20 @@ const RootStack = StackNavigator(
   },
 );
 
-export default RootStack;
+const RootStack = StackNavigator(
+  {
+    Main: {
+      screen: MainStack,
+    },
+    MyModal: {
+      screen: ModalScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  },
+);
+
+// export default RootStack;
+
