@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image } from 'react-native';
+import { View, Text, Button, Image, TouchableHighlight } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 
 class LogoTitle extends Component {
@@ -9,6 +9,20 @@ class LogoTitle extends Component {
         source={require('./favicon.png')}
         style={{ width: 30, height: 30 }}
       />
+    );
+  }
+}
+
+class MyButton extends Component {
+  _onPressButton() {
+    console.log("You tapped the button");
+  }
+
+  render() {
+    return (
+      <TouchableHighlight onPress={this._onPressButton}>
+        <Text>TouchableHighlight</Text>
+      </TouchableHighlight>
     );
   }
 }
@@ -63,6 +77,7 @@ class HomeScreen extends Component {
             });
           }}
         />
+        <MyButton/>
       </View>
     );
   }
