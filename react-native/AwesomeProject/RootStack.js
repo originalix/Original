@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, Image, TouchableHighlight } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
+import FadeInView from './FadeInView';
 
 class LogoTitle extends Component {
   render() {
@@ -78,6 +79,9 @@ class HomeScreen extends Component {
           }}
         />
         <MyButton/>
+        <FadeInView style={{width: 250, height: 70, backgroundColor: 'powderblue'}}>
+          <Text style={{ fontSize: 28, textAlign: 'center', margin: 10 }}>Fading in</Text>
+        </FadeInView>
       </View>
     );
   }
