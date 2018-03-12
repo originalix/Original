@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Button, Image, TouchableHighlight, NativeModules } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import FadeInView from './FadeInView';
 
@@ -17,6 +17,8 @@ class LogoTitle extends Component {
 class MyButton extends Component {
   _onPressButton() {
     console.log("You tapped the button");
+    let CalendarManager = NativeModules.CalendarManager;
+    CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey');
   }
 
   render() {
