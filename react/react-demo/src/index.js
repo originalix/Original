@@ -12,3 +12,4 @@ ReactDOM.render(
     <Animated/>,
     document.getElementById('root')
 );
+  

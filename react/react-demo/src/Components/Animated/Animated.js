@@ -6,6 +6,9 @@ class Animated extends Component {
     return (
       <div>
         <h1>Hello World</h1>
+        <div className="img-wrap">
+          <img src="/China.png" alt=""/>
+        </div>
       </div>
     );
   }
