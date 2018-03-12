@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 #import <React/RCTLog.h>
+#import <React/RCTConvert.h>
 
 @interface CalendarManager : NSObject<RCTBridgeModule>
 

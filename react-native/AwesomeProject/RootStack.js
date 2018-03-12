@@ -18,7 +18,14 @@ class MyButton extends Component {
   _onPressButton() {
     console.log("You tapped the button");
     let CalendarManager = NativeModules.CalendarManager;
-    CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey');
+    // CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey', date.toISOString());
+    let date = new Date();
+    // CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey', date.toISOString());
+    CalendarManager.addEvent('Play Basketball', {
+      location: '全民健身中心',
+      time: date,
+      description: 'balabala...'
+    });
   }
 
   render() {

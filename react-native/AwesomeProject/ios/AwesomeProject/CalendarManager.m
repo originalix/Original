@@ -12,9 +12,22 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(addEvent:(NSString *)name location:(NSString *)location)
+//RCT_EXPORT_METHOD(addEvent:(NSString *)name location:(NSString *)location)
+//{
+//  RCTLogInfo(@"Pretending to create an event %@ at %@", name, location);
+//}
+
+//RCT_EXPORT_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(NSString *)date)
+//{
+////  NSDate *date = [RCTConvert NSDate:ISO8601DateString];
+//  RCTLogInfo(@"%@", date);
+//}
+
+RCT_EXPORT_METHOD(addEvent:(NSString *)name details:(NSDictionary *)details)
 {
-  RCTLogInfo(@"Pretending to create an event %@ at %@", name, location);
+  NSString *location = [RCTConvert NSString:details[@"location"]];
+  NSDate *date = [RCTConvert NSDate:details[@"time"]];
+  RCTLogInfo(@"location: %@, time: %@", location, date);
 }
 
 @end
