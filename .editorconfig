@@ -24,6 +24,18 @@ indent_style = space
 indent_style = space
 indent_size = 4
 
+[*h]
+indent_style = space
+indent_size = 4
+
+[*m]
+indent_style = space
+indent_size = 4
+
+[*swift]
+indent_style = space
+indent_size = 4
+
 # Tab indentation (no size specified)
 [Makefile]
 indent_style = tab

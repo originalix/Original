@@ -28,12 +28,24 @@ RCT_EXPORT_METHOD(addEvent:(NSString *)name details:(NSDictionary *)details)
   NSString *location = [RCTConvert NSString:details[@"location"]];
   NSDate *date = [RCTConvert NSDate:details[@"time"]];
   RCTLogInfo(@"location: %@, time: %@", location, date);
+  [self sendEventWithName:@"EventReminder" body:@{@"name": @"wssxxxxxxxx"}];
+}
+//
+//RCT_EXPORT_METHOD(findEvent:(RCTResponseSenderBlock)callback)
+//{
+//  NSArray *events = @[@2150, @21, @1201];
+//  callback(@[[NSNull null], events]);
+//}
+
+// 给Javascript发送事件
+
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"EventReminder"];
 }
 
-RCT_EXPORT_METHOD(findEvent:(RCTResponseSenderBlock)callback)
-{
-  NSArray *events = @[@2150, @21, @1201];
-  callback(@[[NSNull null], events]);
+- (void)calendarEventReminderReceived:(NSNotification *)notification {
+    NSString *eventName = notification.userInfo[@"name"];
+    [self sendEventWithName:@"EventReminder" body:@{@"name" : eventName}];
 }
 
 @end
