@@ -9,6 +9,9 @@ class Animated extends Component {
         <div className="img-wrap">
           <img src="/China.png" alt=""/>
         </div>
+        <div className="rainbow-wrap">
+          <h1>Hello CSS</h1>
+        </div>
       </div>
     );
   }

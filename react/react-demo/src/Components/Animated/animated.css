@@ -9,8 +9,22 @@ img {
   width: 15px;
   display: block;
   margin: 15px auto;
-  transition: 1s height cubic-bezier(0.36, 0.64, 0.73, 0.4); }
+  transition-property: height;
+  transition-duration: 1s;
+  transition-delay: 1s;
+  transition-timing-function: ease; }
 
 img:hover {
   height: 450px;
   width: 450px; }
+
+.rainbow-wrap:hover {
+  animation: 1s rainbow backwards; }
+
+@keyframes rainbow {
+  0% {
+    background: #c00; }
+  50% {
+    background: orange; }
+  100% {
+    background: yellowgreen; } }
