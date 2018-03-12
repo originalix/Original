@@ -19,13 +19,21 @@ class MyButton extends Component {
     console.log("You tapped the button");
     let CalendarManager = NativeModules.CalendarManager;
     // CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey', date.toISOString());
-    let date = new Date();
+    // let date = new Date();
     // CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey', date.toISOString());
-    CalendarManager.addEvent('Play Basketball', {
-      location: '全民健身中心',
-      time: date,
-      description: 'balabala...'
-    });
+    // CalendarManager.addEvent('Play Basketball', {
+    //   location: '全民健身中心',
+    //   time: date,
+    //   description: 'balabala...'
+    // });
+
+    CalendarManager.findEvent((error, events) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(events);
+      }
+    })
   }
 
   render() {

@@ -30,4 +30,10 @@ RCT_EXPORT_METHOD(addEvent:(NSString *)name details:(NSDictionary *)details)
   RCTLogInfo(@"location: %@, time: %@", location, date);
 }
 
+RCT_EXPORT_METHOD(findEvent:(RCTResponseSenderBlock)callback)
+{
+  NSArray *events = @[@2150, @21, @1201];
+  callback(@[[NSNull null], events]);
+}
+
 @end
