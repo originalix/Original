@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Button, Image, TouchableHighlight, NativeModules, NativeEventEmitter } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import FadeInView from './FadeInView';
 
@@ -17,6 +17,23 @@ class LogoTitle extends Component {
 class MyButton extends Component {
   _onPressButton() {
     console.log("You tapped the button");
+    let CalendarManager = NativeModules.CalendarManager;
+    // CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey', date.toISOString());
+    let date = new Date();
+    // CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey', date.toISOString());
+    CalendarManager.addEvent('Play Basketball', {
+      location: '全民健身中心',
+      time: date,
+      description: 'balabala...'
+    });
+
+    // CalendarManager.findEvent((error, events) => {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log(events);
+    //   }
+    // })
   }
 
   render() {
@@ -27,6 +44,9 @@ class MyButton extends Component {
     );
   }
 }
+
+const { CalendarManager } = NativeModules;
+const calendarManagerEmitter = new NativeEventEmitter(CalendarManager);
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -54,6 +74,18 @@ class HomeScreen extends Component {
 
   componentWillMount() {
     this.props.navigation.setParams({ increaseCount: this._increaseCount });
+  }
+
+  componentDidMount() {
+    const subscription = calendarManagerEmitter.addListener(
+      'EventReminder',
+      (render) => console.log('----------->' + render.name)
+    );
+  }
+
+  componentWillUnmount() {
+    // subscription.remove();
+    calendarManagerEmitter.remove();
   }
 
   state = {
