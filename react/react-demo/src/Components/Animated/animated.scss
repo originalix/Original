@@ -1,3 +1,20 @@
 h1 {
     color: blueviolet;
 }
+
+.img-wrap {
+    margin: 50px;
+}
+
+img{
+    height:15px;
+    width:15px;
+    display: block;
+    margin:15px auto;
+    transition: 1s height cubic-bezier(.36,.64,.73,.4);
+}
+
+img:hover{
+    height: 450px;
+    width: 450px;
+}
