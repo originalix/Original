@@ -32,11 +32,134 @@ img:hover{
 }
 
 .rainbow-wrap:hover {
+<<<<<<< HEAD
     animation: 1s rainbow infinite steps(10);
+=======
+    animation: 1s rainbow 3 reverse;
+>>>>>>> 73e5ad60a88f491fce7cb411825e24900d0799b8
 }
 
 @keyframes rainbow {
     from { background: #c00; }
     50% { background: orange; }
     to { background: yellowgreen; }
+}
+
+.rotate {
+    display: block;
+    width: 9em;
+    height: 1em;
+    margin: 1em auto;
+    background: yellowgreen;
+        animation: spin 1s linear infinite;
+        -webkit-animation: spin 1s linear infinite;
+        animation-play-state: paused;
+        -webkit-animation-play-state: paused;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(1turn);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(1turn);
+    }
+}
+
+.rotate:hover {
+    // animation: spin 1s linear infinite;
+    // -webkit-animation: spin 1s linear infinite;
+    animation-play-state: running;
+    -webkit-animation-play-state: running;
+}
+
+/* step动画 */
+@-webkit-keyframes typing {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@-webkit-keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+@-moz-keyframes typing {
+    from { width: 100% }
+    to { width: 0 }
+}
+
+@-moz-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black }
+}
+
+
+.step-wrap {
+    font-family: Consolas, monospace;
+}
+
+.step-wrap h1 {
+    position: relative;
+    float: left;
+    font-size: 150%;
+    color: black;
+}
+
+.step-wrap h1 span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    background: white;
+    border-left: .1em solid black;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-animation: typing 5s steps(24, end),
+                        blink-caret 1s step-end infinite;
+    -moz-animation: typeing 5s steps(24, end),
+                    blink-caret 1s step-end infinite;
+}
+
+/* step animation */
+.hi {
+    margin: 40px;
+    width: 50px;
+    height: 72px;
+    background-image: url("http://s.cdpn.io/79/sprite-steps.png");
+    
+    -webkit-animation: play .8s steps(10) infinite;
+       -moz-animation: play .8s steps(10) infinite;
+        -ms-animation: play .8s steps(10) infinite;
+         -o-animation: play .8s steps(10) infinite;
+            animation: play .8s steps(10) infinite;
+}
+
+@-webkit-keyframes play {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+@-moz-keyframes play {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+@-ms-keyframes play {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+@-o-keyframes play {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+@keyframes play {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
 }
