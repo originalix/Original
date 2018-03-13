@@ -10,9 +10,13 @@ img {
   width: 15px;
   display: block;
   margin: 15px auto;
+  -webkit-transition-property: height;
   transition-property: height;
+  -webkit-transition-duration: 1s;
   transition-duration: 1s;
+  -webkit-transition-delay: 1s;
   transition-delay: 1s;
+  -webkit-transition-timing-function: ease;
   transition-timing-function: ease; }
 
 img:hover {
@@ -20,7 +24,16 @@ img:hover {
   width: 450px; }
 
 .rainbow-wrap:hover {
+  -webkit-animation: 1s rainbow 3 reverse;
   animation: 1s rainbow 3 reverse; }
+
+@-webkit-keyframes rainbow {
+  from {
+    background: #c00; }
+  50% {
+    background: orange; }
+  to {
+    background: yellowgreen; } }
 
 @keyframes rainbow {
   from {
@@ -41,11 +54,11 @@ img:hover {
   animation-play-state: paused;
   -webkit-animation-play-state: paused; }
 
-@keyframes spin {
+@-webkit-keyframes spin {
   to {
     -webkit-transform: rotate(1turn); } }
 
-@-webkit-keyframes spin {
+@keyframes spin {
   to {
     -webkit-transform: rotate(1turn); } }
 
@@ -61,18 +74,6 @@ img:hover {
     width: 0; } }
 
 @-webkit-keyframes blink-caret {
-  from, to {
-    border-color: transparent; }
-  50% {
-    border-color: black; } }
-
-@-moz-keyframes typing {
-  from {
-    width: 100%; }
-  to {
-    width: 0; } }
-
-@-moz-keyframes blink-caret {
   from, to {
     border-color: transparent; }
   50% {
@@ -94,7 +95,7 @@ img:hover {
   width: 0;
   background: white;
   border-left: .1em solid black;
-  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-animation: typing 5s steps(24, end), blink-caret 1s step-end infinite;
   -moz-animation: typeing 5s steps(24, end), blink-caret 1s step-end infinite; }
@@ -106,30 +107,9 @@ img:hover {
   height: 72px;
   background-image: url("http://s.cdpn.io/79/sprite-steps.png");
   -webkit-animation: play 0.8s steps(10) infinite;
-  -moz-animation: play 0.8s steps(10) infinite;
-  -ms-animation: play 0.8s steps(10) infinite;
-  -o-animation: play 0.8s steps(10) infinite;
   animation: play 0.8s steps(10) infinite; }
 
 @-webkit-keyframes play {
-  from {
-    background-position: 0px; }
-  to {
-    background-position: -500px; } }
-
-@-moz-keyframes play {
-  from {
-    background-position: 0px; }
-  to {
-    background-position: -500px; } }
-
-@-ms-keyframes play {
-  from {
-    background-position: 0px; }
-  to {
-    background-position: -500px; } }
-
-@-o-keyframes play {
   from {
     background-position: 0px; }
   to {
