@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import Animated from './Components/Animated/Animated';
+import AnimatedExample from './Components/Animated/index';
 
 
 {/* antd test */}
 
 ReactDOM.render(
-    <Animated/>,
+    <AnimatedExample/>,
     document.getElementById('root')
 );
   
