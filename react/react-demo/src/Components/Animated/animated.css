@@ -19,7 +19,7 @@ img:hover {
   width: 450px; }
 
 .rainbow-wrap:hover {
-  animation: 1s rainbow backwards; }
+  animation: 1s rainbow 3 reverse; }
 
 @keyframes rainbow {
   0% {
@@ -28,3 +28,22 @@ img:hover {
     background: orange; }
   100% {
     background: yellowgreen; } }
+
+.rotate {
+  display: block;
+  width: 9em;
+  height: 1em;
+  margin: 1em auto;
+  background: yellowgreen; }
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn); } }
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn); } }
+
+.rotate:hover {
+  animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite; }

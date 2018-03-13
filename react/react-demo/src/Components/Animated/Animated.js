@@ -12,6 +12,7 @@ class Animated extends Component {
         <div className="rainbow-wrap">
           <h1>Hello CSS</h1>
         </div>
+        <div className="rotate"></div>
       </div>
     );
   }
