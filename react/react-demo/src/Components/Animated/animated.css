@@ -19,12 +19,12 @@ img:hover {
   width: 450px; }
 
 .rainbow-wrap:hover {
-  animation: 1s rainbow backwards; }
+  animation: 1s rainbow infinite steps(10); }
 
 @keyframes rainbow {
-  0% {
+  from {
     background: #c00; }
   50% {
     background: orange; }
-  100% {
+  to {
     background: yellowgreen; } }
