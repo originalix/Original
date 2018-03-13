@@ -47,6 +47,10 @@ img:hover{
     height: 1em;
     margin: 1em auto;
     background: yellowgreen;
+        animation: spin 1s linear infinite;
+        -webkit-animation: spin 1s linear infinite;
+        animation-play-state: paused;
+        -webkit-animation-play-state: paused;
 }
 
 @keyframes spin {
@@ -62,6 +66,25 @@ img:hover{
 }
 
 .rotate:hover {
-    animation: spin 1s linear infinite;
-    -webkit-animation: spin 1s linear infinite;
+    // animation: spin 1s linear infinite;
+    // -webkit-animation: spin 1s linear infinite;
+    animation-play-state: running;
+    -webkit-animation-play-state: running;
+}
+
+.step-wrap h1 {
+    position: relative;
+    float: left;
+    font-size: 150%;
+}
+
+.step-wrap h1 span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    background: white;
+    border-left: .1em solid black;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
