@@ -20,11 +20,7 @@ img:hover {
   width: 450px; }
 
 .rainbow-wrap:hover {
-<<<<<<< HEAD
-  animation: 1s rainbow infinite steps(10); }
-=======
   animation: 1s rainbow 3 reverse; }
->>>>>>> 73e5ad60a88f491fce7cb411825e24900d0799b8
 
 @keyframes rainbow {
   from {
