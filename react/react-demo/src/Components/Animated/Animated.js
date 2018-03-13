@@ -13,7 +13,7 @@ class Animated extends Component {
           <h1>Hello CSS</h1>
         </div>
         <div className="rotate"></div>
-        <div className="step-wrap"><h1>Typing animation by Lea Verou.</h1></div>
+        <div className="step-wrap"><h1>Typing animation by Lix.<span>&nbsp;</span></h1></div>
       </div>
     );
   }

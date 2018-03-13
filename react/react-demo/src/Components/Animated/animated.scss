@@ -72,10 +72,37 @@ img:hover{
     -webkit-animation-play-state: running;
 }
 
+/* step动画 */
+@-webkit-keyframes typing {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@-webkit-keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+@-moz-keyframes typing {
+    from { width: 100% }
+    to { width: 0 }
+}
+
+@-moz-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black }
+}
+
+
+.step-wrap {
+    font-family: Consolas, monospace;
+}
+
 .step-wrap h1 {
     position: relative;
     float: left;
     font-size: 150%;
+    color: black;
 }
 
 .step-wrap h1 span {
@@ -87,4 +114,9 @@ img:hover{
     border-left: .1em solid black;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+
+    -webkit-animation: typing 5s steps(24, end),
+                        blink-caret 1s step-end infinite;
+    -moz-animation: typeing 5s steps(24, end),
+                    blink-caret 1s step-end infinite;
 }
