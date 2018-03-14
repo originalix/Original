@@ -7,7 +7,7 @@
 //
 
 #import "TestViewController.h"
-
+#import "RNViewController.h"
 
 @interface TestViewController ()
 
@@ -24,6 +24,8 @@
     [super viewDidLoad];
     self.navigationItem.title = @"原生测试页面";
     self.view.backgroundColor = [UIColor redColor];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -33,6 +35,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)buttonClick:(UIButton *)sender {
+    RNViewController *vc = [[RNViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 @end
