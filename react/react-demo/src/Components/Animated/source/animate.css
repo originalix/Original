@@ -27,6 +27,18 @@
   animation-name: bounce;
   transform-origin: center bottom; }
 
+@keyframes flash {
+  from,
+  50%,
+  to {
+    opacity: 1; }
+  25%,
+  75% {
+    opacity: 0; } }
+
+.flash {
+  animation-name: flash; }
+
 #root > div {
   width: 300px;
   margin: 0 auto;

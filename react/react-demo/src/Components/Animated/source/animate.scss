@@ -1,5 +1,6 @@
 @import "base";
-@import "bounce";
+@import "./attention_seekers/bounce";
+@import "./attention_seekers/flash";
 
 #root > div {
     width: 300px;
