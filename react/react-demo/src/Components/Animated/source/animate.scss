@@ -1,5 +1,32 @@
 @import "base";
-@import "bounce";
+
+/*=============================================
+=            Attention_seekers            =
+=============================================*/
+
+@import "./attention_seekers/bounce";
+@import "./attention_seekers/flash";
+@import "./attention_seekers/pulse";
+@import "./attention_seekers/rubberBand";
+@import "./attention_seekers/shake";
+@import "./attention_seekers/swing";
+@import "./attention_seekers/tada";
+@import "./attention_seekers/wobble";
+@import "./attention_seekers/jello";
+
+/*=====  End of Attention_seekers  ======*/
+
+
+/*=============================================
+=            Bouncing_entrances            =
+=============================================*/
+
+@import "./bouncing_entrances/bounceIn";
+@import "./bouncing_entrances/bounceInDown";
+
+/*=====  End of Bouncing_entrances  ======*/
+
+
 
 #root > div {
     width: 300px;
