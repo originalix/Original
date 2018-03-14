@@ -1,22 +1,23 @@
 //
-//  RootViewController.m
+//  TestViewController.m
 //  AwesomeProject
 //
 //  Created by Lix on 2018/3/14.
 //  Copyright © 2018年 Facebook. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "TestViewController.h"
 
-@interface RootViewController ()
+@interface TestViewController ()
 
 @end
 
-@implementation RootViewController
+@implementation TestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"原生测试页面";
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {

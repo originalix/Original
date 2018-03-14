@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  TestViewController.h
 //  AwesomeProject
 //
 //  Created by Lix on 2018/3/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+@interface TestViewController : UIViewController
 
 @end
