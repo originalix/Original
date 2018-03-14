@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image, TouchableHighlight, NativeModules, NativeEventEmitter } from 'react-native';
+import { View, Text, Button, Image, TouchableHighlight, NativeModules, NativeEventEmitter, InteractionManager } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import FadeInView from './FadeInView';
 
@@ -96,6 +96,13 @@ class HomeScreen extends Component {
     this.setState({ count: this.state.count + 1 });
   }
 
+  _goNativeViewController = () => {
+    const { PushNative } = NativeModules;
+    InteractionManager.runAfterInteractions( () => {
+      PushNative.RNOpenNativeVC("Open TestViewController");
+    });
+  }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -114,6 +121,10 @@ class HomeScreen extends Component {
         <FadeInView style={{width: 250, height: 70, backgroundColor: 'powderblue'}}>
           <Text style={{ fontSize: 28, textAlign: 'center', margin: 10 }}>Fading in</Text>
         </FadeInView>
+        <Button
+          title="跳转原生界面"
+          onPress={() => this._goNativeViewController()}
+        />
       </View>
     );
   }

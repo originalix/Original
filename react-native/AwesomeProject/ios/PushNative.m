@@ -24,4 +24,10 @@ RCT_EXPORT_METHOD(RNOpenNativeVC:(NSString *)msg)
     });
 }
 
+// 给Javascript发送事件
+
+- (NSArray<NSString *> *)supportedEvents {
+  return @[@"PushNative"];
+}
+
 @end
