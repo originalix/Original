@@ -4,7 +4,7 @@ import './source/animate.css';
 class AnimatedExample extends Component {
   render() {
     return (
-      <div className="animated tada">
+      <div className="animated wobble">
         <h1>Hello CSS3</h1>
       </div>
     );
