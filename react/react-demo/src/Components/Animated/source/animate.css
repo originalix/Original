@@ -5,6 +5,9 @@
 .animated.infinite {
   animation-iteration-count: infinite; }
 
+/*=============================================
+=            Attention_seekers            =
+=============================================*/
 @keyframes bounce {
   from,
   20%,
@@ -88,6 +91,7 @@
 .shake {
   animation-name: shake; }
 
+/*=====  End of Attention_seekers  ======*/
 #root > div {
   width: 300px;
   margin: 0 auto;

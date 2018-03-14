@@ -1,9 +1,16 @@
 @import "base";
+
+/*=============================================
+=            Attention_seekers            =
+=============================================*/
+
 @import "./attention_seekers/bounce";
 @import "./attention_seekers/flash";
 @import "./attention_seekers/pulse";
 @import "./attention_seekers/rubberBand";
 @import "./attention_seekers/shake";
+
+/*=====  End of Attention_seekers  ======*/
 
 #root > div {
     width: 300px;
