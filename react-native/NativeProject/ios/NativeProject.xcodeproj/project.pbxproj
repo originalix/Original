@@ -16,6 +16,8 @@
 		56D54DC7205A090E00BD505E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DC6205A090E00BD505E /* main.m */; };
 		56D54DD1205A090E00BD505E /* NativeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DD0205A090E00BD505E /* NativeProjectTests.m */; };
 		56D54DDC205A090E00BD505E /* NativeProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DDB205A090E00BD505E /* NativeProjectUITests.m */; };
+		56D54DF8205A54B500BD505E /* PicListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DF7205A54B500BD505E /* PicListController.m */; };
+		56D54DFC205A6CB100BD505E /* NaviManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DFB205A6CB100BD505E /* NaviManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		56D54DD7205A090E00BD505E /* NativeProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NativeProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D54DDB205A090E00BD505E /* NativeProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeProjectUITests.m; sourceTree = "<group>"; };
 		56D54DDD205A090E00BD505E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D54DF6205A54B500BD505E /* PicListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PicListController.h; sourceTree = "<group>"; };
+		56D54DF7205A54B500BD505E /* PicListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicListController.m; sourceTree = "<group>"; };
+		56D54DFA205A6CB100BD505E /* NaviManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NaviManager.h; sourceTree = "<group>"; };
+		56D54DFB205A6CB100BD505E /* NaviManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviManager.m; sourceTree = "<group>"; };
 		81A5E1E709A7CBD18FCEAC65 /* Pods-NativeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NativeProject/Pods-NativeProject.release.xcconfig"; sourceTree = "<group>"; };
 		D72C0CDFE2251AEF5892A785 /* Pods-NativeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NativeProject/Pods-NativeProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,15 +123,9 @@
 		56D54DB6205A090E00BD505E /* NativeProject */ = {
 			isa = PBXGroup;
 			children = (
-				56D54DB7205A090E00BD505E /* AppDelegate.h */,
-				56D54DB8205A090E00BD505E /* AppDelegate.m */,
-				56D54DBA205A090E00BD505E /* ViewController.h */,
-				56D54DBB205A090E00BD505E /* ViewController.m */,
-				56D54DBD205A090E00BD505E /* Main.storyboard */,
-				56D54DC0205A090E00BD505E /* Assets.xcassets */,
-				56D54DC2205A090E00BD505E /* LaunchScreen.storyboard */,
-				56D54DC5205A090E00BD505E /* Info.plist */,
-				56D54DC6205A090E00BD505E /* main.m */,
+				56D54DE9205A51FD00BD505E /* AppDelegate */,
+				56D54DEA205A520200BD505E /* Classes */,
+				56D54DF0205A520600BD505E /* Resource */,
 			);
 			path = NativeProject;
 			sourceTree = "<group>";
@@ -146,6 +146,120 @@
 				56D54DDD205A090E00BD505E /* Info.plist */,
 			);
 			path = NativeProjectUITests;
+			sourceTree = "<group>";
+		};
+		56D54DE9205A51FD00BD505E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DB7205A090E00BD505E /* AppDelegate.h */,
+				56D54DB8205A090E00BD505E /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		56D54DEA205A520200BD505E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DEB205A520200BD505E /* General */,
+				56D54DEC205A520200BD505E /* Helper */,
+				56D54DED205A520200BD505E /* Macro */,
+				56D54DF2205A545700BD505E /* Components */,
+				56D54DEF205A520200BD505E /* Vendors */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		56D54DEB205A520200BD505E /* General */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DF9205A6C4900BD505E /* Bridge */,
+				56D54DF1205A523700BD505E /* Public */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		56D54DEC205A520200BD505E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		56D54DED205A520200BD505E /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		56D54DEF205A520200BD505E /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		56D54DF0205A520600BD505E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DC5205A090E00BD505E /* Info.plist */,
+				56D54DC0205A090E00BD505E /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		56D54DF1205A523700BD505E /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DC6205A090E00BD505E /* main.m */,
+				56D54DC2205A090E00BD505E /* LaunchScreen.storyboard */,
+				56D54DBD205A090E00BD505E /* Main.storyboard */,
+				56D54DBA205A090E00BD505E /* ViewController.h */,
+				56D54DBB205A090E00BD505E /* ViewController.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		56D54DF2205A545700BD505E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DF3205A545700BD505E /* Controllers */,
+				56D54DF4205A545700BD505E /* Models */,
+				56D54DF5205A545700BD505E /* Views */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		56D54DF3205A545700BD505E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DF6205A54B500BD505E /* PicListController.h */,
+				56D54DF7205A54B500BD505E /* PicListController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		56D54DF4205A545700BD505E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		56D54DF5205A545700BD505E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		56D54DF9205A6C4900BD505E /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				56D54DFA205A6CB100BD505E /* NaviManager.h */,
+				56D54DFB205A6CB100BD505E /* NaviManager.m */,
+			);
+			path = Bridge;
 			sourceTree = "<group>";
 		};
 		B47CCC6DDDE16C90B018B5B1 /* Frameworks */ = {
@@ -345,6 +459,8 @@
 			files = (
 				56D54DBC205A090E00BD505E /* ViewController.m in Sources */,
 				56D54DC7205A090E00BD505E /* main.m in Sources */,
+				56D54DF8205A54B500BD505E /* PicListController.m in Sources */,
+				56D54DFC205A6CB100BD505E /* NaviManager.m in Sources */,
 				56D54DB9205A090E00BD505E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,7 +627,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R92MB35B2J;
-				INFOPLIST_FILE = NativeProject/Info.plist;
+				INFOPLIST_FILE = NativeProject/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.Originalee.lix.NativeProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,7 +642,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R92MB35B2J;
-				INFOPLIST_FILE = NativeProject/Info.plist;
+				INFOPLIST_FILE = NativeProject/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.Originalee.lix.NativeProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
-import {AppRegistry, FlatList, StyleSheet, Text, View} from 'react-native';
+import {
+  AppRegistry,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  NativeModules
+} from 'react-native';
 
 class RootView extends Component {
+  _go2PicListController() {
+    const { NaviManager } = NativeModules;
+    NaviManager.go2PicListController();
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <Button
+          title="跳转到原生TableView"
+          onPress={() => this._go2PicListController()}       
+        />
         <FlatList
           data={[
             {key: 'Devin'},
@@ -41,7 +58,7 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5
   },
-  item: {
+  item: {  
     padding: 10,
     fontSize: 18,
     height: 44,
