@@ -31,10 +31,19 @@
                                     <action selector="goToRNView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VuM-uR-sEs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Za-nP-nLB">
+                                <rect key="frame" x="132" y="454" width="111" height="30"/>
+                                <state key="normal" title="Go to Next View"/>
+                                <connections>
+                                    <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s66-MG-lRk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="baN-sz-AQe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="70w-kB-7cp"/>
+                            <constraint firstItem="3Za-nP-nLB" firstAttribute="top" secondItem="NRT-CR-w0s" secondAttribute="bottom" constant="8" id="Nra-kg-0I9"/>
+                            <constraint firstItem="3Za-nP-nLB" firstAttribute="centerX" secondItem="NRT-CR-w0s" secondAttribute="centerX" id="e1y-Bg-fum"/>
                             <constraint firstItem="baN-sz-AQe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="rei-SV-KRQ"/>
                             <constraint firstItem="NRT-CR-w0s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sbT-lZ-vh4"/>
                             <constraint firstItem="NRT-CR-w0s" firstAttribute="top" secondItem="baN-sz-AQe" secondAttribute="bottom" constant="39.5" id="y8A-NL-a32"/>

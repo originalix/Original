@@ -41,4 +41,18 @@
     [self.navigationController pushViewController:vc animated:true];
 }
 
+- (IBAction)goToNextView:(id)sender {
+    NSURL *jsCodeLocation;
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"root" fallbackResource:nil];
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                                        moduleName:@"NativeProject"
+                                                 initialProperties:@{
+                                                                     @"name" : @"lixxxxx"
+                                                                     }
+                                                     launchOptions:nil];
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = rootView;
+    [self.navigationController pushViewController:vc animated:true];
+}
+
 @end
