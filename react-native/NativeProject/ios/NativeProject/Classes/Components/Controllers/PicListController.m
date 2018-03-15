@@ -33,11 +33,15 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.touchPoints = [NSMutableArray array];
-    self.dataSource = [NSMutableArray array];
+//    self.touchPoints = [NSMutableArray array];
+//    self.dataArray = [NSMutableArray array];
+    self.dataArray = [NSMutableArray array];
+    self.originalArray = [NSMutableArray array];
     for (int i = 0; i < 30; i++) {
-        [self.dataSource addObject:[NSString stringWithFormat:@"第%d行", i]];
+        [self.dataArray addObject:[NSString stringWithFormat:@"第%d行", i]];
     }
+    
+    self.originalArray = [self.dataArray mutableCopy];
     [self setupViews];
     [self setLongPressGesture];
 }
@@ -49,7 +53,7 @@ typedef enum {
 - (void)setupViews {
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight - 64) style:UITableViewStylePlain];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -62,24 +66,24 @@ typedef enum {
     if (! cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = self.dataSource[indexPath.row];
+    cell.textLabel.text = self.dataArray[indexPath.row];
     
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return self.dataArray.count;
 }
 
 #pragma mark - 长按tableView移动
-- (UIView *)customSnapshotFromView:(UIView *)inputView {
+- (UIImageView *)customSnapshotFromView:(UIView *)inputView {
     // 用Cell的图层生成一个Image，方便一会儿显示
     UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0);
     [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     // 自定义这个快照的显示
-    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
+    UIImageView *snapshot = [[UIImageView alloc] initWithImage:image];
     snapshot.layer.masksToBounds = false;
     snapshot.layer.cornerRadius = 0.0;
     snapshot.layer.shadowOffset = CGSizeMake(-0.0, 0.0);
@@ -92,111 +96,87 @@ typedef enum {
     if (_scrollSpeed == 0) {
         _scrollSpeed = 3;
     }
-    UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(moveRow:)];
     [self.tableView addGestureRecognizer:gesture];
 }
 
-- (void)longPressGestureRecognized:(id)sender {
-    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer*)sender;
-    UIGestureRecognizerState state = longPress.state;
-    CGPoint location = [longPress locationInView:self.tableView];
-//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-//    static UIView *snapshot = nil;
-//    static NSIndexPath *sourceIndexPath = nil;
-    
-    switch (state) {
-        case UIGestureRecognizerStateBegan:
-//            if (indexPath) {
-//
-//                sourceIndexPath = indexPath;
-//                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-//                snapshot = [self customSnapshotFromView:cell];
-//                __block CGPoint center = cell.center;
-//                snapshot.center = center;
-//                snapshot.alpha = 0.0;
-//                [self.tableView addSubview:snapshot];
-//
-//                [UIView animateWithDuration:0.25 animations:^{
-//                    center.y = location.y;
-//                    snapshot.center = center;
-//                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
-//                    snapshot.alpha = 0.98;
-//                    cell.alpha = 0.0;
-//
-//                } completion:^(BOOL finished) {
-//                    cell.hidden = true;
-//                }];
-//
-//            }
-            //根据手势点击的位置，获取被点击cell所在的indexPath
-            self.fromIndexPath = [self.tableView indexPathForRowAtPoint:location];
-            
-            if (!_fromIndexPath) return;
-            //根据indexPath获取cell
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:_fromIndexPath];
-            
-            //创建一个imageView，imageView的image由cell渲染得来
-            self.snapshot = [self customSnapshotFromView:cell];
-            
-            //更改imageView的中心点为手指点击位置
-            __block CGPoint center = cell.center;
+- (void)moveRow:(UILongPressGestureRecognizer *)sender {
+    //获取点击的位置
+    CGPoint point = [sender locationInView:self.tableView];
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        //根据手势点击的位置，获取被点击cell所在的indexPath
+        self.fromIndexPath = [self.tableView indexPathForRowAtPoint:point];
+        
+        if (!_fromIndexPath) return;
+        //根据indexPath获取cell
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:_fromIndexPath];
+        
+        //创建一个imageView，imageView的image由cell渲染得来
+        self.snapshot = [self createCellImageView:cell];
+        
+        //更改imageView的中心点为手指点击位置
+        __block CGPoint center = cell.center;
+        _snapshot.center = center;
+        _snapshot.alpha = 0.0;
+        [UIView animateWithDuration:0.25 animations:^{
+            center.y = point.y;
             _snapshot.center = center;
-            _snapshot.alpha = 0.0;
-            [UIView animateWithDuration:0.25 animations:^{
-                center.y = location.y;
-                _snapshot.center = center;
-                _snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
-                _snapshot.alpha = 0.9;
-                cell.alpha = 0.0;
-            } completion:^(BOOL finished) {
-                cell.hidden = YES;
-            }];
+            _snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+            _snapshot.alpha = 0.9;
+            cell.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            cell.hidden = YES;
+        }];
+        
+    } else if (sender.state == UIGestureRecognizerStateChanged){
+        //根据手势的位置，获取手指移动到的cell的indexPath
+        _toIndexPath = [self.tableView indexPathForRowAtPoint:point];
+        
+        //更改imageView的中心点为手指点击位置
+        CGPoint center = self.snapshot.center;
+        center.y = point.y;
+        self.snapshot.center = center;
+        
+        //判断cell是否被拖拽到了tableView的边缘，如果是，则自动滚动tableView
+        if ([self isScrollToEdge]) {
+            [self startTimerToScrollTableView];
+        } else {
+            [_displayLink invalidate];
+        }
+        
+        /*
+         若当前手指所在indexPath不是要移动cell的indexPath，
+         且是插入模式，则执行cell的插入操作
+         每次移动手指都要执行该判断，实时插入
+         */
+        if (_toIndexPath && ![_toIndexPath isEqual:_fromIndexPath] && !self.isExchange)
+            [self insertCell:_toIndexPath];
+        
+    } else {
+        /*
+         如果是交换模式，则执行交换操作
+         交换操作等手势结束时执行，不用每次移动都执行
+         */
+        if (self.isExchange) [self exchangeCell:point];
+        [_displayLink invalidate];
+        //将隐藏的cell显示出来，并将imageView移除掉
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:_fromIndexPath];
+        cell.hidden = NO;
+        cell.alpha = 0;
+        [UIView animateWithDuration:0.25 animations:^{
             
-            break;
-        
-        case UIGestureRecognizerStateChanged:
-//            [self.touchPoints addObject:[NSValue valueWithCGPoint:location]];
-//            if (self.touchPoints.count > 2) {
-//                [self.touchPoints removeObjectAtIndex:0];
-//            }
-//            CGPoint center =snapshot.center;
-//            center.y = location.y;
-//            CGPoint Ppoint = [[self.touchPoints firstObject] CGPointValue];
-//            CGPoint Npoint = [[self.touchPoints lastObject] CGPointValue];
-//            CGFloat moveX = Npoint.x - Ppoint.x;
-//            center.x += moveX;
-//            snapshot.center = center;
-//            NSLog(@"%@---%f----%@", self.touchPoints, moveX, NSStringFromCGPoint(center));
-//            NSLog(@"%@", NSStringFromCGRect(snapshot.frame));
-//
-//            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
-//                [self.dataSource exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
-//                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
-//                sourceIndexPath = indexPath;
-//            }
-            break;
-        
-        default:
-//            [self.touchPoints removeAllObjects];
-//            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
-//            cell.hidden = false;
-//            cell.alpha = 0.0;
-//
-//            [UIView animateWithDuration:0.25 animations:^{
-//                snapshot.center = cell.center;
-//                snapshot.transform = CGAffineTransformIdentity;
-//                snapshot.alpha = 0.0;
-//                cell.alpha = 1.0;
-//            } completion:^(BOOL finished) {
-//                sourceIndexPath = nil;
-//                [snapshot removeFromSuperview];
-//                snapshot = nil;
-//            }];
-//
-            break;
+            cell.alpha = 1;
+            _snapshot.alpha = 0;
+            _snapshot.transform = CGAffineTransformIdentity;
+            _snapshot.center = cell.center;
+        } completion:^(BOOL finished) {
+            [self.snapshot removeFromSuperview];
+            self.snapshot = nil;
+        }];
     }
-    
 }
+
+
 
 - (BOOL)isScrollToEdge {
     if ((CGRectGetMaxY(self.snapshot.frame) > self.tableView.contentOffset.y + self.tableView.frame.size.height - self.tableView.contentInset.bottom) && (self.tableView.contentOffset.y < self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom)) {
@@ -288,6 +268,19 @@ typedef enum {
         }
     }
     [self.tableView reloadData];
+}
+
+- (UIImageView *)createCellImageView:(UITableViewCell *)cell {
+    //打开图形上下文，并将cell的根层渲染到上下文中，生成图片
+    UIGraphicsBeginImageContext(cell.bounds.size);
+    [cell.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageView *cellImageView = [[UIImageView alloc] initWithImage:image];
+    cellImageView.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    cellImageView.layer.shadowRadius = 5.0;
+    [self.tableView addSubview:cellImageView];
+    return cellImageView;
 }
 
 #pragma mark - get & set
