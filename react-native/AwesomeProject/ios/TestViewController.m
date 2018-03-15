@@ -32,7 +32,7 @@
     button.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:button];
 }
-
+    
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   [self.navigationController setNavigationBarHidden:true animated:animated];
