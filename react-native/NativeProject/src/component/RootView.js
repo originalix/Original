@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {AppRegistry, FlatList, StyleSheet, Text, View} from 'react-native';
 
 class RootView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.highScoresTitle}>This is React Native View.</Text>
-        <Text style={styles.highScoresTitle}>RootView Component</Text>
+        <FlatList
+          data={[
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        />
       </View>
     );
   }
@@ -17,7 +28,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#ffffff',
+    marginTop: 64
   },
   highScoresTitle: {
     fontSize: 20,
@@ -28,8 +40,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5
-  }
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
 });
 
-export default RootView;
-
+AppRegistry.registerComponent('NativeProject', () => RootView);

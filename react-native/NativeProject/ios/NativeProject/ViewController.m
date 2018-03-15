@@ -43,7 +43,7 @@
 
 - (IBAction)goToNextView:(id)sender {
     NSURL *jsCodeLocation;
-    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"root" fallbackResource:nil];
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"src/component/RootView" fallbackResource:nil];
     RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                         moduleName:@"NativeProject"
                                                  initialProperties:@{
