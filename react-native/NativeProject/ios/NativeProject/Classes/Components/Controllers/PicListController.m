@@ -16,9 +16,6 @@ typedef enum {
 @interface PicListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) NSMutableArray *touchPoints;
-
 @property (nonatomic, strong) NSMutableArray *originalArray;
 @property (nonatomic, strong) UIImageView *snapshot;
 @property (nonatomic, strong) NSIndexPath *fromIndexPath;
@@ -33,8 +30,7 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.touchPoints = [NSMutableArray array];
-//    self.dataArray = [NSMutableArray array];
+
     self.dataArray = [NSMutableArray array];
     self.originalArray = [NSMutableArray array];
     for (int i = 0; i < 30; i++) {
@@ -122,7 +118,7 @@ typedef enum {
             center.y = point.y;
             _snapshot.center = center;
             _snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
-            _snapshot.alpha = 0.9;
+            _snapshot.alpha = 0.98;
             cell.alpha = 0.0;
         } completion:^(BOOL finished) {
             cell.hidden = YES;
@@ -235,7 +231,8 @@ typedef enum {
         //交换两个cell的数据模型
         [self.dataArray exchangeObjectAtIndex:_fromIndexPath.row withObjectAtIndex:toIndexPath.row];
     }
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
+    [self.tableView moveRowAtIndexPath:_fromIndexPath toIndexPath:_toIndexPath];
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:toIndexPath];
     cell.hidden = YES;
@@ -256,7 +253,8 @@ typedef enum {
     } else {
         [self.dataArray exchangeObjectAtIndex:_fromIndexPath.row withObjectAtIndex:toIndexPath.row];
     }
-    [self.tableView reloadData];
+    [self.tableView moveRowAtIndexPath:_fromIndexPath toIndexPath:_toIndexPath];
+//    [self.tableView reloadData];
 }
 
 - (void)resetCellLocation {
@@ -272,13 +270,17 @@ typedef enum {
 
 - (UIImageView *)createCellImageView:(UITableViewCell *)cell {
     //打开图形上下文，并将cell的根层渲染到上下文中，生成图片
-    UIGraphicsBeginImageContext(cell.bounds.size);
+//    UIGraphicsBeginImageContext(cell.bounds.size);
+    UIGraphicsBeginImageContextWithOptions(cell.bounds.size, NO, 0);
     [cell.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     UIImageView *cellImageView = [[UIImageView alloc] initWithImage:image];
+    cellImageView.layer.masksToBounds = NO;
+    cellImageView.layer.cornerRadius = 0.0;
     cellImageView.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
     cellImageView.layer.shadowRadius = 5.0;
+    cellImageView.layer.shadowOpacity = 0.4;
     [self.tableView addSubview:cellImageView];
     return cellImageView;
 }
