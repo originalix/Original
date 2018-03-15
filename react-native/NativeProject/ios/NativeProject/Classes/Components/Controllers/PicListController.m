@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *touchPoints;
 
 @end
 
@@ -70,6 +71,84 @@
     snapshot.layer.shadowRadius = 5.0;
     snapshot.layer.shadowOpacity = 0.4;
     return snapshot;
+}
+
+- (void)longPressGestureRecognized:(id)sender {
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer*)sender;
+    UIGestureRecognizerState state = longPress.state;
+    CGPoint location = [longPress locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    static UIView *snapshot = nil;
+    static NSIndexPath *sourceIndexPath = nil;
+    
+    switch (state) {
+        case UIGestureRecognizerStateBegan:
+            if (indexPath) {
+                
+                sourceIndexPath = indexPath;
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+                snapshot = [self customSnapshotFromView:cell];
+                __block CGPoint center = cell.center;
+                snapshot.center = center;
+                snapshot.alpha = 0.0;
+                [self.tableView addSubview:snapshot];
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    center.y = location.y;
+                    snapshot.center = center;
+                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+                    snapshot.alpha = 0.98;
+                    cell.alpha = 0.0;
+                    
+                } completion:^(BOOL finished) {
+                    cell.hidden = true;
+                }];
+                
+            }
+            break;
+        
+        case UIGestureRecognizerStateChanged:
+            [self.touchPoints addObject:[NSValue valueWithCGPoint:location]];
+            if (self.touchPoints.count > 2) {
+                [self.touchPoints removeObjectAtIndex:0];
+            }
+            CGPoint center =snapshot.center;
+            center.y = location.y;
+            CGPoint Ppoint = [[self.touchPoints firstObject] CGPointValue];
+            CGPoint Npoint = [[self.touchPoints lastObject] CGPointValue];
+            CGFloat moveX = Npoint.x - Ppoint.x;
+            center.x += moveX;
+            snapshot.center = center;
+            NSLog(@"%@---%f----%@", self.touchPoints, moveX, NSStringFromCGPoint(center));
+            NSLog(@"%@", NSStringFromCGRect(snapshot.frame));
+            
+            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
+                [self.dataSource exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+                sourceIndexPath = indexPath;
+            }
+            break;
+        
+        default:
+            [self.touchPoints removeAllObjects];
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+            cell.hidden = false;
+            cell.alpha = 0.0;
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                snapshot.center = cell.center;
+                snapshot.transform = CGAffineTransformIdentity;
+                snapshot.alpha = 0.0;
+                cell.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                sourceIndexPath = nil;
+                [snapshot removeFromSuperview];
+                snapshot = nil;
+            }];
+            
+            break;
+    }
+    
 }
 
 @end
