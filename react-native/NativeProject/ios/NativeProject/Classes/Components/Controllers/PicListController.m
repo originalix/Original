@@ -19,11 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor yellowColor];
     self.dataSource = [NSMutableArray array];
     for (int i = 0; i < 30; i++) {
         [self.dataSource addObject:[NSString stringWithFormat:@"第%d行", i]];
     }
+    [self setupViews];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +53,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
+}
+
+#pragma mark - 长按tableView移动
+- (UIView *)customSnapshotFromView:(UIView *)inputView {
+    // 用Cell的图层生成一个Image，方便一会儿显示
+    UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0);
+    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    // 自定义这个快照的显示
+    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
+    snapshot.layer.masksToBounds = false;
+    snapshot.layer.cornerRadius = 0.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.4;
+    return snapshot;
 }
 
 @end

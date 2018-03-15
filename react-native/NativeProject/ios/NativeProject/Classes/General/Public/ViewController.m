@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PicListController.h"
 #import <React/RCTRootView.h>
 #import <React/RCTBundleURLProvider.h>
 
@@ -41,16 +42,19 @@
 }
 
 - (IBAction)goToNextView:(id)sender {
-    NSURL *jsCodeLocation;
-    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"src/component/RootView" fallbackResource:nil];
-    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                        moduleName:@"NativeProject"
-                                                 initialProperties:@{
-                                                                     @"name" : @"lixxxxx"
-                                                                     }
-                                                     launchOptions:nil];
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view = rootView;
+//    NSURL *jsCodeLocation;
+//    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"src/component/RootView" fallbackResource:nil];
+//    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+//                                                        moduleName:@"NativeProject"
+//                                                 initialProperties:@{
+//                                                                     @"name" : @"lixxxxx"
+//                                                                     }
+//                                                     launchOptions:nil];
+//    UIViewController *vc = [[UIViewController alloc] init];
+//    vc.view = rootView;
+//    [self.navigationController pushViewController:vc animated:true];
+    
+    PicListController *vc = [[PicListController alloc] init];
     [self.navigationController pushViewController:vc animated:true];
 }
 
