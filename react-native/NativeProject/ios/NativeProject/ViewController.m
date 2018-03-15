@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import <React/RCTRootView.h>
+#import <React/RCTBundleURLProvider.h>
 
 @interface ViewController ()
 
@@ -25,5 +27,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)goToRNView:(id)sender {
+    NSURL *jsCodeLocation;
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                                        moduleName:@"NativeProject"
+                                                 initialProperties:@{
+                                                                            @"name" : @"lixxxxx"
+                                                                            }
+                                                     launchOptions:nil];
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = rootView;
+    [self.navigationController pushViewController:vc animated:true];
+}
 
 @end
