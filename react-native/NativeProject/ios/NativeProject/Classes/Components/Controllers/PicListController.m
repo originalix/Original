@@ -8,11 +8,24 @@
 
 #import "PicListController.h"
 
+typedef enum {
+    AutoScrollUp,
+    AutoScrollDown
+} AutoScroll;
+
 @interface PicListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *touchPoints;
+
+@property (nonatomic, strong) NSMutableArray *originalArray;
+@property (nonatomic, strong) UIImageView *snapshot;
+@property (nonatomic, strong) NSIndexPath *fromIndexPath;
+@property (nonatomic, strong) NSIndexPath *toIndexPath;
+@property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic, assign) AutoScroll autoScroll;
+@property (nonatomic, assign) NSInteger index;
 
 @end
 
@@ -69,13 +82,16 @@
     UIView *snapshot = [[UIImageView alloc] initWithImage:image];
     snapshot.layer.masksToBounds = false;
     snapshot.layer.cornerRadius = 0.0;
-    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
-    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-0.0, 0.0);
+    snapshot.layer.shadowRadius = 0.0;
     snapshot.layer.shadowOpacity = 0.4;
     return snapshot;
 }
 
 - (void)setLongPressGesture {
+    if (_scrollSpeed == 0) {
+        _scrollSpeed = 3;
+    }
     UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
     [self.tableView addGestureRecognizer:gesture];
 }
@@ -84,78 +100,205 @@
     UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer*)sender;
     UIGestureRecognizerState state = longPress.state;
     CGPoint location = [longPress locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-    static UIView *snapshot = nil;
-    static NSIndexPath *sourceIndexPath = nil;
+//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+//    static UIView *snapshot = nil;
+//    static NSIndexPath *sourceIndexPath = nil;
     
     switch (state) {
         case UIGestureRecognizerStateBegan:
-            if (indexPath) {
-                
-                sourceIndexPath = indexPath;
-                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-                snapshot = [self customSnapshotFromView:cell];
-                __block CGPoint center = cell.center;
-                snapshot.center = center;
-                snapshot.alpha = 0.0;
-                [self.tableView addSubview:snapshot];
-                
-                [UIView animateWithDuration:0.25 animations:^{
-                    center.y = location.y;
-                    snapshot.center = center;
-                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
-                    snapshot.alpha = 0.98;
-                    cell.alpha = 0.0;
-                    
-                } completion:^(BOOL finished) {
-                    cell.hidden = true;
-                }];
-                
-            }
-            break;
-        
-        case UIGestureRecognizerStateChanged:
-            [self.touchPoints addObject:[NSValue valueWithCGPoint:location]];
-            if (self.touchPoints.count > 2) {
-                [self.touchPoints removeObjectAtIndex:0];
-            }
-            CGPoint center =snapshot.center;
-            center.y = location.y;
-            CGPoint Ppoint = [[self.touchPoints firstObject] CGPointValue];
-            CGPoint Npoint = [[self.touchPoints lastObject] CGPointValue];
-            CGFloat moveX = Npoint.x - Ppoint.x;
-            center.x += moveX;
-            snapshot.center = center;
-            NSLog(@"%@---%f----%@", self.touchPoints, moveX, NSStringFromCGPoint(center));
-            NSLog(@"%@", NSStringFromCGRect(snapshot.frame));
+//            if (indexPath) {
+//
+//                sourceIndexPath = indexPath;
+//                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//                snapshot = [self customSnapshotFromView:cell];
+//                __block CGPoint center = cell.center;
+//                snapshot.center = center;
+//                snapshot.alpha = 0.0;
+//                [self.tableView addSubview:snapshot];
+//
+//                [UIView animateWithDuration:0.25 animations:^{
+//                    center.y = location.y;
+//                    snapshot.center = center;
+//                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+//                    snapshot.alpha = 0.98;
+//                    cell.alpha = 0.0;
+//
+//                } completion:^(BOOL finished) {
+//                    cell.hidden = true;
+//                }];
+//
+//            }
+            //根据手势点击的位置，获取被点击cell所在的indexPath
+            self.fromIndexPath = [self.tableView indexPathForRowAtPoint:location];
             
-            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
-                [self.dataSource exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
-                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
-                sourceIndexPath = indexPath;
-            }
-            break;
-        
-        default:
-            [self.touchPoints removeAllObjects];
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
-            cell.hidden = false;
-            cell.alpha = 0.0;
+            if (!_fromIndexPath) return;
+            //根据indexPath获取cell
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:_fromIndexPath];
             
+            //创建一个imageView，imageView的image由cell渲染得来
+            self.snapshot = [self customSnapshotFromView:cell];
+            
+            //更改imageView的中心点为手指点击位置
+            __block CGPoint center = cell.center;
+            _snapshot.center = center;
+            _snapshot.alpha = 0.0;
             [UIView animateWithDuration:0.25 animations:^{
-                snapshot.center = cell.center;
-                snapshot.transform = CGAffineTransformIdentity;
-                snapshot.alpha = 0.0;
-                cell.alpha = 1.0;
+                center.y = location.y;
+                _snapshot.center = center;
+                _snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+                _snapshot.alpha = 0.9;
+                cell.alpha = 0.0;
             } completion:^(BOOL finished) {
-                sourceIndexPath = nil;
-                [snapshot removeFromSuperview];
-                snapshot = nil;
+                cell.hidden = YES;
             }];
             
             break;
+        
+        case UIGestureRecognizerStateChanged:
+//            [self.touchPoints addObject:[NSValue valueWithCGPoint:location]];
+//            if (self.touchPoints.count > 2) {
+//                [self.touchPoints removeObjectAtIndex:0];
+//            }
+//            CGPoint center =snapshot.center;
+//            center.y = location.y;
+//            CGPoint Ppoint = [[self.touchPoints firstObject] CGPointValue];
+//            CGPoint Npoint = [[self.touchPoints lastObject] CGPointValue];
+//            CGFloat moveX = Npoint.x - Ppoint.x;
+//            center.x += moveX;
+//            snapshot.center = center;
+//            NSLog(@"%@---%f----%@", self.touchPoints, moveX, NSStringFromCGPoint(center));
+//            NSLog(@"%@", NSStringFromCGRect(snapshot.frame));
+//
+//            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
+//                [self.dataSource exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+//                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+//                sourceIndexPath = indexPath;
+//            }
+            break;
+        
+        default:
+//            [self.touchPoints removeAllObjects];
+//            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+//            cell.hidden = false;
+//            cell.alpha = 0.0;
+//
+//            [UIView animateWithDuration:0.25 animations:^{
+//                snapshot.center = cell.center;
+//                snapshot.transform = CGAffineTransformIdentity;
+//                snapshot.alpha = 0.0;
+//                cell.alpha = 1.0;
+//            } completion:^(BOOL finished) {
+//                sourceIndexPath = nil;
+//                [snapshot removeFromSuperview];
+//                snapshot = nil;
+//            }];
+//
+            break;
     }
     
+}
+
+- (BOOL)isScrollToEdge {
+    if ((CGRectGetMaxY(self.snapshot.frame) > self.tableView.contentOffset.y + self.tableView.frame.size.height - self.tableView.contentInset.bottom) && (self.tableView.contentOffset.y < self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom)) {
+        self.autoScroll = AutoScrollDown;
+        return YES;
+    }
+    
+    if ((self.snapshot.frame.origin.y < self.tableView.contentOffset.y + self.tableView.contentInset.top) && (self.tableView.contentOffset.y > -self.tableView.contentInset.top)) {
+        self.autoScroll = AutoScrollUp;
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)startTimerToScrollTableView {
+    [_displayLink invalidate];
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(scrollTableView)];
+    [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+- (void)scrollTableView{
+    //如果已经滚动到最上面或最下面，则停止定时器并返回
+    if ((_autoScroll == AutoScrollUp && self.tableView.contentOffset.y <= -self.tableView.contentInset.top)
+        || (_autoScroll == AutoScrollDown && self.tableView.contentOffset.y >= self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom)) {
+        [_displayLink invalidate];
+        return;
+    }
+    
+    //改变tableView的contentOffset，实现自动滚动
+    CGFloat height = _autoScroll == AutoScrollUp? -_scrollSpeed : _scrollSpeed;
+    [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + height)];
+    //改变cellImageView的位置为手指所在位置
+    _snapshot.center = CGPointMake(_snapshot.center.x, _snapshot.center.y + height);
+    
+    //滚动tableView的同时也要执行插入操作
+    _toIndexPath = [self.tableView indexPathForRowAtPoint:_snapshot.center];
+    if (_toIndexPath && ![_toIndexPath isEqual:_fromIndexPath] && !self.isExchange)
+        [self insertCell:_toIndexPath];
+}
+
+- (void)insertCell:(NSIndexPath *)toIndexPath {
+    if (self.isGroup) {
+        //先将cell的数据模型从之前的数组中移除，然后再插入新的数组
+        NSMutableArray *fromSection = self.dataArray[_fromIndexPath.section];
+        NSMutableArray *toSection = self.dataArray[toIndexPath.section];
+        id obj = fromSection[_fromIndexPath.row];
+        [fromSection removeObject:obj];
+        [toSection insertObject:obj atIndex:toIndexPath.row];
+        
+        //如果某个组的所有cell都被移动到其他组，则删除这个组
+        if (!fromSection.count) {
+            [self.dataArray removeObject:fromSection];
+        }
+    } else {
+        //交换两个cell的数据模型
+        [self.dataArray exchangeObjectAtIndex:_fromIndexPath.row withObjectAtIndex:toIndexPath.row];
+    }
+    [self.tableView reloadData];
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:toIndexPath];
+    cell.hidden = YES;
+    _fromIndexPath = toIndexPath;
+}
+
+- (void)exchangeCell:(CGPoint)point {
+    NSIndexPath *toIndexPath = [self.tableView indexPathForRowAtPoint:point];
+    if (!toIndexPath) return;
+    //交换要移动cell与被替换cell的数据模型
+    if (self.isGroup) {
+        //分组情况下，交换模型的过程比较复杂
+        NSMutableArray *fromSection = self.dataArray[_fromIndexPath.section];
+        NSMutableArray *toSection = self.dataArray[toIndexPath.section];
+        id obj = fromSection[_fromIndexPath.row];
+        [fromSection replaceObjectAtIndex:_fromIndexPath.row withObject:toSection[toIndexPath.row]];
+        [toSection replaceObjectAtIndex:toIndexPath.row withObject:obj];
+    } else {
+        [self.dataArray exchangeObjectAtIndex:_fromIndexPath.row withObjectAtIndex:toIndexPath.row];
+    }
+    [self.tableView reloadData];
+}
+
+- (void)resetCellLocation {
+    [_dataArray removeAllObjects];
+    [_dataArray addObjectsFromArray:_originalArray];
+    if (_isGroup) {
+        for (int i = 0; i < _dataArray.count; i++) {
+            _originalArray[i] = [_dataArray[i] mutableCopy];
+        }
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark - get & set
+- (void)setDataArray:(NSMutableArray *)dataArray {
+    _dataArray = dataArray;
+    _originalArray = [dataArray mutableCopy];
+    if (_isGroup) {
+        for (int i = 0; i < dataArray.count; i++) {
+            _originalArray[i] = [dataArray[i] mutableCopy];
+        }
+    }
 }
 
 @end
