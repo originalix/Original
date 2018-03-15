@@ -20,11 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.touchPoints = [NSMutableArray array];
     self.dataSource = [NSMutableArray array];
     for (int i = 0; i < 30; i++) {
         [self.dataSource addObject:[NSString stringWithFormat:@"第%d行", i]];
     }
     [self setupViews];
+    [self setLongPressGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +73,11 @@
     snapshot.layer.shadowRadius = 5.0;
     snapshot.layer.shadowOpacity = 0.4;
     return snapshot;
+}
+
+- (void)setLongPressGesture {
+    UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    [self.tableView addGestureRecognizer:gesture];
 }
 
 - (void)longPressGestureRecognized:(id)sender {
