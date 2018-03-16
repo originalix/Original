@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B48CB9186437B9E0E750953 /* libPods-NativeProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36832D88318B2067CF21D397 /* libPods-NativeProject.a */; };
+		5684081E205B61A20094A4A3 /* PicScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5684081D205B61A20094A4A3 /* PicScrollController.m */; };
 		56D54DB9205A090E00BD505E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DB8205A090E00BD505E /* AppDelegate.m */; };
 		56D54DBC205A090E00BD505E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DBB205A090E00BD505E /* ViewController.m */; };
 		56D54DBF205A090E00BD505E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D54DBD205A090E00BD505E /* Main.storyboard */; };
@@ -39,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		36832D88318B2067CF21D397 /* libPods-NativeProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NativeProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5684081C205B61A20094A4A3 /* PicScrollController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PicScrollController.h; sourceTree = "<group>"; };
+		5684081D205B61A20094A4A3 /* PicScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicScrollController.m; sourceTree = "<group>"; };
 		56D54DB4205A090E00BD505E /* NativeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D54DB7205A090E00BD505E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56D54DB8205A090E00BD505E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 			children = (
 				56D54DF6205A54B500BD505E /* PicListController.h */,
 				56D54DF7205A54B500BD505E /* PicListController.m */,
+				5684081C205B61A20094A4A3 /* PicScrollController.h */,
+				5684081D205B61A20094A4A3 /* PicScrollController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56D54DBC205A090E00BD505E /* ViewController.m in Sources */,
+				5684081E205B61A20094A4A3 /* PicScrollController.m in Sources */,
 				56D54DC7205A090E00BD505E /* main.m in Sources */,
 				56D54DF8205A54B500BD505E /* PicListController.m in Sources */,
 				56D54DFC205A6CB100BD505E /* NaviManager.m in Sources */,

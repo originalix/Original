@@ -19,34 +19,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcom Native Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baN-sz-AQe">
-                                <rect key="frame" x="98" y="356" width="180.5" height="20.5"/>
+                                <rect key="frame" x="97" y="147" width="180.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRT-CR-w0s">
-                                <rect key="frame" x="138" y="416" width="99" height="30"/>
+                                <rect key="frame" x="138" y="268" width="99" height="30"/>
                                 <state key="normal" title="Go to RN View"/>
                                 <connections>
                                     <action selector="goToRNView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VuM-uR-sEs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Za-nP-nLB">
-                                <rect key="frame" x="132" y="454" width="111" height="30"/>
-                                <state key="normal" title="Go to Next View"/>
+                                <rect key="frame" x="142" y="306" width="91" height="30"/>
+                                <state key="normal" title="Go to Pic List"/>
                                 <connections>
                                     <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s66-MG-lRk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCv-uo-S8f">
+                                <rect key="frame" x="135" y="344" width="105" height="30"/>
+                                <state key="normal" title="Go to Pic Scroll"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="baN-sz-AQe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="70w-kB-7cp"/>
-                            <constraint firstItem="3Za-nP-nLB" firstAttribute="top" secondItem="NRT-CR-w0s" secondAttribute="bottom" constant="8" id="Nra-kg-0I9"/>
-                            <constraint firstItem="3Za-nP-nLB" firstAttribute="centerX" secondItem="NRT-CR-w0s" secondAttribute="centerX" id="e1y-Bg-fum"/>
-                            <constraint firstItem="baN-sz-AQe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="rei-SV-KRQ"/>
-                            <constraint firstItem="NRT-CR-w0s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sbT-lZ-vh4"/>
-                            <constraint firstItem="NRT-CR-w0s" firstAttribute="top" secondItem="baN-sz-AQe" secondAttribute="bottom" constant="39.5" id="y8A-NL-a32"/>
+                            <constraint firstItem="aCv-uo-S8f" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="46U-Mp-EXV"/>
+                            <constraint firstItem="aCv-uo-S8f" firstAttribute="top" secondItem="3Za-nP-nLB" secondAttribute="bottom" constant="8" id="6Xk-Go-Vsq"/>
+                            <constraint firstItem="3Za-nP-nLB" firstAttribute="top" secondItem="NRT-CR-w0s" secondAttribute="bottom" constant="8" id="9MR-x2-dHJ"/>
+                            <constraint firstItem="baN-sz-AQe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="I1d-zY-IGd"/>
+                            <constraint firstItem="baN-sz-AQe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="83" id="NQf-uS-KLM"/>
+                            <constraint firstItem="NRT-CR-w0s" firstAttribute="top" secondItem="baN-sz-AQe" secondAttribute="bottom" constant="100.5" id="n49-8P-BNw"/>
+                            <constraint firstItem="NRT-CR-w0s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qwS-Lk-GMP"/>
+                            <constraint firstItem="3Za-nP-nLB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yEY-ev-jMg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
