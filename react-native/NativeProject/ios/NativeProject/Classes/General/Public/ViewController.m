@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "PicListController.h"
 #import <React/RCTRootView.h>
 #import <React/RCTBundleURLProvider.h>
+#import "PicListController.h"
+#import "PicScrollController.h"
 
 @interface ViewController ()
 
@@ -55,6 +56,11 @@
 //    [self.navigationController pushViewController:vc animated:true];
     
     PicListController *vc = [[PicListController alloc] init];
+    [self.navigationController pushViewController:vc animated:true];
+}
+
+- (IBAction)go2PicScroll:(id)sender {
+    PicScrollController *vc = [[PicScrollController alloc] init];
     [self.navigationController pushViewController:vc animated:true];
 }
 

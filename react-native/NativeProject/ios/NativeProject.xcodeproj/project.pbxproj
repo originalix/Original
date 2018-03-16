@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4B48CB9186437B9E0E750953 /* libPods-NativeProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36832D88318B2067CF21D397 /* libPods-NativeProject.a */; };
 		5684081E205B61A20094A4A3 /* PicScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5684081D205B61A20094A4A3 /* PicScrollController.m */; };
+		56840823205B66F40094A4A3 /* 1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 56840820205B66F30094A4A3 /* 1.PNG */; };
+		56840824205B66F40094A4A3 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 56840821205B66F30094A4A3 /* 2.PNG */; };
+		56840825205B66F40094A4A3 /* 3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 56840822205B66F30094A4A3 /* 3.PNG */; };
 		56D54DB9205A090E00BD505E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DB8205A090E00BD505E /* AppDelegate.m */; };
 		56D54DBC205A090E00BD505E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DBB205A090E00BD505E /* ViewController.m */; };
 		56D54DBF205A090E00BD505E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D54DBD205A090E00BD505E /* Main.storyboard */; };
@@ -42,6 +45,9 @@
 		36832D88318B2067CF21D397 /* libPods-NativeProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NativeProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5684081C205B61A20094A4A3 /* PicScrollController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PicScrollController.h; sourceTree = "<group>"; };
 		5684081D205B61A20094A4A3 /* PicScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicScrollController.m; sourceTree = "<group>"; };
+		56840820205B66F30094A4A3 /* 1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.PNG; sourceTree = "<group>"; };
+		56840821205B66F30094A4A3 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.PNG; sourceTree = "<group>"; };
+		56840822205B66F30094A4A3 /* 3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.PNG; sourceTree = "<group>"; };
 		56D54DB4205A090E00BD505E /* NativeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D54DB7205A090E00BD505E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56D54DB8205A090E00BD505E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -99,6 +105,16 @@
 				81A5E1E709A7CBD18FCEAC65 /* Pods-NativeProject.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5684081F205B66F30094A4A3 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				56840820205B66F30094A4A3 /* 1.PNG */,
+				56840821205B66F30094A4A3 /* 2.PNG */,
+				56840822205B66F30094A4A3 /* 3.PNG */,
+			);
+			path = img;
 			sourceTree = "<group>";
 		};
 		56D54DAB205A090E00BD505E = {
@@ -205,6 +221,7 @@
 		56D54DF0205A520600BD505E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5684081F205B66F30094A4A3 /* img */,
 				56D54DC5205A090E00BD505E /* Info.plist */,
 				56D54DC0205A090E00BD505E /* Assets.xcassets */,
 			);
@@ -384,7 +401,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56840824205B66F40094A4A3 /* 2.PNG in Resources */,
 				56D54DC4205A090E00BD505E /* LaunchScreen.storyboard in Resources */,
+				56840823205B66F40094A4A3 /* 1.PNG in Resources */,
+				56840825205B66F40094A4A3 /* 3.PNG in Resources */,
 				56D54DC1205A090E00BD505E /* Assets.xcassets in Resources */,
 				56D54DBF205A090E00BD505E /* Main.storyboard in Resources */,
 			);
