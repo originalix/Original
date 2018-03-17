@@ -46,7 +46,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-} 
+}
 
 #pragma mark - setupViews
 - (void)setupViews {
