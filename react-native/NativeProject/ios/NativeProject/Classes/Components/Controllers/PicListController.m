@@ -172,8 +172,6 @@ typedef enum {
     }
 }
 
-
-
 - (BOOL)isScrollToEdge {
     if ((CGRectGetMaxY(self.snapshot.frame) > self.tableView.contentOffset.y + self.tableView.frame.size.height - self.tableView.contentInset.bottom) && (self.tableView.contentOffset.y < self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom)) {
         self.autoScroll = AutoScrollDown;

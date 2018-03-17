@@ -33,11 +33,20 @@
         [self.scrollView addSubview:imgView];
         index += 1;
     }
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.scrollView addGestureRecognizer:tapRecognizer];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)sender {
+    CGPoint tapPoint = [sender locationInView:self.scrollView];
+    CGPoint tapPointInView = [self.scrollView convertPoint:tapPoint toView:self.view];
+    
+    NSLog(@"%@, %@", NSStringFromCGPoint(tapPoint), NSStringFromCGPoint(tapPointInView));
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
+} 
 
 #pragma mark - setupViews
 - (void)setupViews {
