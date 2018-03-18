@@ -22,4 +22,18 @@
     NSLog(@"%@", NSStringFromCGPoint(touchPosition));
 }
 
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint current = [touch locationInView:touch.view];
+    CGPoint previous = [touch previousLocationInView:touch.view];
+    NSLog(@"触摸前的点: %@ 当前的触摸点: %@", NSStringFromCGPoint(previous),    NSStringFromCGPoint(current));
+    
+    // 改变位置
+    CGPoint center = self.center;
+    center.x += current.x - previous.x;
+    center.y += current.y - previous.y;
+    
+    self.center = center;
+}
+
 @end
