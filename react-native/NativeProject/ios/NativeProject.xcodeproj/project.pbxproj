@@ -13,6 +13,7 @@
 		56840824205B66F40094A4A3 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 56840821205B66F30094A4A3 /* 2.PNG */; };
 		56840825205B66F40094A4A3 /* 3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 56840822205B66F30094A4A3 /* 3.PNG */; };
 		56AB2B62205CB45700712924 /* LixTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB2B61205CB45700712924 /* LixTouchView.m */; };
+		56AB2B65205E096D00712924 /* LixTouchImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB2B64205E096D00712924 /* LixTouchImgView.m */; };
 		56D54DB9205A090E00BD505E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DB8205A090E00BD505E /* AppDelegate.m */; };
 		56D54DBC205A090E00BD505E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D54DBB205A090E00BD505E /* ViewController.m */; };
 		56D54DBF205A090E00BD505E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D54DBD205A090E00BD505E /* Main.storyboard */; };
@@ -51,6 +52,8 @@
 		56840822205B66F30094A4A3 /* 3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.PNG; sourceTree = "<group>"; };
 		56AB2B60205CB45700712924 /* LixTouchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LixTouchView.h; sourceTree = "<group>"; };
 		56AB2B61205CB45700712924 /* LixTouchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LixTouchView.m; sourceTree = "<group>"; };
+		56AB2B63205E096D00712924 /* LixTouchImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LixTouchImgView.h; sourceTree = "<group>"; };
+		56AB2B64205E096D00712924 /* LixTouchImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LixTouchImgView.m; sourceTree = "<group>"; };
 		56D54DB4205A090E00BD505E /* NativeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D54DB7205A090E00BD505E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56D54DB8205A090E00BD505E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 			children = (
 				56AB2B60205CB45700712924 /* LixTouchView.h */,
 				56AB2B61205CB45700712924 /* LixTouchView.m */,
+				56AB2B63205E096D00712924 /* LixTouchImgView.h */,
+				56AB2B64205E096D00712924 /* LixTouchImgView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				5684081E205B61A20094A4A3 /* PicScrollController.m in Sources */,
 				56D54DC7205A090E00BD505E /* main.m in Sources */,
 				56D54DF8205A54B500BD505E /* PicListController.m in Sources */,
+				56AB2B65205E096D00712924 /* LixTouchImgView.m in Sources */,
 				56D54DFC205A6CB100BD505E /* NaviManager.m in Sources */,
 				56AB2B62205CB45700712924 /* LixTouchView.m in Sources */,
 				56D54DB9205A090E00BD505E /* AppDelegate.m in Sources */,

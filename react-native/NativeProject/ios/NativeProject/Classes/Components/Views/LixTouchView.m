@@ -30,7 +30,7 @@
     
     // 改变位置
     CGPoint center = self.center;
-    center.x += current.x - previous.x;
+//    center.x += current.x - previous.x;
     center.y += current.y - previous.y;
     
     self.center = center;

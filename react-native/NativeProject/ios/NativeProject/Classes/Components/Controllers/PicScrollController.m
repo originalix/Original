@@ -7,10 +7,12 @@
 //
 
 #import "PicScrollController.h"
+#import "LixTouchView.h"
 
 @interface PicScrollController ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) LixTouchView *touchView;
 
 @end
 
@@ -19,22 +21,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setupViews];
-    NSArray *imgArr = @[@"1.PNG", @"2.PNG", @"3.PNG"];
-    NSInteger index = 0;
-    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    for (NSString *imgName in imgArr) {
-        CGFloat y = index * screenHeight;
-        UIImage *img = [UIImage imageNamed:imgName];
-        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-        imgView.frame = CGRectMake(0, y, screenWidth, screenHeight);
-        self.scrollView.contentSize = CGSizeMake(screenWidth, y + screenHeight);
-        [self.scrollView addSubview:imgView];
-        index += 1;
-    }
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self.scrollView addGestureRecognizer:tapRecognizer];
+//    [self setupViews];
+//    NSArray *imgArr = @[@"1.PNG", @"2.PNG", @"3.PNG"];
+//    NSInteger index = 0;
+//    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+//    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+//    for (NSString *imgName in imgArr) {
+//        CGFloat y = index * screenHeight;
+//        UIImage *img = [UIImage imageNamed:imgName];
+//        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+//        imgView.frame = CGRectMake(0, y, screenWidth, screenHeight);
+//        self.scrollView.contentSize = CGSizeMake(screenWidth, y + screenHeight);
+//        [self.scrollView addSubview:imgView];
+//        index += 1;
+//    }
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//    [self.scrollView addGestureRecognizer:tapRecognizer];
+    self.touchView = [[LixTouchView alloc] initWithFrame:CGRectMake(100, 100, 100, 50)];
+    self.touchView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.touchView];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)sender {
