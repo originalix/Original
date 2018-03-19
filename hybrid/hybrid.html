@@ -13,11 +13,19 @@
 <body>
     <h1>Hello Hybrid</h1>
     <div class="row">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Check JS Connect</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block test">Check JS Connect</button>
     </div>
 
     <div class="row">
         <button type="button" class="btn btn-primary btn-lg btn-block">Check JS Connect</button>
     </div>
 </body>
+<script src="./hybrid.js"></script>
+<script>
+    $('.test').on('click', function () {
+        HybridAPI.hello(function () {
+            console.log('success');
+        });
+    });
+</script>
 </html>
