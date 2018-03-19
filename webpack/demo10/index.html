@@ -12,5 +12,24 @@
     <script src="commons.js"></script>
     <script src="bundle1.js"></script>
     <script src="bundle2.js"></script>
+
+
+    <a href="schmehandle/user/1">UserInfo</a>
+    <button onClick="userInfo()">UserInfo</button>
+    <button onclick="back()">back</button>
+
+    <script>
+        function userInfo() {
+            // const userInfo = NativeAPI.getUserInfo();
+            const userInfo = window.webkit.messageHandle.getUserInfo();
+        }
+        
+    
+
+        function back() {
+            window.goback(-2);
+        }
+        
+    </script>
 </body>
 </html>
