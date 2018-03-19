@@ -28,21 +28,25 @@
     for (NSString *imgName in imgArr) {
         CGFloat y = index * screenHeight;
         UIImage *img = [UIImage imageNamed:imgName];
-        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+        LixTouchImgView *imgView = [[LixTouchImgView alloc] initWithImage:img];
         imgView.frame = CGRectMake(0, y, screenWidth, screenHeight);
         imgView.tag = index;
         imgView.userInteractionEnabled = true;
         
-        // 添加上滑下滑手势
-        UISwipeGestureRecognizer *upSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        upSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
-        upSwipeGesture.delegate = self;
-        UISwipeGestureRecognizer *downSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        downSwipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
-        downSwipeGesture.delegate = self;
+        UIGestureRecognizer *gesture = [[UIGestureRecognizer alloc] init];
+        gesture.delegate = self;
+        [imgView addGestureRecognizer:gesture];
         
-        [imgView addGestureRecognizer:upSwipeGesture];
-        [imgView addGestureRecognizer:downSwipeGesture];
+//        // 添加上滑下滑手势
+//        UISwipeGestureRecognizer *upSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//        upSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+//        upSwipeGesture.delegate = self;
+//        UISwipeGestureRecognizer *downSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//        downSwipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
+//        downSwipeGesture.delegate = self;
+//
+//        [imgView addGestureRecognizer:upSwipeGesture];
+//        [imgView addGestureRecognizer:downSwipeGesture];
         
         self.scrollView.contentSize = CGSizeMake(screenWidth, y + screenHeight);
         [self.scrollView addSubview:imgView];
