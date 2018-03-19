@@ -9,7 +9,7 @@
 #import "PicScrollController.h"
 #import "LixTouchImgView.h"
 
-@interface PicScrollController ()
+@interface PicScrollController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
@@ -29,28 +29,63 @@
         CGFloat y = index * screenHeight;
         UIImage *img = [UIImage imageNamed:imgName];
         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         imgView.frame = CGRectMake(0, y, screenWidth, screenHeight);
-        
         imgView.tag = index;
-        [imgView addGestureRecognizer:tap];
         imgView.userInteractionEnabled = true;
+        
+        // 添加上滑下滑手势
+        UISwipeGestureRecognizer *upSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        upSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+        upSwipeGesture.delegate = self;
+        UISwipeGestureRecognizer *downSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        downSwipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
+        downSwipeGesture.delegate = self;
+        
+        [imgView addGestureRecognizer:upSwipeGesture];
+        [imgView addGestureRecognizer:downSwipeGesture];
         
         self.scrollView.contentSize = CGSizeMake(screenWidth, y + screenHeight);
         [self.scrollView addSubview:imgView];
         index += 1;
     }
+    
+    UIGestureRecognizer *gesture = [[UIGestureRecognizer alloc] init];
+    gesture.delegate = self;
+    [self.scrollView addGestureRecognizer:gesture];
+    
 //    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
 //    [self.scrollView addGestureRecognizer:tapRecognizer];
     
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)sender {
+- (void)tapAction:(UISwipeGestureRecognizer *)sender {
 //    CGPoint tapPoint = [sender locationInView:self.scrollView];
 //    CGPoint tapPointInView = [self.scrollView convertPoint:tapPoint toView:self.view];
 //
 //    NSLog(@"%@, %@", NSStringFromCGPoint(tapPoint), NSStringFromCGPoint(tapPointInView));
-    NSLog(@"点击了第%ld张图片", sender.view.tag);
+//    NSLog(@"点击了第%ld张图片", sender.view.tag);
+//    CGPoint current = [touch locationInView:touch.view];
+//    CGPoint previous = [touch previousLocationInView:touch.view];
+//    CGPoint current = [sender locationInView:sender.view];
+    if (sender.direction == UISwipeGestureRecognizerDirectionUp) {
+        NSLog(@"向上滑动");
+    }
+    
+    if (sender.direction == UISwipeGestureRecognizerDirectionDown) {
+        NSLog(@"向下滑动");
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([gestureRecognizer.view isKindOfClass:[UIImageView class]]) {
+        NSLog(@"imgView触摸");
+        self.scrollView.scrollEnabled = NO;
+        return YES;
+    } else {
+        NSLog(@"scrollView 触摸");
+        self.scrollView.scrollEnabled = YES;
+        return NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
