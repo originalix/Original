@@ -28,23 +28,29 @@
     for (NSString *imgName in imgArr) {
         CGFloat y = index * screenHeight;
         UIImage *img = [UIImage imageNamed:imgName];
-        LixTouchImgView *imgView = [[LixTouchImgView alloc] initWithImage:img];
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         imgView.frame = CGRectMake(0, y, screenWidth, screenHeight);
+        
+        imgView.tag = index;
+        [imgView addGestureRecognizer:tap];
         imgView.userInteractionEnabled = true;
+        
         self.scrollView.contentSize = CGSizeMake(screenWidth, y + screenHeight);
         [self.scrollView addSubview:imgView];
         index += 1;
     }
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self.scrollView addGestureRecognizer:tapRecognizer];
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//    [self.scrollView addGestureRecognizer:tapRecognizer];
     
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)sender {
-    CGPoint tapPoint = [sender locationInView:self.scrollView];
-    CGPoint tapPointInView = [self.scrollView convertPoint:tapPoint toView:self.view];
-    
-    NSLog(@"%@, %@", NSStringFromCGPoint(tapPoint), NSStringFromCGPoint(tapPointInView));
+//    CGPoint tapPoint = [sender locationInView:self.scrollView];
+//    CGPoint tapPointInView = [self.scrollView convertPoint:tapPoint toView:self.view];
+//
+//    NSLog(@"%@, %@", NSStringFromCGPoint(tapPoint), NSStringFromCGPoint(tapPointInView));
+    NSLog(@"点击了第%ld张图片", sender.view.tag);
 }
 
 - (void)didReceiveMemoryWarning {
