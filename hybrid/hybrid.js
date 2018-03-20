@@ -6,7 +6,7 @@
   };
 
   window.HYBridApi = HYBridApi;
-  window.dsbridge = bridge;
+  window.JSBridge = bridge;
   console.log(window.dsbridge);
   
   HYBridApi.ready = function (readyCallback) {
@@ -22,8 +22,8 @@
   };
 
   HYBridApi.test = function () {
-    console.log(bridge);
-    var str = bridge.call("testParams", {'data': 1, 'name': 'Lix'});
+    console.log(JSBridge);
+    var str = JSBridge.call("testParams", {'data': 1, 'name': 'Lix'});
     console.log(str);
   };
 
@@ -51,9 +51,13 @@
     };
 
     var handler = function (theData, argv) {
+      
       if (cmd.menu === 'general:share') {
         if (argv.shareTo === 'timeline') {
           // 分享到朋友圈
+          JSBridge.call("share.shareToTimeline", theData, function (v) {
+            alert(v);
+          });
         } else if (argv.shareTo === 'friend') {
           // 分享到微信
         } else if (argv.shareTo === 'QQ ') {
@@ -61,6 +65,11 @@
         } else if (argv.shareTo === 'weibo') {
           // 分享到微博
         }
+      } else {
+        console.log('执行分享');
+        JSBridge.call('share.' + cmd.action, theData, function (v) {
+          alert(v);
+        });
       }
     };
 
