@@ -24,40 +24,34 @@
         <button type="button" class="btn btn-primary btn-lg btn-block">Check JS Connect</button>
     </div>
 </body>
+<script src="./dsBridge.js"></script>
 <script src="./hybrid.js"></script>
 <!-- <script src="./node_modules/dsbridge/dist/dsbridge.js"></script> -->
 <!-- <script src="https://unpkg.com/dsbridge@3.0.8/dist/dsbridge.js"> </script> -->
-<script src="./dsBridge.js"></script>
 <script>
     $(document).ready(function () {
         // window.LNJSBridge = function (eventName, params) {
         //     console.log('LNJSBridgeSuccess');
         // }
-        console.log(bridge);
-        var str = bridge.call("testSyn", "testSyn");
-        console.log(str);
+        // console.log(bridge);
+        // var str = bridge.call("testSyn", "testSyn");
+        // console.log(str);
 
-        // bridge.call("testAsyn", "testAsyn", function (v) {
-        //     alert(v);
-        // });
+        // // bridge.call("testAsyn", "testAsyn", function (v) {
+        // //     alert(v);
+        // // });
 
-        bridge.register('addValue', function (l, r) {
-            return l + r;
-        })
+        // bridge.register('addValue', function (l, r) {
+        //     return l + r;
+        // })
     });
 
     $('.ready').on('click', function () {
-        // HYBridApi.ready(function (Api) {
-        //     console.log(Api);
-        //     console.log('now jsbridge is ready');
-        //     var data = {'name': 'lix'};
-        //     var res = window.LNJSBridge("eventName", JSON.stringify(data));
-        //     console.log(res);
-        // });
-
-        // LNJSBridge.getData('userInfo', function(data) {
-        //     console.log(data);
-        // });
+        // HYBridApi.test();
+        HYBridApi.ready(function (Api) {
+            console.log('now jsbridge is ready');
+            Api.test();
+        });
     });
 
 </script>
