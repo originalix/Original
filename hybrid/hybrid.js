@@ -27,7 +27,7 @@
     console.log(str);
   };
 
-  var _sharte = function (cmd, data, callbacks) {
+  var _share = function (cmd, data, callbacks) {
     callbacks = callbacks || {};
     
     var progress = function (resp) {
@@ -64,9 +64,21 @@
       }
     };
 
-    
-
-
+    handler(data, data.action);
   }
 
+  HYBridApi.shareToTimeline = function (data, callbacks) {
+    _share({
+      menu: 'menu:share:timeline',
+      action: 'shareTimeline'
+    }, {
+      "appid": data.appId ? data.appId : '',
+      "img_url": data.imgUrl,
+      "link": data.link,
+      "desc": data.desc,
+      "title": data.title,
+      "img_width": "640",
+      "img_height": "640"      
+    }, callbacks);
+  };
 })(window);
