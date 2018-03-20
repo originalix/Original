@@ -8,6 +8,7 @@
   window.HYBridApi = HYBridApi;
 
   HYBridApi.ready = function (readyCallback) {
+    console.log('test ready');
     if (readyCallback && typeof readyCallback == 'function') {
       var Api = this;
       var hyReadyFunc = function () {
@@ -15,6 +16,7 @@
       };
 
       if (typeof window.LNJSBridge == 'undefined') {
+        console.log('没有找到Bridge');
         if (document.addEventListener) {
           document.addEventListener('LNJSBridgeReady', hyReadyFunc);
         } else if (document.attachEvent) {
@@ -22,8 +24,8 @@
           document.attachEvent('onLNJSBridgeReady', hyReadyFunc);
         }
       } else {
-        hyReadyFunc();  
+        hyReadyFunc();
       }
     }
   };
-})
+})(window);

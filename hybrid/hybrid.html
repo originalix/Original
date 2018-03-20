@@ -8,12 +8,16 @@
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
     <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/todc-bootstrap/3.1.1-3.2.1/todc-bootstrap.min.css">
-
 </head>
+<style>
+    .btn {
+        margin: 20px;
+    }
+</style>
 <body>
     <h1>Hello Hybrid</h1>
     <div class="row">
-        <button type="button" class="btn btn-primary btn-lg btn-block test">Check JS Connect</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block ready">HYBridApi Ready</button>
     </div>
 
     <div class="row">
@@ -22,10 +26,17 @@
 </body>
 <script src="./hybrid.js"></script>
 <script>
-    $('.test').on('click', function () {
-        HybridAPI.hello(function () {
-            console.log('success');
-        });
+    $(document).ready(function () {
+        window.LNJSBridge = function () {
+            console.log('LNJSBridge');
+        }
+    });
+
+    $('.ready').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            console.log(Api);
+            console.log('now jsbridge is ready');
+        });    
     });
 </script>
 </html>
