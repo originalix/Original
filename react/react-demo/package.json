@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.2.3",
     "antd-mobile": "^2.1.6",
+    "dsbridge": "^3.0.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"

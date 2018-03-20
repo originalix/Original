@@ -1,0 +1,8 @@
+{
+  "name": "hybrid",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "dsbridge": "^3.0.9"
+  }
+}
