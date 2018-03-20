@@ -76,6 +76,10 @@
     handler(data, data.action);
   }
 
+  var _nativeShare = function (action, data, callbacks) {
+    
+  }
+
   HYBridApi.shareToTimeline = function (data, callbacks) {
     _share({
       menu: 'menu:share:timeline',
