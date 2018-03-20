@@ -21,7 +21,9 @@ var bridge = {
          ret = prompt("_dsbridge=" + method, arg);
       }
 
-     return  JSON.parse(ret||{}).data
+     return  JSON.parse(ret||{}).data;
+      // return JSON.parse({}).data;
+      // return JSON.parse('{"hello":"\world"}')
   },
   register: function (name, fun, asyn) {
       var q = asyn ? window._dsaf : window._dsf
