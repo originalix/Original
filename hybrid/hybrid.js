@@ -298,5 +298,47 @@
     });
   }
 
+  /**
+   * 直接返回二维码结果
+   * @param {*} callback 二维码结果回调
+   */
+  HYBridApi.scanQRCode = function (callback) {
+    JSBridge.call('scanQRCode', function (res) {
+      callback(res.result);
+    });
+  }
+
+  HYBridApi.chooseWXPay = function (data, callbacks) {
+    var progress = function (resp) {
+      switch (true) {
+        // 用户取消支付
+        case /cancel$/.test(resp.state) :
+          callbacks.cancel && callbacks.cancel();
+        break;
+        // 支付成功
+        case /confirm$/.test(resp.state):
+          callbacks.confirm && callbacks.confirm();
+        break;
+        // fail　支付失败
+        case /fail$/.test(resp.state) :
+        default:
+          callbacks.fail && callbacks.fail(resp);
+        break;
+      }
+      // 无论成功失败都会执行的回调
+      callbacks.all && callbacks.all(resp);
+    };
+
+    JSBridge.call('chooseWXPay', {
+      'partnerId': data.partnerId,
+      'prepayId': data.prepayId,
+      'package': data.package,
+      'nonceStr': data.nonceStr,
+      'timeStamp': data.timeStamp,
+      'sign': data.sign
+    }, function (res) {
+      progress(res.state);
+    });
+  }
 
 })(window);

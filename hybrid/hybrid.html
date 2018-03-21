@@ -62,6 +62,15 @@
         <button type="button" class="btn btn-primary btn-lg btn-block backBtn">Take Over Back Btn</button>
     </div>
 
+    <div class="row">
+        <p>直接返回二维码扫描结果</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block qrcode">ScanQRCode</button>
+    </div>
+
+    <div class="row">
+        <p>发起一个微信支付请求</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block wxpay">ChooseWXPay</button>
+    </div>
     
 </body>
 <script src="./dsBridge.js"></script>
@@ -224,5 +233,51 @@
             });
         });
     });
+
+    // 二维码扫描结果示例
+    $('.qrcode').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            Api.scanQRCode(function (result) {
+                console.log(result);
+            });
+        });
+    });
+
+    $('.wxpay').on('click', function () {
+        HYBridApi.ready(function (Api) {
+
+            // 微信支付的回调
+            var wxpayCallbacks = {
+                // 支付取消回调
+                cancel:function () {
+                    console.log('cancel func');
+                },
+                // 支付失败回调
+                fail:function () {
+                    console.log('fail func');
+                },
+                // 支付成功回调
+                confirm:function () {
+                    console.log('confirm func');
+                },
+                // 整个支付过程结束
+                all:function () {
+                    console.log('all func');
+                }
+            };
+
+            var wxpayData = {
+                'partnerId': '21',
+                'prepayId': '2150',
+                'package': 'aSBsb3ZlIHdzeA==',
+                'nonceStr': 'd3N4MjE1MA==',
+                'timeStamp': 1521615792,
+                'sign': 'bGl4IGxvdmUgd3N4Cg==',
+            };
+
+            Api.chooseWXPay(wxpayData, wxpayCallbacks);
+        });
+    });
+    
 </script>
 </html>
