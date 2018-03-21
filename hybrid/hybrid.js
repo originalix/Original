@@ -258,9 +258,45 @@
     });
   };
 
+  /**
+   * 获取网络状态
+   */
   HYBridApi.getNetworkType = function () {
     var type = JSBridge.call('getNetworkType');
     return type;
   }
+
+  /**
+   * 获取当前地理位置
+   * @param {*} callback 地理位置信息回调
+   */
+  HYBridApi.getLocation = function (callback) {
+    JSBridge.call('getLocation', function (res) {
+      callback(res.city);
+    });
+  }
+
+  /**
+   * 关闭当前网页窗口
+   */
+  HYBridApi.closeWindow = function () {
+    JSBridge.call('closeWindow');
+  }
+
+  /**
+   * 接管返回按钮设置
+   * @param {*} isTakeOver 是否接管原生返回按钮
+   * @param {*} callback 执行回调
+   */
+  HYBridApi.takeOverBackBtn = function (isTakeOver, callback) {
+    var data = {
+      'jscode': 'window.history.back()',
+      'isTakeOver': isTakeOver,
+    }
+    JSBridge.call('takeOverBackBtn', data, function (res) {
+      callback(res);
+    });
+  }
+
 
 })(window);

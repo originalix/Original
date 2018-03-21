@@ -45,6 +45,23 @@
         <p>获取网络状态</p>
         <button type="button" class="btn btn-primary btn-lg btn-block network">GetNetworkType</button>
     </div>
+
+    <div class="row">
+        <p>获取地理位置</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block location">GetLocation</button>
+    </div>
+
+    <div class="row">
+        <p>关闭当前网页窗口</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block close">CloseWindow</button>
+    </div>
+
+    <div class="row">
+        <p>接管返回按钮</p>
+        <p><a href="http://www.baidu.com">测试链接 —— 百度</a></p>
+        <button type="button" class="btn btn-primary btn-lg btn-block backBtn">Take Over Back Btn</button>
+    </div>
+
     
 </body>
 <script src="./dsBridge.js"></script>
@@ -180,6 +197,31 @@
         HYBridApi.ready(function (Api) {
             var type = Api.getNetworkType();
             console.log(type);
+        });
+    });
+
+    // 获取当前地理位置示例
+    $('.location').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            Api.getLocation(function (city) {
+                console.log(city);
+            });
+        });
+    });
+
+    // 关闭当前网页窗口示例
+    $('.close').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            Api.closeWindow();
+        });
+    });
+
+    // 接管返回按钮示例
+    $('.backBtn').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            Api.takeOverBackBtn(true, function (res) {
+                console.log(res);
+            });
         });
     });
 </script>
