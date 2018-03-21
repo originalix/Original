@@ -184,12 +184,31 @@
     }, callbacks);
   };
 
+  /** 
+   *  JS-API 选择图片的缓存数组
+   */ 
   HYBridApi.imgSrcList = [];
 
+  /**
+   * 调起Native端的选择图片功能
+   */
   HYBridApi.chooseImage = function () {
     JSBridge.call('chooseImage', function (res) {
       HYBridApi.imgSrcList = res.srcList;
       console.log(HYBridApi.imgSrcList);
     });
-  }
+  };
+
+  HYBridApi.previewImage = function (curSrc, srcList) {
+    if (!curSrc || !srcList || srcList.length == 0) {
+      alert('请先选择图片之后再调用浏览功能');
+      return;
+    }
+
+    JSBridge.call('previewImage', {
+      'current': curSrc,
+      'urls': srcList
+    });
+  };
+
 })(window);

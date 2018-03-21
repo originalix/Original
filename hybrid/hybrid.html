@@ -30,6 +30,12 @@
         <p>选择图片</p>
         <button type="button" class="btn btn-primary btn-lg btn-block choose">ChooseImage</button>
     </div>
+
+    <div class="row">
+        <p>浏览图片</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block preview">PreviewImage</button>
+    </div>
+    
 </body>
 <script src="./dsBridge.js"></script>
 <script src="./hybrid.js"></script>
@@ -108,6 +114,14 @@
     $('.choose').on('click', function () {
         HYBridApi.ready(function (Api) {
             Api.chooseImage();
+        });
+    });
+
+    $('.preview').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            var curSrc = Api.imgSrcList[0];
+            var srcList = Api.imgSrcList;
+            Api.previewImage(curSrc, srcList);
         });
     });
 
