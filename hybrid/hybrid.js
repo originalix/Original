@@ -308,6 +308,11 @@
     });
   }
 
+  /**
+   * 发起一个微信支付的请求
+   * @param {*} data 微信支付所需数据
+   * @param {*} callbacks 支付过程所有回调
+   */
   HYBridApi.chooseWXPay = function (data, callbacks) {
     var progress = function (resp) {
       switch (true) {
@@ -337,7 +342,42 @@
       'timeStamp': data.timeStamp,
       'sign': data.sign
     }, function (res) {
-      progress(res.state);
+      console.log(res);
+      progress(res);
+    });
+  }
+
+  /**
+   * 发起一个支付宝的请求
+   * @param {*} data 支付宝支付所需数据
+   * @param {*} callbacks 支付过程所有回调
+   */
+  HYBridApi.chooseAliPay = function (data, callbacks) {
+    var progress = function (resp) {
+      switch (true) {
+        // 用户取消支付
+        case /cancel$/.test(resp.state) :
+          callbacks.cancel && callbacks.cancel();
+        break;
+        // 支付成功
+        case /confirm$/.test(resp.state):
+          callbacks.confirm && callbacks.confirm();
+        break;
+        // fail　支付失败
+        case /fail$/.test(resp.state) :
+        default:
+          callbacks.fail && callbacks.fail(resp);
+        break;
+      }
+      // 无论成功失败都会执行的回调
+      callbacks.all && callbacks.all(resp);
+    };
+
+    JSBridge.call('chooseAliPay', {
+      'orderStr': data.orderStr,
+    }, function (res) {
+      console.log(res);
+      progress(res);
     });
   }
 

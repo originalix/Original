@@ -71,6 +71,11 @@
         <p>发起一个微信支付请求</p>
         <button type="button" class="btn btn-primary btn-lg btn-block wxpay">ChooseWXPay</button>
     </div>
+
+    <div class="row">
+        <p>发起一个支付宝支付请求</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block alipay">ChooseAliPay</button>
+    </div>
     
 </body>
 <script src="./dsBridge.js"></script>
@@ -243,6 +248,7 @@
         });
     });
 
+    // 发起一个微信支付的示例
     $('.wxpay').on('click', function () {
         HYBridApi.ready(function (Api) {
 
@@ -276,6 +282,38 @@
             };
 
             Api.chooseWXPay(wxpayData, wxpayCallbacks);
+        });
+    });
+
+    // 发起一个微信支付的示例
+    $('.alipay').on('click', function () {
+        HYBridApi.ready(function (Api) {
+
+            // 支付宝支付的回调
+            var alipayCallbacks = {
+                // 支付取消回调
+                cancel:function () {
+                    console.log('cancel func');
+                },
+                // 支付失败回调
+                fail:function () {
+                    console.log('fail func');
+                },
+                // 支付成功回调
+                confirm:function () {
+                    console.log('confirm func');
+                },
+                // 整个支付过程结束
+                all:function () {
+                    console.log('all func');
+                }
+            };
+
+            var alipayData = {
+                'orderStr': 'bGl4IGxvdmUgd3N4Cg==',
+            };
+
+            Api.chooseAliPay(alipayData, alipayCallbacks);
         });
     });
     
