@@ -184,9 +184,12 @@
     }, callbacks);
   };
 
+  HYBridApi.imgSrcList = [];
+
   HYBridApi.chooseImage = function () {
     JSBridge.call('chooseImage', function (res) {
-      console.log(res);
+      HYBridApi.imgSrcList = res.srcList;
+      console.log(HYBridApi.imgSrcList);
     });
   }
 })(window);

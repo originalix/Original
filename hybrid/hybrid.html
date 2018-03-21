@@ -17,11 +17,18 @@
 <body>
     <h1>Hello Hybrid</h1>
     <div class="row">
+        <p>检测JSBridge</p>
         <button type="button" class="btn btn-primary btn-lg btn-block ready">HYBridApi Ready</button>
     </div>
 
     <div class="row">
+        <p>分享至朋友圈</p>
         <button type="button" class="btn btn-primary btn-lg btn-block share">ShareToTimeline</button>
+    </div>
+
+    <div class="row">
+        <p>选择图片</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block choose">ChooseImage</button>
     </div>
 </body>
 <script src="./dsBridge.js"></script>
@@ -96,7 +103,13 @@
         HYBridApi.ready(function (Api) {
             Api.shareToTimeline(shareData, shareCallbacks);
         });
-    })
+    });
+
+    $('.choose').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            Api.chooseImage();
+        });
+    });
 
 </script>
 </html>
