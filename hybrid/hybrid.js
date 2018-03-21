@@ -99,4 +99,88 @@
       "img_height": "640"      
     }, callbacks);
   };
+
+  /**
+   * 分享至微信好友
+   * @param {*} data 发送分享数据
+   * @param {*} callbacks 分享回调
+   */
+  HYBridApi.shareToFriend = function (data, callbacks) {
+    _share({
+      menu: 'menu:share:friend',
+      action: 'shareFriend'
+    }, {
+      "state": 0,
+      "appid": data.appId ? data.appId : '',
+      "img_url": data.imgUrl,
+      "link": data.link,
+      "desc": data.desc,
+      "title": data.title,
+      "img_width": "640",
+      "img_height": "640"      
+    }, callbacks);
+  };
+
+  /**
+   * 分享至新浪微博
+   * @param {*} data 发送分享数据
+   * @param {*} callbacks 分享回调
+   */
+  HYBridApi.shareToSinaWeibo = function (data, callbacks) {
+    _share({
+      menu: 'menu:share:sinaweibo',
+      action: 'shareSinaWeibo'
+    }, {
+      "state": 0,
+      "appid": data.appId ? data.appId : '',
+      "img_url": data.imgUrl,
+      "link": data.link,
+      "desc": data.desc,
+      "title": data.title,
+      "img_width": "640",
+      "img_height": "640"      
+    }, callbacks);
+  };
+
+  /**
+   * 分享至QQ好友
+   * @param {*} data 发送分享数据
+   * @param {*} callbacks 分享回调
+   */
+  HYBridApi.shareToQQ = function (data, callbacks) {
+    _share({
+      menu: 'menu:share:qq',
+      action: 'shareQQ'
+    }, {
+      "state": 0,
+      "appid": data.appId ? data.appId : '',
+      "img_url": data.imgUrl,
+      "link": data.link,
+      "desc": data.desc,
+      "title": data.title,
+      "img_width": "640",
+      "img_height": "640"      
+    }, callbacks);
+  };
+
+  /**
+   * 分享至QQ空间
+   * @param {*} data 发送分享数据
+   * @param {*} callbacks 分享回调
+   */
+  HYBridApi.shareToQZone = function (data, callbacks) {
+    _share({
+      menu: 'menu:share:qzone',
+      action: 'shareQZone'
+    }, {
+      "state": 0,
+      "appid": data.appId ? data.appId : '',
+      "img_url": data.imgUrl,
+      "link": data.link,
+      "desc": data.desc,
+      "title": data.title,
+      "img_width": "640",
+      "img_height": "640"      
+    }, callbacks);
+  };
 })(window);
