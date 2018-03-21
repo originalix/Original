@@ -199,6 +199,11 @@
     });
   };
 
+  /**
+   * 调起Native端的图片浏览框架
+   * @param {*} curSrc 当前图片url
+   * @param {*} srcList 图片列表
+   */
   HYBridApi.previewImage = function (curSrc, srcList) {
     if (!curSrc || !srcList || srcList.length == 0) {
       alert('请先选择图片之后再调用浏览功能');
@@ -211,6 +216,11 @@
     });
   };
 
+  /**
+   * JS-API上传图片功能
+   * @param {*} srcList 上传图片列表 
+   * @param {*} callbacks 各种状态的回调,详情见示例
+   */
   HYBridApi.uploadImage = function (srcList, callbacks) {
     if (!srcList || srcList.length == 0) {
       alert('请先选择照片之后再上传');
@@ -222,6 +232,7 @@
         // 用户进度
         case /continue$/.test(resp.state):
           callbacks.continue && callbacks.continue(resp.count);
+        break;
         // 用户取消
         case /cancel$/.test(resp.state) :
           callbacks.cancel && callbacks.cancel();
@@ -246,5 +257,10 @@
       progress(res);
     });
   };
+
+  HYBridApi.getNetworkType = function () {
+    var type = JSBridge.call('getNetworkType');
+    return type;
+  }
 
 })(window);
