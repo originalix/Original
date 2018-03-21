@@ -5,83 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hybrid-Example</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
     <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/todc-bootstrap/3.1.1-3.2.1/todc-bootstrap.min.css">
 </head>
 <style>
+    .row {
+        text-align: center;
+    }
+
+    p {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    h1, h2, h3 {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
     .btn {
-        margin: 20px;
+        margin-top: 5px;
+        margin-left: 0;
+        width: 90%;
     }
 </style>
 <body>
-    <h1>Hello Hybrid</h1>
-    <div class="row">
-        <p>检测JSBridge</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block ready">HYBridApi Ready</button>
-    </div>
+    <div class="container">
+        <h1>鲁能JS-API</h1>
+        <h2>基础接口</h2>
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+                <h3>检测JSBridge</h3>
+                <button type="button" class="btn btn-danger btn-lg btn-block ready center-block">HYBridApi Ready</button>
+            </div>
+        </div>
+    
+        <div class="row">
+            <h3>分享至朋友圈</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToTimeline</button>
+        </div>
 
-    <div class="row">
-        <p>分享至朋友圈</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block share">ShareToTimeline</button>
-    </div>
+        <div class="row">
+            <h3>分享给微信好友</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToFriend</button>
+        </div>
 
-    <div class="row">
-        <p>选择图片</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block choose">ChooseImage</button>
-    </div>
+        <div class="row">
+            <h3>分享至新浪微博</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToSinaWeibo</button>
+        </div>
 
-    <div class="row">
-        <p>浏览图片</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block preview">PreviewImage</button>
-    </div>
+        <div class="row">
+            <h3>分享至QQ好友</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToQQ</button>
+        </div>
 
-    <div class="row">
-        <p>上传图片</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block uploadImg">PreviewImage</button>
-    </div>
-
-    <div class="row">
-        <p>获取网络状态</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block network">GetNetworkType</button>
-    </div>
-
-    <div class="row">
-        <p>获取地理位置</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block location">GetLocation</button>
-    </div>
-
-    <div class="row">
-        <p>关闭当前网页窗口</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block close">CloseWindow</button>
-    </div>
-
-    <div class="row">
-        <p>接管返回按钮</p>
-        <p><a href="http://www.baidu.com">测试链接 —— 百度</a></p>
-        <button type="button" class="btn btn-primary btn-lg btn-block backBtn">Take Over Back Btn</button>
-    </div>
-
-    <div class="row">
-        <p>直接返回二维码扫描结果</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block qrcode">ScanQRCode</button>
-    </div>
-
-    <div class="row">
-        <p>发起一个微信支付请求</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block wxpay">ChooseWXPay</button>
-    </div>
-
-    <div class="row">
-        <p>发起一个支付宝支付请求</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block alipay">ChooseAliPay</button>
+        <div class="row">
+            <h3>分享至QQ空间</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToQZone</button>
+        </div>
+        
+        <h2>图片接口</h2>
+        <div class="row">
+            <h3>选择图片</h3>
+            <button type="button" class="btn btn-info btn-lg btn-block choose">ChooseImage</button>
+        </div>
+    
+        <div class="row">
+            <h3>浏览图片</h3>
+            <button type="button" class="btn btn-info btn-lg btn-block preview">PreviewImage</button>
+        </div>
+    
+        <div class="row">
+            <h3>上传图片</h3>
+            <button type="button" class="btn btn-info btn-lg btn-block uploadImg">PreviewImage</button>
+        </div>
+        
+        <h2>网络状态及地理位置接口</h2>
+        <div class="row">
+            <h3>获取网络状态</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block network">GetNetworkType</button>
+        </div>
+    
+        <div class="row">
+            <h3>获取地理位置</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block location">GetLocation</button>
+        </div>
+        
+        <h2>界面操作接口</h2>
+        <div class="row">
+            <h3>关闭当前网页窗口</h3>
+            <button type="button" class="btn btn-info btn-lg btn-block close">CloseWindow</button>
+        </div>
+    
+        <div class="row">
+            <h3>接管返回按钮</h3>
+            <p><a href="http://www.baidu.com">测试链接 —— 百度</a></p>
+            <button type="button" class="btn btn-info btn-lg btn-block backBtn">Take Over Back Btn</button>
+        </div>
+        
+        <h2>扫一扫接口</h2>
+        <div class="row">
+            <h3>直接返回二维码扫描结果</h3>
+            <button type="button" class="btn btn-success btn-lg btn-block qrcode">ScanQRCode</button>
+        </div>
+        
+        <h2>支付接口</h2>
+        <div class="row">
+            <h3>发起一个微信支付请求</h3>
+            <button type="button" class="btn btn-info btn-lg btn-block wxpay">ChooseWXPay</button>
+        </div>
+    
+        <div class="row">
+            <h3>发起一个支付宝支付请求</h3>
+            <button type="button" class="btn btn-info btn-lg btn-block alipay">ChooseAliPay</button>
+        </div>
     </div>
     
 </body>
 <script src="./dsBridge.js"></script>
 <script src="./hybrid.js"></script>
-<!-- <script src="./node_modules/dsbridge/dist/dsbridge.js"></script> -->
-<!-- <script src="https://unpkg.com/dsbridge@3.0.8/dist/dsbridge.js"> </script> -->
 <script>
     $(document).ready(function () {
         // window.LNJSBridge = function (eventName, params) {
