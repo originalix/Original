@@ -35,6 +35,11 @@
         <p>浏览图片</p>
         <button type="button" class="btn btn-primary btn-lg btn-block preview">PreviewImage</button>
     </div>
+
+    <div class="row">
+        <p>上传图片</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block uploadImg">PreviewImage</button>
+    </div>
     
 </body>
 <script src="./dsBridge.js"></script>
@@ -111,12 +116,14 @@
         });
     });
 
+    // 选择照片示例
     $('.choose').on('click', function () {
         HYBridApi.ready(function (Api) {
             Api.chooseImage();
         });
     });
 
+    // 图片预览示例
     $('.preview').on('click', function () {
         HYBridApi.ready(function (Api) {
             var curSrc = Api.imgSrcList[0];
@@ -125,5 +132,48 @@
         });
     });
 
+    // 图片上传示例
+    $('.uploadImg').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            var srcList = Api.imgSrcList;
+
+            // 图片上传的回调
+            var uploadCallbacks = {
+                // 分享操作开始之前
+                ready:function () {
+                    console.log('ready func');
+                    // 你可以在这里对分享的数据进行重组
+                },
+                
+                // 上传图片的进度回调
+                continue: function () {
+                    console.log('continue');
+                },
+
+                // 分享被用户自动取消
+                cancel:function () {
+                    console.log('cancel func');
+                    // 你可以在你的页面上给用户一个小Tip，为什么要取消呢？
+                },
+                // 分享失败了
+                fail:function () {
+                    console.log('fail func');
+                    // 分享失败了，是不是可以告诉用户：不要紧，可能是网络问题，一会儿再试试？
+                },
+                // 分享成功
+                confirm:function () {
+                    console.log('confirm func');
+                    // 分享成功了，我们是不是可以做一些分享统计呢？
+                },
+                // 整个分享过程结束
+                all:function () {
+                    console.log('all func');
+                    // 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？
+                }
+            };
+
+            Api.uploadImage(scrList, uploadCallbacks);
+        });
+    });
 </script>
 </html>
