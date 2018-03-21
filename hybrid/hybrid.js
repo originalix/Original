@@ -183,4 +183,10 @@
       "img_height": "640"      
     }, callbacks);
   };
+
+  HYBridApi.chooseImage = function () {
+    JSBridge.call('chooseImage', function (res) {
+      console.log(res);
+    });
+  }
 })(window);
