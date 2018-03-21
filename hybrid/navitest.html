@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navi Example</title>
+</head>
+<body>
+    <h1>跳转测试页面</h1>
+</body>
+<script src="./dsBridge.js"></script>
+<script src="./hybrid.js"></script>
+<script>
+HYBridApi.ready(function (Api) {
+        Api.takeOverBackBtn(true, function (res) {
+            console.log(res);
+        });
+});
+</script>
+</html>

@@ -106,7 +106,7 @@
     
         <div class="row">
             <h3>接管返回按钮</h3>
-            <p><a href="http://www.baidu.com">测试链接 —— 百度</a></p>
+            <p><a href="./navitest.html">返回测试页面</a></p>
             <button type="button" class="btn btn-info btn-lg btn-block backBtn">Take Over Back Btn</button>
         </div>
         
@@ -147,6 +147,12 @@
         // bridge.register('addValue', function (l, r) {
         //     return l + r;
         // })
+    });
+
+    HYBridApi.ready(function (Api) {
+        Api.takeOverBackBtn(false, function (res) {
+            console.log(res);
+        });
     });
 
     // ready示例 测试jsbridge

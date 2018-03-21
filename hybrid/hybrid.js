@@ -289,8 +289,12 @@
    * @param {*} callback 执行回调
    */
   HYBridApi.takeOverBackBtn = function (isTakeOver, callback) {
+    var jscode = ''
+    if (isTakeOver === true) {
+      jscode = 'window.history.back()'
+    }
     var data = {
-      'jscode': 'window.history.back()',
+      'jscode': jscode,
       'isTakeOver': isTakeOver,
     }
     JSBridge.call('takeOverBackBtn', data, function (res) {
