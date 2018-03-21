@@ -30,34 +30,31 @@
   var _share = function (cmd, data, callbacks) {
     callbacks = callbacks || {};
     
-    // var progress = function (resp) {
-    //   switch (true) {
-    //     // 用户取消
-    //     case /\:cancel$/i.test(resp.err_msg) :
-    //       callbacks.cancel && callbacks.cancel(resp);
-    //     break;
-    //     // 发送成功
-    //     case /\:(confirm|ok)$/i.test(resp.err_msg):
-    //       callbacks.confirm && callbacks.confirm(resp);
-    //     break;
-    //     // fail　发送失败
-    //     case /\:fail$/i.test(resp.err_msg) :
-    //     default:
-    //       callbacks.fail && callbacks.fail(resp);
-    //     break;
-    //   }
-    //   // 无论成功失败都会执行的回调
-    //   callbacks.all && callbacks.all(resp);
-    // };
+    var progress = function (resp) {
+      switch (true) {
+        // 用户取消
+        case /cancel$/.test(resp) :
+          callbacks.cancel && callbacks.cancel(resp);
+        break;
+        // 发送成功
+        case /confirm$/.test(resp):
+          callbacks.confirm && callbacks.confirm(resp);
+        break;
+        // fail　发送失败
+        case /fail$/.test(resp) :
+        default:
+          callbacks.fail && callbacks.fail(resp);
+        break;
+      }
+      // 无论成功失败都会执行的回调
+      callbacks.all && callbacks.all(resp);
+    };
 
     var handler = function (theData, argv) {
       
       if (cmd.menu === 'general:share') {
         if (argv.shareTo === 'timeline') {
-          // 分享到朋友圈
-          JSBridge.call("share.shareToTimeline", theData, function (v) {
-            alert(v);
-          });
+          // 分享到朋友圈);
         } else if (argv.shareTo === 'friend') {
           // 分享到微信
         } else if (argv.shareTo === 'QQ ') {
@@ -66,31 +63,16 @@
           // 分享到微博
         }
       } else {
-        // console.log('执行分享');
-        // JSBridge.call('share.' + cmd.action, theData, function (v) {
-        //   alert(v);
-        // });
-
-        _nativeShare(cmd.action, theData, callbacks);
+        _nativeShare(cmd.action, theData, progress);
       }
     };
 
     handler(data, data.action);
   }
 
-  var _nativeShare = function (action, data, callbacks) {
+  var _nativeShare = function (action, data, progress) {
     JSBridge.call('share.' + action, data, function (res) {
-      switch (res.msg) {
-        case "confirm":
-          callbacks.confirm;
-          break;
-        case "cancel":
-          callbacks.cancel;
-        case "fail":
-        default:
-          callbacks.fail;
-      }
-      callbacks.all;
+      progress(res);
     });
   }
 
@@ -99,7 +81,7 @@
       menu: 'menu:share:timeline',
       action: 'shareTimeline'
     }, {
-      "state": 1,
+      "state": 0,
       "appid": data.appId ? data.appId : '',
       "img_url": data.imgUrl,
       "link": data.link,
