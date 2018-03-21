@@ -9,6 +9,10 @@
   window.JSBridge = bridge;
   console.log(window.dsbridge);
   
+  /**
+   * 检测JS与Native是否完成桥接
+   * @param {*} readyCallback 实例回调，可用于直接操作剩余API
+   */
   HYBridApi.ready = function (readyCallback) {
     console.log('test ready');
     if (readyCallback && typeof readyCallback == 'function') {
@@ -27,6 +31,12 @@
     console.log(str);
   };
 
+  /**
+   * 私有方法：分享
+   * @param {*} cmd 
+   * @param {*} data 分享数据
+   * @param {*} callbacks 分享回调
+   */
   var _share = function (cmd, data, callbacks) {
     callbacks = callbacks || {};
     
@@ -51,31 +61,29 @@
     };
 
     var handler = function (theData, argv) {
-      
-      if (cmd.menu === 'general:share') {
-        if (argv.shareTo === 'timeline') {
-          // 分享到朋友圈);
-        } else if (argv.shareTo === 'friend') {
-          // 分享到微信
-        } else if (argv.shareTo === 'QQ ') {
-          // 分享到QQ
-        } else if (argv.shareTo === 'weibo') {
-          // 分享到微博
-        }
-      } else {
-        _nativeShare(cmd.action, theData, progress);
-      }
+      _nativeShare(cmd.action, theData, progress);
     };
 
     handler(data, data.action);
   }
 
+  /**
+   * 调起原生分享的桥接方法
+   * @param {*} action 分享类型
+   * @param {*} data 分享数据
+   * @param {*} progress 分享进度回调
+   */
   var _nativeShare = function (action, data, progress) {
     JSBridge.call('share.' + action, data, function (res) {
       progress(res);
     });
   }
 
+  /**
+   * 分享至微信朋友圈
+   * @param {*} data 发送分享数据
+   * @param {*} callbacks 分享回调  
+   */
   HYBridApi.shareToTimeline = function (data, callbacks) {
     _share({
       menu: 'menu:share:timeline',
