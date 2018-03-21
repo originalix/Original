@@ -211,4 +211,40 @@
     });
   };
 
+  HYBridApi.uploadImage = function (srcList, callbacks) {
+    if (!srcList || srcList.length == 0) {
+      alert('请先选择照片之后再上传');
+      return;
+    }
+
+    var progress = function (resp) {
+      switch (true) {
+        // 用户进度
+        case /continue$/.test(resp.state):
+          callbacks.continue && callbacks.continue(resp.count);
+        // 用户取消
+        case /cancel$/.test(resp.state) :
+          callbacks.cancel && callbacks.cancel();
+        break;
+        // 发送成功
+        case /confirm$/.test(resp.state):
+          callbacks.confirm && callbacks.confirm();
+        break;
+        // fail　发送失败
+        case /fail$/.test(resp.state) :
+        default:
+          callbacks.fail && callbacks.fail(resp);
+        break;
+      }
+      // 无论成功失败都会执行的回调
+      callbacks.all && callbacks.all(resp);
+    };
+
+    JSBridge.call('uploadImage', {
+      "urls": srcList,
+    }, function (res) {
+      progress(res);
+    });
+  };
+
 })(window);
