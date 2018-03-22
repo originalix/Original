@@ -43,12 +43,27 @@ class WXApiController extends BaseController
             'secret' => '972d0295533d95069c14338296e1bff7',
         ];
 
-        $this->getUrl($url, $params);
+        return $this->get($url, $params);
     }
-
-    public function test($name)
+    
+    /**
+     * 发送返回格式为JSON的HTTP GET请求
+     *
+     * @param [String] $url
+     * @param [Array] $params
+     * @return JSON-Data
+     */
+    protected function get($url, $params)
     {
-        print_r($name);
+        $url = $this->generateUrl($url, $params);
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $data = curl_exec($curl);
+        curl_close($curl);
+
+        return json_decode($data);
     }
 
     /**
