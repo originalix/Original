@@ -128,6 +128,7 @@ class SiteController extends Controller
 
     public function actionTest()
     {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return ['code' => 200];
     }
 }
