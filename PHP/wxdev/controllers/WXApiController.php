@@ -14,27 +14,6 @@ class WXApiController extends BaseController
 
     public function actionGetAccessToken()
     {
-        $grant_type = 'client_credential';
-        $appid = 'wx543ed3903a242eb6';
-        $secret = '972d0295533d95069c14338296e1bff7';
-
-        $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=' . $grant_type . '&appid=' . $appid . '&secret=' . $secret;
-
-        $curl = curl_init();
-        // 设置请求的URL
-        curl_setopt($curl, CURLOPT_URL, $url);
-        // 设置头文件的信息作为数据流输出
-        // curl_setopt($curl, CURLOPT_HEADER, 1);
-        // 设置获取的信息以文件流形式返回，而不是直接输出
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
-        $data = curl_exec($curl);
-        curl_close($curl);
-        return json_decode($data);
-    }
-
-    public function actionArray()
-    {
         $url = 'https://api.weixin.qq.com/cgi-bin/token';
 
         $params = [
@@ -43,7 +22,12 @@ class WXApiController extends BaseController
             'secret' => '972d0295533d95069c14338296e1bff7',
         ];
 
-        return $this->get($url, $params);
+        $jsonData = $this->get($url, $params);
+        return [
+            'msg' => '获取微信Access_Token成功',
+            'access_token' => $jsonData->access_token,
+            'expires_in' => $jsonData->expires_in,
+        ];
     }
     
     /**
