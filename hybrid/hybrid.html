@@ -84,7 +84,7 @@
     
         <div class="row">
             <h3>上传图片</h3>
-            <button type="button" class="btn btn-info btn-lg btn-block uploadImg">PreviewImage</button>
+            <button type="button" class="btn btn-info btn-lg btn-block uploadImg">UploadImage</button>
         </div>
         
         <h2>网络状态及地理位置接口</h2>
@@ -272,8 +272,8 @@
     // 获取当前地理位置示例
     $('.location').on('click', function () {
         HYBridApi.ready(function (Api) {
-            Api.getLocation(function (city) {
-                console.log(city);
+            Api.getLocation(function (location) {
+                console.log(location.city);
             });
         });
     });
@@ -340,7 +340,7 @@
         });
     });
 
-    // 发起一个微信支付的示例
+    // 发起一个支付宝支付的示例
     $('.alipay').on('click', function () {
         HYBridApi.ready(function (Api) {
 

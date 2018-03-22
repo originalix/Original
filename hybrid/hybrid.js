@@ -272,7 +272,7 @@
    */
   HYBridApi.getLocation = function (callback) {
     JSBridge.call('getLocation', function (res) {
-      callback(res.city);
+      callback(res);
     });
   }
 
