@@ -19,8 +19,8 @@ class WXApiController extends BaseController
 
         $params = [
             'grant_type' => 'client_credential',
-            'appid' => 'wx543ed3903a242eb6',
-            'secret' => '972d0295533d95069c14338296e1bff7',
+            'appid' => Yii::$app->params['WX_APP_ID'],
+            'secret' => Yii::$app->params['WX_APP_SECRET'],
         ];
         
         $http = new HttpRequest();
