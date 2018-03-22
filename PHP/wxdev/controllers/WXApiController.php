@@ -32,4 +32,43 @@ class WXApiController extends BaseController
         curl_close($curl);
         return json_decode($data);
     }
+
+    public function actionArray()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/token';
+
+        $params = [
+            'grant_type' => 'client_credential',
+            'appid' => 'wx543ed3903a242eb6',
+            'secret' => '972d0295533d95069c14338296e1bff7',
+        ];
+
+        $this->getUrl($url, $params);
+    }
+
+    public function test($name)
+    {
+        print_r($name);
+    }
+
+    /**
+     * 根据参数数组，生成get请求的url
+     *
+     * @param [String] $url
+     * @param [Array] $params
+     * @return String
+     */
+    protected function generateUrl($url, $params)
+    {
+        foreach ($params as $key => $value) {
+            $index = array_search($key, array_keys($params));
+            if ($index == 0) {
+                $url = $url . '?' . $key . '=' . $value;
+            } else {
+                $url = $url . '&' . $key . '=' . $value;
+            }
+        }
+
+        return $url;
+    }
 }
