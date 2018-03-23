@@ -12,7 +12,11 @@ class WXApiController extends BaseController
     {
         return ['msg' => 'this is WX API Controller'];
     }
-
+    /**
+     * 获取微信的access_token
+     *
+     * @return JSON
+     */
     public function actionGetAccessToken()
     {
         $url = 'https://api.weixin.qq.com/cgi-bin/token';
@@ -33,4 +37,37 @@ class WXApiController extends BaseController
         ];
     }
 
+    public function actionSetButton()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create';
+        $urlParams = [
+            'access_token' => Yii::$app->params['WX_ACCESS_TOKEN']
+        ];
+
+        $params = [
+            'button' => [
+                [
+                    'name' => 'button1',
+                    'type' => 'click',
+                    'key' => 'LIX_BUTTON1',
+                ],
+                [
+                    'name' => 'button2',
+                    'type' => 'click',
+                    'key' => 'LIX_BUTTON2',
+                ],
+                [
+                    'name' => 'button3',
+                    'type' => 'click',
+                    'key' => 'LIX_BUTTON3',
+                ],
+            ],
+        ];
+
+        $http = new HttpRequest();
+        $data = $http->post($url, $urlParams, $params);
+        // print_r($data);
+
+        // return ['code' => 200];
+    }
 }

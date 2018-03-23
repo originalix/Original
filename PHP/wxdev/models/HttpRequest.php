@@ -48,11 +48,13 @@ class HttpRequest extends Model
         return $url;
     }
 
-    public function post($url, $urlParams, $parmas)
+    public function post($url, $urlParams, $params)
     {
         if (count($urlParams) > 0) {
             $url = $this->generateUrl($url, $urlParams);
         }
+
+        print_r ($url);
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
