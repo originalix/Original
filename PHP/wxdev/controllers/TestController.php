@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\controllers\BaseController;
+use app\models\HttpRequest;
 
 class TestController extends BaseController
 {
@@ -34,7 +35,7 @@ class TestController extends BaseController
      */
     public function actionSend()
     {
-        $url = 'http://192.168.0.102/code-repo/PHP/wxdev/web/wxapi/post';
+        $url = 'http://192.168.0.102/code-repo/PHP/wxdev/web/test/post';
         // $params = [
         //     'name' => 'Wsxxxx',
         // ];
@@ -64,6 +65,14 @@ class TestController extends BaseController
 
         $http = new HttpRequest();
         $data = $http->post($url, null, json_encode($params));
+
+        return $data;
     }
 
+    public function actionUrl()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/get';
+        $url = HttpRequest::generateWXUrl($url);
+        print_r($url);
+    }
 }

@@ -14,9 +14,11 @@ class HttpRequest extends Model
      * @param [Array] $params
      * @return JSON-Data
      */
-    public function get($url, $params)
+    public function get($url, $params=null)
     {
-        $url = $this->generateUrl($url, $params);
+        if (! is_null($params)) {
+            $url = self::generateUrl($url, $params);
+        }
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -34,7 +36,7 @@ class HttpRequest extends Model
      * @param [Array] $params
      * @return String
      */
-    protected function generateUrl($url, $params)
+    protected static function generateUrl($url, $params)
     {
         foreach ($params as $key => $value) {
             $index = array_search($key, array_keys($params));
@@ -48,10 +50,18 @@ class HttpRequest extends Model
         return $url;
     }
 
+    /**
+     * 发送POST请求
+     *
+     * @param [String] $url 请求url
+     * @param [Array] $urlParams url中的参数
+     * @param [Array] $params POST
+     * @return void
+     */
     public function post($url, $urlParams, $params)
     {
         if (count($urlParams) > 0) {
-            $url = $this->generateUrl($url, $urlParams);
+            $url = self::generateUrl($url, $urlParams);
         }
 
         $curl = curl_init();
@@ -62,8 +72,15 @@ class HttpRequest extends Model
 
         $data = curl_exec($curl);
         curl_close($curl);
-        print_r($data);
 
         return json_decode($data);
+    }
+
+    public static function generateWXUrl($url)
+    {
+        $access_token = [
+            'access_token' => Yii::$app->params['WX_ACCESS_TOKEN']
+        ];
+        return self::generateUrl($url, $access_token);
     }
 }

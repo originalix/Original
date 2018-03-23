@@ -37,7 +37,12 @@ class WXApiController extends BaseController
         ];
     }
 
-    public function actionSetButton()
+    /**
+     * 自定义菜单创建接口
+     *
+     * @return JSON
+     */
+    public function actionSetMenu()
     {
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create';
         $urlParams = [
@@ -97,6 +102,20 @@ class WXApiController extends BaseController
         $http = new HttpRequest();
         $data = $http->post($url, $urlParams, json_encode($params, JSON_UNESCAPED_UNICODE));
 
+        return $data;
+    }
+
+    /**
+     * 自定义菜单查询接口
+     *
+     * @return JSON
+     */
+    public function actionQueryMenu()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/get';
+        $url = HttpRequest::generateWXUrl($url);
+        $http = new HttpRequest();
+        $data = $http->get($url);
         return $data;
     }
 }
