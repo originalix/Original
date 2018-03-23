@@ -114,6 +114,17 @@ class WXApiController extends BaseController
     {
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/get';
         $url = HttpRequest::generateWXUrl($url);
+
+        $http = new HttpRequest();
+        $data = $http->get($url);
+        return $data;
+    }
+
+    public function actionDeleteMenu()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/delete';
+        $url = HttpRequest::generateWXUrl($url);
+
         $http = new HttpRequest();
         $data = $http->get($url);
         return $data;
