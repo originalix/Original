@@ -54,8 +54,6 @@ class HttpRequest extends Model
             $url = $this->generateUrl($url, $urlParams);
         }
 
-        print_r ($url);
-
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -65,5 +63,7 @@ class HttpRequest extends Model
         $data = curl_exec($curl);
         curl_close($curl);
         print_r($data);
+
+        return json_decode($data);
     }
 }
