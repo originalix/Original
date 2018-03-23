@@ -35,7 +35,7 @@ class TestController extends BaseController
      */
     public function actionSend()
     {
-        $url = 'http://192.168.0.102/code-repo/PHP/wxdev/web/test/post';
+        $url = 'http://originalix.xyz/code-repo/PHP/wxdev/web/test/post';
         // $params = [
         //     'name' => 'Wsxxxx',
         // ];
