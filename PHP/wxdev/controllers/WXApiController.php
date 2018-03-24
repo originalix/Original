@@ -37,7 +37,12 @@ class WXApiController extends BaseController
         ];
     }
 
-    public function actionSetButton()
+    /**
+     * 自定义菜单创建接口
+     *
+     * @return JSON
+     */
+    public function actionSetMenu()
     {
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create';
         $urlParams = [
@@ -47,27 +52,81 @@ class WXApiController extends BaseController
         $params = [
             'button' => [
                 [
-                    'name' => 'button1',
+                    'name' => '点击Click',
                     'type' => 'click',
                     'key' => 'LIX_BUTTON1',
                 ],
                 [
-                    'name' => 'button2',
-                    'type' => 'click',
-                    'key' => 'LIX_BUTTON2',
+                    'name' => '网页视图',
+                    'sub_button' => [
+                        [
+                            'type' => 'view',
+                            'name' => '百度',
+                            'url' => 'https://www.baidu.com',
+                        ],
+                        [
+                            'type' => 'view',
+                            'name' => 'Blog',
+                            'url' => 'http://originalix.github.io/',
+                        ],
+                        [
+                            'type' => 'view',
+                            'name' => '公众平台开发文档',
+                            'url' => 'https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141013',
+                        ],
+                    ],
                 ],
                 [
-                    'name' => 'button3',
-                    'type' => 'click',
-                    'key' => 'LIX_BUTTON3',
+                    'name' => '工具类',
+                    'sub_button' => [
+                        [
+                            'type' => 'pic_photo_or_album',
+                            'name' => '拍照或者相册发图',
+                            'key' => 'pic_photo_1',
+                        ],
+                        [
+                            'type' => 'location_select',
+                            'name' => '发送位置',
+                            'key' => 'location_1',
+                        ],
+                        [
+                            'type' => 'scancode_waitmsg',
+                            'name' => '扫码带提示',
+                            'key' => 'scancode_1',
+                        ],
+                    ],
                 ],
             ],
         ];
 
         $http = new HttpRequest();
-        $data = $http->post($url, $urlParams, $params);
-        // print_r($data);
+        $data = $http->post($url, $urlParams, json_encode($params, JSON_UNESCAPED_UNICODE));
 
-        // return ['code' => 200];
+        return $data;
+    }
+
+    /**
+     * 自定义菜单查询接口
+     *
+     * @return JSON
+     */
+    public function actionQueryMenu()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/get';
+        $url = HttpRequest::generateWXUrl($url);
+
+        $http = new HttpRequest();
+        $data = $http->get($url);
+        return $data;
+    }
+
+    public function actionDeleteMenu()
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/delete';
+        $url = HttpRequest::generateWXUrl($url);
+
+        $http = new HttpRequest();
+        $data = $http->get($url);
+        return $data;
     }
 }
