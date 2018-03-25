@@ -28,11 +28,23 @@ class EasyController extends BaseController
             //...
         ];
 
-        $app = new Application($options);
+        return $options;
+
+        // $app = new Application($options);
         
-        $response = $app->server->serve();
+        // $response = $app->server->serve();
         
         // // 将响应输出
-        $response->send(); // Laravel 里请使用：return $response;
+        // $response->send(); // Laravel 里请使用：return $response;
+    }
+
+    public function actionSend()
+    {
+        $wechat = Yii::$app->get('wechat');
+        //$wechat->app is Easywechat's Application instance
+        $wechat->app->server->setMessageHandler(function ($message) {
+                    return "hello world！welcome!";
+                });
+        $wechat->app->server()->send();
     }
 }
