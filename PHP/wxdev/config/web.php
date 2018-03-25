@@ -53,55 +53,13 @@ $config = [
             'showScriptName' => false,
             'rules' => require __DIR__ . '/restful.php',
         ],
-        'cache' => [
-            'class'=>'yii\caching\FileCache',
-            'keyPrefix' => 'yak',
+        'wechat' => [
+            'class' => 'maxwen\easywechat\Wechat',
+            // 'userOptions' => []  # user identity class params
+            // 'sessionParam' => '' # wechat user info will be stored in session under this key
+            // 'returnUrlParam' => '' # returnUrl param stored in session
         ],
-        'wechat'=>[
-            'class'=>'yii\easyWechat\Wechat',
-            //the config is all most match the easyWechat office's config,
-            //the diffenrece please see Notice
-            'config'=>[                
-                'debug'  => true,                
-                'app_id'=>'',
-                'secret'=>'',
-                'token'=>'',
-                'aes_key'=>'',
-                'payment'=>[                   
-                    'merchant_id'=>'',
-                    'key'=>'',                    
-                    'cert_path'=>'',
-                    'key_path'=>'',                    
-                    'notify_url'=>''
-
-                ],               
-                'oauth' => [
-                    'scopes'   => ['snsapi_userinfo'],
-                    'callback' => '/examples/oauth_callback.php',
-                ],
-                'guzzle' => [
-                    'timeout' => 3.0, //
-                    //'verify' => false, // close SSL verify（not suggust！！！）
-                ],                
-                /**
-                 * Cache,if not set ,use Yii default config cache
-                 */
-                'cache'=>[
-
-                ],
-            ],
-        ],
-        'log'=>[
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'maxFileSize'=> 200,
-                    'levels' => [],
-                    'logVars' => [],
-                    'logFile' => '@runtime/logs/'.date('ymd').'.log',
-                ],
-            ]
-        ],
+        
     ],
     'params' => $params,
 ];

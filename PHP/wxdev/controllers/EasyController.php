@@ -6,7 +6,7 @@ use Yii;
 use app\controllers\BaseController;
 use app\models\HttpRequest;
 
-class EasyController extends BaseController
+class EasyController extends \yii\web\Controller
 {
     public function actionResponse()
     {
@@ -38,11 +38,13 @@ class EasyController extends BaseController
 
     public function actionSend()
     {
-        $wechat = Yii::$app->get('wechat');
-        //$wechat->app is Easywechat's Application instance
-        $wechat->app->server->setMessageHandler(function ($message) {
-                    return "hello world！welcome!";
-                });
-        $wechat->app->server()->send();
+        $server = Yii::$app->wechat->server;
+
+        $server->setMessageHandler(function($message) {
+            return "您好！欢迎关注我!";
+        });
+
+        $response = $server->serve();
+        $response->send();
     }
 }
