@@ -18,7 +18,8 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "overtrue/wechat": "^3.3"
+        "overtrue/wechat": "^3.3",
+        "maxwen/yii2-easy-wechat": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

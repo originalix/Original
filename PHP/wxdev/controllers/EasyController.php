@@ -6,8 +6,6 @@ use Yii;
 use app\controllers\BaseController;
 use app\models\HttpRequest;
 
-use EasyWeChat\Foundation\Application;
-
 class EasyController extends BaseController
 {
     public function actionResponse()

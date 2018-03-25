@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "886c96161b0c59e034f7edc4fc3f66b4",
+    "content-hash": "e48d1d3bda91653e20335e66d8a94275",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -464,6 +464,43 @@
                 "url"
             ],
             "time": "2018-03-21 13:09:20"
+        },
+        {
+            "name": "maxwen/yii2-easy-wechat",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/max-wen/yii2-easy-wechat.git",
+                "reference": "8d25c3af6cf050b7831ee5dc2e265c9be9440381"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/max-wen/yii2-easy-wechat/8d25c3af6cf050b7831ee5dc2e265c9be9440381.zip",
+                "reference": "8d25c3af6cf050b7831ee5dc2e265c9be9440381",
+                "shasum": ""
+            },
+            "require": {
+                "overtrue/wechat": "~3.0",
+                "yiisoft/yii2": "~2.0.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "maxwen\\easywechat\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "max.wen",
+                    "email": "max.wen@qq.com"
+                }
+            ],
+            "description": "WeChat SDK for yii2, based on overtrue/easywechat",
+            "time": "2017-08-11T05:09:15+00:00"
         },
         {
             "name": "monolog/monolog",

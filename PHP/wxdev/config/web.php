@@ -53,8 +53,12 @@ $config = [
             'showScriptName' => false,
             'rules' => require __DIR__ . '/restful.php',
         ],
+        'cache' => [
+            'class'=>'yii\caching\FileCache',
+            'keyPrefix' => 'yak',
+        ],
         'wechat'=>[
-            'class'=>'app\models\Wechat',
+            'class'=>'yii\easyWechat\Wechat',
             //the config is all most match the easyWechat office's config,
             //the diffenrece please see Notice
             'config'=>[                
@@ -86,6 +90,17 @@ $config = [
 
                 ],
             ],
+        ],
+        'log'=>[
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'maxFileSize'=> 200,
+                    'levels' => [],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/'.date('ymd').'.log',
+                ],
+            ]
         ],
     ],
     'params' => $params,
