@@ -120,6 +120,11 @@ class WXApiController extends BaseController
         return $data;
     }
 
+    /**
+     * 删除自定义菜单接口
+     *
+     * @return JSON
+     */
     public function actionDeleteMenu()
     {
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/delete';
