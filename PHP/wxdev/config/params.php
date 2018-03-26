@@ -15,8 +15,9 @@ return [
         // 'aes_key' => null, // 可选
     
         'log' => [
-            'level' => 'debug',
-            'file'  => '/tmp/easywechat.log', // XXX: 绝对路径！！！！
+            'level'      => 'debug',
+            'permission' => 0777,
+            'file'       => '/tmp/easywechat.log',
         ],
     
         //...
