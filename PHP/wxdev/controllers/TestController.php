@@ -22,6 +22,7 @@ class TestController extends BaseController
     {
         if (Yii::$app->request->isPost) {
             $postData = Yii::$app->request->post();
+            
             return $postData;
         } else {
             return ['methos' => 'get'];

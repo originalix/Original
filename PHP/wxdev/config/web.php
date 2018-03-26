@@ -59,7 +59,23 @@ $config = [
             // 'sessionParam' => '' # wechat user info will be stored in session under this key
             // 'returnUrlParam' => '' # returnUrl param stored in session
         ],
-        
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'logFile' => '@app/runtime/logs/' . date('Ym/d') . '.log',
+                    'logVars' => ['_GET', '_POST'],
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'logFile' => '@app/runtime/debug/' . date('Ym/d') . '.log',
+                    'logVars' => ['_GET', '_POST'],
+                ]
+            ],
+        ],
     ],
     'params' => $params,
 ];

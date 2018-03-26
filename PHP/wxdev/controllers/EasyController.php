@@ -38,7 +38,7 @@ class EasyController extends \yii\web\Controller
 
     public function actionSend()
     {
-        Yii::info('request arrived.', __METHOD__);
+        Yii::error('=======Request start=======');
 
         $server = Yii::$app->wechat->server;
 
@@ -48,6 +48,11 @@ class EasyController extends \yii\web\Controller
 
         $response = $server->serve();
         $response->send();
-        Yii::info('return response.', __METHOD__);
+        Yii::error('=======Request end=======');
+    }
+
+    public function actionLog()
+    {
+        Yii::error('========error=======');
     }
 }
