@@ -47,9 +47,15 @@ class EasyController extends \yii\web\Controller
         });
 
         $response = $server->serve();
+
+        // var_dump($response);
         // $response->send();
+        Yii::$app->wechat->server->serve()->sendContent();
+        // \Yii::$app->response->data = $response->send();
+        // echo ($response->send());
+
         Yii::error('=======Request end=======');
-        return $response;
+        // return $response;
     }
 
     public function actionLog()
