@@ -47,8 +47,9 @@ class EasyController extends \yii\web\Controller
         });
 
         $response = $server->serve();
-        $response->send();
+        // $response->send();
         Yii::error('=======Request end=======');
+        return $response;
     }
 
     public function actionLog()
