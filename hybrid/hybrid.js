@@ -387,8 +387,12 @@
 
   HYBridApi.androidTest = function(callback) {
     JSBridge.call('androidTest', {'name': 'Android'}, function (res) {
-      alert(JSON.parse(res));
-      // console.log(JSON.parse(res));
+      // alert(JSON.parse(res));
+      callback(res);
+      // alert(res);
+      // alert(JSON.stringify(res));
+      // alert(JSON.parse(res));
+      // alert('Hello world');
     });
   }
 

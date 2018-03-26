@@ -145,7 +145,7 @@
         
         <div class="row">
             <h3>安卓返回值测试</h>
-            <p>原生函数:androidTest</p>
+            <p id="androidText">原生函数:androidTest</p>
             <button type="button" class="btn btn-info btn-lg btn-block android">安卓返回值测试</button>
         </div>
 
@@ -380,8 +380,9 @@
     });
 
     $('.android').on('click', function () {
-        HYBridApi.androidTest(function () {
-
+        HYBridApi.androidTest(function (res) {
+            $('#androidText').append("<br/>response: " + res);
+            // $('#androidText').append(JSON.stringify(res));
         });
     });
     
