@@ -48,4 +48,16 @@ class EasyController extends \yii\web\Controller
         $response->sendContent();
         Yii::error('=======Request end=======');
     }
+    
+    public function actionUser()
+    {
+        // if (Yii::$app->wechat->isWechat && !Yii::$app->wechat->isAuthorized()) {
+        // }
+        return Yii::$app->wechat->authorizeRequired()->send();
+    }
+
+    public function actionTest()
+    {
+        print_r('Hello World');
+    }
 }

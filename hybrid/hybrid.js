@@ -74,7 +74,7 @@
    * @param {*} progress 分享进度回调
    */
   var _nativeShare = function (action, data, progress) {
-    JSBridge.call('share.' + action, data, function (res) {
+    JSBridge.call(action, data, function (res) {
       progress(res);
     });
   }
@@ -108,7 +108,7 @@
   HYBridApi.shareToFriend = function (data, callbacks) {
     _share({
       menu: 'menu:share:friend',
-      action: 'shareFriend'
+      action: 'shareToFriend'
     }, {
       "state": 0,
       "appid": data.appId ? data.appId : '',
@@ -129,7 +129,7 @@
   HYBridApi.shareToSinaWeibo = function (data, callbacks) {
     _share({
       menu: 'menu:share:sinaweibo',
-      action: 'shareSinaWeibo'
+      action: 'shareToSinaWeibo'
     }, {
       "state": 0,
       "appid": data.appId ? data.appId : '',
@@ -150,7 +150,7 @@
   HYBridApi.shareToQQ = function (data, callbacks) {
     _share({
       menu: 'menu:share:qq',
-      action: 'shareQQ'
+      action: 'shareToQQ'
     }, {
       "state": 0,
       "appid": data.appId ? data.appId : '',
@@ -171,7 +171,7 @@
   HYBridApi.shareToQZone = function (data, callbacks) {
     _share({
       menu: 'menu:share:qzone',
-      action: 'shareQZone'
+      action: 'shareToQZone'
     }, {
       "state": 0,
       "appid": data.appId ? data.appId : '',
