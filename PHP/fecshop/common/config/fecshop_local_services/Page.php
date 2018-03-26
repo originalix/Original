@@ -11,8 +11,8 @@ return [
     'page' => [
         'childService' => [
             'currency' => [
-                'baseCurrecy'     => 'USD',    // 基础货币，后台产品的价格都使用基础货币填写价格值。
-                'defaultCurrency' => 'USD', // 默认货币，如果store不设置货币，就使用这个store默认货币
+                'baseCurrecy'     => 'CNY',    // 基础货币，后台产品的价格都使用基础货币填写价格值。
+                'defaultCurrency' => 'CNY', // 默认货币，如果store不设置货币，就使用这个store默认货币
                 'currencys'       => [
                     
                     'EUR' => [            // 欧元
