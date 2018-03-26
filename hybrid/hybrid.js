@@ -385,4 +385,11 @@
     });
   }
 
+  HYBridApi.androidTest = function(callback) {
+    JSBridge.call('androidTest', {'name': 'Android'}, function (res) {
+      alert(JSON.parse(res));
+      // console.log(JSON.parse(res));
+    });
+  }
+
 })(window);
