@@ -43,15 +43,15 @@
     var progress = function (resp) {
       switch (true) {
         // 用户取消
-        case /cancel$/.test(resp) :
+        case /cancel$/.test(resp.state) :
           callbacks.cancel && callbacks.cancel(resp);
         break;
         // 发送成功
-        case /confirm$/.test(resp):
+        case /confirm$/.test(resp.state):
           callbacks.confirm && callbacks.confirm(resp);
         break;
         // fail　发送失败
-        case /fail$/.test(resp) :
+        case /fail$/.test(resp.state) :
         default:
           callbacks.fail && callbacks.fail(resp);
         break;
