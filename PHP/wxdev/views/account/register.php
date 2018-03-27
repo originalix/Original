@@ -72,44 +72,39 @@ use yii\widgets\ActiveForm;
             $template = ['template' => '<p><label for="user_login">{label}<br /><input type="text" name="log" id="user_login" class="input" value="" size="20" /></label></p>'];
         
 
-        ?>
-
-        <?= $form->field($model, 'name', $template)
-                ->textInput(['maxlength' => true, 'value'=>'', 'name'=>'user_name'])
-                ->label('姓名');
             ?>
 
-        <?php ActiveForm::end() ?>
-            
-        <form name="loginform" id="loginform" action="index.html" method="post">
-            <p>
-                <label for="user_login">姓名<br />
-                    <input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
-            </p>
-            <p>
-                <label for="user_login2">Email<br />
-                    <input type="text" name="log" id="user_login2" class="input" value="" size="20" /></label>
-            </p>
-            <p>
-                <label for="user_login3">用户名<br />
-                    <input type="text" name="log" id="user_login3" class="input" value="" size="20" /></label>
-            </p>
-            <p>
-                <label for="user_pass">密码<br />
-                    <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
-            </p>
-            <p>
-                <label for="user_pass2">再次输入密码<br />
-                    <input type="password" name="pwd1" id="user_pass2" class="input" value="" size="20" /></label>
-            </p>
+            <?= $form->field($model, 'username', $template)
+                ->textInput(['maxlength' => true, 'value'=>'', 'name'=>'user_name'])
+                ->label('用户名');
+                ?>
+        
+            <?= $form->field($model, 'password', $template)
+                ->passwordInput();
+                ?>
+
+            <?= $form->field($model, 'confirm_password', $template)
+                ->passwordInput();
+                ?>
+
+            <?= $form->field($model, 'email', $template)
+                ->textInput(['maxlength' => true, 'value'=>'', 'name'=>'email'])
+                ->label('Email');
+                ?>
+
             <p class="forgetmenot">
                 <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> 我同意注册协议</label>
             </p>
 
             <p class="submit">
-                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="注册" />
+                <!-- <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="注册" /> -->
+                <?= Html::submitButton('注册', [
+                    'class' => 'btn btn-accent btn-block',
+                    'id' => 'wp-submit',
+                ]) ?>
             </p>
-        </form>
+
+        <?php ActiveForm::end() ?>
 
         <p id="nav">
             <a class="pull-left" href="#" title="Password Lost and Found">忘记密码?</a>
@@ -127,7 +122,6 @@ use yii\widgets\ActiveForm;
 
     </div>
 </div>
-
 
 </div>
 

@@ -29,6 +29,9 @@ use Yii;
  */
 class AdminUser extends \yii\db\ActiveRecord
 {
+    
+    public $confirm_password;
+
     /**
      * {@inheritdoc}
      */
@@ -46,7 +49,7 @@ class AdminUser extends \yii\db\ActiveRecord
             [['status', 'created_at', 'updated_at', 'access_token_created_at', 'allowance', 'allowance_updated_at'], 'integer'],
             [['created_at_datetime', 'updated_at_datetime', 'birth_date'], 'safe'],
             [['username', 'password'], 'string', 'max' => 50],
-            [['password_hash'], 'string', 'max' => 80],
+            [['password_hash', 'confirm_password'], 'string', 'max' => 80],
             [['password_reset_token', 'email', 'auth_key', 'access_token'], 'string', 'max' => 60],
             [['person', 'code'], 'string', 'max' => 100],
             [['username'], 'unique'],
@@ -64,6 +67,7 @@ class AdminUser extends \yii\db\ActiveRecord
             'username' => '用户名',
             'password_hash' => '密码',
             'password_reset_token' => '密码token',
+            'confirm_password' => '再次输入密码', 
             'email' => '邮箱',
             'person' => '用户姓名',
             'code' => 'Code',
