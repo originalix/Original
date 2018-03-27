@@ -1,4 +1,7 @@
-
+<?php
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+?>
 
 <!DOCTYPE html>
 <html class=" ">
@@ -38,7 +41,7 @@
         <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - START --> 
         
         
-<link href="../assets/plugins/icheck/skins/all.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="../assets/plugins/icheck/skins/all.css" rel="stylesheet" type="text/css" media="screen"/>
 
         <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - END --> 
 
@@ -60,7 +63,24 @@
 <div class="register-wrapper row">
     <div id="register" class="login loginpage col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-0 col-xs-12 col-sm-6 col-lg-4">
         <h1><a href="#" title="Login Page" tabindex="-1">Complete Admin</a></h1>
+        <?php 
+            $form = ActiveForm::begin([
+                'options' => ['enctype' => 'multipart/form-data', 'id' => 'loginform'],
+                'method' => 'post',
+            ]);
 
+            $template = ['template' => '<p><label for="user_login">{label}<br /><input type="text" name="log" id="user_login" class="input" value="" size="20" /></label></p>'];
+        
+
+        ?>
+
+        <?= $form->field($model, 'name', $template)
+                ->textInput(['maxlength' => true, 'value'=>'', 'name'=>'user_name'])
+                ->label('姓名');
+            ?>
+
+        <?php ActiveForm::end() ?>
+            
         <form name="loginform" id="loginform" action="index.html" method="post">
             <p>
                 <label for="user_login">姓名<br />
