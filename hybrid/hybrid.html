@@ -175,7 +175,7 @@
 
     // 分享示例
     var shareData = {
-        "imgUrl":'http://img.hb.aicdn.com/19d846d614cc443e9e930922fdf042276fa68af726154-iOqQt2_fw658',
+        "imgUrl":'https://b-ssl.duitang.com/uploads/item/201803/27/20180327090357_xzcEi.thumb.700_0.jpeg',
         "link":'http://huaban.com/boards/29279117/',
         "desc":'美女图片分享',
         "title":"花瓣网"
@@ -211,15 +211,7 @@
                 // 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？
             }
         };
-        //同步调用
-        var str=bridge.call("testSyn","testSyn");
-        console.log(str);
 
-        //异步调用
-        console.log(bridge);
-        bridge.call("testAsyn","testAsyn", function (v) {
-            alert(v);
-        });
         HYBridApi.ready(function (Api) {
             console.log(Api);
             Api.shareToTimeline(shareData, shareCallbacks);

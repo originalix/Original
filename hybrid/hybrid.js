@@ -74,7 +74,6 @@
    * @param {*} progress 分享进度回调
    */
   var _nativeShare = function (action, data, progress) {
-    console.log(JSBridge);
     JSBridge.call(action, data, function (res) {
       progress(res);
     });
