@@ -7,7 +7,7 @@
 
   window.HYBridApi = HYBridApi;
   window.JSBridge = bridge;
-  console.log(window.dsbridge);
+  console.log(window.bridge);
   
   /**
    * 检测JS与Native是否完成桥接
@@ -74,6 +74,7 @@
    * @param {*} progress 分享进度回调
    */
   var _nativeShare = function (action, data, progress) {
+    console.log(JSBridge);
     JSBridge.call(action, data, function (res) {
       progress(res);
     });
@@ -87,7 +88,7 @@
   HYBridApi.shareToTimeline = function (data, callbacks) {
     _share({
       menu: 'menu:share:timeline',
-      action: 'shareTimeline'
+      action: 'shareToTimeline'
     }, {
       "state": 0,
       "appid": data.appId ? data.appId : '',

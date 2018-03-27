@@ -156,11 +156,11 @@
 <script src="./hybrid.js"></script>
 <script>
 
-    HYBridApi.ready(function (Api) {
-        Api.takeOverBackBtn(false, function (res) {
-            console.log(res);
-        });
-    });
+    // HYBridApi.ready(function (Api) {
+    //     Api.takeOverBackBtn(false, function (res) {
+    //         console.log(res);
+    //     });
+    // });
 
     // ready示例 测试jsbridge
     $('.ready').on('click', function () {
@@ -171,14 +171,17 @@
         });
     });
 
+    /*================分享示例测试=====================*/
+
     // 分享示例
+    var shareData = {
+        "imgUrl":'http://img.hb.aicdn.com/19d846d614cc443e9e930922fdf042276fa68af726154-iOqQt2_fw658',
+        "link":'http://huaban.com/boards/29279117/',
+        "desc":'美女图片分享',
+        "title":"花瓣网"
+    };
+
     $('.share').on('click', function () {
-        var shareData = {
-        "imgUrl":'http://www.baidufe.com/fe/blog/static/img/weixin-qrcode-2.jpg',
-        "link":'http://www.baidufe.com',
-        "desc":'大家好，我是Alien，Web前端&Android客户端码农，喜欢技术上的瞎倒腾！欢迎多交流',
-        "title":"大家好，我是赵先烈"
-        };
 
         // 分享的回调
         var shareCallbacks = {
@@ -208,11 +211,22 @@
                 // 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？
             }
         };
+        //同步调用
+        var str=bridge.call("testSyn","testSyn");
+        console.log(str);
 
+        //异步调用
+        console.log(bridge);
+        bridge.call("testAsyn","testAsyn", function (v) {
+            alert(v);
+        });
         HYBridApi.ready(function (Api) {
+            console.log(Api);
             Api.shareToTimeline(shareData, shareCallbacks);
         });
     });
+
+    /*================分享示例结束=====================*/
 
     // 选择照片示例
     $('.choose').on('click', function () {

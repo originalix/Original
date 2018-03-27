@@ -20,8 +20,7 @@ var bridge = {
       }else if(window._dswk||navigator.userAgent.indexOf("_dsbridge")!=-1){
          ret = prompt("_dsbridge=" + method, arg);
       }
-
-     return  JSON.parse(ret||{}).data;
+     return  JSON.parse(ret||'{}').data;
   },
   register: function (name, fun, asyn) {
       var q = asyn ? window._dsaf : window._dsf
