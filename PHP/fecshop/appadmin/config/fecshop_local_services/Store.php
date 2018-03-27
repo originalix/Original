@@ -6,7 +6,7 @@
             'appadmin.fecshoptest.com' => [
                 'language'         => 'zh_CN',
                 'languageName'     => '中文',
-                'localThemeDir'    => '@apphtml5/theme/terry/theme01',
+                'localThemeDir'    => '@appadmin/theme/terry/theme01',
                 'thirdThemeDir'    => [],
                 'currency'         => 'CNY',
                 'mobile'           => [
