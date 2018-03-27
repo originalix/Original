@@ -11,7 +11,7 @@
         -->
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>Complete Admin : Registration Page</title>
+        <title>后台注册页面</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="" name="description" />
         <meta content="" name="author" />
@@ -63,7 +63,7 @@
 
         <form name="loginform" id="loginform" action="index.html" method="post">
             <p>
-                <label for="user_login">Full Name<br />
+                <label for="user_login">姓名<br />
                     <input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
             </p>
             <p>
@@ -71,31 +71,29 @@
                     <input type="text" name="log" id="user_login2" class="input" value="" size="20" /></label>
             </p>
             <p>
-                <label for="user_login3">Username<br />
+                <label for="user_login3">用户名<br />
                     <input type="text" name="log" id="user_login3" class="input" value="" size="20" /></label>
             </p>
             <p>
-                <label for="user_pass">Password<br />
+                <label for="user_pass">密码<br />
                     <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
             </p>
             <p>
-                <label for="user_pass2">Confirm Password<br />
+                <label for="user_pass2">再次输入密码<br />
                     <input type="password" name="pwd1" id="user_pass2" class="input" value="" size="20" /></label>
             </p>
             <p class="forgetmenot">
-                <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> I agree to terms to conditions</label>
+                <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> 我同意注册协议</label>
             </p>
 
-
-
             <p class="submit">
-                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="Sign Up" />
+                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="注册" />
             </p>
         </form>
 
         <p id="nav">
-            <a class="pull-left" href="#" title="Password Lost and Found">Forgot password?</a>
-            <a class="pull-right" href="ui-login.html" title="Sign Up">Sign In</a>
+            <a class="pull-left" href="#" title="Password Lost and Found">忘记密码?</a>
+            <a class="pull-right" href="ui-login.html" title="Sign Up">登录</a>
         </p>
         <div class="clearfix"></div>
         <div class="text-center register-social">
