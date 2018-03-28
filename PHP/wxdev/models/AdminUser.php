@@ -29,7 +29,8 @@ use Yii;
  */
 class AdminUser extends \yii\db\ActiveRecord
 {
-    
+    public $username;
+    public $email;
     public $confirm_password;
 
     /**
@@ -52,8 +53,22 @@ class AdminUser extends \yii\db\ActiveRecord
             [['password_hash', 'confirm_password'], 'string', 'max' => 80],
             [['password_reset_token', 'email', 'auth_key', 'access_token'], 'string', 'max' => 60],
             [['person', 'code'], 'string', 'max' => 100],
-            [['username'], 'unique'],
+            
             [['access_token'], 'unique'],
+
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'message' => '该用户名已经被占用.'],
+            ['username', 'string', 'min' => 4, 'max' => 12],
+            ['username','match','pattern'=>'/^[a-zA-Z0-9_]+$/','message'=>'{attribute}只能由英文字母、数字、下划线组成'],
+
+
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'unique', 'message' => '该电子邮箱已经被占用.'],
+
+            ['password', 'required'],
+            ['password', 'string', 'min' => 6,'max' => 16,'message'=>'{attribute}位数为6至16位'],
         ];
     }
 

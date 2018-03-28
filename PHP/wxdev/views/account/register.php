@@ -75,7 +75,7 @@ use yii\widgets\ActiveForm;
             ?>
 
             <?= $form->field($model, 'username', $template)
-                ->textInput(['maxlength' => true, 'value'=>'', 'name'=>'user_name'])
+                ->textInput(['maxlength' => true, 'value'=>'', 'name'=>'username'])
                 ->label('用户名');
                 ?>
         
