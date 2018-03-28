@@ -18,7 +18,6 @@ class RegisterController extends Controller
                               
             } else {
                 $errors = $model->errors;
-                var_dump($errors);  
             }
         }
 

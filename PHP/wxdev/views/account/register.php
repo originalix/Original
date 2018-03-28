@@ -93,7 +93,14 @@ use yii\widgets\ActiveForm;
             <p class="forgetmenot">
                 <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> 我同意注册协议</label>
             </p>
-
+                
+            <?php 
+                if ($errors = $model->getFirstErrors()) {
+                    $firstError = current($errors);
+                    echo $firstError;
+                }
+            ?>
+            
             <p class="submit">
                 <!-- <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="注册" /> -->
                 <?= Html::submitButton('注册', [

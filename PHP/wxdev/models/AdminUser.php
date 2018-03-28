@@ -29,8 +29,6 @@ use Yii;
  */
 class AdminUser extends \yii\db\ActiveRecord
 {
-    public $username;
-    public $email;
     public $confirm_password;
 
     /**

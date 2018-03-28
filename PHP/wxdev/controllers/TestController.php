@@ -116,6 +116,4 @@ class TestController extends BaseController
         }
         return ['session' => 'no session'];
     }
-
-
 }
