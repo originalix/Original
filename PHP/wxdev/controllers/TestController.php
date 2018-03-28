@@ -104,4 +104,18 @@ class TestController extends BaseController
 
         return ['cache' => 'no cache'];
     }
+
+    public function actionSession()
+    {
+        $session = Yii::$app->session;
+        $key = 'username';
+        if ($session->has($key)) {
+            return ['session' => $session->get($key)];
+        } else {
+            $session->set($key, 'Leon');
+        }
+        return ['session' => 'no session'];
+    }
+
+
 }

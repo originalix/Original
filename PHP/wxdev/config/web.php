@@ -21,9 +21,9 @@ $config = [
                 'application/json' => 'yii\web\JsonParser',
             ],
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+        // 'cache' => [
+        //     'class' => 'yii\caching\FileCache',
+        // ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
@@ -86,8 +86,12 @@ $config = [
 
         'cache' => [
             'class' => 'yii\redis\Cache',
-            
-        ]
+        ],
+
+        'session' => [
+            'name' => 'advanced-frontend',
+            'class' => 'yii\redis\Session',
+        ],
     ],
     'params' => $params,
 ];
