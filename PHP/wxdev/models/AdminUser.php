@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: Lix 
+ * @Date: 2018-03-29 07:48:44 
+ * @Last Modified by: Lix
+ * @Last Modified time: 2018-03-29 07:56:02
+ */
 
 namespace app\models;
 
@@ -64,24 +70,12 @@ class AdminUser extends ActiveRecord implements IdentityInterface, RateLimitInte
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
-        return 'admin_user';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
-    }
-
-    public function register()
-    {
-
     }
 
     /**
@@ -112,4 +106,33 @@ class AdminUser extends ActiveRecord implements IdentityInterface, RateLimitInte
             'birth_date' => '出生日期',
         ];
     }
+
+    /**
+     * 数据库表名
+     *
+     * @return String
+     */
+    public static function tableName()
+    {
+        return 'admin_user';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    public static function findIdentity($id)
+    {
+        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    
 }
