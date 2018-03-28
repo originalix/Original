@@ -15,9 +15,14 @@ class RegisterController extends Controller
 
         if (Yii::$app->request->isPost) {
             if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
-                              
-            } else {
-                $errors = $model->errors;
+                if ($model->save()) {
+                    return $this->render('//account/register', [
+                        'model' => $model,
+                        'tips' => '注册成功',
+                    ]);
+                } else {
+                    $this->error('Sorry, Data save fail!');
+                }
             }
         }
 

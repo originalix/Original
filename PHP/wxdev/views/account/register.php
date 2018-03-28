@@ -82,7 +82,8 @@ use yii\widgets\ActiveForm;
                 ->passwordInput()
                 ?>
 
-            <?= $form->field($model, 'confirm_password', $template)
+            <?= $form->field($model, 'repassword', $template)
+                ->label('再次输入密码')
                 ->passwordInput();
                 ?>
 
