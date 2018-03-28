@@ -156,6 +156,9 @@
 <script src="./hybrid.js"></script>
 <script>
 
+    HYBridApi.receiverNetworkType(function (type) {
+        alert('当前网络状态: ' + type);
+    });
     // HYBridApi.ready(function (Api) {
     //     Api.takeOverBackBtn(false, function (res) {
     //         console.log(res);

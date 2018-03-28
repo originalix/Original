@@ -267,6 +267,16 @@
   }
 
   /**
+   * 监听网络变化API
+   * @param {*} callback 回调
+   */
+  HYBridApi.receiverNetworkType = function (callback) {
+    JSBridge.register('receiverNetworkType', function (type) {
+      callback && callback(type);
+    });
+  }
+
+  /**
    * 获取当前地理位置
    * @param {*} callback 地理位置信息回调
    */
