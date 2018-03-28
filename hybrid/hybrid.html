@@ -50,31 +50,31 @@
         <div class="row">
             <h3>分享至朋友圈</h3>
             <p>原生函数: shareToTimeline, 参数JSONObject, 返回值JSONObject</p>
-            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToTimeline</button>
+            <button type="button" class="btn btn-success btn-lg btn-block shareToTimeline">ShareToTimeline</button>
         </div>
 
         <div class="row">
             <h3>分享给微信好友</h3>
             <p>原生函数: shareToFriend, 参数JSONObject, 返回值JSONObject</p>
-            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToFriend</button>
+            <button type="button" class="btn btn-success btn-lg btn-block shareToFriend">ShareToFriend</button>
         </div>
 
         <div class="row">
             <h3>分享至新浪微博</h3>
             <p>原生函数: shareToSinaWeibo, 参数JSONObject, 返回值JSONObject</p>
-            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToSinaWeibo</button>
+            <button type="button" class="btn btn-success btn-lg btn-block shareToSinaWeibo">ShareToSinaWeibo</button>
         </div>
 
         <div class="row">
             <h3>分享至QQ好友</h3>
             <p>原生函数: shareToQQ, 参数JSONObject, 返回值JSONObject</p>
-            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToQQ</button>
+            <button type="button" class="btn btn-success btn-lg btn-block shareToQQ">ShareToQQ</button>
         </div>
 
         <div class="row">
             <h3>分享至QQ空间</h3>
             <p>原生函数: shareToQZone, 参数JSONObject, 返回值JSONObject</p>
-            <button type="button" class="btn btn-success btn-lg btn-block share">ShareToQZone</button>
+            <button type="button" class="btn btn-success btn-lg btn-block shareToQZone">ShareToQZone</button>
         </div>
         
         <h2>图片接口</h2>
@@ -181,38 +181,66 @@
         "title":"花瓣网"
     };
 
-    $('.share').on('click', function () {
+    // 分享的回调
+    var shareCallbacks = {
 
-        // 分享的回调
-        var shareCallbacks = {
-            // 分享被用户自动取消
-            cancel:function (resp) {
-                console.log(resp);
-                console.log('cancel func');
-                // 你可以在你的页面上给用户一个小Tip，为什么要取消呢？
-            },
-            // 分享失败了
-            fail:function (resp) {
-                console.log(resp);
-                console.log('fail func');
-                // 分享失败了，是不是可以告诉用户：不要紧，可能是网络问题，一会儿再试试？
-            },
-            // 分享成功
-            confirm:function (resp) {
-                console.log(resp);
-                console.log('confirm func');
-                // 分享成功了，我们是不是可以做一些分享统计呢？
-            },
-            // 整个分享过程结束
-            all:function (resp) {
-                console.log('all func');
-                // 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？
-            }
-        };
+        // 分享被用户自动取消
+        cancel:function (rep) {
+            console.log(rep);
+            console.log('cancel func');
+            // 你可以在你的页面上给用户一个小Tip，为什么要取消呢？
+        },
+        // 分享失败了
+        fail:function (rep) {
+            console.log(rep);
+            console.log('fail func');
+            // 分享失败了，是不是可以告诉用户：不要紧，可能是网络问题，一会儿再试试？
+        },
+        // 分享成功
+        confirm:function (rep) {
+            console.log(rep);
+            console.log('confirm func');
+            // 分享成功了，我们是不是可以做一些分享统计呢？
+        },
+        // 整个分享过程结束
+        all:function (rep) {
+            console.log('all func');
+            // 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？
+        }
+    };
 
+    $('.shareToTimeline').on('click', function () {
         HYBridApi.ready(function (Api) {
             console.log(Api);
             Api.shareToTimeline(shareData, shareCallbacks);
+        });
+    });
+
+    $('.shareToFriend').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            console.log(Api);
+            Api.shareToFriend(shareData, shareCallbacks);
+        });
+    });
+
+    $('.shareToSinaWeibo').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            console.log(Api);
+            Api.shareToSinaWeibo(shareData, shareCallbacks);
+        });
+    });    
+
+    $('.shareToQQ').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            console.log(Api);
+            Api.shareToQQ(shareData, shareCallbacks);
+        });
+    });
+
+    $('.shareToQZone').on('click', function () {
+        HYBridApi.ready(function (Api) {
+            console.log(Api);
+            Api.shareToQZone(shareData, shareCallbacks);
         });
     });
 
