@@ -76,4 +76,18 @@ class TestController extends BaseController
         $url = HttpRequest::generateWXUrl($url);
         print_r($url);
     }
+
+    public function actionRedis()
+    {
+        $redis = Yii::$app->redis;
+        $key = 'username';
+        if ($val = $redis->get($key)) {
+            return ['redis' => $val];
+        } else {
+            $redis->set($key, 'marko');
+            $redis->expire($key, 5);
+        }
+
+        return ['redis' => 'no data'];
+    }
 }
