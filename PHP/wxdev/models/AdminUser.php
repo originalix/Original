@@ -3,7 +3,7 @@
  * @Author: Lix 
  * @Date: 2018-03-29 07:48:44 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-03-29 07:56:02
+ * @Last Modified time: 2018-03-29 07:58:33
  */
 
 namespace app\models;
@@ -123,16 +123,37 @@ class AdminUser extends ActiveRecord implements IdentityInterface, RateLimitInte
             TimestampBehavior::className(),
         ];
     }
-
+    
+    /**
+     * 通过用户ID，找到identity
+     *
+     * @param [integer] $id 用户id
+     * @return self
+     */
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 
+    /**
+     * 通过access_token 找到identity
+     *
+     * @param [String] $token
+     * @param [type] $type
+     * @return self
+     */
     public static function findIdentityByAccessToken($token, $type = null)
     {
         return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
     }
 
-    
+    /**
+     * 生成access_token
+     *
+     * @return String
+     */
+    public function generateAccessToken()
+    {
+        $this->access_token = Yii::$app->security->generateRandomString();
+    }
 }
