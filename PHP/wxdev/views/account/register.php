@@ -69,7 +69,7 @@ use yii\widgets\ActiveForm;
                 'method' => 'post',
             ]);
 
-            $template = ['template' => '<p><label for="user_login">{label}<br /><input type="text" name="log" id="user_login" class="input" value="" size="20" /></label></p>'];
+            $template = ['template' => '<p><label for="user_login">{label}<br />{input}</label></p>'];
         
 
             ?>
@@ -80,7 +80,7 @@ use yii\widgets\ActiveForm;
                 ?>
         
             <?= $form->field($model, 'password', $template)
-                ->passwordInput();
+                ->passwordInput()
                 ?>
 
             <?= $form->field($model, 'confirm_password', $template)

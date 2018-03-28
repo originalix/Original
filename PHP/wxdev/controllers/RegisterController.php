@@ -10,9 +10,14 @@ class RegisterController extends Controller
 {
     public function actionIndex()
     {
+        $this->layout = false;
         $model = new AdminUser();
 
-        $this->layout = false;
+        if (Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            var_dump(Yii::$app->request->post());
+        }
+
         return $this->render('//account/register', [
             'model' => $model,
         ]);
