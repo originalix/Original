@@ -84,10 +84,24 @@ class TestController extends BaseController
         if ($val = $redis->get($key)) {
             return ['redis' => $val];
         } else {
-            $redis->set($key, 'marko');
+            $redis->set($key, 'Leon');
             $redis->expire($key, 5);
         }
 
         return ['redis' => 'no data'];
+    }
+
+    public function actionCache()
+    {
+        $cache = Yii::$app->cache;
+        $key = 'username';
+
+        if ($cache->exists($key)) {
+            return ['cache' => $cache->get($key)];
+        } else {
+            $cache->set($key, 'Leon', 5);
+        }
+
+        return ['cache' => 'no cache'];
     }
 }
