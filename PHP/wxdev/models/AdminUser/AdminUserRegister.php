@@ -5,6 +5,8 @@ use app\models\AdminUser;
 
 class AdminUserRegister extends AdminUser
 {
+    public $repassword;
+    
     /**
      * 管理员注册子类验证规则
      *

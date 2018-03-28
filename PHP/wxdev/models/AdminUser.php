@@ -3,6 +3,11 @@
 namespace app\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+use yii\filters\RateLimitInterface;
 
 /**
  * This is the model class for table "admin_user".
@@ -27,9 +32,34 @@ use Yii;
  * @property string $updated_at_datetime
  * @property string $birth_date 出生日期
  */
-class AdminUser extends \yii\db\ActiveRecord
+class AdminUser extends ActiveRecord implements IdentityInterface, RateLimitInterface
 {
-    public $repassword;
+    const STATUS_DELETED = 10;
+    const STATUS_ACTIVE = 1;
+
+    # 速度控制  6秒内访问3次，注意，数组的第一个不要设置1，设置1会出问题，一定要
+	#大于2，譬如下面  6秒内只能访问三次
+	# 文档标注：返回允许的请求的最大数目及时间，例如，[100, 600] 表示在600秒内最多100次的API调用。
+    public function getRateLimit($request, $action)
+    {
+        return [6000000, 6];
+    }
+
+    # 文档标注： 返回剩余的允许的请求和相应的UNIX时间戳数 当最后一次速率限制检查时。
+    public function loadAllowance($request, $action)
+    {
+        return [$this->allowance, $this->allowance_update_at];
+    }
+
+    # allowance 对应user 表的allowance字段  int类型
+	# allowance_updated_at 对应user allowance_updated_at  int类型
+	# 文档标注：保存允许剩余的请求数和当前的UNIX时间戳。
+    public function saveAllowance($request, $action, $allowance, $timestamp)
+    {
+        $this->allowance = $allowance;
+        $this->allowance_update_at = $timestamp;
+        $this->save();
+    }
 
     /**
      * {@inheritdoc}
@@ -45,35 +75,13 @@ class AdminUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'created_at', 'updated_at', 'access_token_created_at', 'allowance', 'allowance_updated_at'], 'integer'],
-            [['created_at_datetime', 'updated_at_datetime', 'birth_date'], 'safe'],
-            [['username', 'password'], 'string', 'max' => 50],
-            [['password_hash', 'repassword'], 'string', 'max' => 80],
-            [['password_reset_token', 'email', 'auth_key', 'access_token'], 'string', 'max' => 60],
-            [['person', 'code'], 'string', 'max' => 100],
-            
-            [['access_token'], 'unique'],
 
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required', 'message' => '用户名不能为空'],
-            ['username', 'unique', 'message' => '该用户名已经被占用.'],
-            ['username', 'string', 'min' => 4, 'max' => 12, 'message' => '用户名长度应在4-12字符之间'],
-            ['username','match','pattern'=>'/^[a-zA-Z0-9_]+$/','message'=>'{attribute}只能由英文字母、数字、下划线组成'],
-
-
-            ['email', 'required', 'message' => '邮箱不能为空'],
-            ['email', 'email', 'message' => '邮箱格式不正确'],
-            ['email', 'unique', 'message' => '该电子邮箱已经被占用.'],
-
-            [['password', 'repassword'], 'required', 'message' => '{attribute}不能为空'],
-            [['password', 'repassword'], 'string', 'min' => 6,'max' => 16,'message'=>'{attribute}位数为6至16位'],
-            ['repassword', 'compare', 'compareAttribute' => 'password','message'=>'两次输入的密码不一致！'],
         ];
     }
 
     public function register()
     {
-        
+
     }
 
     /**
