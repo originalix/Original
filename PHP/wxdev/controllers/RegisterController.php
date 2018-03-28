@@ -8,6 +8,11 @@ use app\models\AdminUser;
 
 class RegisterController extends Controller
 {
+    /**
+     * 注册页面首页
+     *
+     * @return View
+     */
     public function actionIndex()
     {
         $this->layout = false;

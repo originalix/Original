@@ -71,6 +71,11 @@ class AdminUser extends \yii\db\ActiveRecord
         ];
     }
 
+    public function register()
+    {
+        
+    }
+
     /**
      * {@inheritdoc}
      */
