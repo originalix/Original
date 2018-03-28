@@ -28,6 +28,7 @@ class RegisterController extends Controller
 
         return $this->render('//account/register', [
             'model' => $model,
+            'tips' => null,
         ]);
     }
 }

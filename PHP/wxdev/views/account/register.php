@@ -70,8 +70,6 @@ use yii\widgets\ActiveForm;
             ]);
 
             $template = ['template' => '<p><label for="user_login">{label}<br />{input}</label></p>'];
-        
-
             ?>
 
             <?= $form->field($model, 'username', $template)
@@ -100,10 +98,13 @@ use yii\widgets\ActiveForm;
                     $firstError = current($errors);
                     echo $firstError;
                 }
+
+                if (! is_null($tips)) {
+                    echo $tips;
+                }
             ?>
             
             <p class="submit">
-                <!-- <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="注册" /> -->
                 <?= Html::submitButton('注册', [
                     'class' => 'btn btn-accent btn-block',
                     'id' => 'wp-submit',
