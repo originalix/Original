@@ -306,8 +306,8 @@
     // 获取网络状态示例
     $('.network').on('click', function () {
         HYBridApi.ready(function (Api) {
-            var type = Api.getNetworkType();
-            console.log(type);
+            var res = Api.getNetworkType();
+            console.log(res.networkType);
         });
     });
 
