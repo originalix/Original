@@ -134,4 +134,19 @@ class WXApiController extends BaseController
         $data = $http->get($url);
         return $data;
     }
+
+    public function actionSina()
+    {
+        $url = 'https://api.weibo.com/oauth2/authorize';
+
+        $params = [
+            'client_id' => '2686997579',
+            'redirect_uri' => 'http://139.199.105.54/code-repo/PHP/wxdev/web/site/index',
+        ];
+
+        $http = new HttpRequest();
+        $data = $http->get($url);
+        print_r($data);
+        return $data;
+    }
 }

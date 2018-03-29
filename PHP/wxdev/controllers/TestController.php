@@ -116,4 +116,29 @@ class TestController extends BaseController
         }
         return ['session' => 'no session'];
     }
+
+    public function actionSina()
+    {
+        $url = 'https://api.weibo.com/oauth2/authorize';
+
+        $params = [
+            'client_id' => '2686997579',
+            'redirect_uri' => 'http://139.199.105.54/code-repo/PHP/wxdev/web/site/index',
+        ];
+
+        // $http = new HttpRequest();
+        // $data = $http->get($url);
+        // print_r($data);
+        // return $data;
+
+        $url1 = "https://api.weibo.com/oauth2/authorize?client_id=2686997579&redirect_uri=http://139.199.105.54/code-repo/PHP/wxdev/web/site/index";
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $data = curl_exec($curl);
+        curl_close($curl);
+
+        print_r($data);
+    }
 }
