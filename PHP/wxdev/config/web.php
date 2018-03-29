@@ -77,21 +77,21 @@ $config = [
                 ]
             ],
         ],
-        'redis' => [
-            'class' => 'yii\redis\Connection',
-            'hostname' => 'localhost',
-            'port' => 6379,
-            'database' => 0,
-        ],
+        // 'redis' => [
+        //     'class' => 'yii\redis\Connection',
+        //     'hostname' => 'localhost',
+        //     'port' => 6379,
+        //     'database' => 0,
+        // ],
 
-        'cache' => [
-            'class' => 'yii\redis\Cache',
-        ],
+        // 'cache' => [
+        //     'class' => 'yii\redis\Cache',
+        // ],
 
-        'session' => [
-            'name' => 'advanced-frontend',
-            'class' => 'yii\redis\Session',
-        ],
+        // 'session' => [
+        //     'name' => 'advanced-frontend',
+        //     'class' => 'yii\redis\Session',
+        // ],
     ],
     'params' => $params,
     'modules' => [
