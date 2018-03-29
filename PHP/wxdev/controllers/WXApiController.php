@@ -137,15 +137,21 @@ class WXApiController extends BaseController
 
     public function actionSina()
     {
-        $url = 'https://api.weibo.com/oauth2/authorize';
+        $url = 'https://api.weibo.com/oauth2/access_token';
 
         $params = [
             'client_id' => '2686997579',
-            'redirect_uri' => 'http://139.199.105.54/code-repo/PHP/wxdev/web/site/index',
+            'client_secret' => '8247c707cc6bcc279b1d893541004477',
+            'grant_type' => 'authorization_code',
+            'code' => '290067ca09420fe37be1b86272f56865',
+            'redirect_uri' => 'http://www.sina.com',
         ];
 
+        // $http = new HttpRequest();
+        // $data = $http->get($url);
+
         $http = new HttpRequest();
-        $data = $http->get($url);
+        $data = $http->post($url, $params, null);
         print_r($data);
         return $data;
     }

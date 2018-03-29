@@ -9,7 +9,8 @@ def requestWX():
     print(r.text)
 
 def requestSina():
-    r = requests.get('https://api.weibo.com/oauth2/authorize?client_id=2686997579&redirect_uri=http://www.baidu.com')
+    paramas = {'access_token': '2.00LuOaLCdo3qvC1055521a7aoyzyVE'}
+    r = requests.get('https://api.weibo.com/2/statuses/home_timeline.json', params=paramas)
     print (r.text)
 
 if __name__ == "__main__":
