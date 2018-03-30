@@ -43,4 +43,46 @@ class AdminUserRegister extends AdminUser
         
         return array_merge($parent_rules, $current_rules);
     }
+
+    /**
+     * 设置hash密码
+     *
+     * @param String $password 密码
+     * @return void
+     */
+    public function setPassword($password)
+    {
+        if ($this->password) {
+            $this->password_hash = \Yii::$app->security->generatePasswordHash($password);
+            $this->password = "";
+        }
+    }
+
+    /**
+     * 重写保存方法
+     *
+     * @param boolean $runValidation
+     * @param [type] $attributeNames
+     * @return boolean
+     */
+    public function save($runValidation = true, $attributeNames = NULL)
+    {
+        if ($this->id) {
+            $this->updated_at_datetime = date('Y-m-d H:i:s');
+        } else {
+            $this->created_at_datetime = date('Y-m-d H:i:s');
+            $this->updated_at_datetime = date('Y-m-d H:i:s');
+        }
+
+        if (!$this->auth_key) {
+            $this->generateAuthKey();
+        }
+
+        if (!$this->access_token) {
+            $this->generateAccessToken();
+        }
+
+        $this->setPassword($this->password);
+        parent::save($runValidation, $attributeNames);
+    }
 }
