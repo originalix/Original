@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\AdminUser;
+use app\models\AdminUser\AdminUserRegister;
 
 class RegisterController extends Controller
 {
@@ -16,24 +16,22 @@ class RegisterController extends Controller
     public function actionIndex()
     {
         $this->layout = false;
-        $model = new AdminUser;
+        $model = new AdminUserRegister;
 
         if (Yii::$app->request->isPost) {
             if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
                 if ($model->save()) {
                     return $this->render('//account/register', [
                         'model' => $model,
-                        'tips' => '注册成功',
                     ]);
                 } else {
-                    $this->error('Sorry, Data save fail!');
+
                 }
             }
         }
 
         return $this->render('//account/register', [
             'model' => $model,
-            'tips' => null,
         ]);
     }
 }

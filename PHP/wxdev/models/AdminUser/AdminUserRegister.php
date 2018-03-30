@@ -5,6 +5,7 @@ use app\models\AdminUser;
 
 class AdminUserRegister extends AdminUser
 {
+    public $password;
     public $repassword;
     
     /**
@@ -36,12 +37,28 @@ class AdminUserRegister extends AdminUser
             ['email', 'email', 'message' => '邮箱格式不正确'],
             ['email', 'unique', 'message' => '该电子邮箱已经被占用.'],
 
-            [['password', 'repassword'], 'required', 'message' => '{attribute}不能为空'],
-            [['password', 'repassword'], 'string', 'min' => 6,'max' => 16,'message'=>'{attribute}位数为6至16位'],
+            // [['password', 'repassword'], 'required', 'message' => '{attribute}不能为空'],
+            // [['password', 'repassword'], 'string', 'min' => 6,'max' => 16,'message'=>'{attribute}位数为6至16位'],
+            [['password', 'repassword'], 'validatePasswordFormat'],
             ['repassword', 'compare', 'compareAttribute' => 'password','message'=>'两次输入的密码不一致！'],
         ];
         
         return array_merge($parent_rules, $current_rules);
+    }
+    
+    public function validatePasswordFormat($attribute, $params)
+    {
+        if ($this->id) {
+            if ($this->password && strlen($this->password) <= 6) {
+                $this->addError($attribute, "密码长度必须大于等于六位");
+            }
+        } else {
+            if ($this->password && strlen($this->password) >= 6) {
+                
+            } else {
+                $this->addError($attribute, "密码长度必须大于等于六位");                
+            }
+        }
     }
 
     /**
@@ -54,7 +71,6 @@ class AdminUserRegister extends AdminUser
     {
         if ($this->password) {
             $this->password_hash = \Yii::$app->security->generatePasswordHash($password);
-            $this->password = "";
         }
     }
 
