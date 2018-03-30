@@ -29,7 +29,7 @@ class AdminUserRegister extends AdminUser
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required', 'message' => '用户名不能为空'],
             ['username', 'unique', 'message' => '该用户名已经被占用.'],
-            ['username', 'string', 'min' => 4, 'max' => 12, 'message' => '用户名长度应在4-12字符之间'],
+            ['username', 'string', 'min' => 3, 'max' => 12, 'message' => '用户名长度应在4-12字符之间'],
             ['username','match','pattern'=>'/^[a-zA-Z0-9_]+$/','message'=>'{attribute}只能由英文字母、数字、下划线组成'],
 
 
@@ -99,6 +99,6 @@ class AdminUserRegister extends AdminUser
         }
 
         $this->setPassword($this->password);
-        parent::save($runValidation, $attributeNames);
+        return parent::save($runValidation, $attributeNames);
     }
 }

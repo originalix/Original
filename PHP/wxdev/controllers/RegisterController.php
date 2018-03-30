@@ -17,21 +17,23 @@ class RegisterController extends Controller
     {
         $this->layout = false;
         $model = new AdminUserRegister;
+        $tips = "";
 
         if (Yii::$app->request->isPost) {
             if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
                 if ($model->save()) {
+                    $tips = "注册成功";
                     return $this->render('//account/register', [
                         'model' => $model,
+                        'tips' => $tips,
                     ]);
-                } else {
-
                 }
             }
         }
 
         return $this->render('//account/register', [
             'model' => $model,
+            'tips' => $tips,
         ]);
     }
 }
