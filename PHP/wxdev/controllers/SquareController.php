@@ -8,7 +8,7 @@ use app\models\HttpRequest;
 
 class SquareController extends BaseController
 {
-    public function actionOrigin
+    public function actionOrigin()
     {
         return ['code' => 200];
     }
