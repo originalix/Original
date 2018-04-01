@@ -60,14 +60,14 @@
             <form name="loginform" id="loginform" action="index.html" method="post">
                 <p>
                     <label for="user_login">Username<br />
-                        <input type="text" name="log" id="user_login" class="input" value="demo" size="20" /></label>
+                        <input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
                 </p>
                 <p>
                     <label for="user_pass">Password<br />
-                        <input type="password" name="pwd" id="user_pass" class="input" value="demo" size="20" /></label>
+                        <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
                 </p>
                 <p class="forgetmenot">
-                    <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> Remember me</label>
+                    <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" > Remember me</label>
                 </p>
 
 
