@@ -59,27 +59,25 @@
 
             <form name="loginform" id="loginform" action="index.html" method="post">
                 <p>
-                    <label for="user_login">Username<br />
-                        <input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+                    <label for="user_login">用户名<br />
+                        <input type="text" name="username" id="user_login" class="input" value="" size="20" /></label>
                 </p>
                 <p>
-                    <label for="user_pass">Password<br />
-                        <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
+                    <label for="user_pass">密码<br />
+                        <input type="password" name="password" id="user_pass" class="input" value="" size="20" /></label>
                 </p>
                 <p class="forgetmenot">
-                    <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" > Remember me</label>
+                    <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" >记住密码</label>
                 </p>
 
-
-
                 <p class="submit">
-                    <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="Sign In" />
+                    <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="登陆" />
                 </p>
             </form>
 
             <p id="nav">
-                <a class="pull-left" href="#" title="Password Lost and Found">Forgot password?</a>
-                <a class="pull-right" href="ui-register.html" title="Sign Up">Sign Up</a>
+                <a class="pull-left" href="#" title="Password Lost and Found">忘记密码?</a>
+                <a class="pull-right" href="ui-register.html" title="Sign Up">注册</a>
             </p>
 
 
