@@ -1,3 +1,8 @@
+<?php
+use yii\helper\Html;
+use yii\widgets\ActiveForm;
+?>
+
 <!DOCTYPE html>
 <html class=" ">
     <head>
@@ -56,6 +61,24 @@
     <div class="login-wrapper row">
         <div id="login" class="login loginpage col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-0 col-xs-12 col-sm-6 col-lg-4">
             <h1><a href="#" title="Login Page" tabindex="-1">Complete Admin</a></h1>
+
+            <?php
+                $form = ActiveForm::begin([
+                    'options' => ['enctype' => 'multipart/form-data', 'id' => 'loginform'],
+                    'method' => 'post',
+                ]);
+
+                $template = ['template' => '<p><label for="user_login">{label}<br />{input}</label></p>'];
+            ?>
+
+            <?= $form->field($model, 'username', $template)
+                ->label('用户名');
+                ?>
+            
+            <?= $form->field($model, 'password', $template)
+                ->passwordInput();
+                ?>
+
 
             <form name="loginform" id="loginform" action="index.html" method="post">
                 <p>
