@@ -2,13 +2,13 @@
  * @Author: Lix 
  * @Date: 2018-04-03 06:58:25 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-03 07:17:58
+ * @Last Modified time: 2018-04-03 07:24:04
  */
 
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, List, Avatar } from 'antd';
 import 'antd/dist/antd.css';
 
 const { SubMenu } = Menu;
@@ -16,6 +16,12 @@ const { Header, Content, Sider } = Layout;
 
 class App extends Component {
   render() {
+    
+    const data = [
+      { title: '上传图片api测试' },
+      { title: '切割图片api测试' },
+    ];
+
     return (
       <Layout>
         <Header className="header">
@@ -66,7 +72,18 @@ class App extends Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-              Content
+              <List
+                itemLayout="horizontal"
+                dataSource={data}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      title={<a href="http://ant.design">{item.title}</a>}
+                      description="Hello World"
+                    />
+                  </List.Item>
+                )}
+              />
             </Content>
           </Layout>
         </Layout>
