@@ -1,25 +1,34 @@
 <?php
 
-namespace app\models;
+namespace api\models;
 
 use yii\base\Model;
 use yii\web\UploadedFile;
 
+/**
+ * UploadForm is the model behind the upload form.
+ */
 class UploadImage extends Model
 {
-    public $image;
+    /**
+     * @var UploadedFile file attribute
+     */
+    public $imageFile;
 
+    /**
+     * @return array the validation rules.
+     */
     public function rules()
     {
         return [
-            [['image'], 'extensions' => 'png, jpg, jpeg, gif, bmp', 'mimeTypes' => 'image/jpeg, image/png'],
+            [['imageFile'], 'file', 'mimeTypes' => 'image/jpeg, image/png'],
         ];
     }
 
     public function upload()
     {
         if ($this->validate()) {
-            $this->image->saveAs('uploads/' . $this->image->baseName . '.' . $this->image->extension);
+            $this->imageFile->saveAs('/Users/Lix/Documents/Sites/lntsapp/apps/api/web/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             return true;
         } else {
             return false;
