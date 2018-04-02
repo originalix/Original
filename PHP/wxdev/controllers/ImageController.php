@@ -12,28 +12,23 @@ class ImageController extends BaseController
 {
     public function actionUpload()
     {
-
+        
         $model = new UploadImage();
-
+        
         if (Yii::$app->request->isPost) {
-            $img_arr=$_FILES["image"];
-            return ['code' => 200, 'file' => $img_arr];
-            if ($model->load(Yii::$app->request->post())) {     
-                $model->image = UploadedFile::getInstance($model, 'image');
-                $model->image = $_FILES('image');
-                return ['code' => 200, 'image' => $model->image];
+            $model->imageFile = UploadedFile::getInstanceByName('image');
+            
+            if ($model->imageFile && $model->validate()) {
                 if ($model->upload()) {
-                    return ['code' => 200, 'msg' => '图片上传成功'];
-                } else {
-                    if ($errors = $model->getFirstErrors()) {
-                        $firstError = current($errors);
-                        return ['code' => 200, 'msg' => $firstError];
-                    }
-                    return ['code' => 200, 'msg' => '图片保存失败'];
+                    return ['msg' => '上传成功'];
                 }
-            // } else {
-            //     return ['code' => 200, 'msg' => '读取信息失败', 'data' => Yii::$app->request->post()];
-            // }
+            } else {
+                if ($errors = $model->getFirstErrors()) {
+                    $firstError = current($errors);
+                    throw new \yii\web\HttpException(404, $firstError);
+                }
+                throw new \yii\web\HttpException(404, 'model验证失败');
+            }
         }
 
         return ['code' => 418, 'msg' => '请使用POST请求'];
