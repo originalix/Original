@@ -11,6 +11,7 @@ use app\helpers\FileHelper;
 
 class ImageController extends BaseController
 {
+
     public function actionLog()
     {
         $path = Yii::getAlias('@uploads');

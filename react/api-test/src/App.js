@@ -5,10 +5,17 @@ import 'whatwg-fetch';
 
 class App extends Component {
   render() {
-    fetch('http://localhost/code-repo/PHP/wxdev/web/image/upload')
-      .then(function(response) {
+    let myHeaders = new Headers({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'text/plain'
+  });
+    fetch('http://localhost/code-repo/PHP/wxdev/web/image/upload', {
+      method: 'GET',
+      headers: myHeaders,
+      mode: 'cors'
+    }) .then(function(response) {
         return response.json();
-      }).then(function (body) {
+      }).then(function (json) {
         console.log('parsed json', json);
       }).catch(function(ex) {
         console.log('parsing failed', ex);
