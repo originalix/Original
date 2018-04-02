@@ -2,7 +2,7 @@
  * @Author: Lix 
  * @Date: 2018-04-03 06:58:25 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-03 07:36:24
+ * @Last Modified time: 2018-04-03 07:39:53
  */
 
 import React, { Component } from 'react';
@@ -21,7 +21,14 @@ class App extends Component {
   }
   
   uploadImgTest() {
-    alert('Hello world');
+    fetch('http://192.168.2.103/code-repo/PHP/wxdev/web/image/upload')
+      .then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        console.log('parsed json', json)
+      }).catch(function(ex) {
+        console.log('parsing failed', ex)
+      })
   }
 
   render() {
