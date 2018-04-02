@@ -7,6 +7,8 @@ use yii\web\UploadedFile;
 
 class UploadImage extends Model
 {
+    public $image;
+    
     public function rules()
     {
         return [
