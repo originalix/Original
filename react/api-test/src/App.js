@@ -5,14 +5,8 @@ import 'whatwg-fetch';
 
 class App extends Component {
   render() {
-    let myHeaders = new Headers({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'text/plain'
-  });
-    fetch('http://localhost/code-repo/PHP/wxdev/web/image/upload', {
-      method: 'GET',
-      headers: myHeaders,
-      mode: 'cors'
+    fetch('http://192.168.2.103/code-repo/PHP/wxdev/web/image/upload', {
+      method: 'GET'
     }) .then(function(response) {
         return response.json();
       }).then(function (json) {
