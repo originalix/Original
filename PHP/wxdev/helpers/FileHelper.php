@@ -26,7 +26,7 @@ class FileHelper extends BaseFileHelper {
      * @param	string	$ext    扩展名
      * @return	string	返回文件名
      */
-    public static function upload($name, $type = "default") {
+    public static function upload($type = "default") {
         if (isset($_FILES)) {
             $uploadBasePath = Yii::getAlias('@uploads') . '/';
             $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
