@@ -8,11 +8,11 @@ use yii\web\UploadedFile;
 class UploadImage extends Model
 {
     public $image;
-    
+
     public function rules()
     {
         return [
-            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, gif, bmp'],
+            [['image'], 'extensions' => 'png, jpg, jpeg, gif, bmp', 'mimeTypes' => 'image/jpeg, image/png'],
         ];
     }
 
