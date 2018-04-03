@@ -14,6 +14,7 @@ use app\controllers\BaseController;
 // use app\models\UploadImage;
 // use yii\web\UploadedFile;
 use app\helpers\FileHelper;
+use app\helpers\ImageCompress;
 
 class ImageController extends BaseController
 {
@@ -56,5 +57,14 @@ class ImageController extends BaseController
         }
 
         return ['code' => 200, 'msg' => '请求方法不允许'];
+    }
+
+    public function actionCompress()
+    {
+        $source = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/400.jpeg';
+        $dst_img = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/400_compress3.jpeg';
+        $percent = 0.1;
+        $image = (new ImageCompress($source, $percent))->compressImg($dst_img);
+        print_r($image);
     }
 }
