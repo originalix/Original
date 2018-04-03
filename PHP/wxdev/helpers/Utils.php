@@ -1,6 +1,6 @@
 <?php
 
-namespace common\helpers;
+namespace app\helpers;
 
 use Yii;
 use SoapClient;

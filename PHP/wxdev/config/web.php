@@ -11,6 +11,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@uploads' => dirname(dirname(__DIR__)) . '/wxdev/web/uploads',
+        '@attachUrl' => dirname(dirname(__DIR__)) . '/wxdev/web/uploads',
     ],
     'components' => [
         'request' => [

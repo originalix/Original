@@ -51,9 +51,10 @@ class ImageController extends BaseController
     public function actionUpload()
     {
         if (Yii::$app->request->isPost) {
-            return FileHelper::upload();
+            $data = FileHelper::upload();
+            return ['code' => 200, 'data' => $data];
         }
 
-        return ['msg' => '请求方法不允许'];
+        return ['code' => 200, 'msg' => '请求方法不允许'];
     }
 }

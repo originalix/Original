@@ -6,11 +6,12 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace common\helpers;
+namespace app\helpers;
 
 use Yii;
 use yii\helpers\BaseFileHelper;
 use yii\web\UploadedFile;
+use app\helpers\Utils;
 
 /**
  * File system helper.
@@ -32,11 +33,11 @@ class FileHelper extends BaseFileHelper {
             $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
             $absolutePath = $uploadBasePath . $uploadPath;
             self::dirCreate($absolutePath);
-            $file = UploadedFile::getInstanceByName('files');
+            $file = UploadedFile::getInstanceByName('image');
             $filename = self::generateUploadFileName($file->extension);
             $file->saveAs($absolutePath . $filename);
             if (!$file->getHasError()) {
-                $this->remotePath = $uploadPath . $filename;
+                // $this->remotePath = $uploadPath . $filename;
                 return [
                     'status' => true,
                     'imgval' => $uploadPath . $filename,
@@ -63,7 +64,7 @@ class FileHelper extends BaseFileHelper {
      * @return	string	返回文件名
      */
     public static function generateUploadFileName($ext = false) {
-        $tempname = self::random(6) . md5(Yii::$app->user->id . time() . self::random(4));
+        $tempname = Utils::random(6) . md5(Yii::$app->user->id . time() . Utils::random(4));
         if ($ext !== false) {
             return $tempname . '.' . $ext;
         }
