@@ -12,6 +12,7 @@ use Yii;
 use yii\helpers\BaseFileHelper;
 use yii\web\UploadedFile;
 use app\helpers\Utils;
+use app\helpers\ImageCompress;
 
 /**
  * File system helper.
@@ -21,27 +22,33 @@ use app\helpers\Utils;
  * @since 2.0
  */
 class FileHelper extends BaseFileHelper {
+    const IMAGE_TYPE = ['thumbnail', 'bmiddle', 'original'];
 
     /**
      * 上传文件
      * @param	string	$ext    扩展名
      * @return	string	返回文件名
      */
-    public static function upload($type = "default") {
+    public static function upload() {
         if (isset($_FILES)) {
-            $uploadBasePath = Yii::getAlias('@uploads') . '/';
-            $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
-            $absolutePath = $uploadBasePath . $uploadPath;
-            self::dirCreate($absolutePath);
             $file = UploadedFile::getInstanceByName('image');
             $filename = self::generateUploadFileName($file->extension);
-            $file->saveAs($absolutePath . $filename);
+            $imageUrls = array();
+
+            foreach(self::IMAGE_TYPE as $type) {
+                $uploadBasePath = Yii::getAlias('@uploads') . '/';
+                $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
+                $absolutePath = $uploadBasePath . $uploadPath;
+                self::dirCreate($absolutePath);
+                $file->saveAs($absolutePath . $filename, false);
+                $imageUrls[$type] = $absolutePath . $filename;
+            }
+
             if (!$file->getHasError()) {
-                // $this->remotePath = $uploadPath . $filename;
                 return [
                     'status' => true,
                     'imgval' => $uploadPath . $filename,
-                    'imgurl' => Yii::getAlias('@attachUrl') . $uploadPath . $filename
+                    'imgurl' => $imageUrls,
                 ];
             } else {
                 return [
