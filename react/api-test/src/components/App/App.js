@@ -2,7 +2,7 @@
  * @Author: Lix 
  * @Date: 2018-04-03 06:58:25 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-03 16:35:53
+ * @Last Modified time: 2018-04-03 16:52:30
  */
 
 import React, { Component } from 'react';
@@ -10,7 +10,7 @@ import './App.css';
 import 'whatwg-fetch';
 import  HeaderView from '../Layout/Header';
 import SiderView from '../Layout/Sider';
-import { Layout, Breadcrumb,Button } from 'antd';
+import { Layout, Button } from 'antd';
 
 const { Content } = Layout;
 
@@ -33,22 +33,19 @@ class App extends Component {
 
   render() {
     return (
-      <Layout>
-        <HeaderView/>
+      <div className="App">
         <Layout>
-          <SiderView/>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-              <Button type="primary" onClick={this.uploadImgTest}>上传图片api测试</Button>
-            </Content>
+          <HeaderView/>
+          <Layout>
+            <SiderView/>
+            <Layout style={{ padding: '0 24px 24px' }}>
+              <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+                <Button type="primary" onClick={this.uploadImgTest}>上传图片api测试</Button>
+              </Content>
+            </Layout>
           </Layout>
         </Layout>
-      </Layout>
+      </div>
     );
   }
 }
