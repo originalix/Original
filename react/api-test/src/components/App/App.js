@@ -2,38 +2,36 @@
  * @Author: Lix 
  * @Date: 2018-04-03 06:58:25 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-03 17:13:29
+ * @Last Modified time: 2018-04-03 21:40:30
  */
 
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import  HeaderView from '../Layout/Header';
-import SiderView from '../Layout/Sider';
-import FooterView from '../Layout/Footer';
+import HeaderView from '../Layout/Header';
+import Home from '../Layout/Home';
+import Foundation from '../API/Foundation';
+import ApiList from '../API/ApiList';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import { Layout, Button } from 'antd';
-
-const { Content } = Layout;
+import { Layout } from 'antd';
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Layout>
-          <HeaderView/>
-          <Layout>
-            <SiderView/>
-            <Layout style={{ padding: '0 24px 24px' }}>
-              <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-                <Button type="primary" onClick={this.uploadImgTest}>上传图片api测试</Button>
-              </Content>
-              <FooterView/>
+      <Router>
+        <div className="App">
+            <Layout>
+              <HeaderView/>
+              <Switch>
+                <Route exact path="/app" component={Home} />
+                <Route path="/foundation" component={Foundation} />
+                <Route path="/list" component={ApiList} />
+              </Switch>
             </Layout>
-          </Layout>
-        </Layout>
-      </div>
+        </div>
+      </Router>
     );
   }
 }

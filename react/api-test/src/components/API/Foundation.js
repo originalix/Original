@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-class Test extends Component {
+class Fundation extends Component {
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1>Foundation</h1>
       </div>
     );
   }
 }
 
-export default Test;
-
+export default Fundation;
