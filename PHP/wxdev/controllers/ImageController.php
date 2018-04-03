@@ -61,14 +61,15 @@ class ImageController extends BaseController
 
     public function actionCompress()
     {
-        $source = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/400.jpeg';
-        // $dst_img = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/400_compress3.jpeg';
+        $source = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/cat.jpg';
+        $filename = 'cat.jpg';
         // $percent = 0.1;
         // $image = (new ImageCompress($source, $percent))->compressImg($dst_img);
 
-        $size = filesize($source)  / 1024;
+        // $size = filesize($source)  / 1024;
         // $sizeArr = $this->FileSizeConvert($size);
 
-        return ['msg' => $size];
+        $info = FileHelper::imgCompress($source, $filename);
+        return ['msg' => $info];
     }
 }

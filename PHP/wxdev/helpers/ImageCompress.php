@@ -4,6 +4,10 @@ namespace app\helpers;
 
 class ImageCompress
 {
+    public $url;
+    public $width;
+    public $height;
+
     private $src;
     private $image;
     private $imageinfo;
@@ -32,6 +36,7 @@ class ImageCompress
             $this->_showImage();
         }
 
+        return $this->imageinfo;
     }
     /**
      * 内部：打开图片

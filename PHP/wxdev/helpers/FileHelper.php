@@ -23,13 +23,16 @@ use app\helpers\ImageCompress;
  */
 class FileHelper extends BaseFileHelper {
     const IMAGE_TYPE = ['thumbnail', 'bmiddle', 'original'];
+    const THUMBNAIL_TYPE = "thumbnail";
+    const BMIDDLE_TYPE = "bmiddle";
+    const ORIGINAL_TYPE = "original";
 
     /**
      * 上传文件
      * @param	string	$ext    扩展名
      * @return	string	返回文件名
      */
-    public static function upload() {
+    public static function upload($type="default") {
         if (isset($_FILES)) {
             $file = UploadedFile::getInstanceByName('image');
             $filename = self::generateUploadFileName($file->extension);
@@ -62,6 +65,38 @@ class FileHelper extends BaseFileHelper {
                 'msg' => '未上传图片'
             ];
         }
+    }
+
+    public static function imgCompress($source, $filename)
+    {
+        $imageUrls = array();
+
+        $percent = 0;
+        
+        foreach(self::IMAGE_TYPE as $type) {
+            switch ($type) {
+                case self::THUMBNAIL_TYPE:
+                $percent = 0.3;
+                break;
+                case self::BMIDDLE_TYPE:
+                $percent = 0.5;
+                break;
+                case self::ORIGINAL_TYPE:
+                $percent = 1;
+                break;
+            }
+            
+            $uploadBasePath = Yii::getAlias('@uploads') . '/';
+            $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
+            $absolutePath = $uploadBasePath . $uploadPath;
+            self::dirCreate($absolutePath);
+
+            $imageInfo = (new ImageCompress($source, $percent))->compressImg($absolutePath . $filename);
+
+            $imageUrls[$type] = $imageInfo;
+        }
+
+
     }
 
     /**
