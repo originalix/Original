@@ -28,31 +28,29 @@ class FileHelper extends BaseFileHelper {
     const ORIGINAL_TYPE = "original";
 
     /**
-     * 上传文件
+     * 上传文件并压缩到指定目录
      * @param	string	$ext    扩展名
      * @return	string	返回文件名
      */
     public static function upload($type="default") {
         if (isset($_FILES)) {
+            $uploadBasePath = Yii::getAlias('@uploads') . '/';
+            $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
+            $absolutePath = $uploadBasePath . $uploadPath;
+            self::dirCreate($absolutePath);
+
             $file = UploadedFile::getInstanceByName('image');
             $filename = self::generateUploadFileName($file->extension);
-            $imageUrls = array();
-
-            foreach(self::IMAGE_TYPE as $type) {
-                $uploadBasePath = Yii::getAlias('@uploads') . '/';
-                $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
-                $absolutePath = $uploadBasePath . $uploadPath;
-                self::dirCreate($absolutePath);
-                $file->saveAs($absolutePath . $filename, false);
-                $imageUrls[$type] = $absolutePath . $filename;
-            }
+            $file->saveAs($absolutePath . $filename, false);
 
             if (!$file->getHasError()) {
+                $imageInfo = FileHelper::imgCompress($absolutePath . $filename, $filename);
                 return [
                     'status' => true,
                     'imgval' => $uploadPath . $filename,
-                    'imgurl' => $imageUrls,
+                    'imgurls' => $imageInfo,
                 ];
+
             } else {
                 return [
                     'status' => false,
@@ -67,23 +65,34 @@ class FileHelper extends BaseFileHelper {
         }
     }
 
+    /**
+     * 压缩图片
+     *
+     * @param String $source 图片路径
+     * @param String $filename 图片名称
+     * @return Object
+     */
     public static function imgCompress($source, $filename)
     {
         $imageUrls = array();
 
-        $percent = 0;
+        $percent = 1;
         
         foreach(self::IMAGE_TYPE as $type) {
-            switch ($type) {
-                case self::THUMBNAIL_TYPE:
-                $percent = 0.3;
-                break;
-                case self::BMIDDLE_TYPE:
-                $percent = 0.5;
-                break;
-                case self::ORIGINAL_TYPE:
-                $percent = 1;
-                break;
+            $size = filesize($source)  / 1024;
+            // 大于100kb才压缩图片 否则使用原图
+            if ($size > 100) {
+                switch ($type) {
+                    case self::THUMBNAIL_TYPE:
+                    $percent = 0.3;
+                    break;
+                    case self::BMIDDLE_TYPE:
+                    $percent = 0.5;
+                    break;
+                    case self::ORIGINAL_TYPE:
+                    $percent = 1;
+                    break;
+                }
             }
             
             $uploadBasePath = Yii::getAlias('@uploads') . '/';
@@ -96,7 +105,7 @@ class FileHelper extends BaseFileHelper {
             $imageUrls[$type] = $imageInfo;
         }
 
-
+        return $imageUrls;
     }
 
     /**

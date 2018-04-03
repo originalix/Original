@@ -25,30 +25,6 @@ class ImageController extends BaseController
         return ['path' => $path];
     }
 
-    // public function actionUpload()
-    // {
-
-    //     $model = new UploadImage();
-
-    //     if (Yii::$app->request->isPost) {
-    //         $model->imageFile = UploadedFile::getInstanceByName('image');
-
-    //         if ($model->imageFile && $model->validate()) {
-    //             if ($model->upload()) {
-    //                 return ['msg' => '上传成功'];
-    //             }
-    //         } else {
-    //             if ($errors = $model->getFirstErrors()) {
-    //                 $firstError = current($errors);
-    //                 throw new \yii\web\HttpException(404, $firstError);
-    //             }
-    //             throw new \yii\web\HttpException(404, 'model验证失败');
-    //         }
-    //     }
-
-    //     return ['code' => 418, 'msg' => '请使用POST请求'];
-    // }
-
     public function actionUpload()
     {
         if (Yii::$app->request->isPost) {
@@ -61,14 +37,8 @@ class ImageController extends BaseController
 
     public function actionCompress()
     {
-        $source = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/cat.jpg';
-        $filename = 'cat.jpg';
-        // $percent = 0.1;
-        // $image = (new ImageCompress($source, $percent))->compressImg($dst_img);
-
-        // $size = filesize($source)  / 1024;
-        // $sizeArr = $this->FileSizeConvert($size);
-
+        $source = '/Users/Lix/Documents/Sites/code-repo/PHP/wxdev/web/uploads/attachments/default/201804/03/400.jpeg';
+        $filename = '400.jpg';
         $info = FileHelper::imgCompress($source, $filename);
         return ['msg' => $info];
     }

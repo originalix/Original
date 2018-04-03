@@ -5,8 +5,8 @@ namespace app\helpers;
 class ImageCompress
 {
     public $url;
-    public $width;
-    public $height;
+    public $newWidth;
+    public $newHeight;
 
     private $src;
     private $image;
@@ -36,7 +36,7 @@ class ImageCompress
             $this->_showImage();
         }
 
-        return $this->imageinfo;
+        return ['width' => $this->newWidth, 'height' => $this->newHeight, 'url' => $saveName];
     }
     /**
      * 内部：打开图片
@@ -66,6 +66,9 @@ class ImageCompress
         imagecopyresampled($image_thump, $this->image, 0, 0, 0, 0, $new_width, $new_height, $this->imageinfo['width'], $this->imageinfo['height']);
         imagedestroy($this->image);
         $this->image = $image_thump;
+
+        $this->newWidth = $new_width;
+        $this->newHeight = $new_height;
     }
     /**
      * 输出图片:保存图片则用saveImage()
