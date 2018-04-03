@@ -12,7 +12,7 @@ class SliderView extends Component {
           mode="inline"
           defaultOpenKeys={['sub1']}
           defaultSelectedKeys={['1']}
-          style={{ height='100%', borderRight: 0 }}
+          style={{ height: '100%', borderRight: 0 }}
         >
           <SubMenu key="sub1" title={<span><Icon type="laptop" />API列表</span>}>
             <Menu.Item key="1">压缩图片</Menu.Item>
