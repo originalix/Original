@@ -7,6 +7,34 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 // ReactDOM.render(<App/>, document.getElementById('root'));
 
+class Carnitas extends React.Component {
+  constructor(props) {
+    super(props);
+    alert('hello world');
+  }
+  
+  render() {
+    let match = this.props.match;
+    console.log(match);
+    return (
+      <div>
+        <h1>Carnitas</h1>
+        <h3>{match.params.topicId}</h3>
+        {/* <Route
+          exact
+          path={match.url}
+          render={() => <h3>Please select a topic.</h3>}
+        /> */}
+        <Route
+          exact
+          path={match.url}
+          render={() => <h3>Please select a topic.</h3>}
+        />
+    </div>
+    );
+  }
+}
+
 const App = () => (
   <Router>
     {/* here's a div */}
@@ -17,7 +45,7 @@ const App = () => (
         </li>
       </ul>
       {/* here's a Route */}
-      <Route path="/tacos" component={Tacos}/>
+      <Route exact path="/tacos" component={Tacos}/>
     </div>
   </Router>
 )
@@ -31,31 +59,41 @@ const App = () => (
 //   </div>
 // );
 
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
+  </div>
+);
+
 class Tacos extends React.Component {
-  
   render() {
     let match = this.props.match;
+    console.log(match);
     return (
       <div>
-        <h1><Link to={`${match.url}/carnitas`}>Carnitas</Link></h1>
-        <Route path={match.url + '/carnitas'}
+        <h1><Link to={`${match.url}/components`}>Carnitas</Link></h1>
+        {/* <Route exact path={match.url + '/carnitas'}
           component={Carnitas} 
-        />
+        /> */}
+        <Route path={`${match.url}/:topicId`} component={Topic} />
         <Route
           exact
           path={match.url}
-          render= {() => <div></div>}
+          render={() => <h3>Please select a topic.</h3>}
         />
+        {/* <Route
+          path={match.url}
+          render= {() => <div></div>}
+        /> */}
       </div>
     );
   }
 }
-
-const Carnitas = () => (
-  <div>
-    <h1>Carnitas</h1>
-  </div>
-);
 
 ReactDOM.render((
   <Router>
