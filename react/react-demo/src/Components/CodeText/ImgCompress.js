@@ -12,6 +12,23 @@ class ImgCompress extends Component {
     this.api = this.api.bind(this);
   }
 
+  enterLoading = () => {
+    this.setState({ loading: true });
+  }
+
+  api() {
+    this.enterLoading();
+    fetch('http://localhost/code-repo/PHP/wxdev/web/image/compress')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          codeText: JSON.stringify(json),
+          loading: false
+        });
+      })
+      .catch(ex => {console.log('parsed failed', ex)});
+  }
+
   render() {
     return (
       <div>
