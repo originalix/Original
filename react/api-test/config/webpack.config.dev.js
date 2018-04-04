@@ -180,12 +180,12 @@ module.exports = {
             use: [
               require.resolve('style-loader'),
               {
-                loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
                 },
               },
               {
+                exclude: path.resolve(__dirname, './node_modules'),
                 loader: require.resolve('postcss-loader'),
                 options: {
                   // Necessary for external CSS imports to work

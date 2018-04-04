@@ -107,6 +107,25 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include: paths.appSrc,
+        loader: require.resolve('babel-loader'),
+        options: {
+          // 改动: 添加 antd 按需加载文件处理插件
+          plugins: [
+            //['react-html-attrs'],//添加babel-plugin-react-html-attrs组件的插件配置
+            // 引入样式为 css
+            ['import', { libraryName: 'antd', style: 'css' }],
+            // 改动: 引入样式为 less
+            //  ['import', { libraryName: 'antd', style: true }],
+          ],
+          // This is a feature of `babel-loader` for webpack (not Babel itself).
+          // It enables caching results in ./node_modules/.cache/babel-loader/
+          // directory for faster rebuilds.
+          cacheDirectory: true,
+        },
+      },
       // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
       // { parser: { requireEnsure: false } },
