@@ -1,3 +1,16 @@
 #codeText {
+  position: relative;
+  height: 100%;
   margin-top: 20px;
   text-align: left; }
+
+.ant-layout-content {
+  position: relative;
+  height: 100%; }
+
+.ant-layout-content > div {
+  position: relative;
+  height: 100%; }
+
+#codeText > pre {
+  max-height: 90%; }
