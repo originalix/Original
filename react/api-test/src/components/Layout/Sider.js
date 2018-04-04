@@ -11,7 +11,7 @@ class SliderView extends Component {
         <Menu
           mode="inline"
           defaultOpenKeys={['sub1']}
-          defaultSelectedKeys={['0']}
+          defaultSelectedKeys={['1']}
           style={{ height: '100%', borderRight: 0 }}
           theme="dark"
         >

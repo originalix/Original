@@ -2,16 +2,16 @@
  * @Author: Lix 
  * @Date: 2018-04-03 21:36:09 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-04 10:15:36
+ * @Last Modified time: 2018-04-04 10:33:26
  */
 
 import React, {Component} from 'react';
-import { Layout, Button } from 'antd';
+import { Layout } from 'antd';
 import SiderView from '../Layout/Sider';
 import FooterView from '../Layout/Footer';
 import ApiList from '../API/ApiList';
 
-import { Route, Link } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 const { Content } = Layout;
 
@@ -32,8 +32,8 @@ class Home extends Component {
             marginTop: '24px',
             minHeight: 280
           }}>
-            <Button type="primary" onClick={this.uploadImgTest}>上传图片api测试</Button>
             <Route path={`${match.url}/list`} component={ApiList}/>
+            <Redirect from="/app" to="/app/list" />
           </Content>
           <FooterView/>
         </Layout>
