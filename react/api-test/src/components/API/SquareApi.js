@@ -1,15 +1,14 @@
 /*
  * @Author: Lix 
- * @Date: 2018-04-04 10:58:49 
+ * @Date: 2018-04-04 15:02:27 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-04 15:07:11
+ * @Last Modified time: 2018-04-04 15:07:02
  */
-
 import React, { Component } from 'react';
 import CodeText from '../Layout/CodeText';
 import { Button } from 'antd';
 
-class ImgCompress extends Component {
+class SquareApi extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,7 +24,7 @@ class ImgCompress extends Component {
 
   api() {
     this.enterLoading();
-    fetch('http://localhost/code-repo/PHP/wxdev/web/image/compress')
+    fetch('http://localhost/code-repo/PHP/wxdev/web/sina/home')
       .then(response => response.json())
       .then(json => {
         this.setState({
@@ -39,11 +38,12 @@ class ImgCompress extends Component {
   render() {
     return (
       <div>
-          <Button type="primary" onClick={this.api} loading={this.state.loading}>压缩图片测试</Button>
+          <Button type="primary" onClick={this.api} loading={this.state.loading}>广场动态接口测试</Button>
           <CodeText code={this.state.codeText} />
       </div>
     );
   }
 }
 
-export default ImgCompress;
+export default SquareApi;
+

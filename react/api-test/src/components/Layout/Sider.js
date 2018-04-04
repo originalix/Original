@@ -1,8 +1,8 @@
 /*
  * @Author: Lix 
  * @Date: 2018-04-04 10:59:04 
- * @Last Modified by:   Lix 
- * @Last Modified time: 2018-04-04 10:59:04 
+ * @Last Modified by: Lix
+ * @Last Modified time: 2018-04-04 15:00:38
  */
 
 import React, { Component } from 'react';
@@ -24,6 +24,7 @@ class SliderView extends Component {
         >
           <SubMenu key="sub1" title={<span><Icon type="laptop" />API列表</span>}>
             <Menu.Item key="1"><Link to="/app/imgCompress">压缩图片</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/app/square">广场动态</Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>

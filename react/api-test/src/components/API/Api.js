@@ -2,14 +2,14 @@
  * @Author: Lix 
  * @Date: 2018-04-04 10:58:49 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-04 15:07:11
+ * @Last Modified time: 2018-04-04 15:09:57
  */
 
 import React, { Component } from 'react';
 import CodeText from '../Layout/CodeText';
 import { Button } from 'antd';
 
-class ImgCompress extends Component {
+class Api extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,7 +25,8 @@ class ImgCompress extends Component {
 
   api() {
     this.enterLoading();
-    fetch('http://localhost/code-repo/PHP/wxdev/web/image/compress')
+    const { url } = this.props;
+    fetch(url)
       .then(response => response.json())
       .then(json => {
         this.setState({
@@ -37,13 +38,14 @@ class ImgCompress extends Component {
   }
 
   render() {
+    const { title } = this.props;
     return (
       <div>
-          <Button type="primary" onClick={this.api} loading={this.state.loading}>压缩图片测试</Button>
+          <Button type="primary" onClick={this.api} loading={this.state.loading}>{title}</Button>
           <CodeText code={this.state.codeText} />
       </div>
     );
   }
 }
 
-export default ImgCompress;
+export default Api;
