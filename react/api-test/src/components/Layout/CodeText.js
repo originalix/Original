@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import jsonFormat from '../../Tools';
 import Highlight from 'react-highlight';
-import 'highlight.js/styles/gruvbox-dark.css';
+import 'highlight.js/styles/monokai.css';
 
 class CodeText extends Component {
 
@@ -10,7 +10,7 @@ class CodeText extends Component {
     return (
       <div id="codeText">
         <Highlight className="javascript">
-          {code}
+          {jsonFormat(code)}
         </Highlight>
       </div>
     );
