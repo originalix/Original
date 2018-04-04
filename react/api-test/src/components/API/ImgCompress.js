@@ -2,7 +2,7 @@
  * @Author: Lix 
  * @Date: 2018-04-04 10:58:49 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-04 12:03:02
+ * @Last Modified time: 2018-04-04 14:32:50
  */
 
 import React, { Component } from 'react';
@@ -14,17 +14,23 @@ class ImgCompress extends Component {
     super(props)
     this.state = {
       codeText: "",
+      loading: false,
     }
     this.api = this.api.bind(this);
   }
-  
+
+  enterLoading = () => {
+    this.setState({ loading: true });
+  }
+
   api() {
+    this.enterLoading();
     fetch('http://localhost/code-repo/PHP/wxdev/web/sina/home')
       .then(response => response.json())
       .then(json => {
-        console.log('parsed json', json)
         this.setState({
-          codeText: JSON.stringify(json)
+          codeText: JSON.stringify(json),
+          loading: false
         });
       })
       .catch(ex => {console.log('parsed failed', ex)});
@@ -33,7 +39,7 @@ class ImgCompress extends Component {
   render() {
     return (
       <div>
-          <Button type="primary" onClick={this.api}>压缩图片测试</Button>
+          <Button type="primary" onClick={this.api} loading={this.state.loading}>压缩图片测试</Button>
           <CodeText code={this.state.codeText} />
       </div>
     );

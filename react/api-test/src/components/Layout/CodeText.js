@@ -1,3 +1,10 @@
+/*
+ * @Author: Lix 
+ * @Date: 2018-04-04 14:24:36 
+ * @Last Modified by:   Lix 
+ * @Last Modified time: 2018-04-04 14:24:36 
+ */
+
 import React, { Component } from 'react';
 import jsonFormat from '../../Tools';
 import Highlight from 'react-highlight';
