@@ -2,7 +2,7 @@
  * @Author: Lix 
  * @Date: 2018-04-03 21:36:09 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-03 21:40:44
+ * @Last Modified time: 2018-04-04 10:15:36
  */
 
 import React, {Component} from 'react';
@@ -17,6 +17,8 @@ const { Content } = Layout;
 
 class Home extends Component {
   render() {
+    const match = this.props.match;
+    console.log(match);
     return (
       <Layout>
         <SiderView/>
@@ -31,12 +33,7 @@ class Home extends Component {
             minHeight: 280
           }}>
             <Button type="primary" onClick={this.uploadImgTest}>上传图片api测试</Button>
-            <ul>
-              <li>
-                <Link to="/app/list">List</Link>
-              </li>
-            </ul>
-            <Route path="/app/list" component={ApiList} />
+            <Route path={`${match.url}/list`} component={ApiList}/>
           </Content>
           <FooterView/>
         </Layout>

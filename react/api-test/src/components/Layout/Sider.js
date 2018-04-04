@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Layout } from 'antd';
-
+import { Link } from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
 const { Sider } = Layout;
 
@@ -11,12 +11,12 @@ class SliderView extends Component {
         <Menu
           mode="inline"
           defaultOpenKeys={['sub1']}
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['0']}
           style={{ height: '100%', borderRight: 0 }}
           theme="dark"
         >
           <SubMenu key="sub1" title={<span><Icon type="laptop" />API列表</span>}>
-            <Menu.Item key="1">压缩图片</Menu.Item>
+            <Menu.Item key="1"><Link to="/app/list">压缩图片</Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>

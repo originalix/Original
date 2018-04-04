@@ -2,7 +2,7 @@
  * @Author: Lix 
  * @Date: 2018-04-03 06:58:25 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-03 21:40:30
+ * @Last Modified time: 2018-04-04 10:16:26
  */
 
 import React, { Component } from 'react';
@@ -12,7 +12,7 @@ import HeaderView from '../Layout/Header';
 import Home from '../Layout/Home';
 import Foundation from '../API/Foundation';
 import ApiList from '../API/ApiList';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import { Layout } from 'antd';
 
@@ -25,9 +25,9 @@ class App extends Component {
             <Layout>
               <HeaderView/>
               <Switch>
-                <Route exact path="/app" component={Home} />
+                <Route path="/app" component={Home} />
                 <Route path="/foundation" component={Foundation} />
-                <Route path="/list" component={ApiList} />
+                <Redirect to="/app" />
               </Switch>
             </Layout>
         </div>
