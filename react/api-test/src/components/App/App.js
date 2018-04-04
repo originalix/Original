@@ -2,12 +2,12 @@
  * @Author: Lix 
  * @Date: 2018-04-03 06:58:25 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-04 10:31:23
+ * @Last Modified time: 2018-04-04 10:56:30
  */
 
 import React, { Component } from 'react';
-import './App.css';
 import 'whatwg-fetch';
+import './App.css';
 import HeaderView from '../Layout/Header';
 import Home from '../Layout/Home';
 import Foundation from '../API/Foundation';
