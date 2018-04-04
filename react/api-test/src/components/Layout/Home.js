@@ -2,15 +2,14 @@
  * @Author: Lix 
  * @Date: 2018-04-03 21:36:09 
  * @Last Modified by: Lix
- * @Last Modified time: 2018-04-04 15:06:05
+ * @Last Modified time: 2018-04-04 15:19:18
  */
 
 import React, {Component} from 'react';
 import { Layout } from 'antd';
 import SiderView from '../Layout/Sider';
 import FooterView from '../Layout/Footer';
-import ImgCompress from '../API/ImgCompress';
-import SquareApi from '../API/SquareApi';
+import Api from '../API/Api';
 
 import { Route, Redirect, Switch } from 'react-router-dom';
 
@@ -35,7 +34,8 @@ class Home extends Component {
             <Switch>
               <Route path={`${match.url}/imgCompress`} component={ImgCompress}/>
               <Route path={`${match.url}/square`} component={SquareApi}/>
-              <Redirect to="/app/imgCompress" />
+              <Route path={`${match.url}/uploadpath`} component={UploadPath}/>
+              <Redirect to="/app/uploadpath" />
             </Switch>
           </Content>
           <FooterView/>
@@ -46,3 +46,24 @@ class Home extends Component {
 }
 
 export default Home;
+
+const UploadPath =  () => (
+  <Api
+    title="上传图片路径"
+    url="http://localhost/code-repo/PHP/wxdev/web/image/log"
+  />
+);
+
+const SquareApi = () => (
+  <Api
+    title="广场动态"
+    url="http://localhost/code-repo/PHP/wxdev/web/sina/home"
+  />
+);
+
+const ImgCompress = () => (
+  <Api
+    title="图片压缩"
+    url="http://localhost/code-repo/PHP/wxdev/web/image/compress"
+  />
+);
