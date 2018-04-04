@@ -16,7 +16,7 @@ class SliderView extends Component {
           theme="dark"
         >
           <SubMenu key="sub1" title={<span><Icon type="laptop" />API列表</span>}>
-            <Menu.Item key="1"><Link to="/app/list">压缩图片</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="/app/imgCompress">压缩图片</Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
