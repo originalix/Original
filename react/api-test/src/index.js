@@ -7,93 +7,64 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 // ReactDOM.render(<App/>, document.getElementById('root'));
 
-class Carnitas extends React.Component {
-  constructor(props) {
-    super(props);
-    alert('hello world');
-  }
-  
-  render() {
-    let match = this.props.match;
-    console.log(match);
-    return (
-      <div>
-        <h1>Carnitas</h1>
-        <h3>{match.params.topicId}</h3>
-        {/* <Route
-          exact
-          path={match.url}
-          render={() => <h3>Please select a topic.</h3>}
-        /> */}
-        <Route
-          exact
-          path={match.url}
-          render={() => <h3>Please select a topic.</h3>}
-        />
-    </div>
-    );
-  }
-}
-
-const App = () => (
-  <Router>
-    {/* here's a div */}
-    <div>
-      <ul>
-        <li>
-          <Link to="/tacos">Tacos</Link>
-        </li>
-      </ul>
-      {/* here's a Route */}
-      <Route exact path="/tacos" component={Tacos}/>
-    </div>
-  </Router>
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
 )
-
-// const Tacos = ({ match }) => (
-//   <div>
-//     <h1><Link to={`${match.url}/carnitas`}>Carnitas</Link></h1>
-//     <Route path={match.url + '/carnitas'}
-//       component={Carnitas} 
-//     />
-//   </div>
-// );
-
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+)
 const Topic = ({ match }) => (
   <div>
     <h3>{match.params.topicId}</h3>
-    <Route
-      exact
-      path={match.url}
-      render={() => <h3>Please select a topic.</h3>}
-    />
   </div>
-);
+)
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>
+          Props v. State
+        </Link>
+      </li>
+    </ul>
+    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route exact path={match.url} render={() => (
+      <h3>Please select a topic.</h3>
+    )}/>
+  </div>
+)
 
-class Tacos extends React.Component {
-  render() {
-    let match = this.props.match;
-    console.log(match);
-    return (
-      <div>
-        <h1><Link to={`${match.url}/components`}>Carnitas</Link></h1>
-        {/* <Route exact path={match.url + '/carnitas'}
-          component={Carnitas} 
-        /> */}
-        <Route path={`${match.url}/:topicId`} component={Topic} />
-        <Route
-          exact
-          path={match.url}
-          render={() => <h3>Please select a topic.</h3>}
-        />
-        {/* <Route
-          path={match.url}
-          render= {() => <div></div>}
-        /> */}
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        {/* <li><Link to="/about">About</Link></li> */}
+        <li><Link to="/topics">Topics</Link></li>
+      </ul>
+      <hr/>
+      <Route exact path="/" component={Home}/>
+      {/* <Route path="/about" component={About}/> */}
+      <Route exact path="/topics" component={Topics}/>
+      <Route path={`/topics/:topicId`} component={Topic}/>
+    </div>
+  </Router>
+)
 
 ReactDOM.render((
   <Router>
