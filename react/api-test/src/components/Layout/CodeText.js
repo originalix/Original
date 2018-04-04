@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import jsonFormat from '../../Tools';
 import Highlight from 'react-highlight';
 import 'highlight.js/styles/monokai.css';
+import './CodeTest.css';
 
 class CodeText extends Component {
 
