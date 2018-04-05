@@ -1,53 +1,44 @@
-import { Checkbox, Button } from 'antd';
+\import { Checkbox } from 'antd';
+const CheckboxGroup = Checkbox.Group;
+
+const plainOptions = ['Apple', 'Pear', 'Orange'];
+const defaultCheckedList = ['Apple', 'Orange'];
 
 class App extends React.Component {
   state = {
-    checked: true,
-    disabled: false,
+    checkedList: defaultCheckedList,
+    indeterminate: true,
+    checkAll: false,
   };
   render() {
-    const label = `${this.state.checked ? 'Checked' : 'Unchecked'}-${this.state.disabled ? 'Disabled' : 'Enabled'}`;
     return (
       <div>
-        <p style={{ marginBottom: '20px' }}>
+        <div style={{ borderBottom: '1px solid #E9E9E9' }}>
           <Checkbox
-            checked={this.state.checked}
-            disabled={this.state.disabled}
-            onChange={this.onChange}
+            indeterminate={this.state.indeterminate}
+            onChange={this.onCheckAllChange}
+            checked={this.state.checkAll}
           >
-            {label}
+            Check all
           </Checkbox>
-        </p>
-        <p>
-          <Button
-            type="primary"
-            size="small"
-            onClick={this.toggleChecked}
-          >
-            {!this.state.checked ? 'Check' : 'Uncheck'}
-          </Button>
-          <Button
-            style={{ marginLeft: '10px' }}
-            type="primary"
-            size="small"
-            onClick={this.toggleDisable}
-          >
-            {!this.state.disabled ? 'Disable' : 'Enable'}
-          </Button>
-        </p>
+        </div>
+        <br />
+        <CheckboxGroup options={plainOptions} value={this.state.checkedList} onChange={this.onChange} />
       </div>
     );
   }
-  toggleChecked = () => {
-    this.setState({ checked: !this.state.checked });
-  }
-  toggleDisable = () => {
-    this.setState({ disabled: !this.state.disabled });
-  }
-  onChange = (e) => {
-    console.log('checked = ', e.target.checked);
+  onChange = (checkedList) => {
     this.setState({
-      checked: e.target.checked,
+      checkedList,
+      indeterminate: !!checkedList.length && (checkedList.length < plainOptions.length),
+      checkAll: checkedList.length === plainOptions.length,
+    });
+  }
+  onCheckAllChange = (e) => {
+    this.setState({
+      checkedList: e.target.checked ? plainOptions : [],
+      indeterminate: false,
+      checkAll: e.target.checked,
     });
   }
 }
