@@ -1,4 +1,4 @@
-\import { Checkbox } from 'antd';
+import { Checkbox } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];
