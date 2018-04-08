@@ -45,7 +45,7 @@
 						'view'  		=> 'cms/home/index/product.php',
 					];
 					echo Yii::$service->page->widget->renderContent('category_product_price',$config,$parentThis);
-				?>
+				?> 
 				
             </div>
         </div>
