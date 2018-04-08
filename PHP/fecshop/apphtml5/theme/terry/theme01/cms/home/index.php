@@ -53,7 +53,7 @@
     </div>
 </div>	  
 
-<div class="footer_bar">
+<!-- <div class="footer_bar">
 	<div class="change-bar">
 		<div class="c_left"><?= Yii::$service->page->translate->__('Language'); ?>: </div>
 		<div class="c_right">
@@ -66,9 +66,9 @@
 			</select>
 		</div>
 		<div class="clear"></div>
-	</div>
+	</div> -->
 	
-	<div class="change-bar">
+	<!-- <div class="change-bar">
 		<div class="c_left"><?= Yii::$service->page->translate->__('Currency'); ?>: </div>
 		<div class="c_right">
 			<select class="currency">
@@ -80,12 +80,12 @@
 			</select>
 		</div>
 		<div class="clear"></div>
-	</div>
+	</div> -->
 </div>
 
-<div class="footer-bottom">
+<!-- <div class="footer-bottom">
 	<?=  Yii::$service->cms->staticblock->getStoreContentByIdentify('copy_right_apphtml5','appfront') ?>
-</div>				
+</div>				 -->
  
 <script>
 <?php $this->beginBlock('owl_fecshop_slider') ?>  
