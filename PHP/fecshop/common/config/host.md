@@ -1,3 +1,4 @@
+// 目录指向
 appfront.fecshoptest.com appfront.fecshoptest.es 指向 /Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appfront/web 
  
 appadmin.fecshoptest.com 指向 /Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appadmin/web
@@ -18,6 +19,7 @@ img4.fecshoptest.com 	指向 /Users/Lix/Documents/Sites/code-repo/PHP/fecshop/ap
 
 img5.fecshoptest.com 	指向 /Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appserver
 
+// host地址
 127.0.0.1       rock.fecshoptest.com     # rockmongo的域名指向，rockmongo是mongodb的可视化界面，类似于mysql的phpmyadmin
 127.0.0.1       my.fecshoptest.com       # mysql的phpmyadmin的域名指向
 127.0.0.1       appadmin.fecshoptest.com # 后台域名指向
@@ -32,6 +34,7 @@ img5.fecshoptest.com 	指向 /Users/Lix/Documents/Sites/code-repo/PHP/fecshop/ap
 127.0.0.1       img4.fecshoptest.com	#appimage/apphtml5 图片的域名指向
 127.0.0.1       img5.fecshoptest.com	#appimage/appserver图片的域名指向
 
+// apache配置
 <VirtualHost *:80>
     ServerName "appfront.fecshoptest.com"
     DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appfront/web"
