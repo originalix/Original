@@ -31,3 +31,113 @@ img5.fecshoptest.com 	指向 /Users/Lix/Documents/Sites/code-repo/PHP/fecshop/ap
 127.0.0.1       img3.fecshoptest.com	#appimage/appfront 图片的域名指向
 127.0.0.1       img4.fecshoptest.com	#appimage/apphtml5 图片的域名指向
 127.0.0.1       img5.fecshoptest.com	#appimage/appserver图片的域名指向
+
+<VirtualHost *:80>
+    ServerName "appfront.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appfront/web"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appfront/web">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "appadmin.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appadmin/web"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appadmin/web">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "apphtml5.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/apphtml5/web"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/apphtml5/web">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "appapi.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appapi/web"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appapi/web">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "appserver.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appserver/web"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appserver/web">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "img.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/common"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/common">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "img2.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appadmin"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appadmin">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "img3.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appfront"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appfront">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "img4.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/apphtml5"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/apphtml5">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName "img5.fecshoptest.com"
+    DocumentRoot "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appserver"
+
+    <Directory "/Users/Lix/Documents/Sites/code-repo/PHP/fecshop/appimage/appserver">
+        Allow From All
+        AllowOverride All
+        Options +Indexes
+    </Directory>
+</VirtualHost>
