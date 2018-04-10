@@ -52,8 +52,29 @@ class m180410_081019_create_product_table extends Migration
 
         // 购物车表
         $this->createTable('{{%sales_flat_cart}}', [
-            
-        ])
+            'id' => $this->primaryKey(),
+            'items_count' => $this->integer(15)->defaultValue(0)->comment('购物车中产品的总个数，默认为0个'),
+            'customer_id' => $this->integer(15)->notNull()->comment('顾客id'),
+            'customer_name' => $this->string(11)->comment('顾客姓名'),
+            'customer_is_guest' => $this->boolean()->defaultValue(false)->comment('是否为游客身份'),
+            'remote_ip' => $this->string(50)->comment('ip地址'),
+            'coupon_code' => $this->string(50)->comment('优惠券码'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
+        ]);
+        
+        // 购物车项目表
+        $this->createTable('{{%sales_flat_cart_item}}', [
+            'id' => $this->primaryKey(),
+            'cart_id' => $this->integer(15)->notNull()->comment('购物车关联id'),
+            'product_id' => $this->integer(15)->notNull()->comment('产品id'),
+            'count' => $this->integer(15)->defaultValue(1)->comment('加入购物车数量'),
+            'custom_option_key' => $this->string(255)->comment('产品的自定义属性'),
+            'active' => $this->integer(5)->defaultValue(2)->comment('1代表勾选，2代表不勾选'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
+        ]);
+
     }
 
     public function down()
