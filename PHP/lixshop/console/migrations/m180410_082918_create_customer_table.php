@@ -9,6 +9,7 @@ class m180410_082918_create_customer_table extends Migration
 {
     public function up()
     {
+        // 顾客表
         $this->createTable('{{%customer}}', [
             'id' => $this->primaryKey(),
             'wechat_openid' => $this->string(255)->comment('微信open_id'),
@@ -21,6 +22,7 @@ class m180410_082918_create_customer_table extends Migration
             'access_token_created_at' => $this->timestamp()
         ]);
 
+        // 顾客地址表
         $this->createTable('{{%customer_address}}', [
             'id' => $this->primaryKey(),
             'customer_id' => $this->integer()->notNull()->comment('顾客id'),

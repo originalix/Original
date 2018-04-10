@@ -10,12 +10,14 @@ class m180410_081019_create_product_table extends Migration
 {
     public function up()
     {
+        // 产品库存表
         $this->createTable('{{%product_flat_stock}}', [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer()->comment('产品id'),
             'stock' => $this->integer()->comment('库存数量'),
         ]);
 
+        // 产品custom option类型对应的库存信息
         $this->createTable('{{%product_custom_option_stock}}', [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer()->comment('产品id'),
@@ -23,6 +25,7 @@ class m180410_081019_create_product_table extends Migration
             'stock' => $this->integer()->comment('库存数量'),
         ]);
 
+        // 优惠券表
         $this->createTable('{{%sales_coupon}}', [
             'id' => $this->primaryKey(),
             'created_person' => $this->string(100)->notNull()->comment('创建人'),
@@ -39,6 +42,7 @@ class m180410_081019_create_product_table extends Migration
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
         
+        // 优惠券使用表
         $this->createTable('{{%sales_coupon_usage}}', [
             'id' => $this->primaryKey(),
             'coupon_id' => $this->integer(15)->notNull()->comment('优惠券id'),
