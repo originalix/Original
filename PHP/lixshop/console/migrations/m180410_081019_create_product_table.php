@@ -97,6 +97,23 @@ class m180410_081019_create_product_table extends Migration
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
+        
+        // 订单产品表
+        $this->createTable('{{%sales_flat_order_item}}', [
+            'id' => $this->primaryKey(),
+            'order_id' => $this->integer()->defaultValue(NULL)->comment('关联的订单id'),
+            'customer_id' => $this->integer(15)->defaultValue(NULL)->comment('顾客id'),
+            'product_id' => $this->integer()->defaultValue(NULL)->comment('产品id'),
+            'custom_option_key' => $this->string(255)->notNull()->comment('产品自定义的属性key'),
+            'name' => $this->string(255)->defaultValue(NULL)->comment('产品名称'),
+            'image' => $this->string(255)->defaultValue(NULL)->comment('封面图片'),
+            'count' => $this->integer()->defaultValue(1)->comment('购买数量'),
+            'price' => $this->decimal(12, 2)->defaultValue(NULL)->comment('产品单价'),
+            'row_total' => $this->decimal(12, 2)->defaultValue(NULL)->comment('一个产品价格*个数'),
+            'redirect_url' => $this->string(255)->defaultValue(NULL)->comment('封面图片'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
+        ]);
     }
 
     public function down()
