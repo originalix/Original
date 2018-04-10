@@ -74,7 +74,29 @@ class m180410_081019_create_product_table extends Migration
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
-
+        
+        // 订单表
+        $this->createTable('{{%sales_flat_order}}', [
+            'id' => $this->primaryKey(),
+            'increment_id' => $this->integer()->defaultValue(0)->comment('自动增长id'),
+            'order_status' => $this->integer()->defaultValue(0)->comment('订单状态，1待付款，2已付款，3已完成'),
+            'items_count' => $this->integer()->defaultValue(1)->comment('订单商品数量'),
+            'total_amount' => $this->decimal(12, 2)->defaultValue(0)->comment('订单总价'),
+            'discount_amount' => $this->decimal(12, 2)->defaultValue(NULL)->comment('折扣价格'),
+            'real_amount' => $this->decimal(12, 2)->defaultValue(NULL)->comment('该订单的真实成交价格'),
+            'customer_id' => $this->integer(15)->defaultValue(NULL)->comment('顾客id'),
+            'customer_group' => $this->integer(15)->defaultValue(NULL)->comment('顾客分组'),
+            'customer_name' => $this->string(100)->defaultValue(NULL)->comment('顾客姓名'),
+            'remote_ip' => $this->string(50)->comment('ip地址'),
+            'coupon_code' => $this->string(255)->notNull()->comment('优惠券码'),
+            'payment_method' => $this->string(20)->notNull()->comment('支付方式'),
+            'address_id' => $this->integer(15)->defaultValue(NULL)->comment('关联地址id'),
+            'order_remark' => $this->text()->comment('交易备注'),
+            'txn_type' => $this->string(20)->defaultValue(NULL)->comment('Transaction类型，是在购物车点击支付按钮下单，还是在下单页面填写完货运地址信息下单'),
+            'txn_id' => $this->string(30)->defaultValue(NULL)->comment('Transaction Id 支付平台唯一交易号,通过这个可以在第三方支付平台查找订单'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
+        ]);
     }
 
     public function down()
