@@ -38,7 +38,7 @@ class m180410_081019_create_product_table extends Migration
             'type' => $this->integer(15)->defaultValue(NULL)->comment('优惠劵的类型，1代表按照百分比对产品打折，2代表在总额上减少多少'),
             'conditions' => $this->integer(15)->defaultValue(NULL)->comment('优惠劵使用的条件，如果类型为1，则没有条件，如果类型是2，则购物车中产品总额满足多少的时候进行打折。这里填写的是金额'),
             'discount' => $this->integer(15)->defaultValue(NULL)->comment('优惠劵的折扣，如果类型为1，这里填写的是百分比，如果类型是2，这里代表的是在总额上减少的金额'),
-            'created_at' => $this->timestamp(),
+            'created_at' => $this->timestamp()->defaultValue(null),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
         
@@ -118,6 +118,14 @@ class m180410_081019_create_product_table extends Migration
 
     public function down()
     {
-
+        echo "m180410_081019_create_product_table cannot be reverted.\n";
+        $this->dropTable('{{%product_flat_stock}}');
+        $this->dropTable('{{%product_custom_option_stock}}');
+        $this->dropTable('{{%sales_coupon}}');
+        $this->dropTable('{{%sales_coupon_usage}}');
+        $this->dropTable('{{%sales_flat_cart}}');
+        $this->dropTable('{{%sales_flat_cart_item}}');
+        $this->dropTable('{{%sales_flat_order}}');
+        $this->dropTable('{{%sales_flat_order_item}}');
     }
 }

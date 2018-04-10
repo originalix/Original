@@ -19,7 +19,7 @@ class m180410_082918_create_customer_table extends Migration
             'updated_at' => $this->timestamp()->defaultValue(null),
             'access_token' => $this->string()->comment('登录令牌'),
             'favorite_product_count' => $this->integer()->defaultValue(0)->comment('收藏个数'),
-            'access_token_created_at' => $this->timestamp()
+            'access_token_created_at' => $this->timestamp()->defaultValue(null)
         ]);
 
         // 顾客地址表
@@ -40,6 +40,8 @@ class m180410_082918_create_customer_table extends Migration
 
     public function down()
     {
-
+        echo "m180410_082918_create_customer_table cannot be reverted.\n";
+        $this->dropTable('{{%product_flat_stock}}');
+        $this->dropTable('{{%customer_address}}');
     }
 }

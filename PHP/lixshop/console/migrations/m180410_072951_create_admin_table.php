@@ -55,5 +55,8 @@ class m180410_072951_create_admin_table extends Migration
         echo "m180410_071034_create_admin_table cannot be reverted.\n";
 
         $this->dropTable('{{%admin_user}}');
+        $this->dropTable('{{%admin_role}}');
+        $this->dropTable('{{%admin_user_role}}');
+        $this->dropTable('{{%admin_visit_log}}');
     }
 }
