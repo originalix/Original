@@ -1,5 +1,6 @@
 数据库设计
 
+## Mysql
 
 ### Admin
 
@@ -27,4 +28,42 @@ id wechat_openid mobile type created_at updated_at access_token favorite_product
 customer_address 顾客地址表
 
 id uid name telephone province city district street is_default created_at updated_at
+
+### 产品
+
+product_flat_stock 产品库存表
+
+id product_id stock
+
+product_custom_option_stock 产品custom option类型产品对应的库存信息
+
+id product_id custom_option_key stock
+
+sales_coupon 优惠券表
+
+id created_person coupon_name coupon_description coupon_code expiration_date users_per_customer times_used type conditions discount created_at updated_at
+
+sales_coupon_usage 优惠券使用表
+
+id coupon_id customer_id times_used
+
+sales_flat_cart 购物车表
+
+id items_count customer_id customer_name customer_is_guest remote_ip coupon_code 
+
+sales_flat_cart_item 购物车项目表
+
+id cart_id product_id count custom_option_key active created_at updated_at
+
+sales_flat_order 订单表
+
+id increment_id order_status items_count total_amount discount_amount customer_id customer_group cutomer_name remote_ip coupon_code payment_method address_id order_remark txn_type txn_id created_at updated_at
+
+sales_flat_order_item 订单产品表
+
+id order_id item_id customer_id product_id custom_option_sku name image count price row_total redirect_url created_at updated_at 
+
+
+
+
 
