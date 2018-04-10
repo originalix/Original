@@ -8,13 +8,16 @@ use fecshop\services\Page;
  */
 class m180410_081019_create_product_table extends Migration
 {
-    public function up()
-    {
+    // public function up()
+    // {
+    //     $this->createTable('{{%product_flat_stock}}', [
+    //         'id' => $this->primaryKey(),
+    //         'product_id' => $this->
+    //     ])
+    // }
 
-    }
+    // public function down()
+    // {
 
-    public function down()
-    {
-        
-    }
+    // }
 }
