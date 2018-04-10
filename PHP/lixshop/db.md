@@ -62,3 +62,17 @@ id increment_id order_status items_count total_amount discount_amount customer_i
 sales_flat_order_item 订单产品表
 
 id order_id item_id customer_id product_id custom_option_sku name image count price row_total redirect_url created_at updated_at 
+
+## Mongodb
+
+Favorite 产品收藏信息表
+
+product_id user_id created_at updated_at
+
+review 产品评论
+
+product_id product_custom_option_key rate_star name user_id ip summary review_content review_date status audit_user audit_date
+
+product_flat 产品信息表
+
+created_at created_user_id updated_at name spu sku status count min_sales_count is_in_stock category price cost_price meta_keywords meta_description image description custom_option review_count reviw_rate_star
