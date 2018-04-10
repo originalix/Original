@@ -16,7 +16,9 @@ $this->title = 'Mongodb-Test';
     <div class="alert alert-danger">
         <?php
             foreach($models as $model) {
-                print_r($model->name);
+                echo $model->name;
+                echo "</br>";
+
             }
         ?>
     </div>

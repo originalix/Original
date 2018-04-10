@@ -102,16 +102,35 @@ class SiteController extends Controller
 
     public function actionMongo()
     {
-        $provider = new ActiveDataProvider([
-            'query' => Customer::find(),
-            'pagination' => [
-                'pageSize' => 10,
-            ]
-        ]);
-        $models = $provider->getModels();
+        $response = Yii::$app->response;
+        $response->format = \yii\web\Response::FORMAT_JSON;
 
-        return $this->render('mongo', [
-            'models' => $models,
-        ]);
+        // Mongodb 插入
+        // $cus = new Customer();
+        // $cus->name = 'James';
+        // $cus->email = 'james@example.com';
+        // $cus->address = '新雅堂公寓';
+        // $cus->status = 1;
+        // $cus->options = [
+        //     'lix', 'PHP', 'javascript'
+        // ];
+        // $cus->save();
+
+        // Mongodb 获取分页数据
+        // $provider = new ActiveDataProvider([
+        //     'query' => Customer::find(),
+        //     'pagination' => [
+        //         'pageSize' => 10,
+        //     ]
+        // ]);
+        // $models = $provider->getModels();
+        
+        // Mongodb ActiveRecord获取数据
+        // $models = Customer::find()->all();
+
+        // return $this->render('mongo', [
+        //     'models' => $models,
+        // ]);
+        return ['data' => $models];
     }
 }

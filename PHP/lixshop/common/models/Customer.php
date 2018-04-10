@@ -19,6 +19,7 @@ class Customer extends ActiveRecord
             'email',
             'address',
             'status',
+            'options',
         ];
     }
 }
