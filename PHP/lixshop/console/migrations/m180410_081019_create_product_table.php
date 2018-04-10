@@ -38,6 +38,18 @@ class m180410_081019_create_product_table extends Migration
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
+        
+        $this->createTable('{{%sales_coupon_usage}}', [
+            'id' => $this->primaryKey(),
+            'coupon_id' => $this->integer(15)->notNull()->comment('优惠券id'),
+            'customer_id' => $this->integer(15)->notNull()->comment('顾客用户id'),
+            'times_used' => $this->integer(15)->notNull()->comment('使用次数'),
+        ]);
+
+        // 购物车表
+        $this->createTable('{{%sales_flat_cart}}', [
+            
+        ])
     }
 
     public function down()
