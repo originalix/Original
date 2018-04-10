@@ -62,8 +62,3 @@ id increment_id order_status items_count total_amount discount_amount customer_i
 sales_flat_order_item 订单产品表
 
 id order_id item_id customer_id product_id custom_option_sku name image count price row_total redirect_url created_at updated_at 
-
-
-
-
-
