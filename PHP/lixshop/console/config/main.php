@@ -19,7 +19,10 @@ return [
         'fixture' => [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',
-          ],
+        ],
+
+        'mongodb-migrate' => 'yii\mongodb\console\controllers\MigrateController'
+        
     ],
     'components' => [
         'log' => [

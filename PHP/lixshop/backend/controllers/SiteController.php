@@ -107,8 +107,8 @@ class SiteController extends Controller
 
         // Mongodb 插入
         // $cus = new Customer();
-        // $cus->name = 'James';
-        // $cus->email = 'james@example.com';
+        // $cus->name = 'Lix';
+        // $cus->email = 'lix@example.com';
         // $cus->address = '新雅堂公寓';
         // $cus->status = 1;
         // $cus->options = [
@@ -124,9 +124,22 @@ class SiteController extends Controller
         //     ]
         // ]);
         // $models = $provider->getModels();
-        
+            
+        // Mongodb 更新数据
+        // $customer = Customer::findOne([
+        //     'name' => 'Lix',
+        // ]);
+
+        // $customer->options = [
+        //     'Objective-C', 'Swift', 'Kotlin'
+        // ];
+
+        // $customer->save();
+
         // Mongodb ActiveRecord获取数据
-        // $models = Customer::find()->all();
+        $models = Customer::find()->all();
+
+
 
         // return $this->render('mongo', [
         //     'models' => $models,
