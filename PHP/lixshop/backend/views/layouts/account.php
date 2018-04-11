@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -37,7 +38,7 @@
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
-
+    <?php $this->beginBody() ?>
 	<body class="login-layout light-login">
 		<div class="main-container">
 			<div class="main-content">
@@ -282,11 +283,6 @@
 		<!--[if !IE]> -->
 		<script src="../assets/js/jquery-2.1.4.min.js"></script>
 
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
@@ -329,6 +325,8 @@
 			 });
 			 
 			});
-		</script>
+        </script>
+    <?php $this->endBody() ?>
 	</body>
 </html>
+<?php $this->endPage() ?>
