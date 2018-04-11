@@ -36,14 +36,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => require __DIR__ . '/restful.php',
         ],
-        */
     ],
     'params' => $params,
 ];
