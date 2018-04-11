@@ -4,9 +4,10 @@ namespace backend\controllers;
 
 class AccountController extends \yii\web\Controller
 {
+    public $layout = 'account';
+    
     public function actionIndex()
     {
-        $this->layout = false;
         return $this->render('index');
     }
 
