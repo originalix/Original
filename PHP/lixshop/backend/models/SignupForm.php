@@ -5,7 +5,7 @@ namespace backend\models;
 use yii\base\Model;
 use backend\models\AdminUser;
 
-class SingupForm extends Model
+class SignupForm extends Model
 {
     public $username;
     public $email;
@@ -45,7 +45,7 @@ class SingupForm extends Model
             return null;
         }
         
-        $user = new User();
+        $user = new AdminUser();
         $user->username = $this->username;
         $user->setPassword($this->password);
         $user->generateAuthKey();
