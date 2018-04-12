@@ -63,13 +63,13 @@ use yii\helpers\Html;
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
+						<!-- <ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
 							<li class="active">Dashboard</li>
-						</ul><!-- /.breadcrumb -->
+						</ul>/.breadcrumb -->
 
 						<!-- <div class="nav-search" id="nav-search">
 							<form class="form-search">
@@ -81,7 +81,7 @@ use yii\helpers\Html;
 						</div>/.nav-search -->
                     </div>
                     
-						<div class="page-header">
+						<!-- <div class="page-header">
 							<h1>
 								Dashboard
 								<small>
@@ -89,7 +89,7 @@ use yii\helpers\Html;
 									overview &amp; stats
 								</small>
 							</h1>
-						</div><!-- /.page-header -->
+						</div>/.page-header -->
                         
                         <?= $content ?>
 

@@ -12,11 +12,11 @@ return [
         'realData' => false,
         'title' => '产品管理',
         'icon' => 'fa-desktop',
-        'redirect' => '/home/index',
+        'redirect' => '../product/index',
         'data' => [
             [
                 'title' => '产品信息管理',
-                'redirect' => '/home/index',
+                'redirect' => '../product/index',
             ],
             [   
                 'title' => '产品评论管理', 

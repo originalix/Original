@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 
-class HomeController extends \yii\web\Controller
+class ProductController extends \yii\web\Controller
 {
     public $layout = "home.php";
     public function actionIndex()
@@ -12,3 +12,4 @@ class HomeController extends \yii\web\Controller
         return $this->render('index');
     }
 }
+

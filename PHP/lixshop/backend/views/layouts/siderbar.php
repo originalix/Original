@@ -58,7 +58,7 @@
                     if (count($item["data"]) > 0) {
                         foreach ($item["data"] as $data) {
                             echo '<li class="">';
-                            echo '<a href="#" class="dropdown-toggle">';
+                            echo '<a href="'. $item["redirect"] .'">';
                             echo '<i class="menu-icon fa fa-caret-right"></i>';
                             echo $data["title"];
                             echo '</a>';
