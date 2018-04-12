@@ -39,55 +39,15 @@
 
     <ul class="nav nav-list">
         <?php
-            $array = [
-                [
-                    'realData' => true,
-                    'title' => '首页',
-                    'icon' => 'fa-tachometer',
-                    'data' => [],
-                ],
-
-                [
-                    'realData' => false,
-                    'title' => '产品管理',
-                    'icon' => 'fa-desktop',
-                    'data' => [
-                        [
-                            'realData' => true,
-                            'title' => '产品信息管理',
-                            // 'icon' => 'fa-desktop',
-                        ],
-                        [
-                            'realData' => true,
-                            'title' => '产品评论管理',
-                            // 'icon' => 'fa-desktop',
-                        ],
-                    ]
-                ]
-            ];
-
+            $siderbar_config = require(BASE_PATH . '/siderbar.php');
             
-            function setupFirstLi($data)
-            {
-                return '
-                <li class="">
-                <a href="'. $data["title"] . '">
-                <i class="menu-icon fa '. $data["icon"] .'"></i>
-                <span class="menu-text">'. $data["title"] .'</span>
-                </a>
-                
-                <b class="arrow"></b>
-                </li>
-                ';
-            }
-            
-            foreach ($array as $item) {
+            foreach ($siderbar_config as $item) {
                 if ($item["realData"] == true) {
                     echo setupFirstLi($item);
                 } else {
 
                     echo '<li class="">';
-                    echo '<a href="#" class="dropdown-toggle">';
+                    echo '<a href="'. $item["redirect"] .'" class="dropdown-toggle">';
                     echo '<i class="menu-icon fa '. $item["icon"].'"></i>';
                     echo '<span class="menu-text">'. $item["title"] .'</span>';
                     echo '<b class="arrow fa fa-angle-down"></b>';
@@ -109,6 +69,20 @@
                     echo '</ul>';
                     echo '</li>';
                 }
+            }
+
+            function setupFirstLi($data)
+            {
+                return '
+                <li class="">
+                <a href="'. $data["redirect"] . '">
+                <i class="menu-icon fa '. $data["icon"] .'"></i>
+                <span class="menu-text">'. $data["title"] .'</span>
+                </a>
+                
+                <b class="arrow"></b>
+                </li>
+                ';
             }
         ?>
     </ul>
