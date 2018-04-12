@@ -8,7 +8,7 @@ use backend\models\AdminUser;
 class SignupForm extends Model
 {
     public $username;
-    public $email;
+    public $mobile;
     public $password;
 
 
