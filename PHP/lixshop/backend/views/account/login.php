@@ -35,41 +35,46 @@ $this->title = '登录';
                                     ];
                                 }
                             ?>
+                            
+                            <?php
+                                $form = ActiveForm::begin([
+                                    'options' => ['enctype' => 'multipart/form-data', 'id' => 'login-form'],
+                                    'method' => 'post',
+                                ]);
+                                
+                            ?>
 
-                            <form>
-                                <fieldset>
-                                    <label class="block clearfix">
-                                        <span class="block input-icon input-icon-right">
-                                            <input type="text" class="form-control" placeholder="用户名" />
-                                            <i class="ace-icon fa fa-user"></i>
-                                        </span>
+                            <fieldset>
+                                <?= $form->field($model, 'username', getTemplate('fa-user'))->input('mobile', ['placeholder' => "用户名"]); ?>
+                                <?= $form->field($model, 'password', getTemplate('fa-lock'))->passwordInput(['placeholder' => "密码"]) ?>
+                            
+                                <div class="space"></div>
+
+                                <div class="clearfix">
+                                    <label class="inline">
+                                        <?= $form->field($model, 'rememberMe', [
+                                            'template' => '{input}',
+                                            'inputOptions' => [
+                                                'class' => 'ace',
+                                            ],
+                                        ])->checkbox([
+                                            'label' => '记住我',
+                                        ]) ?>
                                     </label>
+                                    
+                                    <?= Html::submitButton('登录', [
+                                        'class'=>'width-35 pull-right btn btn-sm btn-primary',
+                                        'name' =>'submit-button',
+                                        'template' => '<i class="ace-icon fa fa-key"></i>'
+                                        ])?>
 
-                                    <label class="block clearfix">
-                                        <span class="block input-icon input-icon-right">
-                                            <input type="password" class="form-control" placeholder="密码" />
-                                            <i class="ace-icon fa fa-lock"></i>
-                                        </span>
-                                    </label>
+                                </div>
 
-                                    <div class="space"></div>
+                                <div class="space-4"></div>
 
-                                    <div class="clearfix">
-                                        <label class="inline">
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl">记住我</span>
-                                        </label>
-
-                                        <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
-                                            <i class="ace-icon fa fa-key"></i>
-                                            <span class="bigger-110">登录</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="space-4"></div>
-                                </fieldset>
-                            </form>
-
+                            </fieldset>
+                            <?php ActiveForm::end(); ?>
+                            
                         </div>
                         <!-- /.widget-main -->
 
