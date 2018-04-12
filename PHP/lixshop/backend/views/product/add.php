@@ -56,7 +56,9 @@ $this->title = '添加商品';
 
             <div class="tab-content no-border padding-24">
                 <div id="faq-tab-1" class="tab-pane fade in active">
-                    <h1>FAQ-TAB-1</h1>
+                    <h1>
+                        添加商品
+                    </h1>
                 </div>
                 <div id="faq-tab-2" class="tab-pane fade">
                 </div>
