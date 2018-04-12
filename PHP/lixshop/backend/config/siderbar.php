@@ -20,11 +20,11 @@ return [
             ],
             [   
                 'title' => '产品评论管理', 
-                'redirect' => '/home/index',
+                'redirect' => '../product/add',
             ],
             [
                 'title' => '产品收藏管理',
-                'redirect' => '/home/index',
+                'redirect' => '../home/test',
             ],
         ],
     ],

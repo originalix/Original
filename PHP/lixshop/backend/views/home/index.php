@@ -1,3 +1,8 @@
+<?php
+
+$this->title = '首页';
+?>
+
 <div class="page-header">
     <h1>
         首页
