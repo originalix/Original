@@ -30,4 +30,13 @@ class AccountController extends \yii\web\Controller
         ]);
     }
 
+    public function actionLogin()
+    {
+        // if (!Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }
+
+        return $this->render('login');
+    }
+
 }

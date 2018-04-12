@@ -24,11 +24,6 @@ $this->title = '注册';
                             </h4>
 
                             <div class="space-6"></div>
-                            <p>
-                                <?php
-                                
-                                ?>
-                            </p>
 
                             <?php
                                 function getTemplate($icon)
@@ -50,7 +45,7 @@ $this->title = '注册';
                             ?>
                             
                             <fieldset>
-                                <?= $form->field($model, 'mobile', getTemplate('fa-envelope'))->input('mobile', ['placeholder' => "手机号码"]); ?>
+                                <?= $form->field($model, 'mobile', getTemplate('fa-phone'))->input('mobile', ['placeholder' => "手机号码"]); ?>
                                 <?= $form->field($model, 'username', getTemplate('fa-user'))->input('username', ['placeholder' => "用户名"]); ?>
                                 <?= $form->field($model, 'password', getTemplate('fa-lock'))->passwordInput(['placeholder' => "密码"]) ?>
                                 <?= $form->field($model, 're_password', getTemplate('fa-retweet'))->passwordInput(['placeholder' => "确认密码"]) ?>
