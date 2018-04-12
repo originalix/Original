@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\SignupForm;
+use backend\models\LoginForm;
 
 class AccountController extends \yii\web\Controller
 {
@@ -36,7 +37,16 @@ class AccountController extends \yii\web\Controller
         //     return $this->goHome();
         // }
 
-        return $this->render('login');
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        } else {
+            $model->password = '';
+
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
     }
 
 }
