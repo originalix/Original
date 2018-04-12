@@ -8,13 +8,12 @@
 
 			<i class="ace-icon fa fa-check green"></i>
 
-			Welcome to
+			欢迎进入
 			<strong class="green">
-				Ace
-				<small>(v1.4)</small>
-			</strong>, лёгкий, многофункциональный и простой в использовании шаблон для админки на bootstrap 3.3.6. Загрузить исходники с
-			<a
-			    href="https://github.com/bopoda/ace">github</a> (with minified ace js/css files).
+				衣之恋
+				<small>(v1.0)</small>
+			</strong> 后台商城系统。
+			
 		</div>
 
 	</div>
