@@ -24,13 +24,17 @@ $this->title = '注册';
                             </h4>
 
                             <div class="space-6"></div>
-                            <p> </p>
+                            <p>
+                                <?php
+                                
+                                ?>
+                            </p>
 
                             <?php
                                 function getTemplate($icon)
                                 {
                                     return [
-                                        'template' => '<label class="block clearfix"><span class="block input-icon input-icon-right">{input}<i class="ace-icon fa ' . $icon . '"></i></span></label>',
+                                        'template' => '<label class="block clearfix"><span class="block input-icon input-icon-right">{input}<i class="ace-icon fa ' . $icon . '"></i></span></label>{error}',
                                         'labelOptions' => ['class' => 'block clearfix'],
                                         'inputOptions' => ['class' => 'form-control'],
                                     ];
@@ -44,12 +48,13 @@ $this->title = '注册';
                                 ]);
                                 
                             ?>
+                            
                             <fieldset>
                                 <?= $form->field($model, 'mobile', getTemplate('fa-envelope'))->input('mobile', ['placeholder' => "手机号码"]); ?>
                                 <?= $form->field($model, 'username', getTemplate('fa-user'))->input('username', ['placeholder' => "用户名"]); ?>
                                 <?= $form->field($model, 'password', getTemplate('fa-lock'))->passwordInput(['placeholder' => "密码"]) ?>
-                                <?= $form->field($model, 'password', getTemplate('fa-retweet'))->passwordInput(['placeholder' => "确认密码"]) ?>
-
+                                <?= $form->field($model, 're_password', getTemplate('fa-retweet'))->passwordInput(['placeholder' => "确认密码"]) ?>
+                                
                                 <label class="block">
                                     <input type="checkbox" class="ace" />
                                     <span class="lbl">
@@ -66,11 +71,8 @@ $this->title = '注册';
                                         <span class="bigger-110">Reset</span>
                                     </button>
 
-                                    <button type="button" class="width-65 pull-right btn btn-sm btn-success">
-                                        <span class="bigger-110">Register</span>
+                                    <?= Html::submitButton('提交', ['class'=>'width-65 pull-right btn btn-sm btn-success','name' =>'submit-button'])?>
 
-                                        <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                                    </button>
                                 </div>
                             </fieldset>
                             <?php ActiveForm::end(); ?>

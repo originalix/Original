@@ -1,8 +1,13 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "{{%admin_user}}".
@@ -36,10 +41,15 @@ class AdminUser extends \yii\db\ActiveRecord implements IdentityInterface
      * {@inheritdoc}
      */
     public function behaviors()
-    {
+    {        
         return [
-            TimestampBehavior::className(),
-        ];
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
+            ],
+        ];   
     }
 
     /**
