@@ -79,11 +79,11 @@ $this->title = '添加商品';
                         <?= $form->field($model, 'meta_title')->textInput()->label('展示标题') ?>
                         <?= $form->field($model, 'meta_keywords')->textInput()->label('关键字') ?>
                         
-                        <?= $form->field($model, 'meta_description')->widget(\yii\redactor\widgets\Redactor::className(), [
-                        'clientOptions' => [
-                            'lang' => 'zh_cn',
-                        ]
-                    ])?>
+                        <?= $form->field($model, 'meta_description')->widget(\yii\redactor\widgets\Redactor::className(),[
+                            'clientOptions' => [
+                                'lang' => 'zh_cn',
+                            ]
+                        ]) ?>
         
                     <?php ActiveForm::end(); ?>
                 </div>

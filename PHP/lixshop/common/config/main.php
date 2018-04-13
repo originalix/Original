@@ -12,8 +12,6 @@ return [
     ],
     'modules' => [
         'redactor' => 'yii\redactor\RedactorModule',
-        'uploadDir' => '/Users/Lix/Documents/www/sites/code-repo/PHP/lixshop/files',
-        'uploadUrl' => 'http://localhost/code-repo/PHP/lixshop/files',
         'imageAllowExtensions'=>['jpg','png','gif'],
     ],
 ];
