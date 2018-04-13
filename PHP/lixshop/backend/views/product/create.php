@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
 
 $this->title = '添加商品';
 ?>
@@ -33,22 +34,21 @@ $this->title = '添加商品';
                 <li>
                     <a data-toggle="tab" href="#faq-tab-2">
                         <i class="green ace-icon fa fa-user bigger-120"></i>
-                        Account
+                        描述信息
                     </a>
                 </li>
 
                 <li>
                     <a data-toggle="tab" href="#faq-tab-3">
                         <i class="orange ace-icon fa fa-credit-card bigger-120"></i>
-                        Payments
+                        上传封面图
                     </a>
                 </li>
 
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="purple ace-icon fa fa-magic bigger-120"></i>
-
-                        Misc
+                        分类信息
                     </a>
                 </li>
                 <!-- /.dropdown -->
@@ -88,6 +88,34 @@ $this->title = '添加商品';
                     <?php ActiveForm::end(); ?>
                 </div>
                 <div id="faq-tab-3" class="tab-pane fade">
+                    <?php
+                        // echo '<label class="control-label">上传封面图</label>';
+                        // echo FileInput::widget([
+                        //     'model' => $model,
+                        //     'attribute' => 'image[]',
+                        //     'options' => ['multiple' => true]
+                        // ]);
+                        echo FileInput::widget([
+                            'name' => 'attachment_49[]',
+                            'options'=>[
+                                'multiple'=>true
+                            ],
+                            'pluginOptions' => [
+                                'initialPreview'=>[
+                                    "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg",
+                                    "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg"
+                                ],
+                                'initialPreviewAsData'=>true,
+                                'initialCaption'=>"The Moon and the Earth",
+                                'initialPreviewConfig' => [
+                                    ['caption' => 'Moon.jpg', 'size' => '873727'],
+                                    ['caption' => 'Earth.jpg', 'size' => '1287883'],
+                                ],
+                                'overwriteInitial'=>false,
+                                'maxFileSize'=>2800
+                            ]
+                        ]);
+                    ?>
                 </div>
                 <div id="faq-tab-4" class="tab-pane fade">
                 </div>
