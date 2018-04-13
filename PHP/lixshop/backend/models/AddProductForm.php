@@ -11,6 +11,7 @@ class AddProductForm extends Model
     public $name;
     public $spu;
     public $sku;
+    public $stock;
     public $min_sales_qty;
     public $is_in_stock = true;
     public $category;
@@ -50,5 +51,39 @@ class AddProductForm extends Model
         $product->min_sales_qty = $this->min_sales_qty;
 
         return $product->save() ? $product : null;
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => '产品名称',
+            'spu' => '标准化产品单元',  
+            'sku' => '库存量单位',
+            
+            'score' => '产品的评分',   // 产品的评分
+            'status' => '状态',  // 产品的状态，1代表激活，2代表下架
+            'min_sales_qty' => '最小销售个数', // 产品的最小销售个数
+            'stock' => '库存个数',
+            'is_in_stock' => '库存状态', // 产品 的库存状态，1代表有库存，0代表无库存
+            'visibility', // 是否可见
+            'url_key', // url地址
+            
+            'category' => '产品分类id', // 产品的分类id。可以多个
+            'price' => '产品销售价格', // 产品的销售价格
+            'cost_price' => '成本价格', // 成本价格
+            'final_price' => '最终价格',   // 算出来的最终价格。这个通过脚本赋值。
+            'meta_title' => '标题',
+            'meta_keywords' => '关键词',
+            'meta_description' => '描述',
+            'image' => '图片',
+            'description' => '描述',
+            'short_description' => '简介',
+            'custom_option' => '自定义属性',    // 产品 custom option部分，也就是淘宝模式的颜色尺码这类属性
+            'package_number' => '打包销售个数',  // 打包销售个数，譬如，值为5，则加入购物车的个数都是5的倍数。
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+            'created_user_id' => '创建人id',
+        ];
     }
 }
