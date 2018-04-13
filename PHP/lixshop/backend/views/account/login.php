@@ -87,7 +87,7 @@ $this->title = '登录';
                             </div>
 
                             <div>
-                                <a href="#" data-target="#signup-box" class="user-signup-link">
+                                <a href="./signup" data-target="#signup-box" class="user-signup-link">
                                     注册
                                     <i class="ace-icon fa fa-arrow-right"></i>
                                 </a>

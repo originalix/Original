@@ -6,11 +6,7 @@ use yii\helpers\Url;
 ?>  
   
 <div class="form-group">  
-    <label class="control-label col-lg-2">  
-        <?= $label ?>  
-    </label>
-  
-    <div class="col-lg-9">  
+    <div class="">  
         <?= FileInput::widget([  
             //'model' => $model,  
             //'attribute' => 'ListImgUrl',  

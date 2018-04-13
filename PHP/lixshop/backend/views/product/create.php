@@ -2,8 +2,11 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use kartik\file\FileInput;
+// use yii\widgets\ActiveForm;
+use common\widgets\imgupload\ImgMultUpload;  
+use kartik\file\FileInput;  
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = '添加商品';
 ?>
@@ -88,34 +91,27 @@ $this->title = '添加商品';
                     <?php ActiveForm::end(); ?>
                 </div>
                 <div id="faq-tab-3" class="tab-pane fade">
-                    <?php
-                        // echo '<label class="control-label">上传封面图</label>';
-                        // echo FileInput::widget([
-                        //     'model' => $model,
-                        //     'attribute' => 'image[]',
-                        //     'options' => ['multiple' => true]
-                        // ]);
-                        echo FileInput::widget([
-                            'name' => 'attachment_49[]',
-                            'options'=>[
-                                'multiple'=>true
-                            ],
-                            'pluginOptions' => [
-                                'initialPreview'=>[
-                                    "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg",
-                                    "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg"
-                                ],
-                                'initialPreviewAsData'=>true,
-                                'initialCaption'=>"The Moon and the Earth",
-                                'initialPreviewConfig' => [
-                                    ['caption' => 'Moon.jpg', 'size' => '873727'],
-                                    ['caption' => 'Earth.jpg', 'size' => '1287883'],
-                                ],
-                                'overwriteInitial'=>false,
-                                'maxFileSize'=>2800
-                            ]
-                        ]);
-                    ?>
+                    <?php $form = ActiveForm::begin([  
+                        'layout' => 'horizontal',  
+                        'enableAjaxValidation' => false,  
+                        'method' => 'post',  
+                        'options' => ['enctype' => 'multipart/form-data'],  
+                        'fieldConfig' => [  
+                            'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{endWrapper}",  
+                            'horizontalCssClasses' => [  
+                                'label' => 'col-lg-2',  
+                                'wrapper' => 'col-lg-6',  
+                                'error' => 'col-lg-3',  
+                                'hint' => '',  
+                            ],  
+                        ]  
+                    ]); ?>  
+                    
+                    <?= ImgMultUpload::widget(['label' => '产品图片', 'imgarr' => [  
+                    ], 'imagedir' => '/uploads/temp/']); ?>  
+                    <?php  
+                    ActiveForm::end();  
+                    ?> 
                 </div>
                 <div id="faq-tab-4" class="tab-pane fade">
                 </div>
