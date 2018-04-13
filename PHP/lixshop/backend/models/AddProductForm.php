@@ -42,9 +42,9 @@ class AddProductForm extends Model
     public function createProduct()
     {
         if (!$this->validate()) {
-            print_r('not validate');
-            print_r($this->meta_description);
-            print_r($this->getFirstErrors());
+            // print_r('not validate');
+            // print_r($this->meta_description);
+            // print_r($this->getFirstErrors());
             return null;
         }
 

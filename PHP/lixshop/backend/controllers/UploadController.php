@@ -68,7 +68,7 @@
                           $res = [  
                               "initialPreview" => $initialPreview,  
                               "initialPreviewConfig" => $initialPreviewConfig,  
-                              "imgfile" => "<input name='ImageFilesPath[]' id='" . $pickey . "' type='hidden' value='" . $imgpath . "'/>"  
+                              "imgfile" => "<input name='image[]' id='" . $pickey . "' type='hidden' value='" . $imgpath . "'/>"  
                           ];  
                       }  
                   }  

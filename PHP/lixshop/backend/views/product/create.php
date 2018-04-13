@@ -2,10 +2,10 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-// use yii\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 use common\widgets\imgupload\ImgMultUpload;  
 use kartik\file\FileInput;  
-use yii\bootstrap\ActiveForm;
+// use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 
 $this->title = '添加商品';
@@ -67,7 +67,7 @@ $this->title = '添加商品';
                 $model->min_sales_qty = 1;
                 $model->meta_title = "衣服";
                 $model->meta_keywords = "衣服衣服";
-                // $model->meta_description = "干洗衣服";
+                // $model->meta_description = "按理说点九分裤拉见识到了";
             ?>
             <div class="tab-content no-border padding-24">
                 <div id="faq-tab-1" class="tab-pane fade in active">
@@ -83,11 +83,7 @@ $this->title = '添加商品';
                         <?= $form->field($model, 'is_in_stock')->dropDownList(
                             ['1'=>'有货','0'=>'无货']
                         ) ?>
-                        <?= Html::submitButton('保存', [
-                            'class'=>'btn btn-white btn-info btn-bold pull-right',
-                            'name' =>'submit-button',
-                        ])?>
-                    
+
                 </div>
 
                 <div id="faq-tab-2" class="tab-pane fade">
@@ -101,11 +97,16 @@ $this->title = '添加商品';
                             ]
                         ]) ?>
                         
+                        <?= Html::submitButton('保存', [
+                            'class'=>'btn btn-white btn-info btn-bold pull-right',
+                            'name' =>'submit-button',
+                        ])?>
+
                     <?php ActiveForm::end(); ?>
                 </div>
                 <div id="faq-tab-3" class="tab-pane fade">
                     <?php $form = ActiveForm::begin([  
-                        'layout' => 'horizontal',  
+                        // 'layout' => 'horizontal',  
                         'enableAjaxValidation' => false,  
                         'method' => 'post',  
                         'options' => ['enctype' => 'multipart/form-data'],  

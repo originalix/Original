@@ -5,25 +5,59 @@ namespace backend\controllers;
 use Yii;
 use backend\models\AddProductForm;
 use backend\controllers\BaseController;
+use backend\models\Img;
 
 class ProductController extends BaseController
 {
     public function actionIndex()
     {
-        $this->layout = false;
-        return $this->render('index');
+        // $this->layout = false;
+        $model = new Img();
+
+        if ($model->load(Yii::$app->request->post())) {
+            print_r(Yii::$app->request->post());
+            exit();
+        }
+
+        return $this->render('index', [
+            'model' => $model
+        ]);
+    }
+
+    public function actionTest()
+    {
+        // $this->layout = false;
+        $model = new Img();
+        if (Yii::$app->request->isPost) {
+            // print_r(Yii::$app->request->post());
+            // exit();
+            print_r($model->getFirstErrors());
+            exit();
+        }
+        if ($model->load(Yii::$app->request->post())) {
+            print_r(Yii::$app->request->post());
+            exit();
+        } else {
+            
+        }
+
+        return $this->render('index', [
+            'model' => $model
+        ]);
     }
 
     public function actionCreate()
     {
         $model = new AddProductForm();
         if ($model->load(Yii::$app->request->post())) {
+            print_r(Yii::$app->request->post());
+            exit();
             if ($product = $model->createProduct()) {
                 return $this->goHome();
             } else {
                 print_r("Hello world");
                 print_r($product);
-                return;
+                // return;
             }
         }
         return $this->render('create', [

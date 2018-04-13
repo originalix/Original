@@ -25,7 +25,7 @@ class ImgMultUpload extends Widget
     {  
         parent::init();  
         if ($this->label === null) {  
-            $this->label = '上传图片';  
+            $this->label = '上传图片';
         }  
   
         if (is_array($this->imgarr) && count($this->imgarr) > 0) {  
@@ -41,8 +41,8 @@ class ImgMultUpload extends Widget
                     // 'title' => 'Image'
                     ]));
                 array_push($this->initialPreviewConfig, $config);
-                array_push($this->model[$this->attribute], $value);
-            } 
+            }
+            
         }  
     }  
   
