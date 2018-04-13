@@ -3,10 +3,10 @@
 namespace backend\controllers;
 
 use Yii;
+use backend\controllers\BaseController;
 
-class HomeController extends \yii\web\Controller
+class HomeController extends BaseController
 {
-    public $layout = "home.php";
     public function actionIndex()
     {
         return $this->render('index');
