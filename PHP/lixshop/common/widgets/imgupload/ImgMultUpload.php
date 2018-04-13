@@ -29,13 +29,14 @@ class ImgMultUpload extends Widget
             foreach ($this->imgarr as $key => $value) {  
                 $config = ['caption' => $value,  
                     'width' => '120px',  
-                    'url' => '/upload/delete-pic', // server delete action  
+                    'url' => '../upload/delete', // server delete action  
                     'key' => $value,  
                     'extra' => ['filename' => $value]];  
                 array_push($this->initialPreview, Html::img($this->imagedir . $value, [  
-                    'class' => 'file-preview-image',  
-                    'alt' => 'The Moon',  
-                    'title' => 'The Moon']));  
+                    // 'class' => 'file-preview-image',
+                    // 'alt' => 'Image',
+                    // 'title' => 'Image'
+                    ]));
                 array_push($this->initialPreviewConfig, $config);  
             }  
         }  
@@ -48,5 +49,5 @@ class ImgMultUpload extends Widget
             'initialPreview' => $this->initialPreview,  
             'initialPreviewConfig' => $this->initialPreviewConfig  
         ]);  
-    }  
+    }
 } 
