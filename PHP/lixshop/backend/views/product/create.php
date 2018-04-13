@@ -78,7 +78,12 @@ $this->title = '添加商品';
                     <?php $form = ActiveForm::begin(['id' => 'form-product']); ?>
                         <?= $form->field($model, 'meta_title')->textInput()->label('展示标题') ?>
                         <?= $form->field($model, 'meta_keywords')->textInput()->label('关键字') ?>
-                        <?= $form->field($model, 'meta_description')->textarea()->label('商品详情') ?>
+                        
+                        <?= $form->field($model, 'meta_description')->widget(\yii\redactor\widgets\Redactor::className(), [
+                        'clientOptions' => [
+                            'lang' => 'zh_cn',
+                        ]
+                    ])?>
         
                     <?php ActiveForm::end(); ?>
                 </div>

@@ -75,7 +75,7 @@ class AddProductForm extends Model
             'final_price' => '最终价格',   // 算出来的最终价格。这个通过脚本赋值。
             'meta_title' => '标题',
             'meta_keywords' => '关键词',
-            'meta_description' => '描述',
+            'meta_description' => '商品详情',
             'image' => '图片',
             'description' => '描述',
             'short_description' => '简介',
