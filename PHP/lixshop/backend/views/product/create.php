@@ -48,8 +48,8 @@ $this->title = '添加商品';
                     </a>
                 </li>
 
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <li>
+                    <a data-toggle="tab" href="#faq-tab-4">
                         <i class="purple ace-icon fa fa-magic bigger-120"></i>
                         分类信息
                     </a>
@@ -114,12 +114,28 @@ $this->title = '添加商品';
                     ?> 
                 </div>
                 <div id="faq-tab-4" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="widget-box widget-color-blue2">
+                                <div class="widget-header">
+                                    <h4 class="widget-title lighter smaller">Choose Categories</h4>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main padding-8">
+                                        <ul id="tree1"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
-
         <!-- PAGE CONTENT ENDS -->
     </div>
     <!-- /.col -->
 </div>
 <!-- /.row -->
+<?= $this->render('category_script'); ?>
