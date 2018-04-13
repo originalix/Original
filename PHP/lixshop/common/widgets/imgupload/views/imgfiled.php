@@ -8,8 +8,8 @@ use yii\helpers\Url;
 <div class="form-group">  
     <div class="">  
         <?= FileInput::widget([  
-            //'model' => $model,  
-            //'attribute' => 'ListImgUrl',  
+            'model' => $model,
+            'attribute' => $attribute,  
             'name' => 'ImgSelect',  
             'language' => 'zh-CN',  
             'options' => ['multiple' => true, 'accept' => 'image/*'],  

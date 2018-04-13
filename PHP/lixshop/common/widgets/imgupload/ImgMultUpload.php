@@ -14,6 +14,9 @@ class ImgMultUpload extends Widget
   
     //图片存储文件夹目录  
     public $imagedir;  
+
+    public $model;
+    public $attribute;
   
     private $initialPreview = [];  
     private $initialPreviewConfig = [];  
@@ -37,14 +40,17 @@ class ImgMultUpload extends Widget
                     // 'alt' => 'Image',
                     // 'title' => 'Image'
                     ]));
-                array_push($this->initialPreviewConfig, $config);  
-            }  
+                array_push($this->initialPreviewConfig, $config);
+                array_push($this->model[$this->attribute], $value);
+            } 
         }  
     }  
   
     public function run()  
     {  
         return $this->render('imgfiled', [  
+            'model' => $this->model,
+            'attribute' => $this->attribute,
             'label' => $this->label,  
             'initialPreview' => $this->initialPreview,  
             'initialPreviewConfig' => $this->initialPreviewConfig  

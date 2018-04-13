@@ -58,6 +58,16 @@ $this->title = '添加商品';
             </ul>
             <?php
                 $model->name = "斯伯丁篮球";
+                $model->cost_price = 99.9;
+                $model->final_price = 100;
+                $model->sku = "一件";
+                $model->spu = "件";
+                $model->stock = 8888;
+                $model->package_number = 1;
+                $model->min_sales_qty = 1;
+                $model->meta_title = "衣服";
+                $model->meta_keywords = "衣服衣服";
+                // $model->meta_description = "干洗衣服";
             ?>
             <div class="tab-content no-border padding-24">
                 <div id="faq-tab-1" class="tab-pane fade in active">
@@ -73,12 +83,15 @@ $this->title = '添加商品';
                         <?= $form->field($model, 'is_in_stock')->dropDownList(
                             ['1'=>'有货','0'=>'无货']
                         ) ?>
-        
-                    <?php ActiveForm::end(); ?>
+                        <?= Html::submitButton('保存', [
+                            'class'=>'btn btn-white btn-info btn-bold pull-right',
+                            'name' =>'submit-button',
+                        ])?>
+                    
                 </div>
 
                 <div id="faq-tab-2" class="tab-pane fade">
-                    <?php $form = ActiveForm::begin(['id' => 'form-product']); ?>
+                    
                         <?= $form->field($model, 'meta_title')->textInput()->label('展示标题') ?>
                         <?= $form->field($model, 'meta_keywords')->textInput()->label('关键字') ?>
                         
@@ -87,7 +100,7 @@ $this->title = '添加商品';
                                 'lang' => 'zh_cn',
                             ]
                         ]) ?>
-        
+                        
                     <?php ActiveForm::end(); ?>
                 </div>
                 <div id="faq-tab-3" class="tab-pane fade">
@@ -105,13 +118,12 @@ $this->title = '添加商品';
                                 'hint' => '',  
                             ],  
                         ]  
-                    ]); ?>  
+                    ]); ?>
                     
-                    <?= ImgMultUpload::widget(['label' => '产品图片', 'imgarr' => [  
+                    <?= ImgMultUpload::widget(['model' => $model, 'attribute' => 'image', 'label' => '产品图片', 'imgarr' => [  
                     ], 'imagedir' => '/uploads/temp/']); ?>  
-                    <?php  
-                    ActiveForm::end();  
-                    ?> 
+
+                    <?php ActiveForm::end(); ?> 
                 </div>
                 <div id="faq-tab-4" class="tab-pane fade">
                     <div class="row">

@@ -26,6 +26,10 @@ return [
                 'title' => '产品收藏管理',
                 'redirect' => '../home/test',
             ],
+            [
+                'title' => '产品分类管理',
+                'redirect' => '../product/category',
+            ],
         ],
     ],
     [

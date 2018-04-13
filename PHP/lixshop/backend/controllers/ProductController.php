@@ -20,6 +20,10 @@ class ProductController extends BaseController
         if ($model->load(Yii::$app->request->post())) {
             if ($product = $model->createProduct()) {
                 return $this->goHome();
+            } else {
+                print_r("Hello world");
+                print_r($product);
+                return;
             }
         }
         return $this->render('create', [
