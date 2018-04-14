@@ -25,7 +25,8 @@ $this->title = 'test';
             'error' => 'col-lg-3',  
             'hint' => '',  
         ],  
-    ]  
+	],
+	'id' => 'form-image',  
 ]); ?>  
   
 <?= ImgMultUpload::widget(['label' => '产品图片', 'imgarr' => [  

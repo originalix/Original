@@ -8,13 +8,19 @@ use common\models\mongodb\Product;
 
 class Img extends Model
 {
-    public $image;
+    // public $image;
 
     public function rules()
     {
         return [
-            ['image', 'required', 'message' => '{attribute}不能为空.'],
+            // ['image', 'required', 'message' => '{attribute}不能为空.'],
+            // ['image', 'validateImage'],
         ];
+    }
+
+    public function validateImage()
+    {
+        return true;
     }
 
 }
