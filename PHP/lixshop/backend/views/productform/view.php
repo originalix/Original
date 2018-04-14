@@ -46,10 +46,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'meta_title',
             'meta_keywords',
             'meta_description',
-            'image',
+            // 'image',
+            [
+                'attribute'=>'image',
+                'value'=> function ($model) {
+                    $content = "";
+                    if (count($model->image) < 1) {
+                        return "没有上传照片";
+                    }
+                    foreach ($model->image as $key => $url) {
+                        $content = $content . Html::img(Yii::getAlias('@baseurl').'/backend/web'. $model->image[$key], ['width'=>'150', 'height'=>'150']);
+                    }
+                    return $content;
+                    // return Html::img(Yii::getAlias('@baseurl').'/backend/web'. $model->image[0], ['width'=>'150', 'height'=>'150']) . Html::img(Yii::getAlias('@baseurl').'/backend/web'. $model->image[1], ['width'=>'150', 'height'=>'150']);
+                },
+                
+                'format' => 'raw',
+            ],
+
             'description',
             'short_description',
-            'custom_option',
+            // 'custom_option',
             'package_number',
             'created_at',
             'updated_at',

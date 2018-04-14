@@ -7,17 +7,17 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\mongodb\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = '产品信息管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
+<div class="product-index tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增产品', ['product/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php
