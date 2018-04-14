@@ -43,12 +43,7 @@ class ProductController extends BaseController
             $model->image = Yii::$app->request->post('image', []);
             
             if ($product = $model->createProduct()) {
-                print_r('存储成功');
-                exit();
-            } else {
-                print_r("Hello world");
-                print_r($product);
-                // return;
+                return $this->redirect(['home/index']);
             }
         }
         return $this->render('create', [
