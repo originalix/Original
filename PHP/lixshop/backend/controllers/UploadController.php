@@ -27,7 +27,7 @@
               $res = [];  
               $initialPreview = [];  
               $initialPreviewConfig = [];  
-              $images = UploadedFile::getInstancesByName("ImgSelect");  
+              $images = UploadedFile::getInstancesByName("UploadImage[image]");  
               if (count($images) > 0) {  
                   foreach ($images as $key => $image) {  
                       if ($image->size > 2048 * 1024) {  
@@ -70,10 +70,9 @@
                               "initialPreviewConfig" => $initialPreviewConfig,  
                               "imgfile" => "<input name='image[]' id='" . $pickey . "' type='hidden' value='" . $imgpath . "'/>"  
                           ];  
-                      }  
+                      }
                   }  
               }  
-    
               return json_encode($res);  
           }  
       }  

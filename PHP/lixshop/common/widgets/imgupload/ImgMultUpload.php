@@ -37,9 +37,9 @@ class ImgMultUpload extends Widget
                     'key' => $value,  
                     'extra' => ['filename' => $value]];  
                 array_push($this->initialPreview, Html::img($this->imagedir . $value, [  
-                    // 'class' => 'file-preview-image',
-                    // 'alt' => 'Image',
-                    // 'title' => 'Image'
+                    'class' => 'file-preview-image',
+                    'alt' => 'Image',
+                    'title' => 'Image'
                     ]));
                 array_push($this->initialPreviewConfig, $config);
             }

@@ -24,7 +24,7 @@ $this->title = '添加商品';
     $model->meta_keywords = "衣服衣服";
     $model->meta_description = "这是商品详情";
 ?>
-            
+
 <div class="page-header">
     <h1>
         商品管理

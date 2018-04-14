@@ -8,7 +8,7 @@ use yii\bootstrap\ActiveForm;
 <div class="form-group">  
     <div class="">
         <?= $form->field($model, $attribute)->label($label)->widget(FileInput::classname(), [
-            'name' => 'ImgSelect',  
+            'name' => 'ImgSelect',
             'language' => 'zh-CN',  
             'options' => ['multiple' => true, 'accept' => 'image/*'],  
             'pluginOptions' => [  
@@ -22,7 +22,7 @@ use yii\bootstrap\ActiveForm;
                 'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",  
                 'maxFileCount' => 5,//允许上传最多的图片5张  
                 'maxFileSize' => 2048,//限制图片最大200kB  
-                'uploadUrl' => Url::to(['/upload/image']),  
+                'uploadUrl' => Url::to(['/upload/image']),
                 //'uploadExtraData' => ['testid' => 'listimg'],  
                 'uploadAsync' => true,//配置异步上传还是同步上传  
             ],

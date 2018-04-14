@@ -20,10 +20,10 @@ $this->title = 'test';
     'fieldConfig' => [  
         'template' => "<div class='row'>{label}</div>\n{beginWrapper}\n{input}\n{hint}\n{endWrapper}",  
         'horizontalCssClasses' => [  
-            // 'label' => 'col-md-8',  
-            // 'wrapper' => 'col-md-8',  
-        //     'error' => 'col-lg-3',  
-        //     'hint' => '',  
+            'label' => 'col-md-8',  
+            'wrapper' => 'col-md-8',  
+            'error' => 'col-lg-3',  
+            'hint' => '',  
         ],  
 	],
 	'id' => 'form-image',  
@@ -34,7 +34,7 @@ $this->title = 'test';
 	'form' => $form,
 	'attribute' => 'image',
 	'label' => '产品图片', 
-	'imgarr' => [], 
+	'imgarr' => [],
 	'imagedir' => '/uploads/temp/'
 	]); ?>  
 

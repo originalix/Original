@@ -5,31 +5,23 @@ namespace backend\controllers;
 use Yii;
 use backend\models\AddProductForm;
 use backend\controllers\BaseController;
-use backend\models\Img;
+use backend\models\UploadImage;
 
 class ProductController extends BaseController
 {
     public function actionIndex()
     {
-        // $this->layout = false;
-        $model = new Img();
-
-        if ($model->load(Yii::$app->request->post())) {
-            print_r(Yii::$app->request->post());
-            exit();
-        }
-
         return $this->render('index', [
-            'model' => $model
         ]);
     }
 
     public function actionTest()
     {
         // $this->layout = false;
-        $model = new Img();
+        $model = new UploadImage();
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post())) {
+                print_r(Yii::$app->request->post());
                 print_r('验证通过');
                 exit();
             } else {
