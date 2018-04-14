@@ -29,18 +29,11 @@ class ProductController extends BaseController
         // $this->layout = false;
         $model = new Img();
         if (Yii::$app->request->isPost) {
-            // print_r(Yii::$app->request->post());
-            // exit();
-            // print_r($model->getFirstErrors());
-            // exit();
             if ($model->load(Yii::$app->request->post())) {
-                // print_r(Yii::$app->request->post());
                 print_r('验证通过');
                 exit();
             } else {
                 print_r('验证失败');
-                // print_r($model->image);
-                // print_r(Yii::$app->request->post('image'));
                 exit();
             }
         }
