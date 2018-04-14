@@ -17,6 +17,7 @@ class ImgMultUpload extends Widget
 
     public $model;
     public $attribute;
+    public $form;
   
     private $initialPreview = [];  
     private $initialPreviewConfig = [];  
@@ -49,6 +50,7 @@ class ImgMultUpload extends Widget
     public function run()  
     {  
         return $this->render('imgfiled', [  
+            'form' => $this->form,
             'model' => $this->model,
             'attribute' => $this->attribute,
             'label' => $this->label,  

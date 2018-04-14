@@ -34,12 +34,13 @@ class ProductController extends BaseController
             // print_r($model->getFirstErrors());
             // exit();
             if ($model->load(Yii::$app->request->post())) {
-                print_r(Yii::$app->request->post());
+                // print_r(Yii::$app->request->post());
+                print_r('验证通过');
                 exit();
             } else {
                 print_r('验证失败');
                 // print_r($model->image);
-                print_r(Yii::$app->request->post('image'));
+                // print_r(Yii::$app->request->post('image'));
                 exit();
             }
         }

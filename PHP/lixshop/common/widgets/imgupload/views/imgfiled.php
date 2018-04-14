@@ -2,14 +2,12 @@
   
 use kartik\file\FileInput;  
 use yii\helpers\Url;  
-  
+use yii\bootstrap\ActiveForm;
 ?>  
   
 <div class="form-group">  
-    <div class="">  
-        <?= FileInput::widget([  
-            'model' => $model,
-            'attribute' => $attribute,  
+    <div class="">
+        <?= $form->field($model, $attribute)->label($label)->widget(FileInput::classname(), [
             'name' => 'ImgSelect',  
             'language' => 'zh-CN',  
             'options' => ['multiple' => true, 'accept' => 'image/*'],  
@@ -39,7 +37,7 @@ use yii\helpers\Url;
                         $(event.currentTarget.closest("form")).find("#"+key).remove();  
                         return;
                     }',  
-            ]  
-        ]); ?>  
+            ]
+        ]); ?>
     </div>  
 </div>  

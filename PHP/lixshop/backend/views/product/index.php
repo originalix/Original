@@ -18,20 +18,25 @@ $this->title = 'test';
     'method' => 'post',  
     'options' => ['enctype' => 'multipart/form-data'],  
     'fieldConfig' => [  
-        'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{endWrapper}",  
+        'template' => "<div class='row'>{label}</div>\n{beginWrapper}\n{input}\n{hint}\n{endWrapper}",  
         'horizontalCssClasses' => [  
-            'label' => 'col-lg-2',  
-            'wrapper' => 'col-lg-6',  
-            'error' => 'col-lg-3',  
-            'hint' => '',  
+            // 'label' => 'col-md-8',  
+            // 'wrapper' => 'col-md-8',  
+        //     'error' => 'col-lg-3',  
+        //     'hint' => '',  
         ],  
 	],
 	'id' => 'form-image',  
 ]); ?>  
   
-<?= ImgMultUpload::widget(['label' => '产品图片', 'imgarr' => [  
-
-], 'imagedir' => '/uploads/temp/']); ?>  
+<?= ImgMultUpload::widget([
+	'model' => $model,
+	'form' => $form,
+	'attribute' => 'image',
+	'label' => '产品图片', 
+	'imgarr' => [], 
+	'imagedir' => '/uploads/temp/'
+	]); ?>  
 
 <?= Html::submitButton('登录', [
                                         'class'=>'width-35 pull-right btn btn-sm btn-primary',
