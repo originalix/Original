@@ -20,31 +20,35 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php
+        // print_r(json_encode($dataProvider));
+        // exit();
+    ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            '_id',
+            // '_id',
             'name',
+            'meta_title',
             'spu',
             'sku',
             'score',
-            //'status',
-            //'min_sales_qty',
-            //'is_in_stock',
-            //'visibility',
-            //'url_key',
-            //'stock',
-            //'category',
-            //'price',
-            //'cost_price',
-            //'final_price',
-            //'meta_title',
-            //'meta_keywords',
-            //'meta_description',
-            //'image',
+            'status',
+            'min_sales_qty',
+            'is_in_stock',
+            'visibility',
+            'url_key',
+            'stock',
+            'category',
+            'price',
+            'cost_price',
+            'final_price',
+            // 'meta_keywords',
+            // 'meta_description',
+            // 'image',
             //'description',
             //'short_description',
             //'custom_option',
