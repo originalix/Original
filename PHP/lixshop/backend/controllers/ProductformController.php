@@ -37,34 +37,8 @@ class ProductformController extends BaseController
      */
     public function actionIndex()
     {
-        // json data
-        $response = Yii::$app->response;
-        $response->format = \yii\web\Response::FORMAT_JSON;
-        // $model = Product::find()->all();
-        // return ['data' => $model];
-        // print_r($model);
-        // exit();
-
-        //
-        $query = AdminUser::find();
-        $provider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 1,
-            ],
-        ]);
-
-        $posts = $provider->getModels();
-        // print_r($posts);
-        // $posts = $provider->prepare();
-        return ['data' => $posts];
-        exit();
-
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        // print_r(json_encode($dataProvider));
-        // exit();
 
         return $this->render('index', [
             'searchModel' => $searchModel,

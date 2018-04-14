@@ -32,6 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // '_id',
             'name',
+            [
+                'attribute' => 'image',
+                'label' => '图片',
+                'format' => 'html',
+                'content' => function ($data) {
+                    $url = Yii::getAlias('@baseurl').'/backend/web'. $data['image'][0];
+                    return Html::img($url, ['alt'=>'yii','width'=>'120','height'=>'120']);
+                }
+            ],
             'meta_title',
             'spu',
             'sku',
