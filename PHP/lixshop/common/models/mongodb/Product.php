@@ -7,7 +7,6 @@ use yii\mongodb\ActiveRecord;
 class Product extends ActiveRecord
 {
     public static $_customProductAttrs;
-    public $image = array();
     
     public static function collectionName()
     {

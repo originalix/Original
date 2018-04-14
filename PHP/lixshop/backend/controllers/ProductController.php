@@ -40,7 +40,7 @@ class ProductController extends BaseController
         $model = new AddProductForm();
         $imgModel = new UploadImage();
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = Yii::$app->request->post('image', null);
+            $model->image = Yii::$app->request->post('image', []);
             
             if ($product = $model->createProduct()) {
                 print_r('存储成功');

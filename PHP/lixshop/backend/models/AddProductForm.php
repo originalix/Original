@@ -63,12 +63,7 @@ class AddProductForm extends Model
         $product->meta_title = $this->meta_title;
         $product->meta_keywords = $this->meta_keywords;
         $product->meta_description = $this->meta_description;
-        $image_final = is_null($this->image) ? ['/uploads/default'] : $this->image;
-        $product->image = array();
-        foreach ($image_final as $url) {
-            array_push($product->image, $url);
-        }
-
+        $product->image = array_values($this->image);
         $product->package_number = $this->package_number;
         $product->custom_option = $this->custom_option;
         $created_user_id = Yii::$app->user->identity->id;
