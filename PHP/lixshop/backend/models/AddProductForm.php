@@ -42,9 +42,10 @@ class AddProductForm extends Model
     public function createProduct()
     {
         if (!$this->validate()) {
-            // print_r('not validate');
-            // print_r($this->meta_description);
-            // print_r($this->getFirstErrors());
+            print_r('not validate');
+            print_r($this->meta_description);
+            print_r($this->getFirstErrors());
+            exit();
             return null;
         }
 
@@ -53,6 +54,24 @@ class AddProductForm extends Model
         $product->spu = $this->spu;
         $product->sku = $this->sku;
         $product->min_sales_qty = $this->min_sales_qty;
+        $product->stock = $this->stock;
+        $product->is_in_stock = $this->is_in_stock;
+        $product->category = $this->category;
+        $product->price = $this->final_price;
+        $product->cost_price = $this->cost_price;
+        $product->final_price = $this->final_price;
+        $product->meta_title = $this->meta_title;
+        $product->meta_keywords = $this->meta_keywords;
+        $product->meta_description = $this->meta_description;
+        $image_final = is_null($this->image) ? ['/uploads/default'] : $this->image;
+        $product->image = array();
+        foreach ($image_final as $url) {
+            array_push($product->image, $url);
+        }
+
+        $product->package_number = $this->package_number;
+        $product->custom_option = $this->custom_option;
+        $created_user_id = Yii::$app->user->identity->id;
 
         return $product->save() ? $product : null;
     }

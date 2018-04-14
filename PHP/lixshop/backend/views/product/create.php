@@ -92,7 +92,7 @@ $this->title = '添加商品';
                 </h3>
                 
                 <?= ImgMultUpload::widget([
-                            'model' => $model,
+                            'model' => $imgModel,
                             'form' => $form,
                             'attribute' => 'image',
                             'label' => '产品图片', 

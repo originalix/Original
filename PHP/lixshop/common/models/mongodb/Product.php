@@ -7,7 +7,8 @@ use yii\mongodb\ActiveRecord;
 class Product extends ActiveRecord
 {
     public static $_customProductAttrs;
-
+    public $image = array();
+    
     public static function collectionName()
     {
         return 'product';
@@ -27,6 +28,7 @@ class Product extends ActiveRecord
             'is_in_stock', // 产品 的库存状态，1代表有库存，2代表无库存
             'visibility', // 是否可见
             'url_key', // url地址
+            'stock', //库存数量
             
             'category', // 产品的分类id。可以多个
             'price', // 产品的销售价格

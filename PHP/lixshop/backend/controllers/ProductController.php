@@ -38,11 +38,13 @@ class ProductController extends BaseController
     public function actionCreate()
     {
         $model = new AddProductForm();
+        $imgModel = new UploadImage();
         if ($model->load(Yii::$app->request->post())) {
-            print_r(Yii::$app->request->post());
-            exit();
+            $model->image = Yii::$app->request->post('image', null);
+            
             if ($product = $model->createProduct()) {
-                return $this->goHome();
+                print_r('存储成功');
+                exit();
             } else {
                 print_r("Hello world");
                 print_r($product);
@@ -51,6 +53,7 @@ class ProductController extends BaseController
         }
         return $this->render('create', [
             'model' => $model,
+            'imgModel' => $imgModel,
         ]);
     }
 }
