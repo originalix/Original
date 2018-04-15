@@ -6,19 +6,16 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
-use common\models\Product;
 
 /**
- * This is the model class for table "{{%product_category}}".
+ * This is the model class for table "{{%product_custom_option_stock}}".
  *
  * @property int $id
- * @property int $product_id 产品id
- * @property int $category_id 分类id
- * @property string $category 分类名
- * @property string $created_at
- * @property string $updated_at
+ * @property string $product_id 产品id
+ * @property string $custom_option_key 产品自定义的属性key
+ * @property int $stock 库存数量
  */
-class ProductCategory extends \yii\db\ActiveRecord
+class CustomOptionStock extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -34,13 +31,13 @@ class ProductCategory extends \yii\db\ActiveRecord
             ],
         ];   
     }
-
+    
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%product_category}}';
+        return '{{%product_custom_option_stock}}';
     }
 
     /**
@@ -49,9 +46,9 @@ class ProductCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'category_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['category'], 'string', 'max' => 255],
+            [['custom_option_key'], 'required'],
+            [['stock'], 'integer'],
+            [['product_id', 'custom_option_key'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,15 +60,9 @@ class ProductCategory extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'product_id' => '产品id',
-            'category_id' => '分类id',
-            'category' => '分类名',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'custom_option_key' => '产品自定义的属性key',
+            'stock' => '库存数量',
         ];
     }
-
-    public function getProduct()
-    {
-        return $this->hasOne(Product::className(), ['id' => 'product_id']);
-    }
 }
+

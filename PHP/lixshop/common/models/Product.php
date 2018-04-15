@@ -7,6 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use common\models\ProductImage;
+use common\models\ProductCategory;
 
 
 /**
@@ -116,5 +117,9 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasMany(ProductImage::className(), ['product_id' => 'id']);
     }
 
+    public function getCategory()
+    {
+        return $this->hasMany(ProductCategory::className(), ['product_id' => 'id']);
+    }
     
 }
