@@ -7,9 +7,9 @@ use yii\bootstrap\ActiveForm;
   
 <div class="form-group">  
     <div class="">
-        <?= $form->field($model, $attribute)->label($label)->widget(FileInput::classname(), [
-            'name' => 'ImgSelect',
-            'language' => 'zh-CN',  
+        <?= $form->field($model, 'image[]')->label($label)->widget(FileInput::classname(), [
+            // 'name' => 'ImgSelect',
+            'language' => 'zh-CN', 
             'options' => ['multiple' => true, 'accept' => 'image/*'],  
             'pluginOptions' => [  
                 'initialPreview' => $initialPreview,  

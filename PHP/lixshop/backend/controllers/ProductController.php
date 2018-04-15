@@ -57,6 +57,7 @@ class ProductController extends BaseController
     {
         $id = Yii::$app->request->get('id');
         $model = new AddProductForm();
+        $imgModel = new UploadImage();
         if (! is_null($id)) {
             $product = Product::findOne($id);
             $data = $product->attributes;
@@ -64,10 +65,11 @@ class ProductController extends BaseController
             $model->image = array_values($product->image);
             $model->custom_option = array_values($product->custom_option);
         }
-        $imgModel = new UploadImage();
         if ($model->load(Yii::$app->request->post())) {
             $model->image = Yii::$app->request->post('image', []);
             
+            print_r($model->image);
+            exit();
             if ($product = $model->createProduct()) {
                 return $this->redirect(['home/index']);
             }

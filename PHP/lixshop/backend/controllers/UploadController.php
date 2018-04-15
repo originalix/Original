@@ -82,11 +82,12 @@
        * @return string 
        */  
       public function actionDelete()  
-      {  
+      {
           $error = '';  
           if (Yii::$app->request->isPost) {  
               $dir = '/uploads/temp/';  
               $filename = yii::$app->request->post("filename");  
+              $imgArr = yii::$app->request->post("imgArr");  
               $filename = $dir . $filename;  
               if (file_exists(Yii::getAlias('@backend') . '/web' . $filename)) {  
                   unlink(Yii::getAlias('@backend') . '/web' . $filename);  
@@ -96,6 +97,7 @@
                   unlink(Yii::getAlias('@backend') . '/web' . $filename . '_100x100.jpg');  
               }  
           }  
-          return json_encode($error);  
+        //   return json_encode($error);
+        return json_encode(['code' => $imgArr]);  
       }  
   } 

@@ -36,7 +36,8 @@ class ImgMultUpload extends Widget
                     'height' => '120px',
                     'url' => '../upload/delete', // server delete action  
                     'key' => $value,
-                    'extra' => ['filename' => $value]];  
+                    'extra' => ['filename' => $value, 'imgArr' => $this->imgarr]];  
+                // $config = [];
                 array_push($this->initialPreview, Html::img($this->imagedir . $value, [  
                     'class' => 'file-preview-image',
                     'alt' => 'Image',
