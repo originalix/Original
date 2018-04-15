@@ -6,7 +6,7 @@ use Yii;
 use backend\models\AddProductForm;
 use backend\controllers\BaseController;
 use backend\models\UploadImage;
-use common\models\mongodb\Product;
+use common\models\Product;
 
 class ProductController extends BaseController
 {
@@ -80,6 +80,18 @@ class ProductController extends BaseController
             'model' => $model,
             'imgModel' => $imgModel,
         ]);
+    }
+
+    public function actionQuery()
+    {
+        $response = Yii::$app->response;
+        $response->format = \yii\web\Response::FORMAT_JSON;
+        $product = Product::find()
+        ->joinWith('image')
+        ->where(['product_id' => '2'])
+        ->all();
+        // $image = $product->getImage()->all();
+        return ['data' => $product];
     }
 }
 

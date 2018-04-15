@@ -113,6 +113,6 @@ class Product extends \yii\db\ActiveRecord
 
     public function getImage()
     {
-        return $this->hasMany(ProductImage::className(), ['id' => 'image_id']);
+        return $this->hasMany(ProductImage::className(), ['product_id' => 'id']);
     }
 }
