@@ -13,7 +13,7 @@ class m180415_032952_create_product_info_table extends Migration
     public function safeUp()
     {
         // 产品信息表
-        $this->createTable('product_info', [
+        $this->createTable('{{%product_info}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(255)->notNull()->comment('产品名称'), //产品名称
             'spu' => $this->string(100)->defaultValue(NULL)->comment('标准化产品单元'),  
@@ -43,6 +43,28 @@ class m180415_032952_create_product_info_table extends Migration
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
+
+        // 产品图片表
+        $this->createTable('{{%product_image}}', [
+            'id' => $this->primaryKey(),
+            'product_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('产品id'),
+            'path' => $this->string(255)->defaultValue(null)->comment('存储路径'),
+            'filename' => $this->string(255)->defaultValue(null)->comment('文件名'),
+        ]);
+
+        // 总的分类表
+        $this->createTable('{{%category}}', [
+            'id' => $this->primaryKey(),
+            'category' => $this->string(255)->defaultValue(null)->comment('分类名'),
+        ]);
+
+        // 产品分类表
+        $this->createTable('{{%product_category}}', [
+            'id' => $this->primaryKey(),
+            'product_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('产品id'),
+            'category_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('分类id'),
+            'category' => $this->string(255)->defaultValue(null)->comment('分类名'),
+        ]);
     }
 
     /**
@@ -50,6 +72,9 @@ class m180415_032952_create_product_info_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('product_info');
+        $this->dropTable('{{%product_info}}');
+        $this->dropTable('{{%product_image}}');
+        $this->dropTable('{{%category}}');
+        $this->dropTable('{{%product_category}}');
     }
 }
