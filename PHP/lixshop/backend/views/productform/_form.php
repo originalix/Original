@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="product-form">
+<div class="product-form tabbable tab-content no-border padding-24">
 
     <?php $form = ActiveForm::begin(); ?>
 

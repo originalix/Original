@@ -10,7 +10,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-view">
+<div class="product-view tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
