@@ -41,8 +41,8 @@
                       $dir = '/uploads/temp/';  
                       //生成唯一uuid用来保存到服务器上图片名称  
                       $pickey = ToolExtend::genuuid();  
-                      $filename = $pickey . '.' . $image->getExtension();  
-    
+                      $filename = $pickey . '.' . $image->getExtension();
+
                       //如果文件夹不存在，则新建文件夹  
                       if (!file_exists(Yii::getAlias('@backend') . '/web' . $dir)) {  
                           FileHelper::createDirectory(Yii::getAlias('@backend') . '/web' . $dir, 777);  
@@ -62,13 +62,15 @@
                               'url' => '../upload/delete', // server delete action  
                               'key' => $pickey,  
                               'extra' => ['filename' => $filename]  
-                          ];  
+                          ];
                           array_push($initialPreviewConfig, $config);  
     
                           $res = [  
                               "initialPreview" => $initialPreview,  
                               "initialPreviewConfig" => $initialPreviewConfig,  
-                              "imgfile" => "<input name='image[]' id='" . $pickey . "' type='hidden' value='" . $imgpath . "'/>"  
+                              "imgfile" => "<input name='image[]' id='" . $pickey . "' type='hidden' value='" . $imgpath . "'/>",
+                              'filename' => $filename,
+                              'imagePath' => $imgpath,
                           ];  
                       }
                   }  

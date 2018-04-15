@@ -4,7 +4,9 @@ namespace backend\models;
 
 use Yii;
 use yii\base\Model;
-use common\models\mongodb\Product;
+// use common\models\mongodb\Product;
+use common\models\Product;
+use common\models\ProductImage;
 
 class AddProductForm extends Model
 {
@@ -63,12 +65,27 @@ class AddProductForm extends Model
         $product->meta_title = $this->meta_title;
         $product->meta_keywords = $this->meta_keywords;
         $product->meta_description = $this->meta_description;
-        $product->image = array_values($this->image);
+        // $product->image = array_values($this->image);
         $product->package_number = $this->package_number;
         $product->custom_option = $this->custom_option;
         $created_user_id = Yii::$app->user->identity->id;
 
         return $product->save() ? $product : null;
+    }
+
+    public function saveImage($id)
+    {
+        foreach($this->image as $url) {
+            $filename = basename($url);
+            $model = new ProductImage();
+            $model->product_id = $id;
+            $model->url = $url;
+            $model->filename = $filename;
+            if (! $model->save()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public function attributeLabels()

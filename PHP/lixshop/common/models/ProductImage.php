@@ -3,6 +3,10 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
+
 
 /**
  * This is the model class for table "{{%product_image}}".
@@ -11,9 +15,26 @@ use Yii;
  * @property int $product_id 产品id
  * @property string $path 存储路径
  * @property string $filename 文件名
+ * @property string $created_at
+ * @property string $updated_at
  */
 class ProductImage extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
+            ],
+        ];   
+    }
+
     /**
      * @inheritdoc
      */
@@ -29,6 +50,7 @@ class ProductImage extends \yii\db\ActiveRecord
     {
         return [
             [['product_id'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
             [['path', 'filename'], 'string', 'max' => 255],
         ];
     }
@@ -43,6 +65,8 @@ class ProductImage extends \yii\db\ActiveRecord
             'product_id' => '产品id',
             'path' => '存储路径',
             'filename' => '文件名',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 }

@@ -50,12 +50,16 @@ class m180415_032952_create_product_info_table extends Migration
             'product_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('产品id'),
             'path' => $this->string(255)->defaultValue(null)->comment('存储路径'),
             'filename' => $this->string(255)->defaultValue(null)->comment('文件名'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
 
         // 总的分类表
         $this->createTable('{{%category}}', [
             'id' => $this->primaryKey(),
             'category' => $this->string(255)->defaultValue(null)->comment('分类名'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
 
         // 产品分类表
@@ -64,6 +68,8 @@ class m180415_032952_create_product_info_table extends Migration
             'product_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('产品id'),
             'category_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('分类id'),
             'category' => $this->string(255)->defaultValue(null)->comment('分类名'),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
     }
 

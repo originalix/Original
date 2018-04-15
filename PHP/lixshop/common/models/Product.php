@@ -3,6 +3,10 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
+
 
 /**
  * This is the model class for table "{{%product_info}}".
@@ -34,6 +38,21 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
+            ],
+        ];   
+    }
+
     /**
      * @inheritdoc
      */

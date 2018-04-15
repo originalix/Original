@@ -18,7 +18,7 @@ use yii\bootstrap\ActiveForm;
                 'allowedFileExtensions' => ['jpg', 'gif', 'png'],  
                 'previewFileType' => 'image',  
                 'overwriteInitial' => false,  
-                'browseLabel' => '选择图片',  
+                'browseLabel' => '选择图片',
                 'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",  
                 'maxFileCount' => 5,//允许上传最多的图片5张  
                 'maxFileSize' => 2048,//限制图片最大200kB  
@@ -31,7 +31,7 @@ use yii\bootstrap\ActiveForm;
                         return (!confirm('确认要删除'));  
                     }",  
                 'fileuploaded' => 'function(event, data, previewId, index) {  
-                        $(event.currentTarget.closest("form")).append(data.response.imgfile);  
+                        $(event.currentTarget.closest("form")).append(data.response.imgfile);
                     }',  
                 'filedeleted' => 'function(event, key) {  
                         $(event.currentTarget.closest("form")).find("#"+key).remove();  

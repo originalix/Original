@@ -58,7 +58,7 @@ class ImgMultUpload extends Widget
             'attribute' => $this->attribute,
             'label' => $this->label,  
             'initialPreview' => $this->initialPreview,  
-            'initialPreviewConfig' => $this->initialPreviewConfig  
+            'initialPreviewConfig' => $this->initialPreviewConfig
         ]);  
     }
 } 

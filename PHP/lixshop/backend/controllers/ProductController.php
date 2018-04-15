@@ -44,7 +44,9 @@ class ProductController extends BaseController
             $model->image = Yii::$app->request->post('image', []);
             
             if ($product = $model->createProduct()) {
-                return $this->redirect(['home/index']);
+                if ($model->saveImage($product->id)) {
+                    return $this->redirect(['home/index']);
+                }
             }
         }
         return $this->render('create', [
