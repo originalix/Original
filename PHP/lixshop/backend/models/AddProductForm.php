@@ -52,6 +52,19 @@ class AddProductForm extends Model
         }
 
         $product = new Product();
+        $this->setProductAttribute($product);
+        return $product->save() ? $product : null;
+    }
+
+    public function updateProduct($id)
+    {
+        $product = Product::findOne($id);
+        $this->setProductAttribute($product);
+        return $product->save() ? $product : null;
+    }
+
+    protected function setProductAttribute($product)
+    {
         $product->name = $this->name;
         $product->spu = $this->spu;
         $product->sku = $this->sku;
@@ -69,8 +82,6 @@ class AddProductForm extends Model
         $product->package_number = $this->package_number;
         // $product->custom_option = $this->custom_option;
         $created_user_id = Yii::$app->user->identity->id;
-
-        return $product->save() ? $product : null;
     }
 
     public function saveImage($id)
