@@ -65,8 +65,8 @@ class ProductController extends BaseController
             $product = Product::findOne($id);
             $data = $product->attributes;
             $model->setAttributes($data);
-            $model->image = array_values($product->image);
-            $model->custom_option = array_values($product->custom_option);
+            $model->image = $product->image;
+            // $model->custom_option = array_values($product->custom_option);
         }
         if ($model->load(Yii::$app->request->post())) {
             $model->image = Yii::$app->request->post('image', []);

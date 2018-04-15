@@ -9,7 +9,8 @@
   use yii\helpers\Url;  
   use yii\imagine\Image;  
   use yii\web\Controller;  
-  use yii\web\UploadedFile;  
+  use yii\web\UploadedFile;
+  use common\models\ProductImage;
     
   class UploadController extends Controller  
   {  
@@ -60,7 +61,7 @@
                               'caption' => $filename,  
                               'width' => '120px',  
                               'url' => '../upload/delete', // server delete action  
-                              'key' => $pickey,  
+                              'key' => $pickey,
                               'extra' => ['filename' => $filename]  
                           ];
                           array_push($initialPreviewConfig, $config);  
@@ -88,18 +89,22 @@
           $error = '';  
           if (Yii::$app->request->isPost) {  
               $dir = '/uploads/temp/';  
-              $filename = yii::$app->request->post("filename");  
-              $imgArr = yii::$app->request->post("imgArr");  
-              $filename = $dir . $filename;  
-              if (file_exists(Yii::getAlias('@backend') . '/web' . $filename)) {  
-                  unlink(Yii::getAlias('@backend') . '/web' . $filename);  
-              }  
-    
-              if (file_exists(Yii::getAlias('@backend') . '/web' . $filename . '_100x100.jpg')) {  
-                  unlink(Yii::getAlias('@backend') . '/web' . $filename . '_100x100.jpg');  
-              }  
+              $filename = yii::$app->request->post("filename");
+              $imgName = $filename;
+              $imageModel = ProductImage::find()->where(['filename' => $filename])->one();
+              if ($imageModel->delete()) {
+                  $filename = $dir . $filename;
+                  
+                  if (file_exists(Yii::getAlias('@backend') . '/web' . $filename)) {  
+                      unlink(Yii::getAlias('@backend') . '/web' . $filename);  
+                  }  
+        
+                  if (file_exists(Yii::getAlias('@backend') . '/web' . $filename . '_100x100.jpg')) {  
+                      unlink(Yii::getAlias('@backend') . '/web' . $filename . '_100x100.jpg');  
+                  }
+              }
           }  
-        //   return json_encode($error);
-        return json_encode(['code' => $imgArr]);  
-      }  
+          return json_encode(['filename' => $filename]);
+          return json_encode($error);
+      }
   } 

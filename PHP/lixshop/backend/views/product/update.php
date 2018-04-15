@@ -78,8 +78,10 @@ $this->title = '修改商品信息';
                 </h3>
                 <?php
                     $result = array();
-                    foreach($model->image as $key => $url) {
-                        array_push($result, Yii::getAlias('@baseurl').'/backend/web'. $model->image[$key]);
+                    // print_r($model->image);
+                    // exit();
+                    foreach($model->image as $imageModel) {
+                        array_push($result, $imageModel->filename);
                     }
                 ?>
                 <?= ImgMultUpload::widget([
@@ -88,7 +90,7 @@ $this->title = '修改商品信息';
                             'attribute' => 'image',
                             'label' => '产品图片', 
                             'imgarr' => $result,
-                            // 'imagedir' => '/uploads/temp/'
+                            'imagedir' => '../uploads/temp/'
                 ]); ?> 
 
 
