@@ -33,6 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '图片',
                 'format' => 'html',
                 'content' => function ($data) {
+                    if (count($data->image) < 1) {
+                        return '未上传图片';
+                    }
                     $url = Yii::getAlias('@baseurl').'/backend/web'. $data->image[0]->path;
                     return Html::img($url, ['alt'=>'yii','width'=>'120','height'=>'120']);
                 }
@@ -59,7 +62,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update} {delete}',
+                
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'view') {
+                        $url = $model->id;
+                        return $url;
+                    }
+        
+                    if ($action === 'update') {
+                        $url ='../product/update?id='.$model->id;
+                        return $url;
+                    }
+                    if ($action === 'delete') {
+                        $url ='delete?id='.$model->id;
+                        return $url;
+                    }
+                }
+            ],
+            
         ],
     ]); ?>
 </div>
