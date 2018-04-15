@@ -6,6 +6,7 @@ use Yii;
 use backend\models\AddProductForm;
 use backend\controllers\BaseController;
 use backend\models\UploadImage;
+use common\models\mongodb\Product;
 
 class ProductController extends BaseController
 {
@@ -47,6 +48,31 @@ class ProductController extends BaseController
             }
         }
         return $this->render('create', [
+            'model' => $model,
+            'imgModel' => $imgModel,
+        ]);
+    }
+
+    public function actionUpdate()
+    {
+        $id = Yii::$app->request->get('id');
+        $model = new AddProductForm();
+        if (! is_null($id)) {
+            $product = Product::findOne($id);
+            $data = $product->attributes;
+            $model->setAttributes($data);
+            $model->image = array_values($product->image);
+            $model->custom_option = array_values($product->custom_option);
+        }
+        $imgModel = new UploadImage();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = Yii::$app->request->post('image', []);
+            
+            if ($product = $model->createProduct()) {
+                return $this->redirect(['home/index']);
+            }
+        }
+        return $this->render('update', [
             'model' => $model,
             'imgModel' => $imgModel,
         ]);

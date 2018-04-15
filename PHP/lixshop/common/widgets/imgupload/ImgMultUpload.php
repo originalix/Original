@@ -33,17 +33,19 @@ class ImgMultUpload extends Widget
             foreach ($this->imgarr as $key => $value) {  
                 $config = ['caption' => $value,  
                     'width' => '120px',  
+                    'height' => '120px',
                     'url' => '../upload/delete', // server delete action  
-                    'key' => $value,  
+                    'key' => $value,
                     'extra' => ['filename' => $value]];  
                 array_push($this->initialPreview, Html::img($this->imagedir . $value, [  
                     'class' => 'file-preview-image',
                     'alt' => 'Image',
-                    'title' => 'Image'
+                    'title' => 'Image',
+                    'width' => '120',
+                    'height' => '120',
                     ]));
                 array_push($this->initialPreviewConfig, $config);
             }
-            
         }  
     }  
   

@@ -76,14 +76,19 @@ $this->title = '修改商品信息';
                         上传封面图
                     </span><!-- /.col -->
                 </h3>
-                
+                <?php
+                    $result = array();
+                    foreach($model->image as $key => $url) {
+                        array_push($result, Yii::getAlias('@baseurl').'/backend/web'. $model->image[$key]);
+                    }
+                ?>
                 <?= ImgMultUpload::widget([
                             'model' => $imgModel,
                             'form' => $form,
                             'attribute' => 'image',
                             'label' => '产品图片', 
-                            'imgarr' => [], 
-                            'imagedir' => '/uploads/temp/'
+                            'imgarr' => $result,
+                            // 'imagedir' => '/uploads/temp/'
                 ]); ?> 
 
 
