@@ -44,6 +44,8 @@ class ProductSearch extends Product
     {
         $query = Product::find();
 
+        $query->with('image');
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -67,6 +69,7 @@ class ProductSearch extends Product
             'is_in_stock' => $this->is_in_stock,
             'visibility' => $this->visibility,
             'stock' => $this->stock,
+            'image' => $this->image,
             'price' => $this->price,
             'cost_price' => $this->cost_price,
             'final_price' => $this->final_price,

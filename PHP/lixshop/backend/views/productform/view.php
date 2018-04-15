@@ -10,7 +10,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-view">
+<div class="product-view tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -34,6 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'sku',
             'score',
             'status',
+            'image' => [
+                'attribute'=>'image',
+                'value'=> function ($model) {
+                    $content = "";
+                    if (count($model->image) < 1) {
+                        return "没有上传照片";
+                    }
+                    foreach ($model->image as $imageModel) {
+                        $content = $content . Html::img(Yii::getAlias('@baseurl').'/backend/web'. $imageModel->path, ['width'=>'150', 'height'=>'150']);
+                    }
+                    return $content;
+                },
+                
+                'format' => 'raw',
+            ],
             'min_sales_qty',
             'is_in_stock',
             'visibility',
@@ -56,20 +71,3 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
-
-<!-- [
-                'attribute'=>'image',
-                'value'=> function ($model) {
-                    $content = "";
-                    if (count($model->image) < 1) {
-                        return "没有上传照片";
-                    }
-                    foreach ($model->image as $key => $url) {
-                        $content = $content . Html::img(Yii::getAlias('@baseurl').'/backend/web'. $model->image[$key], ['width'=>'150', 'height'=>'150']);
-                    }
-                    return $content;
-                    // return Html::img(Yii::getAlias('@baseurl').'/backend/web'. $model->image[0], ['width'=>'150', 'height'=>'150']) . Html::img(Yii::getAlias('@baseurl').'/backend/web'. $model->image[1], ['width'=>'150', 'height'=>'150']);
-                },
-                
-                'format' => 'raw',
-            ], -->

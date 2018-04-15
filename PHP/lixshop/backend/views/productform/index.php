@@ -7,10 +7,10 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = '产品信息';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
+<div class="product-index tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,19 +27,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            'meta_title',
+            [
+                'attribute' => 'image',
+                'label' => '图片',
+                'format' => 'html',
+                'content' => function ($data) {
+                    $url = Yii::getAlias('@baseurl').'/backend/web'. $data->image[0]->path;
+                    return Html::img($url, ['alt'=>'yii','width'=>'120','height'=>'120']);
+                }
+            ],
             'spu',
             'sku',
             'score',
-            //'status',
-            //'min_sales_qty',
-            //'is_in_stock',
-            //'visibility',
+            'status',
+            'min_sales_qty',
+            'is_in_stock',
+            // 'visibility',
             //'url_key:url',
-            //'stock',
-            //'price',
-            //'cost_price',
+            'stock',
+            'price',
+            'cost_price',
             //'final_price',
-            //'meta_title',
             //'meta_keywords',
             //'meta_description:ntext',
             //'package_number',
@@ -47,20 +56,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'reviw_rate_star_average',
             //'review_count',
             //'favorite_count',
-            //'created_at',
+            'created_at',
             //'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
-
-            <!-- [
-                'attribute' => 'image',
-                'label' => '图片',
-                'format' => 'html',
-                'content' => function ($data) {
-                    $url = Yii::getAlias('@baseurl').'/backend/web'. $data['image'][0];
-                    return Html::img($url, ['alt'=>'yii','width'=>'120','height'=>'120']);
-                }
-            ], -->
