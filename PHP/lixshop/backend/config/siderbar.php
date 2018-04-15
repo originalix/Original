@@ -28,7 +28,7 @@ return [
             ],
             [
                 'title' => '产品分类管理',
-                'redirect' => '../product/category',
+                'redirect' => '../category/index',
             ],
         ],
     ],

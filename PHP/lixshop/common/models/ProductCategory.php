@@ -4,17 +4,20 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 /**
- * This is the model class for table "{{%category}}".
+ * This is the model class for table "{{%product_category}}".
  *
  * @property int $id
+ * @property int $product_id 产品id
+ * @property int $category_id 分类id
  * @property string $category 分类名
  * @property string $created_at
  * @property string $updated_at
  */
-class Category extends \yii\db\ActiveRecord
+class ProductCategory extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -30,13 +33,13 @@ class Category extends \yii\db\ActiveRecord
             ],
         ];   
     }
-
+    
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%category}}';
+        return '{{%product_category}}';
     }
 
     /**
@@ -45,6 +48,7 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['product_id', 'category_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['category'], 'string', 'max' => 255],
         ];
@@ -57,6 +61,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'product_id' => '产品id',
+            'category_id' => '分类id',
             'category' => '分类名',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
