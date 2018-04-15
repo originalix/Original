@@ -58,7 +58,7 @@ class AddProductForm extends Model
         $product->min_sales_qty = $this->min_sales_qty;
         $product->stock = $this->stock;
         $product->is_in_stock = $this->is_in_stock;
-        $product->category = $this->category;
+        // $product->category = $this->category;
         $product->price = $this->final_price;
         $product->cost_price = $this->cost_price;
         $product->final_price = $this->final_price;
@@ -67,7 +67,7 @@ class AddProductForm extends Model
         $product->meta_description = $this->meta_description;
         // $product->image = array_values($this->image);
         $product->package_number = $this->package_number;
-        $product->custom_option = $this->custom_option;
+        // $product->custom_option = $this->custom_option;
         $created_user_id = Yii::$app->user->identity->id;
 
         return $product->save() ? $product : null;
@@ -79,7 +79,7 @@ class AddProductForm extends Model
             $filename = basename($url);
             $model = new ProductImage();
             $model->product_id = $id;
-            $model->url = $url;
+            $model->path = $url;
             $model->filename = $filename;
             if (! $model->save()) {
                 return false;
