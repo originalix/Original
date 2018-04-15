@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\mongodb\Product */
+/* @var $model common\models\Product */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-view tabbable tab-content no-border padding-24">
+<div class="product-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['product/update', 'id' => (string)$model->_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => (string)$model->_id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            '_id',
+            'id',
             'name',
             'spu',
             'sku',
@@ -37,17 +37,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'min_sales_qty',
             'is_in_stock',
             'visibility',
-            'url_key',
+            'url_key:url',
             'stock',
-            'category',
             'price',
             'cost_price',
             'final_price',
             'meta_title',
             'meta_keywords',
-            'meta_description',
-            // 'image',
-            [
+            'meta_description:ntext',
+            'package_number',
+            'created_user_id',
+            'reviw_rate_star_average',
+            'review_count',
+            'favorite_count',
+            'created_at',
+            'updated_at',
+        ],
+    ]) ?>
+
+</div>
+
+<!-- [
                 'attribute'=>'image',
                 'value'=> function ($model) {
                     $content = "";
@@ -62,21 +72,4 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 
                 'format' => 'raw',
-            ],
-
-            'description',
-            'short_description',
-            // 'custom_option',
-            'package_number',
-            'created_at',
-            'updated_at',
-            'created_user_id',
-            'attr_group',
-            'reviw_rate_star_average',
-            'review_count',
-            'reviw_rate_star_info',
-            'favorite_count',
-        ],
-    ]) ?>
-
-</div>
+            ], -->

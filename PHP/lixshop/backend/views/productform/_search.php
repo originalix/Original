@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\mongodb\ProductSearch */
+/* @var $model common\models\ProductSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -13,12 +13,9 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
     ]); ?>
 
-    <?= $form->field($model, '_id') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'name') ?>
 
@@ -40,8 +37,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'stock') ?>
 
-    <?php // echo $form->field($model, 'category') ?>
-
     <?php // echo $form->field($model, 'price') ?>
 
     <?php // echo $form->field($model, 'cost_price') ?>
@@ -54,31 +49,19 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'meta_description') ?>
 
-    <?php // echo $form->field($model, 'image') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'short_description') ?>
-
-    <?php // echo $form->field($model, 'custom_option') ?>
-
     <?php // echo $form->field($model, 'package_number') ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
     <?php // echo $form->field($model, 'created_user_id') ?>
-
-    <?php // echo $form->field($model, 'attr_group') ?>
 
     <?php // echo $form->field($model, 'reviw_rate_star_average') ?>
 
     <?php // echo $form->field($model, 'review_count') ?>
 
-    <?php // echo $form->field($model, 'reviw_rate_star_info') ?>
-
     <?php // echo $form->field($model, 'favorite_count') ?>
+
+    <?php // echo $form->field($model, 'created_at') ?>
+
+    <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

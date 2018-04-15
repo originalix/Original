@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use common\models\ProductImage;
 
 
 /**
@@ -108,5 +109,10 @@ class Product extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getImage()
+    {
+        return $this->hasMany(ProductImage::className(), ['id' => 'image_id']);
     }
 }
