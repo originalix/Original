@@ -44,20 +44,37 @@ class ProductController extends BaseController
         $imgModel = new UploadImage();
         if ($model->load(Yii::$app->request->post())) {
             $model->image = Yii::$app->request->post('image', []);
-            print_r(Yii::$app->request->post());
-            exit();
             
             if ($product = $model->createProduct()) {
                 if ($model->saveImage($product->id)) {
-                    return $this->redirect(['home/index']);
+                    return $this->redirect(['product/custom', 'id' => $product->id]);
                 }
             }
         }
         return $this->render('create', [
-            'id' => 0,
             'model' => $model,
             'imgModel' => $imgModel,
-            'models' => array(),
+        ]);
+    }
+
+    public function actionCustom()
+    {
+        $product_id = Yii::$app->request->get('id');
+        $model = new CustomOptionStock();
+        $models = [];
+        if (Yii::$app->request->isPost) {
+            print_r(Yii::$app->request->post());
+            // exit();
+            // $model->product_id = Yii::$app->request->post('product_id');
+            // $product_id = $model->product_id;
+            
+        }
+
+        $models = CustomOptionStock::find()->where(['product_id' => $product_id])->all();
+
+        return $this->render('_create_category', [
+            'models' => $models,
+            'id' => $product_id,
         ]);
     }
 
@@ -98,26 +115,19 @@ class ProductController extends BaseController
     {
         $product_id = 0;
         $model = new CustomOptionStock();
+        $models = [];
+
         if (Yii::$app->request->isPost) {
             print_r(Yii::$app->request->post());
-            // exit();
             $model->product_id = Yii::$app->request->post('product_id');
             $product_id = $model->product_id;
             $model->custom_option_key = Yii::$app->request->post('custom_option_key');
             $model->stock = Yii::$app->request->post('stock');
+            $model->save();
         }
 
-        $models = [];
-        if ($product_id === 0) {
-            if ($model->save()) {
-
-            } else {
-                print_r($model->getFirstErrors());
-                exit();
-            }
+        if ($product_id !== 0) {
             $models = CustomOptionStock::find()->where(['product_id' => $product_id])->all();
-        } else {
-            array_push($models, $model);
         }
         
         return $this->render('custom_option_form', [

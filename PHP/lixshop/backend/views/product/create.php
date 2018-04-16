@@ -59,10 +59,6 @@ $this->title = '添加商品';
                         <i class="ace-icon fa fa-question-circle"></i>
                         基本信息
                     </span><!-- /.col -->
-                    <?= Html::submitButton('保存', [
-                        'class'=>'btn btn-white btn-info btn-bold pull-right',
-                        'name' =>'submit-button',
-                    ])?>
                 </h3>
 
 
@@ -112,7 +108,11 @@ $this->title = '添加商品';
                             'imagedir' => '/uploads/temp/'
                 ]); ?> 
 
-
+                
+                <?= Html::submitButton('下一步', [
+                    'class'=>'btn btn-white btn-info btn-bold pull-right',
+                    'name' =>'submit-button',
+                ])?>
 
                 <h3 class="row header smaller lighter blue">
                     <span class="col-sm-7">
@@ -120,18 +120,7 @@ $this->title = '添加商品';
                         分类信息
                     </span><!-- /.col -->
                 </h3>
-                    
-                <?=Html::hiddenInput('custom_key[]', '1');?>
-                <?=Html::hiddenInput('custom_value[]', '2');?>
-
                 <?php ActiveForm::end(); ?>
-                
-                <button id="custom_btn" clsaa="btn btn-primary btn-sm">test</button>
-
-                <?= $this->render('custom_option_form', [
-                    'models' => $models,
-                    'product_id' => $id
-                ]); ?>
             </div>
         </div>
         <!-- PAGE CONTENT ENDS -->
