@@ -45,6 +45,16 @@ $this->title = '添加商品';
                     </span><!-- /.col -->
                 </h3>
 
+                <?php
+                    $dataSource = [];
+                    foreach($category_models as $category_model) {
+                        array_push($dataSource, [$category_model->id => $category_model->category]);
+                    }
+                    print_r($dataSource);
+                    exit();
+                ?>
+
+                <?= $form->field($category, 'category')->checkboxList(['a' => 'Item A', 'b' => 'Item B', 'c' => 'Item C']); ?>
 
                 <?php ActiveForm::end(); ?>
 

@@ -9,6 +9,8 @@ use backend\models\UploadImage;
 use common\models\Product;
 use common\models\ProductImage;
 use common\models\CustomOptionStock;
+use common\models\ProductCategory;
+use common\models\Category;
 
 class ProductController extends BaseController
 {
@@ -61,6 +63,8 @@ class ProductController extends BaseController
     {
         $product_id = Yii::$app->request->get('id');
         $model = new CustomOptionStock();
+        $product_category = new ProductCategory();
+        $category = Category::find()->all();
         $models = [];
         if (Yii::$app->request->isPost) {
             print_r(Yii::$app->request->post());
@@ -75,6 +79,8 @@ class ProductController extends BaseController
         return $this->render('_create_category', [
             'models' => $models,
             'id' => $product_id,
+            'category' => $product_category,
+            'category_models' => $category,
         ]);
     }
 
