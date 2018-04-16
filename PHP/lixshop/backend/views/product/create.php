@@ -7,6 +7,7 @@ use common\widgets\imgupload\ImgMultUpload;
 use kartik\file\FileInput;  
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = '添加商品';
 ?>
@@ -52,7 +53,12 @@ $this->title = '添加商品';
                         <i class="ace-icon fa fa-question-circle"></i>
                         基本信息
                     </span><!-- /.col -->
+                    <?= Html::submitButton('保存', [
+                        'class'=>'btn btn-white btn-info btn-bold pull-right',
+                        'name' =>'submit-button',
+                    ])?>
                 </h3>
+
 
                 <!-- 基本信息form -->
                 <?= $form->field($model, 'name')->textInput()->label('产品名称') ?>
@@ -109,12 +115,12 @@ $this->title = '添加商品';
                     </span><!-- /.col -->
                 </h3>
 
-                <?= Html::submitButton('保存', [
-                    'class'=>'btn btn-white btn-info btn-bold pull-right',
-                    'name' =>'submit-button',
-                ])?>
-
                 <?php ActiveForm::end(); ?>
+                
+                <?= $this->render('custom_option_form', [
+                    'models' => $models,
+                    'product_id' => $id
+                ]); ?>
             </div> 
         </div>
         <!-- PAGE CONTENT ENDS -->

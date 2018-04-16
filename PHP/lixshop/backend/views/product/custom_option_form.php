@@ -5,26 +5,27 @@
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 
-$this->title = 'Pjax测试';
 ?>
 
-<h3>宝贝销售规格</h3>
+<h5>宝贝销售规格</h5>
 <p>该类目下：请填写宝贝规格和库存数量；库存数量为0的宝贝规格，在商品详情页不展示</p>
-<div class="space-12"></div>
+<div class="space-5"></div>
 <?php Pjax::begin();?>
 <?=Html::beginForm(['product/pjax'], 'post', ['data-pjax' => '', 'class' => 'form-inline']);?>
 <p>批量填充</p>
-<?=Html::input('text', 'custom_option_key', Yii::$app->request->post('custom_option_key'), ['class' => 'form-control', 'placeholder' => "宝贝规格"])?>
-<?=Html::input('text', 'stock', Yii::$app->request->post('stock'), ['class' => 'form-control', 'placeholder' => "宝贝数量"])?>
-<?=Html::hiddenInput('product_id', 0);?>
-<?=Html::submitButton('提交', ['class' => 'btn btn-primary', 'name' => 'submit-button'])?>
+<?=Html::input('text', 'custom_option_key', Yii::$app->request->post('custom_option_key'), ['class' => 'col-sm-2', 'placeholder' => "宝贝规格"])?>
+<?=Html::input('text', 'stock', Yii::$app->request->post('stock'), ['class' => 'col-sm-2', 'placeholder' => "宝贝数量"])?>
+<?=Html::hiddenInput('product_id', $product_id);?>
+
+<?=Html::submitButton('新增', ['class' => 'btn btn-primary btn-sm', 'name' => 'submit-button'])?>
 <?=Html::endForm()?>
-<div class="widget-body col-md-3">
-    <div class="widget-main no-padding">
+<div class="space-10"></div>
+<div class="col-sm-4 col-md-4">
+    <div class="">
         <table class="table table-striped table-bordered table-hover">
             <thead class="thin-border-bottom">
                 <tr>
-                    <th>
+                    <th class="">
                         宝贝规格
                     </th>
 
@@ -35,7 +36,7 @@ $this->title = 'Pjax测试';
             </thead>
 
             <tbody>
-                <?php 
+                <?php
                     foreach($models as $model) {
                         echo '<tr>';
                         echo '<td class="">'. $model->custom_option_key .'</td>';

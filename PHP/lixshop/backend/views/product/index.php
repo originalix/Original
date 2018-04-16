@@ -24,7 +24,7 @@ $this->title = 'test';
             'wrapper' => 'col-md-8',  
             'error' => 'col-lg-3',  
             'hint' => '',  
-        ],  
+        ],
 	],
 	'id' => 'form-image',  
 ]); ?>  
