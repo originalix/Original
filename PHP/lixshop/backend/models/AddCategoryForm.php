@@ -18,12 +18,6 @@ class AddCategoryForm extends Model
 
     public function saveCategory($product_id)
     {
-        print_r($this['category']);
-        // foreach($this->category as $id) {
-        //     echo $id;
-        //     echo "</br>";
-        // }
-        exit();
         foreach($this->category as $id) {
             $model = new ProductCategory();
             $model->product_id = $product_id;
@@ -37,5 +31,4 @@ class AddCategoryForm extends Model
 
         return true;
     }
-
 }

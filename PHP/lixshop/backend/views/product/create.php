@@ -114,12 +114,6 @@ $this->title = '添加商品';
                     'name' =>'submit-button',
                 ])?>
 
-                <h3 class="row header smaller lighter blue">
-                    <span class="col-sm-7">
-                        <i class="ace-icon fa fa-magic"></i>
-                        分类信息
-                    </span><!-- /.col -->
-                </h3>
                 <?php ActiveForm::end(); ?>
             </div>
         </div>

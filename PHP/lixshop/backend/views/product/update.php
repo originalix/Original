@@ -93,16 +93,8 @@ $this->title = '修改商品信息';
                             'imagedir' => '../uploads/temp/'
                 ]); ?> 
 
-
-
-                <h3 class="row header smaller lighter blue">
-                    <span class="col-sm-7">
-                        <i class="ace-icon fa fa-magic"></i>
-                        分类信息
-                    </span><!-- /.col -->
-                </h3>
-
-                <?= Html::submitButton('保存', [
+                
+                <?= Html::submitButton('下一步', [
                     'class'=>'btn btn-white btn-info btn-bold pull-right',
                     'name' =>'submit-button',
                 ])?>
@@ -115,4 +107,3 @@ $this->title = '修改商品信息';
     <!-- /.col -->
 </div>
 <!-- /.row -->
-<?= $this->render('category_script'); ?>

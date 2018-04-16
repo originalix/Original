@@ -71,11 +71,8 @@ class ProductController extends BaseController
         $models = [];
 
         if ($add_category_form->load(Yii::$app->request->post())) {
-            // print_r(Yii::$app->request->post());
-            
-            $add_category_form = Yii::$app->request->post('AddCategoryForm');
-            // print_r($add_category_form['category']);
-            // exit();
+            $category_maps= Yii::$app->request->post('AddCategoryForm');
+            $add_category_form->category = $category_maps['category'];
             if ($add_category_form->saveCategory($product_id)) {
                 return $this->redirect(['home/index']);
             }
@@ -96,31 +93,27 @@ class ProductController extends BaseController
         $id = Yii::$app->request->get('id');
         $model = new AddProductForm();
         $imgModel = new UploadImage();
-        // 自定义属性model集合
-        $custom_option_models = array();
+
         if (! is_null($id)) {
             $product = Product::findOne($id);
             $data = $product->attributes;
             $model->setAttributes($data);
             $model->image = $product->image;
-
-            $custom_option_models = CustomOptionStock::find()->where(['product_id' => $id])->all();
-            // $model->custom_option = array_values($product->custom_option);
         }
         if ($model->load(Yii::$app->request->post())) {
             $model->image = Yii::$app->request->post('image', []);
             
             if ($product = $model->updateProduct($id)) {
                 if ($model->saveImage($product->id)) {
-                    return $this->redirect(['home/index']);
+                    return $this->redirect(['product/custom', 'id' => $product->id]);
                 }
             }
         }
+        
         return $this->render('update', [
             'id' => $id,
             'model' => $model,
             'imgModel' => $imgModel,
-            'models' => $custom_option_models,
         ]);
     }
 

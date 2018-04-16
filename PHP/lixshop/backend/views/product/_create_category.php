@@ -30,9 +30,7 @@ $this->title = '添加商品';
         <div class="tabbable">
             <div class="tab-content no-border padding-24">
                 <?php $form = ActiveForm::begin([
-                    'id' => 'form-category',
-                    // 'options' => ['enctype' => 'multipart/form-data'], 
-                    // 'enableAjaxValidation' => false,            
+                    'id' => 'form-category',           
                 ]); ?>
 
                 <h3 class="row header smaller lighter blue">
@@ -41,6 +39,10 @@ $this->title = '添加商品';
                         <i class="ace-icon fa fa-magic"></i>
                         分类信息
                     </span><!-- /.col -->
+                    <?= Html::submitButton('保存', [
+                        'class'=>'btn btn-white btn-info btn-bold pull-right',
+                        'name' =>'submit-button',
+                    ])?>
                 </h3>
 
                 <?php
@@ -51,10 +53,6 @@ $this->title = '添加商品';
                 ?>
 
                 <?= $form->field($category, 'category[]')->label('')->checkboxList($dataSource); ?>
-                <?= Html::submitButton('保存', [
-                        'class'=>'btn btn-white btn-info btn-bold pull-right',
-                        'name' =>'submit-button',
-                    ])?>
                 <?php ActiveForm::end(); ?>
 
                 <?= $this->render('custom_option_form',[
