@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use common\models\Product;
 
 /**
  * This is the model class for table "{{%product_custom_option_stock}}".
@@ -31,7 +32,7 @@ class CustomOptionStock extends \yii\db\ActiveRecord
             ],
         ];   
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -64,5 +65,9 @@ class CustomOptionStock extends \yii\db\ActiveRecord
             'stock' => '库存数量',
         ];
     }
-}
 
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
+    }
+}

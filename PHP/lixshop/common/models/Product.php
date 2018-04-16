@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\db\Expression;
 use common\models\ProductImage;
 use common\models\ProductCategory;
+use common\models\CustomOptionStock;
 
 
 /**
@@ -121,5 +122,9 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ProductCategory::className(), ['product_id' => 'id']);
     }
-    
+
+    public function getCustomOptionStock()
+    {
+        return $this->hasMany(CustomOptionStock::className(), ['product_id' => 'id']);
+    }
 }
