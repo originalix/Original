@@ -8,6 +8,7 @@ use backend\controllers\BaseController;
 use backend\models\UploadImage;
 use common\models\Product;
 use common\models\ProductImage;
+use common\models\CustomOptionStock;
 
 class ProductController extends BaseController
 {
@@ -85,17 +86,29 @@ class ProductController extends BaseController
 
     public function actionPjax()
     {
+        $product_id = 0;
         if (Yii::$app->request->isPost) {
             print_r(Yii::$app->request->post());
-            exit();
+            $model = new CustomOptionStock();
+            $model->product_id = Yii::$app->request->post('product_id');
+            $product_id = $model->product_id;
+            $model->custom_option_key = Yii::$app->request->post('custom_option_key');
+            $model->stock = Yii::$app->request->post('stock');
+            if ($model->save()) {
+
+            } else {
+                print_r($model->getFirstErrors());
+                exit();
+            }
         }
-        $string = Yii::$app->request->post('string');
-        $stringHash = '';
-        if (!is_null($string)) {
-            $stringHash = $string;
-        }
+
+        $models = [];
+        $models = CustomOptionStock::find()->where(['product_id' => $product_id])->all();
+        // if ($product_id !== 0) {
+        // }
+        
         return $this->render('pjax', [
-            'stringHash' => $stringHash,
+            'models' => $models,
         ]);
     }
 }

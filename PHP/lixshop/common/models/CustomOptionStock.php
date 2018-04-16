@@ -3,9 +3,7 @@
 namespace common\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
-use yii\db\Expression;
 use common\models\Product;
 
 /**
@@ -18,21 +16,6 @@ use common\models\Product;
  */
 class CustomOptionStock extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {        
-        return [
-            [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
-                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
-                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
-            ],
-        ];   
-    }
-
     /**
      * @inheritdoc
      */
