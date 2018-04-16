@@ -1,4 +1,4 @@
-<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+<div id="sidebar" class="sidebar responsive ace-save-state">
     <script type="text/javascript">
         try {
             ace.settings.loadState('sidebar')
@@ -40,7 +40,7 @@
     <ul class="nav nav-list">
         <?php
             $siderbar_config = require(BASE_PATH . '/siderbar.php');
-            
+
             foreach ($siderbar_config as $item) {
                 if ($item["realData"] == true) {
                     echo setupFirstLi($item);

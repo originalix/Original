@@ -82,5 +82,20 @@ class ProductController extends BaseController
             'imgModel' => $imgModel,
         ]);
     }
-}
 
+    public function actionPjax()
+    {
+        if (Yii::$app->request->isPost) {
+            print_r(Yii::$app->request->post());
+            exit();
+        }
+        $string = Yii::$app->request->post('string');
+        $stringHash = '';
+        if (!is_null($string)) {
+            $stringHash = $string;
+        }
+        return $this->render('pjax', [
+            'stringHash' => $stringHash,
+        ]);
+    }
+}
