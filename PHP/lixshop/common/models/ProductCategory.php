@@ -69,22 +69,6 @@ class ProductCategory extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function saveCategory($product_id, $categories)
-    {
-        print_r($categories);
-        exit();
-        foreach($categories as $id) {
-            $model = new ProductCategory();
-            $model->product_id = $product_id;
-            $model->category_id = $id;
-            if (! $model->save()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     public function getProduct()
     {
         return $this->hasOne(Product::className(), ['id' => 'product_id']);

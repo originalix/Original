@@ -50,7 +50,7 @@ $this->title = '添加商品';
                     }
                 ?>
 
-                <?= Html::activeListBox($category, 'category', ArrayHelper::map($category_models, 'id', 'category')) ?>
+                <?= $form->field($category, 'category[]')->label('')->checkboxList($dataSource); ?>
                 <?= Html::submitButton('保存', [
                         'class'=>'btn btn-white btn-info btn-bold pull-right',
                         'name' =>'submit-button',

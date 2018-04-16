@@ -66,18 +66,17 @@ class ProductController extends BaseController
     {
         $product_id = Yii::$app->request->get('id');
         $model = new CustomOptionStock();
-        $product_category = new AddCategoryForm();
+        $add_category_form = new AddCategoryForm();
         $category = Category::find()->all();
         $models = [];
 
-        if ($product_category->load(Yii::$app->request->post())) {
-            print_r(Yii::$app->request->post());
+        if ($add_category_form->load(Yii::$app->request->post())) {
+            // print_r(Yii::$app->request->post());
             
-            print_r($product_category->category);
-            $category_maps = Yii::$app->request->post('category');
-            print_r($category_maps);
-            exit();
-            if (ProductCategory::saveCategory($product_id, $category_maps)) {
+            $add_category_form = Yii::$app->request->post('AddCategoryForm');
+            // print_r($add_category_form['category']);
+            // exit();
+            if ($add_category_form->saveCategory($product_id)) {
                 return $this->redirect(['home/index']);
             }
         }
@@ -87,7 +86,7 @@ class ProductController extends BaseController
         return $this->render('_create_category', [
             'models' => $models,
             'id' => $product_id,
-            'category' => $product_category,
+            'category' => $add_category_form,
             'category_models' => $category,
         ]);
     }

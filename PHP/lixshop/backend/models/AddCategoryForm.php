@@ -15,4 +15,27 @@ class AddCategoryForm extends Model
         return [
         ];
     }
+
+    public function saveCategory($product_id)
+    {
+        print_r($this['category']);
+        // foreach($this->category as $id) {
+        //     echo $id;
+        //     echo "</br>";
+        // }
+        exit();
+        foreach($this->category as $id) {
+            $model = new ProductCategory();
+            $model->product_id = $product_id;
+            $model->category_id = $id;
+            if (! $model->save()) {
+                print_r($model->getFirstErrors());
+                exit();
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
