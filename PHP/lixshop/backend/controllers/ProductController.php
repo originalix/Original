@@ -44,6 +44,8 @@ class ProductController extends BaseController
         $imgModel = new UploadImage();
         if ($model->load(Yii::$app->request->post())) {
             $model->image = Yii::$app->request->post('image', []);
+            print_r(Yii::$app->request->post());
+            exit();
             
             if ($product = $model->createProduct()) {
                 if ($model->saveImage($product->id)) {

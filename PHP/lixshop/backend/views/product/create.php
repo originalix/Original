@@ -24,6 +24,12 @@ $this->title = '添加商品';
     $model->meta_title = "衣服";
     $model->meta_keywords = "衣服衣服";
     $model->meta_description = "这是商品详情";
+    $model->custom_option = [
+        ['custom_option_key' => '红色', 'stock' => 100],
+        ['custom_option_key' => '红色', 'stock' => 100],
+        ['custom_option_key' => '红色', 'stock' => 100],
+        ['custom_option_key' => '红色', 'stock' => 100],
+    ];
 ?>
 
 <div class="page-header">
@@ -114,18 +120,22 @@ $this->title = '添加商品';
                         分类信息
                     </span><!-- /.col -->
                 </h3>
+                    
+                <?=Html::hiddenInput('custom_key[]', '1');?>
+                <?=Html::hiddenInput('custom_value[]', '2');?>
 
                 <?php ActiveForm::end(); ?>
                 
+                <button id="custom_btn" clsaa="btn btn-primary btn-sm">test</button>
+
                 <?= $this->render('custom_option_form', [
                     'models' => $models,
                     'product_id' => $id
                 ]); ?>
-            </div> 
+            </div>
         </div>
         <!-- PAGE CONTENT ENDS -->
     </div>
     <!-- /.col -->
 </div>
 <!-- /.row -->
-<?= $this->render('category_script'); ?>
