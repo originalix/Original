@@ -24,10 +24,12 @@ class ProductController extends BaseController
     public function actionTest()
     {
         // $this->layout = false;
-        $model = new UploadImage();
+        $model = new AddProductForm();
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post())) {
                 print_r(Yii::$app->request->post());
+                $model->category = Yii::$app->request->post('AddProductForm');
+                print_r($model->category);
                 print_r('验证通过');
                 exit();
             } else {
