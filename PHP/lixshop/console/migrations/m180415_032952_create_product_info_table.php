@@ -67,7 +67,6 @@ class m180415_032952_create_product_info_table extends Migration
             'id' => $this->primaryKey(),
             'product_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('产品id'),
             'category_id' => $this->integer(12)->notNull()->defaultValue(null)->comment('分类id'),
-            'category' => $this->string(255)->defaultValue(null)->comment('分类名'),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);

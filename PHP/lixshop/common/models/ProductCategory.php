@@ -7,6 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use common\models\Product;
+use common\models\Category;
 
 /**
  * This is the model class for table "{{%product_category}}".
@@ -51,7 +52,6 @@ class ProductCategory extends \yii\db\ActiveRecord
         return [
             [['product_id', 'category_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['category'], 'string', 'max' => 255],
         ];
     }
 
@@ -64,14 +64,34 @@ class ProductCategory extends \yii\db\ActiveRecord
             'id' => 'ID',
             'product_id' => '产品id',
             'category_id' => '分类id',
-            'category' => '分类名',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
 
+    public static function saveCategory($product_id, $categories)
+    {
+        print_r($categories);
+        exit();
+        foreach($categories as $id) {
+            $model = new ProductCategory();
+            $model->product_id = $product_id;
+            $model->category_id = $id;
+            if (! $model->save()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function getProduct()
     {
         return $this->hasOne(Product::className(), ['id' => 'product_id']);
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 }

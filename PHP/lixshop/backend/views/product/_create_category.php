@@ -7,6 +7,7 @@ use common\widgets\imgupload\ImgMultUpload;
 use kartik\file\FileInput;  
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
 
 $this->title = '添加商品';
@@ -29,16 +30,13 @@ $this->title = '添加商品';
         <div class="tabbable">
             <div class="tab-content no-border padding-24">
                 <?php $form = ActiveForm::begin([
-                    'id' => 'form-product',
-                    'options' => ['enctype' => 'multipart/form-data'], 
-                    'enableAjaxValidation' => false,            
+                    'id' => 'form-category',
+                    // 'options' => ['enctype' => 'multipart/form-data'], 
+                    // 'enableAjaxValidation' => false,            
                 ]); ?>
 
                 <h3 class="row header smaller lighter blue">
-                    <?= Html::submitButton('保存', [
-                        'class'=>'btn btn-white btn-info btn-bold pull-right',
-                        'name' =>'submit-button',
-                    ])?>
+                   
                     <span class="col-sm-7">
                         <i class="ace-icon fa fa-magic"></i>
                         分类信息
@@ -48,14 +46,15 @@ $this->title = '添加商品';
                 <?php
                     $dataSource = [];
                     foreach($category_models as $category_model) {
-                        array_push($dataSource, [$category_model->id => $category_model->category]);
+                        $dataSource[strval($category_model->id)] = $category_model->category;
                     }
-                    print_r($dataSource);
-                    exit();
                 ?>
 
-                <?= $form->field($category, 'category')->checkboxList(['a' => 'Item A', 'b' => 'Item B', 'c' => 'Item C']); ?>
-
+                <?= Html::activeListBox($category, 'category', ArrayHelper::map($category_models, 'id', 'category')) ?>
+                <?= Html::submitButton('保存', [
+                        'class'=>'btn btn-white btn-info btn-bold pull-right',
+                        'name' =>'submit-button',
+                    ])?>
                 <?php ActiveForm::end(); ?>
 
                 <?= $this->render('custom_option_form',[

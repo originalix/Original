@@ -11,6 +11,7 @@ use common\models\ProductImage;
 use common\models\CustomOptionStock;
 use common\models\ProductCategory;
 use common\models\Category;
+use backend\models\AddCategoryForm;
 
 class ProductController extends BaseController
 {
@@ -63,15 +64,20 @@ class ProductController extends BaseController
     {
         $product_id = Yii::$app->request->get('id');
         $model = new CustomOptionStock();
-        $product_category = new ProductCategory();
+        $product_category = new AddCategoryForm();
         $category = Category::find()->all();
         $models = [];
-        if (Yii::$app->request->isPost) {
+
+        if ($product_category->load(Yii::$app->request->post())) {
             print_r(Yii::$app->request->post());
-            // exit();
-            // $model->product_id = Yii::$app->request->post('product_id');
-            // $product_id = $model->product_id;
             
+            print_r($product_category->category);
+            $category_maps = Yii::$app->request->post('category');
+            print_r($category_maps);
+            exit();
+            if (ProductCategory::saveCategory($product_id, $category_maps)) {
+                return $this->redirect(['home/index']);
+            }
         }
 
         $models = CustomOptionStock::find()->where(['product_id' => $product_id])->all();
