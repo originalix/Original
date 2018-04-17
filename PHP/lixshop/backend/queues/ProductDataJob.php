@@ -11,7 +11,6 @@ use common\models\ProductFlatStock;
 use common\models\ProductCategory;
 use common\models\Category;
 use common\models\mongodb\Product as MongoProduct;
-use yii\log\Logger;
 
 class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
 {
@@ -19,13 +18,13 @@ class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
     
     public function execute($queue)
     {
-        Yii::getLogger()->log("调用消息队列", Logger::LEVEL_INFO);
-        print_r('调用消息队列');
+        print_r(['msg' => '调用消息队列']);
         $mongoProduct = MongoProduct::find()
         ->where(['product_id' => $this->product_id])
         ->one();
         if (is_null($mongoProduct)) {
             $mongoProduct = new MongoProduct();
+            print_r(['msg' => '新建product']);
         }
 
         $imageArr = [];
@@ -69,7 +68,7 @@ class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
         // echo "</br>";
 
         $mongoProduct->setAttributes($product->attributes, false);
-        $mongoProduct->product_id = $product->id;
+        $mongoProduct->name = $product->name;
         $mongoProduct->image = $imageArr;
         $mongoProduct->stock = $product->flatStock->stock;
         $mongoProduct->custom_option = $custom_option_arr;
@@ -78,8 +77,9 @@ class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
 
         // echo "</br>";
         // print_r($mongoProduct->getAttributes());
-        $mongoProduct->save();
-        echo "</br>";
-        print_r('消息队列结束');
+        if (!$mongoProduct->save()) {
+            print_r($mongoProduct->getFirstErrors());
+        }
+        print_r(['msg' => '结束消息队列']);
     }
 }

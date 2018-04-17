@@ -13,13 +13,6 @@ class Product extends ActiveRecord
         return 'product';
     }
 
-    public function rules()
-    {
-        return [
-            ['product_id', 'unique'],
-        ];
-    }
-
     public function attributes()
     {
         $origin = [
