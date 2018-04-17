@@ -13,12 +13,33 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
-            'csrfParam' => '_csrf-frontend',
+            'csrfParam' => '_csrf-api',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
+        ],
+        'response' => [
+            'class' => 'yii\web\Response',
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'on beforeSend' => function ($event) {
+                $sender = $event->sender;
+                $responseData = [
+                    'code' => $sender->statusCode,
+                    'msg' => 'Success',
+                ];
+                if ($sender->statusCode == 200) {
+                    $responseData['data'] = $sender->data;
+                } else {
+                    $responseData['msg'] = $sender->data['message'];
+                }
+                $sender->statusCode = 200;
+                $sender->data = $responseData;
+            },
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\Customer',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
@@ -33,14 +54,12 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => require __DIR__ . '/restful.php',
         ],
     ],
+    'modules' => require(__DIR__ . '/modules.php'),
     'params' => $params,
 ];
