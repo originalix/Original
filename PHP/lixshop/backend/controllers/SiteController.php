@@ -172,8 +172,12 @@ class SiteController extends Controller
         $product_id = 8;
 
         $mongoProduct = MongoProduct::find()
-        ->where(['product_id' => $product_id])
+        ->where(['product_id' => 8])
         ->one();
+
+        print_r($mongoProduct);
+        exit();
+
         if (is_null($mongoProduct)) {
             $mongoProduct = new MongoProduct();
         }

@@ -18,10 +18,13 @@ class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
     
     public function execute($queue)
     {
-        print_r(['msg' => '调用消息队列']);
+        print_r(['msg' => '重新开始 调用消息队列']);
         $mongoProduct = MongoProduct::find()
-        ->where(['product_id' => $this->product_id])
+        ->where(['product_id' => intval($this->product_id)])
         ->one();
+
+        print_r(['msg' => $this->product_id]);
+
         if (is_null($mongoProduct)) {
             $mongoProduct = new MongoProduct();
             print_r(['msg' => '新建product']);
@@ -73,6 +76,7 @@ class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
         $mongoProduct->stock = $product->flatStock->stock;
         $mongoProduct->custom_option = $custom_option_arr;
         $mongoProduct->category = $categoryArr;
+        $mongoProduct->product_id = intval($this->product_id);
         // $mongoProduct->test = "test1";
 
         // echo "</br>";
