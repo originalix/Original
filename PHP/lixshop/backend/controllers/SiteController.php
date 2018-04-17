@@ -170,7 +170,14 @@ class SiteController extends Controller
     public function actionProduct()
     {
         $product_id = 8;
-        $mongoProduct = new MongoProduct();
+
+        $mongoProduct = MongoProduct::find()
+        ->where(['product_id' => $product_id])
+        ->one();
+        if (is_null($mongoProduct)) {
+            $mongoProduct = new MongoProduct();
+        }
+
         $imageArr = [];
         $categoryArr = [];
         $custom_option_arr = [];
@@ -189,7 +196,6 @@ class SiteController extends Controller
         print_r($product->flatStock->stock);
         echo "</br>";
 
-        
         // $product->category;
         foreach($product->category as $categoryModel) {
             $item = [
@@ -199,10 +205,31 @@ class SiteController extends Controller
             array_push($categoryArr, $item);
         }
         print_r($categoryArr);
-        exit();
+        echo "</br>";
         // $product->customOptionStock;
         foreach($product->customOptionStock as $customOption) {
-            array_push($custom_option_arr, $customOption);
+            $item = [
+                'id' => $customOption->id,
+                'key' => $customOption->custom_option_key,
+                'stock' => $customOption->stock,
+            ];
+            array_push($custom_option_arr, $item);
         }
+        print_r($custom_option_arr);
+        echo "</br>";
+
+        $mongoProduct->setAttributes($product->attributes, false);
+        $mongoProduct->product_id = $product->id;
+        $mongoProduct->image = $imageArr;
+        $mongoProduct->stock = $product->flatStock->stock;
+        $mongoProduct->custom_option = $custom_option_arr;
+        $mongoProduct->category = $categoryArr;
+
+        echo "</br>";
+        // print_r($product->attributes);
+        // echo "</br>";
+        // // $mongoProduct->name = 'lix';
+        print_r($mongoProduct->getAttributes());
+        $mongoProduct->save();
     }
 }
