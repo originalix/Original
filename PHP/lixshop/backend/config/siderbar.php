@@ -72,7 +72,7 @@ return [
             ],
             [
                 'title' => '账户管理',
-                'redirect' => '/home/index',
+                'redirect' => '../user/index',
             ],
             [
                 'title' => '权限管理',
