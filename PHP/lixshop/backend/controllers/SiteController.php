@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use common\models\Customer;
 use yii\data\ActiveDataProvider;
+use backend\queues\DownloadJob;
 
 /**
  * Site controller
@@ -145,5 +146,16 @@ class SiteController extends Controller
         //     'models' => $models,
         // ]);
         return ['data' => $models];
+    }
+
+    public function actionQueue()
+    {
+        $response = Yii::$app->response;
+        $response->format = \yii\web\Response::FORMAT_JSON;
+        $id = Yii::$app->queue->push(new DownloadJob([
+            'url' => 'http://example.com/image.jpg',
+            'file' => '/tmp/image.jpg',
+        ]));
+        return ['code' => 200, 'id' => $id];
     }
 }

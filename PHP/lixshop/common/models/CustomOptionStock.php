@@ -30,9 +30,9 @@ class CustomOptionStock extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['custom_option_key'], 'required'],
+            [['custom_option_key', 'product_id'], 'required'],
             [['stock'], 'integer'],
-            [['product_id', 'custom_option_key'], 'string', 'max' => 255],
+            [['custom_option_key'], 'string', 'max' => 255],
         ];
     }
 

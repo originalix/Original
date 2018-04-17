@@ -10,8 +10,8 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
     ],
-    'modules' => [
-        'redactor' => 'yii\redactor\RedactorModule',
-        'imageAllowExtensions'=>['jpg','png','gif'],
-    ],
+    // 'modules' => [
+    //     'redactor' => 'yii\redactor\RedactorModule',
+    //     'imageAllowExtensions'=>['jpg','png','gif'],
+    // ],
 ];
