@@ -9,6 +9,7 @@ use yii\db\Expression;
 use common\models\ProductImage;
 use common\models\ProductCategory;
 use common\models\CustomOptionStock;
+use common\models\ProductFlatStock;
 
 
 /**
@@ -72,7 +73,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['score', 'price', 'cost_price', 'final_price', 'reviw_rate_star_average'], 'number'],
-            [['status', 'min_sales_qty', 'is_in_stock', 'visibility', 'stock', 'package_number', 'created_user_id', 'review_count', 'favorite_count'], 'integer'],
+            [['status', 'min_sales_qty', 'is_in_stock', 'visibility', 'package_number', 'created_user_id', 'review_count', 'favorite_count'], 'integer'],
             [['meta_description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'url_key', 'meta_title', 'meta_keywords'], 'string', 'max' => 255],
@@ -96,7 +97,7 @@ class Product extends \yii\db\ActiveRecord
             'is_in_stock' => '产品 的库存状态，1代表有库存，2代表无库存',
             'visibility' => '是否可见',
             'url_key' => 'url地址',
-            'stock' => '库存数量',
+            // 'stock' => '库存数量',
             'price' => '销售价格',
             'cost_price' => '成本价格',
             'final_price' => '最终价格',
@@ -126,5 +127,10 @@ class Product extends \yii\db\ActiveRecord
     public function getCustomOptionStock()
     {
         return $this->hasMany(CustomOptionStock::className(), ['product_id' => 'id']);
+    }
+
+    public function getFlatStock()
+    {
+        return $this->hasOne(ProductFlatStock::className(), ['product_id' => 'id']);
     }
 }

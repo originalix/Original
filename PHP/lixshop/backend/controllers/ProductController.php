@@ -121,11 +121,13 @@ class ProductController extends BaseController
                     $category_maps= Yii::$app->request->post('AddCategoryForm');
 
                     // category_maps['category] 以及 category_id_maps 去重
-                    $add_category_form->category = array_diff($category_maps['category'], $category_id_maps);
-
-                    if ($add_category_form->saveCategory($id)) {
-                        return $this->redirect(['productform/index']);
+                    if (! empty($category_maps['category'])) {
+                        $add_category_form->category = array_diff($category_maps['category'], $category_id_maps);
+    
+                        if ($add_category_form->saveCategory($id)) {
+                        }
                     }
+                    return $this->redirect(['productform/index']);
                 }
             }
         }

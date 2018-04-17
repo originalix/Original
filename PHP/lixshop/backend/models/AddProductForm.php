@@ -7,6 +7,8 @@ use yii\base\Model;
 // use common\models\mongodb\Product;
 use common\models\Product;
 use common\models\ProductImage;
+use common\models\ProductFlatStock;
+use fecshop\models\mysqldb\product\ProductFlatQty;
 
 class AddProductForm extends Model
 {
@@ -53,14 +55,24 @@ class AddProductForm extends Model
 
         $product = new Product();
         $this->setProductAttribute($product);
-        return $product->save() ? $product : null;
+        if ($product->save()) {
+            $this->saveFlatStock($product->id);
+            return $product;
+        }
+
+        return null;
     }
 
     public function updateProduct($id)
     {
         $product = Product::findOne($id);
         $this->setProductAttribute($product);
-        return $product->save() ? $product : null;
+        if ($product->save()) {
+            $this->saveFlatStock($product->id);
+            return $product;
+        }
+
+        return null;
     }
 
     protected function setProductAttribute($product)
@@ -69,7 +81,7 @@ class AddProductForm extends Model
         $product->spu = $this->spu;
         $product->sku = $this->sku;
         $product->min_sales_qty = $this->min_sales_qty;
-        $product->stock = $this->stock;
+        // $product->stock = $this->stock;
         $product->is_in_stock = $this->is_in_stock;
         // $product->category = $this->category;
         $product->price = $this->final_price;
@@ -97,6 +109,17 @@ class AddProductForm extends Model
             }
         }
         return true;
+    }
+
+    public function saveFlatStock($id)
+    {
+        $stockModel = ProductFlatStock::find()->where(['product_id' => $id])->one();
+        if (is_null($stockModel)) {
+            $stockModel = new ProductFlatStock();
+            $stockModel->product_id = $id;
+        }
+        $stockModel->stock = $this->stock;
+        return $stockModel->save() ? $stockModel : null;
     }
 
     public function attributeLabels()
