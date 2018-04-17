@@ -44,7 +44,7 @@ return [
             ],
             [
                 'title' => '优惠券',
-                'redirect' => '/home/index',
+                'redirect' => '../coupon/index',
             ]
         ],
     ],
@@ -52,11 +52,11 @@ return [
         'realData' => false,
         'title' => '用户管理',
         'icon' => 'fa-user-plus',
-        'redirect' => '/home/index',
+        'redirect' => '../customer/index',
         'data' => [
             [
                 'title' => '账号管理',
-                'redirect' => '/home/index',
+                'redirect' => '../customer/index',
             ],
         ],
     ],

@@ -3,17 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Customer;
-use backend\models\CustomerSearch;
-use yii\web\Controller;
+use common\models\Coupon;
+use backend\models\CouponSearch;
+use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\controllers\BaseController;
 
 /**
- * CustomerController implements the CRUD actions for Customer model.
+ * CouponController implements the CRUD actions for Coupon model.
  */
-class CustomerController extends BaseController
+class CouponController extends BaseController
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class CustomerController extends BaseController
     }
 
     /**
-     * Lists all Customer models.
+     * Lists all Coupon models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CustomerSearch();
+        $searchModel = new CouponSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * Displays a single Customer model.
+     * Displays a single Coupon model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +58,13 @@ class CustomerController extends BaseController
     }
 
     /**
-     * Creates a new Customer model.
+     * Creates a new Coupon model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Customer();
+        $model = new Coupon();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +76,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * Updates an existing Customer model.
+     * Updates an existing Coupon model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +96,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * Deletes an existing Customer model.
+     * Deletes an existing Coupon model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +110,15 @@ class CustomerController extends BaseController
     }
 
     /**
-     * Finds the Customer model based on its primary key value.
+     * Finds the Coupon model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Customer the loaded model
+     * @return Coupon the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Customer::findOne($id)) !== null) {
+        if (($model = Coupon::findOne($id)) !== null) {
             return $model;
         }
 
