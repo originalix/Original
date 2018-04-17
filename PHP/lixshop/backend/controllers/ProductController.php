@@ -13,6 +13,8 @@ use common\models\ProductCategory;
 use common\models\Category;
 use backend\models\AddCategoryForm;
 use common\models\ProductFlatStock;
+use backend\queues\ProductDataJob;
+use yii\log\Logger;
 
 class ProductController extends BaseController
 {
@@ -74,6 +76,7 @@ class ProductController extends BaseController
             $category_maps= Yii::$app->request->post('AddCategoryForm');
             $add_category_form->category = $category_maps['category'];
             if ($add_category_form->saveCategory($product_id)) {
+                $this->pushProductToMongo($product_id);
                 return $this->redirect(['productform/index']);
             }
         }
@@ -90,6 +93,7 @@ class ProductController extends BaseController
 
     public function actionUpdate()
     {
+        Yii::getLogger()->log("更新商品", Logger::LEVEL_ERROR);
         $id = Yii::$app->request->get('id');
         $model = new AddProductForm();
         $imgModel = new UploadImage();
@@ -106,7 +110,10 @@ class ProductController extends BaseController
             ->where(['product_id' => $id])
             ->one();
             $model->image = $product->image;
-            $model->stock = $stock_model->stock;
+            $model->stock = 0;
+            if (! is_null($stock_model)) {
+                $model->stock = $stock_model->stock;
+            }
             // 获取自定义属性信息
             $models = CustomOptionStock::find()->where(['product_id' => $id])->all();
             // 获取分类信息 并赋值给AddCategoryForm模型
@@ -132,6 +139,7 @@ class ProductController extends BaseController
                         if ($add_category_form->saveCategory($id)) {
                         }
                     }
+                    $this->pushProductToMongo($id);
                     return $this->redirect(['productform/index']);
                 }
             }
@@ -170,5 +178,12 @@ class ProductController extends BaseController
             'product_id' => $product_id,
             'models' => $models,
         ]);
+    }
+
+    protected function pushProductToMongo($id)
+    {
+        Yii::$app->queue->push(new ProductDataJob([
+            'product_id' => $id,
+        ]));
     }
 }

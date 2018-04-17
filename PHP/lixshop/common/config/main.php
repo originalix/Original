@@ -11,7 +11,9 @@ return [
         ],
     ],
     'modules' => [
-        'redactor' => 'yii\redactor\RedactorModule',
-        'imageAllowExtensions'=>['jpg','png','gif'],
+        'redactor' => [ 
+            'class' => 'yii\redactor\RedactorModule', 
+            'imageAllowExtensions'=>['jpg','png','gif'] 
+        ], 
     ],
 ];
