@@ -38,6 +38,11 @@ $this->title = '修改商品信息';
                         <i class="ace-icon fa fa-question-circle"></i>
                         基本信息
                     </span><!-- /.col -->
+
+                    <?= Html::submitButton('保存修改', [
+                        'class'=>'btn btn-white btn-info btn-bold pull-right',
+                        'name' =>'submit-button',
+                    ])?>
                 </h3>
 
                 <!-- 基本信息form -->
@@ -92,14 +97,31 @@ $this->title = '修改商品信息';
                             'imgarr' => $result,
                             'imagedir' => '../uploads/temp/'
                 ]); ?> 
-
                 
-                <?= Html::submitButton('下一步', [
-                    'class'=>'btn btn-white btn-info btn-bold pull-right',
-                    'name' =>'submit-button',
-                ])?>
+                <h3 class="row header smaller lighter blue">
+                   
+                    <span class="col-sm-7">
+                        <i class="ace-icon fa fa-magic"></i>
+                        分类信息
+                    </span><!-- /.col -->
+                </h3>
+
+                <?php
+                    $dataSource = [];
+                    foreach($category_models as $category_model) {
+                        $dataSource[strval($category_model->id)] = $category_model->category;
+                    }
+                ?>
+
+                <?= $form->field($category, 'category[]')->label('')->checkboxList($dataSource, ['value' => $category->category]); ?>
 
                 <?php ActiveForm::end(); ?>
+
+                <?= $this->render('custom_option_form',[
+                    'models' => $models,
+                    'product_id' => $id,
+                ]); ?>
+                
             </div> 
         </div>
         <!-- PAGE CONTENT ENDS -->

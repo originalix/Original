@@ -65,7 +65,6 @@ class ProductController extends BaseController
     public function actionCustom()
     {
         $product_id = Yii::$app->request->get('id');
-        $model = new CustomOptionStock();
         $add_category_form = new AddCategoryForm();
         $category = Category::find()->all();
         $models = [];
@@ -93,27 +92,50 @@ class ProductController extends BaseController
         $id = Yii::$app->request->get('id');
         $model = new AddProductForm();
         $imgModel = new UploadImage();
-
+        $category = Category::find()->all();
+        $add_category_form = new AddCategoryForm();
+        // 自定义属性models数组
+        $models = [];
         if (! is_null($id)) {
+            // 获取产品信息
             $product = Product::findOne($id);
             $data = $product->attributes;
             $model->setAttributes($data);
             $model->image = $product->image;
+            // 获取自定义属性信息
+            $models = CustomOptionStock::find()->where(['product_id' => $id])->all();
+            // 获取分类信息 并赋值给AddCategoryForm模型
+            $product_categroies = ProductCategory::find()->where(['product_id' => $id])->all();
+            $category_id_maps = [];
+            foreach($product_categroies as $product_category) {
+                array_push($category_id_maps, $product_category->category_id);
+            }
+            $add_category_form->category = $category_id_maps;
         }
+
         if ($model->load(Yii::$app->request->post())) {
             $model->image = Yii::$app->request->post('image', []);
             
             if ($product = $model->updateProduct($id)) {
                 if ($model->saveImage($product->id)) {
-                    return $this->redirect(['product/custom', 'id' => $product->id]);
+                    $category_maps= Yii::$app->request->post('AddCategoryForm');
+                    // category_maps['category] 以及 category_id_maps 去重
+                    
+                    $add_category_form->category = $category_maps['category'];
+                    if ($add_category_form->saveCategory($id)) {
+                        return $this->redirect(['home/index']);
+                    }
                 }
             }
         }
-        
+
         return $this->render('update', [
             'id' => $id,
             'model' => $model,
             'imgModel' => $imgModel,
+            'category_models' => $category,
+            'category' => $add_category_form,
+            'models' => $models
         ]);
     }
 

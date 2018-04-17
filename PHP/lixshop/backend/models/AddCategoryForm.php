@@ -18,6 +18,7 @@ class AddCategoryForm extends Model
 
     public function saveCategory($product_id)
     {
+        $this->category = array_unique($this->category);
         foreach($this->category as $id) {
             $model = new ProductCategory();
             $model->product_id = $product_id;
