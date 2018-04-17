@@ -28,7 +28,7 @@ class Category extends \yii\db\ActiveRecord
                 'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
                 'value' => new Expression('NOW()'), // 自己根据数据库字段修改
             ],
-        ];   
+        ];
     }
 
     /**
