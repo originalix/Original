@@ -12,6 +12,7 @@ use common\models\CustomOptionStock;
 use common\models\ProductCategory;
 use common\models\Category;
 use backend\models\AddCategoryForm;
+use common\models\ProductFlatStock;
 
 class ProductController extends BaseController
 {
@@ -101,7 +102,11 @@ class ProductController extends BaseController
             $product = Product::findOne($id);
             $data = $product->attributes;
             $model->setAttributes($data);
+            $stock_model = ProductFlatStock::find()
+            ->where(['product_id' => $id])
+            ->one();
             $model->image = $product->image;
+            $model->stock = $stock_model->stock;
             // 获取自定义属性信息
             $models = CustomOptionStock::find()->where(['product_id' => $id])->all();
             // 获取分类信息 并赋值给AddCategoryForm模型

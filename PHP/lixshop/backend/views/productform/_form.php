@@ -30,7 +30,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'url_key')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'stock')->textInput() ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 

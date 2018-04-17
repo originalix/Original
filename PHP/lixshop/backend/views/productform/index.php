@@ -40,6 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img($url, ['alt'=>'yii','width'=>'120','height'=>'120']);
                 }
             ],
+            [
+                'attribute' => 'flatStock',
+                'label' => '库存',
+                'content' => function ($data) {
+                    return $data->flatStock['stock'];
+                }
+            ],
             'spu',
             'sku',
             'score',
@@ -48,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'is_in_stock',
             // 'visibility',
             //'url_key:url',
-            'stock',
+            // 'stock',
             'price',
             'cost_price',
             //'final_price',

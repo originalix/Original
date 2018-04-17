@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'image' => [
                 'attribute'=>'image',
+                'label' => '图片',
                 'value'=> function ($model) {
                     $content = "";
                     if (count($model->image) < 1) {
@@ -49,11 +50,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 'format' => 'raw',
             ],
+            [
+                'attribute' => 'flatStock',
+                'label' => '库存',
+                'value' => function ($data) {
+                    return $data->flatStock['stock'];
+                }
+            ],
             'min_sales_qty',
             'is_in_stock',
             'visibility',
             'url_key:url',
-            'stock',
+            // 'stock',
             'price',
             'cost_price',
             'final_price',

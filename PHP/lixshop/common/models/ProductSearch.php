@@ -18,7 +18,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'status', 'min_sales_qty', 'is_in_stock', 'visibility', 'stock', 'package_number', 'created_user_id', 'review_count', 'favorite_count'], 'integer'],
+            [['id', 'status', 'min_sales_qty', 'is_in_stock', 'visibility', 'package_number', 'created_user_id', 'review_count', 'favorite_count'], 'integer'],
             [['name', 'spu', 'sku', 'url_key', 'meta_title', 'meta_keywords', 'meta_description', 'created_at', 'updated_at'], 'safe'],
             [['score', 'price', 'cost_price', 'final_price', 'reviw_rate_star_average'], 'number'],
         ];
@@ -45,6 +45,9 @@ class ProductSearch extends Product
         $query = Product::find();
 
         $query->with('image');
+        $query->with('category');
+        $query->with('customOptionStock');
+        $query->with('flatStock');
 
         // add conditions that should always apply here
 
@@ -68,8 +71,10 @@ class ProductSearch extends Product
             'min_sales_qty' => $this->min_sales_qty,
             'is_in_stock' => $this->is_in_stock,
             'visibility' => $this->visibility,
-            'stock' => $this->stock,
+            'flatStock' => $this->flatStock,
             'image' => $this->image,
+            'category' => $this->category,
+            'customOptionStock' => $this->customOptionStock,
             'price' => $this->price,
             'cost_price' => $this->cost_price,
             'final_price' => $this->final_price,
