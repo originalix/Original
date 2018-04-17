@@ -5,14 +5,13 @@ namespace backend\controllers;
 use Yii;
 use common\models\Favorite;
 use backend\models\FavoriteSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use backend\controllers\BaseController;
 /**
  * FavoriteController implements the CRUD actions for Favorite model.
  */
-class FavoriteController extends Controller
+class FavoriteController extends BaseController
 {
     /**
      * @inheritdoc

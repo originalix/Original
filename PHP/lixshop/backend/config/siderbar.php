@@ -24,7 +24,7 @@ return [
             ],
             [
                 'title' => '产品收藏管理',
-                'redirect' => '../home/test',
+                'redirect' => '../favorite/index',
             ],
             [
                 'title' => '产品分类管理',
