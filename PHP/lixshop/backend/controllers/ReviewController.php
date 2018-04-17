@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use common\models\Review;
 use backend\models\ReviewSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\controllers\BaseController;
 
 /**
  * ReviewController implements the CRUD actions for Review model.
  */
-class ReviewController extends Controller
+class ReviewController extends BaseController
 {
     /**
      * @inheritdoc

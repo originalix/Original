@@ -20,7 +20,7 @@ return [
             ],
             [   
                 'title' => '产品评论管理', 
-                'redirect' => '../product/pjax',
+                'redirect' => '../review/index',
             ],
             [
                 'title' => '产品收藏管理',
