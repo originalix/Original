@@ -9,8 +9,11 @@ use yii\web\HttpException;
 
 class ProductController extends BaseController
 {
+    public $modelClass = 'api\models\product\ProductSearch';
+
     public function actionIndex()
     {
-        return ['id' => Yii::$app->user->id];
+        $modelClass = new $this->modelClass;
+        return $modelClass->search();        
     }
 }

@@ -8,6 +8,8 @@ use yii\helpers\Inflector;
 use api\filters\HttpApiAuth;
 use yii\filters\auth\CompositeAuth;
 
+use common\models\Customer;
+
 class BaseController extends \yii\rest\Controller
 {
     public $serializer = [
@@ -28,8 +30,10 @@ class BaseController extends \yii\rest\Controller
                 ],
             ];
         } else {
-            
+            $identity = Customer::loginByAccessToken('vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn', get_class($this));
+            Yii::$app->user->login($identity);
         }
+
         $behaviors['contentNegotiator']['formats'] = [];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
 
