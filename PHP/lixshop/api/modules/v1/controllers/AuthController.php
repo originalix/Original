@@ -7,10 +7,15 @@ use api\components\BaseController;
 
 class AuthController extends BaseController
 {
-    public function actionIndex()
+    public function actionCreate()
     {
+        $request = Yii::$app->request;
+        $openId = $request->post('openId');
+        $mobile = $request->post('mobile');
+
+
         return [
-            'access' => 'test'
+            
         ];
     }
 }

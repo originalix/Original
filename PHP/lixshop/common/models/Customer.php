@@ -142,6 +142,7 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
     public function generateAccessToken()
     {
         $this->access_token = Yii::$app->security->generateRandomString();
+        $this->access_token_created_at = new Expression('NOW()');
     }
 
 }

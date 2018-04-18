@@ -22,7 +22,7 @@ class SignupForm extends Model
             ['mobile', 'required', 'message' => '手机号码不能为空'],
              //targetClass 不会自己调用Ajax验证，提交表单后才会触发
             ['mobile', 'unique', 'targetClass' => '\backend\models\AdminUser', 'message' => '手机号已经注册。'],
-            [['mobile'],'match','pattern'=>'/^[1][358][0-9]{9}$/'],
+            [['mobile'],'match','pattern'=>'/^[1][3578][0-9]{9}$/'],
 
             ['username', 'trim'],
             ['username', 'required', 'message' => '用户名不能为空'],
