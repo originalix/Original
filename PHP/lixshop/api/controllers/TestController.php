@@ -19,4 +19,13 @@ class TestController extends \yii\web\Controller
             'car' => 'crv',
         ];
     }
+
+    public function actionAuth()
+    {
+        $authHeader = "Bearer LixLixLix";
+        preg_match('/^Bearer\s+(.*?)$/', $authHeader, $matches);
+        return [
+            'matches' => $matches[1]
+        ];
+    }
 }
