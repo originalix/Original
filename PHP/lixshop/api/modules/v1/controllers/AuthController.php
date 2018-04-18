@@ -5,15 +5,16 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\components\BaseController;
 use api\models\customer\AddCustomer;
+use common\models\Customer;
 use yii\web\HttpException;
 
 class AuthController extends BaseController
 {
-    public function actionCreate()
+    public function actionToken()
     {
         $addCustomer = new AddCustomer();
-        $addCustomer->openId = Yii::$app->request->post('openId');
-        $addCustomer->mobile = Yii::$app->request->post('mobile');
+        $addCustomer->openId = Yii::$app->request->get('openId');
+        $addCustomer->mobile = Yii::$app->request->get('mobile');
         
         $customer = $addCustomer->signup();
 

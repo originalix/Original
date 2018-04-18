@@ -20,8 +20,20 @@ class AddCustomer extends Model
         ];
     }
 
+    public function findCustomer()
+    {
+        $customer = Customer::findIdentityByWechatOpenId($this->openId);
+        return $customer;
+    }
+
     public function signup()
     {
+        $customer = $this->findCustomer();
+
+        if (! is_null($customer)) {
+            return $customer;
+        }
+
         if (!$this->validate()) {
             return array_values($this->getFirstErrors())[0];
         }

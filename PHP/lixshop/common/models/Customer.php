@@ -92,6 +92,11 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
         return static::findOne(['id' => $id]);
     }
 
+    public static function findIdentityByWechatOpenId($openId)
+    {
+        return static::findOne(['wechat_openid' => $openId]);
+    }
+
     /**
      * {@inheritdoc}
      */
