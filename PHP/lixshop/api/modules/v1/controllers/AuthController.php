@@ -5,25 +5,22 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\components\BaseController;
 use api\models\customer\AddCustomer;
+use yii\web\HttpException;
 
 class AuthController extends BaseController
 {
     public function actionCreate()
     {
         $addCustomer = new AddCustomer();
-        // $addCustomer->openId = $request->post('openId');
-        // $addCustomer->mobile = $request->post('mobile');
+        $addCustomer->openId = Yii::$app->request->post('openId');
+        $addCustomer->mobile = Yii::$app->request->post('mobile');
+        
+        $customer = $addCustomer->signup();
 
-        if ($addCustomer->load(Yii::$app->request->post())) {
-            return ['msg' => '认证成功'];
-            if ($customer = $addCustomer->signup()) {
-                return $customer;
-            }
+        if (is_null($customer)) {
+            throw new HttpException(418, '生成用户信息失败');
         }
 
-        print_r($addCustomer);
-        exit();
-
-        return ['msg' => $addCustomer->getFirstErrors()];
+        return $customer;
     }
 }
