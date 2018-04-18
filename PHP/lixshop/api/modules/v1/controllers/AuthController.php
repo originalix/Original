@@ -21,6 +21,10 @@ class AuthController extends BaseController
             throw new HttpException(418, '生成用户信息失败');
         }
 
+        if (is_string($customer)) {
+            throw new HttpException(419, $customer);
+        }
+
         return $customer;
     }
 }

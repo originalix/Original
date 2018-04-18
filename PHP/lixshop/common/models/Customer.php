@@ -35,9 +35,9 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
                 'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
                 'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
-                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
             ],
-        ];   
+        ];
     }
 
     /**
@@ -142,7 +142,24 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
     public function generateAccessToken()
     {
         $this->access_token = Yii::$app->security->generateRandomString();
-        $this->access_token_created_at = new Expression('NOW()');
+        $this->access_token_created_at = date('Y-m-d H:i:s');
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'wechat_openid',
+            'mobile',
+            'group',
+            'created_at' => function ($model) {
+                return strval($model->created_at);
+            },
+            'updated_at',
+            'access_token',
+            'favorite_product_count',
+            // 'access_token_created_at',
+        ];
     }
 
 }

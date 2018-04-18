@@ -23,7 +23,7 @@ class AddCustomer extends Model
     public function signup()
     {
         if (!$this->validate()) {
-            return null;
+            return array_values($this->getFirstErrors())[0];
         }
 
         $customer = new Customer();
@@ -31,7 +31,11 @@ class AddCustomer extends Model
         $customer->mobile = $this->mobile;
         $customer->group = 1;
         $customer->generateAccessToken();
-    
-        return $customer->save() ? $customer : null;
+
+        if (! $customer->save()) {
+            return array_values($customer->getFirstErrors())[0];
+        }
+
+        return $customer;
     }
 }
