@@ -13,14 +13,14 @@ class m180410_081019_create_product_table extends Migration
         // 产品库存表
         $this->createTable('{{%product_flat_stock}}', [
             'id' => $this->primaryKey(),
-            'product_id' => $this->string(255)->defaultValue(NULL)->comment('产品id'),
+            'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'stock' => $this->integer()->comment('库存数量'),
         ]);
 
         // 产品custom option类型对应的库存信息
         $this->createTable('{{%product_custom_option_stock}}', [
             'id' => $this->primaryKey(),
-            'product_id' => $this->string(255)->defaultValue(NULL)->comment('产品id'),
+            'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'custom_option_key' => $this->string(255)->notNull()->comment('产品自定义的属性key'),
             'stock' => $this->integer()->comment('库存数量'),
         ]);
@@ -67,7 +67,7 @@ class m180410_081019_create_product_table extends Migration
         $this->createTable('{{%sales_flat_cart_item}}', [
             'id' => $this->primaryKey(),
             'cart_id' => $this->integer(15)->notNull()->comment('购物车关联id'),
-            'product_id' => $this->string(255)->defaultValue(NULL)->comment('产品id'),
+            'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'count' => $this->integer(15)->defaultValue(1)->comment('加入购物车数量'),
             'custom_option_key' => $this->string(255)->comment('产品的自定义属性'),
             'active' => $this->integer(5)->defaultValue(2)->comment('1代表勾选，2代表不勾选'),
@@ -103,7 +103,7 @@ class m180410_081019_create_product_table extends Migration
             'id' => $this->primaryKey(),
             'order_id' => $this->integer()->defaultValue(NULL)->comment('关联的订单id'),
             'customer_id' => $this->integer(15)->defaultValue(NULL)->comment('顾客id'),
-            'product_id' => $this->string(255)->defaultValue(NULL)->comment('产品id'),
+            'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'custom_option_key' => $this->string(255)->notNull()->comment('产品自定义的属性key'),
             'name' => $this->string(255)->defaultValue(NULL)->comment('产品名称'),
             'image' => $this->string(255)->defaultValue(NULL)->comment('封面图片'),
@@ -118,7 +118,7 @@ class m180410_081019_create_product_table extends Migration
         // 产品收藏信息表
         $this->createTable('{{%favorite}}', [
             'id' => $this->primaryKey(),
-            'product_id' => $this->string(255)->defaultValue(NULL)->comment('产品id'),
+            'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'customer_id' => $this->integer()->defaultValue(NULL)->comment('顾客id'),
             'created_at' => $this->timestamp()->defaultValue(null),
             'updated_at' => $this->timestamp()->defaultValue(null)            
@@ -127,7 +127,7 @@ class m180410_081019_create_product_table extends Migration
         // 产品评论表
         $this->createTable('{{%review}}', [
             'id' => $this->primaryKey(),
-            'product_id' => $this->string(255)->defaultValue(NULL)->comment('产品id'),
+            'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'product_custom_option_key' => $this->string(100)->defaultValue(NULL)->comment('产品自定义属性key'),
             'rate_star' => $this->integer(5)->defaultValue(NULL)->comment('评分'),
             'name' => $this->string(100)->defaultValue(NULL)->comment('评论姓名'),
