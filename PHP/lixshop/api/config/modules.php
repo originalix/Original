@@ -1,7 +1,7 @@
 <?php
 
 $modules = [
-    'vi' => [
+    'v1' => [
         'class' => 'api\modules\v1\Module',
     ]
 ];

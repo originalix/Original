@@ -5,21 +5,23 @@ namespace api\controllers;
 use Yii;
 use yii\filters\auth\CompositeAuth;
 use api\filters\HttpApiAuth;
+use api\models\Image;
+use api\components\BaseController;
 
-class TestController extends \yii\web\Controller
+class TestController extends BaseController
 {
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => CompositeAuth::className(),
-            'authMethods' => [
-                HttpApiAuth::className(),
-            ],
-        ];
+    // public function behaviors()
+    // {
+    //     $behaviors = parent::behaviors();
+    //     $behaviors['authenticator'] = [
+    //         'class' => CompositeAuth::className(),
+    //         'authMethods' => [
+    //             HttpApiAuth::className(),
+    //         ],
+    //     ];
 
-        return $behaviors;
-    }
+    //     return $behaviors;
+    // }
     
     public function actionIndex()
     {
@@ -43,5 +45,11 @@ class TestController extends \yii\web\Controller
             'matches' => $matches[1],
             'access_token' => Yii::$app->security->generateRandomString()
         ];
+    }
+
+    public function actionImage()
+    {
+        $image = Image::find()->all();
+        return $image;
     }
 }
