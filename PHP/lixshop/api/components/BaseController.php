@@ -27,6 +27,8 @@ class BaseController extends \yii\rest\Controller
                     HttpApiAuth::className(),
                 ],
             ];
+        } else {
+            
         }
         $behaviors['contentNegotiator']['formats'] = [];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
