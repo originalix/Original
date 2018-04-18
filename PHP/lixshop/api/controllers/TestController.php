@@ -7,6 +7,11 @@ use yii\filters\auth\CompositeAuth;
 use api\filters\HttpApiAuth;
 use api\models\Image;
 use api\components\BaseController;
+use yii\data\ActiveDataProvider;
+use yii\web\Link;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+
 
 class TestController extends BaseController
 {
@@ -49,7 +54,11 @@ class TestController extends BaseController
 
     public function actionImage()
     {
-        $image = Image::find()->all();
-        return $image;
+        $query = Image::find();
+        $query->orderBy(['created_at' => SORT_DESC]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        return $dataProvider;
     }
 }
