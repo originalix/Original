@@ -63,10 +63,19 @@ class Address extends CustomerAddress
 
     public function updateAddress($data)
     {
-        $address = static::findOne(999);
+        $address = static::findOne($data['id']);
         if (is_null($address)) {
             throw new HttpException(423, '更新地址失败');
         }
+
+        $address->load($data, '');
+        if (! $address->validate()) {
+            throw new HttpException(423, array_values($this->getFirstErrors())[0]);
+        }
+        if (! $address->save()) {
+            throw new HttpException(423, array_values($this->getFirstErrors())[0]);
+        }
+        return $address;
     }
 
     public function fields()

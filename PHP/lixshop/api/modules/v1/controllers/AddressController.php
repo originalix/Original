@@ -69,22 +69,17 @@ class AddressController extends BaseController
         return $address;
     }
 
+    /**
+     * 更新单个地址信息
+     *
+     * @return void
+     */
     public function actionUpdate()
     {
         $request = Yii::$app->request;
         $data = $request->getBodyParams();
         $modelClass = new $this->modelClass;
-        // $modelClass->id = $request->post('id');
         return $modelClass->updateAddress($data);
-
-        // $modelClass->customer_id = Yii::$app->user->identity->id;
-        // $modelClass->name = $request->post('name');
-        // $modelClass->telephone = $request->post('telephone');
-        // $modelClass->province = $request->post('province');
-        // $modelClass->city = $request->post('city');
-        // $modelClass->district = $request->post('district');
-        // $modelClass->street = $request->post('street');
-        // $modelClass->is_default = is_null($request->post('is_default')) ? 0 : $request->post('is_default');
     }
 
     public function actionDelete()
