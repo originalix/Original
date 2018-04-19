@@ -10,6 +10,11 @@ use yii\web\HttpException;
 
 class AuthController extends BaseController
 {
+    /**
+     * 获取或生成token 返回user信息 携带token
+     *
+     * @return void
+     */
     public function actionToken()
     {
         $addCustomer = new AddCustomer();

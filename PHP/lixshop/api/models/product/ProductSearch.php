@@ -58,7 +58,7 @@ class ProductSearch extends Product
                     'created_at' => SORT_DESC
                 ],
             ],
-        ]);        
+        ]);
         return $dataProvider;
     }
 
