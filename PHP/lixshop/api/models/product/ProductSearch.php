@@ -13,6 +13,7 @@ class ProductSearch extends Product
     {
         $query = static::find()
             ->where(['<>', 'status', 2]);
+            // ->andWhere(['category' => [4]]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [

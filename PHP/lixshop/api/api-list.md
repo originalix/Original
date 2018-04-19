@@ -11,5 +11,15 @@ auth/index (GET)
 
 > 商品列表接口
 
+product/index (GET)
 请求参数 page
 响应：商品信息集合
+
+> 商品分类接口
+
+product/category (GET)
+响应：所有分类信息
+
+> 根据分类 获取商品列表接口
+
+请求参数 category int
