@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "{{%customer_address}}".
@@ -21,6 +23,21 @@ use Yii;
  */
 class CustomerAddress extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -41,7 +58,7 @@ class CustomerAddress extends \yii\db\ActiveRecord
             [['name', 'province'], 'string', 'max' => 100],
             [['telephone'], 'string', 'max' => 11],
             [['city', 'district', 'street'], 'string', 'max' => 255],
-            [['is_default'], 'string', 'max' => 1],
+            [['is_default'], 'boolean'],
         ];
     }
 
