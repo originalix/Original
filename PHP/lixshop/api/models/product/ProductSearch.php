@@ -41,6 +41,7 @@ class ProductSearch extends Product
         $category_models = ProductCategory::find()
             ->where(['category_id' => $id])
             ->all();
+
         $product_arr = [];
         foreach ($category_models as $model) {
             array_push($product_arr, $model->product_id);

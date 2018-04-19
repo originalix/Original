@@ -30,7 +30,9 @@ class BaseController extends \yii\rest\Controller
                 ],
             ];
         } else {
-            $identity = Customer::loginByAccessToken('vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn', get_class($this));
+            // gxKehPvizQbscvKMBgtaDdfT8dJMQFw9   iMac
+            // vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn
+            $identity = Customer::loginByAccessToken('gxKehPvizQbscvKMBgtaDdfT8dJMQFw9', get_class($this));
             Yii::$app->user->login($identity);
         }
 
