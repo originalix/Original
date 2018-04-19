@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%customer_address}}".
@@ -74,7 +75,7 @@ class CustomerAddress extends \yii\db\ActiveRecord
             'telephone' => '电话',
             'province' => '省份',
             'city' => '城市',
-            'district' => '区',
+            'district' => '城区',
             'street' => '街道地址',
             'is_default' => '是否为默认地址',
             'created_at' => 'Created At',

@@ -4,7 +4,7 @@ namespace api\modules\v1\controllers;
 
 use Yii;
 use api\components\BaseController;
-
+use yii\web\HttpException;
 
 class AddressController extends BaseController
 {
@@ -26,7 +26,7 @@ class AddressController extends BaseController
         $modelClass->city = $request->post('city');
         $modelClass->district = $request->post('district');
         $modelClass->street = $request->post('street');
-        $modelClass->is_default = $request->post('is_default');
+        $modelClass->is_default = is_null($request->post('is_default')) ? 0 : $request->post('is_default');
 
         $address = $modelClass->create();
 
@@ -38,7 +38,7 @@ class AddressController extends BaseController
             throw new HttpException(419, $address);
         }
 
-        return $addres;
+        return $address;
     }
 
     public function actionView()
