@@ -31,6 +31,8 @@ class Address extends CustomerAddress
             return array_values($this->getFirstErrors())[0];
         }
 
+        $this->changeDefaultState($this, "create");
+
         if (! $this->save()) {
             return array_values($this->getFirstErrors())[0];
         }
@@ -72,10 +74,34 @@ class Address extends CustomerAddress
         if (! $address->validate()) {
             throw new HttpException(423, array_values($this->getFirstErrors())[0]);
         }
+
+        $this->changeDefaultState($address);
+
         if (! $address->save()) {
             throw new HttpException(423, array_values($this->getFirstErrors())[0]);
         }
         return $address;
+    }
+
+    public function changeDefaultState($address, $type = "update")
+    {
+        if ($address->is_default == true) {
+            $defaultArr = [];
+            if ($type === "create") {
+                $defaultArr = static::find()
+                    ->where(['is_default' => 1])
+                    ->all();    
+            } else {
+                $defaultArr = static::find()
+                ->where(['is_default' => 1])
+                ->andWhere(['<>', 'id', $address->id])
+                ->all();
+            }
+            foreach($defaultArr as $model) {
+                $model->is_default = 0;
+                $model->save();
+            }
+        }
     }
 
     public function fields()
