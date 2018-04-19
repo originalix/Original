@@ -28,4 +28,9 @@ class ProductController extends BaseController
         $modelClass = new $this->modelClass;
         return $modelClass->searchByCategoryId(5);
     }
+
+    public function actionInfo()
+    {
+        
+    }
 }
