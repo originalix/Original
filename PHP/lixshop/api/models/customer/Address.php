@@ -5,6 +5,7 @@ namespace api\models\customer;
 use Yii;
 use common\models\CustomerAddress;
 use yii\data\ActiveDataProvider;
+use yii\web\HttpException;
 
 class Address extends CustomerAddress
 {
@@ -58,6 +59,14 @@ class Address extends CustomerAddress
     public function getAddress($id)
     {
         return static::findOne($id);
+    }
+
+    public function updateAddress($data)
+    {
+        $address = static::findOne(999);
+        if (is_null($address)) {
+            throw new HttpException(423, '更新地址失败');
+        }
     }
 
     public function fields()
