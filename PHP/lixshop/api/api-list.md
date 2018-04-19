@@ -60,7 +60,7 @@ product/category (GET)
 - 发送手机验证码api
 - 地址列表api
 - 删除地址api
-- 初始化地址编辑api
+- ~~初始化地址编辑api~~
 - 提交地址编辑api
 
 ##### 查询订单

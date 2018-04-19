@@ -4,6 +4,7 @@ namespace api\models\customer;
 
 use Yii;
 use common\models\CustomerAddress;
+use yii\data\ActiveDataProvider;
 
 class Address extends CustomerAddress
 {
@@ -34,6 +35,24 @@ class Address extends CustomerAddress
         }
 
         return $this;
+    }
+
+    public function getList()
+    {
+        $id = Yii::$app->user->identity->id;
+        $query = static::find()
+            ->where(['customer_id' => $id]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'is_default' => SORT_DESC, 
+                    'created_at' => SORT_DESC,
+                ]
+            ],
+        ]);
+
+        return $dataProvider;
     }
 
     public function fields()

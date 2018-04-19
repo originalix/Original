@@ -12,9 +12,15 @@ class AddressController extends BaseController
 
     public function actionIndex()
     {
-
+        $modelClass = new $this->modelClass;
+        return $modelClass->getList();
     }
 
+    /**
+     * 创建地址
+     *
+     * @return void
+     */
     public function actionCreate()
     {
         $request = Yii::$app->request;
