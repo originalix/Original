@@ -55,6 +55,11 @@ class Address extends CustomerAddress
         return $dataProvider;
     }
 
+    public function getAddress($id)
+    {
+        return static::findOne($id);
+    }
+
     public function fields()
     {
         return [

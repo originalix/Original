@@ -10,6 +10,11 @@ class AddressController extends BaseController
 {
     public $modelClass = 'api\models\customer\Address';
 
+    /**
+     * 获取地址列表
+     *
+     * @return void
+     */
     public function actionIndex()
     {
         $modelClass = new $this->modelClass;
@@ -47,9 +52,21 @@ class AddressController extends BaseController
         return $address;
     }
 
+    /**
+     * 根据地址id 查看地址
+     *
+     * @return void
+     */
     public function actionView()
     {
+        $id = Yii::$app->request->get('id');
+        $modelClass = new $this->modelClass;
+        $address = $modelClass->getAddress($id);
+        if (is_null($address)) {
+            throw new HttpException(418, '没有查找到地址信息');
+        }
 
+        return $address;
     }
 
     public function actionUpdate()
