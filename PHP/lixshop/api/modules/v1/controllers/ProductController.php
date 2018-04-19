@@ -17,9 +17,15 @@ class ProductController extends BaseController
         return $modelClass->search();        
     }
 
-    public function actionCategory()
+    public function actionCategoryList()
     {
         $modelClass = new $this->modelClass;
         return $modelClass->getCategory()->getModels();
+    }
+
+    public function actionCategory()
+    {
+        $modelClass = new $this->modelClass;
+        return $modelClass->searchByCategoryId(3);
     }
 }

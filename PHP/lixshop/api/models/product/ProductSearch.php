@@ -6,6 +6,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\mongodb\Product;
 use common\models\Category;
+use common\models\ProductCategory;
 
 class ProductSearch extends Product
 {
@@ -32,6 +33,31 @@ class ProductSearch extends Product
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        return $dataProvider;
+    }
+
+    public function searchByCategoryId($id)
+    {
+        $category_models = ProductCategory::find()
+            ->where(['category_id' => $id])
+            ->all();
+        $product_arr = [];
+        foreach ($category_models as $model) {
+            array_push($product_arr, $model->product_id);
+        }
+
+        $query = static::find()
+        ->where(['<>', 'status', 2])
+        ->andWhere(['product_id' => $product_arr]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC
+                ],
+            ],
+        ]);        
         return $dataProvider;
     }
 
