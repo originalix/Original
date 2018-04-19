@@ -2,6 +2,7 @@
 
 namespace api\models\product;
 
+use Yii;
 use yii\data\ActiveDataProvider;
 use common\models\Product;
 use common\models\Category;
@@ -27,6 +28,17 @@ class ProductInfo extends Product
             'is_in_stock',
             'visibility',
             'url_key',
+            'image' => function ($model) {
+                $arr = [];
+                foreach($model->image as $imageModel) {
+                    $url = Yii::getAlias('@baseurl').'/backend/web'. $imageModel->path;
+                    array_push($arr, $url);
+                }
+                return $arr;
+            },
+            'category',
+            'customOptionStock',
+            'flatStock',
             // 'stock' => '库存数量',
             'price',
             'cost_price',
