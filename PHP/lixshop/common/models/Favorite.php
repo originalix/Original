@@ -16,6 +16,21 @@ use Yii;
 class Favorite extends \yii\db\ActiveRecord
 {
     /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
+            ],
+        ];
+    }
+    
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -31,7 +46,7 @@ class Favorite extends \yii\db\ActiveRecord
         return [
             [['customer_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['product_id'], 'string', 'max' => 255],
+            [['product_id'], 'integer'],
         ];
     }
 
