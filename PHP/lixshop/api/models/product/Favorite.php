@@ -6,6 +6,7 @@ use Yii;
 use common\models\Favorite as FavoriteModel;
 use yii\data\ActiveDataProvider;
 use yii\web\HttpException;
+use api\models\product\ProductInfo;
 
 class Favorite extends FavoriteModel
 {
@@ -22,11 +23,22 @@ class Favorite extends FavoriteModel
         ];
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'product_id',
+            'customer_id',
+            'product',
+        ];
+    }
+
     public function getList()
     {
         $id = Yii::$app->user->identity->id;
         $query = static::find()
             ->where(['customer_id' => $id]);
+        $query->with('product');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
@@ -79,5 +91,10 @@ class Favorite extends FavoriteModel
         }
 
         return $favorite->delete();
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(ProductInfo::className(), ['id' => 'product_id']);
     }
 }
