@@ -23,6 +23,23 @@ class Favorite extends FavoriteModel
         ];
     }
 
+    public function getList()
+    {
+        $id = Yii::$app->user->identity->id;
+        $query = static::find()
+            ->where(['customer_id' => $id]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC,
+                ]
+            ],
+        ]);
+
+        return $dataProvider;   
+    }
+
     public function createFavorite()
     {
         if (! $this->validate()) {
@@ -55,4 +72,13 @@ class Favorite extends FavoriteModel
         return $favorite;
     }
 
+    public function deleteFavorite($id)
+    {
+        $favorite = static::findOne($id);
+        if (is_null($favorite)) {
+            return true;
+        }
+
+        return $favorite->delete();
+    }
 }
