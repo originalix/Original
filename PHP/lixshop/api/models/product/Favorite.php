@@ -6,7 +6,6 @@ use Yii;
 use common\models\Favorite as FavoriteModel;
 use yii\data\ActiveDataProvider;
 use yii\web\HttpException;
-use yii\behaviors\TimestampBehavior;
 
 class Favorite extends FavoriteModel
 {
@@ -16,7 +15,7 @@ class Favorite extends FavoriteModel
     public function rules()
     {
         return [
-            [['customer_id', 'product_id'], 'require', 'message' => '{attribute}不能为空'],
+            [['customer_id', 'product_id'], 'required', 'message' => '{attribute}不能为空'],
             [['customer_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['product_id'], 'integer'],

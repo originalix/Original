@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%favorite}}".
@@ -29,7 +30,7 @@ class Favorite extends \yii\db\ActiveRecord
             ],
         ];
     }
-    
+
     /**
      * @inheritdoc
      */
