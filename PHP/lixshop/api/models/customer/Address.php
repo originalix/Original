@@ -89,11 +89,13 @@ class Address extends CustomerAddress
             $defaultArr = [];
             if ($type === "create") {
                 $defaultArr = static::find()
-                    ->where(['is_default' => 1])
+                    ->where(['customer_id' => Yii::$app->user->identity->id])
+                    ->andWhere(['is_default' => 1])
                     ->all();    
             } else {
                 $defaultArr = static::find()
-                ->where(['is_default' => 1])
+                ->where(['customer_id' => Yii::$app->user->identity->id])
+                ->andWhere(['is_default' => 1])
                 ->andWhere(['<>', 'id', $address->id])
                 ->all();
             }
@@ -102,6 +104,34 @@ class Address extends CustomerAddress
                 $model->save();
             }
         }
+    }
+
+    public function deleteAddress($id)
+    {
+        $address = static::findOne($id);
+        if (is_null($address)) {
+            return true;
+        }
+
+        if ($address->is_default == true) {
+            $this->selectOtherDefault($id);
+        }
+
+        return $address->delete();
+    }
+
+    protected function selectOtherDefault($id)
+    {
+        $address = Address::find()
+            ->where(['customer_id' => Yii::$app->user->identity->id])
+            ->andWhere(['<>', 'id', $id])
+            ->one();
+        if (is_null($address)) {
+            return;
+        }
+
+        $address->is_default = true;
+        return $address->save();
     }
 
     public function fields()

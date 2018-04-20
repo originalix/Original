@@ -5,6 +5,7 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\components\BaseController;
 use yii\web\HttpException;
+use api\models\customer\Address;
 
 class AddressController extends BaseController
 {
@@ -76,14 +77,20 @@ class AddressController extends BaseController
      */
     public function actionUpdate()
     {
-        $request = Yii::$app->request;
-        $data = $request->getBodyParams();
+        $data = Yii::$app->request->getBodyParams();
         $modelClass = new $this->modelClass;
         return $modelClass->updateAddress($data);
     }
 
+    /**
+     * 删除地址
+     *
+     * @return void
+     */
     public function actionDelete()
     {
-
+        $id = Yii::$app->request->getBodyParam('id');
+        $modelClass = new $this->modelClass;
+        return $modelClass->deleteAddress($id);
     }
 }
