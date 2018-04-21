@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use common\models\Product;
 
 /**
  * This is the model class for table "{{%favorite}}".
@@ -15,6 +17,21 @@ use Yii;
  */
 class Favorite extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -31,7 +48,7 @@ class Favorite extends \yii\db\ActiveRecord
         return [
             [['customer_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['product_id'], 'string', 'max' => 255],
+            [['product_id'], 'integer'],
         ];
     }
 
@@ -47,5 +64,10 @@ class Favorite extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 }

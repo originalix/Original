@@ -72,13 +72,13 @@ class Address extends CustomerAddress
 
         $address->load($data, '');
         if (! $address->validate()) {
-            throw new HttpException(423, array_values($this->getFirstErrors())[0]);
+            throw new HttpException(423, array_values($address->getFirstErrors())[0]);
         }
 
         $this->changeDefaultState($address);
 
         if (! $address->save()) {
-            throw new HttpException(423, array_values($this->getFirstErrors())[0]);
+            throw new HttpException(423, array_values($address->getFirstErrors())[0]);
         }
         return $address;
     }
