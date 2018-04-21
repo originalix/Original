@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="slide-show-search">
+<div class="slide-show-search tabbable tab-content no-border padding-24">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

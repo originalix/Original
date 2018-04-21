@@ -10,7 +10,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Slide Shows', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="slide-show-view">
+<div class="slide-show-view tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,7 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'path',
+            'path' => [
+                'attribute' => 'path',
+                'label' => '图片',
+                'format' => 'html',
+                'value' => function ($data) {
+                    if (is_null($data->path)) {
+                        return '未上传图片';
+                    }
+                    $url = Yii::getAlias('@baseurl').'/backend/web'. $data->path;
+                    return Html::img($url, ['alt'=>'yii','width'=>'180','height'=>'120']);
+                }
+            ],
             'filename',
             'is_usage',
             'created_at',

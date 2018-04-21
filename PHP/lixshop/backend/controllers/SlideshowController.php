@@ -70,10 +70,9 @@ class SlideshowController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile  = UploadedFile::getInstance($model, 'imageFile');
-            $sildeshow = $model->saveSlideShow();
             
-            if (! is_null($sildeshow)) {
-                return $this->redirect(['view', 'id' => $sildeshow->id]);
+            if ($slideshow = $model->saveSlideShow()) {
+                return $this->redirect(['view', 'id' => $slideshow->id]);
             }
         }
 

@@ -28,7 +28,7 @@ class AddSlideShowForm extends Model
     public function saveSlideShow()
     {
         if (! $this->validate()) {
-            return null;
+            return false;
         }
 
         $dir = '/uploads/temp/';  
@@ -45,12 +45,16 @@ class AddSlideShowForm extends Model
         if ($this->imageFile->saveAs($file)) {
             $model = new SlideShow();
             $model->title = $this->title;
-            $model->path = $file;
+            $model->path = '/uploads/temp/' . $filename;
             $model->filename = $filename;
-            $is_usage = false;
-            return $model->save();
+            $is_usage = 0;
+            if ($model->save()) {
+                return $model;
+            } else {
+                return false;
+            }
         }
 
-        return null;
+        return false;
     }
 }

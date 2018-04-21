@@ -7,17 +7,17 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\SlideShowSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Slide Shows';
+$this->title = '首页轮播图管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="slide-show-index">
+<div class="slide-show-index tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Slide Show', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,8 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'path',
-            'filename',
+            [
+                'attribute' => 'path',
+                'label' => '图片',
+                'format' => 'html',
+                'content' => function ($data) {
+                    if (is_null($data->path)) {
+                        return '未上传图片';
+                    }
+                    $url = Yii::getAlias('@baseurl').'/backend/web'. $data->path;
+                    return Html::img($url, ['alt'=>'yii','width'=>'180','height'=>'120']);
+                }
+            ],
             'is_usage',
             //'created_at',
             //'updated_at',
