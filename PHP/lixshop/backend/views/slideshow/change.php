@@ -16,9 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php $form = ActiveForm::begin([
-        'options' => ['enctype' => 'multipart/form-data']
-        ]); ?>
+    <?=Html::beginForm('','post',['id'=>'form','class'=>'form','data'=>'myself']);?>
 
         <table class="table">
             <tr>
@@ -30,36 +28,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 foreach($data as $slideModel) {
                     echo '<tr>';
                     echo '<td class="active">';
-                    // echo '';
-                    echo Html::checkbox('is_usage',$slideModel->is_usage,['calss'=>'form-control']);
+
+                    if ($slideModel->is_usage) {
+                        echo '<input type="checkbox" name="id[]" value=' .$slideModel->id .' checked="checked" />';
+                    } else {
+                        echo '<input type="checkbox" name="id[]" value=' .$slideModel->id .'/>';
+                    }
                     echo '</td>';
                     echo '<td class="success">';
                     echo $slideModel->title;
                     echo '</td>';
                     echo '<td class="warning">';
-                    // echo '图片';
                     $url = Yii::getAlias('@baseurl').'/backend/web'. $slideModel->path;
                     echo Html::img($url, ['alt'=>'yii','width'=>'300','height'=>'150']);
                     echo '</td>';
                     echo '</tr>';
                 }
             ?>
-            <!-- <tr>
-                <td class="active">
-                    否
-                </td>
-                <td class="success">
-        
-                </td>
-                <td class="warning">
-        
-                </td>
-            </tr> -->
         </table>
 
     <div class="form-group">
         <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?=Html::endForm();?>
 </div>
