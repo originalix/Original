@@ -10,7 +10,7 @@ use common\models\ProductImage;
 use common\models\ProductCategory;
 use common\models\CustomOptionStock;
 use common\models\ProductFlatStock;
-
+use common\models\SalePromotion;
 
 /**
  * This is the model class for table "{{%product_info}}".
@@ -132,5 +132,10 @@ class Product extends \yii\db\ActiveRecord
     public function getFlatStock()
     {
         return $this->hasOne(ProductFlatStock::className(), ['product_id' => 'id']);
+    }
+
+    public function getSalePromotion()
+    {
+        return $this->hasMany(SalePromotion::className(), ['product_id' => 'id']);
     }
 }

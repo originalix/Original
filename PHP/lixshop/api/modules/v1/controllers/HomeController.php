@@ -6,6 +6,8 @@ use Yii;
 use api\components\BaseController;
 use common\models\SlideShow;
 use common\models\Category;
+use common\models\SalePromotion;
+use yii\data\ActiveDataProvider;
 
 
 class HomeController extends BaseController
@@ -19,7 +21,7 @@ class HomeController extends BaseController
         // 分类列表
         $categories = Category::find()->all();
         // 优惠爆品
-
+        $salePromotions = $this->getSaleProduction();
         // 底部类目
         // 服务介绍、服务范围、价目中心、团体洗衣
         $bottom = $this->getBottom();
@@ -27,6 +29,7 @@ class HomeController extends BaseController
         return [
             'slideshow' => $slideShows, 
             'categories' => $categories, 
+            'promotions' => $salePromotions,
             'bottom' => $bottom,
         ];
     }
@@ -55,5 +58,16 @@ class HomeController extends BaseController
                 'icon' => '',
             ],
         ];
+    }
+
+    protected function getSaleProduction()
+    {
+        $query = SalePromotion::find();
+        $query->with('product');
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+
+        return $dataProvider->getModels();
     }
 }

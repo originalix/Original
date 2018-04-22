@@ -10,6 +10,8 @@ use yii\helpers\ArrayHelper;
 $this->title = '设置促销商品';
 ?>
 <div class="tabbable tab-content no-border padding-24">
+    <h1>设置促销商品</h1>
+    <p class="text-warning">最多设置两个商品促销放入首页，请勿勾选过多</p>
     <?php
         $session = Yii::$app->session;
         if ($session->hasFlash('error')) {

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\Product;
 
 /**
  * This is the model class for table "{{%sale_promotion}}".
@@ -30,6 +31,15 @@ class SalePromotion extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'product_id',
+            'product',
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -39,5 +49,10 @@ class SalePromotion extends \yii\db\ActiveRecord
             'id' => 'ID',
             'product_id' => '产品id',
         ];
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 }
