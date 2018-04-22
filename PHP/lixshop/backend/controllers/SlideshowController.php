@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\AddSlideShowForm;
 use yii\web\UploadedFile;
+use backend\models\ChangeSlideShow;
 
 /**
  * SlideshowController implements the CRUD actions for SlideShow model.
@@ -83,9 +84,21 @@ class SlideshowController extends BaseController
 
     public function actionChange()
     {
+        $searchModel = new SlideShowSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = new ChangeSlideShow();
         $models = SlideShow::find()->all();
+
+        if (Yii::$app->request->isPost) {
+            print_r(Yii::$app->request->post());
+            exit();
+        }
         return $this->render('change', [
-            'models' => $models
+            'data' => $models,
+            'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
