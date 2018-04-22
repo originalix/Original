@@ -15,6 +15,7 @@ use backend\models\AddCategoryForm;
 use common\models\ProductFlatStock;
 use backend\queues\ProductDataJob;
 use yii\log\Logger;
+use yii\data\ActiveDataProvider;
 
 class ProductController extends BaseController
 {
@@ -189,7 +190,14 @@ class ProductController extends BaseController
 
     public function actionPromotion()
     {
-        $products = Product::find()->all();
+        // $products = Product::find()->all();
+        $query = Product::find();
+        $query->with('image');
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        $products = $dataProvider->getModels();
+    
         return $this->render('promotion',[
             'products' => $products,
         ]);
