@@ -82,23 +82,45 @@ class SlideshowController extends BaseController
         ]);
     }
 
+    /**
+     * 调整首页轮播图的使用
+     *
+     * @return void
+     */
     public function actionChange()
     {
-        $searchModel = new SlideShowSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        $model = new ChangeSlideShow();
         $models = SlideShow::find()->all();
 
         if (Yii::$app->request->isPost) {
-            print_r(Yii::$app->request->post());
-            exit();
+            $session = Yii::$app->session;
+            $idArr = [];
+            $selectedId = Yii::$app->request->post('id');
+            
+            if (count($selectedId) > 3) {
+                $session->setFlash('error', '最多选择三个轮播图');
+            }
+
+            
+            $is_usage_models = SlideShow::find()
+            ->where(['is_usage' => 1])
+            ->all();
+            
+            foreach ($is_usage_models as $model) {
+                $model->is_usage = 0;
+                $model->save();
+            }
+
+            foreach($selectedId as $id) {
+                $model = SlideShow::findOne($id);
+                $model->is_usage = 1;
+                $model->save();
+            }
+
+            return $this->redirect('index');
+    
         }
         return $this->render('change', [
             'data' => $models,
-            'model' => $model,
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
         ]);
     }
 

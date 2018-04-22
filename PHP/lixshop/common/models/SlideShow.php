@@ -49,7 +49,7 @@ class SlideShow extends \yii\db\ActiveRecord
         return [
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'path', 'filename'], 'string', 'max' => 255],
-            [['is_usage'], 'string', 'max' => 1],
+            [['is_usage'], 'integer'],
         ];
     }
 

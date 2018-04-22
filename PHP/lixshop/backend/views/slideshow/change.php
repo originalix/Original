@@ -1,5 +1,5 @@
 <?php
-
+// use Yii;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo '<td class="active">';
 
                     if ($slideModel->is_usage) {
-                        echo '<input type="checkbox" name="id[]" value=' .$slideModel->id .' checked="checked" />';
+                        echo '<input type="checkbox" name="id[]" value="' . $slideModel->id . '" checked="checked" />';
                     } else {
-                        echo '<input type="checkbox" name="id[]" value=' .$slideModel->id .'/>';
+                        echo '<input type="checkbox" name="id[]" value="' .$slideModel->id .'" />';
                     }
                     echo '</td>';
                     echo '<td class="success">';
@@ -46,6 +46,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ?>
         </table>
+
+        <?php
+            $session = Yii::$app->session;
+            if ($session->hasFlash('error')) {
+                echo '<div class="error">';
+                echo '<p class="bg-danger">';
+                echo $session->getFlash('error');   
+                echo '</p>';
+                echo '</div>';
+            }
+            
+        ?>
 
     <div class="form-group">
         <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
