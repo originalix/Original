@@ -81,6 +81,14 @@ class SlideshowController extends BaseController
         ]);
     }
 
+    public function actionChange()
+    {
+        $models = SlideShow::find()->all();
+        return $this->render('change', [
+            'models' => $models
+        ]);
+    }
+
     /**
      * Updates an existing SlideShow model.
      * If update is successful, the browser will be redirected to the 'view' page.

@@ -30,6 +30,10 @@ return [
                 'title' => '产品分类管理',
                 'redirect' => '../category/index',
             ],
+            [
+                'title' => '活动轮播图管理',
+                'redirect' => '../slideshow/index',
+            ],
         ],
     ],
     [

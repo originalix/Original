@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('新建', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('选择需要启用的轮播图', ['change'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -40,7 +41,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img($url, ['alt'=>'yii','width'=>'180','height'=>'120']);
                 }
             ],
-            'is_usage',
+            [
+                'attribute' => 'is_usage',
+                'label' => '是否启用',
+                'content' => function ($data) {
+                    if ($data->is_usage == false) {
+                        return '未使用';
+                    } else {
+                        return '使用中';
+                    }
+                }
+            ],
+            // 'is_usage',
             //'created_at',
             //'updated_at',
 
