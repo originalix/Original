@@ -186,4 +186,12 @@ class ProductController extends BaseController
             'product_id' => $id,
         ]));
     }
+
+    public function actionPromotion()
+    {
+        $products = Product::find()->all();
+        return $this->render('promotion',[
+            'products' => $products,
+        ]);
+    }
 }
