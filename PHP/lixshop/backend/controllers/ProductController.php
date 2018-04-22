@@ -11,6 +11,7 @@ use common\models\ProductImage;
 use common\models\CustomOptionStock;
 use common\models\ProductCategory;
 use common\models\Category;
+use common\models\SalePromotion;
 use backend\models\AddCategoryForm;
 use common\models\ProductFlatStock;
 use backend\queues\ProductDataJob;
@@ -197,9 +198,39 @@ class ProductController extends BaseController
             'query' => $query,
         ]);
         $products = $dataProvider->getModels();
-    
+
+        // 查询爆款列表
+        $salePromotion = SalePromotion::find()->all();
+        
+        if (Yii::$app->request->isPost) {
+            $session = Yii::$app->session;
+            $idArr = [];
+            $selectedId = Yii::$app->request->post('id');
+            
+            if (count($selectedId) > 2) {
+                $session->setFlash('error', '最多选择两个促销商品放至首页');
+                return $this->render('promotion',[
+                    'products' => $products,
+                    'promotions' => $salePromotion,
+                ]);
+            }
+
+            foreach ($salePromotion as $model) {
+                $model->delete();
+            }
+
+            foreach($selectedId as $id) {
+                $model = new SalePromotion();
+                $model->product_id = $id;
+                $model->save();
+            }
+
+            return $this->redirect('../productform/index');
+        }
+
         return $this->render('promotion',[
             'products' => $products,
+            'promotions' => $salePromotion,
         ]);
     }
 }
