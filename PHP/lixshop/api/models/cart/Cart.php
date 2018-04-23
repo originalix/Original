@@ -5,10 +5,11 @@ namespace api\models\cart;
 use Yii;
 use common\models\SalesFlatCart;
 use common\models\Customer;
+use yii\web\HttpException;
 
 class Cart extends SalesFlatCart
 {
-    public function createRow()
+    public static function createRow()
     {
         if (is_null($this->items_count)) {
             $this->items_count = 0;
@@ -24,10 +25,14 @@ class Cart extends SalesFlatCart
         $this->customer_name = NULL;
         $this->remote_ip = Yii::$app->request->userIP;
 
-        return $this->save();
+        if (! $this->save()) {
+            throw new HttpException(418, '创建购物车失败');
+        }
+
+        return $this;
     }
 
-    public function findByCustomerId($id)
+    public static function findByCustomerId($id)
     {
         return static::find()->where(['customer_id' => $id])->one();
     }
