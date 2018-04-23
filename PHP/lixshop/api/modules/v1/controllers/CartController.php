@@ -36,5 +36,23 @@ class CartController extends BaseController
         $items_count = $request->post('items_count');
         
         return $cartItem->saveItem($cart, $items_count);
-    }    
+    }
+
+    public function actionDelete()
+    {
+        $item_id = Yii::$app->request->getBodyParam('id');
+        $cartItem = CartItem::findOne($item_id);
+        if (is_null($cartItem)) {
+            return null;
+        }
+
+        $count = $cartItem->count;
+        $cart = Cart::findOne($cartItem->cart_id);
+        $cart->items_count = $cart->items_count - $count;
+        if ($cartItem->delete()) {
+            return $cart->save();
+        }
+
+        return null;
+    }
 }
