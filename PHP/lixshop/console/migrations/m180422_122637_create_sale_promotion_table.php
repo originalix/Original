@@ -12,6 +12,7 @@ class m180422_122637_create_sale_promotion_table extends Migration
      */
     public function safeUp()
     {
+        // 创建爆款商品表
         $this->createTable('{{%sale_promotion}}', [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer()->defaultValue(NULL)->comment('产品id'),
