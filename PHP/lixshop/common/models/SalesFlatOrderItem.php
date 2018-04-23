@@ -61,7 +61,7 @@ class SalesFlatOrderItem extends \yii\db\ActiveRecord
             'count' => '购买数量',
             'price' => '产品单价',
             'row_total' => '一个产品价格*个数',
-            'redirect_url' => '封面图片',
+            'redirect_url' => '跳转地址',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
