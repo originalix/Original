@@ -32,6 +32,21 @@ class CartItem extends SalesFlatCartItem
         return $this;
     }
 
+    public function updateItem($items_count)
+    {
+        if (! $this->validate()) {
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]);
+        }
+
+        if ($this->save()) {
+            $cart = Cart::findOne($this->cart_id);
+            $cart->items_count = $items_count;
+            return $cart->save();
+        }
+
+        return null;
+    }
+
     public function getProduct()
     {
         return $this->hasOne(Product::className(), ['id' => 'product_id']);

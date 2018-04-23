@@ -50,13 +50,33 @@ class CartController extends BaseController
         }
 
         $cartItem->cart_id = $cart->id;
-        $cartItem->product_id = $request->post('id');
+        $cartItem->product_id = $request->post('product_id');
         $cartItem->count = $request->post('count');
         $cartItem->custom_option_key = $request->post('custom_key');
         $cartItem->active = $request->post('active');
         $items_count = $request->post('items_count');
         
         return $cartItem->saveItem($cart, $items_count);
+    }
+
+    /**
+     * 更新购物车商品属性
+     *
+     * @return void
+     */
+    public function actionUpdate()
+    {
+        $request = Yii::$app->request;
+        $cartItem = CartItem::findOne($request->getBodyParam('id'));
+        if (is_null($cartItem)) {
+            $cartItem = new CartItem();
+        }
+        $cartItem->count = $request->post('count');
+        $cartItem->custom_option_key = $request->post('custom_key');
+        $cartItem->active = $request->post('active');
+        $items_count = $request->post('items_count');
+
+        return $cartItem->updateItem($items_count);
     }
 
     /**
