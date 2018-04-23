@@ -29,12 +29,12 @@ class ProfileController extends BaseController
         $balanceModel = Balance::find()
             ->where(['customer_id' => $user->id])
             ->one();
-        if (! is_null($balanceModel)) {
+        if (!is_null($balanceModel)) {
             $balance = $balanceModel->balance;
         }
 
         // 积分
-        
+
         return [
             'user' => $user,
             'coupon' => $couponCount,
@@ -46,5 +46,10 @@ class ProfileController extends BaseController
     protected function setSecretMobile($mobile)
     {
         return preg_replace('/(\d{3})\d{4}(\d{4})/', '$1****$2', $mobile);
+    }
+
+    public function actionIp()
+    {
+        return Yii::$app->request->userIP;
     }
 }
