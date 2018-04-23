@@ -18,13 +18,18 @@ class CartItem extends SalesFlatCartItem
             ->one();
     }
 
-    public function saveItem()
+    public function saveItem($cart, $items_count)
     {
         if (! $this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]);
         }
 
-        return $this->saveItem();
+        if ($this->save()) {
+            $cart->items_count = $items_count;
+            $cart->save();
+        }
+
+        return $this;
     }
 
     public function getProduct()

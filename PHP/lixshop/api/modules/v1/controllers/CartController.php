@@ -33,9 +33,8 @@ class CartController extends BaseController
         $cartItem->count = $request->post('count');
         $cartItem->custom_option_key = $request->post('custom_key');
         $cartItem->active = $request->post('active');
+        $items_count = $request->post('items_count');
         
-        $cartItem->saveItem();
-        
-        return null;
+        return $cartItem->saveItem($cart, $items_count);
     }    
 }
