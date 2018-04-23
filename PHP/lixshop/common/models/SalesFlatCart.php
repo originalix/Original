@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%sales_flat_cart}}".
@@ -20,6 +21,21 @@ use Yii;
 class SalesFlatCart extends \yii\db\ActiveRecord
 {
     /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
+            ],
+        ];
+    }
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -34,7 +50,7 @@ class SalesFlatCart extends \yii\db\ActiveRecord
     {
         return [
             [['items_count', 'customer_id'], 'integer'],
-            [['customer_id'], 'required'],
+            // [['customer_id'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['customer_name'], 'string', 'max' => 11],
             [['customer_is_guest'], 'string', 'max' => 1],
