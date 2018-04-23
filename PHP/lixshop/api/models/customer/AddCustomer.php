@@ -4,6 +4,7 @@ namespace api\models\customer;
 
 use yii\base\Model;
 use common\models\Customer;
+use common\models\Balance;
 
 class AddCustomer extends Model
 {
@@ -47,6 +48,11 @@ class AddCustomer extends Model
         if (! $customer->save()) {
             return array_values($customer->getFirstErrors())[0];
         }
+
+        $balance = new Balance();
+        $balance->customer_id = $customer->id;
+        $balance->balance = 0;
+        $balance->save();
 
         return $customer;
     }
