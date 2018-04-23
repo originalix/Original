@@ -3,12 +3,12 @@
 namespace api\modules\v1\controllers;
 
 use Yii;
-use api\components\BaseController;
+// use api\components\BaseController;
 use api\models\customer\AddCustomer;
 use common\models\Customer;
 use yii\web\HttpException;
 
-class AuthController extends BaseController
+class AuthController extends \yii\web\Controller
 {
     /**
      * 获取或生成token 返回user信息 携带token
