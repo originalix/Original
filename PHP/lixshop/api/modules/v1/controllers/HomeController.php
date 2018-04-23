@@ -6,7 +6,8 @@ use Yii;
 use api\components\BaseController;
 use common\models\SlideShow;
 use common\models\Category;
-use common\models\SalePromotion;
+// use common\models\SalePromotion;
+use api\models\product\SalePromotion;
 use yii\data\ActiveDataProvider;
 
 
