@@ -4,6 +4,7 @@ namespace api\models\cart;
 
 use Yii;
 use common\models\SalesFlatCart;
+use common\models\Customer;
 
 class Cart extends SalesFlatCart
 {
@@ -24,5 +25,15 @@ class Cart extends SalesFlatCart
         $this->remote_ip = Yii::$app->request->userIP;
 
         return $this->save();
+    }
+
+    public function findByCustomerId($id)
+    {
+        return static::find()->where(['customer_id' => $id])->one();
+    }
+
+    public function getCustomer()
+    {
+        return $this->hasOne(Customer::className(), ['id' => 'customer_id']);
     }
 }
