@@ -8,7 +8,28 @@ use api\models\cart\Cart;
 use api\models\cart\CartItem;
 
 class CartController extends BaseController
-{
+{   
+    /**
+     * 获取购物车列表
+     *
+     * @return void
+     */
+    public function actionIndex()
+    {
+        $uid = Yii::$app->user->identity->id;
+        $cart = Cart::findByCustomerId($uid);
+        if (is_null($cart)) {
+            return null;
+        }
+
+        $cartItems = CartItem::find()
+            ->where(['cart_id' => $cart->id])
+            ->andWhere(['<>', 'count', 0])
+            ->all();
+        
+        return $cartItems;
+    }
+
     /**
      * 添加商品进入购物车
      *
@@ -38,6 +59,11 @@ class CartController extends BaseController
         return $cartItem->saveItem($cart, $items_count);
     }
 
+    /**
+     * 从购物车 删除商品
+     *
+     * @return void
+     */
     public function actionDelete()
     {
         $item_id = Yii::$app->request->getBodyParam('id');
