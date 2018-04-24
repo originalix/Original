@@ -24,7 +24,7 @@ class OrderItemForm extends Model
     public function rules()
     {
         return [
-            [['order_id', 'product_id', 'count', 'price', 'row_total', 'custom_option_key'], 'required', 'message' => '{attribute}不能为空'],
+            [['order_id', 'product_id', 'count', 'custom_option_key'], 'required', 'message' => '{attribute}不能为空'],
             [['order_id', 'customer_id', 'product_id', 'count'], 'integer'],
             [['custom_option_key'], 'required'],
             [['price', 'row_total'], 'number'],
@@ -35,16 +35,20 @@ class OrderItemForm extends Model
 
     public function saveWithOrder($order)
     {
+        $this->order_id = $order->id;
+        $this->customer_id = $order->customer_id;
+
         if (! $this->validate()) {
             throw new HttpException(418, '生成订单错误');
         }
 
         $product = ProductInfo::findOne($this->product_id);
-
+        print_r($product->image);
+        exit();
         $model = new OrderItem();
         $model->attributes = [
-            'order_id' => $order->id,
-            'customer_id' => $order->customer_id,
+            'order_id' => $this->order_id,
+            'customer_id' => $this->customer_id,
             'product_id' => $this->product_id,
             'custom_option_key' => $this->custom_option_key,
             'name' => $product->name,
@@ -55,6 +59,11 @@ class OrderItemForm extends Model
             'redirect_url' => null,
         ];
 
-        return $model->save();
+        if (! $model->save()) {
+
+            throw new HttpException(418, array_values($model->getFirstErrors())[0]);
+        }
+
+        return true;
     }
 }

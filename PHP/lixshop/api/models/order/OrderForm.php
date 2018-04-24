@@ -26,6 +26,7 @@ class OrderForm extends Model
     public $order_remark;
     public $txn_type;
     public $orderItems;
+    public $increment_id;
 
     public function rules()
     {
@@ -37,7 +38,7 @@ class OrderForm extends Model
             [['remote_ip'], 'string', 'max' => 50],
             [['coupon_code'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
-            [['txn_id'], 'string', 'max' => 255],
+            // [['txn_id'], 'string', 'max' => 255],
             [['orderItems'], 'validateOrderItems']
         ];
     }
@@ -54,7 +55,8 @@ class OrderForm extends Model
     public function save()
     {
         if (! $this->validate()) {
-            throw new HttpException(418, '保存订单失败');
+            // throw new HttpException(418, '保存订单失败');
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]);
         }
 
         $model = new Order();
@@ -71,7 +73,7 @@ class OrderForm extends Model
             'coupon_code' => $this->coupon_code,
             'payment_method' => $this->payment_method,
             'address_id' => $this->address_id,
-            'order_remark' => $this->order_remarkm,
+            'order_remark' => $this->order_remark,
             'txn_type' => $this->txn_type,
         ];
 
@@ -85,8 +87,8 @@ class OrderForm extends Model
                 // 保存order Items
                 $orderItem = new OrderItemForm();
                 foreach ($this->orderItems as $item) {
-                    $_orderItem = clone $orderItem;
-                    $_orderItem->load($item, '');
+                        $_orderItem = clone $orderItem;
+                        $_orderItem->load($item, '');
                     if (! $_orderItem->saveWithOrder($model)) {
                         throw new Exception('订单产品保存失败');
                     }
