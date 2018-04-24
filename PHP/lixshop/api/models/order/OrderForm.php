@@ -65,8 +65,8 @@ class OrderForm extends Model
             'discount_amount' => $this->discount_amount,
             'real_amount' => $this->real_amount,
             'customer_id' => $this->customer_id,
-            'customer_group' => $this->customer_group,
-            'customer_name' => $this->customer_name,
+            // 'customer_group' => $this->customer_group,
+            // 'customer_name' => $this->customer_name,
             'remote_ip' => $this->remote_ip,
             'coupon_code' => $this->coupon_code,
             'payment_method' => $this->payment_method,
@@ -86,7 +86,7 @@ class OrderForm extends Model
                 $orderItem = new OrderItemForm();
                 foreach ($this->orderItems as $item) {
                     $_orderItem = clone $orderItem;
-                    $_orderItem->load($item);
+                    $_orderItem->load($item, '');
                     if (! $_orderItem->saveWithOrder($model)) {
                         throw new Exception('订单产品保存失败');
                     }
