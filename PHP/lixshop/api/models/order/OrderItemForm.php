@@ -43,8 +43,10 @@ class OrderItemForm extends Model
         }
 
         $product = ProductInfo::findOne($this->product_id);
-        print_r($product->image);
-        exit();
+        $imagePath = null;
+        if (! empty($product->image)) {
+            $imagePath = $product->image[0]->path;
+        }
         $model = new OrderItem();
         $model->attributes = [
             'order_id' => $this->order_id,
@@ -52,18 +54,13 @@ class OrderItemForm extends Model
             'product_id' => $this->product_id,
             'custom_option_key' => $this->custom_option_key,
             'name' => $product->name,
-            'image' => $product->image[0],
+            'image' => $imagePath,
             'count' => $this->count,
             'price' => $product->final_price,
             'row_total' => $this->count * $product->final_price,
             'redirect_url' => null,
         ];
 
-        if (! $model->save()) {
-
-            throw new HttpException(418, array_values($model->getFirstErrors())[0]);
-        }
-
-        return true;
+        return $model->save();
     }
 }
