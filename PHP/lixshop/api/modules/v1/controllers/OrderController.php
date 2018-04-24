@@ -15,4 +15,26 @@ class OrderController extends BaseController
         $order->setAttributes(Yii::$app->request->post());
         return $order;
     }
+
+    /*
+     * items_count
+     * total_amount
+     * discount_amount
+     * real_amount
+     * coupon_code
+     * payment_method
+     * address_id
+     * order_remark
+     * txn_type
+     * 
+     * orderItem 
+     * {
+     *      [
+     *      'product_id',
+     *      'count'
+     *      'price'
+     *      'row_total'
+     *      ]
+     * }
+     */
 }
