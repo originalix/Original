@@ -6,7 +6,9 @@ use Yii;
 use api\models\order\Order;
 use yii\base\Model;
 use yii\web\HttpException;
+use yii\db\Exception;
 use api\models\order\OrderItem;
+use api\models\order\OrderItemForm;
 
 class OrderForm extends Model
 {
@@ -81,7 +83,22 @@ class OrderForm extends Model
 
             if ($this->orderItems) {
                 // 保存order Items
+                $orderItem = new OrderItemForm();
+                foreach ($this->orderItems as $item) {
+                    $_orderItem = clone $orderItem;
+                    $_orderItem->load($item);
+                    if (! $_orderItem->saveWithOrder($model)) {
+                        throw new Exception('订单产品保存失败');
+                    }
+                }
             }
+
+            $transaction->commit();
+        } catch (Exception $e) {
+            $transaction->rollBack();
+            throw new HttpException(418, $e->getMessage());
         }
+
+        return $model->attributes;
     }
 }
