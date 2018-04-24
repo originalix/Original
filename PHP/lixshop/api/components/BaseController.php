@@ -63,4 +63,9 @@ class BaseController extends \yii\rest\Controller
         Yii::info($message);
         Yii::info($content);
     }
+
+    public function getUser()
+    {
+        return Yii::$app->user->identity;
+    }
 }

@@ -4,8 +4,10 @@ namespace api\models\order;
 
 use Yii;
 use common\models\SalesFlatOrder;
+use common\models\SalesFlatOrderItem;
+use yii\base\Model;
 
-class Order extends SalesFlatOrder
+class Order extends Model
 {
     public function rules()
     {
@@ -19,5 +21,10 @@ class Order extends SalesFlatOrder
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
             [['txn_id'], 'string', 'max' => 255],
         ];
+    }
+
+    public function createOrder()
+    {
+        
     }
 }
