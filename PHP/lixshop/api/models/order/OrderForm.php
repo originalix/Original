@@ -3,13 +3,15 @@
 namespace api\models\order;
 
 use Yii;
-use common\models\SalesFlatOrder;
-use common\models\SalesFlatOrderItem;
+use api\models\order\Order;
 use yii\base\Model;
+use yii\web\HttpException;
+use yii\db\Exception;
+use api\models\order\OrderItem;
+use api\models\order\OrderItemForm;
 
 class OrderForm extends Model
 {
-    public $order_status;
     public $items_count;
     public $total_amount;
     public $discount_amount;
@@ -23,7 +25,8 @@ class OrderForm extends Model
     public $address_id;
     public $order_remark;
     public $txn_type;
-    public $txn_id;
+    public $orderItems;
+    public $increment_id;
 
     public function rules()
     {
@@ -35,9 +38,69 @@ class OrderForm extends Model
             [['remote_ip'], 'string', 'max' => 50],
             [['coupon_code'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
-            [['txn_id'], 'string', 'max' => 255],
+            // [['txn_id'], 'string', 'max' => 255],
+            [['orderItems'], 'validateOrderItems']
         ];
     }
 
-    
+    public function validateOrderItems($attribute)
+    {
+        if (! $this->hasErrors() && !empty($this->attribute)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function save()
+    {
+        if (! $this->validate()) {
+            // throw new HttpException(418, '保存订单失败');
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]);
+        }
+
+        $model = new Order();
+        $model->attributes = [
+            'order_status' => 1,
+            'items_count' => $this->items_count,
+            'total_amount' => $this->total_amount,
+            'discount_amount' => $this->discount_amount,
+            'real_amount' => $this->real_amount,
+            'customer_id' => $this->customer_id,
+            // 'customer_group' => $this->customer_group,
+            // 'customer_name' => $this->customer_name,
+            'remote_ip' => $this->remote_ip,
+            'coupon_code' => $this->coupon_code,
+            'payment_method' => $this->payment_method,
+            'address_id' => $this->address_id,
+            'order_remark' => $this->order_remark,
+            'txn_type' => $this->txn_type,
+        ];
+
+        $transaction = Yii::$app->db->beginTransaction();
+        try {
+            if (! $model->save()) {
+                throw new HttpException(418, '订单保存失败');
+            }
+
+            if ($this->orderItems) {
+                // 保存order Items
+                $orderItem = new OrderItemForm();
+                foreach ($this->orderItems as $item) {
+                        $_orderItem = clone $orderItem;
+                        $_orderItem->load($item, '');
+                    if (! $_orderItem->saveWithOrder($model)) {
+                        throw new Exception('订单产品保存失败');
+                    }
+                }
+            }
+
+            $transaction->commit();
+        } catch (Exception $e) {
+            $transaction->rollBack();
+            throw new HttpException(418, $e->getMessage());
+        }
+
+        return $model->attributes;
+    }
 }
