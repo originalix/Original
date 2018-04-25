@@ -59,16 +59,63 @@ class OrderForm extends Model
         }
 
         // 生成order model 并保存
-        $this->saveOrderModel();
+        $order = $this->createOrderModel();
 
         // 开启事务
+        $transaction = Yii::$app->db->beginTransaction();
 
-        // 循环产品 orderItems
-            // 每个产品 记录信息 保存model
-            // 每个产品 按数量 减少库存
-            // 对应的custom_option_key 库存减少
-        
-        // 事务结束
+        try {
+            if (! $order->save()) {
+                throw new HttpException(418, '订单保存失败');
+            }
+
+            if ($this->orderItems) {
+                // 循环产品 orderItems
+                foreach ($this->orderItems as $item) {
+                    $_orderItem = clone $orderItem;
+                    $_orderItem->load($item, '');
+                    if (! $_orderItem->saveWithOrder($model)) {
+                        throw new Exception('订单产品保存失败');
+                    }
+                }
+                    // 每个产品 记录信息 保存model
+                    // 每个产品 按数量 减少库存
+                    // 对应的custom_option_key 库存减少
+                // 保存order Items
+                $orderItem = new OrderItemForm();
+            }
+
+            // 事务结束
+            $transaction->commit();
+        } catch (Exception $e) {
+            $transaction->rollBack();
+            throw new HttpException(418, $e->getMessage());
+        }
+
+        return $model->attributes;
+    }
+
+    protected function createOrderModel()
+    {
+        $model = new Order();
+        $model->attributes = [
+            'order_status' => 1,
+            'items_count' => $this->items_count,
+            'total_amount' => $this->total_amount,
+            'discount_amount' => $this->discount_amount,
+            'real_amount' => $this->real_amount,
+            'customer_id' => $this->customer_id,
+            // 'customer_group' => $this->customer_group,
+            // 'customer_name' => $this->customer_name,
+            'remote_ip' => $this->remote_ip,
+            'coupon_code' => $this->coupon_code,
+            'payment_method' => $this->payment_method,
+            'address_id' => $this->address_id,
+            'order_remark' => $this->order_remark,
+            'txn_type' => $this->txn_type,
+        ];
+
+        return $model;
     }
 
     public function save()

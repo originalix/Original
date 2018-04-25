@@ -33,6 +33,9 @@ class OrderItemForm extends Model
         ];
     }
 
+    // 每个产品 记录信息 保存model
+    // 每个产品 按数量 减少库存
+    // 对应的custom_option_key 库存减少
     public function saveWithOrder($order)
     {
         $this->order_id = $order->id;
