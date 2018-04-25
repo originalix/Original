@@ -52,6 +52,25 @@ class OrderForm extends Model
         return false;
     }
 
+    public function save1()
+    {
+        if (! $this->validate()) {
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]);
+        }
+
+        // 生成order model 并保存
+        $this->saveOrderModel();
+
+        // 开启事务
+
+        // 循环产品 orderItems
+            // 每个产品 记录信息 保存model
+            // 每个产品 按数量 减少库存
+            // 对应的custom_option_key 库存减少
+        
+        // 事务结束
+    }
+
     public function save()
     {
         if (! $this->validate()) {
