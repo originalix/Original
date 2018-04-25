@@ -101,3 +101,11 @@ product/category (GET)
 - 余额归零以后 取消折扣
 
 下单 分用户群体 打折
+
+
+//app id 
+
+wx3321acae41983595
+
+// app secret
+eee558d25ae6677587e00a7703cff55f
