@@ -52,6 +52,11 @@ class OrderForm extends Model
         return false;
     }
 
+    public function calculateAmount()
+    {
+        
+    }
+
     public function save1()
     {
         if (! $this->validate()) {

@@ -23,6 +23,7 @@ class m180410_081019_create_product_table extends Migration
             'product_id' => $this->integer(15)->defaultValue(NULL)->comment('产品id'),
             'custom_option_key' => $this->string(255)->notNull()->comment('产品自定义的属性key'),
             'stock' => $this->integer()->comment('库存数量'),
+            'price' => $this->trim(12, 2)->comment('对应价格'),
         ]);
 
         // 优惠券表

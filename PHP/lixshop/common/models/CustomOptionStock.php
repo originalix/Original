@@ -30,8 +30,9 @@ class CustomOptionStock extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['custom_option_key', 'product_id'], 'required'],
+            [['custom_option_key', 'product_id', 'price'], 'required'],
             [['stock'], 'integer'],
+            [['price'], 'number'],
             [['custom_option_key'], 'string', 'max' => 255],
         ];
     }
@@ -46,6 +47,7 @@ class CustomOptionStock extends \yii\db\ActiveRecord
             'product_id' => '产品id',
             'custom_option_key' => '产品自定义的属性key',
             'stock' => '库存数量',
+            'number' => '价格',
         ];
     }
 
