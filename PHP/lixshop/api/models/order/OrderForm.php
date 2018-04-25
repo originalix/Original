@@ -31,7 +31,8 @@ class OrderForm extends Model
     public function rules()
     {
         return [
-            [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
+            // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
+            
             [['increment_id', 'items_count', 'customer_id', 'address_id'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],

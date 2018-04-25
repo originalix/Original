@@ -21,6 +21,7 @@ class AddProductForm extends Model
     public $category;
     public $cost_price;
     public $final_price;
+    public $price;
     public $meta_title;
     public $meta_keywords;
     public $meta_description;
@@ -84,7 +85,7 @@ class AddProductForm extends Model
         // $product->stock = $this->stock;
         $product->is_in_stock = $this->is_in_stock;
         // $product->category = $this->category;
-        $product->price = $this->final_price;
+        $product->price = $this->price;
         $product->cost_price = $this->cost_price;
         $product->final_price = $this->final_price;
         $product->meta_title = $this->meta_title;
