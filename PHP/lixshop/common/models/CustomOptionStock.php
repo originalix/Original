@@ -47,7 +47,7 @@ class CustomOptionStock extends \yii\db\ActiveRecord
             'product_id' => '产品id',
             'custom_option_key' => '产品自定义的属性key',
             'stock' => '库存数量',
-            'number' => '价格',
+            'price' => '价格',
         ];
     }
 

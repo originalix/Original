@@ -169,9 +169,10 @@ class ProductController extends BaseController
             $product_id = $model->product_id;
             $model->custom_option_key = Yii::$app->request->post('custom_option_key');
             $model->stock = Yii::$app->request->post('stock');
+            $model->price = Yii::$app->request->post('price');
             $model->save();
         }
-
+        
         if ($product_id !== 0) {
             $models = CustomOptionStock::find()->where(['product_id' => $product_id])->all();
         }

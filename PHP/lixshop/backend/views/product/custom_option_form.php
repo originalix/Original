@@ -15,6 +15,7 @@ use yii\widgets\Pjax;
 <p>批量填充</p>
 <?=Html::input('text', 'custom_option_key', Yii::$app->request->post('custom_option_key'), ['class' => 'col-sm-2', 'placeholder' => "宝贝规格"])?>
 <?=Html::input('text', 'stock', Yii::$app->request->post('stock'), ['class' => 'col-sm-2', 'placeholder' => "宝贝数量"])?>
+<?=Html::input('text', 'price', Yii::$app->request->post('price'), ['class' => 'col-sm-2', 'placeholder' => "宝贝价格"])?>
 <?=Html::hiddenInput('product_id', $product_id);?>
 
 <?=Html::submitButton('新增', ['class' => 'btn btn-primary btn-sm', 'name' => 'submit-button'])?>
@@ -25,13 +26,11 @@ use yii\widgets\Pjax;
         <table class="table table-striped table-bordered table-hover">
             <thead class="thin-border-bottom">
                 <tr>
-                    <th class="">
-                        宝贝规格
-                    </th>
+                    <th class="">宝贝规格</th>
 
-                    <th>
-                        库存数量 
-                    </th>
+                    <th>库存数量</th>
+
+                    <th>宝贝价格</th>
                 </tr>
             </thead>
 
@@ -41,6 +40,7 @@ use yii\widgets\Pjax;
                         echo '<tr>';
                         echo '<td class="">'. $model->custom_option_key .'</td>';
                         echo '<td>'. $model->stock .'</td>';
+                        echo '<td>'. $model->price .'</td>';
                         echo '</tr>';
                     }
                 ?>
