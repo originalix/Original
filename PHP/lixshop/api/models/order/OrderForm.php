@@ -9,6 +9,7 @@ use yii\web\HttpException;
 use yii\db\Exception;
 use api\models\order\OrderItem;
 use api\models\order\OrderItemForm;
+use api\models\product\ProductInfo;
 
 class OrderForm extends Model
 {
@@ -60,7 +61,9 @@ class OrderForm extends Model
             array_push($product_ids, $items["product_id"]);
         }
 
-        return $product_ids;
+        $products = ProductInfo::find()->where(['id' => $product_ids]);
+
+        return $products;
     }
 
     public function save1()
