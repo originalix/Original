@@ -55,7 +55,12 @@ class OrderForm extends Model
 
     public function calculateAmount()
     {
-        
+        $product_ids = [];
+        foreach ($this->orderItems as $items) {
+            array_push($product_ids, $items["product_id"]);
+        }
+
+        return $product_ids;
     }
 
     public function save1()
