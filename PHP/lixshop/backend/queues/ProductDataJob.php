@@ -64,6 +64,7 @@ class ProductDataJob extends BaseObject implements \yii\queue\JobInterface
                 'id' => $customOption->id,
                 'key' => $customOption->custom_option_key,
                 'stock' => $customOption->stock,
+                'price' => $customOption->price,
             ];
             array_push($custom_option_arr, $item);
         }
