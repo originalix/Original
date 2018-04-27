@@ -56,24 +56,32 @@ class OrderForm extends Model
 
     public function calculateAmount()
     {
-        $product_ids = [];
+        $products = [];
         $total_amount = 0;
         $discount_amount = 0;
         $real_amount = 0;
         foreach ($this->orderItems as $items) {
-            array_push($product_ids, $items["product_id"]);
-        }
+            $count = isset($items['count']) ? $items['count'] : 1;
 
-        $products = ProductInfo::find()->where(['id' => $product_ids])->all();
-        foreach ($products as $product)
-        {
-            $total_amount += $product->price;
-            $real_amount += $product->final_price;
+            $product = ProductInfo::findOne($items["product_id"]);
+            $total_amount += $product->price * $count;
+            $real_amount += $product->final_price * $count;
+            array_push($products, $product);
         }
+        $discount_amount = $total_amount - $real_amount;
+
         // return $products;
+
+        // $products = ProductInfo::find()->where(['id' => $product_ids])->all();
+        // foreach ($products as $product)
+        // {
+        //     $total_amount += $product->price;
+        //     $real_amount += $product->final_price;
+        // }
         return [
             'total_amount' => $total_amount,
             'real_amount' => $real_amount,
+            'discount_amount' => $discount_amount,
         ];
     }
 
