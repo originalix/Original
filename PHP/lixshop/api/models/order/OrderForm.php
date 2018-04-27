@@ -10,13 +10,15 @@ use yii\db\Exception;
 use api\models\order\OrderItem;
 use api\models\order\OrderItemForm;
 use api\models\product\ProductInfo;
+use common\models\CustomOptionStock;
 
 class OrderForm extends Model
 {
     public $items_count;
-    public $total_amount;
-    public $discount_amount;
-    public $real_amount;
+    public $total_amount = 0;
+    public $discount_amount = 0;
+    public $real_amount = 0;
+    public $products = [];
     public $customer_id;
     public $customer_group;
     public $customer_name;
@@ -56,37 +58,44 @@ class OrderForm extends Model
 
     public function calculateAmount()
     {
-        $products = [];
-        $total_amount = 0;
-        $discount_amount = 0;
-        $real_amount = 0;
         foreach ($this->orderItems as $items) {
+            // 宝贝数量
             $count = isset($items['count']) ? $items['count'] : 1;
+            // 宝贝自选型号
+            $custom_option_key = isset($items['custom_option_key']) ? $items['custom_option_key'] : null;
 
+            // 查询产品
             $product = ProductInfo::findOne($items["product_id"]);
-            $total_amount += $product->price * $count;
-            $real_amount += $product->final_price * $count;
-            array_push($products, $product);
+
+            // 查询宝贝自选型号价格
+            if (! is_null($custom_option_key)) {
+                $custom_option = CustomOptionStock::findByProductIdAndKey($items["product_id"], $custom_option_key);
+                if (! is_null($custom_option)) {
+                    $product->price = ($product->price > $custom_option->price) ? $product->price : $custom_option->price;
+                    $product->final_price = $custom_option->price;
+                }
+            }
+            // 计算总价格 真实价格
+            $this->total_amount += $product->price * $count;
+            $this->real_amount += $product->final_price * $count;
+            array_push($this->products, $product);
         }
-        $discount_amount = $total_amount - $real_amount;
 
-        // return $products;
 
-        // $products = ProductInfo::find()->where(['id' => $product_ids])->all();
-        // foreach ($products as $product)
-        // {
-        //     $total_amount += $product->price;
-        //     $real_amount += $product->final_price;
-        // }
+        $this->discount_amount = $this->total_amount - $this->real_amount;
+
         return [
-            'total_amount' => $total_amount,
-            'real_amount' => $real_amount,
-            'discount_amount' => $discount_amount,
+            'total_amount' => $this->total_amount,
+            'real_amount' => $this->real_amount,
+            'discount_amount' => $this->discount_amount,
         ];
     }
 
     public function save1()
     {
+        // 计算商品价格
+        $this->calculateAmount();
+
         if (! $this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]);
         }
@@ -138,9 +147,7 @@ class OrderForm extends Model
             'discount_amount' => $this->discount_amount,
             'real_amount' => $this->real_amount,
             'customer_id' => $this->customer_id,
-            // 'customer_group' => $this->customer_group,
-            // 'customer_name' => $this->customer_name,
-            'remote_ip' => $this->remote_ip,
+            'remote_ip' => Yii::app()->request->getUserHostAddress(),
             'coupon_code' => $this->coupon_code,
             'payment_method' => $this->payment_method,
             'address_id' => $this->address_id,

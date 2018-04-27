@@ -55,4 +55,12 @@ class CustomOptionStock extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
+
+    public static function findByProductIdAndKey($product_id, $key)
+    {
+        return static::find()
+            ->where(['product_id' => $product_id])
+            ->andWhere(['custom_option_key' => $key])
+            ->one();
+    }
 }
