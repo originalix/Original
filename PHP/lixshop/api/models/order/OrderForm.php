@@ -25,6 +25,7 @@ class OrderForm extends Model
     public $customer_group;
     public $customer_name;
     public $remote_ip;
+    public $couponUsage = null;
     public $coupon_code;
     public $coupon_id;
     public $payment_method;
@@ -59,6 +60,11 @@ class OrderForm extends Model
         return false;
     }
 
+    /**
+     * 计算商品价格
+     *
+     * @return void
+     */
     public function calculateAmount()
     {
         // 计算总价
@@ -98,6 +104,11 @@ class OrderForm extends Model
         // ];
     }
 
+    /**
+     * 查看有无可用优惠券
+     *
+     * @return void
+     */
     public function checkCoupon()
     {
         if (is_null($this->coupon_id)) {
@@ -106,16 +117,16 @@ class OrderForm extends Model
         }
 
         // $couponUsage = CouponUsage::findOne(1);
-        $couponUsage = CouponUsage::find()->where(['customer_id' => $this->customer_id])
+        $this->couponUsage = CouponUsage::find()->where(['customer_id' => $this->customer_id])
                         ->andWhere(['coupon_id' => $this->coupon_id])
                         ->andWhere(['<', 'times_used', 1])
                         ->one();
 
-        if (is_null($couponUsage)) {
+        if (is_null($this->couponUsage)) {
             throw new HttpException(418, '优惠券无效或已被使用');
         }
         
-        $coupon = $couponUsage->coupon;
+        $coupon = $this->couponUsage->coupon;
 
         if (is_null($coupon)) {
             throw new HttpException(418, '没有优惠券！！！！');
@@ -149,6 +160,11 @@ class OrderForm extends Model
         $this->discount_amount = $this->total_amount - $this->real_amount;
     }
 
+    /**
+     * 保存订单
+     *
+     * @return void
+     */
     public function save()
     {
         // 计算商品价格
@@ -187,6 +203,20 @@ class OrderForm extends Model
                     // 对应的custom_option_key 库存减少
             }
 
+            // 开始记录优惠券使用情况
+            if (! is_null ($this->couponUsage)) {
+                $this->couponUsage->times_used += 1;
+                $coupon = $this->couponUsage->coupon;
+                $coupon->times_used += 1;
+                if (! $this->couponUsage->save()) {
+                    throw new Exception('优惠券使用保存失败');
+                }
+
+                if (! $coupon->save()) {
+                    throw new Exception('优惠券使用保存失败');
+                }
+            }
+
             // 事务结束
             $transaction->commit();
         } catch (Exception $e) {
@@ -197,6 +227,11 @@ class OrderForm extends Model
         return $order->attributes;
     }
 
+    /**
+     * 创建订单model
+     *
+     * @return void
+     */
     protected function createOrderModel()
     {
         $model = new Order();
@@ -217,3 +252,4 @@ class OrderForm extends Model
 
         return $model;
     }
+}
