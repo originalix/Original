@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\Coupon;
 
 /**
  * This is the model class for table "{{%sales_coupon_usage}}".
@@ -44,5 +45,10 @@ class CouponUsage extends \yii\db\ActiveRecord
             'customer_id' => '顾客用户id',
             'times_used' => '使用次数',
         ];
+    }
+
+    public function getCoupon()
+    {
+        return $this->hasOne(Coupon::className(), ['id' => 'coupon_id']);
     }
 }

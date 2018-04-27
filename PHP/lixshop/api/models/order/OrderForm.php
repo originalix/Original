@@ -39,11 +39,11 @@ class OrderForm extends Model
         return [
             // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
             
-            [['increment_id', 'items_count', 'customer_id', 'address_id'], 'integer'],
+            [['increment_id', 'items_count', 'customer_id', 'address_id', 'coupon_id'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip'], 'string', 'max' => 50],
-            [['coupon_code'], 'string', 'max' => 255],
+            [['coupon_code', 'order_remark'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
             // [['txn_id'], 'string', 'max' => 255],
             [['orderItems'], 'validateOrderItems']
@@ -101,20 +101,24 @@ class OrderForm extends Model
     public function checkCoupon()
     {
         if (is_null($this->coupon_id)) {
+            // throw new HttpException(418, '没有优惠券id!');
             return;    
         }
 
+        // $couponUsage = CouponUsage::findOne(1);
         $couponUsage = CouponUsage::find()->where(['customer_id' => $this->customer_id])
-            ->andWhere(['cuupon_id' => $this->coupon_id])
-            ->andWhere('<', 'times_used', 1)
-            ->one();
+                        ->andWhere(['coupon_id' => $this->coupon_id])
+                        ->andWhere(['<', 'times_used', 1])
+                        ->one();
 
         if (is_null($couponUsage)) {
             throw new HttpException(418, '优惠券无效或已被使用');
         }
         
-        $coupon = Coupon::findOne($this->coupon_id);
+        $coupon = $couponUsage->coupon;
+
         if (is_null($coupon)) {
+            throw new HttpException(418, '没有优惠券！！！！');
             return;
         }
 
