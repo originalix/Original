@@ -20,7 +20,7 @@ class OrderController extends BaseController
         $model->customer_id = $this->user->id;
         
         // return $model->save();
-        return $model->calculateAmount();
+        return $model->save1();
     }
 
     /*

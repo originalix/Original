@@ -11,6 +11,9 @@ use api\models\order\OrderItem;
 use api\models\order\OrderItemForm;
 use api\models\product\ProductInfo;
 use common\models\CustomOptionStock;
+use common\models\Coupon;
+use common\models\CouponUsage;
+use fecshop\services\Coupon;
 
 class OrderForm extends Model
 {
@@ -24,6 +27,7 @@ class OrderForm extends Model
     public $customer_name;
     public $remote_ip;
     public $coupon_code;
+    public $coupon_id;
     public $payment_method;
     public $address_id;
     public $order_remark;
@@ -58,6 +62,7 @@ class OrderForm extends Model
 
     public function calculateAmount()
     {
+        // 计算总价
         foreach ($this->orderItems as $items) {
             // 宝贝数量
             $count = isset($items['count']) ? $items['count'] : 1;
@@ -79,16 +84,35 @@ class OrderForm extends Model
             $this->total_amount += $product->price * $count;
             $this->real_amount += $product->final_price * $count;
             array_push($this->products, $product);
-        }
 
+            // 查看是否有优惠券 是否需要打折
+
+            // 查看是否满足30元 否则需要邮费
+        }
 
         $this->discount_amount = $this->total_amount - $this->real_amount;
 
-        return [
-            'total_amount' => $this->total_amount,
-            'real_amount' => $this->real_amount,
-            'discount_amount' => $this->discount_amount,
-        ];
+        // return [
+        //     'total_amount' => $this->total_amount,
+        //     'real_amount' => $this->real_amount,
+        //     'discount_amount' => $this->discount_amount,
+        // ];
+    }
+
+    public function checkCoupon()
+    {
+        if (is_null($this->coupon_id)) {
+            return;    
+        }
+        
+        $coupon = Coupon::findOne($this->coupon_id);
+        if (is_null($coupon)) {
+            return;
+        }
+
+        if ($coupon->type === 1) {
+            
+        }
     }
 
     public function save1()
@@ -115,12 +139,12 @@ class OrderForm extends Model
                 // 循环产品 orderItems
                 foreach ($this->orderItems as $item) {
                     $_orderItem = clone $orderItem;
+                    // 每个产品 记录信息 保存model
                     $_orderItem->load($item, '');
                     if (! $_orderItem->saveWithOrder($model)) {
                         throw new Exception('订单产品保存失败');
                     }
                 }
-                    // 每个产品 记录信息 保存model
                     // 每个产品 按数量 减少库存
                     // 对应的custom_option_key 库存减少
                 // 保存order Items
@@ -147,7 +171,7 @@ class OrderForm extends Model
             'discount_amount' => $this->discount_amount,
             'real_amount' => $this->real_amount,
             'customer_id' => $this->customer_id,
-            'remote_ip' => Yii::app()->request->getUserHostAddress(),
+            'remote_ip' => Yii::$app->request->userIP,
             'coupon_code' => $this->coupon_code,
             'payment_method' => $this->payment_method,
             'address_id' => $this->address_id,
