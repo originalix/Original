@@ -1,5 +1,6 @@
 <?php
 
+use kartik\datetime\DateTimePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -20,7 +21,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'coupon_code')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'expiration_date')->textInput() ?>
+    <?= $form->field($model, 'expiration_date')->widget(DateTimePicker::classname(), [
+        'name' => 'Article[created_at]', 
+        'options' => ['placeholder' => '请输入优惠券过期时间'], 
+        //value值更新的时候需要加上 
+        'value' => '2016-05-03', 
+        'pluginOptions' => [ 
+            'autoclose' => true, 
+            'format' => 'yyyy-mm-dd', 
+            'todayHighlight' => true, 
+            'language'=>'zh-CN'
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'users_per_customer')->textInput() ?>
 
@@ -31,10 +43,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'conditions')->textInput() ?>
 
     <?= $form->field($model, 'discount')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
