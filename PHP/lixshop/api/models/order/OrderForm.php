@@ -13,7 +13,6 @@ use api\models\product\ProductInfo;
 use common\models\CustomOptionStock;
 use common\models\Coupon;
 use common\models\CouponUsage;
-use fecshop\services\Coupon;
 
 class OrderForm extends Model
 {
@@ -103,6 +102,15 @@ class OrderForm extends Model
     {
         if (is_null($this->coupon_id)) {
             return;    
+        }
+
+        $couponUsage = CouponUsage::find()->where(['customer_id' => $this->customer_id])
+            ->andWhere(['cuupon_id' => $this->coupon_id])
+            ->andWhere('<', 'times_used', 1)
+            ->one();
+
+        if (is_null($couponUsage)) {
+            throw new HttpException(418, '优惠券无效或已被使用');
         }
         
         $coupon = Coupon::findOne($this->coupon_id);
