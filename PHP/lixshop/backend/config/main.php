@@ -10,6 +10,7 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'language'=>'zh-CN',
     'bootstrap' => [
         'log',
         'queue'

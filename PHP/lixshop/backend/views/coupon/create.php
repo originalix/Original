@@ -10,7 +10,7 @@ $this->title = 'Create Coupon';
 $this->params['breadcrumbs'][] = ['label' => 'Coupons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="coupon-create">
+<div class="coupon-create tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

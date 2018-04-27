@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = 'Coupons';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="coupon-index">
+<div class="coupon-index tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>

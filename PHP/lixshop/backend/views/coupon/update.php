@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Coupons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="coupon-update">
+<div class="coupon-update tabbable tab-content no-border padding-24">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="coupon-form">
+<div class="coupon-form tabbable tab-content no-border padding-24">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
         'value' => '2016-05-03', 
         'pluginOptions' => [ 
             'autoclose' => true, 
-            'format' => 'yyyy-mm-dd', 
+            'format' => 'yyyy-mm-dd hh:ii:ss',
             'todayHighlight' => true, 
             'language'=>'zh-CN'
         ]

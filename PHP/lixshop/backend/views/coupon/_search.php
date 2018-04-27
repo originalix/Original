@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="coupon-search">
+<div class="coupon-search tabbable tab-content no-border padding-24">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
