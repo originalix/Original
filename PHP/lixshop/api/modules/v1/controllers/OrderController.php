@@ -19,9 +19,9 @@ class OrderController extends BaseController
         }
         $model->customer_id = $this->user->id;
         
-        return $model->checkCoupon();
+        // return $model->checkCoupon();
         // return $model->save();
-        // return $model->save1();
+        return $model->save1();
     }
 
     /*

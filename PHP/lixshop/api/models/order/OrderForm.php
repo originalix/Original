@@ -122,15 +122,38 @@ class OrderForm extends Model
             return;
         }
 
-        if ($coupon->type === 1) {
-            
+        if(strtotime(date("y-m-d h:i:s")) >= strtotime($coupon->expiration_date)){
+            throw new HttpException(418, "优惠券已经过期");
         }
+
+        $this->coupon_code = $coupon->coupon_name;
+
+        // 是否达到满减条件
+        if ($this->real_amount < $coupon->conditions) {
+            throw new HttpException(418, "未达到满减条件");
+        }
+
+        // type 1 折扣 2 满减
+        if ($coupon->type === 1) {
+            // 打折
+            $this->real_amount = $this->real_amount * ($coupon->discount / 100);
+        } else if ($coupon->type === 2) {
+            // 如果实际价格比折扣高，则满减，否则直接为0
+            if ($this->real_amount >= $coupon->discount) {
+                $this->real_amount -= $coupon->discount;
+            } else {
+                $this->real_amount = 0;
+            }
+        }
+
+        $this->discount_amount = $this->total_amount - $this->real_amount;
     }
 
     public function save1()
     {
         // 计算商品价格
         $this->calculateAmount();
+        $this->checkCoupon();
 
         if (! $this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]);
@@ -138,6 +161,7 @@ class OrderForm extends Model
 
         // 生成order model 并保存
         $order = $this->createOrderModel();
+        // return $order;
 
         // 开启事务
         $transaction = Yii::$app->db->beginTransaction();
@@ -149,18 +173,18 @@ class OrderForm extends Model
 
             if ($this->orderItems) {
                 // 循环产品 orderItems
+                $orderItem = new OrderItemForm();
                 foreach ($this->orderItems as $item) {
+                    // 保存order Items
                     $_orderItem = clone $orderItem;
                     // 每个产品 记录信息 保存model
                     $_orderItem->load($item, '');
-                    if (! $_orderItem->saveWithOrder($model)) {
+                    if (! $_orderItem->saveWithOrder($order)) {
                         throw new Exception('订单产品保存失败');
                     }
                 }
                     // 每个产品 按数量 减少库存
                     // 对应的custom_option_key 库存减少
-                // 保存order Items
-                $orderItem = new OrderItemForm();
             }
 
             // 事务结束
@@ -170,7 +194,7 @@ class OrderForm extends Model
             throw new HttpException(418, $e->getMessage());
         }
 
-        return $model->attributes;
+        return $order->attributes;
     }
 
     protected function createOrderModel()

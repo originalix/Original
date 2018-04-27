@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use common\models\Coupon;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%sales_coupon_usage}}".
@@ -15,6 +16,21 @@ use common\models\Coupon;
  */
 class CouponUsage extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
