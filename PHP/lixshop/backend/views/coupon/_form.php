@@ -13,8 +13,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'created_person')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'coupon_name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'coupon_description')->textarea(['rows' => 6]) ?>

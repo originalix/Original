@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'coupon_code',
             'expiration_date',
             'users_per_customer',
-            'times_used:datetime',
+            'times_used',
             'type',
             'conditions',
             'discount',
