@@ -22,6 +22,10 @@
       {
         "pagePath": "pages/logs/logs",
         "text": "日志"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "商城"
       }
     ]
   }
