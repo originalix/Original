@@ -7,7 +7,11 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    text: 'init data',
+    array: [
+      {msg: '1'}
+    ],
   },
   //事件处理函数
   bindViewTap: function() {
@@ -42,6 +46,9 @@ Page({
         }
       })
     }
+  },
+  onPullDownRefresh: function () {
+    console.log('下拉刷新');
   },
   getUserInfo: function(e) {
     console.log(e)

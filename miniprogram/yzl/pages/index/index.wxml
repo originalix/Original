@@ -13,4 +13,6 @@
   <view class="userLix">
     <text class="user-motto">Hello Lix</text>
   </view>
+  <view>{{text}}</view>
+  <view>{{array[0].msg}}</view>
 </view>
