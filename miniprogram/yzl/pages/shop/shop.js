@@ -12,5 +12,8 @@ Page({
     this.setData({
       count: this.data.count + 1,
     })
+  },
+  tapName: function(event) {
+    console.log(event)
   }
 })
