@@ -15,5 +15,9 @@ Page({
   },
   tapName: function(event) {
     console.log(event)
+  },
+  bindViewTap:function(event){
+    event.currentTarget.dataset.alphaBeta === 1 // - 会转为驼峰写法
+    event.currentTarget.dataset.alphabeta === 2 // 大写会转为小写
   }
 })

@@ -54,3 +54,5 @@
     inner view
   </view>
 </view>
+
+<view data-alpha-beta="1" data-alphaBeta="2" bindtap="bindViewTap"> DataSet Test </view>
