@@ -6,3 +6,7 @@ module.exports = {
   foo: foo,
   bar: bar
 };
+
+var foo = 1;
+var bar = "hello world";
+var i; // i === undefined
