@@ -56,3 +56,31 @@
 </view>
 
 <view data-alpha-beta="1" data-alphaBeta="2" bindtap="bindViewTap"> DataSet Test </view>
+
+<!--wxml-->
+<wxs module="m1">
+var msg = "hello world";
+
+module.exports.message = msg;
+</wxs>
+
+<view> {{m1.message}} </view>
+
+<!--wxml-->
+<!-- 下面的 getMax 函数，接受一个数组，且返回数组中最大的元素的值 -->
+<wxs module="m1">
+var getMax = function(array) {
+  var max = undefined;
+  for (var i = 0; i < array.length; ++i) {
+    max = max === undefined ? 
+      array[i] : 
+      (max >= array[i] ? max : array[i]);
+  }
+  return max;
+}
+
+module.exports.getMax = getMax;
+</wxs>
+
+<!-- 调用 wxs 里面的 getMax 函数，参数为 page.js 里面的 array -->
+<view> {{m1.getMax(array1)}} </view>

@@ -6,7 +6,8 @@ Page({
     staffA: {firstName: 'Hulk', lastName: 'Hu'},
     staffB: {firstName: 'Shang', lastName: 'You'},
     staffC: {firstName: 'Gideon', lastName: 'Lin'},
-    count: 1
+    count: 1,
+    array1: [1, 2, 3, 4, 5, 1, 2, 3, 4]
   },
   add: function (e) {
     this.setData({
