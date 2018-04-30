@@ -84,3 +84,9 @@ module.exports.getMax = getMax;
 
 <!-- 调用 wxs 里面的 getMax 函数，参数为 page.js 里面的 array -->
 <view> {{m1.getMax(array1)}} </view>
+
+<!-- page/index/index.wxml -->
+
+<wxs src="./../tools.wxs" module="tools" />
+<view> {{tools.msg}} </view>
+<view> {{tools.bar(tools.FOO)}} </view>
