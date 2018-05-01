@@ -11,19 +11,25 @@ var foo = 1;
 var bar = "hello world";
 var i; // i === undefined
 
-<!-- wxml -->
-<wxs module="sample">
-// 方法一：单行注释
+var a = 10, b = 20;
 
-/*
-方法二：多行注释
-*/
-
-/*
-方法三：结尾注释。即从 /* 开始往后的所有 WXS 代码均被注释
-
-var a = 1;
-var b = 2;
-var c = "fake";
-
-</wxs>
+// 自增运算
+console.log(10 === a++);
+console.log(12 === ++a);
+// 自减运算
+console.log(12 === a--);
+console.log(10 === --a);
+// 正值运算
+console.log(10 === +a);
+// 负值运算
+console.log(0-10 === -a);
+// 否运算
+console.log(-11 === ~a);
+// 取反运算
+console.log(false === !a);
+// delete 运算
+console.log(true === delete a.fake);
+// void 运算
+console.log(undefined === void a);
+// typeof 运算
+console.log("number" === typeof a);
