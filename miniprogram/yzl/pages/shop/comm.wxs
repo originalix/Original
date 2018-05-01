@@ -10,3 +10,20 @@ module.exports = {
 var foo = 1;
 var bar = "hello world";
 var i; // i === undefined
+
+<!-- wxml -->
+<wxs module="sample">
+// 方法一：单行注释
+
+/*
+方法二：多行注释
+*/
+
+/*
+方法三：结尾注释。即从 /* 开始往后的所有 WXS 代码均被注释
+
+var a = 1;
+var b = 2;
+var c = "fake";
+
+</wxs>
