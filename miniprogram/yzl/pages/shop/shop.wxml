@@ -1,96 +1,23 @@
-<view>
-    {{message}}
-</view>
-<view wx:for="{{array}}">{{ item }}</view>
-<view wx:if="{{view == 'WEBVIEW'}}">WEBVIEW</view>
-<view wx:elif="{{view == 'APP'}}">APP</view>
-<view wx:else="{{view == 'MINA'}}">MINA</view>
+<view class="section">
+  <view class="section__title">vertical scroll</view>
+  <scroll-view scroll-y style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view id="green" class="scroll-view-item bc_green"></view>
+    <view id="red"  class="scroll-view-item bc_red"></view>
+    <view id="yellow" class="scroll-view-item bc_yellow"></view>
+    <view id="blue" class="scroll-view-item bc_blue"></view>
+  </scroll-view>
 
-<template name="staffName">
-    <view>
-        FirstName: {{firstName}}, LastName: {{lastName}}
-    </view>
-</template>
-
-<template is="staffName" data="{{...staffA}}"></template>
-<template is="staffName" data="{{...staffB}}"></template>
-<template is="staffName" data="{{...staffC}}"></template>
-
-<view bindtap="add">{{count}}</view>
-<view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
-  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
-    <view wx:if="{{i <= j}}">
-      {{i}} * {{j}} = {{i * j}}
-    </view>
+  <view class="btn-area">
+    <button size="mini" bindtap="tap">click me to scroll into view </button>
+    <button size="mini" bindtap="tapMove">click me to scroll</button>
   </view>
 </view>
-
-<template name="odd">
-  <view> odd </view>
-</template>
-<template name="even">
-  <view> even </view>
-</template>
-
-<block wx:for="{{[1, 2, 3, 4, 5]}}">
-    <template is="{{item % 2 == 0 ? 'even' : 'odd'}}"/>
-</block>
-
-<view id="tapTest" data-hi="WeChat" bindtap="tapName"> Click me! </view>
-
-<view id="outer" bindtap="handleTap1">
-  outer view
-  <view id="middle" catchtap="handleTap2">
-    middle view
-    <view id="inner" bindtap="handleTap3">
-      inner view
-    </view>
-  </view>
+<view class="section section_gap">
+  <view class="section__title">horizontal scroll</view>
+  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+    <view id="green" class="scroll-view-item_H bc_green"></view>
+    <view id="red"  class="scroll-view-item_H bc_red"></view>
+    <view id="yellow" class="scroll-view-item_H bc_yellow"></view>
+    <view id="blue" class="scroll-view-item_H bc_blue"></view>
+  </scroll-view>
 </view>
-
-<view id="outer" bind:touchstart="handleTap1" capture-catch:touchstart="handleTap2">
-  outer view
-  <view id="inner" bind:touchstart="handleTap3" capture-bind:touchstart="handleTap4">
-    inner view
-  </view>
-</view>
-
-<view data-alpha-beta="1" data-alphaBeta="2" bindtap="bindViewTap"> DataSet Test </view>
-
-<!--wxml-->
-<wxs module="m1">
-var msg = "hello world";
-
-module.exports.message = msg;
-</wxs>
-
-<view> {{m1.message}} </view>
-
-<!--wxml-->
-<!-- 下面的 getMax 函数，接受一个数组，且返回数组中最大的元素的值 -->
-<wxs module="m1">
-var getMax = function(array) {
-  var max = undefined;
-  for (var i = 0; i < array.length; ++i) {
-    max = max === undefined ? 
-      array[i] : 
-      (max >= array[i] ? max : array[i]);
-  }
-  return max;
-}
-
-module.exports.getMax = getMax;
-</wxs>
-
-<!-- 调用 wxs 里面的 getMax 函数，参数为 page.js 里面的 array -->
-<view> {{m1.getMax(array1)}} </view>
-
-<wxs src="./logic.wxs" module="logic" />
-
-<wxs module="foo">
-var some_msg = "hello world";
-module.exports = {
-    msg : some_msg,
-}
-</wxs>
-<view> {{foo.msg}} </view>
