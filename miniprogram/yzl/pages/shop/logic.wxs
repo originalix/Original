@@ -1,5 +1,0 @@
-var tools = require("./tools.wxs");
-
-console.log(tools.FOO);
-console.log(tools.bar("logic.wxs"));
-console.log(tools.msg);
