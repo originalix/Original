@@ -4,8 +4,8 @@
 }
 
 .icon-img {
-  width: 80%;
-  height: 200rpx;
+  /* width: 80%; */
+  /* height: 200rpx; */
 }
 
 .center {
@@ -26,5 +26,45 @@
 }
 
 .seprate {
-  
+  display: block;
+  height: 1px;
+  width: 100%;
 }
+
+.seprate-bg-color {
+  background-color: #e7eefe;
+}
+
+.category-col {
+  height: 152px;
+}
+
+.category-bg-1 {
+  background-color: #fbfdff;
+}
+
+.category-bg-2 {
+  background-color: #fffdfd;
+}
+
+.category-bg-3 {
+  background-color: #fbffff;
+}
+
+.category-title-margin {
+  position: relative;
+  padding-top: 14px;
+}
+
+.category-title {
+  font-size: 15px;
+  color: #1a1a1a;
+}
+
+.category-img {
+  height: 85px;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 11px;
+}
+
