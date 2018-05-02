@@ -12,8 +12,10 @@
 <view>
   <zan-row>
     <zan-col col="8" col-class="custom-zan-col">
-      <text>洗衣</text>
-      <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" alt="" />
+      <view><text>洗衣</text></view>
+      <view>
+        <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img"/>
+      </view>
     </zan-col>
     <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
     <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>

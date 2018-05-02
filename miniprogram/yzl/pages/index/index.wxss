@@ -2,3 +2,8 @@
 .slider-img {
   display: inline;
 }
+
+.icon-img {
+  width: 100%;
+  height: 200rpx;
+}
