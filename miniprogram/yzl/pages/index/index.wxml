@@ -1,6 +1,6 @@
 <view>
   <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-height">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
         <image src="{{item}}" class="slide-image slider-img" width="355" height="150"/>
@@ -10,10 +10,13 @@
 </view>
 
 <view>
+  <view class="icon-title">
+    <text>- 专业清洗 -</text>
+  </view>
   <zan-row>
     <zan-col col="8" col-class="custom-zan-col">
-      <view><text>洗衣</text></view>
-      <view>
+      <view class='center'><text>洗衣</text></view>
+      <view class='center'>
         <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img"/>
       </view>
     </zan-col>

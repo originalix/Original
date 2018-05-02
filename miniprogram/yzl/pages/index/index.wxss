@@ -4,6 +4,20 @@
 }
 
 .icon-img {
-  width: 100%;
+  width: 80%;
   height: 200rpx;
+}
+
+.center {
+  text-align: center;
+}
+
+.icon-title {
+  display: block;
+  height: 108px;
+  text-align: center;
+}
+
+.swiper-height {
+  height: 560px;
 }
