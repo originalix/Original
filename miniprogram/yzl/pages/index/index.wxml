@@ -13,6 +13,7 @@
   <view class="icon-title">
     <text>- 专业清洗 -</text>
   </view>
+  <view></view>
   <zan-row>
     <zan-col col="8" col-class="custom-zan-col">
       <view class='center'><text>洗衣</text></view>

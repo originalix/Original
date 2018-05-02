@@ -14,10 +14,17 @@
 
 .icon-title {
   display: block;
-  height: 108px;
+  margin-top: 10px;
+  height: 26px;
+  color: #c1c1c1;
+  font-size: 10px;
   text-align: center;
 }
 
 .swiper-height {
-  height: 560px;
+  height: 193px;
+}
+
+.seprate {
+  
 }
