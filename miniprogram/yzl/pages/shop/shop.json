@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Button 按钮",
+    "usingComponents": {
+        "zan-button": "../../bower_components/zanui-weapp/dist/btn/index",
+        "zan-panel": "../../bower_components/zanui-weapp/dist/panel/index"
+    }
+}
