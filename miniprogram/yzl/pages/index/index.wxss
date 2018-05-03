@@ -100,3 +100,21 @@
   margin: 0 auto;
   padding-top: 20px;
 }
+
+.real-price {
+  color: #545962;
+  font-size: 10px;
+}
+
+.old-price {
+  color: #bcc1cb;
+  font-size: 10px;
+  margin-left: 3px;
+  text-decoration: line-through;
+}
+
+.product-title {
+  color: #bcc1cb;
+  font-size: 13px;
+  margin-top: 10px;
+}
