@@ -67,7 +67,7 @@
   <!-- row -->
   <zan-row>
     <zan-col col="12" col-class="custom-zan-col">
-      <view class="category-col-hot category-bg-1">
+      <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
         <view class='center'>
           <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img-hot"/>
@@ -77,7 +77,7 @@
           <view>
             <text class="product-title">棉服悠然洗(8月31日前送回)</text>
           </view>
-          <view class="test">
+          <view class="btn-view">
             <button class="sale-btn">立即抢</button>
           </view>
         </view>
@@ -86,10 +86,19 @@
 
     <!-- col -->
     <zan-col col="12" col-class="custom-zan-col">
-      <view class="category-col-hot category-bg-2">
-        <view class='center category-title-margin category-title'><text>洗鞋</text></view>
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
         <view class='center'>
-          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img"/>
+          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥29.0</text><text class='old-price'>￥45.0</text>
+          </view>
+          <view>
+            <text class="product-title">棉服悠然洗(8月31日前送回)</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">立即抢</button>
+          </view>
         </view>
       </view>
     </zan-col>
