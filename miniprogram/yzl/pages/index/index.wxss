@@ -32,6 +32,13 @@
   width: 100%;
 }
 
+.seprate-10px {
+  display: block;
+  height: 10px;
+  width: 100%;
+  background-color: #f4f7fa;
+}
+
 /* 垂直分割线  */
 .seprate-vertical {
   display: block;
@@ -46,6 +53,13 @@
 
 .category-col {
   height: 152px;
+  border-right-style:solid;
+  border-width: 1px;
+  border-right-color: #dcdcdc;
+}
+
+.category-col-hot {
+  height: 238px;
   border-right-style:solid;
   border-width: 1px;
   border-right-color: #dcdcdc;
@@ -80,3 +94,9 @@
   padding-top: 11px;
 }
 
+.icon-img-hot {
+  height: 126px;
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 20px;
+}

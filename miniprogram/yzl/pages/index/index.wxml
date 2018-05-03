@@ -57,4 +57,32 @@
     </zan-col>
 
   </zan-row>
+  <view class="seprate-10px"></view>
+
+  <view class="icon-title">
+    <text>- 优惠爆品 -</text>
+  </view>
+  <view class="seprate seprate-bg-color"></view>
+
+  <!-- row -->
+  <zan-row>
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-1">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center'>
+          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img-hot"/>
+        </view>
+      </view>
+    </zan-col>
+
+    <!-- col -->
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-2">
+        <view class='center category-title-margin category-title'><text>洗鞋</text></view>
+        <view class='center'>
+          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img"/>
+        </view>
+      </view>
+    </zan-col>
+  </zan-row>
 </view>
