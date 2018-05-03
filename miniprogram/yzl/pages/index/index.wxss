@@ -139,22 +139,30 @@
 }
 
 .bottom-icon-layout {
+  margin-top: 22px;
   height: 74px;
-  background-color: red;
 }
 
 .bottom-icon-img {
   position: relative;
-  padding-top: 9px;
-  height: 31px;
-  width: 31px;
+  padding-top: 7px;
+  height: 20px;
+  width: 20px;
 }
 
 .bottom-img-wrapper {
-  height: 49px;
-  width: 49px;
-  border: solid 1px yellow;
-  border-radius: 5px;
+  height: 34px;
+  width: 34px;
+  border: solid 1px #6a6f79;
+  border-radius: 7px;
   text-align: center;
   margin: 0 auto;
+}
+
+.bottom-icon-title {
+  margin-top: 7px;
+  font-size: 12px;
+  color: #6a6f79;
+  text-align: center;
+  margin-bottom: 20px;
 }
