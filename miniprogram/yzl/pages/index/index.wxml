@@ -77,6 +77,9 @@
           <view>
             <text class="product-title">棉服悠然洗(8月31日前送回)</text>
           </view>
+          <view class="test">
+            <button class="sale-btn">立即抢</button>
+          </view>
         </view>
       </view>
     </zan-col>
