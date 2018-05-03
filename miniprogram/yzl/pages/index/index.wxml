@@ -109,7 +109,14 @@
   <!-- row -->
   <zan-row>
     <zan-col col="6" col-class="custom-zan-col">
-      服务介绍
+      <view class="bottom-icon-layout">
+        <navigator>
+          <view class="bottom-img-wrapper">
+            <image src="../../resource/img/product.png" class="bottom-icon-img" />
+          </view>
+          <view><text>服务介绍</text></view>
+        </navigator>
+      </view>
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
