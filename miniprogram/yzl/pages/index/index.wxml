@@ -103,4 +103,47 @@
       </view>
     </zan-col>
   </zan-row>
+
+  <view class="seprate-10px"></view>
+  
+    <!-- row -->
+  <zan-row>
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center'>
+          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥29.0</text><text class='old-price'>￥45.0</text>
+          </view>
+          <view>
+            <text class="product-title">棉服悠然洗(8月31日前送回)</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">立即抢</button>
+          </view>
+        </view>
+      </view>
+    </zan-col>
+
+    <!-- col -->
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center'>
+          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥29.0</text><text class='old-price'>￥45.0</text>
+          </view>
+          <view>
+            <text class="product-title">棉服悠然洗(8月31日前送回)</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">立即抢</button>
+          </view>
+        </view>
+      </view>
+    </zan-col>
+  </zan-row>
+  
 </view>
