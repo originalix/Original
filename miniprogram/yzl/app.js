@@ -12,18 +12,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res);
         if (res.code) {
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
-            data: {
-              appid: 'test',
-              secret: 'test',
-              js_code: 'js_code',
-              grant_type: 'authorization_code'
-            },
-            success: res => {
-              console.log(res);
-            }
-          })
+
         }
       }
     })
