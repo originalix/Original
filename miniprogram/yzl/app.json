@@ -11,9 +11,9 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "color": "#fff",
-    "selectedColor": "red",
-    "backgroundColor": "#000",
+    "color": "#878787",
+    "selectedColor": "#63d8f2",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
