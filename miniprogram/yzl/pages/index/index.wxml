@@ -110,7 +110,7 @@
   <zan-row>
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/product.png" class="bottom-icon-img" />
           </view>
@@ -121,7 +121,7 @@
 
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/earth.png" class="bottom-icon-img" />
           </view>
@@ -132,7 +132,7 @@
 
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/price.png" class="bottom-icon-img" />
           </view>
@@ -143,7 +143,7 @@
 
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/member.png" class="bottom-icon-img" />
           </view>
