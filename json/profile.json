@@ -1,43 +1,25 @@
 {
-    "data": [
+    "profile": [
         [{
-            "icon": "dingwei",
+            "icon": "signin",
             "title": "我的签到"
         }, {
-            "icon": "dingwei",
-            "title": "我的签到"
+            "icon": "profile_message",
+            "title": "消息中心"
         }, {
-            "icon": "dingwei",
-            "title": "我的签到"
-        }, {
-            "icon": "dingwei",
-            "title": "我的签到"
+            "icon": "profile_collection",
+            "title": "我的收藏"
         }],
         [{
-            "icon": "dingwei",
-            "title": "我的签到"
+            "icon": "changefor",
+            "title": "兑换记录"
         }, {
-            "icon": "dingwei",
-            "title": "我的签到"
-        }, {
-            "icon": "dingwei",
-            "title": "我的签到"
-        }, {
-            "icon": "dingwei",
-            "title": "我的签到"
+            "icon": "express",
+            "title": "收货地址"
         }],
         [{
-            "icon": "dingwei",
-            "title": "我的签到"
-        }, {
-            "icon": "dingwei",
-            "title": "我的签到"
-        }, {
-            "icon": "dingwei",
-            "title": "我的签到"
-        }, {
-            "icon": "dingwei",
-            "title": "我的签到"
+            "icon": "profile_setting",
+            "title": "设置"
         }]
     ]
 }
