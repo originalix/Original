@@ -1,0 +1,35 @@
+<view>
+  <!-- 没有订单提示 -->
+  <view wx:if="{{noOrder}}">
+    <image src="../../resource/img/package.png" class="background-img" />
+    <text class="background-text">说好的订单呢</text>
+  </view>
+
+  <!-- 有订单的情况 -->
+  <view>
+    <zan-tab
+      scroll="true"
+      list="{{list}}"
+      selected-id="{{ selectedId }}"
+      height="45"
+      fixed="false"
+      bindtabchange="handleTabChange"
+    />
+    <view>
+      <!-- 标题 -->
+      <view>
+        <text>衣之恋优质干洗店</text>
+        <text>已完成</text>
+      </view>
+        <!-- 主体 -->
+      <view>
+      </view>
+        <!-- 商品 付款 -->
+      <view>
+      </view>
+      <!-- 再次购买 -->
+      <view>
+      </view>
+    </view>
+  </view>
+</view>
