@@ -11,8 +11,9 @@
       scroll="true"
       list="{{list}}"
       selected-id="{{ selectedId }}"
-      height="{{ 100 }}"
-      fixed="{{ true }}"
+      height="45"
+      fixed="false"
+      bindtabchange="handleTabChange"
     />
   </view>
 </view>

@@ -2,13 +2,16 @@ Page({
   data: {
     noOrder: false,
     list: [{
-      id: '1',
-      title: 'title'
+      id: 'topay',
+      title: '未完成'
     },
     {
-      id: '2',
-      title: '你好'
+      id: 'sign',
+      title: '已完成'
     }],
-    selectedId: '1',
+    selectedId: 'topay',
+  },
+  handleTabChange(selectedId) {
+    console.log(selectedId);
   }
 })
