@@ -15,5 +15,21 @@
       fixed="false"
       bindtabchange="handleTabChange"
     />
+    <view>
+      <!-- 标题 -->
+      <view>
+        <text>衣之恋优质干洗店</text>
+        <text已完成</text>
+      </view>
+        <!-- 主体 -->
+      <view>
+      </view>
+        <!-- 商品 付款 -->
+      <view>
+      </view>
+      <!-- 再次购买 -->
+      <view>
+      </view>
+    </view>
   </view>
 </view>
