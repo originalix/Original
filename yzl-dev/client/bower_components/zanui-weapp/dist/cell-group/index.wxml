@@ -1,3 +1,0 @@
-<view class="cell-group">
-  <slot></slot>
-</view>
