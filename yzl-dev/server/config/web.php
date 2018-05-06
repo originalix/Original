@@ -16,6 +16,24 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '7WYjXn3Ck430IDDu9d8K-zuz33SG566y',
         ],
+        'response' => [
+            'class' => 'yii\web\Response',
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'on beforeSend' => function ($event) {
+                $sender = $event->sender;
+                $responseData = [
+                    'code' => $sender->statusCode,
+                    'msg' => 'Success',
+                ];
+                if ($sender->statusCode == 200) {
+                    $responseData['data'] = $sender->data;
+                } else {
+                    $responseData['msg'] = $sender->data['message'];
+                }
+                $sender->statusCode = 200;
+                $sender->data = $responseData;
+            },
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -43,14 +61,11 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => require __DIR__ . '/restful.php',
         ],
-        */
     ],
     'params' => $params,
 ];
