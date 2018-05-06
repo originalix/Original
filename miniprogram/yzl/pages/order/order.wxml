@@ -1,5 +1,6 @@
 <view>
   <view>
-    <image src="../../resource/img/package.png" />
+    <image src="../../resource/img/package.png" class="background-img" />
+    <text class="background-text">说好的订单呢</text>
   </view>
 </view>
