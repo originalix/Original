@@ -6,10 +6,11 @@
     "pages/order/order"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Lix",
-    "navigationBarTextStyle":"black"
+    "backgroundTextStyle":"black",
+    "navigationBarBackgroundColor": "#63d8f2",
+    "navigationBarTitleText": "衣之恋优质干洗",
+    "navigationBarTextStyle":"light",
+    "navigationStyle": "default"
   },
   "tabBar": {
     "color": "#878787",
@@ -23,7 +24,7 @@
         "selectedIconPath": "/resource/img/tab_1_selected.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/order/order",
         "text": "订单",
         "iconPath": "/resource/img/tab_2.png",
         "selectedIconPath": "/resource/img/tab_2_selected.png"
