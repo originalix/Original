@@ -1,6 +1,18 @@
 <view>
-  <view>
+  <!-- 没有订单提示 -->
+  <view wx:if="{{noOrder}}">
     <image src="../../resource/img/package.png" class="background-img" />
     <text class="background-text">说好的订单呢</text>
+  </view>
+
+  <!-- 有订单的情况 -->
+  <view>
+    <zan-tab
+      scroll="true"
+      list="{{list}}"
+      selected-id="{{ selectedId }}"
+      height="{{ 100 }}"
+      fixed="{{ true }}"
+    />
   </view>
 </view>

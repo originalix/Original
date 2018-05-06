@@ -2,13 +2,6 @@ page {
   background-color: #f0f0f0;
 }
 
-/* .no-order-background {
-  float: left;
-  height: 50%;
-  margin-bottom: -120px;
-} */
-
-
 .background-img {
   position: absolute;
   top: -15%;

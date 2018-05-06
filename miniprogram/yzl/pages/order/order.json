@@ -1,5 +1,9 @@
 {
   "navigationBarTitleText": "未完成",
   "backgroundColor": "#f0f0f0",
-  "backgroundTextStyle": "light"
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index"
+  }
 }
