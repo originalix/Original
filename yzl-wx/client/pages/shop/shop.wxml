@@ -1,0 +1,4 @@
+<zan-panel title="普通按钮">
+  <zan-button type="primary">按钮</zan-button>
+</zan-panel>
+<view class="zan-pull-left">zan-pull-right: 往右靠</view>

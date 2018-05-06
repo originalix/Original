@@ -1,0 +1,464 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ActionChains	../python2.7/selenium-example.py	/^from selenium.webdriver.common.action_chains import ActionChains$/;"	kind:namespace	line:7
+ActionChains	../python2.7/taobaomm.py	/^from selenium.webdriver.common.action_chains import ActionChains$/;"	kind:namespace	line:7
+ActionChains	../python2.7/taobaoshop.py	/^from selenium.webdriver.common.action_chains import ActionChains$/;"	kind:namespace	line:9
+BDTB	../python2.7/baidutieba.py	/^class BDTB:$/;"	kind:class	line:37
+BOT_NAME	../scrapy-demo/tutorial/tutorial/settings.py	/^BOT_NAME = 'tutorial'$/;"	kind:variable	line:12
+BaiduSearch	../python2.7/BaiduSearch.py	/^class BaiduSearch(unittest.TestCase):$/;"	kind:class	line:10
+BaiduSearch.py	../python2.7/BaiduSearch.py	1;"	kind:file	line:1
+BeautifulSoup	../python2.7/taobaomm.py	/^from bs4 import BeautifulSoup$/;"	kind:namespace	line:5
+BeautifulSoup	../python2.7/three-part.py	/^from bs4 import BeautifulSoup$/;"	kind:namespace	line:5
+By	../python2.7/selenium-example.py	/^from selenium.webdriver.common.by import By$/;"	kind:namespace	line:8
+By	../python2.7/taobaoshop.py	/^from selenium.webdriver.common.by import By$/;"	kind:namespace	line:10
+By	../python2.7/three-part.py	/^from selenium.webdriver.common.by import By$/;"	kind:namespace	line:8
+BytesIO	../python/io.py	/^from io import BytesIO$/;"	kind:namespace	line:39
+CrawlSpider	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^from scrapy.spiders import CrawlSpider, Rule$/;"	kind:namespace	line:24
+Dict	../python/mydict.py	/^class Dict(dict):$/;"	kind:class	line:20
+Dict	../python/mydict_test.py	/^from mydict import Dict$/;"	kind:namespace	line:3
+DmozItem	../scrapy-demo/tutorial/tutorial/items.py	/^class DmozItem(scrapy.Item):$/;"	kind:class	line:16
+DmozItem	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^from tutorial.items import DmozItem$/;"	kind:namespace	line:6
+DmozSpider	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^class DmozSpider(scrapy.Spider):$/;"	kind:class	line:8
+EC	../python2.7/three-part.py	/^from selenium.webdriver.support import expected_conditions as EC$/;"	kind:namespace	line:10
+Flask	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+Flask	../python/app.py	/^from flask import Flask$/;"	kind:namespace	line:1
+Flask	../python2.7/hello.py	/^from flask import Flask, jsonify$/;"	kind:namespace	line:4
+Flask	../python2.7/json_example.py	/^from flask import Flask, Response, jsonify$/;"	kind:namespace	line:1
+Hello	../python/hello.py	/^Hello = type('Hello', (object,), dict(hello=fn))$/;"	kind:variable	line:122
+ITEM_PIPELINES	../scrapy-demo/tutorial/tutorial/settings.py	/^ITEM_PIPELINES = {$/;"	kind:variable	line:17
+JsonWritePipeline	../scrapy-demo/tutorial/tutorial/pipelines.py	/^class JsonWritePipeline(object):$/;"	kind:class	line:13
+Keys	../python2.7/BaiduSearch.py	/^from selenium.webdriver.common.keys import Keys$/;"	kind:namespace	line:7
+Keys	../python2.7/three-part.py	/^from selenium.webdriver.common.keys import Keys$/;"	kind:namespace	line:7
+L	../python/hello.py	/^L = ['Michael', 'Sarah', 'Tracy']$/;"	kind:variable	line:50
+L	../python/hello.py	/^L = [x * x for x in range(1, 11)]$/;"	kind:variable	line:57
+L	../python/hello.py	/^L = list(range(1, 11))$/;"	kind:variable	line:54
+LinkExtractor	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^from scrapy.linkextractors import LinkExtractor$/;"	kind:namespace	line:25
+MONGODB_DBNAME	../python2.7/mongoconnect.py	/^MONGODB_DBNAME = 'test'$/;"	kind:variable	line:6
+MONGODB_DBNAME	../scrapy-demo/tutorial/tutorial/settings.py	/^MONGODB_DBNAME = 'test'$/;"	kind:variable	line:25
+MONGODB_HOST	../python2.7/mongoconnect.py	/^MONGODB_HOST = 'localhost'$/;"	kind:variable	line:4
+MONGODB_HOST	../scrapy-demo/tutorial/tutorial/settings.py	/^MONGODB_HOST = 'localhost'$/;"	kind:variable	line:23
+MONGODB_PORT	../python2.7/mongoconnect.py	/^MONGODB_PORT = 27017$/;"	kind:variable	line:5
+MONGODB_PORT	../scrapy-demo/tutorial/tutorial/settings.py	/^MONGODB_PORT = 27017$/;"	kind:variable	line:24
+MONGODB_TABLE	../python2.7/mongoconnect.py	/^MONGODB_TABLE = 'runoob'$/;"	kind:variable	line:7
+MONGODB_TABLE	../scrapy-demo/tutorial/tutorial/settings.py	/^MONGODB_TABLE = 'nba'$/;"	kind:variable	line:26
+MyFlask	../python2.7/json_example.py	/^class MyFlask(Flask):$/;"	kind:class	line:10
+MyResponse	../python2.7/json_example.py	/^class MyResponse(Response):$/;"	kind:class	line:3
+MySpider	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^class MySpider(CrawlSpider):$/;"	kind:class	line:27
+NBAScheduleSpider	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	/^class NBAScheduleSpider(scrapy.Spider):$/;"	kind:class	line:6
+NEWSPIDER_MODULE	../scrapy-demo/tutorial/tutorial/settings.py	/^NEWSPIDER_MODULE = 'tutorial.spiders'$/;"	kind:variable	line:15
+PhpLexer	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^from pygments.lexers.web import PhpLexer$/;"	kind:namespace	line:3
+Process	../python/io.py	/^from multiprocessing import Process$/;"	kind:namespace	line:49
+QSBK	../python2.7/qiushibaike.py	/^class QSBK:$/;"	kind:class	line:14
+ROBOTSTXT_OBEY	../scrapy-demo/tutorial/tutorial/settings.py	/^ROBOTSTXT_OBEY = True$/;"	kind:variable	line:32
+Response	../python2.7/json_example.py	/^from flask import Flask, Response, jsonify$/;"	kind:namespace	line:1
+Rule	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^from scrapy.spiders import CrawlSpider, Rule$/;"	kind:namespace	line:24
+SPIDER_MODULES	../scrapy-demo/tutorial/tutorial/settings.py	/^SPIDER_MODULES = ['tutorial.spiders']$/;"	kind:variable	line:14
+SaveScheduleItemPipeline	../scrapy-demo/tutorial/tutorial/pipelines.py	/^class SaveScheduleItemPipeline(object):$/;"	kind:class	line:26
+ScheduleItem	../scrapy-demo/tutorial/tutorial/items.py	/^class ScheduleItem(scrapy.Item):$/;"	kind:class	line:21
+ScheduleItem	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	/^from tutorial.items import ScheduleItem$/;"	kind:namespace	line:4
+ScheduleItem	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^from tutorial.items import ScheduleItem$/;"	kind:namespace	line:4
+StringIO	../python/io.py	/^from io import StringIO$/;"	kind:namespace	line:23
+Student	../python/hello.py	/^class Student(object):$/;"	kind:class	line:94
+Student	../python/io.py	/^class Student(object):$/;"	kind:class	line:64
+TBMM	../python2.7/taobaomm.py	/^class TBMM:$/;"	kind:class	line:13
+TBShopSpider	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^class TBShopSpider(scrapy.Spider):$/;"	kind:class	line:6
+TestDict	../python/mydict_test.py	/^class TestDict(unittest.TestCase):$/;"	kind:class	line:5
+ToScrapeCSSSpider	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^class ToScrapeCSSSpider(scrapy.Spider):$/;"	kind:class	line:5
+ToScrapeXpathSpider	../scrapy-demo/tutorial/tutorial/spiders/toscrape-xpath.py	/^class ToScrapeXpathSpider(scrapy.Spider):$/;"	kind:class	line:5
+Tool	../python2.7/baidutieba.py	/^class Tool:$/;"	kind:class	line:10
+TutorialItem	../scrapy-demo/tutorial/tutorial/items.py	/^class TutorialItem(scrapy.Item):$/;"	kind:class	line:11
+TutorialSpiderMiddleware	../scrapy-demo/tutorial/tutorial/middlewares.py	/^class TutorialSpiderMiddleware(object):$/;"	kind:class	line:11
+WatermarkRemover	../python2.7/watermark-test.py	/^class WatermarkRemover(object):$/;"	kind:class	line:14
+WebDriverWait	../python2.7/three-part.py	/^from selenium.webdriver.support.ui import WebDriverWait$/;"	kind:namespace	line:9
+_DILATE_KERNEL	../python2.7/watermark-test.py	/^_DILATE_KERNEL = np.array([[0, 0, 1, 0, 0],$/;"	kind:variable	line:8
+__author__	../python/hello.py	/^__author__ = 'Lix'$/;"	kind:variable	line:5
+__author__	../python/io.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python/mydict.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python/server.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python/web.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python2.7/BaiduSearch.py	/^__author__ = 'Lix'$/;"	kind:variable	line:3
+__author__	../python2.7/baidutieba.py	/^__author__ = 'Lix'$/;"	kind:variable	line:3
+__author__	../python2.7/forin.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python2.7/qiushibaike.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python2.7/selenium-example.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../python2.7/taobaomm.py	/^__author__ = 'Lix'$/;"	kind:variable	line:3
+__author__	../python2.7/taobaoshop.py	/^__author__ = 'Lix'$/;"	kind:variable	line:4
+__author__	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^__author__ = "Lix"$/;"	kind:variable	line:3
+__getattr__	../python/mydict.py	/^    def __getattr__(self, key):$/;"	kind:member	line:46
+__init__	../python/hello.py	/^    def __init__(self, name, score):$/;"	kind:member	line:96
+__init__	../python/io.py	/^    def __init__(self, name, age, score):$/;"	kind:member	line:65
+__init__	../python/mydict.py	/^    def __init__(self, **kw):$/;"	kind:member	line:43
+__init__	../python2.7/baidutieba.py	/^    def __init__(self, baseUrl, seeLZ, floorTag):$/;"	kind:member	line:39
+__init__	../python2.7/qiushibaike.py	/^    def __init__(self):$/;"	kind:member	line:17
+__init__	../python2.7/taobaomm.py	/^    def __init__(self):$/;"	kind:member	line:14
+__init__	../python2.7/taobaoshop.py	/^    def __init__(self):$/;"	kind:member	line:17
+__init__	../python2.7/watermark-test.py	/^    def __init__(self, verbose=True):$/;"	kind:member	line:19
+__init__	../scrapy-demo/tutorial/tutorial/pipelines.py	/^    def __init__(self):$/;"	kind:member	line:14
+__init__	../scrapy-demo/tutorial/tutorial/pipelines.py	/^    def __init__(self):$/;"	kind:member	line:27
+__init__	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^    def __init__(self):$/;"	kind:member	line:12
+__init__.py	../scrapy-demo/tutorial/tutorial/__init__.py	1;"	kind:file	line:1
+__init__.py	../scrapy-demo/tutorial/tutorial/spiders/__init__.py	1;"	kind:file	line:1
+__setattr__	../python/mydict.py	/^    def __setattr__(self, key, value):$/;"	kind:member	line:52
+a	../python/hello.py	/^a = foo(0)$/;"	kind:variable	line:143
+a	../python/io.py	/^a = json.dumps(d)$/;"	kind:variable	line:57
+a	../python/io.py	/^a = json.loads(json_str)$/;"	kind:variable	line:61
+abort	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+allowed_domains	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^    allowed_domains = ['dmoztools.net']$/;"	kind:variable	line:10
+allowed_domains	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    allowed_domains = ['example.com']$/;"	kind:variable	line:29
+app	../flaskr/flaskr.py	/^app = Flask(__name__)$/;"	kind:variable	line:9
+app	../python/app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
+app	../python2.7/hello.py	/^app = Flask(__name__)$/;"	kind:variable	line:6
+app	../python2.7/json_example.py	/^app = MyFlask(__name__)$/;"	kind:variable	line:13
+app.py	../python/app.py	1;"	kind:file	line:1
+application	../python/server.py	/^from web import application$/;"	kind:namespace	line:7
+application	../python/web.py	/^def application(environ, start_response):$/;"	kind:function	line:6
+arrays	../python2.7/forin.py	/^arrays = [1, 21, 50, 121, 2150]$/;"	kind:variable	line:6
+author	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^author = 'Ben Ramsey'$/;"	kind:variable	line:51
+baidutieba.py	../python2.7/baidutieba.py	1;"	kind:file	line:1
+balance	../python/io.py	/^balance = 0$/;"	kind:variable	line:180
+balance	../python/io.py	/^balance = 0$/;"	kind:variable	line:201
+baseURL	../python2.7/baidutieba.py	/^baseURL = 'https:\/\/tieba.baidu.com\/p\/' + str(raw_input(u'https:\/\/tieba.baidu.com\/p\/'))$/;"	kind:variable	line:135
+bdtb	../python2.7/baidutieba.py	/^bdtb = BDTB(baseURL, seeLZ, floorTag)$/;"	kind:variable	line:138
+calc	../python/hello.py	/^def calc(*numbers):$/;"	kind:function	line:32
+change_it	../python/io.py	/^def change_it(n):$/;"	kind:function	line:183
+client	../python2.7/mongoconnect.py	/^client = pymongo.MongoClient(host=host, port=port)$/;"	kind:variable	line:14
+close_db	../flaskr/flaskr.py	/^def close_db(error):$/;"	kind:function	line:52
+codecs	../scrapy-demo/tutorial/tutorial/pipelines.py	/^import codecs$/;"	kind:namespace	line:9
+collection	../python2.7/mongodb.py	/^collection = db.runoob$/;"	kind:variable	line:10
+conf.py	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	1;"	kind:file	line:1
+conf.py	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	1;"	kind:file	line:1
+conn	../python2.7/mongodb.py	/^conn = pymongo.MongoClient()$/;"	kind:variable	line:8
+connect_db	../flaskr/flaskr.py	/^def connect_db():$/;"	kind:function	line:30
+copy	../python2.7/mongodb.py	/^import copy$/;"	kind:namespace	line:32
+copyright	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^copyright = '2018, Ben Ramsey'$/;"	kind:variable	line:50
+copyright	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^copyright = u'2015, Michael Dowling'$/;"	kind:variable	line:15
+create_app	../flaskr/flaskr.py	/^def create_app(config=None):$/;"	kind:function	line:11
+cv2	../python2.7/watermark-test.py	/^import cv2$/;"	kind:namespace	line:4
+d	../python/io.py	/^d = dict(name='wsx', age=21, score=99)$/;"	kind:variable	line:56
+dataNitro	../python2.7/excel.py	/^def dataNitro():$/;"	kind:function	line:101
+data_pass	../python2.7/urllib2-example.py	/^data_pass=urllib.encode(dict_data)$/;"	kind:variable	line:47
+date	../python2.7/excel.py	/^from datetime import date,datetime$/;"	kind:namespace	line:6
+date	../scrapy-demo/tutorial/tutorial/items.py	/^    date = scrapy.Field()$/;"	kind:variable	line:22
+datetime	../python/io.py	/^from datetime import datetime$/;"	kind:namespace	line:222
+datetime	../python2.7/excel.py	/^from datetime import date,datetime$/;"	kind:namespace	line:6
+db	../python2.7/mongoconnect.py	/^db = client[dbname]$/;"	kind:variable	line:17
+db	../python2.7/mongodb.py	/^db = conn.test$/;"	kind:variable	line:9
+dbname	../python2.7/mongoconnect.py	/^dbname = MONGODB_DBNAME$/;"	kind:variable	line:13
+desc	../scrapy-demo/tutorial/tutorial/items.py	/^    desc = scrapy.Field()$/;"	kind:variable	line:19
+dic	../python2.7/mongoconnect.py	/^dic = {$/;"	kind:variable	line:26
+dic	../python2.7/mongodb.py	/^dic = {$/;"	kind:variable	line:20
+dict_data	../python2.7/urllib2-example.py	/^dict_data={'use_name':'aibilim','password':'xxxx','language':'python'}$/;"	kind:variable	line:45
+dilate	../python2.7/watermark-test.py	/^    def dilate(self, img):$/;"	kind:member	line:34
+dmoz_spider.py	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	1;"	kind:file	line:1
+doctest	../python/mydict.py	/^    import doctest$/;"	kind:namespace	line:56
+etree	../python2.7/taobaoshop.py	/^from lxml import etree$/;"	kind:namespace	line:7
+excel	../python2.7/excel.py	/^    import xlutils #操作excel$/;"	kind:namespace	line:61
+excel.py	../python2.7/excel.py	1;"	kind:file	line:1
+excel_table_byindex	../python2.7/excel.py	/^def excel_table_byindex(file= 'file.xls',colnameindex=0,by_index=0):$/;"	kind:function	line:110
+excel_table_byname	../python2.7/excel.py	/^def excel_table_byname(file= 'file.xls',colnameindex=0,by_name=u'Sheet1'):$/;"	kind:function	line:128
+exclude_patterns	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']$/;"	kind:variable	line:72
+exclude_patterns	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^exclude_patterns = ['_build']$/;"	kind:variable	line:20
+extensions	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^extensions = []$/;"	kind:variable	line:34
+extensions	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^extensions = []$/;"	kind:variable	line:10
+extra	../python/hello.py	/^extra = {'job': 'developer', 'city': 'Hangzhou'}$/;"	kind:variable	line:46
+f	../python/hello.py	/^f = fib(6)$/;"	kind:variable	line:76
+f	../python/io.py	/^f = BytesIO()$/;"	kind:variable	line:41
+f	../python/io.py	/^f = BytesIO(b'\\xe4\\xb8\\xad\\xe6\\x96\\x87')$/;"	kind:variable	line:45
+f	../python/io.py	/^f = StringIO('Hello\\nHi\\nWsx!')$/;"	kind:variable	line:31
+fib	../python/hello.py	/^def fib(max):$/;"	kind:function	line:67
+find_watermark	../python2.7/watermark-test.py	/^    def find_watermark(self, filename):$/;"	kind:member	line:81
+find_watermark_from_gray	../python2.7/watermark-test.py	/^    def find_watermark_from_gray(self, gray_img, watermark_template_gray_img):$/;"	kind:member	line:91
+flash	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+flaskr.py	../flaskr/flaskr.py	1;"	kind:file	line:1
+floorTag	../python2.7/baidutieba.py	/^floorTag = raw_input('是否写入楼层信息，是输入1，否输入0\\n')$/;"	kind:variable	line:137
+fn	../python/hello.py	/^def fn(self, name='world'):$/;"	kind:function	line:119
+foo	../python/hello.py	/^def foo(s):$/;"	kind:function	line:138
+force_type	../python2.7/json_example.py	/^    def force_type(cls, response, environ=None):$/;"	kind:member	line:5
+forin.py	../python2.7/forin.py	1;"	kind:file	line:1
+from_crawler	../scrapy-demo/tutorial/tutorial/middlewares.py	/^    def from_crawler(cls, crawler):$/;"	kind:member	line:17
+g	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+g	../python/hello.py	/^g = (x * x for x in range(1, 11))$/;"	kind:variable	line:61
+generate_template_gray_and_mask	../python2.7/watermark-test.py	/^    def generate_template_gray_and_mask(self, watermark_template_filename):$/;"	kind:member	line:43
+getContent	../python2.7/baidutieba.py	/^    def getContent(self, pageCode):$/;"	kind:member	line:86
+getContent	../python2.7/taobaomm.py	/^    def getContent(self, soup):$/;"	kind:member	line:58
+getItem	../python2.7/taobaoshop.py	/^    def getItem(self):$/;"	kind:member	line:45
+getItemDetail	../python2.7/taobaoshop.py	/^    def getItemDetail(self, link, save_img_path):$/;"	kind:member	line:84
+getOneStory	../python2.7/qiushibaike.py	/^    def getOneStory(self, pageStories, page):$/;"	kind:member	line:75
+getPage	../python2.7/baidutieba.py	/^    def getPage(self, pageNum):$/;"	kind:member	line:55
+getPage	../python2.7/qiushibaike.py	/^    def getPage(self, pageIndex):$/;"	kind:member	line:28
+getPage	../python2.7/taobaomm.py	/^    def getPage(self):$/;"	kind:member	line:25
+getPage	../python2.7/taobaoshop.py	/^    def getPage(self):$/;"	kind:member	line:27
+getPageItems	../python2.7/qiushibaike.py	/^    def getPageItems(self, pageIndex):$/;"	kind:member	line:44
+getPageNum	../python2.7/baidutieba.py	/^    def getPageNum(self, pageCode):$/;"	kind:member	line:77
+getTitle	../python2.7/baidutieba.py	/^    def getTitle(self, pageCode):$/;"	kind:member	line:68
+getTotalPage	../python2.7/taobaomm.py	/^    def getTotalPage(self, pageCode):$/;"	kind:member	line:40
+get_db	../flaskr/flaskr.py	/^def get_db():$/;"	kind:function	line:43
+go2ContentPage	../python2.7/taobaomm.py	/^    def go2ContentPage(self, url, save_url):$/;"	kind:member	line:137
+go2Page	../python2.7/taobaomm.py	/^    def go2Page(self, page):$/;"	kind:member	line:160
+guest	../scrapy-demo/tutorial/tutorial/items.py	/^    guest = scrapy.Field()$/;"	kind:variable	line:24
+guzzle_sphinx_theme	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^import guzzle_sphinx_theme$/;"	kind:namespace	line:25
+h	../python/hello.py	/^h = Hello()$/;"	kind:variable	line:123
+headers	../python2.7/urllib2-example.py	/^headers = { 'User-Agent' : user_agent }  $/;"	kind:variable	line:9
+hello	../python2.7/hello.py	/^def hello(name=None):$/;"	kind:function	line:26
+hello.py	../python/hello.py	1;"	kind:file	line:1
+hello.py	../python2.7/hello.py	1;"	kind:file	line:1
+hello_world	../python2.7/hello.py	/^def hello_world():$/;"	kind:function	line:9
+home	../python/app.py	/^def home():$/;"	kind:function	line:7
+home	../scrapy-demo/tutorial/tutorial/items.py	/^    home = scrapy.Field()$/;"	kind:variable	line:25
+host	../python2.7/mongoconnect.py	/^host = MONGODB_HOST$/;"	kind:variable	line:11
+html	../python2.7/urllib2-example.py	/^html = response.read()$/;"	kind:variable	line:12
+html_short_title	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_short_title = "Guzzle 6"$/;"	kind:variable	line:18
+html_sidebars	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^html_sidebars = {$/;"	kind:variable	line:104
+html_sidebars	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_sidebars = {$/;"	kind:variable	line:31
+html_static_path	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:97
+html_static_path	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:21
+html_theme	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^html_theme = 'alabaster'$/;"	kind:variable	line:86
+html_theme	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_theme = 'guzzle_sphinx_theme'$/;"	kind:variable	line:28
+html_theme_options	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_theme_options = {$/;"	kind:variable	line:39
+html_theme_path	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_theme_path = guzzle_sphinx_theme.html_theme_path()$/;"	kind:variable	line:27
+html_title	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_title = "Guzzle Documentation"$/;"	kind:variable	line:17
+html_translator_class	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^html_translator_class = 'guzzle_sphinx_theme.HTMLTranslator'$/;"	kind:variable	line:26
+htmlhelp_basename	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^htmlhelp_basename = 'ramseyuuiddoc'$/;"	kind:variable	line:115
+httpd	../python/server.py	/^httpd = make_server('', 8000, application)$/;"	kind:variable	line:9
+init_db	../flaskr/flaskr.py	/^def init_db():$/;"	kind:function	line:36
+io.py	../python/io.py	1;"	kind:file	line:1
+items	../python2.7/mongodb.py	/^items = collection.find( {'age' : { '$ne': 10 }} )$/;"	kind:variable	line:53
+items.py	../scrapy-demo/tutorial/tutorial/items.py	1;"	kind:file	line:1
+json	../python/io.py	/^import json$/;"	kind:namespace	line:55
+json	../scrapy-demo/tutorial/tutorial/pipelines.py	/^import json$/;"	kind:namespace	line:8
+json_example.py	../python2.7/json_example.py	1;"	kind:file	line:1
+json_str	../python/io.py	/^json_str = '{"name": "wsx", "age": 21, "score": 99}'$/;"	kind:variable	line:60
+jsonify	../python2.7/hello.py	/^from flask import Flask, jsonify$/;"	kind:namespace	line:4
+jsonify	../python2.7/json_example.py	/^from flask import Flask, Response, jsonify$/;"	kind:namespace	line:1
+language	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^language = None$/;"	kind:variable	line:67
+latex_documents	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^latex_documents = [$/;"	kind:variable	line:141
+latex_elements	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^latex_elements = {$/;"	kind:variable	line:120
+lexers	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^from sphinx.highlighting import lexers$/;"	kind:namespace	line:2
+link	../scrapy-demo/tutorial/tutorial/items.py	/^    link = scrapy.Field()$/;"	kind:variable	line:18
+loadPage	../python2.7/qiushibaike.py	/^    def loadPage(self):$/;"	kind:member	line:62
+load_watermark_template	../python2.7/watermark-test.py	/^    def load_watermark_template(self, watermark_template_filename):$/;"	kind:member	line:26
+lock	../python/io.py	/^lock = threading.Lock()$/;"	kind:variable	line:202
+main	../python2.7/excel.py	/^def main():$/;"	kind:function	line:143
+main	../python2.7/selenium-example.py	/^def main():$/;"	kind:function	line:21
+main	../python2.7/taobaoshop.py	/^def main():$/;"	kind:function	line:168
+main	../python2.7/watermark-test.py	/^def main():$/;"	kind:function	line:159
+make_server	../python/server.py	/^from wsgiref.simple_server import make_server$/;"	kind:namespace	line:6
+man_pages	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^man_pages = [$/;"	kind:variable	line:151
+many	../python2.7/mongodb.py	/^many = []$/;"	kind:variable	line:31
+master_doc	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^master_doc = 'index'$/;"	kind:variable	line:46
+master_doc	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^master_doc = 'index'$/;"	kind:variable	line:13
+math	../python/hello.py	/^import math$/;"	kind:namespace	line:8
+middlewares.py	../scrapy-demo/tutorial/tutorial/middlewares.py	1;"	kind:file	line:1
+mkdir	../python2.7/taobaomm.py	/^    def mkdir(self, path):$/;"	kind:member	line:114
+mkdir	../python2.7/taobaoshop.py	/^    def mkdir(self, path):$/;"	kind:member	line:145
+mongoconnect.py	../python2.7/mongoconnect.py	1;"	kind:file	line:1
+mongodb.py	../python2.7/mongodb.py	1;"	kind:file	line:1
+move	../python/hello.py	/^def move(x, y, step, angle=0):$/;"	kind:function	line:23
+my_abs	../python/hello.py	/^def my_abs(x):$/;"	kind:function	line:10
+mydict.py	../python/mydict.py	1;"	kind:file	line:1
+mydict_test.py	../python/mydict_test.py	1;"	kind:file	line:1
+name	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^    name = "dmoz"$/;"	kind:variable	line:9
+name	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	/^    name = "nba-schedule"$/;"	kind:variable	line:7
+name	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^    name = "tbshop"$/;"	kind:variable	line:7
+name	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    name = "toscrape-css"$/;"	kind:variable	line:6
+name	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    name = 'example.com'$/;"	kind:variable	line:28
+name	../scrapy-demo/tutorial/tutorial/spiders/toscrape-xpath.py	/^    name = "toscrape-xpath"$/;"	kind:variable	line:6
+nba_schedule_spider.py	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	1;"	kind:file	line:1
+nop	../python/hello.py	/^def nop():$/;"	kind:function	line:20
+np	../python2.7/watermark-test.py	/^import numpy as np$/;"	kind:namespace	line:5
+nums	../python/hello.py	/^nums = [1, 2, 3]$/;"	kind:variable	line:38
+openpyxl	../python2.7/excel.py	/^    import openpyxl$/;"	kind:namespace	line:93
+openpyxl	../python2.7/excel.py	/^def openpyxl():$/;"	kind:function	line:90
+os	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^import sys, os$/;"	kind:namespace	line:1
+os	../flaskr/flaskr.py	/^import os$/;"	kind:namespace	line:5
+os	../python/io.py	/^import os$/;"	kind:namespace	line:48
+os	../python2.7/taobaomm.py	/^import os$/;"	kind:namespace	line:11
+os	../python2.7/taobaoshop.py	/^import os$/;"	kind:namespace	line:14
+parse	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^    def parse(self, response):$/;"	kind:member	line:17
+parse	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	/^    def parse(self, response):$/;"	kind:member	line:12
+parse	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^    def parse(self, response):$/;"	kind:member	line:15
+parse	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    def parse(self, response):$/;"	kind:member	line:11
+parse	../scrapy-demo/tutorial/tutorial/spiders/toscrape-xpath.py	/^    def parse(self, response):$/;"	kind:member	line:11
+parse_dir_contents	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^    def parse_dir_contents(self, response):$/;"	kind:member	line:23
+parse_item	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    def parse_item(self, response):$/;"	kind:member	line:40
+person	../python/hello.py	/^def person(name, age, **kw):$/;"	kind:function	line:43
+pipelines.py	../scrapy-demo/tutorial/tutorial/pipelines.py	1;"	kind:file	line:1
+port	../python2.7/mongoconnect.py	/^port = MONGODB_PORT$/;"	kind:variable	line:12
+practice_beautiful_soup	../python2.7/three-part.py	/^def practice_beautiful_soup():$/;"	kind:function	line:25
+practice_beautiful_soup_tag	../python2.7/three-part.py	/^def practice_beautiful_soup_tag():$/;"	kind:function	line:54
+practice_requests	../python2.7/three-part.py	/^def practice_requests():$/;"	kind:function	line:12
+practice_selenium	../python2.7/three-part.py	/^def practice_selenium():$/;"	kind:function	line:74
+practice_taobaomm	../python2.7/three-part.py	/^def practice_taobaomm():$/;"	kind:function	line:86
+primary_domain	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^primary_domain = 'php'$/;"	kind:variable	line:8
+print_score	../python/hello.py	/^    def print_score(self):$/;"	kind:member	line:100
+process_item	../scrapy-demo/tutorial/tutorial/pipelines.py	/^    def process_item(self, item, spider):$/;"	kind:member	line:17
+process_item	../scrapy-demo/tutorial/tutorial/pipelines.py	/^    def process_item(self, item, spider):$/;"	kind:member	line:41
+process_spider_exception	../scrapy-demo/tutorial/tutorial/middlewares.py	/^    def process_spider_exception(self, response, exception, spider):$/;"	kind:member	line:38
+process_spider_input	../scrapy-demo/tutorial/tutorial/middlewares.py	/^    def process_spider_input(self, response, spider):$/;"	kind:member	line:23
+process_spider_output	../scrapy-demo/tutorial/tutorial/middlewares.py	/^    def process_spider_output(self, response, result, spider):$/;"	kind:member	line:30
+process_start_requests	../scrapy-demo/tutorial/tutorial/middlewares.py	/^    def process_start_requests(self, start_requests, spider):$/;"	kind:member	line:46
+project	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^project = 'ramsey\/uuid'$/;"	kind:variable	line:49
+project	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^project = u'Guzzle'$/;"	kind:variable	line:14
+pygments_style	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^pygments_style = 'sphinx'$/;"	kind:variable	line:75
+pymongo	../python2.7/mongoconnect.py	/^import pymongo$/;"	kind:namespace	line:9
+pymongo	../python2.7/mongodb.py	/^import pymongo$/;"	kind:namespace	line:4
+pymongo	../scrapy-demo/tutorial/tutorial/pipelines.py	/^import pymongo$/;"	kind:namespace	line:11
+qiushibaike.py	../python2.7/qiushibaike.py	1;"	kind:file	line:1
+re	../python2.7/baidutieba.py	/^import re$/;"	kind:namespace	line:7
+re	../python2.7/qiushibaike.py	/^import re$/;"	kind:namespace	line:9
+re	../python2.7/taobaomm.py	/^import re$/;"	kind:namespace	line:9
+re	../python2.7/taobaoshop.py	/^import re$/;"	kind:namespace	line:12
+read_exc	../python2.7/excel.py	/^def read_exc():$/;"	kind:function	line:8
+redirect	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+release	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^release = '3.7'$/;"	kind:variable	line:60
+removeAddr	../python2.7/baidutieba.py	/^    removeAddr = re.compile(r'<a.*?>|<\/a>')$/;"	kind:variable	line:14
+removeExtraTag	../python2.7/baidutieba.py	/^    removeExtraTag = re.compile(r'<.*?>')$/;"	kind:variable	line:24
+removeImg	../python2.7/baidutieba.py	/^    removeImg = re.compile(r'<img.*?>| {7}|')$/;"	kind:variable	line:12
+remove_watermark	../python2.7/watermark-test.py	/^    def remove_watermark(self, filename, output_filename=None):$/;"	kind:member	line:138
+remove_watermark_raw	../python2.7/watermark-test.py	/^    def remove_watermark_raw(self, img, watermark_template_gray_img, watermark_template_mask_img):$/;"	kind:member	line:113
+render_template	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+render_template	../python2.7/hello.py	/^from flask import render_template$/;"	kind:namespace	line:5
+replace	../python2.7/baidutieba.py	/^    def replace(self, x):$/;"	kind:member	line:25
+replaceBR	../python2.7/baidutieba.py	/^    replaceBR = re.compile(r'<br><br>|<br>')$/;"	kind:variable	line:22
+replaceLine	../python2.7/baidutieba.py	/^    replaceLine = re.compile(r'<tr>|<div>|<\/div>|<\/p>')$/;"	kind:variable	line:16
+replacePara	../python2.7/baidutieba.py	/^    replacePara = re.compile(r'<p.*?>')$/;"	kind:variable	line:20
+replaceTD	../python2.7/baidutieba.py	/^    replaceTD = re.compile(r'<td>')$/;"	kind:variable	line:18
+req	../python2.7/urllib2-example.py	/^req = urllib2.Request(url)$/;"	kind:variable	line:27
+req	../python2.7/urllib2-example.py	/^req=urllib2.Request(url,data)$/;"	kind:variable	line:49
+request	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+request	../python/app.py	/^from flask import request$/;"	kind:namespace	line:2
+request	../python2.7/urllib2-example.py	/^request = urllib2.Request(url, None, headers)  $/;"	kind:variable	line:10
+requestSina	../python2.7/weixin.py	/^def requestSina():$/;"	kind:function	line:11
+requestWX	../python2.7/weixin.py	/^def requestWX():$/;"	kind:function	line:7
+requests	../python2.7/taobaomm.py	/^import requests$/;"	kind:namespace	line:10
+requests	../python2.7/taobaoshop.py	/^import requests$/;"	kind:namespace	line:13
+requests	../python2.7/three-part.py	/^import requests$/;"	kind:namespace	line:4
+requests	../python2.7/weixin.py	/^import requests$/;"	kind:namespace	line:4
+response	../python2.7/urllib2-example.py	/^response = urllib2.urlopen(req)$/;"	kind:variable	line:29
+response	../python2.7/urllib2-example.py	/^response = urllib2.urlopen(request)$/;"	kind:variable	line:11
+response	../python2.7/urllib2-example.py	/^response=urllib2.urlopen(req)$/;"	kind:variable	line:51
+response_class	../python2.7/json_example.py	/^    response_class = MyResponse$/;"	kind:variable	line:11
+root	../python2.7/json_example.py	/^def root():$/;"	kind:function	line:16
+rules	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    rules = ($/;"	kind:variable	line:32
+run_thread	../python/io.py	/^def run_thread(n):$/;"	kind:function	line:205
+s	../python/io.py	/^    s = f.readline()$/;"	kind:variable	line:33
+s	../python/io.py	/^s = Student('Bob', 20, 88)$/;"	kind:variable	line:70
+saveHtml	../python2.7/taobaoshop.py	/^    def saveHtml(self, file_name, file_content):  $/;"	kind:member	line:39
+saveImg	../python2.7/taobaomm.py	/^    def saveImg(self, savePath, imageURL, fileName):$/;"	kind:member	line:103
+saveImg	../python2.7/taobaoshop.py	/^    def saveImg(self, savePath, imageURL, fileName):$/;"	kind:member	line:134
+scrapy	../scrapy-demo/tutorial/tutorial/items.py	/^import scrapy$/;"	kind:namespace	line:8
+scrapy	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^import scrapy$/;"	kind:namespace	line:5
+scrapy	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	/^import scrapy$/;"	kind:namespace	line:3
+scrapy	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^import scrapy$/;"	kind:namespace	line:3
+scrapy	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^import scrapy$/;"	kind:namespace	line:23
+scrapy	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^import scrapy$/;"	kind:namespace	line:3
+scrapy	../scrapy-demo/tutorial/tutorial/spiders/toscrape-xpath.py	/^import scrapy$/;"	kind:namespace	line:3
+seeLZ	../python2.7/baidutieba.py	/^seeLZ = raw_input('是否只获取楼主发言，是输入1，否输入0\\n')$/;"	kind:variable	line:136
+selenium-example.py	../python2.7/selenium-example.py	1;"	kind:file	line:1
+selenium_example	../python2.7/selenium-example.py	/^def selenium_example():$/;"	kind:function	line:11
+server.py	../python/server.py	1;"	kind:file	line:1
+session	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+setFileTitle	../python2.7/baidutieba.py	/^    def setFileTitle(self, title):$/;"	kind:member	line:96
+setUp	../python/mydict_test.py	/^    def setUp(self):$/;"	kind:member	line:7
+setUp	../python2.7/BaiduSearch.py	/^    def setUp(self):$/;"	kind:member	line:11
+settings	../scrapy-demo/tutorial/tutorial/pipelines.py	/^from scrapy.conf import settings$/;"	kind:namespace	line:10
+settings.py	../scrapy-demo/tutorial/tutorial/settings.py	1;"	kind:file	line:1
+show	../python2.7/mongoconnect.py	/^def show(collection):$/;"	kind:function	line:35
+show	../python2.7/mongodb.py	/^def show(collection):$/;"	kind:function	line:14
+show_post	../python2.7/hello.py	/^def show_post(post_id):$/;"	kind:function	line:21
+show_user_profile	../python2.7/hello.py	/^def show_user_profile(username):$/;"	kind:function	line:17
+signals	../scrapy-demo/tutorial/tutorial/middlewares.py	/^from scrapy import signals$/;"	kind:namespace	line:8
+signin	../python/app.py	/^def signin():$/;"	kind:function	line:19
+signin_form	../python/app.py	/^def signin_form():$/;"	kind:function	line:11
+source_suffix	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^source_suffix = '.rst'$/;"	kind:variable	line:43
+source_suffix	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^source_suffix = '.rst'$/;"	kind:variable	line:12
+spider	../python2.7/qiushibaike.py	/^spider = QSBK()$/;"	kind:variable	line:108
+spider.py	../python2.7/spider.py	1;"	kind:file	line:1
+spider_opened	../scrapy-demo/tutorial/tutorial/middlewares.py	/^    def spider_opened(self, spider):$/;"	kind:member	line:55
+sqlite3	../flaskr/flaskr.py	/^import sqlite3$/;"	kind:namespace	line:6
+start	../python2.7/baidutieba.py	/^    def start(self):$/;"	kind:member	line:113
+start	../python2.7/qiushibaike.py	/^    def start(self):$/;"	kind:member	line:89
+start	../python2.7/taobaomm.py	/^    def start(self):$/;"	kind:member	line:173
+start_urls	../scrapy-demo/tutorial/tutorial/spiders/dmoz_spider.py	/^    start_urls = [$/;"	kind:variable	line:11
+start_urls	../scrapy-demo/tutorial/tutorial/spiders/nba_schedule_spider.py	/^    start_urls = [$/;"	kind:variable	line:8
+start_urls	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	/^    start_urls = [$/;"	kind:variable	line:8
+start_urls	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    start_urls = [$/;"	kind:variable	line:7
+start_urls	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	/^    start_urls = ['http:\/\/www.example.com']$/;"	kind:variable	line:30
+start_urls	../scrapy-demo/tutorial/tutorial/spiders/toscrape-xpath.py	/^    start_urls = [$/;"	kind:variable	line:7
+subprocess	../python/io.py	/^import subprocess$/;"	kind:namespace	line:117
+sys	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^import sys, os$/;"	kind:namespace	line:1
+sys	../python/hello.py	/^import sys$/;"	kind:namespace	line:7
+t	../python/io.py	/^t = 1429417200.0$/;"	kind:variable	line:223
+t1	../python/io.py	/^t1 = threading.Thread(target=run_thread, args=(5,))$/;"	kind:variable	line:213
+t2	../python/io.py	/^t2 = threading.Thread(target=run_thread, args=(8,))$/;"	kind:variable	line:214
+table	../python2.7/mongoconnect.py	/^table = db[MONGODB_TABLE]$/;"	kind:variable	line:18
+taobaoShop	../python2.7/taobaoshop.py	/^class taobaoShop:$/;"	kind:class	line:16
+taobaomm.py	../python2.7/taobaomm.py	1;"	kind:file	line:1
+taobaoshop.py	../python2.7/taobaoshop.py	1;"	kind:file	line:1
+tbmm	../python2.7/taobaomm.py	/^tbmm = TBMM()$/;"	kind:variable	line:180
+tbshop.py	../scrapy-demo/tutorial/tutorial/spiders/tbshop.py	1;"	kind:file	line:1
+tearDown	../python/mydict_test.py	/^    def tearDown(self):$/;"	kind:member	line:10
+tearDown	../python2.7/BaiduSearch.py	/^    def tearDown(self):$/;"	kind:member	line:23
+templates_path	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^templates_path = ['_templates']$/;"	kind:variable	line:37
+templates_path	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^templates_path = ['_templates']$/;"	kind:variable	line:11
+test	../python/hello.py	/^def test():$/;"	kind:function	line:81
+test_init	../python/mydict_test.py	/^    def test_init(self):$/;"	kind:member	line:13
+test_keyerror	../python/mydict_test.py	/^    def test_keyerror(self):$/;"	kind:member	line:19
+test_searh_in_baidu	../python2.7/BaiduSearch.py	/^    def test_searh_in_baidu(self):$/;"	kind:member	line:14
+texinfo_documents	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:162
+the_page	../python2.7/urllib2-example.py	/^the_page=response.read()$/;"	kind:variable	line:52
+thread	../python2.7/qiushibaike.py	/^import thread$/;"	kind:namespace	line:10
+threading	../python/io.py	/^import time, threading$/;"	kind:namespace	line:177
+three-part.py	../python2.7/three-part.py	1;"	kind:file	line:1
+time	../python/io.py	/^import time, threading$/;"	kind:namespace	line:177
+time	../python2.7/qiushibaike.py	/^import time$/;"	kind:namespace	line:11
+time	../python2.7/selenium-example.py	/^import time$/;"	kind:namespace	line:9
+time	../python2.7/taobaomm.py	/^import time$/;"	kind:namespace	line:8
+time	../python2.7/taobaoshop.py	/^import time$/;"	kind:namespace	line:11
+time	../scrapy-demo/tutorial/tutorial/items.py	/^    time = scrapy.Field()$/;"	kind:variable	line:23
+title	../scrapy-demo/tutorial/tutorial/items.py	/^    title = scrapy.Field()$/;"	kind:variable	line:17
+todo_include_todos	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^todo_include_todos = False$/;"	kind:variable	line:78
+toscrape-css.py	../scrapy-demo/tutorial/tutorial/spiders/toscrape-css.py	1;"	kind:file	line:1
+toscrape-xpath.py	../scrapy-demo/tutorial/tutorial/spiders/toscrape-xpath.py	1;"	kind:file	line:1
+unittest	../python/mydict_test.py	/^import unittest$/;"	kind:namespace	line:1
+unittest	../python2.7/BaiduSearch.py	/^import unittest$/;"	kind:namespace	line:5
+url	../python2.7/urllib2-example.py	/^url = 'http:\/\/originalix.github.io\/#blog'$/;"	kind:variable	line:7
+url	../python2.7/urllib2-example.py	/^url = 'http:\/\/www.xxxxx.com'$/;"	kind:variable	line:26
+url	../python2.7/urllib2-example.py	/^url='http:\/\/www.voidspace.com.uk\/'$/;"	kind:variable	line:43
+url_for	../flaskr/flaskr.py	/^from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash$/;"	kind:namespace	line:7
+urllib	../python2.7/baidutieba.py	/^import urllib$/;"	kind:namespace	line:5
+urllib	../python2.7/qiushibaike.py	/^import urllib$/;"	kind:namespace	line:7
+urllib	../python2.7/urllib2-example.py	/^import urllib  $/;"	kind:namespace	line:4
+urllib	../python2.7/urllib2-example.py	/^import urllib$/;"	kind:namespace	line:40
+urllib2	../python2.7/baidutieba.py	/^import urllib2$/;"	kind:namespace	line:6
+urllib2	../python2.7/qiushibaike.py	/^import urllib2$/;"	kind:namespace	line:8
+urllib2	../python2.7/urllib2-example.py	/^import urllib2  $/;"	kind:namespace	line:5
+urllib2	../python2.7/urllib2-example.py	/^import urllib2$/;"	kind:namespace	line:16
+urllib2	../python2.7/urllib2-example.py	/^import urllib2$/;"	kind:namespace	line:25
+urllib2	../python2.7/urllib2-example.py	/^import urllib2$/;"	kind:namespace	line:41
+urllib2-example.py	../python2.7/urllib2-example.py	1;"	kind:file	line:1
+user_agent	../python2.7/urllib2-example.py	/^user_agent = 'Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/64.0.3282.140 Safari\/537.36'  $/;"	kind:variable	line:8
+version	../PHP/fecshop/vendor/ramsey/uuid/docs/conf.py	/^version = '3.7'$/;"	kind:variable	line:58
+version	../PHP/wxdev/vendor/guzzlehttp/guzzle/docs/conf.py	/^version = '6'$/;"	kind:variable	line:16
+watermark-test.py	../python2.7/watermark-test.py	1;"	kind:file	line:1
+web.py	../python/web.py	1;"	kind:file	line:1
+webdriver	../python2.7/BaiduSearch.py	/^from selenium import webdriver$/;"	kind:namespace	line:6
+webdriver	../python2.7/selenium-example.py	/^from selenium import webdriver$/;"	kind:namespace	line:6
+webdriver	../python2.7/taobaomm.py	/^from selenium import webdriver$/;"	kind:namespace	line:6
+webdriver	../python2.7/taobaoshop.py	/^from selenium import webdriver$/;"	kind:namespace	line:8
+webdriver	../python2.7/three-part.py	/^from selenium import webdriver$/;"	kind:namespace	line:6
+weixin.py	../python2.7/weixin.py	1;"	kind:file	line:1
+writeData	../python2.7/baidutieba.py	/^    def writeData(self, contents):$/;"	kind:member	line:103
+xlrd	../python2.7/excel.py	/^import xlrd$/;"	kind:namespace	line:4
+xlswriter	../python2.7/excel.py	/^def xlswriter():$/;"	kind:function	line:45
+xlutils	../python2.7/excel.py	/^    import xlutils #操作excel$/;"	kind:namespace	line:61
+xlutils	../python2.7/excel.py	/^def xlutils():$/;"	kind:function	line:56
+xlwings	../python2.7/excel.py	/^def xlwings():$/;"	kind:function	line:34
+xlwt	../python2.7/excel.py	/^    import xlwt #写入数据$/;"	kind:namespace	line:60
+xlwt	../python2.7/excel.py	/^import xlwt$/;"	kind:namespace	line:5
+xw	../python2.7/excel.py	/^    import xlsxwriter as xw$/;"	kind:namespace	line:46
+xw	../python2.7/excel.py	/^    import xlwings as xw$/;"	kind:namespace	line:35
