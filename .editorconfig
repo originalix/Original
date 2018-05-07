@@ -19,6 +19,21 @@ charset = utf-8
 indent_size = 2
 indent_style = space
 
+[*.vue]
+charset = utf-8
+indent_size = 2
+indent_style = space
+
+[*.wxml]
+charset = utf-8
+indent_size = 2
+indent_style = space
+
+[*.wxss]
+charset = utf-8
+indent_size = 2
+indent_style = space
+
 # 4 space indentation
 [*.py]
 indent_style = space

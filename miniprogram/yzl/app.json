@@ -2,30 +2,38 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/shop/shop"
+    "pages/shop/shop",
+    "pages/order/order"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Lix",
-    "navigationBarTextStyle":"black"
+    "backgroundTextStyle":"black",
+    "navigationBarBackgroundColor": "#63d8f2",
+    "navigationBarTitleText": "衣之恋优质干洗",
+    "navigationBarTextStyle":"light",
+    "navigationStyle": "default"
   },
   "tabBar": {
-    "color": "#fff",
-    "selectedColor": "red",
-    "backgroundColor": "#000",
+    "color": "#878787",
+    "selectedColor": "#63d8f2",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "/resource/img/tab_1.png",
+        "selectedIconPath": "/resource/img/tab_1_selected.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "/resource/img/tab_2.png",
+        "selectedIconPath": "/resource/img/tab_2_selected.png"
       },
       {
         "pagePath": "pages/shop/shop",
-        "text": "商城"
+        "text": "我的",
+        "iconPath": "/resource/img/tab_3.png",
+        "selectedIconPath": "/resource/img/tab_3_selected.png"
       }
     ]
   }

@@ -110,7 +110,7 @@
   <zan-row>
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/product.png" class="bottom-icon-img" />
           </view>
@@ -121,33 +121,33 @@
 
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
-            <image src="../../resource/img/product.png" class="bottom-icon-img" />
+            <image src="../../resource/img/earth.png" class="bottom-icon-img" />
           </view>
-          <view class="bottom-icon-title"><text>服务介绍</text></view>
+          <view class="bottom-icon-title"><text>服务范围</text></view>
         </navigator>
       </view>
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
-            <image src="../../resource/img/product.png" class="bottom-icon-img" />
+            <image src="../../resource/img/price.png" class="bottom-icon-img" />
           </view>
-          <view class="bottom-icon-title"><text>服务介绍</text></view>
+          <view class="bottom-icon-title"><text>价目中心</text></view>
         </navigator>
       </view>
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator>
+        <navigator url="/pages/order/order" hover-class="other-navigator-hover">
           <view class="bottom-img-wrapper">
-            <image src="../../resource/img/product.png" class="bottom-icon-img" />
+            <image src="../../resource/img/member.png" class="bottom-icon-img" />
           </view>
-          <view class="bottom-icon-title"><text>服务介绍</text></view>
+          <view class="bottom-icon-title"><text>团体洗衣</text></view>
         </navigator>
       </view>
     </zan-col>
