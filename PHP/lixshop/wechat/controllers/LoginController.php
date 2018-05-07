@@ -12,7 +12,7 @@ class LoginController extends BaseController
     public function actionIndex()
     {
         return [
-            'code' => 200;
+            'code' => 200
         ];
     }
 }

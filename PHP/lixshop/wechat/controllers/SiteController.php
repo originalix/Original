@@ -1,5 +1,5 @@
 <?php
-namespace frontend\controllers;
+namespace wechat\controllers;
 
 use Yii;
 use yii\base\InvalidParamException;

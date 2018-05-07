@@ -1,6 +1,6 @@
 <?php
 
-namespace api\components;
+namespace wechat\components;
 
 use Yii;
 use yii\web\Response;
