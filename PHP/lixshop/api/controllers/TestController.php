@@ -61,4 +61,64 @@ class TestController extends BaseController
         ]);
         return $dataProvider;
     }
+
+    public function actionProfile()
+    {
+        return [
+            [
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+            ],
+            [
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+            ],
+            [
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+                [
+                    'icon' => 'dingwei',
+                    'title' => '我的签到'
+                ],
+            ],
+        ];
+    }
 }
