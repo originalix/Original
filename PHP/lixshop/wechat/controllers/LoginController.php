@@ -19,4 +19,9 @@ class LoginController extends BaseController
             return ['code' => -1, 'error' => $result['error']];
         }
     }
+
+    public function actionTest()
+    {
+        return ['code' => 418, 'msg' => 'test'];
+    }
 }
