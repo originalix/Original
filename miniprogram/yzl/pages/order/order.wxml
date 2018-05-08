@@ -17,7 +17,7 @@
     />
     <view>
       <!-- 标题 -->
-      <view>
+      <view bindtap="login">
         <text>衣之恋优质干洗店</text>
         <text>已完成</text>
       </view>

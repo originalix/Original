@@ -22,6 +22,7 @@ class LoginController extends BaseController
 
     public function actionTest()
     {
-        return ['code' => 418, 'msg' => 'test'];
+        $headers = apache_request_headers();
+        return ['code' => 418, 'data' => $headers];
     }
 }
