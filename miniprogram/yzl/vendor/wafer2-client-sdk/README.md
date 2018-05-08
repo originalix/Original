@@ -14,13 +14,13 @@
 
 ```sh
 npm install -g bower
-bower install wafer-client-sdk
+bower install qcloud-weapp-client-sdk
 ```
 
 安装之后，就可以使用 `require` 引用 SDK 模块：
 
 ```js
-var qcloud = require('./bower_components/wafer-client-sdk/index.js');
+var qcloud = require('./bower_components/qcloud-weapp-client-sdk/index.js');
 ```
 
 ## 会话服务

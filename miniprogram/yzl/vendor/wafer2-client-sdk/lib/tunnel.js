@@ -153,8 +153,8 @@ function Tunnel(serviceUrl) {
             url: serviceUrl,
             method: 'GET',
             success: function (response) {
-                if (+response.statusCode === 200 && response.data && response.data.url) {
-                    openSocket(me.socketUrl = response.data.url);
+                if (+response.statusCode === 200 && response.data && response.data.data.connectUrl) {
+                    openSocket(me.socketUrl = response.data.data.connectUrl);
                 } else {
                     dispatchConnectServiceError(response);
                 }

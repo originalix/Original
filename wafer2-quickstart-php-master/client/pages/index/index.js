@@ -27,6 +27,7 @@ Page({
                         userInfo: result,
                         logged: true
                     })
+                    console.log(result);
                 } else {
                     // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
                     qcloud.request({
@@ -38,6 +39,7 @@ Page({
                                 userInfo: result.data.data,
                                 logged: true
                             })
+                            console.log(result);
                         },
 
                         fail(error) {

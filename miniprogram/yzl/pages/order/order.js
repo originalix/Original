@@ -1,5 +1,5 @@
 // index.js
-var qcloud = require('../../bower_components/wafer-client-sdk/index')
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
 var util = require('../../utils/util.js')
 
@@ -40,7 +40,7 @@ Page({
 
             fail(error) {
               util.showModel('请求失败 else', error)
-              console.log('request fail', error)
+              console.log('request fail else', error)
             }
           })
         }

@@ -6,12 +6,12 @@ use QCloud_WeApp_SDK\Constants as Constants;
 
 class Login extends CI_Controller {
     public function index() {
-        $headers = $this->apache_request_headers();
-        $diyHeaders = $this->getAllHeaders();
-        if (is_array($diyHeaders)) {
-            $headers = array_merge($headers, $diyHeaders);
-        }
-        
+        // $headers = $this->apache_request_headers();
+        // $diyHeaders = $this->getAllHeaders();
+        // if (is_array($diyHeaders)) {
+        //     $headers = array_merge($headers, $diyHeaders);
+        // }
+
         $result = LoginService::login();
         
         if ($result['loginState'] === Constants::S_AUTH) {
