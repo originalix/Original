@@ -18,13 +18,13 @@ class Login extends CI_Controller {
             $this->json([
                 'code' => 0,
                 'data' => $result['userinfo'],
-                'headers' => $headers
+                // 'headers' => $headers
             ]);
         } else {
             $this->json([
                 'code' => -1,
                 'error' => $result['error'],
-                'headers' => $headers
+                // 'headers' => $headers
             ]);
         }
     }
