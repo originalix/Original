@@ -1,0 +1,61 @@
+[
+    {
+        "name": "php-curl-class/php-curl-class",
+        "version": "8.0.3",
+        "version_normalized": "8.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-curl-class/php-curl-class.git",
+            "reference": "4b19e0fa0278b45452164d3043057cccb4f750db"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/php-curl-class/php-curl-class/4b19e0fa0278b45452164d3043057cccb4f750db.zip",
+            "reference": "4b19e0fa0278b45452164d3043057cccb4f750db",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "squizlabs/php_codesniffer": "*"
+        },
+        "time": "2018-04-21T08:28:43+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Curl\\": "src/Curl/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Unlicense"
+        ],
+        "authors": [
+            {
+                "name": "Zach Borboa"
+            }
+        ],
+        "description": "PHP Curl Class makes it easy to send HTTP requests and integrate with web APIs.",
+        "homepage": "https://github.com/php-curl-class/php-curl-class",
+        "keywords": [
+            "api",
+            "class",
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "json",
+            "php",
+            "requests",
+            "rest",
+            "restful",
+            "web service",
+            "xml"
+        ]
+    }
+]
