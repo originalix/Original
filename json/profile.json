@@ -7,6 +7,9 @@
             "icon": "profile_message",
             "title": "消息中心"
         }, {
+            "icon": "species",
+            "title": "草稿箱"
+        }, {
             "icon": "profile_collection",
             "title": "我的收藏"
         }],

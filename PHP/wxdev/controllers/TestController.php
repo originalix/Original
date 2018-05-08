@@ -21,9 +21,9 @@ class TestController extends BaseController
     public function actionPost()
     {
         if (Yii::$app->request->isPost) {
-            $postData = Yii::$app->request->post();
-            
-            return $postData;
+            $images = Yii::$app->request->post('images');
+            $images = json_decode($images);
+            return ['code' => 200, 'images' => $images];
         } else {
             return ['methos' => 'get'];
         }
