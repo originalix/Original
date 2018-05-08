@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 use QCloud_WeApp_SDK\Auth\LoginService as LoginService;
 use QCloud_WeApp_SDK\Constants as Constants;
-use \Curl\Curl;
+use Curl\Curl as Curl;
 
 class Login extends CI_Controller {
     public function index() {
@@ -81,14 +81,6 @@ class Login extends CI_Controller {
 
     public function wx()
     {
-        $curl = new Curl();
-        $curl->get('http://140.143.8.19/code-repo/PHP/lixshop/wechat/web/login/test');
 
-        if ($curl->error) {
-            echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
-        } else {
-            echo 'Response:' . "\n";
-            var_dump($curl->response);
-        }
     }
 }

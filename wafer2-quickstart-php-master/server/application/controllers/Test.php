@@ -1,5 +1,7 @@
 <?php
 
+use Curl\Curl;
+
 class Test extends CI_Controller
 {
     public function index()
@@ -15,5 +17,10 @@ class Test extends CI_Controller
             'code' => 200,
             'msg' => 'lix'
         ]);
+    }
+
+    public function test()
+    {
+        $curl = new Curl();
     }
 }
