@@ -8,4 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'QCloud_WeApp_SDK\\' => array($vendorDir . '/qcloud/weapp-sdk/lib'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
 );

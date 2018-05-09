@@ -6,5 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Curl\\' => array($vendorDir . '/php-curl-class/php-curl-class/src/Curl'),
 );

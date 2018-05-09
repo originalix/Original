@@ -1,12 +1,12 @@
 {
 	"client": "./client",
-	"svr": "./server",
+	"svr": "./ci",
 	"miniprogramRoot": "./client",
-	"qcloudRoot": "./server",
+	"qcloudRoot": "./ci",
 	"setting": {
 		"newFeature": true
 	},
 	"appid": "wx3321acae41983595",
-	"projectname": "wafer%20php%20demo",
+	"projectname": "ci%20demo",
 	"condition": {}
 }
