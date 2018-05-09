@@ -100,5 +100,4 @@ class CI_Controller {
 						json_encode($data)
 					);
 	}
-
 }
