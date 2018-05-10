@@ -139,10 +139,6 @@ $config['subclass_prefix'] = 'MY_';
 // $config['composer_autoload'] = FALSE;
 $config['composer_autoload'] = FCPATH.'vendor/autoload.php';
 
-echo FCPATH.'vendor/autoload.php';
-exit();
-
-
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
