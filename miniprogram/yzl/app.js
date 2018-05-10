@@ -15,7 +15,23 @@ App({
           },
           method: 'GET',
           success: function (res) {
-            console.log(res)
+            let openid = res.data.data.openid
+            if (typeof(openid) == "undefined") {
+              console.log('openid undefined')
+              // 获取openid失败
+              wx.showModal({
+                title: '提示',
+                content: '读取用户信息有误，请点击确认重试',
+                success: function(res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
+                }
+              })
+            }
+            console.log(openid)
           },
           fail: function (error) {
             console.log(error)
