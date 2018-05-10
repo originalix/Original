@@ -8,6 +8,19 @@ App({
     wx.login({
       success(res) {
         console.log(res)
+        wx.request({
+          url: config.service.loginUrl,
+          data: {
+            'code': res.code
+          },
+          method: 'GET',
+          success: function (res) {
+            console.log(res)
+          },
+          fail: function (error) {
+            console.log(error)
+          }
+        });
       },
       fail(res) {
         console.log(res)

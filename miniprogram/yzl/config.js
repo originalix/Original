@@ -12,7 +12,7 @@ var config = {
         host,
 
         // 登录地址，用于建立会话
-        loginUrl: `${host}/weapp/login`,
+        loginUrl: `${host}/login`,
 
         // 测试的请求地址，用于测试会话
         requestUrl: `${host}/weapp/user`,

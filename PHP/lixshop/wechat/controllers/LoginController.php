@@ -17,7 +17,7 @@ class LoginController extends BaseController
 		$res = $client->request('GET', 'https://api.weixin.qq.com/sns/jscode2session', [
             'query' => [
                 'appid' => 'wx3321acae41983595',
-                'secret' => 'xxxxxx',
+                'secret' => 'eee558d25ae6677587e00a7703cff55f',
                 'js_code' => $js_code,
                 'grant_type' => 'authorization_code'
             ],
