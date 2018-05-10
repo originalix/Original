@@ -24,7 +24,8 @@
         "kartik-v/yii2-widget-fileinput": "@dev",
         "yiisoft/yii2-queue": "^2.0",
         "kartik-v/yii2-widget-datetimepicker": "*",
-        "qcloud/weapp-sdk": "v2.1.1"
+        "qcloud/weapp-sdk": "v2.1.1",
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

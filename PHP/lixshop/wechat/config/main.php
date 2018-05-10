@@ -15,6 +15,24 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
+        'response' => [
+            'class' => 'yii\web\Response',
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'on beforeSend' => function ($event) {
+                $sender = $event->sender;
+                $responseData = [
+                    'code' => $sender->statusCode,
+                    'msg' => 'Success',
+                ];
+                if ($sender->statusCode == 200) {
+                    $responseData['data'] = $sender->data;
+                } else {
+                    $responseData['msg'] = $sender->data['message'];
+                }
+                $sender->statusCode = 200;
+                $sender->data = $responseData;
+            },
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
