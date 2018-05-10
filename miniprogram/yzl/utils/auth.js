@@ -64,23 +64,29 @@ const getAccessTokenFromServer = (openid) => {
     method: 'GET',
     success: function(res) {
       wx.hideLoading()
-      // let openid = res.data.data.openid
-      // if (typeof(openid) == "undefined") {
-      //   console.log('openid undefined')
-      //   // 获取openid失败
-      //   wx.showModal({
-      //     title: '提示',
-      //     content: '读取用户信息有误，请点击确认重试',
-      //     success: function(res) {
-      //       if (res.confirm) {
-      //         console.log('用户点击确定')
-      //         login()
-      //       } else if (res.cancel) {
-      //         console.log('用户点击取消')
-      //       }
-      //     }
-      //   })
-      // }
+      let access_token = res.data.data.access_token
+      let wechat_openid = res.data.data.wechat_openid
+      if (typeof(access_token) == "undefined") {
+        wx.showModal({
+          title: '提示',
+          content: '读取用户信息有误，请点击确认重试',
+          success: function(res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              login()
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      } else {
+        try {
+          wx.setStorageSync('access_token', access_token)
+          wx.setStorageSync('openid', wechat_openid)
+        } catch (e) {
+
+        }
+      }
       console.log(res)
     },
     fail: function(error) {
