@@ -4,6 +4,8 @@ var auth = require('./utils/auth.js');
 
 App({
   onLaunch: function () {
+    const authInfo = auth.getAuthInfo()
+    console.log(authInfo)
     auth.login()
   },
   onError: function (msg) {

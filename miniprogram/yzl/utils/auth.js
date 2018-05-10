@@ -98,7 +98,7 @@ const getAccessTokenFromServer = (openid) => {
 
 const getAuthInfo = () => {
   try {
-    let accessToken = wx.getStorageInfo('access_token')
+    let accessToken = wx.getStorageSync('access_token')
     let openid = wx.getStorageSync('openid')
     return {
       'accessToken': accessToken,

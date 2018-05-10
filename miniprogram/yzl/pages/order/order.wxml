@@ -4,7 +4,6 @@
     <image src="../../resource/img/package.png" class="background-img" />
     <text class="background-text">说好的订单呢</text>
   </view>
-
   <!-- 有订单的情况 -->
   <view>
     <zan-tab
