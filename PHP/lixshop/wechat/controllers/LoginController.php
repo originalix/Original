@@ -12,7 +12,6 @@ class LoginController extends BaseController
     {
         // https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
         $js_code = Yii::$app->request->post('code');
-        $js_code = 'xxxxxxx';
         $client = new Client();
 		$res = $client->request('GET', 'https://api.weixin.qq.com/sns/jscode2session', [
             'query' => [
