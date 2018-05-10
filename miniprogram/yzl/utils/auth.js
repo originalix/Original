@@ -96,4 +96,17 @@ const getAccessTokenFromServer = (openid) => {
   });
 }
 
-module.exports = { getOpenid, login, getAccessTokenFromServer }
+const getAuthInfo = () => {
+  try {
+    let accessToken = wx.getStorageInfo('access_token')
+    let openid = wx.getStorageSync('openid')
+    return {
+      'accessToken': accessToken,
+      'openid': openid
+    }
+  } catch (e) {
+    return undefined
+  }
+}
+
+module.exports = { getOpenid, login, getAccessTokenFromServer, getAuthInfo }
