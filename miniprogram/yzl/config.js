@@ -15,7 +15,7 @@ var config = {
         loginUrl: `${host}/login`,
 
         // 获取Token地址
-        tokenUrl: `$(host)/token`,
+        tokenUrl: `${host}/token`,
 
         // 测试的请求地址，用于测试会话
         requestUrl: `${host}/user`,

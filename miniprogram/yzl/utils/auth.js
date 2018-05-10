@@ -57,7 +57,7 @@ const login = () => {
 const getAccessTokenFromServer = (openid) => {
   wx.showLoading()
   wx.request({
-    url: config.service.loginUrl,
+    url: config.service.tokenUrl,
     data: {
       'openid': openid
     },
@@ -80,7 +80,7 @@ const getAccessTokenFromServer = (openid) => {
       //       }
       //     }
       //   })
-      }
+      // }
       console.log(res)
     },
     fail: function(error) {
@@ -90,4 +90,4 @@ const getAccessTokenFromServer = (openid) => {
   });
 }
 
-module.exports = { getOpenid, login }
+module.exports = { getOpenid, login, getAccessTokenFromServer }
