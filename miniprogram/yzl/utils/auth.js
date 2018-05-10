@@ -1,3 +1,5 @@
+var config = require('../config.js');
+
 const getOpenid = (code) => {
   wx.request({
     url: config.service.loginUrl,
