@@ -11,7 +11,7 @@ class LoginController extends BaseController
     public function actionIndex()
     {
         // https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
-        $js_code = Yii::$app->request->post('code');
+        $js_code = Yii::$app->request->get('code');
         $client = new Client();
 		$res = $client->request('GET', 'https://api.weixin.qq.com/sns/jscode2session', [
             'query' => [
@@ -22,6 +22,6 @@ class LoginController extends BaseController
             ],
         ]);
 		$data = json_decode($res->getBody()->getContents());
-        return ['wx_res' => $data, 'js_code' => $js_code];
+        return $data;
     }
 }
