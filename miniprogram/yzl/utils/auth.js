@@ -8,6 +8,7 @@ const getOpenid = (code) => {
     },
     method: 'GET',
     success: function(res) {
+      wx.hideLoading()
       let openid = res.data.data.openid
       if (typeof(openid) == "undefined") {
         console.log('openid undefined')
@@ -28,12 +29,17 @@ const getOpenid = (code) => {
       console.log(openid)
     },
     fail: function(error) {
+      // wx.hideLoading()
       console.log(error)
     }
   });
 }
 
 const login = () => {
+  wx.showLoading({
+    'title': '加载中'
+  })
+
   wx.login({
     success(res) {
       console.log(res)
@@ -43,6 +49,10 @@ const login = () => {
       console.log(res)
     }
   })
+}
+
+const getAccessTokenFromServer = (openid) => {
+
 }
 
 module.exports = { getOpenid, login }

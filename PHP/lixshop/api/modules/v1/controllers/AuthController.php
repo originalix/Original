@@ -19,7 +19,7 @@ class AuthController extends \yii\web\Controller
     {
         $addCustomer = new AddCustomer();
         $addCustomer->openId = Yii::$app->request->get('openId');
-        $addCustomer->mobile = Yii::$app->request->get('mobile');
+        // $addCustomer->mobile = Yii::$app->request->get('mobile');
         
         $customer = $addCustomer->signup();
 
