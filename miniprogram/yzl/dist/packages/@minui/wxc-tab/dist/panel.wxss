@@ -1,0 +1,4 @@
+.tab {}
+.tab__panel {
+    width: 100%
+}
