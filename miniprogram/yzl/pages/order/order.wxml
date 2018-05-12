@@ -5,12 +5,13 @@
     <text class="background-text">说好的订单呢</text>
   </view>
   <!-- 有订单的情况 -->
-  <view>
-
+  <view class="scroll-bg-color">
     <wxc-tab
         bind:tabchange="onClick"
         default-index="{{0}}"
         component-id="c4"
+        text-color="#000000"
+        animate="true"
       >
       <wxc-tab-panel
         wx:for="{{tabs}}"
@@ -23,15 +24,6 @@
         {{tab.content}}
       </wxc-tab-panel>
     </wxc-tab>
-
-<!--     <zan-tab
-      scroll="true"
-      list="{{list}}"
-      selected-id="{{ selectedId }}"
-      height="45"
-      fixed="false"
-      bindtabchange="handleTabChange"
-    /> -->
     <view>
       <!-- 标题 -->
       <view bindtap="login">

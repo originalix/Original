@@ -25,3 +25,11 @@ page {
   text-align: center;
   color: #c4c4c4;
 }
+
+.scroll-bg-color {
+  background-color: white;
+}
+
+.tab__navbar {
+  background-color: white;
+}
