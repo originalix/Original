@@ -33,3 +33,8 @@ page {
 .tab__navbar {
   background-color: white;
 }
+
+.store-name-view {
+  height: 40px;
+  width: 100%;
+}

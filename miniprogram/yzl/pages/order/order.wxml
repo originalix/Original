@@ -23,7 +23,7 @@
       >
         <view>
           <!-- 标题 -->
-          <view>
+          <view class="store-name-view">
             <text>衣之恋优质干洗店</text>
             <wxc-icon size="26" type="arrow-right"></wxc-icon>
           </view>
