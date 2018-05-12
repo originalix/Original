@@ -21,24 +21,23 @@
         component-id="c4"
         label="{{tab.title}}"
       >
-        {{tab.content}}
+        <view>
+          <!-- 标题 -->
+          <view>
+            <text>衣之恋优质干洗店</text>
+            <wxc-icon size="26" type="arrow-right"></wxc-icon>
+          </view>
+            <!-- 主体 -->
+          <view>
+          </view>
+            <!-- 商品 付款 -->
+          <view>
+          </view>
+          <!-- 再次购买 -->
+          <view>
+          </view>
+        </view>
       </wxc-tab-panel>
     </wxc-tab>
-    <view>
-      <!-- 标题 -->
-      <view bindtap="login">
-        <text>衣之恋优质干洗店</text>
-        <text>已完成</text>
-      </view>
-        <!-- 主体 -->
-      <view>
-      </view>
-        <!-- 商品 付款 -->
-      <view>
-      </view>
-      <!-- 再次购买 -->
-      <view>
-      </view>
-    </view>
   </view>
 </view>

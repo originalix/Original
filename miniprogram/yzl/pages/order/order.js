@@ -2,8 +2,8 @@ Page({
   data: {
     noOrder: false,
     tabs: [
-      {title: '选项一', content: '内容一'},
-      {title: '选项二', content: '内容二'},
+      {title: '已完成', content: '内容一'},
+      {title: '未完成', content: '内容二'},
     ]
   },
   handleTabChange(selectedId) {

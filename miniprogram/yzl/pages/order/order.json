@@ -6,6 +6,7 @@
   "usingComponents": {
     "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index",
     "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
-    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel"
+    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
+    "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index"
   }
 }
