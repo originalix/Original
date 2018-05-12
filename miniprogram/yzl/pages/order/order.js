@@ -18,7 +18,6 @@ Page({
     tabs: [
       {title: '选项一', content: '内容一'},
       {title: '选项二', content: '内容二'},
-      {title: '选项三', content: '内容三'}
     ]
   },
   handleTabChange(selectedId) {

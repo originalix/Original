@@ -5,7 +5,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index",
-    "wxc-tab": "../../node_modules/@minui/wxc-tab/src/index.wxc",
-    "wxc-tab-panel": "../../node_modules/@minui/wxc-tab/src/panel.wxc",
+    "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
+    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel"
   }
 }
