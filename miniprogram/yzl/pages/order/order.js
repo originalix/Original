@@ -15,6 +15,11 @@ Page({
       title: '已完成'
     }],
     selectedId: 'topay',
+    tabs: [
+      {title: '选项一', content: '内容一'},
+      {title: '选项二', content: '内容二'},
+      {title: '选项三', content: '内容三'}
+    ]
   },
   handleTabChange(selectedId) {
     console.log(selectedId);
@@ -51,4 +56,7 @@ Page({
       }
     })
   },
+  onClick: function(e) {
+    console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
+  }
 })
