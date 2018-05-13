@@ -24,16 +24,18 @@
         <view>
           <view class="sperate"></view>
           <!-- 标题 -->
-          <view class="store-name-view">
+          <view class="store-name-view flex-vertical-center">
             <text class="store-name-txt">衣之恋优质干洗店</text>
             <wxc-icon size="30" type="arrow-right" class="store-name-icon"></wxc-icon>
           </view>
-            <!-- 主体 -->
-          <view class="order-li-main-view">
+          <!-- 主体 -->
+          <view class="order-li-main-view flex-vertical-center">
             <image src="http://cms-bucket.nosdn.127.net/1a47fcc17d2e46b5b0d3e0f160d98a0320180123163519.jpeg?imageView&thumbnail=550x0" class="order-image"/>
+            <text class="order-name">海昌 半年近视隐形眼镜 半年抛QQ 2片装 425度</text>
           </view>
-            <!-- 商品 付款 -->
-          <view>
+          <!-- 商品 付款 -->
+          <view class="order-info flex-vertical-center">
+            <text class="order-info-text">共1件商品 实付款：￥199.00</text>
           </view>
           <!-- 再次购买 -->
           <view>

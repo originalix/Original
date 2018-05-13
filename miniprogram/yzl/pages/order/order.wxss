@@ -34,13 +34,16 @@ page {
   background-color: white;
 }
 
-.store-name-view {
-  height: 40px;
-  width: 100%;
+.flex-vertical-center {
   /* flex 水平居中 */
   display:flex;/*Flex布局*/
   display: -webkit-flex; /* Safari */
   align-items:center;/*指定垂直居中*/
+}
+
+.store-name-view {
+  height: 40px;
+  width: 100%;
 }
 
 .store-name-txt {
@@ -66,7 +69,25 @@ page {
 }
 
 .order-image {
+  margin-left: 15px;
   width: 69px;
   height: 69px;
-  
+}
+
+.order-name {
+  width: 69%;
+  margin-left: 10px;
+}
+
+.order-info {
+  width: 100%;
+  height: 38px;
+}
+
+.order-info-text {
+  width: 100%;
+  margin-right: 16px;
+  color: #4b4b4d;
+  font-size: 15px;
+  text-align: right;
 }
