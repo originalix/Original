@@ -1,0 +1,12 @@
+.member-header { 
+  position: relative;
+  height: 179px;
+  background: url("http://www.webjx.com/files/allimg/100910/1404161.jpg") no-repeat;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+
+.inner{
+  height: 179px;
+  background: rgba(255,255,255,.3);
+}
