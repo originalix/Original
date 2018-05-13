@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/shop/shop",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/member/member"
   ],
   "window":{
     "backgroundTextStyle":"black",
@@ -30,7 +31,7 @@
         "selectedIconPath": "/resource/img/tab_2_selected.png"
       },
       {
-        "pagePath": "pages/shop/shop",
+        "pagePath": "pages/member/member",
         "text": "我的",
         "iconPath": "/resource/img/tab_3.png",
         "selectedIconPath": "/resource/img/tab_3_selected.png"

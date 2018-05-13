@@ -75,7 +75,7 @@ page {
 }
 
 .order-name {
-  width: 69%;
+  width: 65%;
   margin-left: 10px;
 }
 
