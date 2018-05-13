@@ -27,7 +27,7 @@
 
 .header-user-view {
   margin-left: 10px;
-  width: 100px;
+  /* width: 100px; */
 }
 
 .header-user-mobile {
