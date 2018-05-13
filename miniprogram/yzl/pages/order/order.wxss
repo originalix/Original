@@ -58,3 +58,15 @@ page {
   background-color: #f1f2f5;
   width: 100%;
 }
+
+.order-li-main-view {
+  width: 100%;
+  height: 90px;
+  background-color: #f8f8f8;
+}
+
+.order-image {
+  width: 69px;
+  height: 69px;
+  
+}

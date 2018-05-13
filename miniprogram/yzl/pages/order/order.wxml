@@ -29,7 +29,8 @@
             <wxc-icon size="30" type="arrow-right" class="store-name-icon"></wxc-icon>
           </view>
             <!-- 主体 -->
-          <view>
+          <view class="order-li-main-view">
+            <image src="http://cms-bucket.nosdn.127.net/1a47fcc17d2e46b5b0d3e0f160d98a0320180123163519.jpeg?imageView&thumbnail=550x0" class="order-image"/>
           </view>
             <!-- 商品 付款 -->
           <view>
