@@ -37,4 +37,24 @@ page {
 .store-name-view {
   height: 40px;
   width: 100%;
+  /* flex 水平居中 */
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;/*指定垂直居中*/
+}
+
+.store-name-txt {
+  margin-left: 14px;
+  font-size: 16px;
+  color: #474749;
+}
+
+.store-name-icon {
+  margin-left: 10px;
+}
+
+.sperate {
+  height: 12px;
+  background-color: #f1f2f5;
+  width: 100%;
 }

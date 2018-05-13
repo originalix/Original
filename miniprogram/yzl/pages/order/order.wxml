@@ -22,10 +22,11 @@
         label="{{tab.title}}"
       >
         <view>
+          <view class="sperate"></view>
           <!-- 标题 -->
           <view class="store-name-view">
-            <text>衣之恋优质干洗店</text>
-            <wxc-icon size="26" type="arrow-right"></wxc-icon>
+            <text class="store-name-txt">衣之恋优质干洗店</text>
+            <wxc-icon size="30" type="arrow-right" class="store-name-icon"></wxc-icon>
           </view>
             <!-- 主体 -->
           <view>
