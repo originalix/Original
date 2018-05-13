@@ -10,3 +10,34 @@
   height: 179px;
   background: rgba(255,255,255,.3);
 }
+
+.avatar {
+  display: block;
+  width: 65px;
+  height: 65px;
+  margin-left: 13px;
+}
+
+.flex-vertical-center {
+  /* flex 水平居中 */
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;/*指定垂直居中*/
+}
+
+.header-user-view {
+  margin-left: 10px;
+  width: 100px;
+}
+
+.header-user-mobile {
+  text-align: left;
+  font-size: 15px;
+  color: #3e3e3e;
+}
+
+.header-user-feel {
+  text-align: left;
+  font-size: 13px;
+  color: #aaaaa6;
+}
