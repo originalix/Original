@@ -42,6 +42,7 @@
   color: #aaaaa6;
 }
 
+/* flex 布局 单个元素 靠右 */
 .button-wrap {
   flex-grow: 1;
   display: flex;
