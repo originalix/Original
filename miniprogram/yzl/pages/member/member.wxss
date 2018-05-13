@@ -41,3 +41,10 @@
   font-size: 13px;
   color: #aaaaa6;
 }
+
+.button-wrap {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 13px;
+}

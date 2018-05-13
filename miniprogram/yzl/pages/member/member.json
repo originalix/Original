@@ -4,7 +4,8 @@
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true,
     "usingComponents": {
-      "wxc-avatar": "../../dist/packages/@minui/wxc-avatar/dist/index"
+      "wxc-avatar": "../../dist/packages/@minui/wxc-avatar/dist/index",
+      "wxc-button": "../../dist/packages/@minui/wxc-button/dist/index"
     }
   }
   

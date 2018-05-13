@@ -10,7 +10,9 @@
           <text class="header-user-feel">让生活多份自在</text>
         </view>
       </view>
-      <text>充值</text>
+      <view class="button-wrap">
+        <wxc-button plain="{{true}}" size="small" type="beauty" value="充值"></wxc-button>
+      </view>
     </view>
   </view>
 </view>
