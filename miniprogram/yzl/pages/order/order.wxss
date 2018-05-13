@@ -56,7 +56,7 @@ page {
   margin-left: 10px;
 }
 
-.sperate {
+.separate {
   height: 12px;
   background-color: #f1f2f5;
   width: 100%;
@@ -90,4 +90,10 @@ page {
   color: #4b4b4d;
   font-size: 15px;
   text-align: right;
+}
+
+.separate-line {
+  background-color: #e4e5e9;
+  height: 1px;
+  width: 100%;
 }

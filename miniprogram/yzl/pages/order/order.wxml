@@ -22,7 +22,7 @@
         label="{{tab.title}}"
       >
         <view>
-          <view class="sperate"></view>
+          <view class="separate"></view>
           <!-- 标题 -->
           <view class="store-name-view flex-vertical-center">
             <text class="store-name-txt">衣之恋优质干洗店</text>
@@ -37,6 +37,7 @@
           <view class="order-info flex-vertical-center">
             <text class="order-info-text">共1件商品 实付款：￥199.00</text>
           </view>
+          <view class="separate-line"></view>
           <!-- 再次购买 -->
           <view>
           </view>
