@@ -68,4 +68,15 @@ class SlideShow extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'title',
+            'url' => function () {
+                return Yii::getAlias('@baseurl').'/backend/web'. $this->path;
+            }
+        ];
+    }
 }
