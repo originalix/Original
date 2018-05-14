@@ -15,7 +15,9 @@
       </view>
     </view>
   </view>
-  <view class="wallet">
+  <view class="wallet-wrap">
     <image src="../../resource/img/wallet.png" class="wallet-img" />
+    <text class="wallet-text">我的钱包</text>
   </view>
+  <view class="separate-line"></view>
 </view>

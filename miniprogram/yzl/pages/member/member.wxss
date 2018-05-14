@@ -50,8 +50,29 @@
   margin-right: 13px;
 }
 
+.wallet-wrap {
+  height: 36px;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+
 .wallet-img {
   height: 22px;
   width: 22px;
+  margin-left: 15px;
+}
 
+.wallet-text {
+  margin-left: 19px;
+  font-size: 14px;
+  color: #bcbcbc;
+}
+
+.separate-line {
+  display: block;
+  height: 1px;
+  background-color: #f1f2f5;
+  width: 100%;
 }
