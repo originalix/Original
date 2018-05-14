@@ -16,6 +16,6 @@
     </view>
   </view>
   <view class="wallet">
-    
+    <image src="../../resource/img/wallet.png" class="wallet-img" />
   </view>
 </view>

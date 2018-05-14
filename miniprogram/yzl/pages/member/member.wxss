@@ -49,3 +49,9 @@
   justify-content: flex-end;
   margin-right: 13px;
 }
+
+.wallet-img {
+  height: 22px;
+  width: 22px;
+
+}
