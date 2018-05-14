@@ -20,4 +20,27 @@
     <text class="wallet-text">我的钱包</text>
   </view>
   <view class="separate-line"></view>
+  <view class="wallet-container">
+    <view class="wallet-item">
+      <text>0张</text>
+      <view>
+        <text>优惠券</text>
+      </view>
+    </view>
+
+    <view class="wallet-item">
+      <text>0张</text>
+      <text>优惠券</text>
+    </view>
+
+    <view class="wallet-item">
+      <text>0张</text>
+      <text>优惠券</text>
+    </view>
+
+    <view class="wallet-item">
+      <text>0张</text>
+      <text>优惠券</text>
+    </view>
+  </view>
 </view>
