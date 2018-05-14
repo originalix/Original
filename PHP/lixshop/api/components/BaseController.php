@@ -22,19 +22,19 @@ class BaseController extends \yii\rest\Controller
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        if (!YII_ENV_DEV) {
-            $behaviors['authenticator'] = [
-                'class' => CompositeAuth::className(),
-                'authMethods' => [
-                    HttpApiAuth::className(),
-                ],
-            ];
-        } else {
-            // gxKehPvizQbscvKMBgtaDdfT8dJMQFw9   iMac
-            // vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn
-            $identity = Customer::loginByAccessToken('vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn', get_class($this));
-            Yii::$app->user->login($identity);
-        }
+        // if (!YII_ENV_DEV) {
+        $behaviors['authenticator'] = [
+            'class' => CompositeAuth::className(),
+            'authMethods' => [
+                HttpApiAuth::className(),
+            ],
+        ];
+        // } else {
+        //     // gxKehPvizQbscvKMBgtaDdfT8dJMQFw9   iMac
+        //     // vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn
+        //     $identity = Customer::loginByAccessToken('vLVX_pf8-Vb73fIqZOT7qboVBDw3UhHn', get_class($this));
+        //     Yii::$app->user->login($identity);
+        // }
 
         $behaviors['contentNegotiator']['formats'] = [];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
