@@ -22,25 +22,32 @@
   <view class="separate-line"></view>
   <view class="wallet-container">
     <view class="wallet-item">
-      <text>0张</text>
+      <text class="wallet-value">0张</text>
       <view>
-        <text>优惠券</text>
+        <text class="wallet-key">优惠券</text>
       </view>
     </view>
 
     <view class="wallet-item">
-      <text>0张</text>
-      <text>优惠券</text>
+      <text class="wallet-value">0张</text>
+      <view>
+        <text class="wallet-key">余额</text>
+      </view>
     </view>
 
     <view class="wallet-item">
-      <text>0张</text>
-      <text>优惠券</text>
+      <text class="wallet-value">0张</text>
+      <view>
+        <text class="wallet-key">会员卡</text>
+      </view>
     </view>
 
     <view class="wallet-item">
-      <text>0张</text>
-      <text>优惠券</text>
+      <text class="wallet-value">点击查看</text>
+      <view>
+        <text class="wallet-key">积分</text>
+      </view>
     </view>
   </view>
+  <view class="seprate-10px"></view>
 </view>

@@ -82,9 +82,27 @@
   height: 62px;
   display: flex;
   display: -webkit-flex;
+  align-items: center;
 }
 
 .wallet-item {
   flex: 1;
-  background-color: rebeccapurple;
+  text-align: center;
+}
+
+.wallet-value {
+  font-size: 16px;
+  color: #0f0f0f;
+}
+
+.wallet-key {
+  font-size: 14px;
+  color: #bcbcbc;
+}
+
+.seprate-10px {
+  display: block;
+  height: 10px;
+  width: 100%;
+  background-color: #f4f7fa;
 }
