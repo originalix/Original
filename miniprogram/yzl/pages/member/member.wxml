@@ -49,5 +49,33 @@
       </view>
     </view>
   </view>
-  <view class="seprate-10px"></view>
+
+  <!-- list -->
+  <view class="list-wrap">
+    <view class="list-item">
+      <wxc-list
+              wx:for="{{list}}"
+              wx:key="index"
+              class="item"
+              title="{{item.title}}"
+              mode="{{index == list.length-1 ? 'none': ''}}"
+              src="{{item.src}}">
+        <view wx:if="{{item.slot && item.desc}}" class="desc-highlight">{{item.desc}}</view>
+      </wxc-list>
+    </view>
+
+    <view class="list-item">
+      <wxc-list
+              class="item"
+              icon="help"
+              icon-color="#69A0DD"
+              title="客服电话"></wxc-list>
+      <wxc-list
+              class="item"
+              icon="feedback"
+              icon-color="#69A0DD"
+              mode="none"
+              title="意见反馈"></wxc-list>
+    </view>
+  </view>
 </view>

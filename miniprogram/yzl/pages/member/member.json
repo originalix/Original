@@ -5,7 +5,9 @@
     "enablePullDownRefresh": true,
     "usingComponents": {
       "wxc-avatar": "../../dist/packages/@minui/wxc-avatar/dist/index",
-      "wxc-button": "../../dist/packages/@minui/wxc-button/dist/index"
+      "wxc-button": "../../dist/packages/@minui/wxc-button/dist/index",
+      "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index",
+      "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index"
     }
   }
   
