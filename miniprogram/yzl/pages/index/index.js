@@ -3,11 +3,7 @@ var appInstance = getApp()
 
 Page({
   data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
+    imgUrls: [],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -17,13 +13,26 @@ Page({
     this.getIndexConfig()
   },
   getIndexConfig() {
+    var that = this;
     wx.request({
       url: config.service.indexConfigUrl,
       header: {
         'Authorization': 'Bearer ' + appInstance.accessToken
       },
       success: function (res) {
-        console.log(res)
+        let data = res.data.data;
+        // 处理轮播图赋值
+        if (typeof(data.slideshow) != "undefined" && Array.isArray(data.slideshow)) {
+          var imgs = [];
+          for (let i=0; i < data.slideshow.length; i++) {
+            imgs.push(data.slideshow[i].url)
+          }
+          that.setData({
+            imgUrls: imgs
+          }, function () {
+          })
+        }
+        console.log(data)
       }
     })
   }
