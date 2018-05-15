@@ -18,10 +18,10 @@ const getOpenid = (code) => {
           content: '读取用户信息有误，请点击确认重试',
           success: function(res) {
             if (res.confirm) {
-              console.log('用户点击确定')
+              // console.log('用户点击确定')
               login()
             } else if (res.cancel) {
-              console.log('用户点击取消')
+              // console.log('用户点击取消')
             }
           }
         })
@@ -29,11 +29,11 @@ const getOpenid = (code) => {
 
         getAccessTokenFromServer(openid)
       }
-      console.log(openid)
+      // console.log(openid)
     },
     fail: function(error) {
       // wx.hideLoading()
-      console.log(error)
+      // console.log(error)
     }
   });
 }
@@ -45,11 +45,11 @@ const login = () => {
 
   wx.login({
     success(res) {
-      console.log(res)
+      // console.log(res)
       getOpenid(res.code)
     },
     fail(res) {
-      console.log(res)
+      // console.log(res)
     }
   })
 }
@@ -72,10 +72,10 @@ const getAccessTokenFromServer = (openid) => {
           content: '读取用户信息有误，请点击确认重试',
           success: function(res) {
             if (res.confirm) {
-              console.log('用户点击确定')
+              // console.log('用户点击确定')
               login()
             } else if (res.cancel) {
-              console.log('用户点击取消')
+              // console.log('用户点击取消')
             }
           }
         })
@@ -87,11 +87,11 @@ const getAccessTokenFromServer = (openid) => {
 
         }
       }
-      console.log(res)
+      // console.log(res)
     },
     fail: function(error) {
       // wx.hideLoading()
-      console.log(error)
+      // console.log(error)
     }
   });
 }

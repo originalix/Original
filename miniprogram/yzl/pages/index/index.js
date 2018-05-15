@@ -14,14 +14,17 @@ Page({
     duration: 1000
   },
   onLoad: function () {
-    
+    this.getIndexConfig()
   },
   getIndexConfig() {
-    // wx.request({
-    //   url: config.service.indexConfigUrl,
-    //   header: {
-    //     'Authorization': 
-    //   }
-    // })
+    wx.request({
+      url: config.service.indexConfigUrl,
+      header: {
+        'Authorization': 'Bearer ' + appInstance.accessToken
+      },
+      success: function (res) {
+        console.log(res)
+      }
+    })
   }
 })
