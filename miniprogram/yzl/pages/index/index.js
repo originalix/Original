@@ -1,3 +1,6 @@
+var config = require('../../config.js');
+var appInstance = getApp()
+
 Page({
   data: {
     imgUrls: [
@@ -9,5 +12,16 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000
+  },
+  onLoad: function () {
+    
+  },
+  getIndexConfig() {
+    // wx.request({
+    //   url: config.service.indexConfigUrl,
+    //   header: {
+    //     'Authorization': 
+    //   }
+    // })
   }
 })

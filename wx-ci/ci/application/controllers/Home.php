@@ -19,8 +19,8 @@ class Home extends CI_Controller
 		$client = new Client();
 		$res = $client->request('GET', 'http://140.143.8.19/code-repo/PHP/lixshop/api/web/v1/home/index', [
 			'headers' => [
-				'Authorization' => 'Bearer 5ljzJarPzVS2Uzyt4KdwxlHSVfCk5_4s'
-			]
+				'Authorization' => $access_token,
+			],
 		]);
 		$data = json_decode($res->getBody()->getContents());
 		return $this->json($data);

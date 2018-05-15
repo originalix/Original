@@ -13,5 +13,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  accessToken: auth.getAuthInfo().accessToken,
 })
