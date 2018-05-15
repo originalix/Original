@@ -7,7 +7,8 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    duration: 1000
+    duration: 1000,
+    categories: [],
   },
   onLoad: function () {
     this.getIndexConfig()
@@ -29,6 +30,14 @@ Page({
           }
           that.setData({
             imgUrls: imgs
+          }, function () {
+          })
+        }
+
+        // 处理category
+        if (typeof(data.categories) != "undefined" && Array.isArray(data.categories)) {
+          that.setData({
+            categories: data.categories
           }, function () {
           })
         }

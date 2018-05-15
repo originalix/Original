@@ -19,9 +19,9 @@
   <zan-row>
     <zan-col col="6" col-class="custom-zan-col">
       <view class="category-col category-bg-1">
-        <view class='center category-title-margin category-title'><text>洗衣</text></view>
+        <view class='center category-title-margin category-title'><text>{{categories[0].category}}</text></view>
         <view class='center'>
-          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img"/>
+          <image src="{{categories[0].icon}}" class="icon-img category-img"/>
         </view>
       </view>
     </zan-col>
@@ -29,9 +29,9 @@
     <!-- col -->
     <zan-col col="6" col-class="custom-zan-col">
       <view class="category-col category-bg-2">
-        <view class='center category-title-margin category-title'><text>洗鞋</text></view>
+        <view class='center category-title-margin category-title'><text>{{categories[1].category}}</text></view>
         <view class='center'>
-          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img"/>
+          <image src="{{categories[1].icon}}" class="icon-img category-img"/>
         </view>
       </view>
     </zan-col>
@@ -39,9 +39,9 @@
     <!-- col -->
     <zan-col col="6" col-class="custom-zan-col">
       <view class="category-col category-bg-3">
-        <view class='center category-title-margin category-title'><text>洗家纺</text></view>
+        <view class='center category-title-margin category-title'><text>{{categories[2].category}}</text></view>
         <view class='center'>
-          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img"/>
+          <image src="{{categories[2].icon}}" class="icon-img category-img"/>
         </view>
       </view>
     </zan-col>
@@ -49,9 +49,9 @@
     <!-- col -->
     <zan-col col="6" col-class="custom-zan-col">
       <view class="category-col category-bg-3">
-        <view class='center category-title-margin category-title'><text>皮具养护</text></view>
+        <view class='center category-title-margin category-title'><text>{{categories[3].category}}</text></view>
         <view class='center'>
-          <image src="http://image.lelezone.com/uploads/201705/62/77/62779dafa8dc707552370f4a4c5b16fb.jpg" class="icon-img category-img"/>
+          <image src="{{categories[3].icon}}" class="icon-img category-img"/>
         </view>
       </view>
     </zan-col>
