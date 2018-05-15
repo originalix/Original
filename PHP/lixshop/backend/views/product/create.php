@@ -13,24 +13,24 @@ $this->title = '添加商品';
 ?>
 
 <?php
-    $model->name = "斯伯丁篮球";
-    $model->cost_price = 99.9;
-    $model->price = 150;
-    $model->final_price = 100;
-    $model->sku = "一件";
-    $model->spu = "件";
-    $model->stock = 8888;
-    $model->package_number = 1;
-    $model->min_sales_qty = 1;
-    $model->meta_title = "衣服";
-    $model->meta_keywords = "衣服衣服";
-    $model->meta_description = "这是商品详情";
-    $model->custom_option = [
-        ['custom_option_key' => '红色', 'stock' => 100],
-        ['custom_option_key' => '红色', 'stock' => 100],
-        ['custom_option_key' => '红色', 'stock' => 100],
-        ['custom_option_key' => '红色', 'stock' => 100],
-    ];
+    // $model->name = "斯伯丁篮球";
+    // $model->cost_price = 99.9;
+    // $model->price = 150;
+    // $model->final_price = 100;
+    // $model->sku = "一件";
+    // $model->spu = "件";
+    // $model->stock = 8888;
+    // $model->package_number = 1;
+    // $model->min_sales_qty = 1;
+    // $model->meta_title = "衣服";
+    // $model->meta_keywords = "衣服衣服";
+    // $model->meta_description = "这是商品详情";
+    // $model->custom_option = [
+    //     ['custom_option_key' => '红色', 'stock' => 100],
+    //     ['custom_option_key' => '红色', 'stock' => 100],
+    //     ['custom_option_key' => '红色', 'stock' => 100],
+    //     ['custom_option_key' => '红色', 'stock' => 100],
+    // ];
 ?>
 
 <div class="page-header">

@@ -9,6 +9,7 @@ Page({
     interval: 5000,
     duration: 1000,
     categories: [],
+    promotions: [],
   },
   onLoad: function () {
     this.getIndexConfig()
