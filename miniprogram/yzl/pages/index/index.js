@@ -39,8 +39,14 @@ Page({
         if (typeof(data.categories) != "undefined" && Array.isArray(data.categories)) {
           that.setData({
             categories: data.categories
-          }, function () {
-          })
+          }, function () {})
+        }
+
+        // 处理promotions
+        if (typeof(data.promotions) != "undefined" && Array.isArray(data.promotions)) {
+          that.setData({
+            promotions: data.promotions
+          }, function () {})
         }
         console.log(data)
       }
