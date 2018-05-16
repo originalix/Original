@@ -12,12 +12,10 @@ Page({
   },
   getTab() {
     var tlist = [
-      {title: '选项一', content: '内容一'},
-      {title: '选项二', content: 'jjwwwwww'},
-      {title: '选项三', content: '内容三'},
-      {title: '选项四', content: '内容四'},
-      {title: '选项五', content: '内容五'},
-      {title: '选项六', content: '内容六'}
+      {title: '洗衣'},
+      {title: '洗鞋'},
+      {title: '洗家纺'},
+      {title: '洗窗帘'},
     ]
     console.log(tlist);
     this.setData({

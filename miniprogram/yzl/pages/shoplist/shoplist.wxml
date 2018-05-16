@@ -18,7 +18,11 @@
         component-id="c2"
         label="{{tab.title}}"
       >
-        {{tab.content}}
+        <!-- content -->
+        <view>
+          <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" />
+          
+        </view>
       </wxc-tab-panel>
 
     </wxc-tab>
