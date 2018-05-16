@@ -51,5 +51,10 @@ Page({
         console.log(data)
       }
     })
+  },
+  pushToShopList() {
+    wx.navigateTo({
+      url: '/pages/shoplist/shoplist'
+    })
   }
 })

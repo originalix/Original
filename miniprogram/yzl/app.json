@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/shop/shop",
     "pages/order/order",
-    "pages/member/member"
+    "pages/member/member",
+    "pages/shoplist/shoplist"
   ],
   "window":{
     "backgroundTextStyle":"black",
