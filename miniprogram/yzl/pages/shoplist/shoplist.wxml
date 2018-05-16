@@ -19,9 +19,17 @@
         label="{{tab.title}}"
       >
         <!-- content -->
-        <view>
-          <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" />
-          
+        <view class="shop-container">
+          <view class="shop-content">
+            <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" class="shop-img"/>
+            <wxc-badge class="shop-badge">9</wxc-badge>
+            <view>
+              <text>单衬衫</text>
+            </view>
+            <view>
+              <text>￥ 16.0</text>
+            </view>
+          </view>
         </view>
       </wxc-tab-panel>
 

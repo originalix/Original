@@ -1,3 +1,25 @@
 .tab-font {
   font-size: 15px;
 }
+
+.shop-container {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
+.shop-content {
+  width: 33.33333333333%;
+  height: 150px;
+  background-color: blueviolet;
+}
+
+.shop-img {
+  padding-top: 13px;
+  width: 50px;
+  height: 58px;
+}
+
+.shop-badge {
+  
+}

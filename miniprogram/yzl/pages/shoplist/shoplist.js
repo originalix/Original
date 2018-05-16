@@ -8,7 +8,7 @@ Page({
     ]
   },
   onLoad() {
-    setTimeout(this.getTab, 3000)
+    setTimeout(this.getTab, 100)
   },
   getTab() {
     var tlist = [
