@@ -3,11 +3,11 @@
 }
 
 .shop-container {
-  position: relative;
   text-align: center;
 }
 
 .shop-content {
+  position: relative;
   height: 150px;
 }
 
@@ -25,7 +25,7 @@
 .shop-badge {
   position: absolute;
   top: 30rpx;
-  right: 21rpx;
+  right: 16rpx;
 }
 
 .shop-title {

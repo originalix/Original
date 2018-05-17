@@ -31,7 +31,7 @@ Page({
       'price': '16.00'
     }
     var ptli = []
-    for(var i = 0; i < 1; i++) {
+    for(var i = 0; i < 40; i++) {
       ptli.push(pt)
     }
     this.setData({
