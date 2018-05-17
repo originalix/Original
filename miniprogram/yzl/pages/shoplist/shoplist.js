@@ -5,10 +5,12 @@ Page({
   data: {
     tabs: [
 
-    ]
+    ],
+    productList: [],
   },
   onLoad() {
     setTimeout(this.getTab, 100)
+    setTimeout(this.mockProduct, 3000)
   },
   getTab() {
     var tlist = [
@@ -20,6 +22,20 @@ Page({
     console.log(tlist);
     this.setData({
       tabs: tlist,
+    }, function () {})
+  },
+  mockProduct() {
+    var pt = {
+      'image': 'http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg',
+      'title': '衬衫哦哦哦',
+      'price': '16.00'
+    }
+    var ptli = []
+    for(var i = 0; i < 20; i++) {
+      ptli.push(pt)
+    }
+    this.setData({
+      productList: ptli
     }, function () {})
   },
   handleTabChange(selectedId) {
