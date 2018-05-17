@@ -57,13 +57,20 @@ Page({
   addBadge: function (event) {
     console.log(event)
     var item = event.currentTarget.dataset.item
-    console.log(item.id)
-    var targetBadge = "productList[0].badge"
-    var newData = item.badge += 1
+    // console.log(item.id)
+    // var id = item.id
+    var targetBadge = "productList[" + item.id + "]"
+    // item.badge += 1;
+    item.title = "李晓你好"
+    item.price = "2150.00"
+    item.badge += 1
+    console.log('now item is ');
+    console.log(item)
     var that = this
     that.setData({
-      [targetBadge]: newData
+      [targetBadge]: item
     }, function () {})
+
   },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);

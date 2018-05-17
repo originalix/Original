@@ -31,7 +31,8 @@
                 <text>￥{{ item.price }}</text>
               </view>
 
-              <zan-badge wx:if="{{ item.badge > 0 }}" class="shop-badge">{{ item.badge }}</zan-badge>
+              <!-- <zan-badge wx:if="{{ item.badge > 0 }}" class="shop-badge">{{ item.badge }}</zan-badge> -->
+              <text>{{ item.badge }}</text>
             </view>
           </zan-col>
           
