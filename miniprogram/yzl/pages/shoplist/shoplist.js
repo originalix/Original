@@ -40,37 +40,14 @@ Page({
       productList: ptli
     }, function () {})
   },
-  changeData() {
-    var str = "productList[0].badge"
-    this.setData({
-      [str]: 1
-    }, function () {})
-  },
-  // addBadge(item) {
-  //   var item = "productList[item.id].badge"
-  //   var newData = item.badge += 1
-  //   var that = this
-  //   that.setData({
-  //     [item]: newData
-  //   }, function () {})
-  // },
   addBadge: function (event) {
-    console.log(event)
     var item = event.currentTarget.dataset.item
-    // console.log(item.id)
-    // var id = item.id
-    var targetBadge = "productList[" + item.id + "]"
-    // item.badge += 1;
-    item.title = "李晓你好"
-    item.price = "2150.00"
+    var targetItem = "productList[" + item.id + "]"
     item.badge += 1
-    console.log('now item is ');
-    console.log(item)
     var that = this
     that.setData({
-      [targetBadge]: item
+      [targetItem]: item
     }, function () {})
-
   },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);

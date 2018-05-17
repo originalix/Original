@@ -24,10 +24,19 @@
 
 .shop-badge {
   position: absolute;
-  /* top: 30rpx; */
-  /* right: 16rpx; */
-  top: 45rpx;
-  right: 36rpx;
+  top: 30rpx;
+  right: 16rpx;
+  /* top: 45rpx; */
+  /* right: 36rpx; */
+}
+
+.shop-badge-text {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #dd4037;
+  color: #ffffff;
+  font-size: 11px;  
 }
 
 .shop-title {

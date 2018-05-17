@@ -31,8 +31,9 @@
                 <text>￥{{ item.price }}</text>
               </view>
 
-              <!-- <zan-badge wx:if="{{ item.badge > 0 }}" class="shop-badge">{{ item.badge }}</zan-badge> -->
-              <text>{{ item.badge }}</text>
+              <view class="shop-badge shop-badge-text" wx:if="{{ item.badge > 0 }}">
+                <text>{{ item.badge }}</text>
+              </view>
             </view>
           </zan-col>
           
@@ -40,7 +41,7 @@
         
         <view class="bottom-fix"></view>
         <view class="float-button-view">
-          <zan-button type="large" class="float-button" bindtap="changeData">预约取件</zan-button>
+          <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
 
       </wxc-tab-panel>
