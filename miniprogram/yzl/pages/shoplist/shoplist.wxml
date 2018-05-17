@@ -13,16 +13,16 @@
       <wxc-tab-panel
         wx:for="{{tabs}}"
         wx:for-item="tab"
-        wx:key="{{tab.content}}"
+        wx:key="{{tab}}"
         tab-index="{{index}}"
         component-id="c2"
         label="{{tab.title}}"
       >
         <!-- content -->
         <zan-row>
-          <view class="shop-container">
-            <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-content">
-              <view class="shop-border">
+          
+            <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-container">
+              <view class="shop-border shop-content">
                 <image src="{{item.image}}" class="shop-img"/>
                 <view class="shop-title">
                   <text>{{ item.title }}</text>
@@ -33,7 +33,7 @@
                 <wxc-badge class="shop-badge">9</wxc-badge>
               </view>
             </zan-col>
-          </view>
+          
         </zan-row>
 
       </wxc-tab-panel>

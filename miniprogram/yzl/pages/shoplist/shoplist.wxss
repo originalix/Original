@@ -3,18 +3,12 @@
 }
 
 .shop-container {
-  /* display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap; */
-  /* text-decoration: row; */
+  position: relative;
+  text-align: center;
 }
 
 .shop-content {
-  position: relative;
-  /* width: 32.777%; */
-  /* height: 150px; */
-  text-align: center;
-  /* border: 1px solid #eaebf3; */
+  height: 150px;
 }
 
 .shop-border {
@@ -29,9 +23,9 @@
 }
 
 .shop-badge {
-  /* position: absolute;
+  position: absolute;
   top: 30rpx;
-  right: 21rpx; */
+  right: 21rpx;
 }
 
 .shop-title {
