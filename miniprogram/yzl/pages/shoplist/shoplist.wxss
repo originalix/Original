@@ -9,17 +9,33 @@
 }
 
 .shop-content {
-  width: 33.33333333333%;
+  position: relative;
+  width: 32.777%;
   height: 150px;
-  background-color: blueviolet;
+  text-align: center;
+  border: 1px solid #eaebf3;
 }
 
 .shop-img {
   padding-top: 13px;
-  width: 50px;
-  height: 58px;
+  width: 60px;
+  height: 65px;
 }
 
 .shop-badge {
-  
+  position: absolute;
+  top: 30rpx;
+  right: 21rpx;
+}
+
+.shop-title {
+  margin-top: 12rpx;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.shop-price {
+  margin-top: 10rpx;
+  font-size: 12px;
+  color: #dd4037;
 }

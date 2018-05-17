@@ -11,7 +11,8 @@
       "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
       "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
       "wx-tab-label": "../../dist/packages/@minui/wxc-tab/dist/label",
-      "wxc-badge": "../../dist/packages/@minui/wxc-badge/dist/index"
+      "wxc-badge": "../../dist/packages/@minui/wxc-badge/dist/index",
+      "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index"
     }
 }
   
