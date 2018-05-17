@@ -12,7 +12,9 @@
       "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
       "wx-tab-label": "../../dist/packages/@minui/wxc-tab/dist/label",
       "wxc-badge": "../../dist/packages/@minui/wxc-badge/dist/index",
-      "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index"
+      "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
+      "zan-row": "../../bower_components/zanui-weapp/dist/row/index",
+      "zan-col": "../../bower_components/zanui-weapp/dist/col/index"
     }
 }
   

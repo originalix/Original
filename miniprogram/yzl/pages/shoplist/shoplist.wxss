@@ -3,17 +3,19 @@
 }
 
 .shop-container {
-  display: flex;
+  /* display: flex;
   display: -webkit-flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  /* text-decoration: row; */
 }
 
 .shop-content {
-  position: relative;
-  width: 32.777%;
-  height: 150px;
+  /* position: relative; */
+  /* width: 32.777%; */
+  /* height: 150px;
+  border: 1px solid #eaebf3; */
   text-align: center;
-  border: 1px solid #eaebf3;
+  border: 3px solid red;
 }
 
 .shop-img {
@@ -23,9 +25,9 @@
 }
 
 .shop-badge {
-  position: absolute;
+  /* position: absolute;
   top: 30rpx;
-  right: 21rpx;
+  right: 21rpx; */
 }
 
 .shop-title {

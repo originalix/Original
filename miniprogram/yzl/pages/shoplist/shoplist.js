@@ -10,7 +10,7 @@ Page({
   },
   onLoad() {
     setTimeout(this.getTab, 100)
-    setTimeout(this.mockProduct, 3000)
+    setTimeout(this.mockProduct, 500)
   },
   getTab() {
     var tlist = [
