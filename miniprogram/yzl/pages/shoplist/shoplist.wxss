@@ -10,12 +10,16 @@
 }
 
 .shop-content {
-  /* position: relative; */
+  position: relative;
   /* width: 32.777%; */
-  /* height: 150px;
-  border: 1px solid #eaebf3; */
+  /* height: 150px; */
   text-align: center;
-  border: 3px solid red;
+  /* border: 1px solid #eaebf3; */
+}
+
+.shop-border {
+  border-right: 1rpx solid #eaebf3;
+  border-bottom: 1rpx solid #eaebf3;
 }
 
 .shop-img {

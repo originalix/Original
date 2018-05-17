@@ -22,7 +22,7 @@
         <zan-row>
           <view class="shop-container">
             <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-content">
-              <view class="">
+              <view class="shop-border">
                 <image src="{{item.image}}" class="shop-img"/>
                 <view class="shop-title">
                   <text>{{ item.title }}</text>
