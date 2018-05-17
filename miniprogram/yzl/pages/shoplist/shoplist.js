@@ -35,6 +35,7 @@ Page({
     var ptli = []
     for(var i = 0; i < 40; i++) {
       pt.id = i;
+      console.log(pt.id)
       ptli.push(pt)
     }
     this.setData({
@@ -55,6 +56,17 @@ Page({
   //     [item]: newData
   //   }, function () {})
   // },
+  addBadge: function (event) {
+    console.log(event)
+    var item = event.currentTarget.dataset.item
+    console.log(item.id)
+    var targetBadge = "productList[0].badge"
+    var newData = item.badge += 1
+    var that = this
+    that.setData({
+      [targetBadge]: newData
+    }, function () {})
+  },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   }
