@@ -34,12 +34,12 @@
             </view>
           </zan-col>
           
-          <view class="float-button">
-            <button>确认添加</button>
-          </view>
-          
         </zan-row>
         
+        <view class="bottom-fix"></view>
+        <view class="float-button-view">
+          <zan-button type="large" class="float-button">预约取件</zan-button>
+        </view>
 
       </wxc-tab-panel>
     </wxc-tab>

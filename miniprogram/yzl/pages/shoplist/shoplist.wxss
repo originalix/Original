@@ -40,16 +40,26 @@
   color: #dd4037;
 }
 
-.float-button {
-  position: fixed;
+.bottom-fix {
+  display: block;
   height: 58px;
-  width: 100%;
-  bottom: 0;
-  background-color: rgba(112, 223, 244, 1);
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.float-button > button {
-  height: 100%;
+.float-button-view {
+  position: fixed;
   width: 100%;
-  background-color: rgba(112, 223, 244, 1);
+  bottom: 0;
+}
+
+.float-button {
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(112, 223, 244, 0.7);
+}
+
+zan-button.float-button > button {
+  color: #ffffff;
+  background-color: rgba(112, 223, 244, 0.9);
 }
