@@ -21,23 +21,27 @@
         <!-- content -->
         <zan-row>
           
-            <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-container">
-              <view class="shop-border shop-content">
-                <image src="{{item.image}}" class="shop-img"/>
-                <view class="shop-title">
-                  <text>{{ item.title }}</text>
-                </view>
-                <view class="shop-price">
-                  <text>￥{{ item.price }}</text>
-                </view>
-                <wxc-badge class="shop-badge">9</wxc-badge>
+          <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-container">
+            <view class="shop-border shop-content">
+              <image src="{{item.image}}" class="shop-img"/>
+              <view class="shop-title">
+                <text>{{ item.title }}</text>
               </view>
-            </zan-col>
+              <view class="shop-price">
+                <text>￥{{ item.price }}</text>
+              </view>
+              <wxc-badge class="shop-badge">9</wxc-badge>
+            </view>
+          </zan-col>
+          
+          <view class="float-button">
+            <button>确认添加</button>
+          </view>
           
         </zan-row>
+        
 
       </wxc-tab-panel>
-
     </wxc-tab>
   </view>
 </view>

@@ -39,3 +39,17 @@
   font-size: 12px;
   color: #dd4037;
 }
+
+.float-button {
+  position: fixed;
+  height: 58px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(112, 223, 244, 1);
+}
+
+.float-button > button {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(112, 223, 244, 1);
+}
