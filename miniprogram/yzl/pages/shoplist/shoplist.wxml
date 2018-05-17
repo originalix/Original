@@ -22,7 +22,7 @@
         <zan-row>
           
           <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-container">
-            <view class="shop-border shop-content">
+            <view class="shop-border shop-content" bindtap="addBadge">
               <image src="{{item.image}}" class="shop-img"/>
               <view class="shop-title">
                 <text>{{ item.title }}</text>
@@ -30,7 +30,8 @@
               <view class="shop-price">
                 <text>￥{{ item.price }}</text>
               </view>
-              <wxc-badge wx:if="{{ item.badge > 0 }}" class="shop-badge">{{ item.badge }}</wxc-badge>
+
+              <zan-badge wx:if="{{ item.badge > 0 }}" class="shop-badge">{{ item.badge }}</zan-badge>
             </view>
           </zan-col>
           

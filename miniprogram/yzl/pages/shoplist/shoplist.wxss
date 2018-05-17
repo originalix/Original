@@ -24,8 +24,10 @@
 
 .shop-badge {
   position: absolute;
-  top: 30rpx;
-  right: 16rpx;
+  /* top: 30rpx; */
+  /* right: 16rpx; */
+  top: 45rpx;
+  right: 36rpx;
 }
 
 .shop-title {

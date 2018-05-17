@@ -42,11 +42,19 @@ Page({
     }, function () {})
   },
   changeData() {
-    var str = "productList[0].title"
+    var str = "productList[0].badge"
     this.setData({
-      [str]: "恰同学少年"
-    })
+      [str]: 1
+    }, function () {})
   },
+  // addBadge(item) {
+  //   var item = "productList[item.id].badge"
+  //   var newData = item.badge += 1
+  //   var that = this
+  //   that.setData({
+  //     [item]: newData
+  //   }, function () {})
+  // },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   }
