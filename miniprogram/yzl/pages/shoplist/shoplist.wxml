@@ -40,13 +40,14 @@
         </zan-row>
         
         <view class="bottom-fix"></view>
-        <view class="float-button-view">
+        <view class="float-button-view" wx:if="{{ false }}">
           <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
 
         <view class="shop-cart-container">
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
+            <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
           </view>
           <!-- 价格预估 -->
           <view class="cart-price">
