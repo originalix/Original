@@ -74,3 +74,20 @@ zan-button.float-button > button {
   color: #ffffff;
   background-color: rgba(112, 223, 244, 0.9);
 }
+
+.shop-cart-container {
+  background-color: burlywood;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.cloth-backet {
+  /* padding-left: 16rpx; */
+  margin-left: 16rpx;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+}
+.cloth-backet-img {
+  width: 70rpx;
+  height: 70rpx;
+}

@@ -26,7 +26,7 @@ Page({
   },
   mockProduct() {
     var ptli = []
-    for(var i = 0; i < 40; i++) {
+    for(var i = 0; i < 1; i++) {
       var pt = {
         'id' : i,
         'image': 'http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg',
