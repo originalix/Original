@@ -29,11 +29,8 @@ const getOpenid = (code) => {
 
         getAccessTokenFromServer(openid)
       }
-      // console.log(openid)
     },
     fail: function(error) {
-      // wx.hideLoading()
-      // console.log(error)
     }
   });
 }
@@ -45,11 +42,10 @@ const login = () => {
 
   wx.login({
     success(res) {
-      // console.log(res)
       getOpenid(res.code)
     },
     fail(res) {
-      // console.log(res)
+      
     }
   })
 }
