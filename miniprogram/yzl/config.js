@@ -29,7 +29,7 @@ var config = {
         uploadUrl: `${host}/weapp/upload`,
 
         // 获取首页配置信息
-        indexConfigUrl: `${host}/home/config`,
+        indexConfigUrl: `${base_host}/v1/home/index`,
     }
 };
 

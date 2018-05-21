@@ -55,7 +55,6 @@ const login = () => {
 }
 
 const getAccessTokenFromServer = (openid) => {
-  console.log('request open id = ' + openid)
   wx.showLoading()
   wx.request({
     url: config.service.tokenUrl,
