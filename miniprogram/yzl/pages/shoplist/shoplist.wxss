@@ -78,11 +78,14 @@ zan-button.float-button > button {
 .shop-cart-container {
   background-color: burlywood;
   position: fixed;
+  display: flex;
+  vertical-align: center;
   width: 100%;
   bottom: 0;
 }
 .cloth-backet {
   /* padding-left: 16rpx; */
+  flex: 1;
   margin-left: 16rpx;
   padding-top: 12rpx;
   padding-bottom: 12rpx;
@@ -90,4 +93,13 @@ zan-button.float-button > button {
 .cloth-backet-img {
   width: 70rpx;
   height: 70rpx;
+}
+
+.cart-price {
+  flex: 2;
+  text-align: right;
+}
+
+.payview {
+  flex: 1.3;
 }

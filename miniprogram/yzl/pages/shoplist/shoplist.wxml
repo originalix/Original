@@ -51,9 +51,13 @@
           </view>
           <!-- 价格预估 -->
           <view class="cart-price">
+            <text>预估价格￥</text>
+            <text>121.00</text>
+            <view>不含运费</view>
           </view>
           <!-- 买单按钮 -->
           <view class="payview">
+            <zan-button>确认付款</zan-button>
           </view>
         </view>
 
