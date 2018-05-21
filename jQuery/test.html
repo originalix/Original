@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <title></title>  
+    <script type="text/javascript">  
+    var position = 0;  
+    function scroller()  
+    {  
+        if(true)  
+        {  
+            position++;  
+            scroll(0,position);  
+            clearTimeout(timer);  
+            var timer = setTimeout("scroller()",10);  
+        }  
+    }  
+    scroller();  
+    </script>  
+</head>  
+<body>  
+    <img src="../img/me.jpg"/><br/>  
+    <img src="../img/me.jpg"/><br/>  
+    <img src="../img/me.jpg"/><br/>  
+    <img src="../img/me.jpg"/><br/>  
+</body>  
+</html>
