@@ -44,16 +44,16 @@
           <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
 
-        <view class="shop-cart-container">
+        <view class="shop-cart-container shop-cart-border">
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
           </view>
           <!-- 价格预估 -->
           <view class="cart-price">
-            <text>预估价格￥</text>
-            <text>121.00</text>
-            <view>不含运费</view>
+            <text class="tip">预估价格￥</text>
+            <text class="price-text">121.00</text>
+            <view class="express-text">不含运费</view>
           </view>
           <!-- 买单按钮 -->
           <view class="payview">
