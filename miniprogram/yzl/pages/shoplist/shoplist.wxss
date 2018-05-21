@@ -36,7 +36,8 @@
   border-radius: 8px;
   background-color: #dd4037;
   color: #ffffff;
-  font-size: 11px;  
+  font-size: 11px;
+  text-align: center;
 }
 
 .shop-title {
@@ -127,4 +128,10 @@ zan-button.float-button > button {
 .express-text {
   font-size: 12px;
   color: #c0c4ce;
+}
+
+.shop-cart-badge {
+  position: absolute;
+  top: 10rpx;
+  left: 40rpx;
 }

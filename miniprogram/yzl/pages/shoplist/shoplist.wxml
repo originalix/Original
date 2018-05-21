@@ -21,7 +21,7 @@
         <!-- content -->
         <zan-row>
           
-          <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-container">
+          <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx" class="shop-container">
             <view class="shop-border shop-content" data-item="{{item}}" bindtap="addBadge">
               <image src="{{item.image}}" class="shop-img"/>
               <view class="shop-title">
@@ -48,6 +48,9 @@
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
+            <view class="shop-cart-badge shop-badge-text">
+                <text>55</text>
+            </view>
           </view>
           <!-- 价格预估 -->
           <view class="cart-price">
