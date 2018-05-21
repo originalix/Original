@@ -57,7 +57,7 @@
           </view>
           <!-- 买单按钮 -->
           <view class="payview">
-            <zan-button>确认付款</zan-button>
+            <zan-button type="shopcart">确认付款</zan-button>
           </view>
         </view>
 
