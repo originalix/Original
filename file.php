@@ -62,3 +62,24 @@ dump($fileArray);
 
 mongo -u root -p 123456 --authenticationDatabase admin
 mongo -u test -p 123456 --authenticationDatabase test -->
+
+<VirtualHost *:80>
+    ServerName h5.lunengsports.net
+
+    ServerAdmin admin@lnts.cn
+    DocumentRoot /approot/www/lnts.vue/dist/
+  
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride All
+    </Directory>
+    <Directory "/approot/www/lnts.vue/dist/">
+        Options FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/h5.lunengsports.error.log
+    CustomLog ${APACHE_LOG_DIR}/h5.lunengsports.access.log combined
+</VirtualHost>
