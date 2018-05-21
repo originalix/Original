@@ -3,20 +3,21 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-// var host = 'https://yc9qpwz4.qcloud.la';
-var host = 'https://api.yzl1030.com'
+var host = 'https://yc9qpwz4.qcloud.la';
+// 专用于接口的https域名
+var base_host = 'https://api.yzl1030.com'
 
 var config = {
 
     // 下面的地址配合云端 Demo 工作
     service: {
         host,
-
+        base_host,
         // 登录地址，用于建立会话
         loginUrl: `${host}/login`,
 
         // 获取Token地址
-        tokenUrl: `${host}/token`,
+        tokenUrl: `${base_host}/v1/auth/token`,
 
         // 测试的请求地址，用于测试会话
         requestUrl: `${host}/user`,

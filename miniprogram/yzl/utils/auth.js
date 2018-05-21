@@ -55,11 +55,12 @@ const login = () => {
 }
 
 const getAccessTokenFromServer = (openid) => {
+  console.log('request open id = ' + openid)
   wx.showLoading()
   wx.request({
     url: config.service.tokenUrl,
     data: {
-      'openid': openid
+      'openId': openid
     },
     method: 'GET',
     success: function(res) {
@@ -87,11 +88,8 @@ const getAccessTokenFromServer = (openid) => {
 
         }
       }
-      // console.log(res)
     },
     fail: function(error) {
-      // wx.hideLoading()
-      // console.log(error)
     }
   });
 }
