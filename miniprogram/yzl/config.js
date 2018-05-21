@@ -3,7 +3,8 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://yc9qpwz4.qcloud.la';
+// var host = 'https://yc9qpwz4.qcloud.la';
+var host = 'https://api.yzl1030.com'
 
 var config = {
 
