@@ -71,6 +71,13 @@
               <text class="header-title">价格预估</text>
               <button class="header-btn f-right">关闭</button>
             </view>
+            <view class="cart-cell">
+              <zan-icon type="checked"></zan-icon>
+              <zan-icon type="success"></zan-icon>
+              <view>
+                <zan-icon type="success"></zan-icon>
+              </view>
+            </view>
           </view>
         </view>
 
