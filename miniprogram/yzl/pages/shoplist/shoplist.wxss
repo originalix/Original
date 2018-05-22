@@ -141,7 +141,7 @@ zan-button.float-button > button {
   background-color: #ffffff;
   position: fixed;
   width: 100%;
-  height: 408rpx;
+  height: 813rpx;
   bottom: 46px;
 }
 

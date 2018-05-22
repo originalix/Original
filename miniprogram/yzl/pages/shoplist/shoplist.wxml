@@ -66,7 +66,11 @@
 
         <view class="mask-view">
           <view class="shop-cart-list" wx:if="{{ cartShow }}">
-            <text>hello world</text>
+            <view class="cart-header">
+              <button>清空</button>
+              <text>价格预估</text>
+              <button>关闭</button>
+            </view>
           </view>
         </view>
 
