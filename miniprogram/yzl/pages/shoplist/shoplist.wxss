@@ -201,3 +201,9 @@ zan-button.float-button > button {
   overflow: auto;
   _height: 1%;
 }
+
+.cart-header {
+  border-bottom-style: solid;
+  border-bottom-color: #e9ebf3;
+  border-bottom-width: 1rpx;
+}
