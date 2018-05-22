@@ -73,10 +73,18 @@
             </view>
             <view class="cart-cell">
               <zan-icon type="checked"></zan-icon>
-              <zan-icon type="success"></zan-icon>
               <view>
-                <zan-icon type="success"></zan-icon>
+                <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" />
               </view>
+              <text>￥</text><text>16.0</text>
+              <zan-stepper
+                stepper="6"
+                min="1"
+                max="10"
+                componentId="123"
+                bind:change="handleZanStepperChange"
+              >
+              </zan-stepper>
             </view>
           </view>
         </view>

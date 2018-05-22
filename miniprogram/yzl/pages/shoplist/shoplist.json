@@ -17,7 +17,8 @@
       "zan-col": "../../bower_components/zanui-weapp/dist/col/index",
       "zan-button": "../../bower_components/zanui-weapp/dist/btn/index",
       "zan-badge": "../../bower_components/zanui-weapp/dist/badge/index",
-      "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index"
+      "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index",
+      "zan-stepper": "../../bower_components/zanui-weapp/dist/stepper/index"
     }
 }
   
