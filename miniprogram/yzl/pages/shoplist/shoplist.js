@@ -51,5 +51,13 @@ Page({
   },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
+  },
+  showPopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.show();
+  },
+  hidePopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.hide();
   }
 })

@@ -135,3 +135,12 @@ zan-button.float-button > button {
   top: 10rpx;
   left: 40rpx;
 }
+
+.popup__content {
+  width: 100%;
+  height: 500rpx;
+  line-height: 500rpx;
+  margin-bottom: 46px;
+  background: #ffffff;
+  text-align: center;
+}

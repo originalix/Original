@@ -16,7 +16,8 @@
       "zan-row": "../../bower_components/zanui-weapp/dist/row/index",
       "zan-col": "../../bower_components/zanui-weapp/dist/col/index",
       "zan-button": "../../bower_components/zanui-weapp/dist/btn/index",
-      "zan-badge": "../../bower_components/zanui-weapp/dist/badge/index"
+      "zan-badge": "../../bower_components/zanui-weapp/dist/badge/index",
+      "wxc-popup": "../../dist/packages/@minui/wxc-popup/dist/index"
     }
 }
   
