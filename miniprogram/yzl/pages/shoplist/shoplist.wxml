@@ -66,10 +66,5 @@
 
       </wxc-tab-panel>
     </wxc-tab>
-
-    <!-- 底部购物车弹出层 -->
-    <wxc-popup class="J_Popup" animation-mode="bottom" align="bottom">
-      <view class="popup__content">Hello World</view>
-    </wxc-popup>
   </view>
 </view>
