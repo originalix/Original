@@ -153,3 +153,37 @@ zan-button.float-button > button {
   height: 100%;
   bottom: 46px;
 }
+
+.header-btn {
+  display: inline;
+  line-height: 81rpx;
+  background-color: #ffffff !important;
+  color: #00dbf5 !important;
+  border-radius: 0 !important;
+  font-size: 36rpx;
+}
+
+.header-btn::after {
+  border: none;
+}
+
+.header-title {
+  color: #1a1a1a;
+  font-size: 38rpx;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.f-right {
+  float: right;
+}
+
+.f-left {
+  float: left;
+}
