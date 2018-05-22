@@ -39,7 +39,7 @@
           
         </zan-row>
         
-        <view class="bottom-fix"></view>
+        <!-- <view class="bottom-fix"></view> -->
         <view class="float-button-view" wx:if="{{ false }}">
           <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
@@ -61,6 +61,12 @@
           <!-- 买单按钮 -->
           <view class="payview">
             <zan-button type="shopcart">确认付款</zan-button>
+          </view>
+        </view>
+
+        <view class="mask-view">
+          <view class="shop-cart-list" wx:if="{{ cartShow }}">
+            <text>hello world</text>
           </view>
         </view>
 
