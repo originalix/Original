@@ -154,6 +154,10 @@ zan-button.float-button > button {
   bottom: 46px;
 }
 
+.t-center {
+  text-align: center;
+}
+
 .header-btn {
   display: inline;
   line-height: 81rpx;
@@ -170,6 +174,19 @@ zan-button.float-button > button {
 .header-title {
   color: #1a1a1a;
   font-size: 38rpx;
+  line-height: 81rpx;
+}
+
+.f-right {
+  float: right;
+}
+
+.f-left {
+  float: left;
+}
+
+.claer {
+  clear: both;
 }
 
 .clearfix:after {
@@ -180,10 +197,7 @@ zan-button.float-button > button {
   visibility: hidden;
 }
 
-.f-right {
-  float: right;
-}
-
-.f-left {
-  float: left;
+.clearfix {
+  overflow: auto;
+  _height: 1%;
 }
