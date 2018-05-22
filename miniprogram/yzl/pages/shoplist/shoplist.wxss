@@ -36,7 +36,8 @@
   border-radius: 8px;
   background-color: #dd4037;
   color: #ffffff;
-  font-size: 11px;  
+  font-size: 11px;
+  text-align: center;
 }
 
 .shop-title {
@@ -76,18 +77,79 @@ zan-button.float-button > button {
 }
 
 .shop-cart-container {
-  background-color: burlywood;
+  background-color: #ffffff;
   position: fixed;
+  display: flex;
+  vertical-align: center;
   width: 100%;
   bottom: 0;
 }
-.cloth-backet {
-  /* padding-left: 16rpx; */
-  margin-left: 16rpx;
-  padding-top: 12rpx;
-  padding-bottom: 12rpx;
+
+.shop-cart-border {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #e7eefe;
 }
+
+.cloth-backet {
+  position: relative;
+  flex: 1;
+  margin-left: 26rpx;
+}
+
 .cloth-backet-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 70rpx;
   height: 70rpx;
+}
+
+.cart-price {
+  flex: 2;
+  text-align: right;
+  margin-right: 30rpx;
+}
+
+.payview {
+  flex: 1.3;
+}
+
+.tip {
+  font-size: 13px;
+  color: #dd4037;
+}
+
+.price-text {
+  font-size: 17px;
+  color: #dd4037;
+}
+
+.express-text {
+  font-size: 12px;
+  color: #c0c4ce;
+}
+
+.shop-cart-badge {
+  position: absolute;
+  top: 10rpx;
+  left: 40rpx;
+}
+
+.shop-cart-list {
+  display: block;
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  height: 813rpx;
+  bottom: 46px;
+}
+
+.mask-view {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  bottom: 46px;
 }

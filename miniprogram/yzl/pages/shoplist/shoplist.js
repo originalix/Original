@@ -7,6 +7,7 @@ Page({
 
     ],
     productList: [],
+    cartShow: true
   },
   onLoad() {
     setTimeout(this.getTab, 100)
@@ -51,5 +52,10 @@ Page({
   },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
+  },
+  showPopup () {
+    this.setData({
+      cartShow: true
+    }, function () {})
   }
 })

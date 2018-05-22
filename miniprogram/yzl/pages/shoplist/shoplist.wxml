@@ -21,7 +21,7 @@
         <!-- content -->
         <zan-row>
           
-          <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" class="shop-container">
+          <zan-col col="8" col-class="custom-zan-col" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx" class="shop-container">
             <view class="shop-border shop-content" data-item="{{item}}" bindtap="addBadge">
               <image src="{{item.image}}" class="shop-img"/>
               <view class="shop-title">
@@ -39,21 +39,38 @@
           
         </zan-row>
         
-        <view class="bottom-fix"></view>
+        <!-- <view class="bottom-fix"></view> -->
         <view class="float-button-view" wx:if="{{ false }}">
           <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
 
-        <view class="shop-cart-container">
+        <view class="shop-cart-container shop-cart-border" bindtap="showPopup">
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
+            <view class="shop-cart-badge shop-badge-text">
+                <text>55</text>
+            </view>
           </view>
           <!-- 价格预估 -->
           <view class="cart-price">
+            <text class="tip">预估价格￥</text>
+            <text class="price-text">121.00</text>
+            <view class="express-text">不含运费</view>
           </view>
           <!-- 买单按钮 -->
           <view class="payview">
+            <zan-button type="shopcart">确认付款</zan-button>
+          </view>
+        </view>
+
+        <view class="mask-view">
+          <view class="shop-cart-list" wx:if="{{ cartShow }}">
+            <view class="cart-header">
+              <button>清空</button>
+              <text>价格预估</text>
+              <button>关闭</button>
+            </view>
           </view>
         </view>
 
