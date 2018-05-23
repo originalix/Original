@@ -9,13 +9,10 @@ Page({
     productList: [],
     cartShow: true,
     stepper: {
-      // 当前 stepper 数字
-      stepper: 1,
-      // 最小可到的数字
+      stepper: 10,
       min: 1,
-      // 最大可到的数字
-      max: 10
-    }
+      max: 20
+    },
   },
   onLoad() {
     setTimeout(this.getTab, 100)
@@ -66,10 +63,18 @@ Page({
       cartShow: true
     }, function () {})
   },
-  handleZanStepperChange({ componentId, stepper }) {
-    console.log(componentId);
+  handleZanStepperChange({
+    detail: stepper,
+    target: {
+      dataset: {
+        componentId
+      }
+    }
+  }) {
+    console.log(stepper)
+    console.log(componentId)
     this.setData({
-      stepper
+      stepper1: stepper
     });
   }
 })

@@ -78,10 +78,10 @@
               </view>
               <text>￥</text><text>16.0</text>
               <zan-stepper
-                stepper="6"
-                min="1"
-                max="10"
-                componentId="123"
+                stepper="{{ stepper.stepper }}"
+                min="{{ stepper.min }}"
+                max="{{ stepper.max }}"
+                data-component-id="stepper1"
                 bind:change="handleZanStepperChange"
               >
               </zan-stepper>
