@@ -208,6 +208,17 @@ zan-button.float-button > button {
   border-bottom-width: 1rpx;
 }
 
-.test {
-  color: aqua !important;
+.cart-cell {
+  display: inline;
+}
+
+.cart-img-wrapper {
+  display: inline;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.cart-cell-img {
+  width: 200rpx;
+  height: 200rpx;
 }
