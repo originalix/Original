@@ -1,7 +1,12 @@
 .counter {
     display:flex;
-    margin-top:10rpx
+    margin-top:10rpx;
 }
+
+.counter-wrapper {
+  display: inline-block;
+}
+
 .counter__number {
     box-sizing:border-box;
     height: 50rpx;
