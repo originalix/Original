@@ -77,14 +77,7 @@
                 <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" />
               </view>
               <text>￥</text><text>16.0</text>
-              <zan-stepper
-                stepper="{{ stepper.stepper }}"
-                min="{{ stepper.min }}"
-                max="{{ stepper.max }}"
-                data-component-id="stepper1"
-                bind:change="handleZanStepperChange"
-              >
-              </zan-stepper>
+              <wxc-counter number="111" max="{{10000}}" min="1" bind:changenumber="onChangeNumber" color="green"></wxc-counter>
             </view>
           </view>
         </view>

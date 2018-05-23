@@ -207,3 +207,7 @@ zan-button.float-button > button {
   border-bottom-color: #e9ebf3;
   border-bottom-width: 1rpx;
 }
+
+.test {
+  color: aqua !important;
+}

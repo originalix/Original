@@ -8,11 +8,6 @@ Page({
     ],
     productList: [],
     cartShow: true,
-    stepper: {
-      stepper: 10,
-      min: 1,
-      max: 20
-    },
   },
   onLoad() {
     setTimeout(this.getTab, 100)
@@ -63,18 +58,7 @@ Page({
       cartShow: true
     }, function () {})
   },
-  handleZanStepperChange({
-    detail: stepper,
-    target: {
-      dataset: {
-        componentId
-      }
-    }
-  }) {
-    console.log(stepper)
-    console.log(componentId)
-    this.setData({
-      stepper1: stepper
-    });
+  onChangeNumber (e) {
+    console.log(e.detail);
   }
 })
