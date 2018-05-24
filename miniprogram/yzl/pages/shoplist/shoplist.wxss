@@ -218,11 +218,34 @@ zan-button.float-button > button {
 
 .cart-img-wrapper {
   display: inline;
-  width: 108rpx;
-  height: 105rpx;
+  margin-left: 25rpx;
 }
 
 .cart-cell-img {
   width: 108rpx;
   height: 105rpx;
+}
+
+.checked {
+  margin-top: 24rpx;
+  height: 41rpx;
+  width: 41rpx;
+}
+
+.cell-title {
+  margin-left: 27rpx;
+  font-size: 24rpx;
+  color: #1a1a1a;
+}
+
+.price-unit {
+    margin-left: 58rpx;
+    font-size: 16rpx;
+    color: #f02b2b;
+}
+
+.cell-price {
+    margin-left: 10rpx;
+    font-size: 24rpx;
+    color: #f02b2b;
 }
