@@ -69,7 +69,7 @@
             <view class="cart-header t-center">
               <button class="header-btn f-left">清空</button>
               <text class="header-title">价格预估</text>
-              <button class="header-btn f-right">关闭</button>
+              <button class="header-btn f-right" bindtap="showPopup" data-cartshow ="{{ cartShow }}">关闭</button>
             </view>
             <scroll-view scroll-y style="height: 720rpx;" >
             

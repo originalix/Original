@@ -53,12 +53,14 @@ Page({
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   },
-  showPopup () {
+  showPopup (e) {
+    console.log(e)
+    let cartState = e.target.dataset.cartshow
     this.setData({
-      cartShow: true
+      cartShow: !cartState
     }, function () {})
   },
   onChangeNumber (e) {
     console.log(e.detail);
-  }
+  },
 })

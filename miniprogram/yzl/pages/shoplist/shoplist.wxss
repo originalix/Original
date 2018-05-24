@@ -268,6 +268,6 @@ zan-button.float-button > button {
 .line {
   width: 89%;
   margin-left: 11%;
-  height: 1rpx;
+  height: 2rpx;
   background-color: #e9ebf3;
 }
