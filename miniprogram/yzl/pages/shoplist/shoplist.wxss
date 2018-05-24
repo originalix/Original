@@ -209,27 +209,29 @@ zan-button.float-button > button {
 }
 
 .cart-cell-wrapper {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
   height: 148rpx;
 }
 
 .cart-cell {
-  display: inline;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  height: 148rpx;
 }
 
 .cart-img-wrapper {
-  display: inline;
   margin-left: 25rpx;
+  width: 115rpx;
+  height: 114rpx;
+  border: 1px solid #e9ebf3;
 }
 
 .cart-cell-img {
-  width: 108rpx;
-  height: 105rpx;
-}
-
-.checked {
-  margin-top: 24rpx;
-  height: 41rpx;
-  width: 41rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .cell-title {
@@ -239,13 +241,33 @@ zan-button.float-button > button {
 }
 
 .price-unit {
-    margin-left: 58rpx;
-    font-size: 16rpx;
-    color: #f02b2b;
+  margin-left: 58rpx;
+  font-size: 16rpx;
+  color: #f02b2b;
 }
 
 .cell-price {
-    margin-left: 10rpx;
-    font-size: 24rpx;
-    color: #f02b2b;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #f02b2b;
+}
+
+.icon {
+  margin-left: 24rpx;
+  height: 41rpx;
+  width: 41rpx;
+  color: #00dbf5;
+}
+
+.cell-counter {
+  margin-left: auto;
+  margin-right: 22rpx;
+  order: 2;
+}
+
+.line {
+  width: 89%;
+  margin-left: 11%;
+  height: 1rpx;
+  background-color: #e9ebf3;
 }

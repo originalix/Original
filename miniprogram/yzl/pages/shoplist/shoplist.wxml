@@ -71,18 +71,19 @@
               <text class="header-title">价格预估</text>
               <button class="header-btn f-right">关闭</button>
             </view>
-            <view class="cart-cell-wrapper">
+            <!-- <view class="cart-cell-wrapper"> -->
               <view class="cart-cell">
-                <zan-icon type="checked"></zan-icon>
-                <view class="cart-img-wrapper">
+                <zan-icon type="checked" class="icon"></zan-icon>
+                <wxc-cc class="cart-img-wrapper">
                   <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" class="cart-cell-img" />
-                </view>
+                </wxc-cc>
                 <text class="cell-title">单衬衫</text>
                 <text class="price-unit">￥</text>
                 <text class="cell-price">16.0</text>
-                <wxc-counter number="111" max="{{10000}}" min="1" bind:changenumber="onChangeNumber" color="green"></wxc-counter>
+                <wxc-counter number="1" max="{{10000}}" min="1" bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
               </view>
-            </view>
+              <view class="line"></view>
+            <!-- </view> -->
           </view>
         </view>
 
