@@ -64,7 +64,7 @@
           </view>
         </view>
 
-        <view class="mask-view">
+        <view class="mask-view" wx:if="{{ cartShow }}">
           <view class="shop-cart-list" wx:if="{{ cartShow }}">
             <view class="cart-header t-center">
               <button class="header-btn f-left">清空</button>
