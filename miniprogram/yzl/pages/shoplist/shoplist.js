@@ -1,4 +1,5 @@
 var config = require('../../config.js');
+
 var appInstance = getApp()
 
 Page({
@@ -8,10 +9,15 @@ Page({
     ],
     productList: [],
     cartShow: true,
+		cartMin: 0,
+		cartMax: 99999,
+		cartOrigin: 1,
+		cartList: []
   },
   onLoad() {
     setTimeout(this.getTab, 100)
     setTimeout(this.mockProduct, 100)
+		this.mockCartList()
   },
   getTab() {
     var tlist = [
@@ -41,8 +47,19 @@ Page({
       productList: ptli
     }, function () {})
   },
+	mockCartList() {
+		var cartli = [1, 2, 3, 4]
+		this.setData({
+			cartList: cartli
+		}, function () {})
+	},
+	/**
+	 * 商品列表的点击事件，增加badeg数量 并且加入购物车
+	 */
   addBadge: function (event) {
     var item = event.currentTarget.dataset.item
+		console.log(item)
+		this.addCartItem(item)
     var targetItem = "productList[" + item.id + "]"
     item.badge += 1
     var that = this
@@ -50,6 +67,10 @@ Page({
       [targetItem]: item
     }, function () {})
   },
+	addCartItem: function (item) {
+		var list = this.cartList	
+		console.log(list)
+	},
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   },
