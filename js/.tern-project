@@ -1,0 +1,11 @@
+{
+    "ecmaVersion": 6,
+    "libs": [
+        "browser",
+        "underscore",
+        "jquery"
+    ],
+    "plugins": {
+        "node": {}
+    }
+}
