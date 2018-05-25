@@ -72,7 +72,7 @@
               <button class="header-btn f-right" bindtap="showPopup" data-cartshow ="{{ cartShow }}">关闭</button>
             </view>
             <scroll-view scroll-y style="height: 720rpx;" >
-							<view wx:for="{{cartList}}" wx:for-index="idx" wx:for-item="item">
+							<view wx:for="{{cartList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
 	              <!-- row -->
 	              <view class="cart-cell">
 	                <zan-icon type="checked" class="icon"></zan-icon>
@@ -82,7 +82,7 @@
 									<text class="cell-title">{{item.title}}</text>
 	                <text class="price-unit">￥</text>
 	                <text class="cell-price">{{item.price}}</text>
-									<wxc-counter number="{{ item.badge }}" max="{{ cartMax }}" min="{{ cartMin }}" bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
+									<wxc-counter number="{{ item.badge }}" max="{{ cartMax }}" min="{{ cartMin }}" data-idx="{{idx}}" bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
 	              </view>
 	              <view class="line"></view>
 	              <!-- row end -->

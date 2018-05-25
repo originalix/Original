@@ -128,6 +128,6 @@ Page({
     }, function () {})
   },
   onChangeNumber (e) {
-    console.log(e.detail);
+    console.log(e);
   },
 })
