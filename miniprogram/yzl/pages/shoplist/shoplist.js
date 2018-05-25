@@ -130,4 +130,21 @@ Page({
   onChangeNumber (e) {
     console.log(e);
   },
+	refreshProductItemBadge(item, value) {
+		// 根据productid 查找到对应productList里的index
+		for (var i=0; i<productList.length; i++) {
+			if (item.id === productList[i].id) {
+				// i is index
+				
+    		var targetItem = "productList[" + i + "]"
+    		item.badge = value
+    		var that = this
+
+		    that.setData({
+		      [targetItem]: item
+		    }, function () {})
+				return
+			}
+		}		
+	},
 })
