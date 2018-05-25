@@ -69,12 +69,7 @@ Page({
     var item = event.currentTarget.dataset.item
 		console.log('addbadge')
 		console.log(item)
-    var targetItem = "productList[" + item.id + "]"
-    item.badge += 1
-    var that = this
-    that.setData({
-      [targetItem]: item
-    }, function () {})
+		this.refreshProductItemBadge(item, item.badge + 1)
     this.addCartItem(item)
   },
 	/*
@@ -130,7 +125,13 @@ Page({
   onChangeNumber (e) {
     console.log(e);
   },
+	/* 
+	*		传入一个产品，更新他的badge值
+	*/
 	refreshProductItemBadge(item, value) {
+		const that = this	
+		const productList = that.data.productList
+
 		// 根据productid 查找到对应productList里的index
 		for (var i=0; i<productList.length; i++) {
 			if (item.id === productList[i].id) {
@@ -138,7 +139,6 @@ Page({
 				
     		var targetItem = "productList[" + i + "]"
     		item.badge = value
-    		var that = this
 
 		    that.setData({
 		      [targetItem]: item
