@@ -69,13 +69,13 @@ Page({
     var item = event.currentTarget.dataset.item
 		console.log('addbadge')
 		console.log(item)
-		this.addCartItem(item)
     var targetItem = "productList[" + item.id + "]"
     item.badge += 1
     var that = this
     that.setData({
       [targetItem]: item
     }, function () {})
+    this.addCartItem(item)
   },
 	/*
 	 * 添加商品进入购物车

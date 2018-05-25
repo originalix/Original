@@ -72,21 +72,21 @@
               <button class="header-btn f-right" bindtap="showPopup" data-cartshow ="{{ cartShow }}">关闭</button>
             </view>
             <scroll-view scroll-y style="height: 720rpx;" >
-            
-              <!-- row -->
-              <view class="cart-cell">
-                <zan-icon type="checked" class="icon"></zan-icon>
-                <wxc-cc class="cart-img-wrapper">
-                  <image src="http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg" class="cart-cell-img" />
-                </wxc-cc>
-                <text class="cell-title">单衬衫</text>
-                <text class="price-unit">￥</text>
-                <text class="cell-price">16.0</text>
-								<wxc-counter number="{{ cartOrigin }}" max="{{ cartMax }}" min="{{ cartMin }}" bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
-              </view>
-              <view class="line"></view>
-              <!-- row end -->
-
+							<view wx:for="{{cartList}}" wx:for-index="idx" wx:for-item="item">
+	              <!-- row -->
+	              <view class="cart-cell">
+	                <zan-icon type="checked" class="icon"></zan-icon>
+	                <wxc-cc class="cart-img-wrapper">
+	                  <image src="{{item.image}}" class="cart-cell-img" />
+	                </wxc-cc>
+									<text class="cell-title">{{item.title}}</text>
+	                <text class="price-unit">￥</text>
+	                <text class="cell-price">{{item.price}}</text>
+									<wxc-counter number="{{ item.badge }}" max="{{ cartMax }}" min="{{ cartMin }}" bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
+	              </view>
+	              <view class="line"></view>
+	              <!-- row end -->
+							</view>
             </scroll-view>
 
           </view>
