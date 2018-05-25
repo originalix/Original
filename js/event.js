@@ -72,5 +72,6 @@ var example7 = new Vue({
     }
 })
 
-document.getElementById('#id');
+document.getElementById();
+
 
