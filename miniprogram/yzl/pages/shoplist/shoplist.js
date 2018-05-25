@@ -48,7 +48,16 @@ Page({
     }, function () {})
   },
 	mockCartList() {
-		var cartli = [1, 2, 3, 4]
+	  var pt = {
+	  	'id' : 0,
+	  	'image': 'http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg',
+	  	'title': '衬衫哦哦哦',
+	  	'price': '16.00',
+	  	'badge': 0
+	  }
+		var cartli = []
+		cartli.push(pt)
+		console.log(cartli)
 		this.setData({
 			cartList: cartli
 		}, function () {})
@@ -68,8 +77,28 @@ Page({
     }, function () {})
   },
 	addCartItem: function (item) {
-		var list = this.cartList	
+		var that = this
+		var list = that.data.cartList	
 		console.log(list)
+		const exist = this.isInCartList(item)
+		console.log(exist)
+		// 判断已经添加过商品
+		if (exist) {
+			// 产品badge +1
+		} else {
+			// 添加产品进入list
+		}
+
+		// 刷新cartlist
+	},
+	isInCartList(item) {
+		var that = this;
+		for (var i=0; i<that.data.cartList.length; i++) {
+			if (item.id === that.data.cartList[i].id) {
+				return true
+			}
+		}
+		return false
 	},
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
