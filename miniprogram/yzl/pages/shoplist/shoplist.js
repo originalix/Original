@@ -154,4 +154,18 @@ Page({
 			}
 		}		
 	},
+	/*
+	 * 传入购物车的列表index，刷新购物车item的badge值
+	 */
+	refreshCartItemBadge(index, value) {
+		var that = this
+		var list = that.data.cartList	
+		list[idx].badge = value
+		var targetItem = "cartList[" + idx + " ]"
+		that.setData({
+			targetItem: list[idx] 
+		})
+		console.log('now refresh cart list is : ')
+		console.log(list[idx])
+	}
 })
