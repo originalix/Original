@@ -128,9 +128,12 @@ Page({
   onChangeNumber (e) {
 		const currentNum = e.detail.number
 		const cartIdx = e.target.dataset.idx
+		const currentItem = e.target.dataset.item
 		console.log('current number is : ' + currentNum)
 		console.log('current Idx is : ' + cartIdx)
     console.log(e)
+		this.refreshCartItemBadge(cartIdx, currentNum)
+		this.refreshProductItemBadge(currentItem, currentNum)
   },
 	/* 
 	*		传入一个产品，更新他的badge值
@@ -157,7 +160,7 @@ Page({
 	/*
 	 * 传入购物车的列表index，刷新购物车item的badge值
 	 */
-	refreshCartItemBadge(index, value) {
+	refreshCartItemBadge(idx, value) {
 		var that = this
 		var list = that.data.cartList	
 		list[idx].badge = value

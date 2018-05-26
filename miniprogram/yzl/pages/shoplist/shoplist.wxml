@@ -1,4 +1,5 @@
 <view>
+
   <view class="scroll-bg-color" wx:if="{{tabs.length > 0}}">
     <wxc-tab
       bind:tabchange="onClick"
@@ -82,7 +83,7 @@
 									<text class="cell-title">{{item.title}}</text>
 	                <text class="price-unit">￥</text>
 	                <text class="cell-price">{{item.price}}</text>
-									<wxc-counter number="{{ item.badge }}" max="{{ cartMax }}" min="{{ cartMin }}" data-idx="{{idx}}" bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
+									<wxc-counter number="{{ item.badge }}" max="{{ cartMax }}" min="{{ cartMin }}" data-idx="{{idx}}" data-item="{{item}}"  bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
 	              </view>
 	              <view class="line"></view>
 	              <!-- row end -->
