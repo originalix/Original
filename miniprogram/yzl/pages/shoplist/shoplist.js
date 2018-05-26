@@ -122,8 +122,15 @@ Page({
       cartShow: !cartState
     }, function () {})
   },
+	/*
+	 *  购物车 counter组件的点击事件
+	 */
   onChangeNumber (e) {
-    console.log(e);
+		const currentNum = e.detail.number
+		const cartIdx = e.target.dataset.idx
+		console.log('current number is : ' + currentNum)
+		console.log('current Idx is : ' + cartIdx)
+    console.log(e)
   },
 	/* 
 	*		传入一个产品，更新他的badge值
