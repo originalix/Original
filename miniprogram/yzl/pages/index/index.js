@@ -1,4 +1,5 @@
 var config = require('../../config.js');
+		console.log('hello world')
 var appInstance = getApp()
 
 Page({
@@ -52,9 +53,11 @@ Page({
       }
     })
   },
-  pushToShopList() {
-    wx.navigateTo({
-      url: '/pages/shoplist/shoplist'
-    })
+  pushToShopList(e) {
+		const categoryId = e.currentTarget.dataset.id
+		console.log('categoryId is : ' + categoryId)
+		wx.navigateTo({
+			url: '/pages/shoplist/shoplist?id=' + categoryId
+		})
   }
 })
