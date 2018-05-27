@@ -22,3 +22,4 @@ class CategoryListSearch extends ProductCategory
         return $dataProvider;
     }
 }
+
