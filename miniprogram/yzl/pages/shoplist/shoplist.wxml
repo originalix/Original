@@ -49,8 +49,8 @@
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
-            <view class="shop-cart-badge shop-badge-text">
-                <text>55</text>
+						<view class="shop-cart-badge shop-badge-text" wx:if="{{cartList.length>0}}">
+							<text>{{cartList.length}}</text>
             </view>
           </view>
           <!-- 价格预估 -->

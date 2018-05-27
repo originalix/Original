@@ -6,6 +6,8 @@
 # phpstorm project files
 .idea
 tags
+*.swp
+.DS\_Store
 # netbeans project files
 nbproject
 
