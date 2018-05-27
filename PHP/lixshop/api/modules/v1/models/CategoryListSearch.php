@@ -10,16 +10,21 @@ class CategoryListSearch extends ProductCategory
 {
     public function search($id)
     {
-        $query = static::find()->where([
-            'category_id' => $id 
-        ]); 
-        $query->with('product');
+        // $query = static::find()->where([
+            // 'category_id' => $id 
+        // ]); 
+        // $query->with('product');
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+            // 'query' => $query,
+        // ]);
 
-        return $dataProvider;
+        // return $dataProvider;
+        // $a = static::find()->where([
+            // 'product_id' => $id
+        // ])->one();
+        $a = static::findOne($id);
+        return $a->product;
     }
 }
 
