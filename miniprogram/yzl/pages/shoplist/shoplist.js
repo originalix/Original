@@ -22,16 +22,23 @@ Page({
 		this.mockCartList()
   },
   getTab() {
-    var tlist = [
-      {title: '洗衣'},
-      {title: '洗鞋'},
-      {title: '洗家纺'},
-      {title: '洗窗帘'},
-    ]
-    console.log(tlist);
-    this.setData({
-      tabs: tlist,
-    }, function () {})
+		wx.request({
+			url: config.getCategoryListUrl,
+			success: function (res) {
+				console.log(res.data)
+			}
+		})
+
+    // var tlist = [
+      // {title: '洗衣'},
+      // {title: '洗鞋'},
+      // {title: '洗家纺'},
+      // {title: '洗窗帘'},
+    // ]
+    // console.log(tlist);
+    // this.setData({
+      // tabs: tlist,
+    // }, function () {})
   },
   mockProduct() {
     var ptli = []
