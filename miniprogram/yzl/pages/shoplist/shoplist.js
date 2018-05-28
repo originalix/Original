@@ -252,5 +252,14 @@ Page({
 			'cartCount': sum,
 			'price': sumPrice.toFixed(2)
 		}, function () {})
+	},
+	clearCartList() {
+		const list = this.data.cartList
+		for (var i=0; i<list.length; i++) {
+			this.refreshProductItemBadge(list[i], 0)
+		}
+		this.setData({
+			'cartList': []
+		}, function() {})
 	}
 })
