@@ -95,5 +95,6 @@
 
       </wxc-tab-panel>
     </wxc-tab>
+		<zan-dialog id="zan-dialog-tip"></zan-dialog>
   </view>
 </view>

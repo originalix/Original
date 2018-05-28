@@ -1,4 +1,5 @@
 var config = require('../../config.js');
+const Dialog = require('../../bower_components/zanui-weapp/dist/dialog/dialog');
 
 var appInstance = getApp()
 
@@ -254,23 +255,26 @@ Page({
 		}, function () {})
 	},
 	clearCartList() {
-		wx.showModal({
-			title: '提示',
-			content: '这是一个模态弹窗',
-			success: function(res) {
-				if (res.confirm) {
-					console.log('用户点击确定')
-				} else if (res.cancel) {
-					console.log('用户点击取消')
+		var that = this
+		Dialog({
+			title: '操作提示',
+			message: '确认清空选项吗？',
+			selector: '#zan-dialog-tip',
+			showCancelButton: true,
+			confirmButtonColor: '#00dbf5',
+			cancelButtonColor: '#00dbf5',
+		}).then((res) => {
+			if (res.type === "confirm") {
+				const list = that.data.cartList
+				for (var i=0; i<list.length; i++) {
+					that.refreshProductItemBadge(list[i], 0)
 				}
-			}
+				that.setData({
+					'cartList': []
+				}, function() {
+					that.calculateCartCount()
+				})
+			}	
 		})
-		// const list = this.data.cartList
-		// for (var i=0; i<list.length; i++) {
-			// this.refreshProductItemBadge(list[i], 0)
-		// }
-		// this.setData({
-			// 'cartList': []
-		// }, function() {})
 	}
 })
