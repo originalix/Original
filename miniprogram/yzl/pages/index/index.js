@@ -1,5 +1,4 @@
 var config = require('../../config.js');
-		console.log('hello world')
 var appInstance = getApp()
 
 Page({

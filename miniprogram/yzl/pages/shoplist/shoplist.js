@@ -1,6 +1,6 @@
 var config = require('../../config.js');
-
 var appInstance = getApp()
+console.log(appInstance.requestToken)
 
 Page({
   data: {
@@ -23,7 +23,8 @@ Page({
   },
   getTab() {
 		wx.request({
-			url: config.getCategoryListUrl,
+			url: config.service.getCategoryListUrl, 
+			header: appInstance.requestToken,
 			success: function (res) {
 				console.log(res.data)
 			}
