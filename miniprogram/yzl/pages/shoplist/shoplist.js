@@ -13,7 +13,8 @@ Page({
 		cartMin: 0,
 		cartMax: 99999,
 		cartOrigin: 1,
-		cartList: []
+		cartList: [],
+		cartCount: 0
   },
   onLoad(option) {
 		console.log('option query is : ')
@@ -21,8 +22,8 @@ Page({
 		const categoryId = option.id
 		this.getTab(categoryId)
     // setTimeout(this.getTab, 100)
-    setTimeout(this.mockProduct, 100)
-		this.mockCartList()
+    // setTimeout(this.mockProduct, 100)
+		// this.mockCartList()
   },
   getTab(categoryId) {
 		const that = this
@@ -71,21 +72,6 @@ Page({
       // productList: ptli
     // }, function () {})
   },
-	mockCartList() {
-	 // var pt = {
-	 // 	'id' : 0,
-	 // 	'image': 'http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg',
-	 // 	'title': '衬衫哦哦哦',
-	 // 	'price': '16.00',
-	 // 	'badge': 0
-	 // }
-		//var cartli = []
-		//cartli.push(pt)
-		//console.log(cartli)
-		//this.setData({
-		//	cartList: cartli
-		//}, function () {})
-	},
 	/**
 	 * 商品列表的点击事件，增加badeg数量 并且加入购物车
 	 */
@@ -124,6 +110,7 @@ Page({
 			}, function () {})
 		}
 		// 刷新cartlist
+		this.calculateCartCount()
 	},
 	isInCartList(item) {
 		var that = this;
@@ -136,6 +123,9 @@ Page({
 		}
 		return res
 	},
+	/**
+	 * tab的点击事件，刷新列表，重新从接口请求商品数据
+	 */
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
 		const categoryId = this.data.tabs[`${e.detail.key}`].id
@@ -226,6 +216,9 @@ Page({
 		console.log('now refresh cart list is : ')
 		console.log(list[idx])
 	},
+	/**
+	 * 在添加完商品后，计算购物车内所有商品数量，并刷新左下角badge
+	 */
 	calculateCartCount() {
 		const list = this.data.cartList
 		let sum = 0
@@ -233,6 +226,8 @@ Page({
 			sum += list[i].badge
 		}
 		console.log('cartsum : ' + sum)
-		return sum
+		this.setData({
+			'cartCount': sum
+		}, function () {})
 	}
 })

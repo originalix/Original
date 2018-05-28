@@ -50,7 +50,7 @@
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
 						<view class="shop-cart-badge shop-badge-text" wx:if="{{cartList.length>0}}">
-							<text>{{shoplist.calculateCartCount(cartList)}}</text>
+							<text>{{cartCount}}</text>
             </view>
           </view>
           <!-- 价格预估 -->
