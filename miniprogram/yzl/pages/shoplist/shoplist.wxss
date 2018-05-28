@@ -238,10 +238,11 @@ zan-button.float-button > button {
   margin-left: 27rpx;
   font-size: 24rpx;
   color: #1a1a1a;
+	width: 25%;
 }
 
 .price-unit {
-  margin-left: 58rpx;
+  margin-left: 28rpx;
   font-size: 16rpx;
   color: #f02b2b;
 }
