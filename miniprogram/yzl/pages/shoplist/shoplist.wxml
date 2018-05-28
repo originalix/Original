@@ -44,13 +44,13 @@
         <view class="float-button-view" wx:if="{{ false }}">
           <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
-
+        <wxs module="shoplist" src="./shoplist.wxs"></wxs>
         <view class="shop-cart-container shop-cart-border" bindtap="showPopup">
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>
 						<view class="shop-cart-badge shop-badge-text" wx:if="{{cartList.length>0}}">
-							<text>{{cartList.length}}</text>
+							<text>{{shoplist.calculateCartCount(cartList)}}</text>
             </view>
           </view>
           <!-- 价格预估 -->

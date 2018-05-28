@@ -1,0 +1,20 @@
+// var calculateCartCount = (list) => {
+//     console.log(list)
+// }
+
+var shoplist = {
+  calculateCartCount: function (list) {
+    console.log(list)
+    console.log('Hello world')
+		let sum = 0
+		for (var i=0; i<list.length; i++) {
+			sum += list[i].badge
+		}
+		console.log('cartsum : ' + sum)
+		return sum
+  }
+}
+
+module.exports = {
+    calculateCartCount: shoplist.calculateCartCount
+}

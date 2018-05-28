@@ -156,7 +156,7 @@ Page({
 					console.log(product)
 					const productInfo = {
 						'id': product.id,
-						'image': '',
+						'image': product.image[0],
 						'title': product.name,
 						'price': product.price,
 						'badge': 0
@@ -225,5 +225,14 @@ Page({
 		})
 		console.log('now refresh cart list is : ')
 		console.log(list[idx])
+	},
+	calculateCartCount() {
+		const list = this.data.cartList
+		let sum = 0
+		for (let i=0; i<list.length; i++) {
+			sum += list[i].badge
+		}
+		console.log('cartsum : ' + sum)
+		return sum
 	}
 })
