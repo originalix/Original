@@ -6,6 +6,7 @@ Page({
     tabs: [
 
     ],
+		defaultIndex: 0,
     productList: [],
     cartShow: false,
 		cartMin: 0,
@@ -16,13 +17,15 @@ Page({
   onLoad(option) {
 		console.log('option query is : ')
 		console.log(option.id)
-		this.getTab()
+		const categoryId = option.id
+		this.getTab(categoryId)
     // setTimeout(this.getTab, 100)
     setTimeout(this.mockProduct, 100)
 		this.mockCartList()
   },
-  getTab() {
+  getTab(categoryId) {
 		const that = this
+		var defaultIdx = 0
 		wx.request({
 			url: config.service.getCategoryListUrl, 
 			header: appInstance.requestToken,
@@ -33,6 +36,9 @@ Page({
 				let tlist = []
 				for (var i=0; i<categories.length; i++) {
 					console.log(categories[i])
+					if (categoryId === categories[i].id) {
+						defaultIdx = i	
+					}
 					tlist.push(
 						{'id': categories[i].id, 'title': categories[i].category}
 					)
@@ -41,6 +47,7 @@ Page({
 				console.log(tlist)
 				that.setData({
 					tabs: tlist,
+					defaultIndex: defaultIdx
 				}, function() {})
 				// var tlist = [
 					// {title: '洗衣'},

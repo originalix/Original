@@ -1,9 +1,9 @@
 <view>
 
-  <view class="scroll-bg-color" wx:if="true">
+	<view class="scroll-bg-color" wx:if="{{tabs.length > 0}}">
     <wxc-tab
       bind:tabchange="onClick"
-      default-index="{{0}}"
+      default-index="{{defaultIndex}}"
       component-id="c2"
       animate="{{true}}"
       text-color="#1a1a1a"
