@@ -281,6 +281,14 @@ Page({
 		})
 	},
 	saveCartParams() {
+		const that = this
+
+		try {
+			wx.setStorageSync('CART_LIST_DATA', that.data.cartList)
+		} catch (e) {
+			console.log(e)
+		}
+		
 		try {
 			const value = wx.getStorageSync('CART_LIST_DATA')
 			if (value) {
