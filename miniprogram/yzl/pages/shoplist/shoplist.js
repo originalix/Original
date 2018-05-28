@@ -1,6 +1,5 @@
 var config = require('../../config.js');
 var appInstance = getApp()
-console.log(appInstance.requestToken)
 
 Page({
   data: {
@@ -17,16 +16,42 @@ Page({
   onLoad(option) {
 		console.log('option query is : ')
 		console.log(option.id)
-    setTimeout(this.getTab, 100)
+		this.getTab()
+    // setTimeout(this.getTab, 100)
     setTimeout(this.mockProduct, 100)
 		this.mockCartList()
   },
   getTab() {
+		const that = this
 		wx.request({
 			url: config.service.getCategoryListUrl, 
 			header: appInstance.requestToken,
 			success: function (res) {
 				console.log(res.data)
+				const categories = res.data.data
+				console.log(categories)
+				let tlist = []
+				for (var i=0; i<categories.length; i++) {
+					console.log(categories[i])
+					tlist.push(
+						{'id': categories[i].id, 'title': categories[i].category}
+					)
+				}
+				console.log('tlist: ')
+				console.log(tlist)
+				that.setData({
+					tabs: tlist,
+				}, function() {})
+				// var tlist = [
+					// {title: '洗衣'},
+					// {title: '洗鞋'},
+					// {title: '洗家纺'},
+					// {title: '洗窗帘'},
+				// ]
+				// console.log(tlist);
+				// that.setData({
+					// tabs: tlist,
+				// }, function () {})
 			}
 		})
 
