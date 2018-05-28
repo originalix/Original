@@ -254,6 +254,9 @@ Page({
 			'price': sumPrice.toFixed(2)
 		}, function () {})
 	},
+	/* 
+	 *  清理购物车列表，清空按钮的点击事件
+	 */
 	clearCartList() {
 		var that = this
 		Dialog({
@@ -276,5 +279,18 @@ Page({
 				})
 			}	
 		})
+	},
+	saveCartParams() {
+		try {
+			const value = wx.getStorageSync('CART_LIST_DATA')
+			if (value) {
+				console.log('购物车缓存数据: ')
+				console.log(value)
+			} else {
+				console.log(' 没有购物车缓存数据')
+			}
+		} catch (e) {
+			console.log(e)
+		}
 	}
 })
