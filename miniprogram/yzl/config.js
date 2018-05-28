@@ -28,6 +28,8 @@ var config = {
       indexConfigUrl: `${base_host}/v1/home/index`,
 			// 获取分类列表
 			getCategoryListUrl: `${base_host}/v1/category/index`,
+			// 根据分类id获取产品列表
+			getProductByCategoryId: `${base_host}/v1/category/list`,
 			
     }
 };

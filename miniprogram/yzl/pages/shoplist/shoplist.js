@@ -1,4 +1,5 @@
 var config = require('../../config.js');
+
 var appInstance = getApp()
 
 Page({
@@ -51,29 +52,8 @@ Page({
 					tabs: tlist,
 					defaultIndex: defaultIdx
 				}, function() {})
-				// var tlist = [
-					// {title: '洗衣'},
-					// {title: '洗鞋'},
-					// {title: '洗家纺'},
-					// {title: '洗窗帘'},
-				// ]
-				// console.log(tlist);
-				// that.setData({
-					// tabs: tlist,
-				// }, function () {})
 			}
 		})
-
-    // var tlist = [
-      // {title: '洗衣'},
-      // {title: '洗鞋'},
-      // {title: '洗家纺'},
-      // {title: '洗窗帘'},
-    // ]
-    // console.log(tlist);
-    // this.setData({
-      // tabs: tlist,
-    // }, function () {})
   },
   mockProduct() {
     var ptli = []
@@ -158,6 +138,18 @@ Page({
 	},
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
+		const categoryId = this.data.tabs[`${e.detail.key}`].id
+		console.log('categoryId IS : ' + categoryId)
+		wx.request({
+			url: config.service.getProductByCategoryId,
+			header: appInstance.requestToken,
+			data: {
+				'id': categoryId
+			},
+			success: function (res) {
+				console.log(res.data)
+			}
+		})
   },
   showPopup (e) {
     console.log(e)
