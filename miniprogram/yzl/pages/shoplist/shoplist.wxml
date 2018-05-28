@@ -68,7 +68,7 @@
         <view class="mask-view" wx:if="{{ cartShow }}">
           <view class="shop-cart-list" wx:if="{{ cartShow }}">
             <view class="cart-header t-center">
-              <button class="header-btn f-left">清空</button>
+              <button class="header-btn f-left" bindtap="clearCartList">清空</button>
               <text class="header-title">价格预估</text>
               <button class="header-btn f-right" bindtap="showPopup" data-cartshow ="{{ cartShow }}">关闭</button>
             </view>

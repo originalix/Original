@@ -254,12 +254,23 @@ Page({
 		}, function () {})
 	},
 	clearCartList() {
-		const list = this.data.cartList
-		for (var i=0; i<list.length; i++) {
-			this.refreshProductItemBadge(list[i], 0)
-		}
-		this.setData({
-			'cartList': []
-		}, function() {})
+		wx.showModal({
+			title: '提示',
+			content: '这是一个模态弹窗',
+			success: function(res) {
+				if (res.confirm) {
+					console.log('用户点击确定')
+				} else if (res.cancel) {
+					console.log('用户点击取消')
+				}
+			}
+		})
+		// const list = this.data.cartList
+		// for (var i=0; i<list.length; i++) {
+			// this.refreshProductItemBadge(list[i], 0)
+		// }
+		// this.setData({
+			// 'cartList': []
+		// }, function() {})
 	}
 })
