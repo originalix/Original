@@ -14,7 +14,9 @@ Page({
 		cartOrigin: 1,
 		cartList: []
   },
-  onLoad() {
+  onLoad(option) {
+		console.log('option query is : ')
+		console.log(option.id)
     setTimeout(this.getTab, 100)
     setTimeout(this.mockProduct, 100)
 		this.mockCartList()
