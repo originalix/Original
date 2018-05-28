@@ -10,7 +10,6 @@ class ProductInfo extends Product
     public function fields()
     {
         return [
-            
             'id',
             'name',
             'spu',
@@ -21,6 +20,11 @@ class ProductInfo extends Product
             'is_in_stock',
             'visibility',
             'url_key',
+            'image' => function () {
+                
+            },
+            'category',
+            'customOptionStock',
             // 'stock' => '库存数量',
             'price',
             'cost_price',

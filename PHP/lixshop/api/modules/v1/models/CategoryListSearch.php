@@ -4,6 +4,7 @@ namespace api\modules\v1\models;
 
 use Yii;
 use common\models\ProductCategory;
+use api\models\product\ProductInfo;
 use yii\data\ActiveDataProvider;
 
 class CategoryListSearch extends ProductCategory
@@ -17,18 +18,24 @@ class CategoryListSearch extends ProductCategory
 
     public function search($id)
     {
-        // $query = ProductCategory::find()->where([
-            // 'category_id' => $id 
-        // ]);
-        // $query->with('product');
+        $query = static::find()->where([
+            'category_id' => $id 
+        ]);
+        $query->with('product');
 
-        // $dataProvider = new ActiveDataProvider([
-            // 'query' => $query,
-        // ]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
 
-        // return $dataProvider;
-        $a = ProductCategory::findOne(18);
-        return $a->product;
+        return $dataProvider;
+        // $a = static::findOne(18);
+        // return $a->product;
     }
+
+    public function getProduct()
+    {
+        return $this->hasOne(ProductInfo::className(), ['id' => 'product_id']);
+    }
+
 }
 
