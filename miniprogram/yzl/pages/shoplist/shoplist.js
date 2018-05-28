@@ -149,7 +149,7 @@ Page({
 						'image': product.image[0],
 						'title': product.name,
 						'price': product.price,
-						'badge': 0
+						'badge': that.checkBadgeInCartList(product.id)
 					}	
 					product_li.push(productInfo)
 				}
@@ -159,7 +159,20 @@ Page({
 				}, function () {})
 			}
 		})
-  },
+	},
+	checkBadgeInCartList(id) {
+		const cartList = that.data.cartList
+
+		for (var i=0; i<cartList.length; i++) {
+			if (cartList[i].id === id) {
+				return cartList[i].badge
+			}
+		}
+		return 0
+	},
+	/**
+	 * 打开关闭购物车菜单
+	 */
   showPopup (e) {
     console.log(e)
     let cartState = e.target.dataset.cartshow
