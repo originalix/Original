@@ -28,7 +28,7 @@
 
     <!-- col -->
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="category-col category-bg-2">
+      <view class="category-col category-bg-2" bindtap="pushToShopList" data-id="{{categories[1].id}}">
         <view class='center category-title-margin category-title'><text>{{categories[1].category}}</text></view>
         <view class='center'>
           <image src="{{categories[1].icon}}" class="icon-img category-img"/>
@@ -38,7 +38,7 @@
 
     <!-- col -->
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="category-col category-bg-3">
+      <view class="category-col category-bg-3" bindtap="pushToShopList" data-id="{{categories[2].id}}">
         <view class='center category-title-margin category-title'><text>{{categories[2].category}}</text></view>
         <view class='center'>
           <image src="{{categories[2].icon}}" class="icon-img category-img"/>
@@ -48,7 +48,7 @@
 
     <!-- col -->
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="category-col category-bg-3">
+      <view class="category-col category-bg-3" bindtap="pushToShopList" data-id="{{categories[3].id}}">
         <view class='center category-title-margin category-title'><text>{{categories[3].category}}</text></view>
         <view class='center'>
           <image src="{{categories[3].icon}}" class="icon-img category-img"/>

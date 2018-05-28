@@ -36,7 +36,7 @@ Page({
 				let tlist = []
 				for (var i=0; i<categories.length; i++) {
 					console.log(categories[i])
-					if (categoryId === categories[i].id) {
+					if (categoryId == categories[i].id) {
 						defaultIdx = i	
 					}
 					tlist.push(
@@ -45,6 +45,8 @@ Page({
 				}
 				console.log('tlist: ')
 				console.log(tlist)
+				console.log('defaultIdx: ' + defaultIdx)
+				console.log('categoryId: ' + categoryId)
 				that.setData({
 					tabs: tlist,
 					defaultIndex: defaultIdx
