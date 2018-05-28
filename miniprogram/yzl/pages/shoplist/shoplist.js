@@ -152,7 +152,8 @@ Page({
 				const items = res.data.data.items
 				let product_li = []
 				for (var i=0; i<items.length; i++) {
-					const product = items[i]
+					const product = items[i].product
+					console.log(product)
 					const productInfo = {
 						'id': product.id,
 						'image': '',

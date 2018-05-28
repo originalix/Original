@@ -17,16 +17,18 @@ class CategoryListSearch extends ProductCategory
 
     public function search($id)
     {
-        $query = static::find()->where([
-            'category_id' => $id 
-        ]);
-        $query->with('product');
+        // $query = ProductCategory::find()->where([
+            // 'category_id' => $id 
+        // ]);
+        // $query->with('product');
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+            // 'query' => $query,
+        // ]);
 
-        return $dataProvider;
+        // return $dataProvider;
+        $a = ProductCategory::findOne(18);
+        return $a->product;
     }
 }
 
