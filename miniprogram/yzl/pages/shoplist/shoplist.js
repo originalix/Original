@@ -14,7 +14,8 @@ Page({
 		cartMax: 99999,
 		cartOrigin: 1,
 		cartList: [],
-		cartCount: 0
+		cartCount: 0,
+		price: 0.00,
   },
   onLoad(option) {
 		console.log('option query is : ')
@@ -160,8 +161,11 @@ Page({
 			}
 		})
 	},
+	/** 
+	 *  加载商品列表时，同步badge
+	 */
 	checkBadgeInCartList(id) {
-		const cartList = that.data.cartList
+		const cartList = this.data.cartList
 
 		for (var i=0; i<cartList.length; i++) {
 			if (cartList[i].id === id) {
@@ -234,13 +238,19 @@ Page({
 	 */
 	calculateCartCount() {
 		const list = this.data.cartList
+		console.log('list ---->: ')
+		console.log(list)
 		let sum = 0
+		let sumPrice = 0.00
 		for (let i=0; i<list.length; i++) {
 			sum += list[i].badge
+			sumPrice += Number(list[i].price) * list[i].badge
 		}
 		console.log('cartsum : ' + sum)
+		console.log('price: ' + sumPrice.toFixed(2))
 		this.setData({
-			'cartCount': sum
+			'cartCount': sum,
+			'price': sumPrice.toFixed(2)
 		}, function () {})
 	}
 })
