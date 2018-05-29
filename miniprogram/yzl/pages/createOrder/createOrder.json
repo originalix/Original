@@ -20,6 +20,10 @@
       "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index",
       "wxc-counter": "../../dist/packages/@minui/wxc-counter/dist/index",
       "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index",
-      "zan-card": "../../bower_components/zanui-weapp/dist/card/index"
+      "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
+      "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
+      "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index",
+      "zan-field": "../../bower_components/zanui-weapp/dist/field/index",
+      "zan-cell": "../../bower_components/zanui-weapp/dist/cell/index"
     }
 }

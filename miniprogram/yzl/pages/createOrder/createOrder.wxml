@@ -42,6 +42,18 @@
 			status="已发货"
 		>
 		</zan-card>
+		<wxc-list title="标题文字" desc="内容描述" arrow="{{false}}"></wxc-list>
+		<wxc-input type="text" title="收货人" placeholder="名字"></wxc-input>
+		<zan-cell title="只显示箭头" is-link></zan-cell>
+		<zan-cell title="单行列表" value="详细信息" is-link></zan-cell>
+		<zan-field
+			title="收货人"
+			placeholder="名字"
+			focus="true"
+			value="test"
+			bind:change="handleFieldChange"
+		>
+		</zan-field>
 	</view>
 	<!-- 商品面板 -->
 
