@@ -61,3 +61,7 @@
 .bg-e5 {
 	background-color: #e5e5e5;
 }
+
+.view-hover {
+	opacity: .8;
+}
