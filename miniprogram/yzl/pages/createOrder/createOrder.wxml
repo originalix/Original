@@ -1,4 +1,21 @@
 <view>
-	<text>Hello World</text>
+	<!-- 地址栏目 -->
+	<view class="address-wrapper bg-white vertical-center">
+		<image class="add-icon" src="../../resource/img/add.png" />
+		<text class="font-30 text-bg-333">新增收货地址</text>
+		<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
+	</view>
+	<view class="separate bg-e5"></view>
+	<!-- 店铺title -->
+
+	<!-- 商品面板 -->
+
+	<!-- 配送方式cell -->
+
+	<!-- 优惠模块cell -->
+
+	<!-- 商品金额cell -->
+
+	<!-- 底部fixed 显示提交订单 -->
 </view>
 

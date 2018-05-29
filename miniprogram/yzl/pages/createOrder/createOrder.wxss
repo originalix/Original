@@ -1,3 +1,14 @@
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+}
+
+.flex-right {
+	order: 2;
+	margin-left: auto;
+}
+
 .address-wrapper {
 	width: 100%;
 	height: 142rpx;
@@ -31,3 +42,22 @@
 	font-size: 27rpx;
 }
 
+.add-icon {
+	margin-left: 30rpx;
+	margin-right: 20rpx;
+	width: 85rpx;
+	height: 85rpx;
+}
+
+.arrow-layout {
+	margin-right: 24rpx;
+}
+
+.separate {
+	width: 100%;
+	height: 1rpx;
+}
+
+.bg-e5 {
+	background-color: #e5e5e5;
+}
