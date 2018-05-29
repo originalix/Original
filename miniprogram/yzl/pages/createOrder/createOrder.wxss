@@ -84,3 +84,8 @@ page {
 	height: 97rpx;
 	margin-top: 20rpx;
 }
+
+.card-wrapper {
+	margin-bottom: 20rpx;
+	background-color: #fafafa;
+}
