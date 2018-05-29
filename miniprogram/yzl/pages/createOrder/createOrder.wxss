@@ -1,0 +1,33 @@
+.address-wrapper {
+	width: 100%;
+	height: 142rpx;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.text-bg-333 {
+	color: #333333;
+}
+
+.text-bg-666 {
+	color: #666666;
+}
+
+.text-bg-000 {
+	color: #000000;
+}
+
+.font-30 {
+	font-size: 30rpx;
+}
+
+.font-25 {
+	font-size: 25rpx;
+}
+
+.font-27 {
+	font-size: 27rpx;
+}
+

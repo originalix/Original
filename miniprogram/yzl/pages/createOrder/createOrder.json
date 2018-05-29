@@ -1,3 +1,24 @@
 {
-
+    "navigationBarTitleText": "待付款的订单",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f0f0f0",
+    "backgroundTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+      "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index",
+      "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
+      "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
+      "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
+      "wx-tab-label": "../../dist/packages/@minui/wxc-tab/dist/label",
+      "wxc-badge": "../../dist/packages/@minui/wxc-badge/dist/index",
+      "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
+      "zan-row": "../../bower_components/zanui-weapp/dist/row/index",
+      "zan-col": "../../bower_components/zanui-weapp/dist/col/index",
+      "zan-button": "../../bower_components/zanui-weapp/dist/btn/index",
+      "zan-badge": "../../bower_components/zanui-weapp/dist/badge/index",
+      "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index",
+      "wxc-counter": "../../dist/packages/@minui/wxc-counter/dist/index",
+      "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index"
+    }
 }
