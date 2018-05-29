@@ -280,25 +280,19 @@ Page({
 			}	
 		})
 	},
+	/* 保存购物车的数据，传值到下个场景 */
 	saveCartParams() {
 		const that = this
-
 		try {
 			wx.setStorageSync('CART_LIST_DATA', that.data.cartList)
 		} catch (e) {
 			console.log(e)
 		}
-		
-		try {
-			const value = wx.getStorageSync('CART_LIST_DATA')
-			if (value) {
-				console.log('购物车缓存数据: ')
-				console.log(value)
-			} else {
-				console.log(' 没有购物车缓存数据')
-			}
-		} catch (e) {
-			console.log(e)
-		}
+	},
+	pushToCreateOrderPage() {
+		this.saveCartParams()
+		wx.navigateTo({
+			url: '/pages/createOrder/createOrder'
+		})
 	}
 })
