@@ -19,6 +19,7 @@
       "zan-badge": "../../bower_components/zanui-weapp/dist/badge/index",
       "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index",
       "wxc-counter": "../../dist/packages/@minui/wxc-counter/dist/index",
-      "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index"
+      "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index",
+      "zan-card": "../../bower_components/zanui-weapp/dist/card/index"
     }
 }
