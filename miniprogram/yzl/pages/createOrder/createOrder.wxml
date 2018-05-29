@@ -1,4 +1,5 @@
 <view>
+	<view class="separate bg-e5"></view>
 	<!-- 地址栏目 -->
 	<view 
 		hover
@@ -11,8 +12,15 @@
 		<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
 	</view>
 	<view class="separate bg-e5"></view>
-	<!-- 店铺title -->
 
+	<!-- 商品详情 -->
+	<view>
+		<!-- 店铺title -->
+		<view class="title bg-white vertical-center">
+			<image src="../../resource/img/icon-shop.png" class="shop-icon" />
+			<text class="font-30 text-bg-333">衣之恋优质干洗店</text>
+		</view>
+	</view>
 	<!-- 商品面板 -->
 
 	<!-- 配送方式cell -->

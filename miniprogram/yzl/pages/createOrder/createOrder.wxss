@@ -1,3 +1,9 @@
+page {
+	display: block;
+	min-height: 100%;
+	background-color: #f8f8f8;
+}
+
 .vertical-center {
 	display: flex;
 	display: -webkit-flex;
@@ -55,7 +61,7 @@
 
 .separate {
 	width: 100%;
-	height: 1rpx;
+	height: 2rpx;
 }
 
 .bg-e5 {
@@ -64,4 +70,17 @@
 
 .view-hover {
 	opacity: .8;
+}
+
+.shop-icon {
+	margin-left: 32rpx;
+	margin-right: 18rpx;
+	width: 41rpx;
+	height: 37rpx;
+}
+
+.title {
+	width: 100%;
+	height: 97rpx;
+	margin-top: 20rpx;
 }
