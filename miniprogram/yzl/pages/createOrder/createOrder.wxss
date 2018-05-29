@@ -64,6 +64,11 @@ page {
 	height: 2rpx;
 }
 
+.separate-left {
+	width: 95%;
+	margin-left: 5%;
+}
+
 .bg-e5 {
 	background-color: #e5e5e5;
 }
