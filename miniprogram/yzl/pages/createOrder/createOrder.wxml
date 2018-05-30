@@ -93,7 +93,7 @@
 
 	<!-- 底部fixed 显示提交订单 -->
 	<view class="bottom-fix"></view>
-	<view class="shop-cart-container shop-cart-border">
+	<view class="shop-cart-container shop-cart-border vertical-center">
 		<!-- [> 价格预估 <] -->
 		<view class="cart-price">
 			<text class="tip">合计：</text>
@@ -101,7 +101,7 @@
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
-			<zan-button type="shopcart" catchtap="pushToCreateOrderPage">提交订单</zan-button>
+			<zan-button type="not-order" catchtap="pushToCreateOrderPage">提交订单</zan-button>
 		</view>
 	</view>
 </view>
