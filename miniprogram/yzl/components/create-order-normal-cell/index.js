@@ -42,7 +42,12 @@ Component({
     url: {
       type: String,
       value: ''
-    }
+    },
+		isPrice: {
+      type: null,
+      value: '',
+      description: '是否显示价格的红色样式'
+		}
   },
   data: {
     isLastCell: true

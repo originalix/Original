@@ -42,7 +42,7 @@
 			status="已发货"
 		>
 		</zan-card>
-		<normal-cell title="配送方式" value="上门取件"></normal-cell>
+		<normal-cell title="配送方式" value="上门取件" isPrice></normal-cell>
 		<view class="separate bg-e5 separate-left"></view>
 		<normal-cell title="单行列表" value="详细信息" is-link></normal-cell>
 		<zan-field

@@ -95,3 +95,21 @@
   padding-top: 6px;
   padding-bottom: 6px
 }
+
+.zan-cell-normal {
+	font-size: 30rpx;
+	line-height: 30rpx;
+}
+
+.title-color {
+	color: #000000;
+}
+
+.zan-cell-value-normal {
+	color: #666666;
+}
+
+.zan-cell-price {
+	color: #ff4545;
+}
+
