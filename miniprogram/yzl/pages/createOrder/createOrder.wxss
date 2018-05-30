@@ -95,3 +95,7 @@ page {
 	background-color: #fafafa;
 }
 
+.mgt-20 {
+ margin-top: 20rpx;
+}
+

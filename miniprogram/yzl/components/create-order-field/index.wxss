@@ -146,3 +146,9 @@
 .zan-field__input--right {
   text-align: right
 }
+
+.zan-field__font {
+	font-size: 30rpx;
+	line-height: 30rpx;
+}
+

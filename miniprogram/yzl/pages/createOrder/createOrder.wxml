@@ -42,24 +42,26 @@
 			status="已发货"
 		>
 		</zan-card>
-		<normal-cell title="配送方式" value="上门取件" isPrice></normal-cell>
+		<normal-cell title="配送方式" value="上门取件"></normal-cell>
 		<view class="separate bg-e5 separate-left"></view>
-		<normal-cell title="单行列表" value="详细信息" is-link></normal-cell>
 		<lix-field
-			title="收货人"
-			placeholder="名字"
-			focus="true"
-			value="test"
+			title="留言"
+			placeholder="点击给商家留言"
+			focus="false"
+			value=""
 			bind:change="handleFieldChange"
 		>
 		</lix-field>
+		<normal-cell title="合计" value="￥458.00" isPrice></normal-cell>
 	</view>
 	<!-- 商品面板 -->
 
 	<!-- 配送方式cell -->
 
 	<!-- 优惠模块cell -->
-
+	<view class="mgt-20 bg-white">
+		<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+	</view>
 	<!-- 商品金额cell -->
 
 	<!-- 底部fixed 显示提交订单 -->
