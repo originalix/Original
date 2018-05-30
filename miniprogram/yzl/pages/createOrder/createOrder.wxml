@@ -45,14 +45,14 @@
 		<normal-cell title="配送方式" value="上门取件" isPrice></normal-cell>
 		<view class="separate bg-e5 separate-left"></view>
 		<normal-cell title="单行列表" value="详细信息" is-link></normal-cell>
-		<zan-field
+		<lix-field
 			title="收货人"
 			placeholder="名字"
 			focus="true"
 			value="test"
 			bind:change="handleFieldChange"
 		>
-		</zan-field>
+		</lix-field>
 	</view>
 	<!-- 商品面板 -->
 

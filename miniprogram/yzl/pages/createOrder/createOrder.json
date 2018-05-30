@@ -12,7 +12,7 @@
       "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index",
       "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
       "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
-      "zan-field": "../../bower_components/zanui-weapp/dist/field/index",
-      "normal-cell": "../../components/create-order-normal-cell/index"
+      "lix-field": "../../components/create-order-field/index",
+      "normal-cell": "../../components/create-order-cell/index"
     }
 }
