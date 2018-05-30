@@ -41,11 +41,11 @@
         </zan-row>
         
         <!-- <view class="bottom-fix"></view> -->
-        <view class="float-button-view" wx:if="{{ false }}">
+				<view class="float-button-view" wx:if="{{ cartCount <= 0 }}">
           <zan-button type="large" class="float-button">预约取件</zan-button>
         </view>
         <wxs module="shoplist" src="./shoplist.wxs"></wxs>
-        <view class="shop-cart-container shop-cart-border" bindtap="showPopup">
+				<view class="shop-cart-container shop-cart-border" bindtap="showPopup" wx:if="{{ cartCount > 0 }}">
           <!-- 洗衣篮图标 -->
           <view class="cloth-backet">
             <image src="../../resource/img/cloth-backet.png" class="cloth-backet-img"/>

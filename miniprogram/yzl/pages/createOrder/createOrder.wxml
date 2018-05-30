@@ -1,69 +1,108 @@
 <view>
-	<view class="separate bg-e5"></view>
-	<!-- 地址栏目 -->
-	<view 
-		hover
-		hover-start-time="50"
-		hover-stay-time="50"
-		hover-class="view-hover"
-		class="address-wrapper bg-white vertical-center">
-		<image class="add-icon" src="../../resource/img/add.png" />
-		<text class="font-30 text-bg-333">新增收货地址</text>
-		<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
-	</view>
-	<view class="separate bg-e5"></view>
-
-	<!-- 商品详情 -->
-	<view class="bg-white">
-		<!-- 店铺title -->
-		<view class="title bg-white vertical-center">
-			<image src="../../resource/img/icon-shop.png" class="shop-icon" />
-			<text class="font-30 text-bg-333">衣之恋优质干洗店</text>
+	<scroll-view scroll-y style="height: 100%">
+		<view class="separate bg-e5"></view>
+		<!-- 地址栏目 -->
+		<view 
+			hover
+			hover-start-time="50"
+			hover-stay-time="50"
+			hover-class="view-hover"
+			class="address-wrapper bg-white vertical-center">
+			<image class="add-icon" src="../../resource/img/add.png" />
+			<text class="font-30 text-bg-333">新增收货地址</text>
+			<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
 		</view>
-		<!-- card -->
-		<zan-card
-			card-class="test-card card-wrapper"
-			thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg"
-			price="999.99"
-			title="红烧牛肉【虚拟商品】【有库存】【有sku】"
-			num="2"
-			desc="3000克 50%"
-			status="已发货"
-		>
-		</zan-card>
-		<!-- card -->
-		<zan-card
-			card-class="test-card card-wrapper"
-			thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg"
-			price="999.99"
-			title="红烧牛肉【虚拟商品】【有库存】【有sku】"
-			num="2"
-			desc="3000克 50%"
-			status="已发货"
-		>
-		</zan-card>
-		<normal-cell title="配送方式" value="上门取件"></normal-cell>
-		<view class="separate bg-e5 separate-left"></view>
-		<lix-field
-			title="留言"
-			placeholder="点击给商家留言"
-			focus="false"
-			value=""
-			bind:change="handleFieldChange"
-		>
-		</lix-field>
-		<normal-cell title="合计" value="￥458.00" isPrice></normal-cell>
-	</view>
-	<!-- 商品面板 -->
+		<view class="separate bg-e5"></view>
 
-	<!-- 配送方式cell -->
+		<!-- 商品详情 -->
+		<view class="bg-white">
+			<!-- 店铺title -->
+			<view class="title bg-white vertical-center">
+				<image src="../../resource/img/icon-shop.png" class="shop-icon" />
+				<text class="font-30 text-bg-333">衣之恋优质干洗店</text>
+			</view>
+			<!-- card -->
+			<zan-card
+				card-class="test-card card-wrapper"
+				thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg"
+				price="999.99"
+				title="红烧牛肉【虚拟商品】【有库存】【有sku】"
+				num="2"
+				desc="3000克 50%"
+				status="已发货"
+			>
+			</zan-card>
+			<!-- card -->
+			<zan-card
+				card-class="test-card card-wrapper"
+				thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg"
+				price="999.99"
+				title="红烧牛肉【虚拟商品】【有库存】【有sku】"
+				num="2"
+				desc="3000克 50%"
+				status="已发货"
+			>
+			</zan-card>
+			<normal-cell title="配送方式" value="上门取件"></normal-cell>
+			<view class="separate bg-e5 separate-left"></view>
+			<lix-field
+				title="留言"
+				placeholder="点击给商家留言"
+				focus="false"
+				value=""
+				bind:change="handleFieldChange"
+			>
+			</lix-field>
+			<normal-cell title="合计" value="￥458.00" isPrice></normal-cell>
+		</view>
+		<!-- 商品面板 -->
 
-	<!-- 优惠模块cell -->
-	<view class="mgt-20 bg-white">
-		<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
-	</view>
-	<!-- 商品金额cell -->
+		<!-- 配送方式cell -->
+
+		<!-- 优惠模块cell -->
+		<view class="mgt-20 bg-white">
+			<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+		</view>
+		<!-- 商品金额cell -->
+
+
+
+		<view class="mgt-20 bg-white">
+			<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+		</view>
+		<!-- 商品金额cell -->
+
+
+		<view class="mgt-20 bg-white">
+			<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+		</view>
+		<!-- 商品金额cell -->
+
+
+		<view class="mgt-20 bg-white">
+			<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+		</view>
+		<!-- 商品金额cell -->
+
+
+		<view class="mgt-20 bg-white">
+			<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+		</view>
+		<!-- 商品金额cell -->
+	</scroll-view>
 
 	<!-- 底部fixed 显示提交订单 -->
+	<view class="bottom-fix"></view>
+	<view class="shop-cart-container shop-cart-border">
+		<!-- [> 价格预估 <] -->
+		<view class="cart-price">
+			<text class="tip">合计：</text>
+			<text class="price-text">￥458.00</text>
+		</view>
+		<!-- [> 买单按钮 <] -->
+		<view class="payview">
+			<zan-button type="shopcart" catchtap="pushToCreateOrderPage">提交订单</zan-button>
+		</view>
+	</view>
 </view>
 
