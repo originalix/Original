@@ -1,3 +1,5 @@
+@import "../../dist/weui/weui.wxss"
+
 page {
 	display: block;
 	min-height: 100%;
@@ -65,8 +67,8 @@ page {
 }
 
 .separate-left {
-	width: 95%;
-	margin-left: 5%;
+	width: 96%;
+	margin-left: 4%;
 }
 
 .bg-e5 {
@@ -139,3 +141,17 @@ page {
   height: 58px;
   background-color: rgba(255, 255, 255, 0);
 }
+
+.section {
+	position: relative;
+	padding: 10px 15px;
+	display: flex;
+	align-items: center;
+	line-height: 1.4;
+	font-size: 30rpx;
+}
+
+.section__title {
+	flex: 1;
+}
+
