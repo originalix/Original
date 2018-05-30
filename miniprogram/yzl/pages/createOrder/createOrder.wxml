@@ -7,7 +7,9 @@
 			hover-start-time="50"
 			hover-stay-time="50"
 			hover-class="view-hover"
-			class="address-wrapper bg-white vertical-center">
+			class="address-wrapper bg-white vertical-center"
+			bindtap="choseAddress"
+			>
 			<image class="add-icon" src="../../resource/img/add.png" />
 			<text class="font-30 text-bg-333">新增收货地址</text>
 			<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>

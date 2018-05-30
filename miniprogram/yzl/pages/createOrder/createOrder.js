@@ -15,4 +15,12 @@ Page({
       date: e.detail.value
     })
   },
+	choseAddress () {
+		console.log('choseAddress')
+		wx.chooseAddress({
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	},
 })
