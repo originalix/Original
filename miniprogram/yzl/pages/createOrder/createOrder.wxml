@@ -27,15 +27,16 @@
 			bindtap="choseAddress"
 			block wx:if="{{isChooseAddress}}"
 			>
-			<view>
-				<view class="vertical-center w-h100">
-					<image src="../../resource/img/address-loca.png" class="loca-icon"/>
+			<view class="width-full">
+				<view class="vertical-center width-full">
+					<image src="../../resource/img/address-loca.png" class="loca-icon mg-30"/>
 					<text class="font-30 text-bg-05">收货人：牧之</text>
 					<text class="font-26 text-bg-05 flex-right">13166655985</text>
 				</view>
-				<text class="font-26 text-bg-666">收货地址： 北京市北京市东城区 望京</text>
+				<text class="font-26 text-bg-666 mg-75">收货地址： 北京市北京市东城区 望京</text>
 			</view>
-		</view>
+			<image src="../../resource/img/right.png" class="arrow-icon"/>
+			</view>
 		<view class="separate bg-e5"></view>
 
 		<!-- 商品详情 -->
