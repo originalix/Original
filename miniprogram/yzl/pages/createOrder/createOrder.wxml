@@ -30,10 +30,10 @@
 			<view class="width-full">
 				<view class="vertical-center width-full">
 					<image src="../../resource/img/address-loca.png" class="loca-icon mg-30"/>
-					<text class="font-30 text-bg-05">收货人：牧之</text>
-					<text class="font-26 text-bg-05 flex-right">13166655985</text>
+					<text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
+					<text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
 				</view>
-				<text class="font-26 text-bg-666 mg-75">收货地址： 北京市北京市东城区 望京</text>
+				<text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
 			</view>
 			<image src="../../resource/img/right.png" class="arrow-icon"/>
 			</view>
@@ -48,25 +48,17 @@
 			</view>
 			<!-- 商品面板 -->
 			<!-- card -->
-			<zan-card
-				card-class="test-card card-wrapper"
-				thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg"
-				price="999.99"
-				title="红烧牛肉【虚拟商品】【有库存】【有sku】"
-				num="2"
-				desc="3000克 50%"
-			>
-			</zan-card>
-			<!-- card -->
-			<zan-card
-				card-class="test-card card-wrapper"
-				thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg"
-				price="999.99"
-				title="红烧牛肉【虚拟商品】【有库存】【有sku】"
-				num="2"
-				desc="3000克 50%"
-			>
-			</zan-card>
+			<view wx:for="{{productList}}" wx:for-index="idx" wx:for-item="product" wx:key="idx">
+				<zan-card
+					card-class="test-card card-wrapper"
+					thumb="{{product.image}}"
+					price="{{product.price}}"
+					title="{{product.title}}"
+					num="{{product.badge}}"
+					desc=""
+				>
+				</zan-card>
+			</view>
 
 			<!-- 配送方式cell -->
 			<normal-cell title="配送方式" value="上门取件"></normal-cell>

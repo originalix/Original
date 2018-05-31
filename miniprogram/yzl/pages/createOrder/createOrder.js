@@ -50,6 +50,7 @@ Page({
 					isChooseAddress: true
 				}, function () {
 					console.log(that.data.isChooseAddress)
+					console.log(that.data.address)
 				})
 			},
 			fail: function (res) {
