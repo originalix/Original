@@ -197,6 +197,7 @@ Page({
     console.log(e)
 		this.refreshCartItemBadge(cartIdx, currentNum)
 		this.refreshProductItemBadge(currentItem, currentNum)
+		this.calculateCartCount()
   },
 	/* 
 	*		传入一个产品，更新他的badge值
@@ -209,14 +210,12 @@ Page({
 		for (var i=0; i<productList.length; i++) {
 			if (item.id === productList[i].id) {
 				// i is index
-				
-    		var targetItem = "productList[" + i + "]"
-    		item.badge = value
+				var targetItem = "productList[" + i + "]"
+				item.badge = value
 
-		    that.setData({
-		      [targetItem]: item
-		    }, function () {})
-				return
+				that.setData({
+					[targetItem]: item
+				}, function () {})
 			}
 		}		
 	},
@@ -226,13 +225,22 @@ Page({
 	refreshCartItemBadge(idx, value) {
 		var that = this
 		var list = that.data.cartList	
-		list[idx].badge = value
-		var targetItem = "cartList[" + idx + " ]"
-		that.setData({
-			targetItem: list[idx] 
-		})
-		console.log('now refresh cart list is : ')
-		console.log(list[idx])
+		if (value != 0) {
+			list[idx].badge = value
+			var targetItem = "cartList[" + idx + " ]"
+			that.setData({
+				targetItem: list[idx] 
+			})
+			console.log('now refresh cart list is : ')
+			console.log(list[idx])
+			return
+		} else {
+			list.splice(idx, 1)
+			that.setData({
+				cartList: list
+			}, function () {})
+			return
+		}
 	},
 	/**
 	 * 在添加完商品后，计算购物车内所有商品数量，并刷新左下角badge
