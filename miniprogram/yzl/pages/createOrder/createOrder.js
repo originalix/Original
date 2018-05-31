@@ -20,7 +20,10 @@ Page({
 			name: '到店取送',
 		}],
 		expressType: 0,
-		expressText: '上门配送'
+		expressText: '上门配送',
+		price: 0,
+		finalPrice: 0, 
+		expressPrice: 0,
 	},
 	onLoad () {
 		// 获取购物车的商品数据
@@ -39,6 +42,9 @@ Page({
 		}
 		this.initTimeAndDate()
 	},
+	/**
+	 *  初始化配送日期、时间
+	 */
 	initTimeAndDate () {
 		var that = this
 		// 查询设置取件整点
@@ -68,12 +74,18 @@ Page({
 		})
 		console.log(hours)
 	},
+	/**
+	 *  配送时间修改事件
+	 */
 	bindTimeChange: function(e) {
 		console.log('picker发送选择改变，携带值为', e.detail.value)
 		this.setData({
 			time: e.detail.value
 		})
 	},
+	/**
+	 *  配送日期修改事件
+	 */
 	bindDateChange: function(e) {
 		var targetDate = e.detail.value
 		var today = util.getDateStr(0)
@@ -129,12 +141,18 @@ Page({
 			}
 		})
 	},
+	/**
+	 *  打开配送方式选择的ActionSheet
+	 */
 	openActionSheet () {
 		console.log('openActionSheet')
 		this.setData({
 			actionsheetShow: true
 		})
 	},
+	/**
+	 *  配送方式选择的监听事件
+	 */
 	handleActionClick ({ detail }) {
 		const { index } = detail
 		console.log (detail)
@@ -149,5 +167,22 @@ Page({
 			expressText: text,
 			actionsheetShow: false
 		})
+	},
+	calculatePrice () {
+		const list = this.data.productList
+		console.log('list ---->: ')
+		console.log(list)
+		let sum = 0
+		let sumPrice = 0.00
+		for (let i=0; i<list.length; i++) {
+			sum += list[i].badge
+			sumPrice += Number(list[i].price) * list[i].badge
+		}
+		console.log('cartsum : ' + sum)
+		console.log('price: ' + sumPrice.toFixed(2))
+		this.setData({
+			'cartCount': sum,
+			'price': sumPrice.toFixed(2)
+		}, function () {})
 	}
 })
