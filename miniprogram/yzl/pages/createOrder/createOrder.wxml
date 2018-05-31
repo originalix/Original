@@ -55,7 +55,6 @@
 				title="红烧牛肉【虚拟商品】【有库存】【有sku】"
 				num="2"
 				desc="3000克 50%"
-				status="已发货"
 			>
 			</zan-card>
 			<!-- card -->
@@ -66,7 +65,6 @@
 				title="红烧牛肉【虚拟商品】【有库存】【有sku】"
 				num="2"
 				desc="3000克 50%"
-				status="已发货"
 			>
 			</zan-card>
 
