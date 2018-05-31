@@ -4,7 +4,8 @@ var appInstance = getApp()
 
 Page({
 	data: {
-		time: '12:01',
+		time: '',
+		startTime: '',
 		date: '',
 		startDate: '',
 		endDate: '',
@@ -36,16 +37,33 @@ Page({
 		} catch (e) {
 			console.log(e)
 		}
-		// 设置取件日期
+	},
+	initTimeAndDate () {
+		// 查询设置取件整点
+		var d = new Date()
+		var hours = d.getHours()
+		
+		// 设置默认取件日期
 		var today = util.getDateStr(0)
 		var endDate = util.getDateStr(3)
+		if (hours < 22 && hours+2 >= 22) {
+			hours = 22
+		} else if (hours >= 22) {
+			today = util.getDateStr(1)
+			endDate = util.getDateStr(4)
+			hours = 9
+		} else {
+			hours += 2
+		}
+		var time = hours + ':00'
+		// 设置取件日期
 		that.setData({
 			date: today,
 			startDate: today,
-			endDate: endDate
+			endDate: endDate,
+			time: time,
+			startTime: time
 		})
-		// 设置取件整点
-		var hours = getHours()
 		console.log(hours)
 	},
 	bindTimeChange: function(e) {
