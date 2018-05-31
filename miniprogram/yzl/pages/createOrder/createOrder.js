@@ -21,9 +21,14 @@ Page({
 		}],
 		expressType: 0,
 		expressText: '上门配送',
+		// 合计栏目显示价格
 		price: 0,
+		// fixed栏目显示价格
 		finalPrice: 0, 
+		// 运费价格
 		expressPrice: 0,
+		// 不包含快递的合计价格
+		no_express_price: 0
 	},
 	onLoad () {
 		// 获取购物车的商品数据
@@ -41,6 +46,7 @@ Page({
 			console.log(e)
 		}
 		this.initTimeAndDate()
+		this.calculatePrice()
 	},
 	/**
 	 *  初始化配送日期、时间
@@ -168,21 +174,29 @@ Page({
 			actionsheetShow: false
 		})
 	},
+	/**
+	 * 计算商品价格和运费
+	 */
 	calculatePrice () {
 		const list = this.data.productList
 		console.log('list ---->: ')
 		console.log(list)
-		let sum = 0
 		let sumPrice = 0.00
+		var expressP = 0.00
 		for (let i=0; i<list.length; i++) {
-			sum += list[i].badge
 			sumPrice += Number(list[i].price) * list[i].badge
 		}
-		console.log('cartsum : ' + sum)
 		console.log('price: ' + sumPrice.toFixed(2))
+
+		if (sumPrice < 30) {
+			expressP = 10.00	
+		}
+		var finalP = sumPrice + expressP 
 		this.setData({
-			'cartCount': sum,
-			'price': sumPrice.toFixed(2)
+			'price': sumPrice.toFixed(2),
+			expressPrice: expressP,
+			finalPrice: finalP,
+			no_express_price: sumPrice.toFixed(2)
 		}, function () {})
 	}
 })

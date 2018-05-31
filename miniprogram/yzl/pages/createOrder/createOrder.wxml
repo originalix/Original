@@ -97,7 +97,7 @@
 			>
 			</lix-field>
 
-			<normal-cell title="合计" value="￥458.00" isPrice></normal-cell>
+			<normal-cell title="合计" value="￥{{price}}" isPrice></normal-cell>
 		</view>
 
 		<!-- 优惠模块cell -->
@@ -106,8 +106,8 @@
 		</view>
 		<!-- 商品金额cell -->
 		<view class="mgt-20 bg-white">
-			<normal-cell title="商品金额" value="￥458.00"></normal-cell>
-			<normal-cell title="运费" value="+￥0.00"></normal-cell>
+			<normal-cell title="商品金额" value="￥{{no_express_price}}"></normal-cell>
+			<normal-cell title="运费" value="+￥{{expressPrice}}"></normal-cell>
 		</view>
 	</scroll-view>
 
@@ -117,7 +117,7 @@
 		<!-- [> 价格预估 <] -->
 		<view class="cart-price">
 			<text class="tip">合计：</text>
-			<text class="price-text">￥458.00</text>
+			<text class="price-text">￥{{finalPrice}}</text>
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
