@@ -11,11 +11,12 @@ Page({
 		actionsheetShow: false,
 		cancelWithMask: true,
 		actions: [{
-			name: '上门取送',
+			name: '上门配送',
 		},{
-			name: '到店自提',
+			name: '到店取送',
 		}],
-		expressType: 1,
+		expressType: 0,
+		expressText: '上门配送'
 	},
 	onLoad () {
 		var that = this
@@ -79,7 +80,15 @@ Page({
 	handleActionClick ({ detail }) {
 		const { index } = detail
 		console.log (detail)
+		var text = ''
+		if (index == 0) {
+			text = '上门配送'	
+		} else {
+			text = '到店取送'
+		}
 		this.setData({
+			expressType: index,
+			expressText: text,
 			actionsheetShow: false
 		})
 	}

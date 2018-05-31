@@ -62,7 +62,7 @@
 
 			<!-- 配送方式cell -->
 			<view bindtap="openActionSheet">
-				<normal-cell title="配送方式" value="上门取件"></normal-cell>
+				<normal-cell title="配送方式" value="{{ expressText }}"></normal-cell>
 			</view>
 			<view class="separate bg-e5 separate-left"></view>
 			
