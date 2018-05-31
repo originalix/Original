@@ -155,3 +155,21 @@ page {
 	flex: 1;
 }
 
+.loca-icon {
+	width: 30rpx;
+	height: 37rpx;
+}
+
+.text-bg-05 {
+	color: #050505;
+}
+
+.font-26 {
+	font-size: 26rpx;
+}
+
+.w-h100 {
+	width: 100%;
+	height: 100%;
+}
+

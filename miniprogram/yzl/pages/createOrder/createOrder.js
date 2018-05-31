@@ -3,7 +3,7 @@ Page({
 		time: '12:01',
 		date: '2018-05-30',
 		address: {},
-		isChooseAddress: false,
+		isChooseAddress: true,
 	},
 	bindTimeChange: function(e) {
 		console.log('picker发送选择改变，携带值为', e.detail.value)
