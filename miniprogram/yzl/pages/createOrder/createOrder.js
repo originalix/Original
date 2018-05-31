@@ -17,6 +17,9 @@ Page({
       date: e.detail.value
     })
   },
+	/**
+	 *  选择地址事件
+	 */
 	choseAddress () {
 		console.log('choseAddress')
 		var that = this
@@ -31,9 +34,12 @@ Page({
 				})
 			},
 			fail: function (res) {
-				that.setData({
-					isChooseAddress: false
-				})
+				console.log(res)
+				if (that.data.isChooseAddress === false) {
+					that.setData({
+						isChooseAddress: false
+					})
+				}
 			}
 		})
 	},
