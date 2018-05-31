@@ -8,6 +8,14 @@ Page({
 		address: {},
 		isChooseAddress: false,
 		productList: [],
+		actionsheetShow: false,
+		cancelWithMask: true,
+		actions: [{
+			name: '上门取送',
+		},{
+			name: '到店自提',
+		}],
+		expressType: 1,
 	},
 	onLoad () {
 		var that = this
@@ -50,7 +58,6 @@ Page({
 					isChooseAddress: true
 				}, function () {
 					console.log(that.data.isChooseAddress)
-					console.log(that.data.address)
 				})
 			},
 			fail: function (res) {
@@ -63,4 +70,17 @@ Page({
 			}
 		})
 	},
+	openActionSheet () {
+		console.log('openActionSheet')
+		this.setData({
+			actionsheetShow: true
+		})
+	},
+	handleActionClick ({ detail }) {
+		const { index } = detail
+		console.log (detail)
+		this.setData({
+			actionsheetShow: false
+		})
+	}
 })

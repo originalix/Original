@@ -61,7 +61,9 @@
 			</view>
 
 			<!-- 配送方式cell -->
-			<normal-cell title="配送方式" value="上门取件"></normal-cell>
+			<view bindtap="openActionSheet">
+				<normal-cell title="配送方式" value="上门取件"></normal-cell>
+			</view>
 			<view class="separate bg-e5 separate-left"></view>
 			
 			<!-- 取件日期选择 -->
@@ -122,5 +124,15 @@
 			<zan-button type="not-order" catchtap="pushToCreateOrderPage">提交订单</zan-button>
 		</view>
 	</view>
+	<view class="actionsheet-container">
+  <!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
+  <zan-actionsheet
+    show="{{ actionsheetShow }}"
+    actions="{{ actions }}"
+    cancel-with-mask="{{ cancelWithMask }}"
+    bind:actionclick="handleActionClick"
+  >
+  </zan-actionsheet>
+</view>
 </view>
 
