@@ -62,7 +62,7 @@
 
 			<!-- 配送方式cell -->
 			<view bindtap="openActionSheet">
-				<normal-cell title="配送方式" value="{{ expressText }}"></normal-cell>
+				<normal-cell title="配送方式" value="{{ expressText }}" isLink></normal-cell>
 			</view>
 			<view class="separate bg-e5 separate-left"></view>
 			
@@ -121,7 +121,7 @@
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
-			<zan-button type="not-order" catchtap="pushToCreateOrderPage">提交订单</zan-button>
+			<zan-button type="order" catchtap="pushToCreateOrderPage">提交订单</zan-button>
 		</view>
 	</view>
 	<view class="actionsheet-container">
