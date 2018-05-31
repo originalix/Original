@@ -37,8 +37,10 @@ Page({
 		} catch (e) {
 			console.log(e)
 		}
+		this.initTimeAndDate()
 	},
 	initTimeAndDate () {
+		var that = this
 		// 查询设置取件整点
 		var d = new Date()
 		var hours = d.getHours()
@@ -73,6 +75,29 @@ Page({
 		})
 	},
 	bindDateChange: function(e) {
+		var targetDate = e.detail.value
+		var today = util.getDateStr(0)
+		if (today == targetDate) {
+			console.log('就是今天哦 亲！！！')
+			
+			var d = new Date()
+			var hours = d.getHours()
+			
+			// 设置默认取件日期
+			if (hours < 22 && hours+2 >= 22) {
+				hours = 22
+			} else if (hours >= 22) {
+				hours = 22
+			} else {
+				hours += 2
+			}
+			var time = hours + ':00'
+			// 设置取件日期
+			this.setData({
+				time: time,
+				startTime: time
+			})
+		}
   	console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
