@@ -69,7 +69,7 @@
 			<!-- 取件日期选择 -->
 			<view class="section">
 				<view class="section__title">取件日期</view>
-				<picker mode="date" value="{{date}}" start="2018-05-30" end="2018-06-05" bindchange="bindDateChange">
+				<picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
 					<view class="picker text-bg-666">
 						{{date}}
 					</view>

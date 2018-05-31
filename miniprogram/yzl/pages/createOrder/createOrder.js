@@ -1,10 +1,13 @@
 var config = require('../../config.js');
+var util = require('../../utils/util.js');
 var appInstance = getApp()
 
 Page({
 	data: {
 		time: '12:01',
-		date: '2018-05-30',
+		date: '',
+		startDate: '',
+		endDate: '',
 		address: {},
 		isChooseAddress: false,
 		productList: [],
@@ -19,6 +22,7 @@ Page({
 		expressText: '上门配送'
 	},
 	onLoad () {
+		// 获取购物车的商品数据
 		var that = this
 		try {
 			var cartData = wx.getStorageSync('CART_LIST_DATA')
@@ -32,6 +36,17 @@ Page({
 		} catch (e) {
 			console.log(e)
 		}
+		// 设置取件日期
+		var today = util.getDateStr(0)
+		var endDate = util.getDateStr(3)
+		that.setData({
+			date: today,
+			startDate: today,
+			endDate: endDate
+		})
+		// 设置取件整点
+		var hours = getHours()
+		console.log(hours)
 	},
 	bindTimeChange: function(e) {
 		console.log('picker发送选择改变，携带值为', e.detail.value)

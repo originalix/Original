@@ -51,4 +51,4 @@ var getDateStr = (AddDayCount) => {
 	return y+"-"+m+"-"+d;
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+module.exports = { formatTime, showBusy, showSuccess, showModel, getDateStr }
