@@ -1,7 +1,7 @@
 <view>
 	<scroll-view scroll-y style="height: 100%">
 		<view class="separate bg-e5"></view>
-		<!-- 地址栏目 -->
+		<!-- 地址栏目 尚未添加地址状态 -->
 		<view 
 			hover
 			hover-start-time="50"
@@ -9,10 +9,25 @@
 			hover-class="view-hover"
 			class="address-wrapper bg-white vertical-center"
 			bindtap="choseAddress"
+			block wx:if="{{! isChooseAddress}}"
 			>
 			<image class="add-icon" src="../../resource/img/add.png" />
 			<text class="font-30 text-bg-333">新增收货地址</text>
 			<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
+		</view>
+		<view class="separate bg-e5"></view>
+
+		<!-- 地址栏目 已存在地址状态 -->
+		<view 
+			hover
+			hover-start-time="50"
+			hover-stay-time="50"
+			hover-class="view-hover"
+			class="address-wrapper bg-white vertical-center"
+			bindtap="choseAddress"
+			block wx:else
+			>
+			<text>Hello World</text>
 		</view>
 		<view class="separate bg-e5"></view>
 

@@ -1,7 +1,9 @@
 Page({
 	data: {
 		time: '12:01',
-		date: '2018-05-30'
+		date: '2018-05-30',
+		address: {},
+		isChooseAddress: false,
 	},
 	bindTimeChange: function(e) {
 		console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -17,9 +19,21 @@ Page({
   },
 	choseAddress () {
 		console.log('choseAddress')
+		var that = this
 		wx.chooseAddress({
 			success: function (res) {
 				console.log(res)
+				that.setData({
+					address: res,
+					isChooseAddress: true
+				}, function () {
+					console.log(that.data.isChooseAddress)
+				})
+			},
+			fail: function (res) {
+				that.setData({
+					isChooseAddress: false
+				})
 			}
 		})
 	},
