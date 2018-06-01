@@ -42,5 +42,19 @@ class WeEncryption
         }
         return self::$instance;
     }
+
+    /**
+     *  发送下单请求
+     *  @param Curl $curl 请求资源句柄
+     *  @param mixed 请求返回数据
+     */
+    public function sendRequest(Curl $curl, $data)
+    {
+        $data = $this->setSendData($data);
+        $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+        $curl->setUrl($url);
+        $content = $curl->execute(true, 'POST', $data);
+        return $content;
+    }
 }
 
