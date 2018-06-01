@@ -52,6 +52,10 @@ class Curl
         }
     }
 
+    /**
+     *   执行一个请求
+     *   @return resource 返回执行结果
+     */
     public function execute($isHttps = false, $requestType = 'GET', $data = null, $useCert = false)
     {
         $this->setopt($isHttps, $requestType, $data, $useCert);
@@ -64,6 +68,9 @@ class Curl
         }
     }
 
+    /**
+     *  关闭一个请求资源句柄
+     */
     private function close()
     {
         curl_close($this->ch);
