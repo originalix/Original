@@ -74,7 +74,7 @@ class WeEncryption
             <total_fee><![CDATA[%d]]></total_fee>
             <trade_type><![CDATA[%s]]></trade_type>
             <sign><![CDATA[%s]]></sign>
-            </xml>";
+        </xml>";
 
 		$nonce_str = $this->getNonceStr();
 		$body = $data['body'];
@@ -186,5 +186,65 @@ class WeEncryption
     {
         self::$details = $obj;
     }
+
+    /**
+	 * 查询订单状态
+	 * @param  Curl   $curl         工具类
+	 * @param  string $out_trade_no 订单号
+	 * @return xml               订单查询结果
+	 */
+	public function queryOrder(Curl $curl, $out_trade_no) {
+		$nonce_str = $this->getNonceStr();
+		$data = array(
+			'appid'		=>	$this->appid,
+			'mch_id'	=>	$this->mch_id,
+			'out_trade_no'	=>	$out_trade_no,
+			'nonce_str'			=>	$nonce_str
+			);
+		$sign = $this->getSign($data);
+		$xml_data = '<xml>
+           <appid>%s</appid>
+           <mch_id>%s</mch_id>
+           <nonce_str>%s</nonce_str>
+           <out_trade_no>%s</out_trade_no>
+           <sign>%s</sign>
+        </xml>';
+		$xml_data = sprintf($xml_data, $this->appid, $this->mch_id, $nonce_str, $out_trade_no, $sign);
+		$url = "https://api.mch.weixin.qq.com/pay/orderquery";
+		$curl->setUrl($url);
+		$content = $curl->execute(true, 'POST', $xml_data);
+		return $content;
+	}
+
+    /**
+     * 查询退款状态
+     * @param $out_trade_no     充值单号
+     */
+    public function refundQuery($out_trade_no)
+    {
+        $nonce_str = $this->getNonceStr();
+        $signData = [
+            'appid'         =>  APPID,
+            'mch_id'        =>  MCHID,
+            'nonce_str'     =>  $nonce_str,
+            'sign'          =>  '',
+            'out_trade_no'  =>  $out_trade_no
+        ];
+        $sign = $this->getSign($signData);
+        $sData = '<xml>
+                    <appid>'.APPID.'</appid>
+                    <mch_id>'.MCHID.'</mch_id>
+                    <nonce_str>'.$nonce_str.'</nonce_str>
+                    <out_refund_no></out_refund_no>
+                    <out_trade_no>'.$out_trade_no.'</out_trade_no>
+                    <refund_id></refund_id>
+                    <transaction_id></transaction_id>
+                    <sign>'.$sign.'</sign>
+                </xml>';
+        $curl = new Curl();
+        $curl->setUrl('https://api.mch.weixin.qq.com/pay/refundquery');
+        $response = $curl->execute(true, 'GET', $sData);
+        return $response;
+	}
 }
 
