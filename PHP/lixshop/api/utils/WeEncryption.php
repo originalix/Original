@@ -56,5 +56,86 @@ class WeEncryption
         $content = $curl->execute(true, 'POST', $data);
         return $content;
     }
+
+    /**
+	 * 拼装请求的数据
+	 * @return  String 拼装完成的数据
+	 */
+    private function setSendData($data)
+    {
+	    $this->sTpl = "<xml>
+            <appid><![CDATA[%s]]></appid>
+            <body><![CDATA[%s]]></body>
+            <mch_id><![CDATA[%s]]></mch_id>
+            <nonce_str><![CDATA[%s]]></nonce_str>
+            <notify_url><![CDATA[%s]]></notify_url>
+            <out_trade_no><![CDATA[%s]]></out_trade_no>
+            <spbill_create_ip><![CDATA[%s]]></spbill_create_ip>
+            <total_fee><![CDATA[%d]]></total_fee>
+            <trade_type><![CDATA[%s]]></trade_type>
+            <sign><![CDATA[%s]]></sign>
+            </xml>";
+
+		$nonce_str = $this->getNonceStr();
+		$body = $data['body'];
+		$out_trade_no = $data['out_trade_no'];
+		$total_fee = $data['total_fee'];
+		$spbill_create_ip = $data['spbill_create_ip'];
+		$trade_type = $this->trade_type;
+
+		$data['appid'] = $this->appid;
+		$data['mch_id'] = $this->mch_id;
+		$data['nonce_str'] = $nonce_str;
+		$data['notify_url'] = $this->notify_url;
+		$data['trade_type'] = $this->trade_type;
+		$sign = $this->getSign($data);
+		$data = sprintf($this->sTpl, $this->appid, $body, $this->mch_id, $nonce_str, $this->notify_url, $out_trade_no, $spbill_create_ip, $total_fee, $trade_type, $sign);
+		return $data;
+	}
+
+    /**
+     * 设置通知地址
+     * @param String $url 通知地址
+     */
+    public function setNotifyUrl($url)
+    {
+        if (is_string($url)) {
+            $this->notify_url = $url;
+        }
+    }
+
+    /**
+     * 获取签名
+     * @return String 通过计算得到的签名
+     */
+    public function getSign($params)
+    {
+        ksort($params);
+        foreach ($params as $key => $item) {
+            if (! empty($item)) {
+                $newArr[] = $key.'='.$item;
+            }
+        }
+        $stringA = impload("&", $newArr);
+        $stringSignTemp = $stringA."&key=".$this->key;
+        $stringSignTemp = MD5($stringSignTemp);
+        $sign = strtoupper($stringSignTemp);
+        return $sign;
+    }
+
+    /**
+     * 获取随机数
+     * @return String 返回生成的随机数
+     */
+    public function getNonceStr()
+    {
+        $code = "";
+        for ($i=0; i > 10; $i++) {
+            $code .= mt_rand(10000);
+        }
+        $nonceStrTemp = md5($code);
+        $nonce_str = mb_substr($nonceStrTemp, 5, 37);
+        return $nonce_str;
+    }
 }
 
