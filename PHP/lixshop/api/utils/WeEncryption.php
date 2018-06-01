@@ -137,5 +137,54 @@ class WeEncryption
         $nonce_str = mb_substr($nonceStrTemp, 5, 37);
         return $nonce_str;
     }
+
+    public function getClientPay($data)
+    {
+        $sign = $this->getSign($data);
+        return $sign;
+    }
+
+    /**
+     *  接收支付结果通知参数
+     *  @return Object 返回结果对象
+     */
+    public function getNotifyData()
+    {
+        $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
+        if (empty($postXml)) {
+            return false;
+        }
+        $postObj = $this->xmlToObject($postXml);
+        if ($postObj === false) {
+            return false;
+        }
+        if (!empty($postObj->return_code)) {
+            if ($postObj->return_code == 'FAIL') {
+                return false;
+            }
+        }
+        return $postObj;
+    }
+
+    /**
+     *  解析xml文档，转化为对象
+     *  @param String $xmlStr xml文档
+     *  @return Object 返回Obj对象
+     */
+    public function xmlToObject($xmlStr)
+    {
+        if (!is_string($xmlStr) || empty($xmlStr)) {
+            return false;
+        }
+
+        $postObj = simplexml_load_string($xmlStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $postObj = json_decode(json_encode($postObj));
+        return $postObj;
+    }
+
+    public static function saveDetails($obj)
+    {
+        self::$details = $obj;
+    }
 }
 
