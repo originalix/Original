@@ -51,5 +51,22 @@ class Curl
             curl_setopt($this->ch, CURLOPT_POST, true);
         }
     }
+
+    public function execute($isHttps = false, $requestType = 'GET', $data = null, $useCert = false)
+    {
+        $this->setopt($isHttps, $requestType, $data, $useCert);
+        $content = $curl_exec($this->ch);
+        $this->close();
+        if (! empty($content)) {
+            return $content;
+        } else {
+            return curl_error($this->ch);
+        }
+    }
+
+    private function close()
+    {
+        curl_close($this->ch);
+    }
 }
 
