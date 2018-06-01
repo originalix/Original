@@ -11,6 +11,7 @@ Page({
 		endDate: '',
 		address: {},
 		isChooseAddress: false,
+		submitBtnType: 'not-order',
 		productList: [],
 		actionsheetShow: false,
 		cancelWithMask: true,
@@ -132,7 +133,8 @@ Page({
 				console.log(res)
 				that.setData({
 					address: res,
-					isChooseAddress: true
+					isChooseAddress: true,
+					submitBtnType: 'order'
 				}, function () {
 					console.log(that.data.isChooseAddress)
 				})
@@ -141,7 +143,8 @@ Page({
 				console.log(res)
 				if (that.data.isChooseAddress === false) {
 					that.setData({
-						isChooseAddress: false
+						isChooseAddress: false,
+						submitBtnType: 'not-order'
 					})
 				}
 			}
