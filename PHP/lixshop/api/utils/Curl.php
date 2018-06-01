@@ -20,7 +20,12 @@ class Curl
     {
         $this->url = $url;
     }
-
+    
+    /**
+     *  设置请求属性
+     *  @param boolean $isHttps     是否采用https方式请求
+     *  @param string $requestType  请求方式
+     */
     private function setopt($isHttps, $rquestType, $data, $useCert = false)
     {
         curl_setopt($this->ch, CURLOPT_URL, $this->url);
@@ -36,6 +41,14 @@ class Curl
             curl_setopt($this->ch, CURLOPT_SSLCERT, SSLCERT_PATH);
             curl_setopt($this->ch, CURLOPT_SSLKEYTYPE, 'PEM');
             curl_setopt($this->ch, CURLOPT_SSLKEY, SSLKEY_PATH);
+        }
+
+        if (!empty($data)) {
+            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
+        }
+
+        if ($requestType == 'POST') {
+            curl_setopt($this->ch, CURLOPT_POST, true);
         }
     }
 }
