@@ -9,6 +9,6 @@ class WxpayController extends BaseController
 {
     public function create()
     {
-        
+
     }
 }
