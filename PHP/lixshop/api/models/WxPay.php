@@ -40,13 +40,21 @@ class WxPay extends Model
             throw new HttpException(418, array_values($this->getFirstErrors())[0]); 
         }
 
-        return ['msg' => 'validate success'];
+        $data = array (
+            'body' => $this->body,
+            'out_trade_no' => $this->out_trade_no,
+            'total_fee' => $this->total_fee,
+            'spbill_create_ip' => $this->spbill_create_ip,
+        );
 
-        $xml_data = $this->encpt->sendRequest($curl, $data);
+        $xml_data = $this->encpt->sendRequest($this->curl, $data);
+        echo "测试请求";
+        exit;
         $postObj = $this->encpt->xmlToObject($xml_data);
         
         if ($postObj == false) {
             //
+            throw new HttpException(418, '未获取到微信数据'); 
             exit;
         } 
 

@@ -63,6 +63,8 @@ class WeEncryption
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
         $curl->setUrl($url);
         $content = $curl->execute(true, 'POST', $data);
+        echo $content;
+        exit;
         return $content;
     }
 
@@ -125,7 +127,7 @@ class WeEncryption
                 $newArr[] = $key.'='.$item;
             }
         }
-        $stringA = impload("&", $newArr);
+        $stringA = implode("&", $newArr);
         $stringSignTemp = $stringA."&key=".$this->key;
         $stringSignTemp = MD5($stringSignTemp);
         $sign = strtoupper($stringSignTemp);
@@ -139,7 +141,7 @@ class WeEncryption
     public function getNonceStr()
     {
         $code = "";
-        for ($i=0; i > 10; $i++) {
+        for ($i=0; $i > 10; $i++) {
             $code .= mt_rand(10000);
         }
         $nonceStrTemp = md5($code);
