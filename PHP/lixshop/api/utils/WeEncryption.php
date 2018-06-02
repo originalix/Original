@@ -75,7 +75,7 @@ class WeEncryption
             <mch_id><![CDATA[%s]]></mch_id>
             <nonce_str><![CDATA[%s]]></nonce_str>
             <notify_url><![CDATA[%s]]></notify_url>
-            <openid>![CDATA[%s]]</openid>
+            <openid><![CDATA[%s]]></openid>
             <out_trade_no><![CDATA[%s]]></out_trade_no>
             <spbill_create_ip><![CDATA[%s]]></spbill_create_ip>
             <total_fee><![CDATA[%d]]></total_fee>
@@ -125,8 +125,6 @@ class WeEncryption
             }
         }
         $stringA = implode("&", $newArr);
-        print_r($stringA);
-        exit;
         $stringSignTemp = $stringA."&key=".$this->key;
         $stringSignTemp = MD5($stringSignTemp);
         $sign = strtoupper($stringSignTemp);
