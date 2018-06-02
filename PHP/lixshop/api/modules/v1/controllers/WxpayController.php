@@ -11,11 +11,9 @@ class WxpayController extends BaseController
     public function actionCreate()
     {
         $model = new WxPay();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post(), '')) {
             return $model->pay();
         }
-
-        return ['msg' => '请重试请求'];
     }
 
     public function actionCallback()

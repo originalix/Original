@@ -29,9 +29,8 @@ class WxPay extends Model
     {
         return [
             [['body', 'out_trade_no', 'total_fee', 'spbill_create_ip'], 'required'],
-            [['out_trade_no'], 'integer'],
-            [['total_fee'], 'number'],
-            [['body', 'spbill_create_ip'], 'string', 'max' => '255'],
+            [['total_fee'], 'integer'],
+            [['body', 'out_trade_no','spbill_create_ip'], 'string', 'max' => '255'],
         ];
     }
 
@@ -40,6 +39,9 @@ class WxPay extends Model
         if (!$this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]); 
         }
+
+        return ['msg' => 'validate success'];
+
         $xml_data = $this->encpt->sendRequest($curl, $data);
         $postObj = $this->encpt->xmlToObject($xml_data);
         
