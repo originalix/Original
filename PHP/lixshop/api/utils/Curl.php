@@ -26,7 +26,7 @@ class Curl
      *  @param boolean $isHttps     是否采用https方式请求
      *  @param string $requestType  请求方式
      */
-    private function setopt($isHttps, $rquestType, $data, $useCert = false)
+    private function setopt($isHttps, $requestType, $data, $useCert = false)
     {
         curl_setopt($this->ch, CURLOPT_URL, $this->url);
         curl_setopt($this->ch, CURLOPT_HEADER, 0);
@@ -59,7 +59,7 @@ class Curl
     public function execute($isHttps = false, $requestType = 'GET', $data = null, $useCert = false)
     {
         $this->setopt($isHttps, $requestType, $data, $useCert);
-        $content = $curl_exec($this->ch);
+        $content = curl_exec($this->ch);
         $this->close();
         if (! empty($content)) {
             return $content;

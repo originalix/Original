@@ -48,18 +48,15 @@ class WxPay extends Model
         );
 
         $xml_data = $this->encpt->sendRequest($this->curl, $data);
-        echo "测试请求";
-        exit;
         $postObj = $this->encpt->xmlToObject($xml_data);
         
         if ($postObj == false) {
             //
             throw new HttpException(418, '未获取到微信数据'); 
-            exit;
         } 
 
         if ($postObj->return_code == 'FAIL') {
-            echo $postObj->return_msg;
+            throw new HttpException(418, $postObj->return_msg); 
         } else {
             $resignData = array(
         		'appid'			=>	$postObj->appid,

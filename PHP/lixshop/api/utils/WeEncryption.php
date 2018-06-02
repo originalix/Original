@@ -47,11 +47,6 @@ class WeEncryption
         die('Clone is not allowed.' . E_USER_ERROR);
     }
 
-    public static function test()
-    {
-        echo 'lixxx';
-    }
-
     /**
      *  发送下单请求
      *  @param Curl $curl 请求资源句柄
@@ -63,8 +58,6 @@ class WeEncryption
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
         $curl->setUrl($url);
         $content = $curl->execute(true, 'POST', $data);
-        echo $content;
-        exit;
         return $content;
     }
 
