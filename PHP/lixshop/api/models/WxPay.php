@@ -5,6 +5,7 @@ namespace api\models;
 use yii\base\Model;
 use api\utils\WeEncryption;
 use api\utils\Curl;
+use yii\web\HttpException;
 
 class WxPay extends Model
 {
@@ -20,14 +21,25 @@ class WxPay extends Model
     function __construct()
     {
         $this->encpt = WeEncryption::getInstance();
-        // $this->encpt->setNotifyUrl($url);
-        // $a->test();
-        $this->encpt->test();
+        $this->encpt->setNotifyUrl($this->url);
         $this->curl = new Curl();
+    }
+
+    public function rules()
+    {
+        return [
+            [['body', 'out_trade_no', 'total_fee', 'spbill_create_ip'], 'required'],
+            [['out_trade_no'], 'integer'],
+            [['total_fee'], 'number'],
+            [['body', 'spbill_create_ip'], 'string', 'max' => '255'],
+        ];
     }
 
     public function pay()
     {
+        if (!$this->validate()) {
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]); 
+        }
         $xml_data = $this->encpt->sendRequest($curl, $data);
         $postObj = $this->encpt->xmlToObject($xml_data);
         
