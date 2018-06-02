@@ -121,4 +121,9 @@ class TestController extends BaseController
             ],
         ];
     }
+
+    public function actionOpenid()
+    {
+        return Yii::$app->user->identity->wechat_openid;
+    }
 }

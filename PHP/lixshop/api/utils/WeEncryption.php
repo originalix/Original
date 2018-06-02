@@ -13,7 +13,8 @@ class WeEncryption
     private $mch_id;
     private $key;
     private $notify_url;
-    private $trade_type = 'APP';
+    private $trade_type = 'JSAPI';
+    private $open_id;
     private static $details;
 
     /**
@@ -27,6 +28,7 @@ class WeEncryption
         $this->appid = Yii::$app->params['APP_ID'];
         $this->mch_id = Yii::$app->params['MCH_ID'];
         $this->key = Yii::$app->params['APP_SECRET'];
+        $this->open_id = Yii::$app->user->identity->wechat_openid;
     }
 
     /**
@@ -73,6 +75,7 @@ class WeEncryption
             <mch_id><![CDATA[%s]]></mch_id>
             <nonce_str><![CDATA[%s]]></nonce_str>
             <notify_url><![CDATA[%s]]></notify_url>
+            <openid>![CDATA[%s]]</openid>
             <out_trade_no><![CDATA[%s]]></out_trade_no>
             <spbill_create_ip><![CDATA[%s]]></spbill_create_ip>
             <total_fee><![CDATA[%d]]></total_fee>
@@ -91,9 +94,10 @@ class WeEncryption
 		$data['mch_id'] = $this->mch_id;
 		$data['nonce_str'] = $nonce_str;
 		$data['notify_url'] = $this->notify_url;
+        $data['openid'] = $this->open_id;
 		$data['trade_type'] = $this->trade_type;
 		$sign = $this->getSign($data);
-		$data = sprintf($this->sTpl, $this->appid, $body, $this->mch_id, $nonce_str, $this->notify_url, $out_trade_no, $spbill_create_ip, $total_fee, $trade_type, $sign);
+		$data = sprintf($this->sTpl, $this->appid, $body, $this->mch_id, $nonce_str, $this->notify_url, $this->open_id, $out_trade_no, $spbill_create_ip, $total_fee, $trade_type, $sign);
 		return $data;
 	}
 
@@ -121,6 +125,8 @@ class WeEncryption
             }
         }
         $stringA = implode("&", $newArr);
+        print_r($stringA);
+        exit;
         $stringSignTemp = $stringA."&key=".$this->key;
         $stringSignTemp = MD5($stringSignTemp);
         $sign = strtoupper($stringSignTemp);
