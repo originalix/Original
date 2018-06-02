@@ -7,7 +7,7 @@ use api\utils\Curl;
 
 class WeEncryption
 {
-    private static $instance;
+    private static $instance = NULL;
     private $sTpl;
     private $appid;
     private $mch_id;
@@ -24,11 +24,9 @@ class WeEncryption
      */
     private function __construct()
     {
-        if (is_string($this->appid) && is_string($this->mch_id)) {
-            $this->appid = Yii::$app->params['APP_ID'];
-            $this->mch_id = Yii::$app->params['MCH_ID'];
-            $this->key = Yii::$app->params['APP_SECRET'];
-        }
+        $this->appid = Yii::$app->params['APP_ID'];
+        $this->mch_id = Yii::$app->params['MCH_ID'];
+        $this->key = Yii::$app->params['APP_SECRET'];
     }
 
     /**
@@ -37,15 +35,21 @@ class WeEncryption
      */
     public static function getInstance()
     {
-        if (self::$instance == null) {
-            self::$instance == new Self(); 
+        if (is_null(self::$instance)) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
-    public function test()
+    public function __clone()
     {
-        return 'lixxx';
+        die('Clone is not allowed.' . E_USER_ERROR);
+    }
+
+    public static function test()
+    {
+        echo 'lixxx';
     }
 
     /**
