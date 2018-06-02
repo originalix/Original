@@ -11,7 +11,7 @@ class WxpayController extends BaseController
     public function actionCreate()
     {
         $model = new WxPay();
-        if ($model->load(Yii::$app->request->load()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             return $model->pay();
         }
 
@@ -48,7 +48,5 @@ class WxpayController extends BaseController
             }
         }
     }
-
-    // test ssh code speed
 }
 

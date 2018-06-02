@@ -24,7 +24,7 @@ class WeEncryption
      */
     private function __construct()
     {
-        if (is_string($appid) && is_string($mch_id)) {
+        if (is_string($this->appid) && is_string($this->mch_id)) {
             $this->appid = Yii::$app->params['APP_ID'];
             $this->mch_id = Yii::$app->params['MCH_ID'];
             $this->key = Yii::$app->params['APP_SECRET'];
@@ -41,6 +41,11 @@ class WeEncryption
             self::$instance == new Self(); 
         }
         return self::$instance;
+    }
+
+    public function test()
+    {
+        return 'lixxx';
     }
 
     /**

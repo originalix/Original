@@ -20,7 +20,11 @@ class WxPay extends Model
     function __construct()
     {
         $this->encpt = WeEncryption::getInstance();
-        $this->encpt->setNotifyUrl($url);
+        echo $this->encpt;
+        // $this->encpt->setNotifyUrl($url);
+        $a = WeEncryption::getInstance();
+        // $a->test();
+        // $this->encpt->test();
         $this->curl = new Curl();
     }
 
