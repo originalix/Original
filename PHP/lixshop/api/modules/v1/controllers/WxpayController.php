@@ -8,7 +8,7 @@ use api\models\WxPay;
 
 class WxpayController extends BaseController
 {
-    public function create()
+    public function actionCreate()
     {
         $model = new WxPay();
         if ($model->load(Yii::$app->request->load()) && $model->validate()) {
@@ -18,7 +18,7 @@ class WxpayController extends BaseController
         return ['msg' => '请重试请求'];
     }
 
-    public function callback()
+    public function actionCallback()
     {
         $model = new WxPay();
         $obj = $model->encpt->getNotifyData();
@@ -47,5 +47,7 @@ class WxpayController extends BaseController
                 exit;
             }
         }
+
     }
 }
+
