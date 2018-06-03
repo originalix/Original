@@ -30,7 +30,8 @@ var config = {
 			getCategoryListUrl: `${base_host}/v1/category/index`,
 			// 根据分类id获取产品列表
 			getProductByCategoryId: `${base_host}/v1/category/list`,
-			
+			// 创建微信支付订单接口
+			createWxPayUrl: `${base_host}/v1/wxpay/create`,	
     }
 };
 
