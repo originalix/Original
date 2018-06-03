@@ -27,7 +27,7 @@ class WeEncryption
     {
         $this->appid = Yii::$app->params['APP_ID'];
         $this->mch_id = Yii::$app->params['MCH_ID'];
-        $this->key = Yii::$app->params['APP_SECRET'];
+        $this->key = Yii::$app->params['APIKEY'];
         $this->open_id = Yii::$app->user->identity->wechat_openid;
     }
 
