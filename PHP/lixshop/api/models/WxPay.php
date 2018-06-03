@@ -2,6 +2,7 @@
 
 namespace api\models;
 
+use Yii;
 use yii\base\Model;
 use api\utils\WeEncryption;
 use api\utils\Curl;
@@ -12,8 +13,8 @@ class WxPay extends Model
     public $body;
     public $out_trade_no;
     public $total_fee;
-    public $spbill_create_ip;
 
+    public $spbill_create_ip;
     private $encpt;
     private $url = '微信回调url';
     private $curl;
@@ -23,12 +24,14 @@ class WxPay extends Model
         $this->encpt = WeEncryption::getInstance();
         $this->encpt->setNotifyUrl($this->url);
         $this->curl = new Curl();
+        $this->spbill_create_ip = Yii::$app->request->userIP;
+        // $this->spbill_create_ip = '127.0.0.1';
     }
 
     public function rules()
     {
         return [
-            [['body', 'out_trade_no', 'total_fee', 'spbill_create_ip'], 'required'],
+            [['body', 'out_trade_no', 'total_fee'], 'required'],
             [['total_fee'], 'integer'],
             [['body', 'out_trade_no','spbill_create_ip'], 'string', 'max' => '255'],
         ];
@@ -52,11 +55,11 @@ class WxPay extends Model
         
         if ($postObj == false) {
             //
-            throw new HttpException(418, '未获取到微信数据'); 
+            throw new HttpException(420, '未获取到微信数据'); 
         } 
 
         if ($postObj->return_code == 'FAIL') {
-            throw new HttpException(418, $postObj->return_msg); 
+            throw new HttpException(422, $postObj->return_msg); 
         } else if ($postObj->result_code == 'FAIL') {
             throw new HttpException(421, $postObj->err_code_des);
         } else {
