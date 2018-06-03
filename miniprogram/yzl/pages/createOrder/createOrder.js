@@ -209,6 +209,15 @@ Page({
 	createWxPay () {
 		const trade_no = "20150806125346"
 		const total_fee = 88
-		orderUtils.getPayParams(trade_no, total_fee)		
+		orderUtils.getPayParams({
+			'trade_no': trade_no,
+			'total_fee': total_fee,
+			'success': function (res) {
+				console.log('成功获取支付参数回调')
+			},
+			'fail': function (error) {
+				console.log('获取支付参数失败回调')
+			}
+		})		
 	}
 })

@@ -27,5 +27,9 @@ const getPayParams = (trade_no, total_fee) => {
 	})
 }
 
+const createWxPay = (data) => {
+
+}
+
 module.exports = { getPayParams }
 
