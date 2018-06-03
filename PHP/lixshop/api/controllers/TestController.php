@@ -126,4 +126,10 @@ class TestController extends BaseController
     {
         return Yii::$app->user->identity->wechat_openid;
     }
+
+    public function actionIp()
+    {
+        return Yii::$app->request->userIP;
+    }
 }
+
