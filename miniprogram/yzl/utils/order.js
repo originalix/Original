@@ -34,17 +34,20 @@ const getPayParams = (data) => {
 		},
 		fail: function (error) {
 			if (data.fail !== undefined && typeof(data.fail) === 'function') {
-				data.fail(error)
+				data.fail('发起支付失败，请重试')
 			}
-			console.log('error')
 			console.log(error)
 		}
 	})
 }
 
+/**
+ * 根据参数 拼装数据，调起小程序支付的JSAPI 
+ *
+ */
 const createWxPay = (data) => {
 	wx.requestPayment({
-		'timeStamp': data.timeStamp,
+		'timeStamp': data.timeStamp.toString(),
 		'nonceStr': data.nonceStr,
 		'package': data.package,
 		'signType': data.signType,
@@ -63,5 +66,5 @@ const createWxPay = (data) => {
 	})
 }
 
-module.exports = { getPayParams }
+module.exports = { getPayParams, createWxPay }
 

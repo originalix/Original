@@ -207,14 +207,13 @@ Page({
 	 *  创建微信支付
 	 */
 	createWxPay () {
-		const trade_no = "20150806125346"
-		const total_fee = 88
+		const trade_no = "20150806125321"
+		const total_fee = 1
 		orderUtils.getPayParams({
 			'trade_no': trade_no,
 			'total_fee': total_fee,
 			'success': function (res) {
 				orderUtils.createWxPay(res)
-				console.log('成功获取支付参数回调')
 			},
 			'fail': function (error) {
 				if (typeof error == 'string' || error instanceof String) {
@@ -224,7 +223,6 @@ Page({
 						duration: 2000
 					})
 				}
-				console.log('获取支付参数失败回调')
 			}
 		})		
 	}
