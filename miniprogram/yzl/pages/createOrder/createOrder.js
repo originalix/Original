@@ -213,9 +213,17 @@ Page({
 			'trade_no': trade_no,
 			'total_fee': total_fee,
 			'success': function (res) {
+				orderUtils.createWxPay(res)
 				console.log('成功获取支付参数回调')
 			},
 			'fail': function (error) {
+				if (typeof error == 'string' || error instanceof String) {
+					wx.showToast({
+						title: error,
+						icon: 'none',
+						duration: 2000
+					})
+				}
 				console.log('获取支付参数失败回调')
 			}
 		})		
