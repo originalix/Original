@@ -1,5 +1,6 @@
 var config = require('../../config.js');
 var util = require('../../utils/util.js');
+var orderUtils = require('../../utils/order.js');
 var appInstance = getApp()
 
 Page({
@@ -201,5 +202,13 @@ Page({
 			finalPrice: finalP,
 			no_express_price: sumPrice.toFixed(2)
 		}, function () {})
+	},
+	/**
+	 *  创建微信支付
+	 */
+	createWxPay () {
+		const trade_no = "20150806125346"
+		const total_fee = 88
+		orderUtils.getPayParams(trade_no, total_fee)		
 	}
 })
