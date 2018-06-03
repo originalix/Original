@@ -45,7 +45,8 @@ const getPayParams = (data) => {
  * 根据参数 拼装数据，调起小程序支付的JSAPI 
  *
  */
-const createWxPay = (data) => {
+const createWxPay = (params) => {
+	const { data } = params
 	wx.requestPayment({
 		'timeStamp': data.timeStamp.toString(),
 		'nonceStr': data.nonceStr,
@@ -54,10 +55,16 @@ const createWxPay = (data) => {
 		'paySign': data.sign,	
 		'success': function (res) {
 			console.log(res)
+			if (params.success !== undefined && typeof(params.success) === 'function') {
+				params.success(res)
+			}
 		},
 		'fail': function (res) {
 			console.log('fail')
 			console.log(res)
+			if (params.fail !== undefined && typeof(params.fail) === 'function') {
+				params.fail(res)
+			}
 		},
 		'complete': function (res) {
 			console.log('complete')
