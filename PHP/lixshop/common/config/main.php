@@ -10,6 +10,30 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'logFile' => '@app/runtime/logs/' . date('Ym/d') . '.log',
+                    'logVars' => ['_GET', '_POST'],
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'logFile' => '@app/runtime/debug/' . date('Ym/d') . '.log',
+                    'logVars' => ['_GET', '_POST'],
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['order'],
+                    'levels' => ['error', 'warning'],
+                    'logVars' => ['*'],
+                    'logFile' => '@app/runtime/logs/order.log',
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'redactor' => [ 

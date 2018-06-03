@@ -129,6 +129,7 @@ class TestController extends BaseController
 
     public function actionIp()
     {
+        Yii::error('记录用户IP日志', 'order');
         return Yii::$app->request->userIP;
     }
 }
