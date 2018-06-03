@@ -57,6 +57,8 @@ class WxPay extends Model
 
         if ($postObj->return_code == 'FAIL') {
             throw new HttpException(418, $postObj->return_msg); 
+        } else if ($postObj->result_code == 'FAIL') {
+            throw new HttpException(421, $postObj->err_code_des);
         } else {
             $resignData = array(
                 'appId'			=>	$postObj->appid,
@@ -67,8 +69,8 @@ class WxPay extends Model
             );
             $sign = $this->encpt->getClientPay($resignData);
             $resignData['sign'] = $sign;
-            return json_encode($resignData);
-            return $postObj;
+            return $resignData;
+            // return $postObj;
         }
     }
 
