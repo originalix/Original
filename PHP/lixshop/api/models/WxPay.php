@@ -59,16 +59,16 @@ class WxPay extends Model
             throw new HttpException(418, $postObj->return_msg); 
         } else {
             $resignData = array(
-        		'appid'			=>	$postObj->appid,
-        		'partnerid'		=>	$postObj->mch_id,
-        		'prepayid'		=>	$postObj->prepay_id,
-        		'noncestr'		=>	$postObj->nonce_str,
-        		'timestamp'		=>	time(),
-        		'package'	=>	'Sign=WXPay'
-    		);
+                'appId'			=>	$postObj->appid,
+                'timeStamp'		=>	time(),
+                'nonceStr'		=>	$this->encpt->getNonceStr(),
+                'package'	=>	'prepay_id='.$postObj->prepay_id,
+                'signType' => 'MD5',
+            );
             $sign = $this->encpt->getClientPay($resignData);
             $resignData['sign'] = $sign;
-            echo json_encode($resignData);
+            return json_encode($resignData);
+            return $postObj;
         }
     }
 
