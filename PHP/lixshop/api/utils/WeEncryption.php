@@ -160,22 +160,17 @@ class WeEncryption
     {
         $postXml = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
         if (empty($postXml)) {
-            Yii::warning('空xml 163', 'order');
             return false;
         }
         $postObj = $this->xmlToObject($postXml);
         if ($postObj === false) {
-            Yii::warning('postObj is False', 'order');
             return false;
         }
         if (!empty($postObj->return_code)) {
             if ($postObj->return_code == 'FAIL') {
-                Yii::warning('postObj is False 2', 'order');
                 return false;
             }
         }
-        Yii::warning('postObj data = ', 'order');
-        Yii::warning($postObj, 'order');
         return $postObj;
     }
 
@@ -186,17 +181,12 @@ class WeEncryption
      */
     public function xmlToObject($xmlStr)
     {
-        Yii::warning('xmlToObject', 'order');
-        Yii::warning($xmlStr, 'order');
         if (!is_string($xmlStr) || empty($xmlStr)) {
-            Yii::warning('不是String 或者为空', 'order'); 
             return false;
         }
 
         $postObj = simplexml_load_string($xmlStr, 'SimpleXMLElement', LIBXML_NOCDATA);
         $postObj = json_decode(json_encode($postObj));
-        Yii::warning('postobj to object = ', 'order');
-        Yii::warning($postObj, 'order');
         return $postObj;
     }
 

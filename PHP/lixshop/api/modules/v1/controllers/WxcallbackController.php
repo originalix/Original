@@ -28,14 +28,10 @@ class WxcallbackController extends \yii\web\Controller
 
         $encpt = WeEncryption::getInstance();
         $obj = $encpt->getNotifyData();
-        Yii::warning('Obj is --------> : ', 'order');
-        Yii::warning($obj, 'order');
         if ($obj) {
-            Yii::warning('接收XML数据', 'order');
             $model = new WxOrderNotify();
             $array =  $this->object2array($obj);
             $model->setAttributes($array, false);
-            Yii::warning($array, 'order');
             $model->save();
         }
 
@@ -44,8 +40,6 @@ class WxcallbackController extends \yii\web\Controller
 					<return_msg><![CDATA[OK]]></return_msg>
 				</xml>";
 		echo $reply;
-
-        return ['code' => 200];
     }
 
     function object2array(&$object) {
