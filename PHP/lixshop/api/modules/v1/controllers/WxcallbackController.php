@@ -21,7 +21,6 @@ class WxcallbackController extends \yii\web\Controller
     public function actionIndex()
     {
         Yii::warning('接收数据 ============= start ==============', 'order');
-        // $postXML = $GLOBALS["HTTP_RAW_POST_DATA"];
         $postXML = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
         Yii::warning($postXML, 'order');
         Yii::warning('接收数据 ============= end ==============', 'order');
@@ -30,10 +29,11 @@ class WxcallbackController extends \yii\web\Controller
         $encpt = WeEncryption::getInstance();
         $obj = $encpt->getNotifyData();
         if ($obj) {
-            Yii::warning('转换成json格式', 'order');
-            Yii::warning($obj, 'order');
+            Yii::warning('接收XML数据', 'order');
             $model = new WxOrderNotify();
-            $model->load($obj, '');
+            $array =  $this->object2array($obj);
+            $model->setAttributes($array, false);
+            Yii::warning($array, 'order');
             $model->save();
         }
 
@@ -44,5 +44,10 @@ class WxcallbackController extends \yii\web\Controller
 		echo $reply;
 
         return ['code' => 200];
+    }
+
+    function object2array(&$object) {
+             $object =  json_decode( json_encode( $object),true);
+             return  $object;
     }
 }
