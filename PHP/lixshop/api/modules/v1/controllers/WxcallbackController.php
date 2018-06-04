@@ -28,6 +28,8 @@ class WxcallbackController extends \yii\web\Controller
 
         $encpt = WeEncryption::getInstance();
         $obj = $encpt->getNotifyData();
+        Yii::warning('Obj is --------> : ', 'order');
+        Yii::warning($obj, 'order');
         if ($obj) {
             Yii::warning('接收XML数据', 'order');
             $model = new WxOrderNotify();
