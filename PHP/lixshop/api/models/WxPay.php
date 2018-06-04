@@ -16,7 +16,7 @@ class WxPay extends Model
 
     public $spbill_create_ip;
     private $encpt;
-    private $url = '微信回调url';
+    private $url = 'https://api.yzl1030.com/v1/wxcallback/index';
     private $curl;
 
     function __construct()
