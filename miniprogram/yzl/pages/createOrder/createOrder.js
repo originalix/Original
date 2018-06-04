@@ -208,7 +208,7 @@ Page({
 	 */
 	createOrder() {
 		var that = this
-		const trade_no = "20150806125321"
+		const trade_no = "20150806125322"
 		const total_fee = 1
 		orderUtils.getPayParams({
 			'trade_no': trade_no,
