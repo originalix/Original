@@ -26,24 +26,62 @@ class WxcallbackController extends \yii\web\Controller
         Yii::warning('接收数据 ============= end ==============', 'order');
         Yii::warning('订单回调', 'order');
 
+        // 接收解析数据，并保存入数据库
         $encpt = WeEncryption::getInstance();
         $obj = $encpt->getNotifyData();
         if ($obj) {
-            $model = new WxOrderNotify();
             $array =  $this->object2array($obj);
+            $model = WxOrderNotify::find()
+                ->where(['out_trade_no' => $array['out_trade_no']])
+                ->one();
+            if (is_null($model)) {
+                $model = new WxOrderNotify();
+            }
             $model->setAttributes($array, false);
             $model->save();
         }
 
-        $reply = "<xml>
+        // 拷贝数组 去除里面的sign字段签名
+        $data = $array;
+        $data = $this->array_remove($data, 'sign');
+        $sign = $encpt->getSign($data);
+        if ($sign == $obj['sign']) {
+            Yii::warning('签名校验成功', 'order');
+            $reply = "<xml>
 					<return_code><![CDATA[SUCCESS]]></return_code>
 					<return_msg><![CDATA[OK]]></return_msg>
 				</xml>";
+        } else {
+            Yii::warning('签名校验失败', 'order');
+            $reply = "<xml>
+					<return_code><![CDATA[FAIL]]></return_code>
+					<return_msg><![CDATA[签名失败]]></return_msg>
+				</xml>";
+        }
+
 		echo $reply;
     }
 
+    /**
+     *  PHP中对象转换成数组
+     */
     function object2array(&$object) {
-             $object =  json_decode( json_encode( $object),true);
-             return  $object;
+        $object =  json_decode( json_encode( $object),true);
+        return  $object;
+    }
+    
+    /**
+     *  从数组中移除key值
+     */
+    function array_remove($data, $key) {  
+        if(!array_key_exists($key, $data)) {  
+            return $data;  
+        }  
+        $keys = array_keys($data);  
+        $index = array_search($key, $keys);  
+        if($index !== FALSE) {  
+            array_splice($data, $index, 1);  
+        }  
+        return $data;  
     }
 }
