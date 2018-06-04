@@ -16,4 +16,14 @@ class WxcallbackController extends \yii\web\Controller
         Yii::warning('测试订单回调', 'order');
         return ['code' => 200];
     }
+
+    public function actionIndex()
+    {
+        Yii::warning('接收数据 ============= start ==============', 'order');
+        $postXML = $GLOBALS["HTTP_RAW_POST_DATA"];
+        Yii::warning($postXML, 'order');
+        Yii::warning('接收数据 ============= end ==============', 'order');
+        Yii::warning('订单回调', 'order');
+        return ['code' => 200];
+    }
 }
