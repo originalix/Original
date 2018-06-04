@@ -8,9 +8,10 @@ use yii\db\Migration;
 class m180604_031950_create_wxordernotify_table extends Migration
 {
     /**
+     * 创建微信支付订单表
      * {@inheritdoc}
      */
-    public function safeUp()
+    public function up()
     {
         $this->createTable('{{%wx_order_notify}}', [
             'id' => $this->primaryKey(),
@@ -40,8 +41,8 @@ class m180604_031950_create_wxordernotify_table extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeDown()
+    public function down()
     {
-        $this->dropTable('wxordernotify');
+        $this->dropTable('{{%wx_order_notify}}');
     }
 }
