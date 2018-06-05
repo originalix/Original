@@ -66,19 +66,19 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group', 'address_id'], 'integer'],
+            [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
-            [['coupon_code', 'payment_method'], 'required'],
+            [['payment_method', 'trade_no', 'userName'], 'required'],
             [['order_remark'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip'], 'string', 'max' => 50],
-            [['coupon_code'], 'string', 'max' => 255],
+            [['coupon_code', 'street'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
             [['txn_id'], 'string', 'max' => 30],
+            [['trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 32],
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -98,12 +98,19 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             'remote_ip' => 'ip地址',
             'coupon_code' => '优惠券码',
             'payment_method' => '支付方式',
-            'address_id' => '关联地址id',
             'order_remark' => '交易备注',
             'txn_type' => 'Transaction类型，是在购物车点击支付按钮下单，还是在下单页面填写完货运地址信息下单',
             'txn_id' => 'Transaction Id 支付平台唯一交易号,通过这个可以在第三方支付平台查找订单',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'trade_no' => '32位以内订单编号',
+            'userName' => '收件人姓名',
+            'province' => '省',
+            'city' => '市',
+            'county' => '区',
+            'street' => '详细地址',
+            'postal_code' => '邮编',
+            'tel_number' => '电话号码',
         ];
     }
 }

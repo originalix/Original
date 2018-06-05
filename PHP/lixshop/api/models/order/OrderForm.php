@@ -29,7 +29,6 @@ class OrderForm extends Model
     public $coupon_code;
     public $coupon_id;
     public $payment_method;
-    public $address_id;
     public $order_remark;
     public $txn_type;
     public $orderItems;
@@ -48,7 +47,7 @@ class OrderForm extends Model
         return [
             // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
             
-            [['increment_id', 'items_count', 'customer_id', 'address_id', 'coupon_id'], 'integer'],
+            [['increment_id', 'items_count', 'customer_id', 'coupon_id'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip', 'trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 50],
@@ -253,9 +252,16 @@ class OrderForm extends Model
             'remote_ip' => Yii::$app->request->userIP,
             'coupon_code' => $this->coupon_code,
             'payment_method' => $this->payment_method,
-            'address_id' => $this->address_id,
             'order_remark' => $this->order_remark,
             'txn_type' => $this->txn_type,
+            'trade_no' => $this->trade_no,
+            'userName' => $this->userName,
+            'province' => $this->province,
+            'city' => $this->city,
+            'county' => $this->county,
+            'street' => $this->street,
+            'postal_code' => $this->postal_code,
+            'tel_number' => $this->tel_number,
         ];
 
         return $model;
