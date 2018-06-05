@@ -214,16 +214,23 @@ Page({
 			no_express_price: sumPrice.toFixed(2)
 		}, function () {})
 	},
+	getRemarkData () {
+		let value = this.data.expressText
+		if (this.data.remark_value.length > 0) {
+			return value + " - " + this.data.remark_value
+		} else {
+			return value
+		}
+	},
 	/**
 	 *  创建订单函数
 	 */
 	createOrder() {
-		console.log(this.data.remark_value)
 		let orderItems = []
 		let sumItemsCount = 0
+
 		for (var i=0; i<this.data.productList.length; i++) {
 			let product = this.data.productList[i]
-			console.log(this.data.productList[i])
 			sumItemsCount += product.badge
 			let item = {
 				'product_id': product.id,
@@ -231,15 +238,11 @@ Page({
 			}
 			orderItems.push(item)
 		}
-		console.log(orderItems)
-		console.log(sumItemsCount)
-		console.log(this.data.address)
-		console.log(this.data.productList)
-		console.log(this.data.expressText)
+
 		let address = this.data.address
 		let data = {
 			'items_count': sumItemsCount,
-			'order_remark': this.data.expressText + " - " + this.data.remark_value,
+			'order_remark': this.getRemarkData(), 
 			'orderItems': orderItems,
 			'userName': address.userName,
 			'province': address.provinceName,
@@ -257,7 +260,7 @@ Page({
 		}
 
 		console.log(data)
-		// orderUtils.createOrder(data)
+		orderUtils.createOrder(data)
 	},
 	/**
 	 * 使用JSAPI 调起微信支付
