@@ -226,6 +226,7 @@ Page({
 	 *  创建订单函数
 	 */
 	createOrder() {
+		var that = this
 		let orderItems = []
 		let sumItemsCount = 0
 
@@ -253,6 +254,10 @@ Page({
 			'tel_number': address.telNumber,
 			'success': function (res) {
 				console.log('订单生成 成功的函数回调')
+				if (res.trade_no !== undefined && res.real_amount !== undefined) {
+					let total_fee = res.real_amount * 100
+					that.createWxOrder(res.trade_no, total_fee)
+				}
 			},
 			'fail': function (error) {
 				console.log('订单生成失败的函数回调')
@@ -283,11 +288,11 @@ Page({
 	 */
 	createWxOrder (trade_no, total_fee) {
 		var that = this
-		// const trade_no = "20150806125329"
-		// const total_fee = 1
+		const trade_no1 = "2018060515282019326307"
+		const total_fee1 = 3800
 		orderUtils.getPayParams({
-			'trade_no': trade_no,
-			'total_fee': total_fee,
+			'trade_no': trade_no1,
+			'total_fee': total_fee1,
 			'success': function (res) {
 				that.createWxPay(res)
 			},
