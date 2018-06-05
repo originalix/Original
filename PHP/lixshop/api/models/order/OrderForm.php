@@ -186,6 +186,8 @@ class OrderForm extends Model
         $this->checkCoupon();
         // 真实价格上 加上运费
         $this->real_amount += $this->express_amount;
+        // 生成订单号
+        $this->trade_no = $this->generatorTradeNo();
         
         if (! $this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]);
@@ -200,7 +202,8 @@ class OrderForm extends Model
 
         try {
             if (! $order->save()) {
-                throw new HttpException(418, '订单保存失败');
+                // throw new HttpException(418, '订单保存失败');
+                throw new HttpException(421, array_values($order->getFirstErrors())[0]);
             }
 
             if ($this->orderItems) {
@@ -237,7 +240,7 @@ class OrderForm extends Model
             $transaction->commit();
         } catch (Exception $e) {
             $transaction->rollBack();
-            throw new HttpException(418, $e->getMessage());
+            throw new HttpException(421, $e->getMessage());
         }
 
         return $order->attributes;
@@ -271,8 +274,15 @@ class OrderForm extends Model
             'street' => $this->street,
             'postal_code' => $this->postal_code,
             'tel_number' => $this->tel_number,
+            'express_amount' => $this->express_amount,
+            'txn_type' => 'order',
         ];
 
         return $model;
+    }
+
+    protected function generatorTradeNo()
+    {
+        return date('Ymd', time()).time().mt_rand(1000,9999);
     }
 }

@@ -42,7 +42,8 @@ class OrderItemForm extends Model
         $this->customer_id = $order->customer_id;
 
         if (! $this->validate()) {
-            throw new HttpException(418, '生成订单错误');
+            // throw new HttpException(418, '生成订单错误');
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]);
         }
 
         $product = ProductInfo::findOne($this->product_id);
