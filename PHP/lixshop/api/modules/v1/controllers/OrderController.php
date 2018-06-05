@@ -18,7 +18,6 @@ class OrderController extends BaseController
             throw new \yii\web\HttpException(420, '创建订单失败');
         }
         $model->customer_id = $this->user->id;
-        
         return $model->save();
     }
 

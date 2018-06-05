@@ -215,7 +215,8 @@ class OrderForm extends Model
                     // 每个产品 记录信息 保存model
                     $_orderItem->load($item, '');
                     if (! $_orderItem->saveWithOrder($order)) {
-                        throw new Exception('订单产品保存失败');
+                        throw new HttpException(422, '订单产品保存失败');
+                        // throw new HttpException(422, array_values($_orderItem->getFirstErrors())[0]);
                     }
                 }
                     // 每个产品 按数量 减少库存
@@ -270,13 +271,17 @@ class OrderForm extends Model
             'userName' => $this->userName,
             'province' => $this->province,
             'city' => $this->city,
-            'county' => $this->county,
-            'street' => $this->street,
-            'postal_code' => $this->postal_code,
+            // 'county' => $this->county,
+            // 'street' => $this->street,
+            // 'postal_code' => $this->postal_code,
             'tel_number' => $this->tel_number,
             'express_amount' => $this->express_amount,
             'txn_type' => 'order',
         ];
+
+        $model->county = $this->county;
+        $model->street = $this->street;
+        $model->postal_code = $this->postal_code;
 
         return $model;
     }

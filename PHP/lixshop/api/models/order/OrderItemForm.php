@@ -24,9 +24,9 @@ class OrderItemForm extends Model
     public function rules()
     {
         return [
-            [['order_id', 'product_id', 'count', 'custom_option_key'], 'required', 'message' => '{attribute}不能为空'],
+            [['order_id', 'product_id', 'count'], 'required', 'message' => '{attribute}不能为空'],
             [['order_id', 'customer_id', 'product_id', 'count'], 'integer'],
-            [['custom_option_key'], 'required'],
+            // [['custom_option_key'], 'required'],
             [['price', 'row_total'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['custom_option_key', 'name', 'image', 'redirect_url'], 'string', 'max' => 255],
@@ -64,6 +64,14 @@ class OrderItemForm extends Model
             'row_total' => $this->count * $product->final_price,
             'redirect_url' => null,
         ];
+
+        // if ($model->save()) {
+            // return true;
+        // } else {
+             // print_r($model->getFirstErrors());
+             // exit;
+             // return false;
+        // }
 
         return $model->save();
     }
