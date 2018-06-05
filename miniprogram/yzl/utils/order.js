@@ -100,23 +100,22 @@ const createOrder = (params) => {
 			const code = res.data.code
 			if (code === 200) {
 				const response = res.data.data
-				if (data.success !== undefined && typeof(data.success) === 'function') {
-					data.success(response)
+				if (params.success !== undefined && typeof(params.success) === 'function') {
+					params.success(response)
 				}
 			} else {
-				if (data.fail !== undefined && typeof(data.fail) === 'function') {
-					data.fail(res.data.msg)
+				if (params.fail !== undefined && typeof(params.fail) === 'function') {
+					params.fail(res.data.msg)
 				}
 			}
 		},
 		fail: function (error) {
-			if (data.fail !== undefined && typeof(data.fail) === 'function') {
-				data.fail('生成订单失败，请重试')
+			if (params.fail !== undefined && typeof(params.fail) === 'function') {
+				params.fail('生成订单失败，请重试')
 			}
 			console.log(error)
 		}
 	})
-
 }
 
 module.exports = { getPayParams, createWxPay, createOrder }

@@ -92,7 +92,7 @@
 				title="留言"
 				placeholder="点击给商家留言"
 				focus="false"
-				value=""
+				value="{{ remark_value  }}"
 				bind:change="handleFieldChange"
 			>
 			</lix-field>

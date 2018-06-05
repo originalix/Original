@@ -30,7 +30,8 @@ Page({
 		// 运费价格
 		expressPrice: 0,
 		// 不包含快递的合计价格
-		no_express_price: 0
+		no_express_price: 0,
+		remark_value: ''
 	},
 	onLoad () {
 		// 获取购物车的商品数据
@@ -179,6 +180,16 @@ Page({
 		})
 	},
 	/**
+	 *  输入表单事件绑定
+	 */
+	handleFieldChange (e) {
+		console.log(e)
+		let value = e.detail.detail.value
+		this.setData({
+			remark_value: value
+		}, function () {})
+	},
+	/**
 	 * 计算商品价格和运费
 	 */
 	calculatePrice () {
@@ -207,6 +218,7 @@ Page({
 	 *  创建订单函数
 	 */
 	createOrder() {
+		console.log(this.data.remark_value)
 		let orderItems = []
 		let sumItemsCount = 0
 		for (var i=0; i<this.data.productList.length; i++) {
@@ -227,7 +239,7 @@ Page({
 		let address = this.data.address
 		let data = {
 			'items_count': sumItemsCount,
-			'order_remark': '',
+			'order_remark': this.data.expressText + " - " + this.data.remark_value,
 			'orderItems': orderItems,
 			'userName': address.userName,
 			'province': address.provinceName,
@@ -244,7 +256,8 @@ Page({
 			}
 		}
 
-		orderUtils.createOrder(data)
+		console.log(data)
+		// orderUtils.createOrder(data)
 	},
 	/**
 	 * 使用JSAPI 调起微信支付
