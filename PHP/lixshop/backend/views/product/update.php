@@ -48,7 +48,8 @@ $this->title = '修改商品信息';
                 <!-- 基本信息form -->
                 <?= $form->field($model, 'name')->textInput()->label('产品名称') ?>
                 <?= $form->field($model, 'cost_price')->textInput()->label('成本价格') ?>
-                <?= $form->field($model, 'final_price')->textInput()->label('销售价格') ?>
+                <?= $form->field($model, 'price')->textInput()->label('销售价格') ?>
+                <?= $form->field($model, 'final_price')->textInput()->label('实际价格') ?>
                 <?= $form->field($model, 'spu')->textInput()->label('标准化产品单元') ?>
                 <?= $form->field($model, 'sku')->textInput()->label('库存量单位') ?>
                 <?= $form->field($model, 'stock')->textInput()->label('库存个数') ?>
