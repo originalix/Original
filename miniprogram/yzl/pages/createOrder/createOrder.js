@@ -207,10 +207,25 @@ Page({
 	 *  创建订单函数
 	 */
 	createOrder() {
-	
-		console.log(address)
-		console.log(productList)
-		console.log(expressText)
+		let orderItems = []
+		let sumItemsCount = 0
+		for (var i=0; i<this.data.productList.length; i++) {
+			let product = this.data.productList[i]
+			console.log(this.data.productList[i])
+			sumItemsCount += product.badge
+			let item = {
+				'product_id': product.id,
+				'count': product.badge
+			}
+			orderItems.push(item)
+		}
+		console.log(orderItems)
+		console.log(sumItemsCount)
+		console.log(this.data.address)
+		console.log(this.data.productList)
+		console.log(this.data.expressText)
+		let data = {
+		}
 		// address: {},
 		// isChooseAddress: false,
 		// submitBtnType: 'not-order',
