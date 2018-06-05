@@ -208,6 +208,30 @@ Page({
 	 */
 	createOrder() {
 	
+		console.log(address)
+		console.log(productList)
+		console.log(expressText)
+		// address: {},
+		// isChooseAddress: false,
+		// submitBtnType: 'not-order',
+		// productList: [],
+		// actionsheetShow: false,
+		// cancelWithMask: true,
+		// actions: [{
+			// name: '上门配送',
+		// },{
+			// name: '到店取送',
+		// }],
+		// expressType: 0,
+		// expressText: '上门配送',
+		// // 合计栏目显示价格
+		// price: 0,
+		// // fixed栏目显示价格
+		// finalPrice: 0, 
+		// // 运费价格
+		// expressPrice: 0,
+		// // 不包含快递的合计价格
+		// no_express_price: 0
 	},
 	/**
 	 * 使用JSAPI 调起微信支付
