@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'stock',
             'price',
             'cost_price',
-            //'final_price',
+            'final_price',
             //'meta_keywords',
             //'meta_description:ntext',
             //'package_number',

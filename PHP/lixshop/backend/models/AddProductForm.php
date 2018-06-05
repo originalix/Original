@@ -37,7 +37,7 @@ class AddProductForm extends Model
     public function rules()
     {
         return [
-            [['name', 'spu', 'sku', 'min_sales_qty', 'final_price', 'meta_title', 'meta_description', 'meta_keywords', 'cost_price'], 'required', 'message' => '{attribute}不能为空.'],
+            [['name', 'spu', 'sku', 'min_sales_qty', 'final_price', 'meta_title', 'meta_description', 'meta_keywords', 'cost_price', 'price'], 'required', 'message' => '{attribute}不能为空.'],
             ['is_in_stock', 'boolean'],
             ['name', 'string', 'min' => 2, 'max' => 150, 'message' => '名称长度必须在2-150个字符之间'],
             [['final_price', 'cost_price', 'min_sales_qty', 'stock', 'package_number'], 'number', 'message' => '{attribute}必须是数字'],
