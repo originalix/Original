@@ -73,5 +73,51 @@ const createWxPay = (params) => {
 	})
 }
 
-module.exports = { getPayParams, createWxPay }
+/**
+ * 生成订单API
+ */
+const createOrder = (params) => {
+	let data = {
+		'items_count': params.items_count,
+		'order_remark': params.order_remark,
+		'orderItems': params.orderItems,
+		'userName': params.userName,
+		'province': params.province,
+		'city': params.city,
+		'county': params.county,
+		'street': params.street,
+		'postal_code': params.postal_code,
+		'tel_number': params.tel_number
+	}
+
+	wx.request({
+		url: config.service.createOrderUrl,
+		header: appInstance.requestToken,
+		data: data,
+		method: 'POST',
+		success: function (res) {
+			console.log(res)
+			const code = res.data.code
+			if (code === 200) {
+				const response = res.data.data
+				if (data.success !== undefined && typeof(data.success) === 'function') {
+					data.success(response)
+				}
+			} else {
+				if (data.fail !== undefined && typeof(data.fail) === 'function') {
+					data.fail(res.data.msg)
+				}
+			}
+		},
+		fail: function (error) {
+			if (data.fail !== undefined && typeof(data.fail) === 'function') {
+				data.fail('生成订单失败，请重试')
+			}
+			console.log(error)
+		}
+	})
+
+}
+
+module.exports = { getPayParams, createWxPay, createOrder }
 
