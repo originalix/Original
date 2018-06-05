@@ -190,7 +190,7 @@ class SiteController extends Controller
         // $product->image;
         foreach($product->image as $imgModel) {
             // Yii::getAlias('@baseurl').'/backend/web'. $imageModel->path,
-            $path = Yii::getAlias('@baseurl').'/backend/web'. $imgModel->path;
+            $path = Yii::getAlias('@backendUrl'). $imgModel->path;
             array_push($imageArr, $path);
         }
         print_r($imageArr);
