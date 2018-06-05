@@ -224,29 +224,27 @@ Page({
 		console.log(this.data.address)
 		console.log(this.data.productList)
 		console.log(this.data.expressText)
+		let address = this.data.address
 		let data = {
+			'items_count': sumItemsCount,
+			'order_remark': '',
+			'orderItems': orderItems,
+			'userName': address.userName,
+			'province': address.provinceName,
+			'city': address.cityName,
+			'county': address.countyName,
+			'street': address.detailInfo,
+			'postal_code': address.postalCode,
+			'tel_number': address.telNumber,
+			'success': function (res) {
+				console.log('订单生成 成功的函数回调')
+			},
+			'fail': function (error) {
+				console.log('订单生成失败的函数回调')
+			}
 		}
-		// address: {},
-		// isChooseAddress: false,
-		// submitBtnType: 'not-order',
-		// productList: [],
-		// actionsheetShow: false,
-		// cancelWithMask: true,
-		// actions: [{
-			// name: '上门配送',
-		// },{
-			// name: '到店取送',
-		// }],
-		// expressType: 0,
-		// expressText: '上门配送',
-		// // 合计栏目显示价格
-		// price: 0,
-		// // fixed栏目显示价格
-		// finalPrice: 0, 
-		// // 运费价格
-		// expressPrice: 0,
-		// // 不包含快递的合计价格
-		// no_express_price: 0
+
+		orderUtils.createOrder(data)
 	},
 	/**
 	 * 使用JSAPI 调起微信支付
