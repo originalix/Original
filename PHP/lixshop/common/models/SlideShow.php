@@ -75,7 +75,7 @@ class SlideShow extends \yii\db\ActiveRecord
             'id',
             'title',
             'url' => function () {
-                return Yii::getAlias('@baseurl').'/backend/web'. $this->path;
+                return Yii::getAlias('@backendUrl'). $this->path;
             }
         ];
     }

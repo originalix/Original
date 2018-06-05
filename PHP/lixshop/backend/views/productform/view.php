@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return "没有上传照片";
                     }
                     foreach ($model->image as $imageModel) {
-                        $content = $content . Html::img(Yii::getAlias('@baseurl').'/backend/web'. $imageModel->path, ['width'=>'150', 'height'=>'150']);
+                        $content = $content . Html::img(Yii::getAlias('@backendUrl'). $imageModel->path, ['width'=>'150', 'height'=>'150']);
                     }
                     return $content;
                 },

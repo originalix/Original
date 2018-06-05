@@ -31,7 +31,7 @@ class ProductInfo extends Product
             'image' => function ($model) {
                 $arr = [];
                 foreach($model->image as $imageModel) {
-                    $url = Yii::getAlias('@baseurl').'/backend/web'. $imageModel->path;
+                    $url = Yii::getAlias('@backendUrl'). $imageModel->path;
                     array_push($arr, $url);
                 }
                 return $arr;

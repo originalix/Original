@@ -50,7 +50,7 @@ $this->title = '设置促销商品';
                     echo $model->name;
                     echo '</td>';
                     echo '<td>';
-                    $url = Yii::getAlias('@baseurl').'/backend/web'. $model->image[0]->path;
+                    $url = Yii::getAlias('@backendUrl'). $model->image[0]->path;
                     echo Html::img($url, ['alt'=>'yii','width'=>'100','height'=>'50'])
                     ;
                     echo '</td>';

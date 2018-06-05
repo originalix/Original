@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     if (count($data->image) < 1) {
                         return '未上传图片';
                     }
-                    $url = Yii::getAlias('@baseurl').'/backend/web'. $data->image[0]->path;
+                    $url = Yii::getAlias('@backendUrl'). $data->image[0]->path;
                     return Html::img($url, ['alt'=>'yii','width'=>'120','height'=>'120']);
                 }
             ],

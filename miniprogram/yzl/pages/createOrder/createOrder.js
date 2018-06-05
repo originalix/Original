@@ -30,7 +30,8 @@ Page({
 		// 运费价格
 		expressPrice: 0,
 		// 不包含快递的合计价格
-		no_express_price: 0
+		no_express_price: 0,
+		remark_value: ''
 	},
 	onLoad () {
 		// 获取购物车的商品数据
@@ -179,6 +180,16 @@ Page({
 		})
 	},
 	/**
+	 *  输入表单事件绑定
+	 */
+	handleFieldChange (e) {
+		console.log(e)
+		let value = e.detail.detail.value
+		this.setData({
+			remark_value: value
+		}, function () {})
+	},
+	/**
 	 * 计算商品价格和运费
 	 */
 	calculatePrice () {
@@ -203,30 +214,62 @@ Page({
 			no_express_price: sumPrice.toFixed(2)
 		}, function () {})
 	},
+	getRemarkData () {
+		let value = this.data.expressText
+		if (this.data.remark_value.length > 0) {
+			return value + " - " + this.data.remark_value
+		} else {
+			return value
+		}
+	},
 	/**
-	 *  创建微信支付
+	 *  创建订单函数
 	 */
 	createOrder() {
 		var that = this
-		const trade_no = "20150806125329"
-		const total_fee = 1
-		orderUtils.getPayParams({
-			'trade_no': trade_no,
-			'total_fee': total_fee,
+		let orderItems = []
+		let sumItemsCount = 0
+
+		for (var i=0; i<this.data.productList.length; i++) {
+			let product = this.data.productList[i]
+			sumItemsCount += product.badge
+			let item = {
+				'product_id': product.id,
+				'count': product.badge
+			}
+			orderItems.push(item)
+		}
+
+		let address = this.data.address
+		let data = {
+			'items_count': sumItemsCount,
+			'order_remark': this.getRemarkData(), 
+			'orderItems': orderItems,
+			'userName': address.userName,
+			'province': address.provinceName,
+			'city': address.cityName,
+			'county': address.countyName,
+			'street': address.detailInfo,
+			'postal_code': address.postalCode,
+			'tel_number': address.telNumber,
 			'success': function (res) {
-				that.createWxPay(res)
+				console.log('订单生成 成功的函数回调')
+				if (res.trade_no !== undefined && res.real_amount !== undefined) {
+					let total_fee = res.real_amount * 100
+					that.createWxOrder(res.trade_no, total_fee)
+				}
 			},
 			'fail': function (error) {
-				if (typeof error == 'string' || error instanceof String) {
-					wx.showToast({
-						title: error,
-						icon: 'none',
-						duration: 2000
-					})
-				}
+				console.log('订单生成失败的函数回调')
 			}
-		})		
+		}
+
+		console.log(data)
+		orderUtils.createOrder(data)
 	},
+	/**
+	 * 使用JSAPI 调起微信支付
+	 */
 	createWxPay (res) {
 		const params = {
 			'data': res,
@@ -239,5 +282,29 @@ Page({
 		}	
 
 		orderUtils.createWxPay(params)
+	},
+	/**
+	 * 创建微信支付订单，微信支付统一下单接口
+	 */
+	createWxOrder (trade_no, total_fee) {
+		var that = this
+		const trade_no1 = "2018060515282019326307"
+		const total_fee1 = 3800
+		orderUtils.getPayParams({
+			'trade_no': trade_no1,
+			'total_fee': total_fee1,
+			'success': function (res) {
+				that.createWxPay(res)
+			},
+			'fail': function (error) {
+				if (typeof error == 'string' || error instanceof String) {
+					wx.showToast({
+						title: error,
+						icon: 'none',
+						duration: 2000
+					})
+				}
+			}
+		})	
 	}
 })

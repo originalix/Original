@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo $slideModel->title;
                     echo '</td>';
                     echo '<td class="warning">';
-                    $url = Yii::getAlias('@baseurl').'/backend/web'. $slideModel->path;
+                    $url = Yii::getAlias('@backendUrl'). $slideModel->path;
                     echo Html::img($url, ['alt'=>'yii','width'=>'300','height'=>'150']);
                     echo '</td>';
                     echo '</tr>';
