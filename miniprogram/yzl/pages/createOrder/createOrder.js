@@ -204,12 +204,34 @@ Page({
 		}, function () {})
 	},
 	/**
-	 *  创建微信支付
+	 *  创建订单函数
 	 */
 	createOrder() {
+	
+	},
+	/**
+	 * 使用JSAPI 调起微信支付
+	 */
+	createWxPay (res) {
+		const params = {
+			'data': res,
+			'success': function (res) {
+				console.log('支付完成后的操作')
+			},
+			'fail': function (error) {
+				console.log('支付失败后的操作')
+			}
+		}	
+
+		orderUtils.createWxPay(params)
+	},
+	/**
+	 * 创建微信支付订单，微信支付统一下单接口
+	 */
+	createWxOrder (trade_no, total_fee) {
 		var that = this
-		const trade_no = "20150806125329"
-		const total_fee = 1
+		// const trade_no = "20150806125329"
+		// const total_fee = 1
 		orderUtils.getPayParams({
 			'trade_no': trade_no,
 			'total_fee': total_fee,
@@ -225,19 +247,6 @@ Page({
 					})
 				}
 			}
-		})		
-	},
-	createWxPay (res) {
-		const params = {
-			'data': res,
-			'success': function (res) {
-				console.log('支付完成后的操作')
-			},
-			'fail': function (error) {
-				console.log('支付失败后的操作')
-			}
-		}	
-
-		orderUtils.createWxPay(params)
+		})	
 	}
 })
