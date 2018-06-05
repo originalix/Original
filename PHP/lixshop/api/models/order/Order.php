@@ -11,9 +11,9 @@ class Order extends SalesFlatOrder
     public function rules()
     {
         return [
-            [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'trade_no', 'userName', 'province', 'city', 'tel_number','txn_type'], 'required', 'message' => '{attribute}未提交'],
+            [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'trade_no', 'userName', 'province', 'city', 'tel_number','txn_type', 'express_amount'], 'required', 'message' => '{attribute}未提交'],
             [['increment_id', 'items_count', 'customer_id', 'order_status'], 'integer'],
-            [['total_amount', 'discount_amount', 'real_amount'], 'number'],
+            [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip'], 'string', 'max' => 50],
             [['coupon_code', 'order_remark'], 'string', 'max' => 255],

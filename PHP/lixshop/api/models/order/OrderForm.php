@@ -41,6 +41,7 @@ class OrderForm extends Model
     public $street;
     public $postal_code;
     public $tel_number;
+    public $express_amount;
 
     public function rules()
     {
@@ -48,7 +49,7 @@ class OrderForm extends Model
             // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
             
             [['increment_id', 'items_count', 'customer_id', 'coupon_id'], 'integer'],
-            [['total_amount', 'discount_amount', 'real_amount'], 'number'],
+            [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip', 'trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 50],
             [['coupon_code', 'order_remark', 'street'], 'string', 'max' => 255],
@@ -98,11 +99,17 @@ class OrderForm extends Model
             array_push($this->products, $product);
 
             // 查看是否有优惠券 是否需要打折
-
-            // 查看是否满足30元 否则需要邮费
         }
 
+        // 计算折扣价格
         $this->discount_amount = $this->total_amount - $this->real_amount;
+
+        // 查看是否满足30元 否则需要邮费
+        if ($this->total_amount > 30) {
+            $this->express_amount = 0.00;
+        } else {
+            $this->express_amount = 10.00;
+        }
 
         // return [
         //     'total_amount' => $this->total_amount,
@@ -177,7 +184,9 @@ class OrderForm extends Model
         // 计算商品价格
         $this->calculateAmount();
         $this->checkCoupon();
-
+        // 真实价格上 加上运费
+        $this->real_amount += $this->express_amount;
+        
         if (! $this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]);
         }

@@ -132,5 +132,14 @@ class TestController extends BaseController
         Yii::error('记录用户IP日志', 'order');
         return Yii::$app->request->userIP;
     }
+
+    /**
+     *  订单号测试
+     */
+    public function actionOrder()
+    {
+        $order = date('Ymd',time()).time().mt_rand(1000,9999);
+        return $order;
+    }
 }
 

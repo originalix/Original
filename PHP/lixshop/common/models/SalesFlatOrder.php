@@ -34,6 +34,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $street 详细地址
  * @property string $postal_code 邮编
  * @property string $tel_number 电话号码
+ * @property string $express_amount 快递金额
  */
 class SalesFlatOrder extends \yii\db\ActiveRecord
 {
@@ -67,7 +68,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
     {
         return [
             [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group'], 'integer'],
-            [['total_amount', 'discount_amount', 'real_amount'], 'number'],
+            [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['payment_method', 'trade_no', 'userName'], 'required'],
             [['order_remark'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
@@ -111,6 +112,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             'street' => '详细地址',
             'postal_code' => '邮编',
             'tel_number' => '电话号码',
+            'express_amount' => '快递金额',
         ];
     }
 }
