@@ -34,6 +34,14 @@ class OrderForm extends Model
     public $txn_type;
     public $orderItems;
     public $increment_id;
+    public $trade_no;
+    public $userName;
+    public $province;
+    public $city;
+    public $county;
+    public $street;
+    public $postal_code;
+    public $tel_number;
 
     public function rules()
     {
@@ -43,8 +51,8 @@ class OrderForm extends Model
             [['increment_id', 'items_count', 'customer_id', 'address_id', 'coupon_id'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
-            [['remote_ip'], 'string', 'max' => 50],
-            [['coupon_code', 'order_remark'], 'string', 'max' => 255],
+            [['remote_ip', 'trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 50],
+            [['coupon_code', 'order_remark', 'street'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
             // [['txn_id'], 'string', 'max' => 255],
             [['orderItems'], 'validateOrderItems']

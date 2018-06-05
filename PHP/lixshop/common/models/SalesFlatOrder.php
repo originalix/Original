@@ -21,12 +21,19 @@ use yii\behaviors\TimestampBehavior;
  * @property string $remote_ip ip地址
  * @property string $coupon_code 优惠券码
  * @property string $payment_method 支付方式
- * @property int $address_id 关联地址id
  * @property string $order_remark 交易备注
  * @property string $txn_type Transaction类型，是在购物车点击支付按钮下单，还是在下单页面填写完货运地址信息下单
  * @property string $txn_id Transaction Id 支付平台唯一交易号,通过这个可以在第三方支付平台查找订单
  * @property string $created_at
  * @property string $updated_at
+ * @property string $trade_no 32位以内订单编号
+ * @property string $userName 收件人姓名
+ * @property string $province 省
+ * @property string $city 市
+ * @property string $county 区
+ * @property string $street 详细地址
+ * @property string $postal_code 邮编
+ * @property string $tel_number 电话号码
  */
 class SalesFlatOrder extends \yii\db\ActiveRecord
 {
