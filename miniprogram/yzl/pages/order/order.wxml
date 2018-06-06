@@ -45,10 +45,20 @@
 							desc=""
 						>
 						</zan-card>
+
 						<!-- 多件宝贝 查看N件商品 -->
+						<view class="show-more vertical-center">
+							<text class="font-13 color-fa43 w-100">查看全部两件商品</text>
+						</view>
+						<view class="separate-line"></view>
 
 						<!-- 合计 -->
-
+						<view class="show-more vertical-center">
+							<view class="price-text">
+								<text class="color-000">合计：</text>
+								<text class="color-fa43">￥498.00</text>
+							</view>
+						</view>
 						<!-- 付款按钮 -->
 
 					</view>

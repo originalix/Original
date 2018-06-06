@@ -96,11 +96,29 @@ page {
 
 .separate-line {
   background-color: #e4e5e9;
-  height: 1px;
-  width: 100%;
+  height: 2rpx;
+  width: 97%;
+	margin-left: 3%;
 }
 
 .card-wrapper {
 	background-color: #fafafa;
 	font-size: 13px !important;
 }
+
+.show-more {
+	height: 80rpx;
+	text-align: center;
+	width: 100%;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.price-text {
+	width: 100%;
+	text-align: right;
+	margin-right: 26rpx;
+}
+
