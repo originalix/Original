@@ -1,3 +1,8 @@
+var config = require('../../config.js');
+var util = require('../../utils/util.js');
+var orderUtils = require('../../utils/order.js');
+var appInstance = getApp()
+
 Page({
   data: {
     noOrder: false,
@@ -12,5 +17,15 @@ Page({
   },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
+		orderUtils.getOrderList({
+			'type': 0,
+			'page': 1,
+			'success': function (res) {
+				console.log('订单列表获取成功回调')
+			},
+			'fail': function (error) {
+				console.log('订单列表失败回调')
+			}
+		})
   }
 })

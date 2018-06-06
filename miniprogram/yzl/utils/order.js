@@ -161,5 +161,5 @@ const getOrderList = (params) => {
 	})
 }
 
-module.exports = { getPayParams, createWxPay, createOrder }
+module.exports = { getPayParams, createWxPay, createOrder, getOrderList }
 
