@@ -77,6 +77,10 @@ const createWxPay = (params) => {
  * 生成订单API
  */
 const createOrder = (params) => {
+	wx.showLoading({
+		'title': '数据提交中',
+		'mask': true
+	})
 	let data = {
 		'items_count': params.items_count,
 		'order_remark': params.order_remark,
@@ -96,6 +100,7 @@ const createOrder = (params) => {
 		data: data,
 		method: 'POST',
 		success: function (res) {
+			wx.hideLoading()
 			console.log(res)
 			const code = res.data.code
 			if (code === 200) {
@@ -110,6 +115,7 @@ const createOrder = (params) => {
 			}
 		},
 		fail: function (error) {
+			wx.hideLoading()
 			if (params.fail !== undefined && typeof(params.fail) === 'function') {
 				params.fail('生成订单失败，请重试')
 			}

@@ -31,7 +31,14 @@ Page({
 		expressPrice: 0,
 		// 不包含快递的合计价格
 		no_express_price: 0,
-		remark_value: ''
+		// 留言数据
+		remark_value: '',
+		// 创建订单之后 缓存的订单数据
+		orderInfo: {},
+		// 是否已经创建订单
+		isCreatedOrder: false,
+		// 根据是否创建订单 显示提交按钮的文本  提交订单 or 去支付
+		submitBtnText: '提交订单'
 	},
 	onLoad () {
 		// 获取购物车的商品数据
