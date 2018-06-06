@@ -45,7 +45,7 @@ class WxPay extends Model
         }
         
         $order = SalesFlatOrder::find()
-            ->where(['trade_no' => $this->out_trade_no, 'cuetomer_id' => Yii::$app->user->identity->id])
+            ->where(['trade_no' => $this->out_trade_no, 'customer_id' => Yii::$app->user->identity->id])
             ->one();
 
         if (is_null($order)) {
