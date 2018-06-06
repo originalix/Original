@@ -18,7 +18,48 @@ page {
 	color: #666666;
 }
 
-.flex-vertical-center {
+.color-999 {
+	color: #999999;
+}
+
+.color-000 {
+	color: #000000;
+}
+
+.color-fa43 {
+	color: #fa434343;
+}
+
+.font-15 {
+	font-size: 15px;
+}
+
+.font-13 {
+	font-size: 13px;
+}
+
+.font-16 {
+	font-size: 16px;
+}
+
+.mgl-24 {
+	margin-left: 24rpx;
+}
+
+.mgr-26 {
+	margin-right: 26rpx;
+}
+
+.cell-container {
+	width: 100%;
+}
+
+.cell-header {
+	height: 120rpx;
+	width: 100%;
+}
+
+.vertical-center {
   /* flex 水平居中 */
   display:flex;/*Flex布局*/
   display: -webkit-flex; /* Safari */

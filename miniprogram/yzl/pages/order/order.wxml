@@ -20,8 +20,28 @@
         label="{{tab.title}}"
       >
 				<!-- 没有订单的异常流 展示 -->
-				<view class="bg-f0">
+				<view class="bg-f0" wx:if="{{noOrder}}">
 					<wxc-abnor type="ORDER"></wxc-abnor>
+				</view>
+
+				<!-- cell 容器 -->
+				<view class="cell-container">
+					<!-- cell header -->
+					<view class="cell-header vertical-center">
+						<view>
+						<text class="font-30 color-000">店铺：衣之恋优质干洗</text>
+						<text class="font-26 color-999">订单编号：2018060615282503062082</text>
+						</view>
+						<text class="font-33 color-fa43">等待买家付款</text>
+					</view>
+					<!-- 商品卡片 -->
+
+					<!-- 多件宝贝 查看N件商品 -->
+
+					<!-- 合计 -->
+
+					<!-- 付款按钮 -->
+
 				</view>
       </wxc-tab-panel>
     </wxc-tab>
