@@ -4,6 +4,8 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\SalesFlatOrder;
+use common\models\Product;
 
 /**
  * This is the model class for table "{{%sales_flat_order_item}}".
@@ -81,5 +83,34 @@ class SalesFlatOrderItem extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'order_id',
+            'customer_id',
+            'product_id',
+            'product',
+            'custom_option_key',
+            'name',
+            'image',
+            'count',
+            'price',
+            'row_total',
+            'redirect_url',
+            'created_at',
+        ];
+    }
+
+    public function getOrder()
+    {
+        return $this->hasOne(SalesFlatOrder::className(), ['id' => 'order_id']);
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 }

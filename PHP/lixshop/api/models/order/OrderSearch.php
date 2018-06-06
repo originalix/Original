@@ -37,6 +37,7 @@ class OrderSearch extends Order
             'id',
             'order_status',
             'items_count',
+            'items',
             'total_amount',
             'discount_amount',
             'discount_amount',

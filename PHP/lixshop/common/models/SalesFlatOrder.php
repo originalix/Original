@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\SalesFlatOrderItem;
 
 /**
  * This is the model class for table "{{%sales_flat_order}}".
@@ -114,5 +115,10 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             'tel_number' => '电话号码',
             'express_amount' => '快递金额',
         ];
+    }
+
+    public function getItems()
+    {
+        return $this->hasMany(SalesFlatOrderItem::className(), ['order_id' => 'id']);
     }
 }
