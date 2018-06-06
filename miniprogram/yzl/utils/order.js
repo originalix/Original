@@ -139,7 +139,7 @@ const getOrderList = (params) => {
 		},
 		method: 'GET',
 		success: function (res) {
-			console.log(res)
+			// console.log(res)
 			const code = res.data.code
 			if (code === 200) {
 				const response = res.data.data
