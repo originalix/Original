@@ -8,6 +8,7 @@
     "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
     "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
     "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
-    "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index"
+    "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index",
+    "zan-card": "../../bower_components/zanui-weapp/dist/card/index"
   }
 }

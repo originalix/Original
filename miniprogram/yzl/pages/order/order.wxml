@@ -24,26 +24,36 @@
 					<wxc-abnor type="ORDER"></wxc-abnor>
 				</view>
 
-				<!-- cell 容器 -->
+				<view class="ul-wrapper">
+					<!-- cell 容器 -->
 				<view class="cell-container">
-					<!-- cell header -->
-					<view class="cell-header vertical-center">
-						<view>
-						<text class="font-30 color-000">店铺：衣之恋优质干洗</text>
-						<text class="font-26 color-999">订单编号：2018060615282503062082</text>
+						<!-- cell header -->
+						<view class="cell-header vertical-center">
+							<view class="mgl-24">
+								<text class="font-13 color-000 dp-block">店铺：衣之恋优质干洗</text>
+								<text class="font-10 color-999">订单编号：2018060615282503062082</text>
+							</view>
+							<text class="font-13 color-fa43 mgr-26 status-text">等待买家付款</text>
 						</view>
-						<text class="font-33 color-fa43">等待买家付款</text>
+						<!-- 商品卡片 -->
+						<zan-card
+							card-class="card-wrapper"
+							thumb="https://backend.yzl1030.com/uploads/temp/a7606841d253405dafd1534a7d0cfdf4.jpg"
+							price="100"
+							title="轻商务系列手拿包"
+							num="1"
+							desc=""
+						>
+						</zan-card>
+						<!-- 多件宝贝 查看N件商品 -->
+
+						<!-- 合计 -->
+
+						<!-- 付款按钮 -->
+
 					</view>
-					<!-- 商品卡片 -->
-
-					<!-- 多件宝贝 查看N件商品 -->
-
-					<!-- 合计 -->
-
-					<!-- 付款按钮 -->
-
 				</view>
-      </wxc-tab-panel>
+			</wxc-tab-panel>
     </wxc-tab>
   </view>
 </view>

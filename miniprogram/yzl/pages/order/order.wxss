@@ -27,7 +27,7 @@ page {
 }
 
 .color-fa43 {
-	color: #fa434343;
+	color: #fa4343;
 }
 
 .font-15 {
@@ -36,6 +36,10 @@ page {
 
 .font-13 {
 	font-size: 13px;
+}
+
+.font-10 {
+	font-size: 10px;
 }
 
 .font-16 {
@@ -48,6 +52,23 @@ page {
 
 .mgr-26 {
 	margin-right: 26rpx;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.status-text {
+	flex: 1;
+	text-align: right;
+}
+
+.dp-block {
+	display: block;
+}
+
+.flex-1 {
+	flex: 1;
 }
 
 .cell-container {
@@ -77,4 +98,9 @@ page {
   background-color: #e4e5e9;
   height: 1px;
   width: 100%;
+}
+
+.card-wrapper {
+	background-color: #fafafa;
+	font-size: 13px !important;
 }
