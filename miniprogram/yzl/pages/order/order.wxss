@@ -122,3 +122,13 @@ page {
 	margin-right: 26rpx;
 }
 
+.btn-view {
+	height: 102rpx;
+}
+
+.btn-group {
+	margin-right: 10rpx;
+	margin-left: auto;
+	order: 2;
+}
+
