@@ -112,8 +112,8 @@
 	</scroll-view>
 
 	<!-- 底部fixed 显示提交订单 -->
-	<view class="bottom-fix"></view>
-	<view class="shop-cart-container shop-cart-border vertical-center">
+	<view class="bottom-fix" wx:if="{{ isShowPayView  }}"></view>
+	<view class="shop-cart-container shop-cart-border vertical-center" wx:if="{{ isShowPayView }}">
 		<!-- [> 价格预估 <] -->
 		<view class="cart-price">
 			<text class="tip">合计：</text>
@@ -139,7 +139,8 @@
 		<zan-actionsheet
 			show="{{ payActionsheetShow }}"
 			actions="{{ payActions }}"
-			cancel-with-mask="{{ cancelWithMask }}"
+			cancel-with-mask="{{ payActionsheetShow }}"
+			bind:cancel="closePayActionsheet"
 			bind:actionclick="handlePayActionClick"
 		>
 		</zan-actionsheet>

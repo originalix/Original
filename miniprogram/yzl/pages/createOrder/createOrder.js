@@ -25,6 +25,7 @@ Page({
 		payActions: [{
 			name: '微信支付'
 		}],
+		isShowPayView: true,
 		expressType: 0,
 		expressText: '上门配送',
 		// 合计栏目显示价格
@@ -177,7 +178,8 @@ Page({
 	openActionSheet () {
 		console.log('openActionSheet')
 		this.setData({
-			actionsheetShow: true
+			actionsheetShow: true,
+			isShowPayView: false
 		})
 	},
 	/**
@@ -195,7 +197,8 @@ Page({
 		this.setData({
 			expressType: index,
 			expressText: text,
-			actionsheetShow: false
+			actionsheetShow: false,
+			isShowPayView: true
 		})
 	},
 	/**
@@ -234,7 +237,7 @@ Page({
 		}, function () {})
 	},
 	getRemarkData () {
-		let value = this.data.expressText
+		let value = this.data.expressText + " - 取件时间: " + this.data.date + " " + this.data.time
 		if (this.data.remark_value.length > 0) {
 			return value + " - " + this.data.remark_value
 		} else {
@@ -345,7 +348,8 @@ Page({
 	 */
 	showPayActionsheet () {
 		this.setData({
-			payActionsheetShow: true
+			payActionsheetShow: true,
+			isShowPayView: false
 		})
 	},
 	/**
@@ -354,7 +358,15 @@ Page({
 	handlePayActionClick () {
 		this.createOrder()
 		this.setData({
-			payActionsheetShow: false
+			payActionsheetShow: false,
+			isShowPayView: true
+		})
+	},
+	closePayActionsheet () {
+		console.log('取消按钮1！！！')
+		this.setData({
+			payActionsheetShow: false,
+			isShowPayView: true
 		})
 	}
 })

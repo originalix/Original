@@ -7,6 +7,7 @@ use yii\base\Model;
 use api\utils\WeEncryption;
 use api\utils\Curl;
 use yii\web\HttpException;
+use common\models\SalesFlatOrder;
 
 class WxPay extends Model
 {
@@ -41,6 +42,14 @@ class WxPay extends Model
     {
         if (!$this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]); 
+        }
+        
+        $order = SalesFlatOrder::find()
+            ->where(['trade_no' => $this->out_trade_no, 'cuetomer_id' => Yii::$app->user->identity->id])
+            ->one();
+
+        if (is_null($order)) {
+            throw new HttpException(210, '该订单未被创建');
         }
 
         $data = array (
