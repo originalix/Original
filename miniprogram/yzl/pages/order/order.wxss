@@ -2,36 +2,20 @@ page {
   background-color: #f0f0f0;
 }
 
-.background-img {
-  position: absolute;
-  top: -15%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 70px;
-  width: 70px;
+.font-15 {
+	font-size: 15px;
 }
 
-.background-text {
-  position: absolute;
-  top: 17%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 70px;
-  width: 70%;
-  text-align: center;
-  color: #c4c4c4;
+.bg-white {
+	background-color: white;
 }
 
-.scroll-bg-color {
-  background-color: white;
+.bg-f0 {
+	background-color: #f0f0f0;
 }
 
-.tab__navbar {
-  background-color: white;
+.color-666 {
+	color: #666666;
 }
 
 .flex-vertical-center {
@@ -41,56 +25,12 @@ page {
   align-items:center;/*指定垂直居中*/
 }
 
-.store-name-view {
-  height: 40px;
-  width: 100%;
-}
-
-.store-name-txt {
-  margin-left: 14px;
-  font-size: 16px;
-  color: #474749;
-}
-
-.store-name-icon {
-  margin-left: 10px;
-}
-
 .separate {
   height: 12px;
   background-color: #f1f2f5;
   width: 100%;
 }
 
-.order-li-main-view {
-  width: 100%;
-  height: 90px;
-  background-color: #f8f8f8;
-}
-
-.order-image {
-  margin-left: 15px;
-  width: 69px;
-  height: 69px;
-}
-
-.order-name {
-  width: 65%;
-  margin-left: 10px;
-}
-
-.order-info {
-  width: 100%;
-  height: 38px;
-}
-
-.order-info-text {
-  width: 100%;
-  margin-right: 16px;
-  color: #4b4b4d;
-  font-size: 15px;
-  text-align: right;
-}
 
 .separate-line {
   background-color: #e4e5e9;
