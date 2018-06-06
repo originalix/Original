@@ -7,6 +7,7 @@ use api\components\BaseController;
 use api\models\order\Order;
 use api\models\order\OrderItem;
 use api\models\order\OrderForm;
+use api\models\order\OrderSearch;
 
 class OrderController extends BaseController
 {
@@ -23,7 +24,8 @@ class OrderController extends BaseController
 
     public function actionIndex()
     {
-
+        $model = new OrderSearch();
+        return $model->search();
     }
 }
 
