@@ -14,6 +14,8 @@
       "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
       "lix-field": "../../components/create-order-field/index",
       "normal-cell": "../../components/create-order-cell/index",
-      "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index"
+      "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
+      "lix-btn": "../../components/create-order-btn/index"
     }
 }
+

@@ -121,7 +121,7 @@
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
-			<zan-button type="{{submitBtnType}}" catchtap="createOrder">提交订单</zan-button>
+			<lix-btn type="{{submitBtnType}}" catchtap="createOrder" disabled="{{true}}" >提交订单</lix-btn>
 		</view>
 	</view>
 	<view class="actionsheet-container">

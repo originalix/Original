@@ -108,6 +108,7 @@ page {
   vertical-align: center;
   width: 100%;
   bottom: 0;
+	z-index: 20;
 }
 
 .shop-cart-border {
