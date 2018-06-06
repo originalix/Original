@@ -121,18 +121,28 @@
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
-			<lix-btn type="{{submitBtnType}}" catchtap="createOrder" disabled="{{submitBtnType === 'not-order'}}" >{{ submitBtnText }}</lix-btn>
+			<lix-btn type="{{submitBtnType}}" catchtap="showPayActionsheet" disabled="{{submitBtnType === 'not-order'}}" >{{ submitBtnText }}</lix-btn>
 		</view>
 	</view>
 	<view class="actionsheet-container">
-  <!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
-  <zan-actionsheet
-    show="{{ actionsheetShow }}"
-    actions="{{ actions }}"
-    cancel-with-mask="{{ cancelWithMask }}"
-    bind:actionclick="handleActionClick"
-  >
-  </zan-actionsheet>
-</view>
+		<!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
+		<zan-actionsheet
+			show="{{ actionsheetShow }}"
+			actions="{{ actions }}"
+			cancel-with-mask="{{ cancelWithMask }}"
+			bind:actionclick="handleActionClick"
+		>
+		</zan-actionsheet>
+	</view>
+	<view class="actionsheet-container">
+		<!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
+		<zan-actionsheet
+			show="{{ payActionsheetShow }}"
+			actions="{{ payActions }}"
+			cancel-with-mask="{{ cancelWithMask }}"
+			bind:actionclick="handlePayActionClick"
+		>
+		</zan-actionsheet>
+	</view>
 </view>
 

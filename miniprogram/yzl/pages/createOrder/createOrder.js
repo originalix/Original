@@ -21,6 +21,10 @@ Page({
 		},{
 			name: '到店取送',
 		}],
+		payActionsheetShow: false,
+		payActions: [{
+			name: '微信支付'
+		}],
 		expressType: 0,
 		expressText: '上门配送',
 		// 合计栏目显示价格
@@ -335,5 +339,23 @@ Page({
 				}
 			}
 		})	
+	},
+	/**
+	 *  显示微信支付弹窗
+	 */
+	showPayActionsheet () {
+		this.setData({
+			payActionsheetShow: true
+		})
+	},
+	/**
+	 * 微信支付的点击事件
+	 */
+	handlePayActionClick () {
+		this.createOrder()
+		this.setData({
+			payActionsheetShow: false
+		})
 	}
 })
+
