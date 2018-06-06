@@ -1,6 +1,6 @@
 Page({
   data: {
-    noOrder: false,
+    noOrder: true,
     tabs: [
       {title: '已完成', content: '内容一'},
       {title: '未完成', content: '内容二'},

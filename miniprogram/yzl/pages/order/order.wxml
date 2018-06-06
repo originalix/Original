@@ -5,7 +5,7 @@
     <text class="background-text">说好的订单呢</text>
   </view>
   <!-- 有订单的情况 -->
-  <view class="scroll-bg-color">
+	<view class="scroll-bg-color" wx:if="{{ !noOrder }}">
     <wxc-tab
         bind:tabchange="onClick"
         default-index="{{0}}"
