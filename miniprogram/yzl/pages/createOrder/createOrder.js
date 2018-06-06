@@ -135,6 +135,14 @@ Page({
 	 *  选择地址事件
 	 */
 	choseAddress () {
+		if (this.data.isCreatedOrder === true) {
+			wx.showToast({
+				title: '订单已创建，地址不能修改',
+				icon: 'none',
+				duration: 1500
+			})
+			return
+		}
 		console.log('choseAddress')
 		var that = this
 		wx.chooseAddress({
@@ -234,6 +242,13 @@ Page({
 	 */
 	createOrder() {
 		var that = this
+
+		if (this.data.isCreatedOrder === true) {
+			let total_fee = this.data.orderInfo.real_amount * 100
+			that.createWxOrder(this.data.orderInfo.trade_no, total_fee)
+			return
+		}
+
 		let orderItems = []
 		let sumItemsCount = 0
 
@@ -262,6 +277,13 @@ Page({
 			'success': function (res) {
 				console.log('订单生成 成功的函数回调')
 				if (res.trade_no !== undefined && res.real_amount !== undefined) {
+					// 第一次在该页生成订单以后，之后再不创建
+					that.setData({
+						orderInfo: res,
+						isCreatedOrder: true,
+						submitBtnText: '去支付'
+					}, function () {})
+
 					let total_fee = res.real_amount * 100
 					that.createWxOrder(res.trade_no, total_fee)
 				}
@@ -295,11 +317,11 @@ Page({
 	 */
 	createWxOrder (trade_no, total_fee) {
 		var that = this
-		const trade_no1 = "2018060515282019326307"
-		const total_fee1 = 3800
+		// const trade_no1 = "2018060515282019326307"
+		// const total_fee1 = 3800
 		orderUtils.getPayParams({
-			'trade_no': trade_no1,
-			'total_fee': total_fee1,
+			'trade_no': trade_no,
+			'total_fee': total_fee,
 			'success': function (res) {
 				that.createWxPay(res)
 			},
