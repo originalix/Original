@@ -21,5 +21,9 @@ class OrderController extends BaseController
         return $model->save();
     }
 
+    public function actionIndex()
+    {
+
+    }
 }
 
