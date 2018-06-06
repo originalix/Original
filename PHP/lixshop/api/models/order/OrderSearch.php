@@ -20,7 +20,19 @@ class OrderSearch extends Order
             'customer_id' => Yii::$app->user->identity->id,
         ]);
 
-        $query->with(['']);
+        if ($this->type == static::WAIT_PAY_ORDER) {
+            $query = static::find()->where([
+                'customer_id' => Yii::$app->user->identity->id,
+                'order_status' => static::WAIT_PAY_ORDER,
+            ]);
+        } else if ($this->type == static::FINISHED_ORDER) {
+            $query = static::find()->where([
+                'customer_id' => Yii::$app->user->identity->id,
+            ])
+            ->andWhere(['<>', 'order_status', static::WAIT_PAY_ORDER]);
+        } 
+
+        $query->with(['items']);
 
         $query->orderBy(['created_at' => SORT_DESC]);
 

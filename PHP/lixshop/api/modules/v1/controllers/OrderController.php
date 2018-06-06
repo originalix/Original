@@ -24,7 +24,12 @@ class OrderController extends BaseController
 
     public function actionIndex()
     {
+        $type = Yii::$app->request->get('type');
+        if (is_null($type)) {
+            $type = 0;
+        }
         $model = new OrderSearch();
+        $model->type = $type;
         return $model->search();
     }
 }
