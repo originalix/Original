@@ -5,6 +5,7 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\utils\WeEncryption;
 use common\models\WxOrderNotify;
+use common\models\SalesFlatOrder;
 
 class WxcallbackController extends \yii\web\Controller
 {
@@ -47,6 +48,7 @@ class WxcallbackController extends \yii\web\Controller
         $sign = $encpt->getSign($data);
         if ($sign == $obj['sign']) {
             Yii::warning('签名校验成功', 'order');
+            $this->updateOrder($obj['out_trade_no']);
             $reply = "<xml>
 					<return_code><![CDATA[SUCCESS]]></return_code>
 					<return_msg><![CDATA[OK]]></return_msg>
@@ -65,7 +67,8 @@ class WxcallbackController extends \yii\web\Controller
     /**
      *  PHP中对象转换成数组
      */
-    function object2array(&$object) {
+    function object2array(&$object)
+    {
         $object =  json_decode( json_encode( $object),true);
         return  $object;
     }
@@ -73,7 +76,8 @@ class WxcallbackController extends \yii\web\Controller
     /**
      *  从数组中移除key值
      */
-    function array_remove($data, $key) {  
+    function array_remove($data, $key)
+    {  
         if(!array_key_exists($key, $data)) {  
             return $data;  
         }  
@@ -84,4 +88,15 @@ class WxcallbackController extends \yii\web\Controller
         }  
         return $data;  
     }
+
+    function updateOrder($trade_no)
+    {
+        $order = SalesFlatOrder::find()
+            ->where(['trade_no' => $trade_no])
+            ->one();
+        $order->payment_method = 'wechat';
+        $order->order_status = 2;
+        $order->save();
+    }
 }
+
