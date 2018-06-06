@@ -34,6 +34,8 @@ var config = {
 			createWxPayUrl: `${base_host}/v1/wxpay/create`,	
 			// 创建订单接口
 			createOrderUrl: `${base_host}/v1/order/create`,
+			// 查询订单列表接口
+			getOrderListUrl: `${base_host}/v1/order/index`,
     }
 };
 
