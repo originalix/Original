@@ -11,7 +11,8 @@
     "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index",
     "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
     "lix-btn": "../../components/create-order-btn/index",
-    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index"
+    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index",
+    "zan-steps": "../../bower_components/zanui-weapp/dist/steps/index"
   }
 }
 

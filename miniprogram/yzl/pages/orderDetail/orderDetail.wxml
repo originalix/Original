@@ -1,4 +1,7 @@
 <view>
-	<text>Hello World</text>
+	<!-- 步骤条 -->
+	<view>
+		<zan-steps type="horizon" steps="{{steps}}"></zan-steps>
+	</view>
 </view>
 
