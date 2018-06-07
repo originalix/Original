@@ -95,7 +95,9 @@ class SalesFlatOrderItem extends \yii\db\ActiveRecord
             'product',
             'custom_option_key',
             'name',
-            'image',
+            'image' => function ($model) {
+                return Yii::getAlias('@backendUrl').$model->image; 
+            },
             'count',
             'price',
             'row_total',
