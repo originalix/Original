@@ -7,9 +7,9 @@ Page({
   data: {
     noOrder: false,
     tabs: [
-			{title: '全部', content: ''},
-      {title: '待付款', content: '内容一'},
-      {title: '已完成', content: '内容二'},
+			{title: '全部', type: 0},
+      {title: '待付款', type: 1},
+      {title: '已完成', type: 2},
     ],
 		orderList: [],
 		pageMeta: {},
@@ -18,7 +18,7 @@ Page({
 		type: 0
   },
 	onLoad () {
-		this.getOrderList(0, 1)
+		// this.getOrderList(0, 1)
 	},
 	/**
 	 *  页面上拉触底事件的处理函数
@@ -44,11 +44,15 @@ Page({
 		})
 		this.getOrderList(this.data.type, 1)
 	},
-  handleTabChange (e) {
-    console.log(e)
-  },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
+		var that = this
+		let tab = this.data.tabs[e.detail.key]
+		that.setData({
+			type: tab.type
+		}, function () {
+			that.onPullDownRefresh()
+		})
   },
 	/**
 	 *  根据分类，页数 加载订单列表

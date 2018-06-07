@@ -31,24 +31,24 @@
 						<view class="cell-header vertical-center">
 							<view class="mgl-24">
 								<text class="font-13 color-000 dp-block">店铺：衣之恋优质干洗</text>
-								<text class="font-10 color-999">订单编号：2018060615282503062082</text>
+								<text class="font-10 color-999">订单编号：{{item.trade_no}}</text>
 							</view>
 							<text class="font-13 color-fa43 mgr-26 status-text">等待买家付款</text>
 						</view>
 						<!-- 商品卡片 -->
 						<zan-card
 							card-class="card-wrapper"
-							thumb="https://backend.yzl1030.com/uploads/temp/a7606841d253405dafd1534a7d0cfdf4.jpg"
-							price="100"
-							title="轻商务系列手拿包"
-							num="1"
+							thumb="{{item.items[0].image}}"
+							price="{{item.items[0].price}}"
+							title="{{item.items[0].name}}"
+							num="{{item.items[0].count}}"
 							desc=""
 						>
 						</zan-card>
 
 						<!-- 多件宝贝 查看N件商品 -->
 						<view class="show-more vertical-center">
-							<text class="font-13 color-fa43 w-100">查看全部两件商品</text>
+							<text class="font-13 color-fa43 w-100">查看全部{{item.items.length}}件商品</text>
 						</view>
 						<view class="separate-line"></view>
 
@@ -56,7 +56,7 @@
 						<view class="show-more vertical-center">
 							<view class="price-text">
 								<text class="color-000">合计：</text>
-								<text class="color-fa43">￥498.00</text>
+								<text class="color-fa43">￥{{item.real_amount}}</text>
 							</view>
 						</view>
 						<view class="separate-line"></view>
