@@ -10,6 +10,7 @@
     "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
     "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index",
     "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
-    "lix-btn": "../../components/create-order-btn/index"
+    "lix-btn": "../../components/create-order-btn/index",
+    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index"
   }
 }
