@@ -86,6 +86,25 @@ Page({
 		this.initTimeAndDate()
 		this.calculatePrice()
 	},
+	setStepsData () {
+		var steps = [
+			{
+				current: false,
+				done: false,
+				text: '买家下单',
+			},
+			{
+				done: false,
+				current: false,
+				text: '买家付款',
+			},
+			{
+				done: false,
+				current: false,
+				text: '交易完成',
+			}
+		]
+	},
 	/**
 	 *  初始化配送日期、时间
 	 */
