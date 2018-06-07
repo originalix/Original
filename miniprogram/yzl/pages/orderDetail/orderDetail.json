@@ -1,18 +1,21 @@
 {
-  "navigationBarTitleText": "订单详情",
-  "backgroundColor": "#f0f0f0",
-  "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index",
-    "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
-    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
-    "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
-    "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index",
-    "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
-    "lix-btn": "../../components/create-order-btn/index",
-    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index",
-    "zan-steps": "../../bower_components/zanui-weapp/dist/steps/index"
-  }
+    "navigationBarTitleText": "订单详情",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f2e",
+    "backgroundTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+      "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
+      "zan-button": "../../bower_components/zanui-weapp/dist/btn/index",
+      "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index",
+      "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index",
+      "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
+      "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
+      "lix-field": "../../components/create-order-field/index",
+      "normal-cell": "../../components/create-order-cell/index",
+      "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
+      "lix-btn": "../../components/create-order-btn/index",
+      "zan-steps": "../../bower_components/zanui-weapp/dist/steps/index"
+    }
 }
-
