@@ -18,18 +18,18 @@
 .loadmore__text {
     margin: 0 16rpx 0 8rpx;
     color: #999;
-    font-size: 28rpx
+    font-size: 24rpx
 }
 .loadmore__wrap {
     color: #999;
-    font-size: 28rpx;
+    font-size: 22rpx;
     display: flex;
     justify-content: center;
     align-items: center
 }
 .loadmore__loading-icon {
-    width:30rpx;
-    height:30rpx;
+    width:25rpx;
+    height:25rpx;
     margin-right: 8rpx;
     display: inline-block;
     vertical-align: middle;

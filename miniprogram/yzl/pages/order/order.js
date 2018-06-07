@@ -13,7 +13,8 @@ Page({
     ],
 		orderList: [],
 		pageMeta: {},
-		loadmore: false
+		loadmore: false,
+		loadText: '正在努力加载...'
   },
 	onLoad () {
 		this.getOrderList(0, 1)
@@ -50,11 +51,13 @@ Page({
 
 				if (res.meta.currentPage < res.meta.pageCount) {
 					that.setData ({
-						loadmore: true
+						loadmore: true,
+						loadText: '正在努力加载...'
 					})
 				} else {
 					that.setData ({
-						loadmore: false
+						loadmore: false,
+						loadText: '到底啦~'
 					})
 				}
 			},
