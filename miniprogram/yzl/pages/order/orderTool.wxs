@@ -1,0 +1,16 @@
+var tools = {
+  showStatus: function (status) {
+    if (status === 1) {
+        return '等待买家付款'
+    } else if (status === 2) {
+        return '已付款'
+    } else if (status === 3) {
+        return '已完成'
+    }
+
+    return ''
+  }
+}
+module.exports = {
+  showStatus: tools.showStatus
+}

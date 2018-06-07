@@ -24,6 +24,7 @@
 					<wxc-abnor type="ORDER"></wxc-abnor>
 				</view>
 
+				<wxs module="tools" src="./orderTool.wxs"></wxs>
 				<view class="ul-wrapper">
 					<!-- cell 容器 -->
 					<view class="cell-container" wx:for="{{orderList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
@@ -33,7 +34,7 @@
 								<text class="font-13 color-000 dp-block">店铺：衣之恋优质干洗</text>
 								<text class="font-10 color-999">订单编号：{{item.trade_no}}</text>
 							</view>
-							<text class="font-13 color-fa43 mgr-26 status-text">等待买家付款</text>
+							<text class="font-13 color-fa43 mgr-26 status-text">{{tools.showStatus(item.order_status)}}</text>
 						</view>
 						<!-- 商品卡片 -->
 						<zan-card
@@ -47,10 +48,10 @@
 						</zan-card>
 
 						<!-- 多件宝贝 查看N件商品 -->
-						<view class="show-more vertical-center">
+						<view class="show-more vertical-center" wx:if="{{item.items.length > 1}}">
 							<text class="font-13 color-fa43 w-100">查看全部{{item.items.length}}件商品</text>
 						</view>
-						<view class="separate-line"></view>
+						<view class="separate-line" wx:if="{{item.items.length > 1}}"></view>
 
 						<!-- 合计 -->
 						<view class="show-more vertical-center">
@@ -61,7 +62,7 @@
 						</view>
 						<view class="separate-line"></view>
 						<!-- 付款按钮 -->
-						<view class="btn-view vertical-center">
+						<view class="btn-view vertical-center" wx:if="{{item.order_status === 1}}">
 							<view class="btn-group">
 								<lix-btn size="small" type="repay" bindtap="btnClick">确认付款</lix-btn>
 							</view>
