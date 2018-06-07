@@ -14,13 +14,35 @@ Page({
 		orderList: [],
 		pageMeta: {},
 		loadmore: false,
-		loadText: '正在努力加载...'
+		loadText: '正在努力加载...',
+		type: 0
   },
 	onLoad () {
 		this.getOrderList(0, 1)
 	},
+	/**
+	 *  页面上拉触底事件的处理函数
+	 */
 	onReachBottom () {
-		console.log('页面触底了！！！')
+		if (this.data.loadmore === true) {
+			let page = this.data.pageMeta.currentPage + 1
+			let type = 0
+			console.log('加载分页数据 页码: ' + page)
+			this.getOrderList(type, page)
+		} else {
+			console.log('没有下一页的数据了')
+		}
+	},
+	/**
+	 *  页面下拉刷新的处理事件
+	 */
+	onPullDownRefresh () {
+		this.setData({
+			orderList: [],
+			loadmore: true,
+			loadText: '正在努力加载...'
+		})
+		this.getOrderList(this.data.type, 1)
 	},
   handleTabChange (e) {
     console.log(e)
@@ -28,6 +50,10 @@ Page({
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   },
+	/**
+	 *  根据分类，页数 加载订单列表
+	 *
+	 */
 	getOrderList: function (type, page) {
 		var that = this
 		orderUtils.getOrderList({
@@ -68,13 +94,6 @@ Page({
 	},
 	btnClick: function (e) {
 		console.log('hello world')
-		if (this.data.loadmore === true) {
-			let page = this.data.pageMeta.currentPage + 1
-			let type = 0
-			console.log('加载分页数据 页码: ' + page)
-			this.getOrderList(type, page)
-		} else {
-			console.log('没有下一页的数据了')
-		}
 	}
 })
+
