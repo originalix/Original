@@ -12,13 +12,14 @@ Page({
       {title: '已完成', content: '内容二'},
     ],
 		orderList: [],
-		pageMeta: {}
+		pageMeta: {},
+		loadmore: false
   },
 	onLoad () {
 		this.getOrderList(0, 1)
 	},
-  handleTabChange(selectedId) {
-    console.log(selectedId);
+  handleTabChange (e) {
+    console.log(e)
   },
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
@@ -31,21 +32,43 @@ Page({
 			'success': function (res) {
 				console.log('订单列表获取成功回调')
 				console.log(res)
-				let list = this.data.orderList
+				let list = that.data.orderList
 				for (var i=0; i<res.items.length; i++) {
 					list.push(res.items[i])
 				}
-				
+
 				that.setData({
-					orderList: list
+					orderList: list,
+					pageMeta: res.meta
 				}, function () {
 					console.log('now orderlist is: ')
-					console.log(this.data.orderList)
+					console.log(that.data.orderList)
 				})
+
+				if (res.meta.currentPage < res.meta.pageCount) {
+					that.setData ({
+						loadmore: true
+					})
+				} else {
+					that.setData ({
+						loadmore: false
+					})
+				}
 			},
 			'fail': function (error) {
 				console.log('订单列表失败回调')
 			}
 		})
+	},
+	btnClick: function (e) {
+		console.log('hello world')
+		if (this.data.loadmore === true) {
+			let page = this.data.pageMeta.currentPage + 1
+			let type = 0
+			console.log('加载分页数据 页码: ' + page)
+			this.getOrderList(type, page)
+		} else {
+			console.log('没有下一页的数据了')
+		}
 	}
 })

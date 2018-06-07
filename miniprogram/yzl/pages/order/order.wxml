@@ -63,7 +63,7 @@
 						<!-- 付款按钮 -->
 						<view class="btn-view vertical-center">
 							<view class="btn-group">
-								<lix-btn size="small" type="repay">确认付款</lix-btn>
+								<lix-btn size="small" type="repay" bindtap="btnClick">确认付款</lix-btn>
 							</view>
 						</view>
 
