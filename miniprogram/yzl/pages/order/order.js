@@ -18,6 +18,9 @@ Page({
 	onLoad () {
 		this.getOrderList(0, 1)
 	},
+	onReachBottom () {
+		console.log('页面触底了！！！')
+	},
   handleTabChange (e) {
     console.log(e)
   },

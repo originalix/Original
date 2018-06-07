@@ -73,6 +73,8 @@ page {
 
 .cell-container {
 	width: 100%;
+	margin-bottom: 20rpx;
+	background-color: white;
 }
 
 .cell-header {
@@ -130,5 +132,10 @@ page {
 	margin-right: 10rpx;
 	margin-left: auto;
 	order: 2;
+}
+
+.ul-wrapper {
+	background-color: #f0f0f0;
+	padding-top: 20rpx;
 }
 
