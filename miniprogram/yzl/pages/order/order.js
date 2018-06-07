@@ -98,6 +98,11 @@ Page({
 	},
 	btnClick: function (e) {
 		console.log('hello world')
+	},
+	go2OrderDetail () {
+		wx.navigateTo({
+			url: '/pages/orderDetail/orderDetail'
+		})
 	}
 })
 
