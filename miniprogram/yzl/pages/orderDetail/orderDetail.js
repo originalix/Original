@@ -12,7 +12,6 @@ Page({
 		startDate: '',
 		endDate: '',
 		address: {},
-		isChooseAddress: false,
 		submitBtnType: 'not-order',
 		productList: [],
 		actionsheetShow: false,
@@ -60,6 +59,8 @@ Page({
 				that.setData({
 					productList: res.items,
 					orderInfo: res
+				}, function () {
+					console.log(that.data.orderInfo)
 				})
 			},
 			'fail': function (error) {

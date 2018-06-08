@@ -5,21 +5,6 @@
       <zan-steps type="horizon" steps="{{steps}}"></zan-steps>
     </view>
 		<view class="separate bg-e5"></view>
-		<!-- 地址栏目 尚未添加地址状态 -->
-		<view 
-			hover
-			hover-start-time="50"
-			hover-stay-time="50"
-			hover-class="view-hover"
-			class="address-wrapper bg-white vertical-center"
-			bindtap="choseAddress"
-			block wx:if="{{! isChooseAddress}}"
-			>
-			<image class="add-icon" src="../../resource/img/add.png" />
-			<text class="font-30 text-bg-333">新增收货地址</text>
-			<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
-		</view>
-		<view class="separate bg-e5"></view>
 
 		<!-- 地址栏目 已存在地址状态 -->
 		<view 
@@ -28,18 +13,16 @@
 			hover-stay-time="50"
 			hover-class="view-hover"
 			class="address-wrapper bg-white vertical-center"
-			bindtap="choseAddress"
-			block wx:if="{{isChooseAddress}}"
 			>
 			<view class="width-full">
 				<view class="vertical-center width-full">
 					<image src="../../resource/img/address-loca.png" class="loca-icon mg-30"/>
-					<text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
-					<text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
+					<text class="font-30 text-bg-05">收货人：{{orderInfo.userName}}</text>
+					<text class="font-26 text-bg-05 flex-right mgr-30">{{orderInfo.tel_number}}</text>
 				</view>
-				<text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
+				<text class="font-26 text-bg-666 mg-75">收货地址：{{orderInfo.province}}{{orderInfo.city}}{{orderInfo.county}} {{orderInfo.street}}</text>
 			</view>
-			<image src="../../resource/img/right.png" class="arrow-icon"/>
+			<!-- <image src="../../resource/img/right.png" class="arrow-icon"/> -->
 			</view>
 		<view class="separate bg-e5"></view>
 
@@ -101,7 +84,7 @@
 			>
 			</lix-field>
 
-			<normal-cell title="合计" value="￥{{price}}" isPrice></normal-cell>
+			<normal-cell title="合计" value="￥{{orderInfo.total_amount}}" isPrice></normal-cell>
 		</view>
 
 		<!-- 优惠模块cell -->
@@ -110,8 +93,8 @@
 		</view>
 		<!-- 商品金额cell -->
 		<view class="mgt-20 bg-white">
-			<normal-cell title="商品金额" value="￥{{no_express_price}}"></normal-cell>
-			<normal-cell title="运费" value="+￥{{expressPrice}}"></normal-cell>
+			<normal-cell title="商品金额" value="￥{{orderInfo.total_amount}}"></normal-cell>
+			<normal-cell title="运费" value="+￥{{orderInfo.express_amount}}"></normal-cell>
 		</view>
 	</scroll-view>
 
@@ -121,7 +104,7 @@
 		<!-- [> 价格预估 <] -->
 		<view class="cart-price">
 			<text class="tip">合计：</text>
-			<text class="price-text">￥{{finalPrice}}</text>
+			<text class="price-text">￥{{orderInfo.real_amount}}</text>
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
