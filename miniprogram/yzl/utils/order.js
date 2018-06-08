@@ -161,5 +161,40 @@ const getOrderList = (params) => {
 	})
 }
 
-module.exports = { getPayParams, createWxPay, createOrder, getOrderList }
+/**
+ * 获取订单详情接口
+ * @param id 订单id
+ */
+const getOrderDetail = (params) => {
+	wx.request({
+		url: config.service.getOrderDetailUrl,
+		header: appInstance.requestToken,
+		data: {
+			'id': params.id,
+		},
+		method: 'GET',
+		success: function (res) {
+			console.log(res)
+			const code = res.data.code
+			if (code === 200) {
+				const response = res.data.data
+				if (params.success !== undefined && typeof(params.success) === 'function') {
+					params.success(response)
+				}
+			} else {
+				if (params.fail !== undefined && typeof(params.fail) === 'function') {
+					params.fail(res.data.msg)
+				}
+			}
+		},
+		fail: function (error) {
+			console.log(error)
+			if (params.fail !== undefined && typeof(params.fail) === 'function') {
+				params.fail('获取订单详情失败，请重试')
+			}
+		}
+	})
+}
+
+module.exports = { getPayParams, createWxPay, createOrder, getOrderList, getOrderDetail }
 

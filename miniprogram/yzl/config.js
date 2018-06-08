@@ -36,6 +36,8 @@ var config = {
 			createOrderUrl: `${base_host}/v1/order/create`,
 			// 查询订单列表接口
 			getOrderListUrl: `${base_host}/v1/order/index`,
+			// 获取订单详情接口
+			getOrderDetailUrl: `${base_host}/v1/order/detail`,
     }
 };
 
