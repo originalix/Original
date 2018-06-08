@@ -6,7 +6,7 @@ var appInstance = getApp()
 Page({
 	data: {
 		steps: [],
-		submitBtnType: 'not-order',
+		submitBtnType: 'order',
 		productList: [],
 		actionsheetShow: false,
 		cancelWithMask: true,
@@ -25,15 +25,16 @@ Page({
 		// 创建订单之后 缓存的订单数据
 		orderInfo: {},
 		// 是否已经创建订单
-		isCreatedOrder: false,
+		isCreatedOrder: true,
 		// 根据是否创建订单 显示提交按钮的文本  提交订单 or 去支付
-		submitBtnText: '提交订单'
+		submitBtnText: '去支付',
+		isPayment: false 
 	},
 	onLoad (option) {
 		console.log(option)
-		wx.setNavigationBarTitle({
-      title: '待付款的订单' 
-		})
+		this.initializeStatus(option.status)
+
+		// 根据id 获取订单详情
 		var that = this
 		orderUtils.getOrderDetail({
 			'id': option.id,
@@ -43,9 +44,6 @@ Page({
 				that.setData({
 					productList: res.items,
 					orderInfo: res
-				}, function () {
-					console.log(that.data.orderInfo)
-					that.initializeStatus()
 				})
 			},
 			'fail': function (error) {
@@ -53,9 +51,30 @@ Page({
 			}
 		})
 	},
+	/**
+	 *  根据支付状态 初始化部分数据
+	 */
 	initializeStatus () {
 		let order = this.data.orderInfo
 		this.setStepsData(order.order_status)
+		let title = '订单详情'
+		let text = '已付款'
+		let isPayMent = true
+
+		// 根据支付状态 设置按钮样式
+		if (order.order_status === 1) {
+			title = '待付款的订单'
+			text = '去支付'
+			isPayMent = false
+		}
+		this.setData({
+			submitBtnText: text,
+			isPayment: isPayMent
+		})
+		
+		wx.setNavigationBarTitle({
+			text: title
+		})
 	},
 	setStepsData (status) {
 		var steps = [
@@ -106,53 +125,14 @@ Page({
 			that.createWxOrder(this.data.orderInfo.trade_no, total_fee)
 			return
 		}
+					// that.setData({
+						// orderInfo: res,
+						// isCreatedOrder: true,
+						// submitBtnText: '去支付'
+					// }, function () {})
 
-		let orderItems = []
-		let sumItemsCount = 0
-
-		for (var i=0; i<this.data.productList.length; i++) {
-			let product = this.data.productList[i]
-			sumItemsCount += product.badge
-			let item = {
-				'product_id': product.id,
-				'count': product.badge
-			}
-			orderItems.push(item)
-		}
-
-		let address = this.data.address
-		let data = {
-			'items_count': sumItemsCount,
-			'order_remark': this.getRemarkData(), 
-			'orderItems': orderItems,
-			'userName': address.userName,
-			'province': address.provinceName,
-			'city': address.cityName,
-			'county': address.countyName,
-			'street': address.detailInfo,
-			'postal_code': address.postalCode,
-			'tel_number': address.telNumber,
-			'success': function (res) {
-				console.log('订单生成 成功的函数回调')
-				if (res.trade_no !== undefined && res.real_amount !== undefined) {
-					// 第一次在该页生成订单以后，之后再不创建
-					that.setData({
-						orderInfo: res,
-						isCreatedOrder: true,
-						submitBtnText: '去支付'
-					}, function () {})
-
-					let total_fee = res.real_amount * 100
-					that.createWxOrder(res.trade_no, total_fee)
-				}
-			},
-			'fail': function (error) {
-				console.log('订单生成失败的函数回调')
-			}
-		}
-
-		console.log(data)
-		orderUtils.createOrder(data)
+					// let total_fee = res.real_amount * 100
+					// that.createWxOrder(res.trade_no, total_fee)
 	},
 	/**
 	 * 使用JSAPI 调起微信支付

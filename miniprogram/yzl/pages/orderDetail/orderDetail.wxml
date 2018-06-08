@@ -94,7 +94,7 @@
 		</view>
 		<!-- [> 买单按钮 <] -->
 		<view class="payview">
-			<lix-btn type="{{submitBtnType}}" catchtap="showPayActionsheet" disabled="{{submitBtnType === 'not-order'}}" >{{ submitBtnText }}</lix-btn>
+			<lix-btn type="{{submitBtnType}}" catchtap="showPayActionsheet" disabled="{{ ! isPayment }}" >{{ submitBtnText }}</lix-btn>
 		</view>
 	</view>
 	<view class="actionsheet-container">
