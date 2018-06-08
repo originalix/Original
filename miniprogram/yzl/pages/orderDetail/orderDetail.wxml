@@ -1,7 +1,7 @@
 <view>
 	<scroll-view scroll-y style="height: 100%">
     <!-- 步骤条 -->
-    <view>
+    <view class="steps">
       <zan-steps type="horizon" steps="{{steps}}"></zan-steps>
     </view>
 		<view class="separate bg-e5"></view>
@@ -49,38 +49,24 @@
 
 			<!-- 配送方式cell -->
 			<view bindtap="openActionSheet">
-				<normal-cell title="配送方式" value="{{ expressText }}" isLink></normal-cell>
+				<normal-cell title="配送方式" value="{{ orderInfo.express_text }}"></normal-cell>
 			</view>
 			<view class="separate bg-e5 separate-left"></view>
 			
 			<!-- 取件日期选择 -->
-			<view class="section">
-				<view class="section__title">取件日期</view>
-				<picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
-					<view class="picker text-bg-666">
-						{{date}}
-					</view>
-				</picker>
-			</view>
+			<normal-cell title="取件日期" value="{{orderInfo.express_date}}"></normal-cell>
 			<view class="separate bg-e5 separate-left"></view>
 
 			<!-- 取件时间选择 -->
-			<view class="section">
-				<view class="section__title">取件时间</view>
-				<picker mode="time" value="{{time}}" start="09:00" end="22:00" bindchange="bindTimeChange">
-					<view class="picker text-bg-666">
-						{{time}}
-					</view>
-				</picker>
-			</view>
+			<normal-cell title="取件时间" value="{{orderInfo.express_time}}"></normal-cell>
 			<view class="separate bg-e5 separate-left"></view>
 
 			<lix-field
 				title="留言"
-				placeholder="点击给商家留言"
+				placeholder=""
 				focus="false"
-				value="{{ remark_value  }}"
-				bind:change="handleFieldChange"
+				disabled="true"
+				value="{{ orderInfo.order_remark }}"
 			>
 			</lix-field>
 

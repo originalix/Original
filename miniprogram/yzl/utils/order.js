@@ -91,7 +91,10 @@ const createOrder = (params) => {
 		'county': params.county,
 		'street': params.street,
 		'postal_code': params.postal_code,
-		'tel_number': params.tel_number
+		'tel_number': params.tel_number,
+		'express_type': params.express_type,
+		'express_date': params.express_date,
+		'express_time': params.express_time
 	}
 
 	wx.request({

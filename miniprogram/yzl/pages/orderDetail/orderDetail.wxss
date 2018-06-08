@@ -197,3 +197,11 @@ page {
 	margin-right: 30rpx;
 }
 
+.steps {
+	background-color: white;
+	height: 125rpx;
+	padding-left: 20rpx;
+	padding-right: 20rpx;
+	padding-top: 30rpx;
+}
+

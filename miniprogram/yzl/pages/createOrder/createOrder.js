@@ -272,7 +272,7 @@ Page({
 		let address = this.data.address
 		let data = {
 			'items_count': sumItemsCount,
-			'order_remark': this.getRemarkData(), 
+			'order_remark': this.data.remark_value, 
 			'orderItems': orderItems,
 			'userName': address.userName,
 			'province': address.provinceName,
@@ -281,6 +281,9 @@ Page({
 			'street': address.detailInfo,
 			'postal_code': address.postalCode,
 			'tel_number': address.telNumber,
+			'express_type': this.data.expressType,
+			'express_date': this.data.date,
+			'express_time': this.data.time,
 			'success': function (res) {
 				console.log('订单生成 成功的函数回调')
 				if (res.trade_no !== undefined && res.real_amount !== undefined) {
