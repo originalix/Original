@@ -86,6 +86,13 @@ class OrderSearch extends Order
             'postal_code',
             'tel_number',
             'express_amount',
+            'express_text' => function ($model) {
+                if ($model->express_type === 0) {
+                    return '上门配送';
+                } else if ($model->express_type === 1) {
+                    return '到店取送';
+                }
+            }
         ];
     }
 }
