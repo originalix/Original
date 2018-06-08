@@ -117,7 +117,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             'postal_code' => '邮编',
             'tel_number' => '电话号码',
             'express_amount' => '快递金额',
-            'express_type' => '配送方式，0上门配送,1到店取送',
+            'express_type' => '配送方式',
             'express_date' => '配送日期',
             'express_time' => '配送时段',
         ];

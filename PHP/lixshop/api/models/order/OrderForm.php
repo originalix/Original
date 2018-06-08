@@ -51,13 +51,14 @@ class OrderForm extends Model
         return [
             // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
             
-            [['increment_id', 'items_count', 'customer_id', 'coupon_id'], 'integer'],
+            [['increment_id', 'items_count', 'customer_id', 'coupon_id', 'express_type'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip', 'trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 50],
             [['coupon_code', 'order_remark', 'street'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
             // [['txn_id'], 'string', 'max' => 255],
+            [['express_date', 'express_time'], 'string', 'max' => 32],
             [['orderItems'], 'validateOrderItems']
         ];
     }
@@ -278,13 +279,14 @@ class OrderForm extends Model
             'express_amount' => $this->express_amount,
             'txn_type' => 'order',
             'express_type' => $this->express_type,
-            'express_date' => $this->express_type,
+            'express_date' => $this->express_date,
             'express_time' => $this->express_time,
         ];
 
         $model->county = $this->county;
         $model->street = $this->street;
         $model->postal_code = $this->postal_code;
+        $model->express_type = $this->express_type;
 
         return $model;
     }
