@@ -30,7 +30,7 @@ class OrderSearch extends Order
                 'customer_id' => Yii::$app->user->identity->id,
             ])
             ->andWhere(['<>', 'order_status', static::WAIT_PAY_ORDER]);
-        } 
+        }
 
         $query->with(['items']);
 

@@ -36,6 +36,9 @@ use common\models\SalesFlatOrderItem;
  * @property string $postal_code 邮编
  * @property string $tel_number 电话号码
  * @property string $express_amount 快递金额
+ * @property int $express_type 配送方式，0上门配送,1到店取送
+ * @property string $express_date 配送日期
+ * @property string $express_time 配送时段
  */
 class SalesFlatOrder extends \yii\db\ActiveRecord
 {
@@ -68,7 +71,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group'], 'integer'],
+            [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group', 'express_type'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['payment_method', 'trade_no', 'userName'], 'required'],
             [['order_remark'], 'string'],
@@ -78,7 +81,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             [['coupon_code', 'street'], 'string', 'max' => 255],
             [['payment_method', 'txn_type'], 'string', 'max' => 20],
             [['txn_id'], 'string', 'max' => 30],
-            [['trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 32],
+            [['trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number', 'express_date', 'express_time'], 'string', 'max' => 32],
         ];
     }
     /**
@@ -114,6 +117,9 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             'postal_code' => '邮编',
             'tel_number' => '电话号码',
             'express_amount' => '快递金额',
+            'express_type' => '配送方式，0上门配送,1到店取送',
+            'express_date' => '配送日期',
+            'express_time' => '配送时段',
         ];
     }
 

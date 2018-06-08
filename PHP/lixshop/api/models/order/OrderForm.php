@@ -42,6 +42,9 @@ class OrderForm extends Model
     public $postal_code;
     public $tel_number;
     public $express_amount;
+    public $express_type;
+    public $express_date;
+    public $express_time;
 
     public function rules()
     {
@@ -271,12 +274,12 @@ class OrderForm extends Model
             'userName' => $this->userName,
             'province' => $this->province,
             'city' => $this->city,
-            // 'county' => $this->county,
-            // 'street' => $this->street,
-            // 'postal_code' => $this->postal_code,
             'tel_number' => $this->tel_number,
             'express_amount' => $this->express_amount,
             'txn_type' => 'order',
+            'express_type' => $this->express_type,
+            'express_date' => $this->express_type,
+            'express_time' => $this->express_time,
         ];
 
         $model->county = $this->county;
