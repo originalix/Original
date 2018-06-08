@@ -92,7 +92,10 @@ class OrderSearch extends Order
                 } else if ($model->express_type === 1) {
                     return '到店取送';
                 }
-            }
+            },
+            'express_type',
+            'express_date',
+            'express_time',
         ];
     }
 }
