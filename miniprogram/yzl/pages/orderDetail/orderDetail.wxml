@@ -57,8 +57,8 @@
 					card-class="test-card card-wrapper"
 					thumb="{{product.image}}"
 					price="{{product.price}}"
-					title="{{product.title}}"
-					num="{{product.badge}}"
+					title="{{product.name}}"
+					num="{{product.count}}"
 					desc=""
 				>
 				</zan-card>

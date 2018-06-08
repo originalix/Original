@@ -99,9 +99,12 @@ Page({
 	btnClick: function (e) {
 		console.log('hello world')
 	},
-	go2OrderDetail () {
+	go2OrderDetail (e) {
+		let id = e.currentTarget.dataset.orderId
+		let status = e.currentTarget.dataset.orderStatus
+		console.log(id)
 		wx.navigateTo({
-			url: '/pages/orderDetail/orderDetail'
+			url: '/pages/orderDetail/orderDetail?id=' + id + '&status=' + status
 		})
 	}
 })

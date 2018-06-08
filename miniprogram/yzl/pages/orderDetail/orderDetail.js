@@ -5,26 +5,7 @@ var appInstance = getApp()
 
 Page({
 	data: {
-		steps: [
-			{
-				// 此步骤是否当前完成状态
-				current: false,
-				// 此步骤是否已经完成
-				done: true,
-				// 此步骤显示文案
-				text: '步骤一',
-			},
-			{
-				done: true,
-				current: true,
-				text: '步骤二',
-			},
-			{
-				done: false,
-				current: false,
-				text: '步骤三',
-			}
-		],
+		steps: [],
 		time: '',
 		startTime: '',
 		date: '',
@@ -65,26 +46,26 @@ Page({
 		// 根据是否创建订单 显示提交按钮的文本  提交订单 or 去支付
 		submitBtnText: '提交订单'
 	},
-	onLoad () {
+	onLoad (option) {
+		console.log(option)
 		wx.setNavigationBarTitle({
       title: '待付款的订单' 
 		})
-		// 获取购物车的商品数据
 		var that = this
-		try {
-			var cartData = wx.getStorageSync('CART_LIST_DATA')
-			if (cartData) {
+		orderUtils.getOrderDetail({
+			'id': option.id,
+			'success': function (res) {
+				console.log('获取订单详情成功回调')
+				console.log(res)
 				that.setData({
-					productList: cartData
-				}, function () {
-					console.log(that.data.productList)
+					productList: res.items,
+					orderInfo: res
 				})
+			},
+			'fail': function (error) {
+				console.log('获取订单详情失败回调')
 			}
-		} catch (e) {
-			console.log(e)
-		}
-		this.initTimeAndDate()
-		this.calculatePrice()
+		})
 	},
 	setStepsData () {
 		var steps = [

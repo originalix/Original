@@ -27,7 +27,7 @@
 				<wxs module="tools" src="./orderTool.wxs"></wxs>
 				<view class="ul-wrapper">
 					<!-- cell 容器 -->
-					<view class="cell-container" wx:for="{{orderList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx" bindtap="go2OrderDetail">
+					<view class="cell-container" wx:for="{{orderList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx" bindtap="go2OrderDetail" data-order-id="{{item.id}}" data-order-status="{{item.order_status}}">
 						<!-- cell header -->
 						<view class="cell-header vertical-center">
 							<view class="mgl-24">
