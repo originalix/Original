@@ -54,15 +54,15 @@ Page({
 	/**
 	 *  根据支付状态 初始化部分数据
 	 */
-	initializeStatus () {
-		let order = this.data.orderInfo
-		this.setStepsData(order.order_status)
+	initializeStatus (statusStr) {
+		let status = parseInt(statusStr)
+		this.setStepsData(status)
 		let title = '订单详情'
 		let text = '已付款'
 		let isPayMent = true
 
 		// 根据支付状态 设置按钮样式
-		if (order.order_status === 1) {
+		if (status === 1) {
 			title = '待付款的订单'
 			text = '去支付'
 			isPayMent = false
@@ -73,7 +73,7 @@ Page({
 		})
 		
 		wx.setNavigationBarTitle({
-			text: title
+			title: title
 		})
 	},
 	setStepsData (status) {
