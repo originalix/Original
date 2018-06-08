@@ -43,6 +43,11 @@ class OrderSearch extends Order
         return $dataProvider;
     } 
 
+    public function detail($id)
+    {
+
+    }
+
     public function fields()
     {
         return [

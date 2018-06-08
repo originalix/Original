@@ -8,9 +8,13 @@ use api\models\order\Order;
 use api\models\order\OrderItem;
 use api\models\order\OrderForm;
 use api\models\order\OrderSearch;
+use yii\web\HttpException;
 
 class OrderController extends BaseController
 {
+    /**
+     *  创建订单接口
+     */
     public function actionCreate()
     {
         // return Yii::$app->request->post();
@@ -22,6 +26,9 @@ class OrderController extends BaseController
         return $model->save();
     }
 
+    /**
+     *  获取订单列表接口
+     */
     public function actionIndex()
     {
         $type = Yii::$app->request->get('type');
@@ -31,6 +38,16 @@ class OrderController extends BaseController
         $model = new OrderSearch();
         $model->type = $type;
         return $model->search();
+    }
+
+    public function actionDetail()
+    {
+        $id = Yii::$app->request->get('id');
+        if (is_null($id)) {
+            throw new HttpException(201, '请求参数缺失');
+        }
+
+        return $model->detail($id);
     }
 }
 
