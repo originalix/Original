@@ -45,7 +45,16 @@ class OrderSearch extends Order
 
     public function detail($id)
     {
+        $order = static::find()
+            ->where(['id' => $id])
+            ->with('items')
+            ->one();
 
+        if (is_null($order)) {
+            throw new HttpException(202, '未找到该订单信息');
+        }
+
+        return $order;
     }
 
     public function fields()

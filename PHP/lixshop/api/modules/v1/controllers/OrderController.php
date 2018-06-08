@@ -46,7 +46,7 @@ class OrderController extends BaseController
         if (is_null($id)) {
             throw new HttpException(201, '请求参数缺失');
         }
-
+        $model = new OrderSearch();
         return $model->detail($id);
     }
 }
