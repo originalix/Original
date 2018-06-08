@@ -1,10 +1,12 @@
 <view class="bg-white">
   <view class="member-header">
     <view class="inner flex-vertical-center">
-      <wxc-avatar class="avatar" src="https://s11.mogucdn.com/p2/170413/upload_86dkh4e886991g9lji7a6g5c530ji_400x400.jpg"></wxc-avatar>
+      <!-- <wxc-avatar class="avatar" src="https://s11.mogucdn.com/p2/170413/upload_86dkh4e886991g9lji7a6g5c530ji_400x400.jpg"></wxc-avatar> -->
+			<open-data type="userAvatarUrl" class="avatar"></open-data>
       <view class="header-user-view">
         <view>
-          <text class="header-user-mobile">1318****109</text>
+          <!-- <text class="header-user-mobile">1318****109</text> -->
+					<open-data type="userNickName" class="header-user-mobile"></open-data>
         </view>
         <view>
           <text class="header-user-feel">让生活多份自在</text>
@@ -51,7 +53,7 @@
   </view>
 
   <!-- list -->
-  <view class="list-wrap bg-white">
+  <view class="list-wrap">
     <view class="list-item">
       <wxc-list
               wx:for="{{list}}"

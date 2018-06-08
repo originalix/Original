@@ -29,6 +29,9 @@ page {
   width: 65px;
   height: 65px;
   margin-left: 13px;
+	border-radius: 33px;
+	border-style: none;
+	overflow: hidden;
 }
 
 .flex-vertical-center {
@@ -104,12 +107,12 @@ page {
 }
 
 .wallet-value {
-  font-size: 16px;
+  font-size: 28rpx;
   color: #0f0f0f;
 }
 
 .wallet-key {
-  font-size: 14px;
+  font-size: 24rpx;
   color: #bcbcbc;
 }
 
