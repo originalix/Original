@@ -1,9 +1,22 @@
 .member-header { 
   position: relative;
   height: 179px;
-  background: url("http://www.webjx.com/files/allimg/100910/1404161.jpg") no-repeat;
+  background: url("http://backend.yzl1030.com/uploads/temp/4986877ca25c4a758b25fa880c8bd8a6.jpg") no-repeat;
   -webkit-background-size: 100%;
   background-size: 100%;
+}
+
+page {
+	background-color: #f3f7fa;
+	min-height: 100%;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.bg-f3f7 {
+	background-color: #f3f7fa;
 }
 
 .inner{
@@ -109,7 +122,7 @@
 
 .list-wrap {
   width: 100%;
-  background: #efefef;
+	background-color: #f3f7fa;
   padding-bottom: 30rpx;
   padding-top: 30rpx;
 }
