@@ -13,7 +13,7 @@
         </view>
       </view>
       <view class="button-wrap">
-        <wxc-button plain="{{true}}" size="small" type="beauty" value="充值"></wxc-button>
+        <wxc-button plain="{{true}}" size="small" type="beauty" value="充值" bindtap="go2ChargePage"></wxc-button>
       </view>
     </view>
   </view>

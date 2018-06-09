@@ -18,5 +18,9 @@ Page({
 			}
 		]
   },
-  methods: { }
+	go2ChargePage () {
+		wx.navigateTo({
+			url: '/pages/charge/charge'
+		})
+	}
 })

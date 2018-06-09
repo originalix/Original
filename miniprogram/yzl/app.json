@@ -7,7 +7,8 @@
     "pages/member/member",
     "pages/shoplist/shoplist",
     "pages/createOrder/createOrder",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/charge/charge"
   ],
   "window":{
     "backgroundTextStyle":"black",
