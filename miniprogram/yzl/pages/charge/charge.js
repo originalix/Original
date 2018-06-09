@@ -6,8 +6,9 @@ var appInstance = getApp()
 Page({
 	data: {
 		list: [],
-		currentIdx: 1,
-		disabled: true
+		currentIdx: 9999,
+		disabled: true,
+		inputValue: ''
 	},
 	onLoad () {
 		this.getChargeList()
@@ -53,13 +54,23 @@ Page({
 	},
 	// 输入框的输入事件
 	handleInput (e) {
-		console.log('输入事件')
-		console.log(e)
+		let value = e.detail.value
+		this.setData({
+			inputValue: value,
+			disabled: false
+		})
 	},
 	// 输入框获取到焦点的事件
 	handleFocus (e) {
-		console.log('获取焦点')
-		console.log(e)
+		let btnDisabled = false
+		if (this.data.inputValue.length < 1) {
+			btnDisabled = true
+		}
+
+		this.setData({
+			currentIdx: 9999,
+			disabled: btnDisabled
+		})
 	},
 	// 输入框失去焦点事件
 	handleBlur (e) {
