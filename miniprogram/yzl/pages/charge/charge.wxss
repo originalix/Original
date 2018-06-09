@@ -46,9 +46,18 @@ page {
 
 .collection-wrapper {
 	margin-top: 200rpx;
+	margin-left: 20rpx;
+	margin-right: 20rpx;
+}
+
+.list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
 }
 
 .cell-content {
+	margin-bottom: 20rpx;
 	width: 227rpx;
 	height: 103rpx;
 	background-color: white;

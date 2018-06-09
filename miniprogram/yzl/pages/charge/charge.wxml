@@ -7,7 +7,7 @@
 		</view>
 	</view>
 
-	<view class="collection-wrapper">
+	<view class="collection-wrapper list">
 		<!-- cell -->
 		<view class="cell-content">
 			<text class="title">2000元</text>
@@ -16,37 +16,37 @@
 
 		<!-- cell -->
 		<view class="cell-content">
-			<text class="title">2000元</text>
+			<text class="title">2001元</text>
 			<text class="des">赠送：500元</text>
 		</view>
 
 		<!-- cell -->
 		<view class="cell-content">
-			<text class="title">2000元</text>
+			<text class="title">2002元</text>
 			<text class="des">赠送：500元</text>
 		</view>
 
 		<!-- cell -->
 		<view class="cell-content">
-			<text class="title">2000元</text>
+			<text class="title">2003元</text>
 			<text class="des">赠送：500元</text>
 		</view>
 		
 		<!-- cell -->
 		<view class="cell-content">
-			<text class="title">2000元</text>
+			<text class="title">2004元</text>
 			<text class="des">赠送：500元</text>
 		</view>
 
 		<!-- cell -->
 		<view class="cell-content">
-			<text class="title">2000元</text>
+			<text class="title">2005元</text>
 			<text class="des">赠送：500元</text>
 		</view>
 
 		<!-- cell -->
 		<view class="cell-content">
-			<text class="title">2000元</text>
+			<text class="title">2006元</text>
 			<text class="des">赠送：500元</text>
 		</view>
 	</view>
