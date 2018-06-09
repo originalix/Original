@@ -68,6 +68,7 @@ page {
 	display: block;
 	font-size: 32rpx;
 	color: #535963;
+	margin-top: 10rpx;
 }
 
 .des {

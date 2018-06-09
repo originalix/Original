@@ -9,7 +9,7 @@ Page({
 		currentIdx: 9999
 	},
 	onLoad () {
-
+		this.getChargeList()
 	},
 	getChargeList () {
 		let list = [
@@ -38,6 +38,9 @@ Page({
 				gift: 3000
 			},
 		]
+		this.setData({
+			list: list 
+		})
 	}
 })
 
