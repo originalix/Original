@@ -7,5 +7,49 @@
 		</view>
 	</view>
 
+	<view class="collection-wrapper">
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+		
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+
+		<!-- cell -->
+		<view class="cell-content">
+			<text class="title">2000元</text>
+			<text class="des">赠送：500元</text>
+		</view>
+	</view>
+
 </view>
 

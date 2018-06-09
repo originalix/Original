@@ -44,3 +44,26 @@ page {
 	text-align: center;
 }
 
+.collection-wrapper {
+	margin-top: 200rpx;
+}
+
+.cell-content {
+	width: 227rpx;
+	height: 103rpx;
+	background-color: white;
+	text-align: center;
+}
+
+.title {
+	display: block;
+	font-size: 32rpx;
+	color: #535963;
+}
+
+.des {
+	display: block;
+	font-size: 26rpx;
+	color: #bbc1cc;
+}
+
