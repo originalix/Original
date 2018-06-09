@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "在线充值",
-  "backgroundColor": "#f0f0f0",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": false,
   "usingComponents": {
@@ -11,7 +10,8 @@
     "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index",
     "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
     "lix-btn": "../../components/create-order-btn/index",
-    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index"
+    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index",
+    "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index"
   }
 }
 

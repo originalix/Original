@@ -1,4 +1,11 @@
 <view>
-	<text>Hello world</text>
+	<!-- 余额显示视图 -->
+	<view class="balance-view">
+		<view class="text-center transform-center">
+			<text class="font-26 color-3e mgr-40">余额</text>
+			<text class="font-43 color-ff43">￥0</text>
+		</view>
+	</view>
+
 </view>
 

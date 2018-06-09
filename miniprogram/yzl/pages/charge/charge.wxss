@@ -1,0 +1,46 @@
+page {
+	background-color: #f3f7fa;
+}
+
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+}
+
+.transform-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.mgr-40 {
+	margin-right: 40rpx;
+}
+
+.balance-view {
+	height: 160rpx;
+	width: 100%;
+	background-color: white;
+}
+
+.font-26 {
+	font-size: 26rpx;
+}
+
+.color-3e {
+	color: #3e3e3e;
+}
+
+.font-43 {
+	font-size: 43rpx;
+}
+
+.color-ff43 {
+	color: #ff435e;
+}
+
+.text-center {
+	text-align: center;
+}
+
