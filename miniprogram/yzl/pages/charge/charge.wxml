@@ -18,10 +18,18 @@
 			data-idx="{{idx}}"
 		>
 		  <view class="cell {{idx == currentIdx ? 'activeli' : ''}}">
-				<text class="title color-active">{{item.value}}元</text>
-				<text class="des">赠送：{{item.gift}}元</text>
+				<text class="title {{idx == currentIdx ? 'color-active' : ''}}">{{item.value}}元</text>
+				<text class="des {{idx == currentIdx ? 'color-active' : ''}}">赠送：{{item.gift}}元</text>
 			</view>
 		</view>
+	</view>
+
+	<view class="input-wrap">
+		<wxc-input type="number" mode="wrapped" placeholder="手动输入充值金额"></wxc-input>
+	</view>
+
+	<view class="btn-wrap">
+		<lix-btn type="charge" disabled>立即充值</lix-btn>
 	</view>
 
 </view>

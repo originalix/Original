@@ -11,7 +11,8 @@
     "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
     "lix-btn": "../../components/create-order-btn/index",
     "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index",
-    "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index"
+    "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
+    "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index"
   }
 }
 
