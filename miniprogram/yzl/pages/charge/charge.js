@@ -50,6 +50,21 @@ Page({
 			disabled: false
 		})
 		console.log(tapIdx)
+	},
+	// 输入框的输入事件
+	handleInput (e) {
+		console.log('输入事件')
+		console.log(e)
+	},
+	// 输入框获取到焦点的事件
+	handleFocus (e) {
+		console.log('获取焦点')
+		console.log(e)
+	},
+	// 输入框失去焦点事件
+	handleBlur (e) {
+		console.log('失去焦点')
+		console.log(e)
 	}
 })
 

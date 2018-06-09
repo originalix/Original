@@ -25,7 +25,14 @@
 	</view>
 
 	<view class="input-wrap">
-		<wxc-input type="number" mode="wrapped" placeholder="手动输入充值金额"></wxc-input>
+		<wxc-input type="number"
+			mode="wrapped"
+			placeholder="手动输入充值金额"
+			bind:input="handleInput"
+			bind:focus="handleFocus"
+			bind:Blur="handleBlur"
+			>
+		</wxc-input>
 	</view>
 
 	<view class="btn-wrap">
