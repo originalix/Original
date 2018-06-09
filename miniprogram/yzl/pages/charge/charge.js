@@ -6,7 +6,7 @@ var appInstance = getApp()
 Page({
 	data: {
 		list: [],
-		currentIdx: 9999
+		currentIdx: 1
 	},
 	onLoad () {
 		this.getChargeList()
@@ -41,6 +41,13 @@ Page({
 		this.setData({
 			list: list 
 		})
+	},
+	onClick (e) {
+		let tapIdx = e.currentTarget.dataset.idx
+		this.setData({
+			currentIdx: tapIdx
+		})
+		console.log(tapIdx)
 	}
 })
 

@@ -14,9 +14,13 @@
 			wx:for-item="item"
 			wx:for-index="idx"
 			wx:key="idx"
+			bindtap="onClick"
+			data-idx="{{idx}}"
 		>
-			<text class="title">{{item.value}}元</text>
-			<text class="des">赠送：{{item.gift}}元</text>
+		  <view class="cell {{idx == currentIdx ? 'activeli' : ''}}">
+				<text class="title color-active">{{item.value}}元</text>
+				<text class="des">赠送：{{item.gift}}元</text>
+			</view>
 		</view>
 	</view>
 

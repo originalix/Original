@@ -77,3 +77,16 @@ page {
 	color: #bbc1cc;
 }
 
+.activeli {
+	border: 1rpx solid #00dbf5;
+}
+
+.color-active {
+	color: #00dbf5;
+}
+
+.cell {
+	width: 100%;
+	height: 100%;
+}
+
