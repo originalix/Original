@@ -30,7 +30,7 @@ class ChargeOrderForm extends Model
     public function rules()
     {
         return [
-           [['type'], required, 'message' => '{attribute}未提交'],
+           [['type'], 'required', 'message' => '{attribute}未提交'],
            [['type', 'product_id'], 'integer'],
            [['input_amount'], 'number'],
         ];
@@ -86,6 +86,8 @@ class ChargeOrderForm extends Model
             if (! $order->save()) {
                 throw new HttpException(421, array_values($order->getFirstErrors())[0]);
             }
+
+            // TODO: 保存消费日志
 
             $transaction->commit();
         } catch (Exception $e) {

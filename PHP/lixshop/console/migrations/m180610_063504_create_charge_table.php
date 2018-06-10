@@ -25,7 +25,7 @@ class m180610_063504_create_charge_table extends Migration
         // 充值订单表
         $this->createTable('{{%charge_order}}', [
             'id' => $this->primaryKey(),
-            'trade_no' => $this->integer()->defaultValue(NULL)->comment('订单号'),
+            'trade_no' => $this->string(32)->defaultValue(NULL)->comment('订单号'),
             'order_status' => $this->integer(2)->defaultValue(1)->comment('订单状态，1未付款，2已付款，3已完成'),
             'total_amount' => $this->decimal(12, 2)->defaultValue(0)->comment('订单总价'),
             'discount_amount' => $this->decimal(12, 2)->defaultValue(NULL)->comment('折扣价格'),
@@ -33,7 +33,7 @@ class m180610_063504_create_charge_table extends Migration
             'customer_id' => $this->integer(15)->defaultValue(NULL)->comment('顾客id'),
             'customer_group' => $this->integer(15)->defaultValue(NULL)->comment('顾客分组'),
             'remote_ip' => $this->string(50)->comment('ip地址'),
-            'payment_method' => $this->string(20)->notNull()->comment('支付方式'),
+            'payment_method' => $this->string(20)->defaultValue(NULL)->comment('支付方式'),
             'txn_id' => $this->string(30)->defaultValue(NULL)->comment('Transaction Id 支付平台唯一交易号,通过这个可以在第三方支付平台查找订单'),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)

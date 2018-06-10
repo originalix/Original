@@ -5,6 +5,7 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\components\BaseController;
 use api\models\charge\ChargeProductSearch;
+use api\models\charge\ChargeOrderForm;
 
 class ChargeController extends BaseController
 {
@@ -28,6 +29,11 @@ class ChargeController extends BaseController
 
     public function actionCreate()
     {
+        $model = new ChargeOrderForm();
+        if (! $model->load(Yii::$app->request->post(), '')) {
+            throw new \yii\web\HttpException(421, '创建充值订单失败');
+        }
 
+        return $model->create();
     }
 }

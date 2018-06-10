@@ -55,7 +55,7 @@ class ChargeOrder extends \yii\db\ActiveRecord
         return [
             [['trade_no', 'order_status', 'customer_id', 'customer_group'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
-            [['payment_method'], 'required'],
+            // [['payment_method'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['remote_ip'], 'string', 'max' => 50],
             [['payment_method'], 'string', 'max' => 20],
