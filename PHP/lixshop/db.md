@@ -72,8 +72,8 @@ id amount gift discount
 充值订单表
 id trade_no order_status total_amount discount_amount real_amount customer_id customer_group remote_ip payment_method txn_id created_at updated_at
 
-
-
+余额记录表
+id customer_id type amount mark balance
 
 ## Mongodb
 
