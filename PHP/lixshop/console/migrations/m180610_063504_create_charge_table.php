@@ -39,6 +39,7 @@ class m180610_063504_create_charge_table extends Migration
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
 
+        // 消费记录表
         $this->createTable('{{%balance_log}}', [
             'id' => $this->primaryKey(),
             'customer_id' => $this->integer(15)->defaultValue(NULL)->comment('顾客id'),
@@ -49,6 +50,10 @@ class m180610_063504_create_charge_table extends Migration
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null)
         ]);
+
+        // 在用户表中 增加余额字段
+        $this->addColumn('{{%customer}}', 'charge', $this->decimal(12, 2)->defaultValue(0.00)->comment('账户余额'));
+
     }
 
     /**
@@ -56,6 +61,8 @@ class m180610_063504_create_charge_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('charge');
+        $this->dropTable('{{%charge_product}}');
+        $this->dropTable('{{%charge_order}}');
+        $this->dropTable('{{%balance_log}}');
     }
 }
