@@ -13,4 +13,10 @@ class ChargeController extends BaseController
         $model = new ChargeProductSearch();
         return $model->search();
     }
+
+    public function actionMock()
+    {
+        $model = new ChargeProductSearch();
+        return $model->mock();
+    }
 }
