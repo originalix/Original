@@ -43,12 +43,12 @@ class ChargeOrderForm extends Model
         }
 
         // type 为1 读取充值商品表 为属性赋值
-        if ($type === static::CHOOSE_CHARGE_PRODUCT) {
-            if (is_null($product_id)) {
+        if ($this->type === static::CHOOSE_CHARGE_PRODUCT) {
+            if (is_null($this->product_id)) {
                 throw new HttpException(201, '商品参数缺失');
             }
 
-            $product = ChargeProduct::findOne($product_id);
+            $product = ChargeProduct::findOne($this->product_id);
             if (is_null($product)) {
                 throw new HttpException(202, '充值商品查询失败');
             }
@@ -63,15 +63,57 @@ class ChargeOrderForm extends Model
                 $this->real_amount = $product->amount * ($product->discount / 100);
                 $this->discount_amount = $this->total_amount - $this->real_amount;
             }
+        } else if ($this->type === static::INPUT_CHARGE_AMOUNT) {
+            // type 为2 自己为属性赋值 
+            if (is_null($input_amount)) {
+                throw new HttpException(202, '未输入商品金额');
+            }
 
+            $this->total_amount = $this->input_amount;
+            $this->real_amount = $this->input_amount;
+            $this->discount_amount = 0;
         }
 
-        // type 为2 自己为属性赋值 
+        // 生成订单号
+        $this->trade_no = $this->generatorTradeNo();
+        $order = $this->createOrderModel();
 
         // 开启事务
+        $transaction = Yii::$app->db->beginTransaction();
 
-        // 生成订单号
+        try {
+            // 保存订单
+            if (! $order->save()) {
+                throw new HttpException(421, array_values($order->getFirstErrors())[0]);
+            }
 
-        // 保存订单
+            $transaction->commit();
+        } catch (Exception $e) {
+            $transaction->rollBack();
+            throw new HttpException(421, $e->getMessage());
+        }
+
+        return $order->attributes;
+    }
+
+    protected function createOrderModel()
+    {
+        $model = new ChargeOrder();
+        $model->setAttributes([
+            'trade_no' => $this->trade_no,
+            'order_status' => 1,
+            'total_amount' => $this->total_amount,
+            'discount_amount' => $this->discount_amount,
+            'real_amount' => $this->real_amount,
+            'customer_id' => Yii::$app->user->identity->id,
+            'remote_ip' => Yii::$app->request->userIP,
+        ]);
+
+        return $model;
+    }
+
+    protected function generatorTradeNo()
+    {
+        return date('Ymd', time()).time().mt_rand(1000,9999);
     }
 }
