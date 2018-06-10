@@ -99,4 +99,3 @@ class OrderSearch extends Order
         ];
     }
 }
-
