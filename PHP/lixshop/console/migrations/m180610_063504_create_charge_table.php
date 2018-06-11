@@ -44,7 +44,7 @@ class m180610_063504_create_charge_table extends Migration
             'id' => $this->primaryKey(),
             'customer_id' => $this->integer(15)->defaultValue(NULL)->comment('顾客id'),
             'type' => $this->integer(2)->defaultValue(NULL)->comment('消费类型, 1消费，2充值'),
-            'amount' => $this->integer(12)->defaultValue(NULL)->comment('消费金额'),
+            'amount' => $this->decimal(12, 2)->defaultValue(NULL)->comment('消费金额'),
             'mark' => $this->string(255)->defaultValue(NULL)->comment('消费描述'),
             'balance' => $this->decimal(12, 2)->defaultValue(NULL)->comment('当前余额'),
             'created_at' => $this->timestamp(),

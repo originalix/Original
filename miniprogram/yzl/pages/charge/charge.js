@@ -173,6 +173,11 @@ Page({
 			'data': res,
 			'success': function (res) {
 				console.log('支付完成后的操作')
+				wx.showToast({
+					title: '支付成功',
+					icon: 'success',
+					duration: 2000
+				})
 			},
 			'fail': function (error) {
 				console.log('支付失败后的操作')
