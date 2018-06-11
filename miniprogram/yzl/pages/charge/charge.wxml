@@ -37,7 +37,7 @@
 	</view>
 
 	<view class="btn-wrap">
-		<lix-btn type="charge" disabled="{{disabled}}">立即充值</lix-btn>
+		<lix-btn type="charge" disabled="{{disabled}}" bindtap="createChargeOrder">立即充值</lix-btn>
 	</view>
 
 </view>

@@ -63,6 +63,13 @@ Page({
 			disabled: false,
 			type: 2
 		})
+
+		if (value.length < 1) {
+			this.setData({
+				disabled: true,
+				type: 0
+			})
+		}
 	},
 	// 输入框获取到焦点的事件
 	handleFocus (e) {
@@ -82,6 +89,15 @@ Page({
 		console.log(e)
 	},
 	createChargeOrder () {
+		if (this.data.type !== 1 || this.data.type !== 2) {
+			console.log(this.data.type)
+			wx.showToast({
+				title: '请选择或填写正确的充值金额',
+				icon: 'none',
+				duration: 1000
+			})
+			return
+		}
 		let params = {}
 		if (this.data.type === 1) {
 			params = {
