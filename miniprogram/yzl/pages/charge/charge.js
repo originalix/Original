@@ -18,6 +18,7 @@ Page({
 		this.getUserInfo()
 		this.getChargeList()
 	},
+	// 获取充值商品列表
 	getChargeList () {
 		let that = this
 		chargeUtils.getChargeList({
@@ -32,6 +33,7 @@ Page({
 			}
 		})
 	},
+	// 获取用户信息
 	getUserInfo () {
 		let that = this
 		chargeUtils.getUserMe({
@@ -48,6 +50,7 @@ Page({
 			}
 		})
 	},
+	// 充值列表的点击事件
 	onClick (e) {
 		let tapIdx = e.currentTarget.dataset.idx
 		this.setData({
@@ -90,6 +93,7 @@ Page({
 		console.log('失去焦点')
 		console.log(e)
 	},
+	// 创建充值订单
 	createChargeOrder () {
 		let type = this.data.type
 		if (type === 0) {
