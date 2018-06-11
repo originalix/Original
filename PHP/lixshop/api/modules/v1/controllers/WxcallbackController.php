@@ -7,6 +7,8 @@ use api\utils\WeEncryption;
 use common\models\WxOrderNotify;
 use common\models\SalesFlatOrder;
 use common\models\ChargeOrder;
+use common\models\Customer;
+use common\models\BalanceLog;
 
 class WxcallbackController extends \yii\web\Controller
 {
@@ -164,8 +166,27 @@ class WxcallbackController extends \yii\web\Controller
             ->one();
         $order->payment_method = 'wechat';
         $order->txn_id = $txn_id;
-        $order->order_status = 2;
+        $order->order_status = 3;
         $order->save();
+        $this->updateChargeOrder($order->total_amount, $order->customer_id);
+    }
+    
+    /**
+     * 更新用户余额字段 更新充值日志表记录
+     */
+    function updateCustomerCharge($total_amount, $customer_id)
+    {
+        $customer = Customer::findOne($customer_id);
+        $new_charge = $customer->charge + $total_amount;
+        $customer->charge = $new_charge;
+        $customer->save();
+
+        $log = new BalanceLog();
+        $log->customer_id = $customer_id;
+        $log->type = 2;
+        $log->amount = $total_amount;
+        $log->mark = '充值'.$total_amount.'元';
+        $log->save();
     }
 }
 
