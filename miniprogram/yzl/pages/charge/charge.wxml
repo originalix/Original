@@ -3,7 +3,7 @@
 	<view class="balance-view">
 		<view class="text-center transform-center">
 			<text class="font-26 color-3e mgr-40">余额</text>
-			<text class="font-43 color-ff43">￥0</text>
+			<text class="font-43 color-ff43">￥{{balance}}</text>
 		</view>
 	</view>
 
@@ -18,7 +18,7 @@
 			data-idx="{{idx}}"
 		>
 		  <view class="cell {{idx == currentIdx ? 'activeli' : ''}}">
-				<text class="title {{idx == currentIdx ? 'color-active' : ''}}">{{item.value}}元</text>
+				<text class="title {{idx == currentIdx ? 'color-active' : ''}}">{{item.amount}}元</text>
 				<text class="des {{idx == currentIdx ? 'color-active' : ''}}">赠送：{{item.gift}}元</text>
 			</view>
 		</view>

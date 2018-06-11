@@ -1,6 +1,9 @@
 var config = require('../config.js')
 var appInstance = getApp()
 
+/**
+ *  获取充值列表api
+ */
 const getChargeList = (data) => {
 	wx.request({
 		url: config.service.getChargeListUrl,
@@ -27,6 +30,9 @@ const getChargeList = (data) => {
 	})
 }
 
+/**
+ * 创建充值订单接口
+ */
 const createChargeOrder = (data) => {
 	wx.request({
 		url:config.service.createChargeOrderUrl,
@@ -53,6 +59,9 @@ const createChargeOrder = (data) => {
 	})
 }
 
+/**
+ * 获取用户信息接口 
+ */ 
 const getUserMe = (data) => {
 	wx.request({
 		url: config.service.getUserMe,
@@ -80,6 +89,8 @@ const getUserMe = (data) => {
 }
 
 module.exports = {
-	getChargeList
+	getChargeList,
+	createChargeOrder,
+	getUserMe
 }
 

@@ -41,9 +41,9 @@ var config = {
 			// 获取充值商品列表
 			getChargeListUrl: `${base_host}/v1/charge/list`,
 			// 创建充值订单
-			createChargeOrderUrl: `{$base_host}/v1/charge/create`,
+			createChargeOrderUrl: `${base_host}/v1/charge/create`,
 			// 获取用户信息
-			getUserMe: `{$base_host}/v1/user/me`,
+			getUserMe: `${base_host}/v1/user/me`,
     }
 };
 

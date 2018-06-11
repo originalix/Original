@@ -1,6 +1,7 @@
 var config = require('../../config.js');
 var util = require('../../utils/util.js');
 var orderUtils = require('../../utils/order.js');
+var chargeUtils = require('../../utils/charge.js');
 var appInstance = getApp()
 
 Page({
@@ -8,40 +9,39 @@ Page({
 		list: [],
 		currentIdx: 9999,
 		disabled: true,
-		inputValue: ''
+		inputValue: '',
+		balance: 0
 	},
 	onLoad () {
+		this.getUserInfo()
 		this.getChargeList()
 	},
 	getChargeList () {
-		let list = [
-			{
-				value: 2000,
-				gift: 500
+		let that = this
+		chargeUtils.getChargeList({
+			'success': function (res) {
+				console.log('列表成功回调')
+				that.setData({
+					list: res
+				})
 			},
-			{
-				value: 500,
-				gift: 80
+			'fail': function (error) {
+				console.log('列表失败回调')
+			}
+		})
+	},
+	getUserInfo () {
+		let that = this
+		chargeUtils.getUserMe({
+			'success': function (res) {
+				console.log(res)
+				that.setData({
+					balanace: res.charge
+				})
 			},
-			{
-				value: 1000,
-				gift: 230
-			},
-			{
-				value: 300,
-				gift: 40
-			},
-			{
-				value: 5000,
-				gift: 1400
-			},
-			{
-				value: 10000,
-				gift: 3000
-			},
-		]
-		this.setData({
-			list: list 
+			'fail': function (error) {
+				console.log('用户信息获取失败')
+			}
 		})
 	},
 	onClick (e) {
