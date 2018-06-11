@@ -67,7 +67,7 @@ class ChargeOrderForm extends Model
             }
         } else if ($this->type === static::INPUT_CHARGE_AMOUNT) {
             // type 为2 自己为属性赋值 
-            if (is_null($input_amount)) {
+            if (is_null($this->input_amount)) {
                 throw new HttpException(202, '未输入商品金额');
             }
 

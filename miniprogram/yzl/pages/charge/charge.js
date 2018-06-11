@@ -38,7 +38,9 @@ Page({
 			'success': function (res) {
 				console.log(res)
 				that.setData({
-					balanace: res.charge
+					balance: res.charge
+				}, function () {
+					console.log(this.data.balance)
 				})
 			},
 			'fail': function (error) {
@@ -89,7 +91,8 @@ Page({
 		console.log(e)
 	},
 	createChargeOrder () {
-		if (this.data.type !== 1 || this.data.type !== 2) {
+		let type = this.data.type
+		if (type === 0) {
 			console.log(this.data.type)
 			wx.showToast({
 				title: '请选择或填写正确的充值金额',
@@ -99,15 +102,15 @@ Page({
 			return
 		}
 		let params = {}
-		if (this.data.type === 1) {
+		if (type === 1) {
 			params = {
 				'type': type,
 				'product_id': this.data.list[currentIdx].id
 			}	
-		} else if (this.data.type === 2) {
+		} else if (type === 2) {
 			params = {
 				'type': type,
-				'input_amount': inputValue
+				'input_amount': this.data.inputValue
 			}
 		}
 
