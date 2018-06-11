@@ -38,6 +38,12 @@ var config = {
 			getOrderListUrl: `${base_host}/v1/order/index`,
 			// 获取订单详情接口
 			getOrderDetailUrl: `${base_host}/v1/order/detail`,
+			// 获取充值商品列表
+			getChargeListUrl: `${base_host}/v1/charge/list`,
+			// 创建充值订单
+			createChargeOrderUrl: `{$base_host}/v1/charge/create`,
+			// 获取用户信息
+			getUserMe: `{$base_host}/v1/user/me`,
     }
 };
 

@@ -9,6 +9,8 @@ use yii\db\Exception;
 use api\models\charge\ChargeOrder;
 use common\models\ChargeProduct;
 use api\filters\HttpApiAuth;
+use common\models\Customer;
+use common\models\BalanceLog;
 
 class ChargeOrderForm extends Model
 {
@@ -88,6 +90,8 @@ class ChargeOrderForm extends Model
             }
 
             // TODO: 保存消费日志
+
+            // TODO: 更新用户余额字段
 
             $transaction->commit();
         } catch (Exception $e) {
