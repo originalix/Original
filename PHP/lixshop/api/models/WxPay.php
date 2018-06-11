@@ -21,7 +21,7 @@ class WxPay extends Model
 
     public $spbill_create_ip;
     private $encpt;
-    private $url = 'https://api.yzl1030.com/v1/wxcallback/index';
+    private $url;
     private $curl;
 
     function __construct()
@@ -61,6 +61,8 @@ class WxPay extends Model
             if (is_null($order)) {
                 throw new HttpException(210, '该订单未被创建');
             }
+
+            $this->encpt->setNotifyUrl('https://api.yzl1030.com/v1/wxcallback/index');
         } else if ($this->type == static::CHARGE_ORDER) {
             $order = ChargeOrder::find()
                 ->where(['trade_no' => $this->out_trade_no, 'customer_id' => Yii::$app->user->identity->id])
@@ -69,6 +71,7 @@ class WxPay extends Model
             if (is_null($order)) {
                 throw new HttpException(210, '该订单未被创建');
             }
+            $this->encpt->setNotifyUrl('https://api.yzl1030.com/v1/wxcallback/charge');
         } else {
             throw new HttpException(210, '订单类型不正确');
         }

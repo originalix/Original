@@ -6,6 +6,7 @@ use Yii;
 use api\utils\WeEncryption;
 use common\models\WxOrderNotify;
 use common\models\SalesFlatOrder;
+use common\models\ChargeOrder;
 
 class WxcallbackController extends \yii\web\Controller
 {
@@ -147,6 +148,16 @@ class WxcallbackController extends \yii\web\Controller
     function updateOrder($trade_no)
     {
         $order = SalesFlatOrder::find()
+            ->where(['trade_no' => $trade_no])
+            ->one();
+        $order->payment_method = 'wechat';
+        $order->order_status = 2;
+        $order->save();
+    }
+
+    function updateChargeOrder($trade_no)
+    {
+        $order = ChargeOrder::find()
             ->where(['trade_no' => $trade_no])
             ->one();
         $order->payment_method = 'wechat';
