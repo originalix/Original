@@ -54,7 +54,7 @@ class WxcallbackController extends \yii\web\Controller
         $sign = $encpt->getSign($data);
         if ($sign == $obj['sign']) {
             Yii::warning('签名校验成功', 'order');
-            $this->updateOrder($obj['out_trade_no']);
+            $this->updateOrder($obj['out_trade_no'], $obj['transaction_id']);
             $reply = "<xml>
 					<return_code><![CDATA[SUCCESS]]></return_code>
 					<return_msg><![CDATA[OK]]></return_msg>
@@ -105,7 +105,7 @@ class WxcallbackController extends \yii\web\Controller
         if ($sign == $obj['sign']) {
             Yii::warning('签名校验成功', 'order');
             // $this->updateOrder($obj['out_trade_no']);
-            $this->updateChargeOrder($obj['out_trade_no']);
+            $this->updateChargeOrder($obj['out_trade_no'], $obj['transaction_id']);
             $reply = "<xml>
 					<return_code><![CDATA[SUCCESS]]></return_code>
 					<return_msg><![CDATA[OK]]></return_msg>
@@ -146,22 +146,24 @@ class WxcallbackController extends \yii\web\Controller
         return $data;  
     }
 
-    function updateOrder($trade_no)
+    function updateOrder($trade_no, $txn_id)
     {
         $order = SalesFlatOrder::find()
             ->where(['trade_no' => $trade_no])
             ->one();
         $order->payment_method = 'wechat';
         $order->order_status = 2;
+        $order->txn_id = $txn_id;
         $order->save();
     }
 
-    function updateChargeOrder($trade_no)
+    function updateChargeOrder($trade_no, $txn_id)
     {
         $order = ChargeOrder::find()
             ->where(['trade_no' => $trade_no])
             ->one();
         $order->payment_method = 'wechat';
+        $order->txn_id = $txn_id;
         $order->order_status = 2;
         $order->save();
     }
