@@ -48,8 +48,8 @@ class BalanceLog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['customer_id', 'type', 'amount'], 'integer'],
-            [['balance'], 'number'],
+            [['customer_id', 'type'], 'integer'],
+            [['balance', 'amount'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['mark'], 'string', 'max' => 255],
         ];
