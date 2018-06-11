@@ -8,9 +8,13 @@ use api\utils\WeEncryption;
 use api\utils\Curl;
 use yii\web\HttpException;
 use common\models\SalesFlatOrder;
+use common\models\ChargeOrder;
 
 class WxPay extends Model
 {
+    const COMMON_ORDER = 1; // 常规订单，正常渠道下单
+    const CHARGE_ORDER = 2; // 充值订单
+    public $type = 0; // 1 常规订单， 2 充值下单 
     public $body;
     public $out_trade_no;
     public $total_fee;
@@ -32,24 +36,41 @@ class WxPay extends Model
     public function rules()
     {
         return [
-            [['body', 'out_trade_no', 'total_fee'], 'required'],
-            [['total_fee'], 'integer'],
+            [['body', 'out_trade_no', 'total_fee', 'type'], 'required'],
+            [['total_fee', 'type'], 'integer'],
             [['body', 'out_trade_no','spbill_create_ip'], 'string', 'max' => '255'],
         ];
     }
 
+    /**
+     * 创建常规商品支付的微信订单
+     *
+     * @return 微信支付object
+     */
     public function pay()
     {
         if (!$this->validate()) {
             throw new HttpException(418, array_values($this->getFirstErrors())[0]); 
         }
-        
-        $order = SalesFlatOrder::find()
-            ->where(['trade_no' => $this->out_trade_no, 'customer_id' => Yii::$app->user->identity->id])
-            ->one();
+       
+        if ($this->type == static::COMMON_ORDER) {
+            $order = SalesFlatOrder::find()
+                ->where(['trade_no' => $this->out_trade_no, 'customer_id' => Yii::$app->user->identity->id])
+                ->one();
 
-        if (is_null($order)) {
-            throw new HttpException(210, '该订单未被创建');
+            if (is_null($order)) {
+                throw new HttpException(210, '该订单未被创建');
+            }
+        } else if ($this->type == static::CHARGE_ORDER) {
+            $order = ChargeOrder::find()
+                ->where(['trade_no' => $this->out_trade_no, 'customer_id' => Yii::$app->user->identity->id])
+                ->one();
+
+            if (is_null($order)) {
+                throw new HttpException(210, '该订单未被创建');
+            }
+        } else {
+            throw new HttpException(210, '订单类型不正确');
         }
 
         $data = array (

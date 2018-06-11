@@ -19,7 +19,62 @@ class WxcallbackController extends \yii\web\Controller
         return ['code' => 200];
     }
 
+    /**
+     * 常规商品支付的微信回调
+     *
+     * @return xml
+     */
     public function actionIndex()
+    {
+        Yii::warning('接收数据 ============= start ==============', 'order');
+        $postXML = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
+        Yii::warning($postXML, 'order');
+        Yii::warning('接收数据 ============= end ==============', 'order');
+        Yii::warning('订单回调', 'order');
+
+        // 接收解析数据，并保存入数据库
+        $encpt = WeEncryption::getInstance();
+        $obj = $encpt->getNotifyData();
+        if ($obj) {
+            $array =  $this->object2array($obj);
+            $model = WxOrderNotify::find()
+                ->where(['out_trade_no' => $array['out_trade_no']])
+                ->one();
+            if (is_null($model)) {
+                $model = new WxOrderNotify();
+            }
+            $model->setAttributes($array, false);
+            $model->save();
+        }
+
+        // 拷贝数组 去除里面的sign字段签名
+        $data = $array;
+        $data = $this->array_remove($data, 'sign');
+        $sign = $encpt->getSign($data);
+        if ($sign == $obj['sign']) {
+            Yii::warning('签名校验成功', 'order');
+            $this->updateOrder($obj['out_trade_no']);
+            $reply = "<xml>
+					<return_code><![CDATA[SUCCESS]]></return_code>
+					<return_msg><![CDATA[OK]]></return_msg>
+				</xml>";
+        } else {
+            Yii::warning('签名校验失败', 'order');
+            $reply = "<xml>
+					<return_code><![CDATA[FAIL]]></return_code>
+					<return_msg><![CDATA[签名失败]]></return_msg>
+				</xml>";
+        }
+
+		echo $reply;
+    }
+
+    /**
+     * 充值类型订单的微信支付回调
+     *
+     * @return xml
+     */
+    public function actionCharge()
     {
         Yii::warning('接收数据 ============= start ==============', 'order');
         $postXML = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
