@@ -10,7 +10,9 @@ Page({
 		currentIdx: 9999,
 		disabled: true,
 		inputValue: '',
-		balance: 0
+		balance: 0,
+		// 1是点选金额，2是手动输入
+		type: 0,
 	},
 	onLoad () {
 		this.getUserInfo()
@@ -48,16 +50,18 @@ Page({
 		let tapIdx = e.currentTarget.dataset.idx
 		this.setData({
 			currentIdx: tapIdx,
-			disabled: false
+			disabled: false,
+			inputValue: '',
+			type: 1
 		})
-		console.log(tapIdx)
 	},
 	// 输入框的输入事件
 	handleInput (e) {
 		let value = e.detail.value
 		this.setData({
 			inputValue: value,
-			disabled: false
+			disabled: false,
+			type: 2
 		})
 	},
 	// 输入框获取到焦点的事件
@@ -76,6 +80,32 @@ Page({
 	handleBlur (e) {
 		console.log('失去焦点')
 		console.log(e)
+	},
+	createChargeOrder () {
+		let params = {}
+		if (this.data.type === 1) {
+			params = {
+				'type': type,
+				'product_id': this.data.list[currentIdx].id
+			}	
+		} else if (this.data.type === 2) {
+			params = {
+				'type': type,
+				'input_amount': inputValue
+			}
+		}
+
+		let data = {
+			'params': params,
+			'success': function (res) {
+				console.log(res)
+			},
+			'fail': function (error) {
+				console.log(error)
+			}
+		}
+
+		chargeUtils.createChargeOrder(data)
 	}
 })
 

@@ -28,6 +28,7 @@
 		<wxc-input type="number"
 			mode="wrapped"
 			placeholder="手动输入充值金额"
+			value="{{inputValue}}"
 			bind:input="handleInput"
 			bind:focus="handleFocus"
 			bind:Blur="handleBlur"
