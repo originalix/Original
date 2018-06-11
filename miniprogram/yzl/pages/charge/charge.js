@@ -129,6 +129,29 @@ Page({
 		}
 
 		chargeUtils.createChargeOrder(data)
+	},
+	/**
+	 * 创建微信支付订单，微信支付统一下单接口
+	 */
+	createWxOrder (trade_no, total_fee) {
+		var that = this
+		orderUtils.getPayParams({
+			'trade_no': trade_no,
+			'total_fee': total_fee,
+			'type': 2,
+			'success': function (res) {
+				// 根据返回参数 拉起微信支付
+			},
+			'fail': function (error) {
+				if (typeof error == 'string' || error instanceof String) {
+					wx.showToast({
+						title: error,
+						icon: 'none',
+						duration: 2000
+					})
+				}
+			}
+		})
 	}
 })
 

@@ -15,7 +15,8 @@ const getPayParams = (data) => {
 		data: {
 			'body': '衣之恋-干洗',
 			'out_trade_no': data.trade_no,
-			'total_fee': data.total_fee
+			'total_fee': data.total_fee,
+			'type': data.type
 		},
 		method: 'POST',
 		success: function (res) {

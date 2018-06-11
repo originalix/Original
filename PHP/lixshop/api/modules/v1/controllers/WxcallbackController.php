@@ -105,6 +105,7 @@ class WxcallbackController extends \yii\web\Controller
         if ($sign == $obj['sign']) {
             Yii::warning('签名校验成功', 'order');
             // $this->updateOrder($obj['out_trade_no']);
+            $this->updateChargeOrder($obj['out_trade_no']);
             $reply = "<xml>
 					<return_code><![CDATA[SUCCESS]]></return_code>
 					<return_msg><![CDATA[OK]]></return_msg>

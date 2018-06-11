@@ -160,6 +160,7 @@ Page({
 		orderUtils.getPayParams({
 			'trade_no': trade_no,
 			'total_fee': total_fee,
+			'type': 1,
 			'success': function (res) {
 				that.createWxPay(res)
 			},
