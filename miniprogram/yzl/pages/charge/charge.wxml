@@ -37,8 +37,19 @@
 	</view>
 
 	<view class="btn-wrap">
-		<lix-btn type="charge" disabled="{{disabled}}" bindtap="createChargeOrder">立即充值</lix-btn>
+		<lix-btn type="charge" disabled="{{disabled}}" bindtap="showPayActionsheet">立即充值</lix-btn>
 	</view>
 
+	<view class="actionsheet-container">
+		<!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
+		<zan-actionsheet
+			show="{{ payActionsheetShow }}"
+			actions="{{ payActions }}"
+			cancel-with-mask="{{ payActionsheetShow }}"
+			bind:cancel="closePayActionsheet"
+			bind:actionclick="handlePayActionClick"
+		>
+		</zan-actionsheet>
+	</view>
 </view>
 

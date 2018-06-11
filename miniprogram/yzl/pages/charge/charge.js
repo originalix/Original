@@ -13,6 +13,11 @@ Page({
 		balance: 0,
 		// 1是点选金额，2是手动输入
 		type: 0,
+		payActionsheetShow: false,
+		payActions: [{
+			name: '微信支付'
+		}],
+		isShowPayView: true,
 	},
 	onLoad () {
 		this.getUserInfo()
@@ -95,6 +100,7 @@ Page({
 	},
 	// 创建充值订单
 	createChargeOrder () {
+		let that = this
 		let type = this.data.type
 		if (type === 0) {
 			console.log(this.data.type)
@@ -107,9 +113,10 @@ Page({
 		}
 		let params = {}
 		if (type === 1) {
+			let product = this.data.list[this.data.currentIdx]
 			params = {
 				'type': type,
-				'product_id': this.data.list[currentIdx].id
+				'product_id': product.id
 			}	
 		} else if (type === 2) {
 			params = {
@@ -122,6 +129,10 @@ Page({
 			'params': params,
 			'success': function (res) {
 				console.log(res)
+				if (res.trade_no !== undefined && res.real_amount !== undefined) {
+					let total_fee = res.real_amount * 100
+					that.createWxOrder(res.trade_no, total_fee)
+				}		
 			},
 			'fail': function (error) {
 				console.log(error)
@@ -141,6 +152,7 @@ Page({
 			'type': 2,
 			'success': function (res) {
 				// 根据返回参数 拉起微信支付
+				that.createWxPay(res)
 			},
 			'fail': function (error) {
 				if (typeof error == 'string' || error instanceof String) {
@@ -151,6 +163,49 @@ Page({
 					})
 				}
 			}
+		})
+	},
+	/**
+	 * 使用JSAPI 调起微信支付
+	 */
+	createWxPay (res) {
+		const params = {
+			'data': res,
+			'success': function (res) {
+				console.log('支付完成后的操作')
+			},
+			'fail': function (error) {
+				console.log('支付失败后的操作')
+			}
+		}	
+
+		orderUtils.createWxPay(params)
+	},
+	/**
+	 *  显示微信支付弹窗
+	 */
+	showPayActionsheet () {
+		this.setData({
+			payActionsheetShow: true,
+			isShowPayView: false
+		})
+	},
+	/**
+	 * 微信支付的点击事件
+	 */
+	handlePayActionClick () {
+		// this.createOrder()
+		this.createChargeOrder()
+		this.setData({
+			payActionsheetShow: false,
+			isShowPayView: true
+		})
+	},
+	closePayActionsheet () {
+		console.log('取消按钮1！！！')
+		this.setData({
+			payActionsheetShow: false,
+			isShowPayView: true
 		})
 	}
 })
