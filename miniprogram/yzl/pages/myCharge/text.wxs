@@ -1,13 +1,16 @@
 var tools = {
-  valueText: function (item) {
-    let icon = "-"
-    if (item.type === 1) {
-      icon = "-"
-    } else if (item.type === 2) {
-      icon = "+"
+  valueText: function (type, value) {
+    console.log(type)
+    // return 'Hello world'
+    if (type == 1) {
+      return '-' + value
+    } else if (type == 2) {
+      return '+' + value
     }
+    return value
 
-    return icon + item.value
+    // console.log(icon + item.value)
+    // return icon + item.value
   }
 }
 

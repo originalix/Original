@@ -6,15 +6,19 @@ Page({
 		listData: [],
 	},
 	onLoad() {
-		// this.setListData()
+		this.setListData()
 	},
 	setListData () {
 		var list = [];
 		for (var i=0; i<100; i++) {
+			let type = 1
+			if (i % 2 === 0) {
+				type = 2
+			}
 			let data = {
 				'title': '充值',
-				'type': 1,
-				'value': 200
+				'type': type,
+				'value': i
 			}	
 			list.push(data)
 		}

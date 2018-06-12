@@ -18,15 +18,16 @@
 			<view class="listtitle__line"></view>
 		</view>
 		<!-- 列表 -->
+		<wxs module="tools" src="./text.wxs"></wxs>
 		<view class="list-wrap" wx:if="{{listData.length > 0}}">
 			<view class="cell vertical-center"
 				wx:for="{{listData}}"
 				wx:for-item="item"
 				wx:for-idx="idx"
-				wx:for-key="idx"
+				wx:key="idx"
 			>
 				<text class="cell-text font-36">{{item.title}}</text>
-				<text class="cell-value plus">{{item.value}}</text>
+				<text class="cell-value {{item.type == 1 ? 'sub' : 'plus'}}">{{tools.valueText(item.type, item.value)}}</text>
 			</view>
 		</view>
 	</view>
