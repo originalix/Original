@@ -118,8 +118,8 @@ page {
 	color: #51b864;
 }
 
-.font-36 {
-	font-size: 36rpx;
+.font-28 {
+	font-size: 28rpx;
 }
 
 .cell-value {

@@ -1,19 +1,22 @@
 var tools = {
   valueText: function (type, value) {
-    console.log(type)
-    // return 'Hello world'
     if (type == 1) {
       return '-' + value
     } else if (type == 2) {
       return '+' + value
     }
     return value
-
-    // console.log(icon + item.value)
-    // return icon + item.value
+  },
+  titleText: function (type) {
+    if (type == 1) {
+      return '洗衣消费'
+    } else if (type == 2) {
+      return '微信充值'
+    }
   }
 }
 
 module.exports = {
-  valueText: tools.valueText
+  valueText: tools.valueText,
+  titleText: tools.titleText
 }

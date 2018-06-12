@@ -26,8 +26,8 @@
 				wx:for-idx="idx"
 				wx:key="idx"
 			>
-				<text class="cell-text font-36">{{item.title}}</text>
-				<text class="cell-value {{item.type == 1 ? 'sub' : 'plus'}}">{{tools.valueText(item.type, item.value)}}</text>
+			<text class="cell-text font-28">{{tools.titleText(item.type)}}</text>
+				<text class="cell-value {{item.type == 1 ? 'sub' : 'plus'}}">{{tools.valueText(item.type, item.amount)}}</text>
 			</view>
 		</view>
 	</view>

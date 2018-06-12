@@ -9,8 +9,28 @@ Page({
 	},
 	onLoad() {
 		this.getUserInfo()
+		this.getListData()
 	},
 	getListData () {
+		let that = this
+		wx.request({
+			url: config.service.getBalanceLog,
+			header: appInstance.requestToken,
+			data: {},
+			success: function (res) {
+				console.log(res.data.data)
+				const code = res.data.code
+				if (code === 200) {
+					const data = res.data.data
+					that.setData({
+						listData: data.items
+					})
+				}
+			},
+			fail: function (error) {
+				
+			}
+		})
 	},
 	// 获取用户信息
 	getUserInfo () {
