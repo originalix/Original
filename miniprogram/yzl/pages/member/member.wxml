@@ -30,7 +30,7 @@
       </view>
     </view>
 
-    <view class="wallet-item">
+    <view class="wallet-item" bindtap="go2MyChargePage">
 			<text class="wallet-value">￥{{userInfo.charge}}</text>
       <view>
         <text class="wallet-key">余额</text>

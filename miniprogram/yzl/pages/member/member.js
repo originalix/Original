@@ -52,5 +52,10 @@ Page({
 
 			}
 		})
+	},
+	go2MyChargePage() {
+		wx.navigateTo({
+			url: '/pages/myCharge/myCharge'
+		})
 	}
 })
