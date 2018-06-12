@@ -1,30 +1,37 @@
 var config = require('../../config.js');
 var appInstance = getApp()
+var chargeUtils = require('../../utils/charge.js');
 
 Page({
 	data: {
 		listData: [],
+		balance: 0,
 	},
 	onLoad() {
-		this.setListData()
+		this.getUserInfo()
 	},
-	setListData () {
-		var list = [];
-		for (var i=0; i<100; i++) {
-			let type = 1
-			if (i % 2 === 0) {
-				type = 2
+	getListData () {
+	},
+	// 获取用户信息
+	getUserInfo () {
+		let that = this
+		chargeUtils.getUserMe({
+			'success': function (res) {
+				console.log(res)
+				that.setData({
+					balance: res.charge
+				}, function () {
+					console.log(this.data.balance)
+				})
+			},
+			'fail': function (error) {
+				console.log('用户信息获取失败')
 			}
-			let data = {
-				'title': '充值',
-				'type': type,
-				'value': i
-			}	
-			list.push(data)
-		}
-
-		this.setData({
-			listData: list
+		})
+	},
+	go2ChargePage () {
+		wx.navigateTo({
+			url: '/pages/charge/charge'
 		})
 	}
 })
