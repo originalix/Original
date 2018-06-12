@@ -6,7 +6,7 @@ Page({
 		listData: [],
 	},
 	onLoad() {
-		this.setListData()
+		// this.setListData()
 	},
 	setListData () {
 		var list = [];
