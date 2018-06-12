@@ -9,7 +9,8 @@
     "pages/createOrder/createOrder",
     "pages/orderDetail/orderDetail",
     "pages/charge/charge",
-    "pages/myCharge/myCharge"
+    "pages/myCharge/myCharge",
+    "pages/myCoupon/myCoupon"
   ],
   "window":{
     "backgroundTextStyle":"black",

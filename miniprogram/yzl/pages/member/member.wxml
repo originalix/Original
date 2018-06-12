@@ -23,7 +23,7 @@
   </view>
   <view class="separate-line"></view>
   <view class="wallet-container">
-    <view class="wallet-item">
+    <view class="wallet-item" bindtap="go2MyCoupon">
 			<text class="wallet-value">{{couponCount}}张</text>
       <view>
         <text class="wallet-key">优惠券</text>

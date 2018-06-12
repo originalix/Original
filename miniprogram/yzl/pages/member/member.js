@@ -57,5 +57,10 @@ Page({
 		wx.navigateTo({
 			url: '/pages/myCharge/myCharge'
 		})
+	},
+	go2MyCoupon () {
+		wx.navigateTo({
+			url: '/pages/myCoupon/myCoupon'
+		})
 	}
 })
