@@ -1,3 +1,6 @@
+var config = require('../config.js')
+var appInstance = getApp()
+
 Page({
   data:{
     list: [
@@ -22,5 +25,20 @@ Page({
 		wx.navigateTo({
 			url: '/pages/charge/charge'
 		})
+	},
+	getProfile () {
+		wx.request({
+			url: config.service.getProfileUrl,
+			header: appInstance.requestToken,
+			data: {},
+			method: 'GET',
+			success: function (res) {
+
+			},
+			fail: function (error) {
+
+			}
+		})
+
 	}
 })

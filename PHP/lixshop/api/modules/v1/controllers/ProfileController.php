@@ -6,6 +6,7 @@ use Yii;
 use api\components\BaseController;
 use common\models\CouponUsage;
 use common\models\Balance;
+use common\models\Customer;
 
 class ProfileController extends BaseController
 {
@@ -13,8 +14,9 @@ class ProfileController extends BaseController
     {
         // 手机号
         $user = Yii::$app->user->identity;
-        $mobile = $user->mobile;
-        $mobile = $this->setSecretMobile($mobile);
+        // $mobile = $user->mobile;
+        // $mobile = $this->setSecretMobile($mobile);
+        // $user = Customer::findOne(Yii::$app->user->identity->id);
 
         // 优惠券
         $coupon = CouponUsage::find()
@@ -25,21 +27,21 @@ class ProfileController extends BaseController
         $couponCount = count($coupon);
 
         // 余额
-        $balance = 0.00;
-        $balanceModel = Balance::find()
-            ->where(['customer_id' => $user->id])
-            ->one();
-        if (!is_null($balanceModel)) {
-            $balance = $balanceModel->balance;
-        }
+        // $balance = 0.00;
+        // $balanceModel = Balance::find()
+            // ->where(['customer_id' => $user->id])
+            // ->one();
+        // if (!is_null($balanceModel)) {
+            // $balance = $balanceModel->balance;
+        // }
 
         // 积分
 
         return [
             'user' => $user,
             'coupon' => $couponCount,
-            'mobile' => $mobile,
-            'balance' => $balance,
+            // 'mobile' => $mobile,
+            // 'balance' => $balance,
         ];
     }
 

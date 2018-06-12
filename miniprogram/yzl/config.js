@@ -44,6 +44,8 @@ var config = {
 			createChargeOrderUrl: `${base_host}/v1/charge/create`,
 			// 获取用户信息
 			getUserMe: `${base_host}/v1/user/me`,
+			// 获取会员页面配置信息
+			getProfileUrl: `${base_host}/v1/profile/index`,
     }
 };
 
