@@ -13,7 +13,7 @@
 		<view class="separate w-80 bg-f6"></view>
 
 		<view class="separate-line">
-			<text class="txt">分隔线文字</text>
+			<view class="txt">分隔线文字</view>
 		</view>
 	</view>
 

@@ -76,16 +76,37 @@ page {
 }
 
 .separate-line {
-	height: 1px;
-	margin-top: 40rpx;
+	position: absolute;
 	text-align: center;
-	border-top: 1rpx solid #e2e2e2;
+	width: 100%;
 }
 
-.txt {
-	position: relative;
-	top: -18rpx;
-	background: #fff;
-	display: inline-block;
+.separate-line view {
+	line-height: 20px;
 }
+
+.separate-line view::after, .separate-line view::before {
+	position: absolute;
+	top: 50%;
+	background: #ddd;
+	content: "";
+	height: 1px;
+	width: 45%;
+}
+
+.separate-line view::before {
+	left: 0;
+}
+
+
+.separate-line view::after {
+	right: 0;
+}
+
+/* .txt { */
+	/* position: relative; */
+	/* top: -18rpx; */
+	/* background: #fff; */
+	/* display: inline-block; */
+/* } */
 
