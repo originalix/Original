@@ -157,6 +157,7 @@ class WxcallbackController extends \yii\web\Controller
         $order->order_status = 2;
         $order->txn_id = $txn_id;
         $order->save();
+        $this->writeLog($order->customer_id, $order->real_amount);
     }
 
     function updateChargeOrder($trade_no, $txn_id)
@@ -186,6 +187,21 @@ class WxcallbackController extends \yii\web\Controller
         $log->type = 2;
         $log->amount = $total_amount;
         $log->mark = '充值'.$total_amount.'元';
+        $log->balance = $customer->charge;
+        $log->save();
+    }
+
+    /**
+     *  产生微信回调后，记录消费日志
+     */
+    function writeLog($customer_id, $real_amount)
+    {
+        $customer = Customer::findOne($customer_id);
+        $log = new BalanceLog();
+        $log->customer_id = $customer_id;
+        $log->type = 1;
+        $log->amount = $real_amount;
+        $log->mark = '消费'.$real_amount.'元';
         $log->balance = $customer->charge;
         $log->save();
     }
