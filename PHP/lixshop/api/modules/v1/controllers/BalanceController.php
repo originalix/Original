@@ -13,6 +13,7 @@ class BalanceController extends BaseController
     {
         $query = BalanceLog::find()
            ->where(['customer_id' => Yii::$app->user->identity->id]); 
+        $query->orderBy(['created_at' => SORT_DESC]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
