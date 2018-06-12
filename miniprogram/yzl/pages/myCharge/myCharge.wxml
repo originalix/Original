@@ -14,13 +14,25 @@
 
 		<view class="listtitle">
 			<view class="listtitle__line"></view>
-			<text class="listtitle__text">分割线文字</text>
+			<text class="listtitle__text">余额明细</text>
 			<view class="listtitle__line"></view>
+		</view>
+		<!-- 列表 -->
+		<view class="list-wrap">
+			<view class="cell"
+				wx:for="{{listData}}"
+				wx:for-item="item"
+				wx:for-idx="idx"
+				wx:for-key="idx"
+			>
+				<text>{{item.title}}</text>
+			</view>
 		</view>
 	</view>
 
-	<view class="list-wrap">
-	
+	<view>
+		<wxc-abnor type="DATA"></wxc-abnor>
 	</view>
+
 </view>
 
