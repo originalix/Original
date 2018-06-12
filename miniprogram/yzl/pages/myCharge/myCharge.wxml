@@ -12,8 +12,10 @@
 		</view>
 		<view class="separate w-80 bg-f6"></view>
 
-		<view class="separate-line">
-			<view class="txt">分隔线文字</view>
+		<view class="listtitle">
+			<view class="listtitle__line"></view>
+			<text class="listtitle__text">分割线文字</text>
+			<view class="listtitle__line"></view>
 		</view>
 	</view>
 
