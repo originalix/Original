@@ -1,11 +1,19 @@
 <view>
-	<view class="header">
-		<view class="separate w-80 mgt-20 bg-f6"></view>
+	<view class="header bg-white">
+		<view class="separate w-80 bg-f6"></view>
 		<view class="charge-wrap vertical-center horizon-center">
 			<view class="horizon-center">
 				<text class="charge-title color-white">余额</text>
 				<text class="charge-value color-white">0.00元</text>
 			</view>
+		</view>
+		<view class="btn-view">
+			<lix-btn size="small" >去充值</lix-btn>
+		</view>
+		<view class="separate w-80 bg-f6"></view>
+
+		<view class="separate-line">
+			<text class="txt">分隔线文字</text>
 		</view>
 	</view>
 

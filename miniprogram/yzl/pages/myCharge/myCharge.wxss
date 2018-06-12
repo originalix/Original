@@ -19,6 +19,7 @@ page {
 }
 
 .header {
+	padding-top: 20rpx;
 	text-align: center;
 	width: 100%;
 }
@@ -30,6 +31,10 @@ page {
 
 .bg-f6 {
 	background-color: #f6f6f6;
+}
+
+.bg-white {
+	background-color: #ffffff;
 }
 
 .w-80 {
@@ -61,5 +66,26 @@ page {
 
 .color-white {
 	color: #ffffff;
+}
+
+.btn-view {
+	/* width: 190rpx; */
+	height: 68rpx;
+	margin-top: 20rpx;
+	/* margin-bottom: 30rpx; */
+}
+
+.separate-line {
+	height: 1px;
+	margin-top: 40rpx;
+	text-align: center;
+	border-top: 1rpx solid #e2e2e2;
+}
+
+.txt {
+	position: relative;
+	top: -18rpx;
+	background: #fff;
+	display: inline-block;
 }
 
