@@ -98,3 +98,34 @@ page {
 	font-size: 24rpx;
 }
 
+.cell {
+	width: 100%;
+	height: 111rpx;
+	background-color: #fff;
+	border-bottom: 1rpx solid #dcdcdc;
+}
+
+.cell-text { 
+	color: #8a8a8a;
+	margin-left: 30rpx;
+}
+
+.plus {
+	color: #ff9901;
+}
+
+.sub {
+	color: #51b864;
+}
+
+.font-36 {
+	font-size: 36rpx;
+}
+
+.cell-value {
+	font-size: 36rpx;
+	order: 20;
+	margin-left: auto;
+	margin-right: 74rpx;
+}
+
