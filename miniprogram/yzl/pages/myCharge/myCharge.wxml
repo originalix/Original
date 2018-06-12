@@ -1,4 +1,14 @@
 <view>
-	<text>Hello World</text>
+	<view class="header">
+		<view class="separate w-70 mgt-20"></view>
+		<view class="charge-wrap">
+			<text class="charge-title color-white">余额</text>
+			<text class="charge-value color-white">0.00元</text>
+		</view>
+	</view>
+
+	<view class="list-wrap">
+	
+	</view>
 </view>
 
