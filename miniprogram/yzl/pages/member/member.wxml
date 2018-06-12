@@ -24,14 +24,14 @@
   <view class="separate-line"></view>
   <view class="wallet-container">
     <view class="wallet-item">
-      <text class="wallet-value">0张</text>
+			<text class="wallet-value">{{couponCount}}张</text>
       <view>
         <text class="wallet-key">优惠券</text>
       </view>
     </view>
 
     <view class="wallet-item">
-      <text class="wallet-value">0张</text>
+			<text class="wallet-value">￥{{userInfo.charge}}</text>
       <view>
         <text class="wallet-key">余额</text>
       </view>

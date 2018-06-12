@@ -1,4 +1,4 @@
-var config = require('../config.js')
+var config = require('../../config.js')
 var appInstance = getApp()
 
 Page({
@@ -19,26 +19,38 @@ Page({
 				slot: false,
 				src: '/resource/img/gift.png'
 			}
-		]
+		],
+		userInfo: {},
+		couponCount: 0
   },
+	onLoad () {
+		this.getProfile()
+	},
 	go2ChargePage () {
 		wx.navigateTo({
 			url: '/pages/charge/charge'
 		})
 	},
 	getProfile () {
+		let that = this
 		wx.request({
 			url: config.service.getProfileUrl,
 			header: appInstance.requestToken,
 			data: {},
 			method: 'GET',
 			success: function (res) {
-
+				const code = res.data.code
+				if (code === 200) {
+					const data = res.data.data
+					that.setData({
+						userInfo: data.user,
+						couponCount: data.coupon
+					})
+				}
 			},
 			fail: function (error) {
 
 			}
 		})
-
 	}
 })
