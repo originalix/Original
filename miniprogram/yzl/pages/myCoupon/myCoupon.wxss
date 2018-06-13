@@ -1,0 +1,25 @@
+.bg-white {
+	background-color: #fff;
+}
+
+.font-15 {
+	font-size: 15px;
+}
+
+.cell-container {
+	background-color: #f0f2f5;
+}
+
+.cell {
+	background: red;
+	padding: 20rpx;
+	height: 200rpx;
+	width: 100%;
+}
+
+.left {
+	width: 30%;
+	height: 100%;
+	background: yellow;
+}
+
