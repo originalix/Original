@@ -11,5 +11,10 @@ class CouponController extends BaseController
     {
 
     }
+
+    public function actionExchange()
+    {
+
+    }
 }
 
