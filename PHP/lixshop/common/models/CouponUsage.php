@@ -11,8 +11,10 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property int $id
  * @property int $coupon_id 优惠券id
+ * @property int $is_used 是否使用过,1未使用，2使用过
+ * @property string $created_at
+ * @property string $updated_at 
  * @property int $customer_id 顾客用户id
- * @property int $times_used 使用次数
  */
 class CouponUsage extends \yii\db\ActiveRecord
 {
@@ -45,8 +47,9 @@ class CouponUsage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['coupon_id', 'customer_id', 'times_used'], 'required'],
-            [['coupon_id', 'customer_id', 'times_used'], 'integer'],
+            [['coupon_id', 'customer_id'], 'required'],
+            [['coupon_id', 'customer_id', 'is_used'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -59,7 +62,9 @@ class CouponUsage extends \yii\db\ActiveRecord
             'id' => 'ID',
             'coupon_id' => '优惠券id',
             'customer_id' => '顾客用户id',
-            'times_used' => '使用次数',
+            'is_used' => '是否使用过,1未使用，2使用过',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 
