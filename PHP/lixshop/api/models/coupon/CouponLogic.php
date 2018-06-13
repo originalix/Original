@@ -29,6 +29,9 @@ class CouponLogic extends Model
             throw new HttpException(421, '该优惠券码已过期');
         }
         // 检查本来是否有该券
+        $couponUsage = CouponUsage::find()
+            ->where(['coupon_id' => $coupon->id, 'customer_id' => Yii::$app->user->identity->id])
+            ->
 
         // 如果超过使用次数 那么失败
 
