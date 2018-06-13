@@ -1,3 +1,7 @@
+page {
+	background-color: #f0f2f5;
+}
+
 .vertical-center {
 	display: flex;
 	display: -webkit-flex;
@@ -33,6 +37,9 @@
 .left {
 	width: 34%;
 	height: 100%;
+}
+
+.coupon {
 	background: url('http://img.yzl1030.com/coupon1.png') no-repeat;
 	background-size: 100% 100%;
 }
@@ -64,5 +71,16 @@
 .txt-center {
 	width: 100%;
 	text-align: center;
+}
+
+.title-font {
+	font-size: 30rpx;
+	display: block;
+	margin-left: 20rpx;
+	margin-bottom: 15rpx;
+}
+
+.font-24 {
+	font-size: 24rpx;
 }
 
