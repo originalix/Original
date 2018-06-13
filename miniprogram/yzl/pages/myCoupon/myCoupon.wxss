@@ -8,18 +8,25 @@
 
 .cell-container {
 	background-color: #f0f2f5;
+	padding: 20rpx;
 }
 
 .cell {
-	background: red;
-	padding: 20rpx;
 	height: 200rpx;
 	width: 100%;
+	margin-bottom: 20rpx;
+	display: flex;
 }
 
 .left {
-	width: 30%;
+	width: 34%;
 	height: 100%;
-	background: yellow;
+	background: url('http://img.yzl1030.com/coupon1.png') no-repeat;
+	background-size: 100% 100%;
 }
 
+.right {
+	background-color: white;
+	width: 66%;
+	height: 100%;
+}

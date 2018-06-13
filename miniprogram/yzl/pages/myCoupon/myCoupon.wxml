@@ -22,6 +22,11 @@
 			<view class="cell-container">
 				<view class="cell">
 					<view class="left">
+						<view>
+							<text>￥</text>
+							<text>120</text>
+						</view>
+						<text>满199元可用</text>
 					</view>
 					<view class="right">
 					</view>
