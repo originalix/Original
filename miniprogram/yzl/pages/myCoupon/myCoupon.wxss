@@ -1,3 +1,15 @@
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	aligin-items: center;
+}
+
+.ver-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 .bg-white {
 	background-color: #fff;
 }
@@ -30,3 +42,27 @@
 	width: 66%;
 	height: 100%;
 }
+
+.price-font {
+	color: white;
+	font-weight: 900;
+}
+
+.font-68 {
+	font-size: 68rpx;
+}
+
+.font-36 {
+	font-size: 36rpx;
+}
+
+.desc-font {
+	color: white;
+	font-size: 26rpx;
+}
+
+.txt-center {
+	width: 100%;
+	text-align: center;
+}
+
