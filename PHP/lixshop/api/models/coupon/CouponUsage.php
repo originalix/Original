@@ -9,4 +9,3 @@ class CouponUsage extends CommonCouponUsage
 {
 
 }
-

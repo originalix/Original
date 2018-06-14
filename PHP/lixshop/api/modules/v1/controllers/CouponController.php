@@ -14,6 +14,9 @@ class CouponController extends BaseController
 
     }
 
+    /**
+     * 根据控制器参数 领取优惠券
+     */
     public function actionExchange()
     {
         $code = Yii::$app->request->post('code');
