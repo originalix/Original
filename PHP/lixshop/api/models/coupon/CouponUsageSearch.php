@@ -21,10 +21,11 @@ class CouponUsageSearch extends CommonCouponUsage
             ->where([
                 'customer_id' => Yii::$app->user->identity->id,
                 'is_used' => 1
-            ])->JoinWith(['coupon' => function ($query) {
-                $query::find()->where(['times_used' => 0])
-            }]);
-        
+            ])->joinWith([
+                'coupon' => function ($query) {
+                    $query->andWhere('times_used = 0');
+                },
+            ]);
         
         // start
         // $query = static::find()
