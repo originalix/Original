@@ -3,7 +3,7 @@
 namespace api\models\coupon;
 
 use Yii;
-use api\models\CouponUsage as CommonCouponUsage;
+use api\models\coupon\CouponUsage as CommonCouponUsage;
 use yii\web\HttpException;
 use yii\data\ActiveDataProvider;
 
@@ -17,20 +17,24 @@ class CouponUsageSearch extends CommonCouponUsage
 
     public function search()
     {
-        // $query = static::find()
-            // ->where([
-                // 'customer_id' => Yii::$app->user->identity->id,
-                // 'is_used' => 1
-            // ])->JoinWith(['coupon' => function ($query) {
-                // $query->where(['expiration_date' => ])
-            // }])->all();
-        //
         $query = static::find()
             ->where([
                 'customer_id' => Yii::$app->user->identity->id,
                 'is_used' => 1
-            ])->all();
-        $query->with('coupon');
+            ])->JoinWith(['coupon' => function ($query) {
+                $query::find()->where(['times_used' => 0])
+            }]);
+        
+        
+        // start
+        // $query = static::find()
+            // ->where([
+                // 'customer_id' => Yii::$app->user->identity->id,
+                // 'is_used' => 1
+            // ]);
+        // $query->with('coupon');
+        // end
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

@@ -5,13 +5,15 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\components\BaseController;
 use api\models\coupon\CouponLogic;
+use api\models\coupon\CouponUsageSearch;
 use yii\web\HttpException;
 
 class CouponController extends BaseController
 {
     public function actionIndex()
     {
-
+        $model = new CouponUsageSearch();
+        return $model->search();
     }
 
     /**
