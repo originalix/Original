@@ -19,22 +19,36 @@ class CouponUsageSearch extends CommonCouponUsage
 
     public function search()
     {
+        // 默认type 未使用、未过期
         $query = static::find()
             ->where([
                 'customer_id' => Yii::$app->user->identity->id,
                 'is_used' => 1
             ])->joinWith([
                 'coupon' => function ($query) {
-                    // 不过期 
+                    // 不过期的where条件 
                     $query->AndWhere('DATEDIFF(expiration_date, NOW()) >= 1');
                 },
             ]);
 
-        if ($this->type === 2) {
+        // type为2 使用过的优惠券
+        if ($this->type === static::COUPON_IS_USED) {
             $query = static::find()
                 ->where([
                     'customer_id' => Yii::$qpp->user->identity->id,
                     'is_used' => 2
+                ]);
+        } else if ($thit->type === static::COUPON_EXPIRED) {
+            // type为3 过期的并且未使用过的优惠券 
+            $query = static::find()
+                ->where([
+                    'customer_id' => Yii::$app->user->identity->id,
+                    'is_used' => 1
+                ])->joinWith([
+                    'coupon' => function ($query) {
+                        // 已过期的where条件 
+                        $query->AndWhere('DATEDIFF(expiration_date, NOW()) < 1');
+                    },
                 ]);
         }
 
