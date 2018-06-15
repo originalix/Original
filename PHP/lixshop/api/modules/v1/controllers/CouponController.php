@@ -10,6 +10,9 @@ use yii\web\HttpException;
 
 class CouponController extends BaseController
 {
+    /**
+     * 获取优惠券的列表接口
+     */
     public function actionIndex()
     {
         $model = new CouponUsageSearch();
