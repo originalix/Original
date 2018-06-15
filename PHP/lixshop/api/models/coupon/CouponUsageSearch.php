@@ -3,19 +3,28 @@
 namespace api\models\coupon;
 
 use Yii;
-use api\models\coupon\CouponUsage as CommonCouponUsage;
+use api\models\coupon\CouponUsage;
 use yii\web\HttpException;
 use yii\data\ActiveDataProvider;
-// use api\models\coupon\Coupon;
-use common\models\Coupon;
+use api\models\coupon\Coupon;
+// use common\models\Coupon;
 
-class CouponUsageSearch extends CommonCouponUsage
+class CouponUsageSearch extends CouponUsage
 {
     const COUPON_NOT_USED = 1;
     const COUPON_IS_USED = 2;
     const COUPON_EXPIRED = 3;
 
     public $type;
+
+    public function rules()
+    {
+        return [
+            [['coupon_id', 'customer_id'], 'required'],
+            [['coupon_id', 'customer_id', 'is_used'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+        ];
+    }
 
     public function search()
     {
@@ -38,7 +47,7 @@ class CouponUsageSearch extends CommonCouponUsage
                     'customer_id' => Yii::$qpp->user->identity->id,
                     'is_used' => 2
                 ]);
-        } else if ($thit->type === static::COUPON_EXPIRED) {
+        } else if ($this->type === static::COUPON_EXPIRED) {
             // type为3 过期的并且未使用过的优惠券 
             $query = static::find()
                 ->where([
