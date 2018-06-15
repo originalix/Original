@@ -20,8 +20,7 @@ class CouponUsageSearch extends CouponUsage
     public function rules()
     {
         return [
-            [['coupon_id', 'customer_id'], 'required'],
-            [['coupon_id', 'customer_id', 'is_used'], 'integer'],
+            [['coupon_id', 'customer_id', 'is_used', 'type'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -41,13 +40,13 @@ class CouponUsageSearch extends CouponUsage
             ]);
 
         // type为2 使用过的优惠券
-        if ($this->type === static::COUPON_IS_USED) {
+        if ($this->type == static::COUPON_IS_USED) {
             $query = static::find()
                 ->where([
-                    'customer_id' => Yii::$qpp->user->identity->id,
+                    'customer_id' => Yii::$app->user->identity->id,
                     'is_used' => 2
                 ]);
-        } else if ($this->type === static::COUPON_EXPIRED) {
+        } else if ($this->type == static::COUPON_EXPIRED) {
             // type为3 过期的并且未使用过的优惠券 
             $query = static::find()
                 ->where([

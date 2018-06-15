@@ -13,6 +13,11 @@ class CouponController extends BaseController
     public function actionIndex()
     {
         $model = new CouponUsageSearch();
+        $type = Yii::$app->request->get('type');
+        if (is_null($type)) {
+            throw new HttpException(421, '请求参数缺失');
+        }
+        $model->type = $type;
         return $model->search();
     }
 
