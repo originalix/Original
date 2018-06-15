@@ -30,6 +30,14 @@ class CouponUsageSearch extends CommonCouponUsage
                 },
             ]);
 
+        if ($this->type === 2) {
+            $query = static::find()
+                ->where([
+                    'customer_id' => Yii::$qpp->user->identity->id,
+                    'is_used' => 2
+                ]);
+        }
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
