@@ -47,7 +47,9 @@ var config = {
 			// 获取会员页面配置信息
 			getProfileUrl: `${base_host}/v1/profile/index`,
 			// 获取消费日志
-			getBalanceLog: `${base_host}/v1/balance/log`
+			getBalanceLog: `${base_host}/v1/balance/log`,
+			// 获取优惠券列表
+			getCouponListUrl: `${base_host}/v1/coupon/index`
     }
 };
 
