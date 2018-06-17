@@ -7,6 +7,7 @@ const getCouponList = (data) => {
 		header: appInstance.requestToken,
 		data: {
 			'type': data.type,
+			'page': data.page
 		},
 		method: 'GET',
 		success: function (res) {
@@ -30,3 +31,6 @@ const getCouponList = (data) => {
 		}
 	})
 }
+
+module.exports = { getCouponList }
+
