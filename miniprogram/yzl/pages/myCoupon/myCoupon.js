@@ -10,7 +10,7 @@ Page({
 			{title: '已使用', type: 2},
 			{title: '已过期', type: 3}
 		],
-		noCoupon: true,
+		noCoupon: false,
 		loadmore: false,
 		loadText: '正在努力加载...',
 		couponList: [],
@@ -38,7 +38,7 @@ Page({
 	 */
 	onPullDownRefresh () {
 		this.setData({
-			orderList: [],
+			couponList: [],
 			loadmore: true,
 			loadText: '正在努力加载...'
 		})

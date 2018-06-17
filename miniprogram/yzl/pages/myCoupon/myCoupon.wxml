@@ -20,20 +20,25 @@
         label="{{tab.title}}"
       >
 			<view class="cell-container">
-				<view class="cell">
+				<view class="cell"
+					wx:for="{{couponList}}"	
+					wx:for-item="item"
+					wx:for-index="idx"
+					wx:key="idx"
+				>
 					<view class="left coupon">
 						<view class="ver-center txt-center">
 							<view>
 								<text class="price-font font-36">￥</text>
-								<text class="price-font font-68">120</text>
+								<text class="price-font font-68">{{item.coupon.discount}}</text>
 							</view>
-							<text class="desc-font">满199元可用</text>
+							<text class="desc-font">{{item.coupon.coupon_description}}</text>
 						</view>
 					</view>
 					<view class="right">
 						<view class="ver-center">
-							<text class="title-font">30元全场通用券</text>
-							<text class="title-font font-24">有效期：2018-6-13至2018-7-30</text>
+							<text class="title-font">{{item.coupon.coupon_name}}</text>
+							<text class="title-font font-24">有效期至：2018-7-30</text>
 						</view>
 					</view>
 				</view>
@@ -45,7 +50,7 @@
 				</view>
 
 				<!-- [> [> 加载更多提示组件	 <] <] -->
-				<view>
+				<view class="bg-f0f2f5">
 					<wxc-loadmore is-end="{{! loadmore}}" text="{{loadText}}" icon="{{true}}"></wxc-loadmore>
 				</view>
 
