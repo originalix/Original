@@ -83,4 +83,22 @@ class Coupon extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'coupon_name',
+            'coupon_description',
+            'coupon_code',
+            'expiration_date' => function ($model) {
+                return date('Y-m-d', strtotime($model->expiration_date));
+            },
+            'users_per_customer',
+            'times_used',
+            'type',
+            'conditions',
+            'discount'
+        ];
+    }
 }
