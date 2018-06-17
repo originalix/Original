@@ -28,7 +28,7 @@ Page({
 			let page = this.data.pageMeta.currentPage + 1
 			let type = 0
 			console.log('加载分页数据 页码: ' + page)
-			this.getOrderList(type, page)
+			this.getCouponList(type, page)
 		} else {
 			console.log('没有下一页的数据了')
 		}
@@ -42,7 +42,7 @@ Page({
 			loadmore: true,
 			loadText: '正在努力加载...'
 		})
-		this.getOrderList(this.data.type, 1)
+		this.getCouponList(this.data.type, 1)
 	},
   onClick: function(e) {
     console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);

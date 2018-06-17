@@ -40,14 +40,14 @@
 			</view>
 
 				<!-- [> 没有订单的异常流 展示 <] -->
-				<!-- <view class="bg-f0" wx:if="{{noOrder}}"> -->
-					<!-- <wxc-abnor type="COUPON"></wxc-abnor> -->
-				<!-- </view> -->
+				<view class="bg-f0" wx:if="{{noCoupon}}">
+					<wxc-abnor type="COUPON"></wxc-abnor>
+				</view>
 
 				<!-- [> [> 加载更多提示组件	 <] <] -->
-				<!-- <view> -->
-					<!-- <wxc-loadmore is-end="{{! loadmore}}" text="{{loadText}}" icon="{{true}}"></wxc-loadmore> -->
-				<!-- </view> -->
+				<view>
+					<wxc-loadmore is-end="{{! loadmore}}" text="{{loadText}}" icon="{{true}}"></wxc-loadmore>
+				</view>
 
 			</wxc-tab-panel>
     </wxc-tab>
