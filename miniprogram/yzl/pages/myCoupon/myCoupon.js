@@ -89,6 +89,16 @@ Page({
 						loadText: '到底啦~'
 					})
 				}
+
+				// if (that.data.couponList.length < 1) {
+					// that.setData ({
+						// noCoupon: true
+					// })
+				// } else {
+					// that.setData ({
+						// noCoupon: false
+					// })
+				// }
 			},
 			'fail': function (error) {
 				console.log('优惠券列表失败回调')

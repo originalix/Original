@@ -44,15 +44,14 @@
 				</view>
 			</view>
 
-				<!-- [> 没有订单的异常流 展示 <] -->
-				<view class="bg-f0" wx:if="{{noCoupon}}">
-					<wxc-abnor type="COUPON"></wxc-abnor>
-				</view>
-
-				<!-- [> [> 加载更多提示组件	 <] <] -->
-				<view class="bg-f0f2f5">
-					<wxc-loadmore is-end="{{! loadmore}}" text="{{loadText}}" icon="{{true}}"></wxc-loadmore>
-				</view>
+			<!-- [> 没有订单的异常流 展示 <] -->
+			<view class="bg-f0" wx:if="{{noCoupon}}">
+				<wxc-abnor type="COUPON"></wxc-abnor>
+			</view>
+			<!-- [> [> 加载更多提示组件	 <] <] -->
+			<view class="bg-f0f2f5" wx:if="{{! noCoupon}}">
+				<wxc-loadmore is-end="{{! loadmore}}" text="{{loadText}}" icon="{{true}}"></wxc-loadmore>
+			</view>
 
 			</wxc-tab-panel>
     </wxc-tab>
