@@ -73,6 +73,7 @@
               class="item"
               icon="help"
               icon-color="#69A0DD"
+							bind:click="makePhoneCall"
               title="客服电话"></wxc-list>
       <wxc-list
               class="item"
