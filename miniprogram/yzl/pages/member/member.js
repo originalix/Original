@@ -74,9 +74,11 @@ Page({
 		switch (index) {
 			// 推荐有奖
 			case 0:
+				this.go2ErrorPage()
 				break
 			// 积分商城
 			case 1:
+				this.go2ErrorPage()
 				break
 			// 优惠券兑换
 			case 2:
@@ -87,6 +89,16 @@ Page({
 	go2CouponExchangePage () {
 		wx.navigateTo({
 			url: '/pages/couponExchange/couponExchange'
+		})
+	},
+	go2ErrorPage () {
+		wx.navigateTo({
+			url: '/pages/error/error'
+		})
+	},
+	makePhoneCall () {
+		wx.makePhoneCall({
+			phoneNumber: '18853176616'
 		})
 	}
 })
