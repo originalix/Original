@@ -19,11 +19,11 @@ Page({
 				slot: false,
 				src: '/resource/img/gift.png'
 			},
-			{
-				title: '优惠券兑换',
-				slot: false,
-				src: '/resource/img/cou_pon.png'
-			}
+			// {
+				// title: '优惠券兑换',
+				// slot: false,
+				// src: '/resource/img/cou_pon.png'
+			// }
 		],
 		userInfo: {},
 		couponCount: 0
