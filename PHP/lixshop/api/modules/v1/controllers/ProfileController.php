@@ -21,7 +21,7 @@ class ProfileController extends BaseController
         // 优惠券
         $coupon = CouponUsage::find()
             ->where(['customer_id' => $user->id])
-            ->andWhere(['times_used' => 0])
+            ->andWhere(['is_used' => 1])
             ->all();
 
         $couponCount = count($coupon);
