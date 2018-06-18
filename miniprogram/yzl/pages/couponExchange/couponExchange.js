@@ -14,7 +14,32 @@ Page({
 		})
 	},
 	getCoupon () {
-
+		let value = this.data.inputValue
+		if (value.length < 1) {
+			wx.showToast({
+				title: '请输入正确的兑换码',
+				icon: 'none',
+				duration: 1500
+			})
+			return
+		}
+		couponUtils.exchangeCoupon({
+			'code': value,
+			'success': function (res) {
+				wx.showToast({
+					title: '领券成功',
+					icon: 'success',
+					duration: 1500
+				})
+			},
+			'fail': function (error) {
+				wx.showToast({
+					title: error,
+					icon: 'none',
+					duration: 1500
+				})
+			}
+		})
 	}
 })
 
