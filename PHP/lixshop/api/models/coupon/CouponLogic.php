@@ -31,18 +31,18 @@ class CouponLogic extends Model
         // 检查本来是否有该券
         $couponUsage = CouponUsage::find()
             ->where(['coupon_id' => $coupon->id, 'customer_id' => Yii::$app->user->identity->id])
-            ->all();
+            ->count();
 
-        $time_used = 0;
-        foreach ($couponUsage as $item) {
-            if ($item->is_used === 2) {
-                $time_used += 1;
-            }
-        }
+        // $time_used = 0;
+        // foreach ($couponUsage as $item) {
+            // if ($item->is_used === 2) {
+                // $time_used += 1;
+            // }
+        // }
 
         // 如果超过使用次数 那么失败
-        if ($time_used >= $coupon->users_per_customer) {
-            throw new HttpException(422, '该优惠券的使用次数已到上限');
+        if ($couponUsage >= $coupon->users_per_customer) {
+            throw new HttpException(422, '该优惠券的领取次数已到上限');
         }
 
         // 否则 领券成功 

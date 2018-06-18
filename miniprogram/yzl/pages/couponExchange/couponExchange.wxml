@@ -5,10 +5,14 @@
 	</view>
 	<view class="separate"></view>
 	<view class="input">
-		<wxc-input type="text" mode="wrapped" placeholder="请输入兑换码"></wxc-input>
+		<wxc-input type="text" mode="wrapped" placeholder="请输入兑换码"
+			bind:input="handleInput"
+			value="{{inputValue}}"
+			>
+		</wxc-input>
 	</view>
 	<view class="btn">
-		<lix-btn type="primary">兑换</lix-btn>
+		<lix-btn type="charge">兑换</lix-btn>
 	</view>
 
 </view>
