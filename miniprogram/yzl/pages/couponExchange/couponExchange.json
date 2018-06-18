@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "我的优惠券",
+  "navigationBarTitleText": "优惠券兑换",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index",
     "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",

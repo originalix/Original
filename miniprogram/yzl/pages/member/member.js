@@ -18,6 +18,11 @@ Page({
 				title: '积分商城',
 				slot: false,
 				src: '/resource/img/gift.png'
+			},
+			{
+				title: '优惠券兑换',
+				slot: false,
+				src: '/resource/img/cou_pon.png'
 			}
 		],
 		userInfo: {},
@@ -40,10 +45,8 @@ Page({
 			method: 'GET',
 			success: function (res) {
 				const code = res.data.code
-				console.log(res)
 				if (code === 200) {
 					const data = res.data.data
-					console.log(data)
 					that.setData({
 						userInfo: data.user,
 						couponCount: data.coupon
