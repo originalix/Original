@@ -49,7 +49,9 @@ var config = {
 			// 获取消费日志
 			getBalanceLog: `${base_host}/v1/balance/log`,
 			// 获取优惠券列表
-			getCouponListUrl: `${base_host}/v1/coupon/index`
+			getCouponListUrl: `${base_host}/v1/coupon/index`,
+			// 兑换优惠券
+			exchangeCouponUrl: `${base_host}/v1/coupon/exchange`
     }
 };
 
