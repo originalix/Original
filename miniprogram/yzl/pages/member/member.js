@@ -71,5 +71,22 @@ Page({
 	handleClick: function (e) {
 		let index = e.currentTarget.dataset.index
 		console.log(index)
+		switch (index) {
+			// 推荐有奖
+			case 0:
+				break
+			// 积分商城
+			case 1:
+				break
+			// 优惠券兑换
+			case 2:
+				this.go2CouponExchangePage()
+				break
+		}
+	},
+	go2CouponExchangePage () {
+		wx.navigateTo({
+			url: '/pages/couponExchange/couponExchange'
+		})
 	}
 })
