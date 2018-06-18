@@ -10,7 +10,8 @@
     "pages/orderDetail/orderDetail",
     "pages/charge/charge",
     "pages/myCharge/myCharge",
-    "pages/myCoupon/myCoupon"
+    "pages/myCoupon/myCoupon",
+    "pages/couponExchange/couponExchange"
   ],
   "window":{
     "backgroundTextStyle":"black",

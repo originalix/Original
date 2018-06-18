@@ -4,6 +4,7 @@ var couponUtils = require('../../utils/coupon.js')
 
 Page({
 	data: {
+
 	}
 })
 

@@ -67,5 +67,9 @@ Page({
 		wx.navigateTo({
 			url: '/pages/myCoupon/myCoupon'
 		})
+	},
+	handleClick: function (e) {
+		let index = e.currentTarget.dataset.index
+		console.log(index)
 	}
 })

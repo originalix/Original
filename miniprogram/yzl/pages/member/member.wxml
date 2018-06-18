@@ -61,6 +61,8 @@
               class="item"
               title="{{item.title}}"
               mode="{{index == list.length-1 ? 'none': ''}}"
+							bind:click="handleClick"
+							data-index="{{index}}"
               src="{{item.src}}">
         <view wx:if="{{item.slot && item.desc}}" class="desc-highlight">{{item.desc}}</view>
       </wxc-list>
