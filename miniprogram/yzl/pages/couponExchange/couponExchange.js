@@ -13,8 +13,12 @@ Page({
 			inputValue: value
 		})
 	},
-	getCoupon () {
+	test () {
+		console.log('Hello world')
+	},
+	getCoupon: function (e) {
 		let value = this.data.inputValue
+		console.log(value)
 		if (value.length < 1) {
 			wx.showToast({
 				title: '请输入正确的兑换码',

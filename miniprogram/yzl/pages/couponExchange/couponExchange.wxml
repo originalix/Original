@@ -12,7 +12,7 @@
 		</wxc-input>
 	</view>
 	<view class="btn">
-		<lix-btn type="charge">兑换</lix-btn>
+		<lix-btn type="charge" bindtap="getCoupon">兑换</lix-btn>
 	</view>
 
 </view>

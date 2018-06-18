@@ -67,5 +67,5 @@ const exchangeCoupon = (data) => {
 
 }
 
-module.exports = { getCouponList }
+module.exports = { getCouponList, exchangeCoupon }
 

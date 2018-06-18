@@ -1,0 +1,12 @@
+<view>
+	<wxc-abnor
+    type="REQUEST_ERROR"
+    image="{{image}}"
+    title="{{title}}"
+    tip="{{tip}}"
+    button="{{button}}"
+    bind:abnortap="onAbnorTap"
+		>
+	</wxc-abnor>
+</view>
+
