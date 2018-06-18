@@ -36,5 +36,14 @@
 .input {
 	width: 90%;
 	height: 90rpx;
+	margin-left: 5%;
+	margin-top: 30rpx;
+}
+
+.btn {
+ width: 90%;
+ height: 90rpx;
+ margin-left: 5%;
+ margin-top: 30rpx;
 }
 
