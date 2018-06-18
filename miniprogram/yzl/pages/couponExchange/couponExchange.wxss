@@ -1,0 +1,40 @@
+.circle {
+	width: 16rpx;
+	height: 16rpx;
+	background-color: #00dbf5;
+	border-radius: 50%;
+	margin-left: 30rpx;
+}
+
+.header {
+	margin-top: 100rpx;
+}
+
+.title {
+	font-size: 32rpx;
+	color: #00dbf5;
+	margin-left: 10rpx;
+}
+
+.bg-00dbf5 {
+	background-color: #00dbf5;
+}
+
+.vertical-center {
+  /* flex 水平居中 */
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;/*指定垂直居中*/
+}
+
+.separate {
+  height: 2rpx;
+  background-color: #00dbf5;
+  width: 100%;
+}
+
+.input {
+	width: 90%;
+	height: 90rpx;
+}
+

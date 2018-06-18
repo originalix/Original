@@ -1,4 +1,12 @@
 <view>
-	<text>Hello world</text>
+	<view class="header vertical-center">
+		<view class="circle"></view>
+		<text class="title">优惠券兑换</text>
+	</view>
+	<view class="separate"></view>
+	<view class="input">
+		<wxc-input type="text" placeholder="请输入兑换码"></wxc-input>
+	</view>
+
 </view>
 
