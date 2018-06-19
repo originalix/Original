@@ -1,4 +1,17 @@
 <view>
-	<text>Hello world</text>
+	<view class="header">
+		<view>
+			<view class="title-view">
+				<text>衣之恋优质干洗店</text>
+				<text>会员折扣：50%</text>
+			</view>
+			<view>
+				<open-data type="userAvatarUrl" class="avatar"></open-data>
+			</view>
+		</view>
+		<view>
+			<text>卡号：1234 5678 9012</text>
+		</view>
+	</view>
 </view>
 

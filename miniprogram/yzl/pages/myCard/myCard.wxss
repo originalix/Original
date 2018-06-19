@@ -1,0 +1,19 @@
+page {
+	background-color: #fafafa;
+}
+
+.header {
+	height: 22%;
+	width: 100%;
+	background-color: #90c371;
+}
+
+.title-view {
+	height: 37%;
+}
+
+.title-view text {
+	display: block;
+	color: #fff;
+}
+
