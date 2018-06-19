@@ -1,11 +1,11 @@
 <view>
 	<view class="header">
-		<view>
+		<view class="vertical-center">
 			<view class="title-view">
-				<text>衣之恋优质干洗店</text>
-				<text>会员折扣：50%</text>
+				<text class="font-13 title">衣之恋优质干洗店</text>
+				<text class="font-11 off">会员折扣：50%</text>
 			</view>
-			<view>
+			<view class="avatar">
 				<open-data type="userAvatarUrl" class="avatar"></open-data>
 			</view>
 		</view>

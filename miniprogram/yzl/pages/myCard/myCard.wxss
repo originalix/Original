@@ -3,17 +3,49 @@ page {
 }
 
 .header {
-	height: 22%;
+	height: 293rpx;
 	width: 100%;
 	background-color: #90c371;
 }
 
 .title-view {
-	height: 37%;
+	height: 108rpx;
 }
 
 .title-view text {
 	display: block;
 	color: #fff;
+	margin-left: 20rpx;
+}
+
+.title {
+	margin-top: 16rpx;
+}
+
+.off {
+	margin-top: 20rpx;
+}
+
+.font-15 {
+	font-size: 15px;
+}
+
+.font-13 {
+	font-size: 13px;
+}
+
+.font-11 {
+	font-size: 11px;
+}
+
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+}
+
+.avatar {
+	height: 75rpx;
+	width: 75rpx;
 }
 
