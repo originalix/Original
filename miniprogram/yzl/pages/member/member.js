@@ -80,10 +80,6 @@ Page({
 			case 1:
 				this.go2ErrorPage()
 				break
-			// 优惠券兑换
-			case 2:
-				this.go2CouponExchangePage()
-				break
 		}
 	},
 	go2CouponExchangePage () {
@@ -99,6 +95,11 @@ Page({
 	makePhoneCall () {
 		wx.makePhoneCall({
 			phoneNumber: '18853176616'
+		})
+	},
+	go2MyCardPage () {
+		wx.navigateTo({
+			url: '/pages/myCard/myCard'
 		})
 	}
 })

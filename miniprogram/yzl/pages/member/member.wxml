@@ -37,14 +37,14 @@
       </view>
     </view>
 
-    <view class="wallet-item">
+    <view class="wallet-item" bindtap="go2MyCardPage">
       <text class="wallet-value">0张</text>
       <view>
         <text class="wallet-key">会员卡</text>
       </view>
     </view>
 
-    <view class="wallet-item">
+    <view class="wallet-item" bindtap="">
       <text class="wallet-value">点击查看</text>
       <view>
         <text class="wallet-key">积分</text>

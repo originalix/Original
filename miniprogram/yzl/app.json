@@ -12,7 +12,8 @@
     "pages/myCharge/myCharge",
     "pages/myCoupon/myCoupon",
     "pages/couponExchange/couponExchange",
-    "pages/error/error"
+    "pages/error/error",
+    "pages/myCard/myCard"
   ],
   "window":{
     "backgroundTextStyle":"black",
