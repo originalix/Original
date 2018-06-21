@@ -1,5 +1,6 @@
 var config = require('../../config.js');
 var appInstance = getApp()
+var util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -13,6 +14,7 @@ Page({
   },
   onLoad: function () {
     this.getIndexConfig()
+		util.test()
   },
   getIndexConfig() {
     var that = this;
