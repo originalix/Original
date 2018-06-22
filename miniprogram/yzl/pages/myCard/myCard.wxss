@@ -30,12 +30,12 @@ page {
 	font-size: 15px;
 }
 
-.font-13 {
-	font-size: 13px;
+.font-18 {
+	font-size: 18px;
 }
 
-.font-11 {
-	font-size: 11px;
+.font-13 {
+	font-size: 13px;
 }
 
 .vertical-center {
@@ -48,7 +48,6 @@ page {
 	height: 75rpx;
 	width: 75rpx;
 	margin-right: 10rpx;
-	/* border-radius: 50%; */
 	border-radius: 50%;
 	overflow: hidden;
 }
@@ -56,5 +55,29 @@ page {
 .flex-right {
 	margin-left: auto;
 	order: 2;
+}
+
+.card-no {
+	margin-left: 20rpx;
+	padding-top: 17%;
+}
+
+.card-no text {
+	font-size: 12px;
+	color: #fff;
+}
+
+.btn-view {
+	/* width: 190rpx; */
+	height: 68rpx;
+	margin-top: 20rpx;
+	text-align: center;
+	/* margin-bottom: 30rpx; */
+}
+
+.separate-block {
+	width: 100%;
+	height: 20rpx;
+	background-color: #f0f2f1;
 }
 

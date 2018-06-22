@@ -2,14 +2,20 @@
 	<view class="header">
 		<view class="vertical-center">
 			<view class="title-view">
-				<text class="font-13 title">衣之恋优质干洗店</text>
-				<text class="font-11 off">会员折扣：50%</text>
+				<text class="font-18 title">衣之恋优质干洗店</text>
+				<text class="font-15 off">会员折扣：50%</text>
 			</view>
 			<open-data mode="aspectFit" type="userAvatarUrl" class="avatar flex-right"></open-data>
 		</view>
-		<view>
+		<view class="card-no">
 			<text>卡号：1234 5678 9012</text>
 		</view>
+	</view>
+	<view>
+		<view class="btn-view">
+			<lix-btn size="small" type="primary"  bindtap="go2ChargePage">去充值</lix-btn>
+		</view>
+		<view class="separate-block"></view>
 	</view>
 </view>
 
