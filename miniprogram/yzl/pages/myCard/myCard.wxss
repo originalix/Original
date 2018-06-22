@@ -47,5 +47,12 @@ page {
 .avatar {
 	height: 75rpx;
 	width: 75rpx;
+	margin-right: 10rpx;
+	border-radius: 50%;
+}
+
+.flex-right {
+	margin-left: auto;
+	order: 2;
 }
 
