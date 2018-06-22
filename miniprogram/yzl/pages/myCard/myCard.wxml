@@ -16,6 +16,8 @@
 			<lix-btn size="small" type="primary"  bindtap="go2ChargePage">去充值</lix-btn>
 		</view>
 		<view class="separate-block"></view>
+		<wxc-list title="我的折扣" desc="5折" mode="none"></wxc-list>
+		<view class="separate-line"></view>
 	</view>
 </view>
 

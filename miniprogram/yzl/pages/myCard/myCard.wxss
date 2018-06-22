@@ -81,3 +81,9 @@ page {
 	background-color: #f0f2f1;
 }
 
+.separate-line {
+	width: 100%;
+	height: 1rpx;
+	background-color: #f0f2f1;
+}
+

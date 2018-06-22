@@ -14,7 +14,8 @@
     "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
     "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
     "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
-    "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index"
+    "wxc-abnor": "../../dist/packages/@minui/wxc-abnor/dist/index",
+    "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index"
   }
 }
 
