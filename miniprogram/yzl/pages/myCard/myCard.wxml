@@ -5,9 +5,7 @@
 				<text class="font-13 title">衣之恋优质干洗店</text>
 				<text class="font-11 off">会员折扣：50%</text>
 			</view>
-			<view class="flex-right">
-				<open-data type="userAvatarUrl" class="avatar"></open-data>
-			</view>
+			<open-data mode="aspectFit" type="userAvatarUrl" class="avatar flex-right"></open-data>
 		</view>
 		<view>
 			<text>卡号：1234 5678 9012</text>

@@ -48,7 +48,9 @@ page {
 	height: 75rpx;
 	width: 75rpx;
 	margin-right: 10rpx;
+	/* border-radius: 50%; */
 	border-radius: 50%;
+	overflow: hidden;
 }
 
 .flex-right {
