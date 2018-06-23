@@ -21,6 +21,8 @@ use yii\web\IdentityInterface;
  * @property int $favorite_product_count 收藏个数
  * @property string $access_token_created_at
  * @property double $charge 账户余额
+ * @property integer $discount 享受折扣
+ * @property string $name 姓名
  */
 class Customer extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -55,9 +57,9 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['group', 'favorite_product_count'], 'integer'],
+            [['group', 'favorite_product_count', 'discount'], 'integer'],
             [['created_at', 'updated_at', 'access_token_created_at'], 'safe'],
-            [['wechat_openid', 'access_token'], 'string', 'max' => 255],
+            [['wechat_openid', 'access_token', 'name'], 'string', 'max' => 255],
             [['mobile'], 'string', 'max' => 11],
         ];
     }
@@ -78,6 +80,9 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
             'access_token' => '登录令牌',
             'favorite_product_count' => '收藏个数',
             'access_token_created_at' => 'Access Token Created At',
+            'charge' => '账户余额',
+            'discount' => '用户享受的会员折扣',
+            'name' => '顾客姓名',
         ];
     }
 
@@ -166,6 +171,9 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
             'updated_at',
             'access_token',
             'favorite_product_count',
+            'charge',
+            'discount',
+            'name',
             // 'access_token_created_at',
         ];
     }

@@ -21,6 +21,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $txn_id Transaction Id 支付平台唯一交易号,通过这个可以在第三方支付平台查找订单
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $enjoy_discounts
  */
 class ChargeOrder extends \yii\db\ActiveRecord
 {
@@ -53,7 +54,7 @@ class ChargeOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['trade_no', 'order_status', 'customer_id', 'customer_group'], 'integer'],
+            [['trade_no', 'order_status', 'customer_id', 'customer_group', 'enjoy_discounts'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount'], 'number'],
             // [['payment_method'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
@@ -82,6 +83,7 @@ class ChargeOrder extends \yii\db\ActiveRecord
             'txn_id' => 'Transaction Id 支付平台唯一交易号,通过这个可以在第三方支付平台查找订单',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'enjoy_discounts' => '充值后能享受到的折扣'
         ];
     }
 }
