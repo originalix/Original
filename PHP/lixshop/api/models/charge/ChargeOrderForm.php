@@ -28,6 +28,7 @@ class ChargeOrderForm extends Model
     public $customer_group;
     public $remote_ip;
     public $payment_method;
+    public $enjoy_discounts;
 
     public function rules()
     {
@@ -65,6 +66,9 @@ class ChargeOrderForm extends Model
                 $this->real_amount = $product->amount * ($product->discount / 100);
                 $this->discount_amount = $this->total_amount - $this->real_amount;
             }
+
+            $this->enjoy_discounts = $product->user_discount;
+
         } else if ($this->type === static::INPUT_CHARGE_AMOUNT) {
             // type 为2 自己为属性赋值 
             if (is_null($this->input_amount)) {
@@ -74,6 +78,7 @@ class ChargeOrderForm extends Model
             $this->total_amount = $this->input_amount;
             $this->real_amount = $this->input_amount;
             $this->discount_amount = 0;
+            $this->enjoy_discounts = 100;
         }
 
         // 生成订单号
@@ -113,6 +118,7 @@ class ChargeOrderForm extends Model
             'real_amount' => $this->real_amount,
             'customer_id' => Yii::$app->user->identity->id,
             'remote_ip' => Yii::$app->request->userIP,
+            'enjoy_discounts' => $this->enjoy_discounts,
         ]);
 
         return $model;

@@ -169,17 +169,18 @@ class WxcallbackController extends \yii\web\Controller
         $order->txn_id = $txn_id;
         $order->order_status = 3;
         $order->save();
-        $this->updateCustomerCharge($order->total_amount, $order->customer_id);
+        $this->updateCustomerCharge($order->total_amount, $order->customer_id, $order->enjoy_discounts);
     }
     
     /**
      * 更新用户余额字段 更新充值日志表记录
      */
-    function updateCustomerCharge($total_amount, $customer_id)
+    function updateCustomerCharge($total_amount, $customer_id, $enjoy_discounts)
     {
         $customer = Customer::findOne($customer_id);
         $new_charge = $customer->charge + $total_amount;
         $customer->charge = $new_charge;
+        $customer->discount = $enjoy_discounts;
         $customer->save();
 
         $log = new BalanceLog();
