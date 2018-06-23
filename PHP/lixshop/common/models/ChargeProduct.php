@@ -14,6 +14,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $discount 充值折扣，请输入整数百分比
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $user_discount 用户享受折扣
  */
 class ChargeProduct extends \yii\db\ActiveRecord
 {
@@ -46,7 +47,7 @@ class ChargeProduct extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['amount', 'gift', 'discount'], 'integer'],
+            [['amount', 'gift', 'discount', 'user_discount'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -63,6 +64,7 @@ class ChargeProduct extends \yii\db\ActiveRecord
             'discount' => '充值折扣，请输入整数百分比',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'user_discount' => '用户享受折扣',
         ];
     }
 }
