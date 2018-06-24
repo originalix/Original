@@ -169,6 +169,7 @@ Page({
 	 * 使用JSAPI 调起微信支付
 	 */
 	createWxPay (res) {
+		var that = this
 		const params = {
 			'data': res,
 			'success': function (res) {
@@ -178,6 +179,7 @@ Page({
 					icon: 'success',
 					duration: 2000
 				})
+				that.getUserInfo()
 			},
 			'fail': function (error) {
 				console.log('支付失败后的操作')
