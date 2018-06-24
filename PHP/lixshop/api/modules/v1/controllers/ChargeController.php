@@ -6,6 +6,7 @@ use Yii;
 use api\components\BaseController;
 use api\models\charge\ChargeProductSearch;
 use api\models\charge\ChargeOrderForm;
+use api\utils\Code;
 
 class ChargeController extends BaseController
 {
@@ -25,6 +26,16 @@ class ChargeController extends BaseController
     {
         $model = new ChargeProductSearch();
         return $model->mock();
+    }
+
+    public function actionCard()
+    {
+        $code = new Code();
+        $card_no = $code->encodeID(1, 5); 
+        $card_pre = '121'; 
+        $card_vc = substr(md5($card_pre.$card_no),0,2); 
+        $card_vc = strtoupper($card_vc); 
+        return $card_pre.$card_no.$card_vc; 
     }
 
     public function actionCreate()
