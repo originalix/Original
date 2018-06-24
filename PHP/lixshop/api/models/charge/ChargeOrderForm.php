@@ -11,6 +11,7 @@ use common\models\ChargeProduct;
 use api\filters\HttpApiAuth;
 use common\models\Customer;
 use common\models\BalanceLog;
+use api\utils\Code;
 
 class ChargeOrderForm extends Model
 {
@@ -131,6 +132,16 @@ class ChargeOrderForm extends Model
 
     protected function generatorCardId()
     {
-
+        $customer = Customer::findOne(Yii::$app->user->identity->id);
+        if (is_null($customer->card_id)) {
+            $code = new Code();
+            $card_no = $code->encodeID(1, 5); 
+            $card_pre = '121'; 
+            $card_vc = substr(md5($card_pre.$card_no),0,2); 
+            $card_vc = strtoupper($card_vc); 
+            $card_id =  $card_pre.$card_no.$card_vc; 
+            $customer->card_id = $card_id;
+            $customer->save();
+        }
     }
 }
