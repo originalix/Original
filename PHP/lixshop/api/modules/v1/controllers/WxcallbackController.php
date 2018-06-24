@@ -185,7 +185,7 @@ class WxcallbackController extends \yii\web\Controller
         // 生成会员卡号
         if (is_null($customer->card_id)) {
             $code = new Code();
-            $card_no = $code->encodeID(1, 5); 
+            $card_no = $code->encodeID($customer_id, 5); 
             $card_pre = '121'; 
             $card_vc = substr(md5($card_pre.$card_no),0,2); 
             $card_vc = strtoupper($card_vc); 
