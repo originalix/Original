@@ -47,6 +47,7 @@ Page({
 				const code = res.data.code
 				if (code === 200) {
 					const data = res.data.data
+					console.log(data)
 					that.setData({
 						userInfo: data.user,
 						couponCount: data.coupon
