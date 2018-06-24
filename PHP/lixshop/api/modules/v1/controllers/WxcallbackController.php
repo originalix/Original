@@ -9,6 +9,7 @@ use common\models\SalesFlatOrder;
 use common\models\ChargeOrder;
 use common\models\Customer;
 use common\models\BalanceLog;
+use api\utils\Code;
 
 class WxcallbackController extends \yii\web\Controller
 {
@@ -181,6 +182,17 @@ class WxcallbackController extends \yii\web\Controller
         $new_charge = $customer->charge + $total_amount;
         $customer->charge = $new_charge;
         $customer->discount = $enjoy_discounts;
+        // 生成会员卡号
+        if (is_null($customer->card_id)) {
+            $code = new Code();
+            $card_no = $code->encodeID(1, 5); 
+            $card_pre = '121'; 
+            $card_vc = substr(md5($card_pre.$card_no),0,2); 
+            $card_vc = strtoupper($card_vc); 
+            $card_id =  $card_pre.$card_no.$card_vc; 
+            $customer->card_id = $card_id;
+        }
+
         $customer->save();
 
         $log = new BalanceLog();
