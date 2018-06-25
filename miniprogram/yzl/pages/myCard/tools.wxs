@@ -6,3 +6,7 @@ var tools = {
     return discount/100 + '折'
   }
 }
+
+module.exports = {
+  showDiscount: tools.showDiscount
+}

@@ -23,6 +23,11 @@ Page({
 				console.log('用户信息获取失败')
 			}
 		})
+	},
+	go2ChargePage () {
+		wx.navigateTo({
+			url: '/pages/charge/charge'
+		})
 	}
 })
 
