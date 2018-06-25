@@ -1,0 +1,12 @@
+var tools = {
+  showDiscount: function (discount) {
+    if (discount === 100) {
+      return '无折扣'
+    }
+    return discount/100 + '折'
+  }
+}
+
+module.exports = {
+  showDiscount: tools.showDiscount
+}

@@ -3,7 +3,7 @@
 		<view class="vertical-center">
 			<view class="title-view">
 				<text class="font-18 title">衣之恋优质干洗店</text>
-				<text class="font-15 off">会员折扣：50%</text>
+				<text class="font-15 off">会员折扣：{{userInfo.discount}}%</text>
 			</view>
 			<open-data mode="aspectFit" type="userAvatarUrl" class="avatar flex-right"></open-data>
 		</view>
@@ -11,15 +11,16 @@
 			<text>卡号：{{userInfo.card_id}}</text>
 		</view>
 	</view>
+	<wxs module="tools" src="./tools.wxs"></wxs>
 	<view wx:if="{{userInfo.card_id}}">
 		<view class="btn-view">
-			<lix-btn size="small" type="primary"  bindtap="go2ChargePage">去充值</lix-btn>
+			<lix-btn size="small" type="primary"  bindtap="go2ChargePage" bindtap="go2ChargePage">去充值</lix-btn>
 		</view>
 		<view class="separate-block"></view>
-		<wxc-list title="我的折扣" desc="5折" mode="none"></wxc-list>
+		<wxc-list title="我的折扣" desc="{{tools.showDiscount(userInfo.discount)}}" mode="none"></wxc-list>
 		<view class="separate-line"></view>
 	</view>
-	<view>
+	<view wx:if="{{! userInfo.card_id}}">
 		<wxc-abnor type="DATA"></wxc-abnor>
 	</view>
 </view>

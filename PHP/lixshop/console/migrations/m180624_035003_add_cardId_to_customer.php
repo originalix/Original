@@ -13,6 +13,7 @@ class m180624_035003_add_cardId_to_customer extends Migration
     public function safeUp()
     {
         $this->addColumn('{{%customer}}', 'card_id', $this->string(32)->defaultValue(NULL)->comment('会员卡号'));
+        $this->addColumn('{{%customer}}', 'credit', $this->integer()->defaultValue(0)->comment('用户积分'));
     }
 
     /**
