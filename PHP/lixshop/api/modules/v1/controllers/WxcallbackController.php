@@ -219,21 +219,9 @@ class WxcallbackController extends \yii\web\Controller
         $log->save();
     }
 
-    // public function actionLog()
-    // {
-        // $customer_id = 3;
-        // $total_amount = 0.01;
-        // $log = new BalanceLog();
-        // $log->customer_id = $customer_id;
-        // $log->type = 2;
-        // $log->amount = $total_amount;
-        // $log->mark = '充值'.$total_amount.'元';
-        // $log->balance = $total_amount;
-        // if ($log->save()) {
-            // return ['msg' => '保存成功'];
-        // } else {
-            // return $log->getFirstErrors();
-        // }
-    // }
+    protected function calculateCredit()
+    {
+
+    }
 }
 
