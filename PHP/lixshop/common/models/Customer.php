@@ -24,6 +24,7 @@ use yii\web\IdentityInterface;
  * @property integer $discount 享受折扣
  * @property string $name 姓名
  * @property string $card_id 会员卡号
+ * @property int $credit 用户积分
  */
 class Customer extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -58,7 +59,7 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['group', 'favorite_product_count', 'discount'], 'integer'],
+            [['group', 'favorite_product_count', 'discount', 'credit'], 'integer'],
             [['created_at', 'updated_at', 'access_token_created_at'], 'safe'],
             [['wechat_openid', 'access_token', 'name', 'card_id'], 'string', 'max' => 255],
             [['mobile'], 'string', 'max' => 11],
@@ -85,6 +86,7 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
             'discount' => '用户享受的会员折扣',
             'name' => '顾客姓名',
             'card_id' => '会员卡号',
+            'credit' => '用户积分',
         ];
     }
 
@@ -177,6 +179,7 @@ class Customer extends \yii\db\ActiveRecord implements IdentityInterface
             'discount',
             'name',
             'card_id',
+            'credit',
             // 'access_token_created_at',
         ];
     }
