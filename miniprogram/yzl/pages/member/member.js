@@ -26,7 +26,8 @@ Page({
 			// }
 		],
 		userInfo: {},
-		couponCount: 0
+		couponCount: 0,
+		cardCount: 0,
   },
 	onLoad () {
 		this.getProfile()
@@ -48,9 +49,17 @@ Page({
 				if (code === 200) {
 					const data = res.data.data
 					console.log(data)
+					var cardCount = 0
+					if (data.user.card_id !== null) {
+						console.log('有会员卡')
+						cardCount = 1
+					} else {
+						console.log('没有会员卡')
+					}
 					that.setData({
 						userInfo: data.user,
-						couponCount: data.coupon
+						couponCount: data.coupon,
+						cardCount: cardCount
 					})
 				}
 			},

@@ -38,7 +38,7 @@
     </view>
 
     <view class="wallet-item" bindtap="go2MyCardPage">
-      <text class="wallet-value">0张</text>
+			<text class="wallet-value">{{cardCount}}张</text>
       <view>
         <text class="wallet-key">会员卡</text>
       </view>
