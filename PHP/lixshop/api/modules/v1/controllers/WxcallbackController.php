@@ -219,9 +219,11 @@ class WxcallbackController extends \yii\web\Controller
         $log->save();
     }
 
-    protected function calculateCredit()
+    protected function calculateCredit($customer, $real_amount)
     {
-
+        $credit = intval($real_amount);
+        $customer->credit += $credit;
+        return $customer;
     }
 }
 
