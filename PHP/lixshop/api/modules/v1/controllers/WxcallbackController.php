@@ -9,6 +9,7 @@ use common\models\SalesFlatOrder;
 use common\models\ChargeOrder;
 use common\models\Customer;
 use common\models\BalanceLog;
+use common\models\CreditLog;
 use api\utils\Code;
 
 class WxcallbackController extends \yii\web\Controller
@@ -217,7 +218,16 @@ class WxcallbackController extends \yii\web\Controller
         $log->mark = '消费'.$real_amount.'元';
         $log->balance = $customer->charge;
         $log->save();
+
+        $credit_log = new CreditLog();
+        $credit_log->customer_id = $customer_id;
+        $credit_log->type = 1;
+        $credit_log->amount = intvale($real_amount);
+        $credit_log->mark = '获取'.$credit_log->amount.'元';
+        $credit_log->balance = $customer->credit;
+        $credit_log->save();
     }
+
 
     protected function calculateCredit($customer, $real_amount)
     {
