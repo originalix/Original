@@ -193,6 +193,8 @@ class WxcallbackController extends \yii\web\Controller
             $card_id =  $card_pre.$card_no.$card_vc; 
             $customer->card_id = $card_id;
         }
+        // 计算积分
+        $customer = $this->calculateCredit($customer, $total_amount);
 
         $customer->save();
 
@@ -203,6 +205,14 @@ class WxcallbackController extends \yii\web\Controller
         $log->mark = '充值'.$total_amount.'元';
         $log->balance = $customer->charge;
         $log->save();
+
+        $credit_log = new CreditLog();
+        $credit_log->customer_id = $customer_id;
+        $credit_log->type = 1;
+        $credit_log->amount = intvale($real_amount);
+        $credit_log->mark = '获取'.$credit_log->amount.'元';
+        $credit_log->balance = $customer->credit;
+        $credit_log->save();
     }
 
     /**
@@ -211,6 +221,9 @@ class WxcallbackController extends \yii\web\Controller
     function writeLog($customer_id, $real_amount)
     {
         $customer = Customer::findOne($customer_id);
+        $customer = $this->calculateCredit($customer, $real_amount);
+        $customer->save();
+
         $log = new BalanceLog();
         $log->customer_id = $customer_id;
         $log->type = 1;
@@ -228,7 +241,9 @@ class WxcallbackController extends \yii\web\Controller
         $credit_log->save();
     }
 
-
+    /**
+     * 计算用户积分
+     */
     protected function calculateCredit($customer, $real_amount)
     {
         $credit = intval($real_amount);
