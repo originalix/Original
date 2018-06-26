@@ -1,0 +1,131 @@
+page {
+	background-color: #f0f0f0;
+}
+
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+}
+
+.horizon-center {
+	margin: 0 auto;
+}
+
+.transform-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.header {
+	padding-top: 20rpx;
+	text-align: center;
+	width: 100%;
+}
+
+.separate {
+	width: 100%;
+	height: 1rpx;
+}
+
+.bg-f6 {
+	background-color: #f6f6f6;
+}
+
+.bg-white {
+	background-color: #ffffff;
+}
+
+.w-80 {
+	width: 80%;
+	margin-left: 10%;
+}
+
+.mgt-20 {
+	margin-top: 20rpx;
+}
+
+.charge-wrap {
+	width: 204rpx;
+	height: 204rpx;
+	background-color: #ff9901;
+	border-radius: 50%;
+	margin-top: 29rpx;
+}
+
+.charge-title {
+	font-size: 34rpx;
+	display: block;
+	margin-bottom: 13rpx;
+}
+
+.charge-value {
+	font-size: 40rpx;
+}
+
+.color-white {
+	color: #ffffff;
+}
+
+.btn-view {
+	/* width: 190rpx; */
+	height: 68rpx;
+	margin-top: 20rpx;
+	/* margin-bottom: 30rpx; */
+}
+
+/**
+ * 小程序文字分割线样例
+ */
+.listtitle {
+	display: flex;
+	width: 100%;
+	height: 92rpx;
+	justify-content: center;
+	align-items: center;
+}
+
+.listtitle__line {
+	width: 200rpx;
+	height: 1rpx;
+	border-top: 1rpx solid #d2d2d2;
+}
+
+.listtitle__text {
+	margin: 0 16rpx 0 8rpx;
+	color: #999;
+	font-size: 24rpx;
+}
+
+.cell {
+	width: 100%;
+	height: 111rpx;
+	background-color: #fff;
+	border-bottom: 1rpx solid #dcdcdc;
+}
+
+.cell-text { 
+	color: #8a8a8a;
+	margin-left: 30rpx;
+}
+
+.plus {
+	color: #ff9901;
+}
+
+.sub {
+	color: #51b864;
+}
+
+.font-28 {
+	font-size: 28rpx;
+}
+
+.cell-value {
+	font-size: 36rpx;
+	order: 20;
+	margin-left: auto;
+	margin-right: 74rpx;
+}
+

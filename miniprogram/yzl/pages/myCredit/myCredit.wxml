@@ -1,0 +1,40 @@
+<view>
+	<view class="header bg-white">
+		<view class="separate w-80 bg-f6"></view>
+		<view class="charge-wrap vertical-center horizon-center">
+			<view class="horizon-center">
+				<text class="charge-title color-white">余额</text>
+				<text class="charge-value color-white">{{balance}}元</text>
+			</view>
+		</view>
+		<view class="btn-view">
+			<lix-btn size="small" bindtap="go2ChargePage">去充值</lix-btn>
+		</view>
+		<view class="separate w-80 bg-f6"></view>
+
+		<view class="listtitle">
+			<view class="listtitle__line"></view>
+			<text class="listtitle__text">余额明细</text>
+			<view class="listtitle__line"></view>
+		</view>
+		<!-- 列表 -->
+		<wxs module="tools" src="./text.wxs"></wxs>
+		<view class="list-wrap" wx:if="{{listData.length > 0}}">
+			<view class="cell vertical-center"
+				wx:for="{{listData}}"
+				wx:for-item="item"
+				wx:for-idx="idx"
+				wx:key="idx"
+			>
+			<text class="cell-text font-28">{{tools.titleText(item.type)}}</text>
+				<text class="cell-value {{item.type == 1 ? 'sub' : 'plus'}}">{{tools.valueText(item.type, item.amount)}}</text>
+			</view>
+		</view>
+	</view>
+
+	<view wx:if="{{listData.length < 1}}">
+		<wxc-abnor type="DATA"></wxc-abnor>
+	</view>
+
+</view>
+
