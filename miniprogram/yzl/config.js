@@ -51,7 +51,9 @@ var config = {
 			// 获取优惠券列表
 			getCouponListUrl: `${base_host}/v1/coupon/index`,
 			// 兑换优惠券
-			exchangeCouponUrl: `${base_host}/v1/coupon/exchange`
+			exchangeCouponUrl: `${base_host}/v1/coupon/exchange`,
+			// 获取积分日志
+			getCreditLog: `${base_host}/v1/credit/log`,
     }
 };
 

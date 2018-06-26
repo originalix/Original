@@ -13,7 +13,8 @@
     "pages/myCoupon/myCoupon",
     "pages/couponExchange/couponExchange",
     "pages/error/error",
-    "pages/myCard/myCard"
+    "pages/myCard/myCard",
+    "pages/myCredit/myCredit"
   ],
   "window":{
     "backgroundTextStyle":"black",

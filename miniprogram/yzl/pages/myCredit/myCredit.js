@@ -14,7 +14,7 @@ Page({
 	getListData () {
 		let that = this
 		wx.request({
-			url: config.service.getBalanceLog,
+			url: config.service.getCreditLog,
 			header: appInstance.requestToken,
 			data: {},
 			success: function (res) {
@@ -39,7 +39,8 @@ Page({
 			'success': function (res) {
 				console.log(res)
 				that.setData({
-					balance: res.charge
+					// balance: res.charge
+					balance: res.credit
 				}, function () {
 					console.log(this.data.balance)
 				})
@@ -51,7 +52,7 @@ Page({
 	},
 	go2ChargePage () {
 		wx.navigateTo({
-			url: '/pages/charge/charge'
+			url: '/pages/error/error'
 		})
 	}
 })

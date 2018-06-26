@@ -111,5 +111,10 @@ Page({
 		wx.navigateTo({
 			url: '/pages/myCard/myCard'
 		})
+	},
+	go2MyCreditPage () {
+		wx.navigateTo({
+			url: '/pages/myCredit/myCredit'
+		})
 	}
 })

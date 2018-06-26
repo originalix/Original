@@ -3,18 +3,18 @@
 		<view class="separate w-80 bg-f6"></view>
 		<view class="charge-wrap vertical-center horizon-center">
 			<view class="horizon-center">
-				<text class="charge-title color-white">余额</text>
-				<text class="charge-value color-white">{{balance}}元</text>
+				<text class="charge-title color-white">积分</text>
+				<text class="charge-value color-white">{{balance}}</text>
 			</view>
 		</view>
 		<view class="btn-view">
-			<lix-btn size="small" bindtap="go2ChargePage">去充值</lix-btn>
+			<lix-btn size="small" bindtap="go2ChargePage">积分商城</lix-btn>
 		</view>
 		<view class="separate w-80 bg-f6"></view>
 
 		<view class="listtitle">
 			<view class="listtitle__line"></view>
-			<text class="listtitle__text">余额明细</text>
+			<text class="listtitle__text">积分明细</text>
 			<view class="listtitle__line"></view>
 		</view>
 		<!-- 列表 -->

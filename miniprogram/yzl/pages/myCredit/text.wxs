@@ -1,0 +1,22 @@
+var tools = {
+  valueText: function (type, value) {
+    if (type == 1) {
+      return '-' + value
+    } else if (type == 2) {
+      return '+' + value
+    }
+    return value
+  },
+  titleText: function (type) {
+    if (type == 1) {
+      return '获取'
+    } else if (type == 2) {
+      return '使用'
+    }
+  }
+}
+
+module.exports = {
+  valueText: tools.valueText,
+  titleText: tools.titleText
+}
