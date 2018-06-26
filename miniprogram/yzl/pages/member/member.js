@@ -32,6 +32,13 @@ Page({
 	onLoad () {
 		this.getProfile()
 	},
+	onShareAppMessage: function (res) {
+		console.log(res)
+		return {
+			title: '衣之恋小程序分享',
+			path: '/page/myCharge/myCharge'
+		}
+	},
 	go2ChargePage () {
 		wx.navigateTo({
 			url: '/pages/charge/charge'
@@ -84,7 +91,8 @@ Page({
 		switch (index) {
 			// 推荐有奖
 			case 0:
-				this.go2ErrorPage()
+				// this.go2ErrorPage()
+				this.go2SharePage()
 				break
 			// 积分商城
 			case 1:
@@ -115,6 +123,11 @@ Page({
 	go2MyCreditPage () {
 		wx.navigateTo({
 			url: '/pages/myCredit/myCredit'
+		})
+	},
+	go2SharePage () {
+		wx.navigateTo({
+			url: '/pages/share/share'
 		})
 	}
 })

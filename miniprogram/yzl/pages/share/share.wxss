@@ -1,0 +1,13 @@
+.share-bg {
+	position: relative;
+	height: 380px;
+	background: url("http://img.yzl1030.com/share_bg.png") no-repeat;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+}
+
+.btn-view {
+	width: 90%;
+	margin: 40rpx 0 0 5%;
+}
+

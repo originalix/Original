@@ -1,0 +1,7 @@
+<view>
+	<view class="share-bg"></view>
+	<view class="btn-view">
+		<lix-btn type="danger" size="large">邀请好友</lix-btn>
+	</view>
+</view>
+

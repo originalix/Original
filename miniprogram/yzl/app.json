@@ -14,7 +14,8 @@
     "pages/couponExchange/couponExchange",
     "pages/error/error",
     "pages/myCard/myCard",
-    "pages/myCredit/myCredit"
+    "pages/myCredit/myCredit",
+    "pages/share/share"
   ],
   "window":{
     "backgroundTextStyle":"black",
