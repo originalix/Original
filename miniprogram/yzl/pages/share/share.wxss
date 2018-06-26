@@ -11,3 +11,13 @@
 	margin: 40rpx 0 0 5%;
 }
 
+.tips text{
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.tips {
+	width: 100%;
+	text-align: center;
+}
+
