@@ -5,6 +5,14 @@
 	</view>
 	<view class="tips">
 		<text>优惠券&活动规则</text>
+		<wxc-dialog
+			class="wxc-dialog"
+			title="标题"
+			content="告知当前状态，信息和解决方案，文字换行的情况。"
+			confirm-text="知道了"
+			bindconfirm="onConfirm"
+			bindcancel="onCancel">
+		</wxc-dialog>
 	</view>
 </view>
 

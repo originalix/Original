@@ -4,7 +4,13 @@ var orderUtils = require('../../utils/order.js');
 var appInstance = getApp()
 
 Page({
-	data: {},
+	data: {
+		title: "优惠券&活动规则",
+		content: "一、邀请好友要求:
+		
+		被邀请的用户必须是衣之恋新用户
+		",
+	},
 	onShareAppMessage: function (res) {
 		console.log(res)
 		if (res.from === 'button') {

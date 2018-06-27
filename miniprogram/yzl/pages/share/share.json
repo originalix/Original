@@ -13,7 +13,8 @@
     "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index",
     "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
     "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
-    "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index"
+    "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
+    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index"
   }
 }
 
