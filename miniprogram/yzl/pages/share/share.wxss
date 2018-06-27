@@ -11,7 +11,7 @@
 	margin: 40rpx 0 0 5%;
 }
 
-.tips text{
+.tips-label{
 	font-size: 12px;
 	text-decoration: underline;
 }

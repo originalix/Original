@@ -4,7 +4,7 @@
 		<lix-btn type="danger" size="large" open-type="share">邀请好友</lix-btn>
 	</view>
 	<view class="tips">
-		<text bindtap="showDialog">优惠券&活动规则</text>
+		<text class="tips-label" bindtap="showDialog">优惠券&活动规则</text>
 		<wxc-dialog
 			class="wxc-dialog"
 			title="标题"
@@ -12,6 +12,8 @@
 			confirm-text="知道了"
 			bindconfirm="onConfirm"
 			bindcancel="onCancel">
+			<text>这是第一段说明文字</text>
+			<text>这是第二段说明文字</text>
 		</wxc-dialog>
 	</view>
 </view>
