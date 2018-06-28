@@ -126,8 +126,9 @@ Page({
 		})
 	},
 	go2SharePage () {
+		console.log(this.data.userInfo)
 		wx.navigateTo({
-			url: '/pages/share/share'
+			url: '/pages/share/share?id=' + this.data.userInfo.id
 		})
 	}
 })

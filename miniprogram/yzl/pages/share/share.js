@@ -5,8 +5,18 @@ var appInstance = getApp()
 
 Page({
 	data: {
+		uid: 0,
 		title: "优惠券&活动规则",
-		content: "一、邀请好友要求:\n被邀请的用户必须是衣之恋新用户",
+	},
+	onLoad (option) {
+		console.log(`option query is : `)
+		console.log(option)
+		if (option.id !== undefined) {
+			var that = this
+			this.setData({
+				uid: option.id
+			})
+		}
 	},
 	onShareAppMessage: function (res) {
 		console.log(res)
@@ -15,7 +25,7 @@ Page({
 		}
 		return {
 			title: '衣之恋小程序分享',
-			path: '/page/myCharge/myCharge'
+			path: '/page/index/index?share_id=' + this.data.uid
 		}
 	},
 	showDialog() {

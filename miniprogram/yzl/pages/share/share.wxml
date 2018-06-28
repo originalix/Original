@@ -9,7 +9,7 @@
 			class="wxc-dialog"
 			title="{{title}}"
 			content="{{}}"
-			confirm-text="知道了"
+			confirm-text="我知道了"
 			bindconfirm="onConfirm"
 			bindcancel="onCancel">
 			<view class="dialog-wrap">

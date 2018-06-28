@@ -12,9 +12,10 @@ Page({
     categories: [],
     promotions: [],
   },
-  onLoad: function () {
+  onLoad: function (option) {
     this.getIndexConfig()
-		util.test()
+		console.log(`option query is : `)
+		console.log(option)
   },
   getIndexConfig() {
     var that = this;

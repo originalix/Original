@@ -51,11 +51,5 @@ var getDateStr = (AddDayCount) => {
 	return y+"-"+m+"-"+d;
 }
 
-var test = () => {
-	var a = ["1", "2", "3"]
-	var b = a.map(parseInt)
-	console.log(b)
-}
-
-module.exports = { formatTime, showBusy, showSuccess, showModel, getDateStr, test }
+module.exports = { formatTime, showBusy, showSuccess, showModel, getDateStr }
 
