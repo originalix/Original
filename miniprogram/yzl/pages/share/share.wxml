@@ -17,6 +17,9 @@
 				<text class="content">1.被邀请用户须是衣之恋新用户，即未在衣之恋下过订单、且未领取其他优惠券</text>
 				<text class="content">2.被邀请用户必须通过邀请人分享链接或二维码领券，方能获得30元优惠券（1张20元1张10元，全品类可用，满0元使用）</text>
 				<text class="content">3.被邀请用户支付订单后，30元优惠券（3张10元，全品类可用，满0元使用）会打入邀请人账户</text>
+				<text class="content">二、红包使用规则：</text>
+				<text class="content">1.红包领取成功后放入填写手机号的账号中，在衣之恋个人中心的优惠券中可以查看</text>
+				<text class="content">2.红包在支付订单时使用，每个订单只能使用一个红包，不找零不累计</text>
 			</view>
 		</wxc-dialog>
 	</view>

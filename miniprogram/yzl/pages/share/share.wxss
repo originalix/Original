@@ -21,7 +21,12 @@
 	text-align: center;
 }
 
+.dialog-wrap {
+	margin: 0 20rpx 20rpx 20rpx;
+}
+
 .content {
+	display: block;
 	font-size: 12px;
 	color: #000;
 	text-align: left;
