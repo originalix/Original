@@ -7,13 +7,17 @@
 		<text class="tips-label" bindtap="showDialog">优惠券&活动规则</text>
 		<wxc-dialog
 			class="wxc-dialog"
-			title="标题"
-			content="{{content}}"
+			title="{{title}}"
+			content="{{}}"
 			confirm-text="知道了"
 			bindconfirm="onConfirm"
 			bindcancel="onCancel">
-			<text>这是第一段说明文字</text>
-			<text>这是第二段说明文字</text>
+			<view class="dialog-wrap">
+				<text class="content">一、邀请好友要求:</text>
+				<text class="content">1.被邀请用户须是衣之恋新用户，即未在衣之恋下过订单、且未领取其他优惠券</text>
+				<text class="content">2.被邀请用户必须通过邀请人分享链接或二维码领券，方能获得30元优惠券（1张20元1张10元，全品类可用，满0元使用）</text>
+				<text class="content">3.被邀请用户支付订单后，30元优惠券（3张10元，全品类可用，满0元使用）会打入邀请人账户</text>
+			</view>
 		</wxc-dialog>
 	</view>
 </view>
