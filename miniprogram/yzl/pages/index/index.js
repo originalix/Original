@@ -65,6 +65,9 @@ Page({
 			url: '/pages/shoplist/shoplist?id=' + categoryId
 		})
   },
+	/**
+	 * 如果用户是被推荐进小程序的，执行此推荐有礼的代码
+	 */
 	recommendByShareId (id) {
 		wx.request({
 			url: config.service.shareAndGetCouponAPI,

@@ -187,6 +187,7 @@ Page({
 	 */
 	handleActionClick ({ detail }) {
 		const { index } = detail
+		var that = this
 		console.log (detail)
 		var text = ''
 		if (index == 0) {
@@ -199,6 +200,8 @@ Page({
 			expressText: text,
 			actionsheetShow: false,
 			isShowPayView: true
+		}, function () {
+			that.calculatePrice()
 		})
 	},
 	/**
@@ -228,6 +231,12 @@ Page({
 		if (sumPrice < 30) {
 			expressP = 10.00	
 		}
+
+		// 到店取送 不计算运费
+		if (this.data.expressType === 1) {
+			expressP = 0.00
+		}
+
 		var finalP = sumPrice + expressP 
 		this.setData({
 			'price': sumPrice.toFixed(2),

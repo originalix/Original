@@ -114,6 +114,11 @@ class OrderForm extends Model
         } else {
             $this->express_amount = 10.00;
         }
+        
+        // 到店取送的情况 去掉运费
+        if ($this->express_type === 1) {
+            $this->express_amount = 0.00;
+        }
 
         // return [
         //     'total_amount' => $this->total_amount,
