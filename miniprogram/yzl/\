@@ -246,7 +246,7 @@ Page({
 		// 如果有会员折扣 则在总价上打折
 		var userDiscount = this.data.userInfo.discount
 		if (userDiscount !== 100) {
-			finalP = finalP * (userDiscount / 100)
+			finalP = finalP * (userInfo.discount / 100)
 		}
 
 		this.setData({

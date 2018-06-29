@@ -109,6 +109,7 @@
 		<view class="mgt-20 bg-white">
 			<normal-cell title="商品金额" value="￥{{no_express_price}}"></normal-cell>
 			<normal-cell title="运费" value="+￥{{expressPrice}}"></normal-cell>
+			<normal-cell title="会员折扣" value="{{userInfo.discount}}%"></normal-cell>
 		</view>
 	</scroll-view>
 
