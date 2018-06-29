@@ -1,6 +1,7 @@
 var config = require('../../config.js');
 var util = require('../../utils/util.js');
 var orderUtils = require('../../utils/order.js');
+var chargeUtils = require('../../utils/charge.js')
 var appInstance = getApp()
 
 Page({
@@ -105,6 +106,23 @@ Page({
 		console.log(id)
 		wx.navigateTo({
 			url: '/pages/orderDetail/orderDetail?id=' + id + '&status=' + status
+		})
+	},
+	getUserInfo () {
+		var that = this
+		chargeUtils.getUserMe ({
+			'success': function (res) {
+				console.log(res)
+				that.setData({
+					userInfo: res
+				}, function () {
+					console.log(that.data.userInfo)
+					that.calculatePrice()
+				})
+			},
+			'fail': function (error) {
+				console.log('用户信息获取失败')
+			}
 		})
 	}
 })

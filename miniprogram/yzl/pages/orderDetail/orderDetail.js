@@ -1,6 +1,8 @@
 var config = require('../../config.js');
+					that.calculatePrice()
 var util = require('../../utils/util.js');
 var orderUtils = require('../../utils/order.js');
+var chargeUtils = require('../../utils/charge.js')
 var appInstance = getApp()
 
 Page({
@@ -28,11 +30,13 @@ Page({
 		isCreatedOrder: true,
 		// 根据是否创建订单 显示提交按钮的文本  提交订单 or 去支付
 		submitBtnText: '去支付',
-		isPayment: false 
+		isPayment: false,
+		userInfo: {}
 	},
 	onLoad (option) {
 		console.log(option)
 		this.initializeStatus(option.status)
+		this.getUserInfo()
 
 		// 根据id 获取订单详情
 		var that = this
@@ -199,6 +203,22 @@ Page({
 		this.setData({
 			payActionsheetShow: false,
 			isShowPayView: true
+		})
+	},
+	getUserInfo () {
+		var that = this
+		chargeUtils.getUserMe ({
+			'success': function (res) {
+				console.log(res)
+				that.setData({
+					userInfo: res
+				}, function () {
+					console.log(that.data.userInfo)
+				})
+			},
+			'fail': function (error) {
+				console.log('用户信息获取失败')
+			}
 		})
 	}
 })
