@@ -202,7 +202,7 @@ class OrderForm extends Model
         $this->calculateAmount();
         $this->checkCoupon();
         // 真实价格上 加上运费
-        $this->real_amount += $this->express_amount;
+        // $this->real_amount += $this->express_amount;
         // 生成订单号
         $this->trade_no = $this->generatorTradeNo();
         
