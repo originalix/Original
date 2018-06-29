@@ -53,7 +53,7 @@ class ShareController extends BaseController
         // 发放优惠券
         $model = new CouponUsage();
         $model->coupon_id = 1;
-        $model->customer_id = $uid;
+        $model->customer_id = $recommend_id;
         $model->is_used = 1;
         if ($model->save()) {
             return [
