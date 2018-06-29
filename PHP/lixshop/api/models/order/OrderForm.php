@@ -13,6 +13,7 @@ use api\models\product\ProductInfo;
 use common\models\CustomOptionStock;
 use common\models\Coupon;
 use common\models\CouponUsage;
+use common\models\Customer;
 
 class OrderForm extends Model
 {
@@ -104,22 +105,29 @@ class OrderForm extends Model
 
             // 查看是否有优惠券 是否需要打折
         }
-
-        // 计算折扣价格
-        $this->discount_amount = $this->total_amount - $this->real_amount;
-
-        // 查看是否满足30元 否则需要邮费
-        if ($this->total_amount > 30) {
-            $this->express_amount = 0.00;
-        } else {
-            $this->express_amount = 10.00;
-        }
         
         // 到店取送的情况 去掉运费
         if ($this->express_type === 1) {
             $this->express_amount = 0.00;
+        } else {
+            // 查看是否满足30元 否则需要邮费
+            if ($this->total_amount > 30) {
+                $this->express_amount = 0.00;
+            } else {
+                $this->express_amount = 10.00;
+                $this->total_amount += 10.00;
+                $this->real_amount += 10.00;
+            }
         }
 
+        // 查询会员折扣，并且按照折扣打折
+        $customer = Customer::findOne(Yii::$app->user->identity->id);
+        if ($customer->discount !== 100) {
+            $this->real_amount = $this->total_amount * ($customer->discount / 100);
+        }
+
+        // 计算折扣价格
+        $this->discount_amount = $this->total_amount - $this->real_amount;
         // return [
         //     'total_amount' => $this->total_amount,
         //     'real_amount' => $this->real_amount,
