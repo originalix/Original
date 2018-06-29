@@ -23,9 +23,6 @@ Page({
 		console.log(option.id)
 		const categoryId = option.id
 		this.getTab(categoryId)
-    // setTimeout(this.getTab, 100)
-    // setTimeout(this.mockProduct, 100)
-		// this.mockCartList()
   },
   getTab(categoryId) {
 		const that = this
@@ -58,22 +55,6 @@ Page({
 			}
 		})
   },
-  mockProduct() {
-    // var ptli = []
-    // for(var i = 0; i < 1; i++) {
-      // var pt = {
-        // 'id' : i,
-        // 'image': 'http://140.143.8.19/code-repo/PHP/lixshop/backend/web/uploads/temp/78145dcf5ea44b0b89afc2f3392445a3.jpg',
-        // 'title': '衬衫哦哦哦',
-        // 'price': '16.00',
-        // 'badge': 0
-      // }
-      // ptli.push(pt)
-    // }
-    // this.setData({
-      // productList: ptli
-    // }, function () {})
-  },
 	/**
 	 * 商品列表的点击事件，增加badeg数量 并且加入购物车
 	 */
@@ -81,6 +62,9 @@ Page({
     var item = event.currentTarget.dataset.item
 		console.log('addbadge')
 		console.log(item)
+		if (item.customOption.length > 0) {
+			console.log('存在可选值')
+		}
 		this.refreshProductItemBadge(item, item.badge + 1)
     this.addCartItem(item)
   },
@@ -151,7 +135,8 @@ Page({
 						'image': product.image[0],
 						'title': product.name,
 						'price': product.price,
-						'badge': that.checkBadgeInCartList(product.id)
+						'badge': that.checkBadgeInCartList(product.id),
+						'customOption': product.customOptionStock
 					}	
 					product_li.push(productInfo)
 				}
