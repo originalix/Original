@@ -6,6 +6,8 @@ use Yii;
 use api\components\BaseController;
 use common\models\Customer;
 use yii\web\HttpException;
+use common\models\Referees;
+use api\models\coupon\CouponUsage;
 
 class ShareController extends BaseController
 {
@@ -22,13 +24,38 @@ class ShareController extends BaseController
         $uid = Yii::$app->user->identity->id;
         $now_time = date("y-m-d");
         $created_time = date("y-m-d", strtotime(Yii::$app->user->identity->access_token_created_at));
-        if (strtotime($now_time) == strtotime($created_time)) {
-            //当天创建账户
-        } else {
-            // 不是当天创建账户
+        if (strtotime($now_time) != strtotime($created_time)) {
+            //不是当天创建账户
+            throw new HttpException(420, '已经是注册会员');
         }
 
-        return [
-        ];
+        // 确定没有推荐关系
+        $referees_record = Referees::find()
+            ->where(['customer_id' => $uid])
+            ->one();
+        if (! is_null($referees_record)) {
+            if (! is_null ($referees_record->referees_id)) {
+                throw new HttpException(421, '已经被推荐加入衣之恋');
+            }
+        }
+
+        // 存储推荐关系 
+        $referees = new Referees();
+        $referees->customer_id = $uid;
+        $referees->referees_id = $recommend_id;
+        $referees->save();
+        
+        // 发放优惠券
+        $model = new CouponUsage();
+        $model->coupon_id = 1;
+        $model->customer_id = $uid;
+        $model->is_used = 1;
+        if ($model->save()) {
+            return [
+                'referees' => $referees,
+            ];
+        } else { 
+            throw new HttpException(422, '给推荐人的优惠券发放失败');
+        }
     }
 }
