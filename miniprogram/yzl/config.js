@@ -54,7 +54,9 @@ var config = {
 			exchangeCouponUrl: `${base_host}/v1/coupon/exchange`,
 			// 获取积分日志
 			getCreditLog: `${base_host}/v1/credit/log`,
-    }
+			// 推荐有奖api
+			shareAndGetCouponAPI: `${base_host}/v1/share/index`,
+	}
 };
 
 module.exports = config;

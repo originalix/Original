@@ -22,6 +22,11 @@ class ShareController extends BaseController
         }
 
         $uid = Yii::$app->user->identity->id;
+
+        if ($uid == $recommend_id) {
+            throw new HttpException(417, '推荐无效');
+        }
+
         $now_time = date("y-m-d");
         $created_time = date("y-m-d", strtotime(Yii::$app->user->identity->access_token_created_at));
         if (strtotime($now_time) != strtotime($created_time)) {
@@ -59,3 +64,4 @@ class ShareController extends BaseController
         }
     }
 }
+

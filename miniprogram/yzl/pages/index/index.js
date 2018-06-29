@@ -16,6 +16,9 @@ Page({
     this.getIndexConfig()
 		console.log(`option query is : `)
 		console.log(option)
+		if (option.share_id !== undefined) {
+			this.recommendByShareId(option.share_id)
+		}
   },
   getIndexConfig() {
     var that = this;
@@ -61,5 +64,21 @@ Page({
 		wx.navigateTo({
 			url: '/pages/shoplist/shoplist?id=' + categoryId
 		})
-  }
+  },
+	recommendByShareId (id) {
+		wx.request({
+			url: config.service.shareAndGetCouponAPI,
+			header: appInstance.requestToken,
+			data: {
+				'recommend_id': id		
+			},
+			method: 'GET',
+			success: function (res) {
+				console.log(res)
+			},
+			fail: function (error) {
+				console.log(error)
+			}
+		})
+	}	
 })
