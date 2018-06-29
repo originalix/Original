@@ -62,9 +62,30 @@ Page({
     var item = event.currentTarget.dataset.item
 		console.log('addbadge')
 		console.log(item)
+
 		if (item.customOption.length > 0) {
 			console.log('存在可选值')
+			var btnList = []
+			for (var i=0; i<item.customOption.length; i++) {
+				var btnItem = {
+					'text': item.customOption.custom_option_key,
+					'type': item.customOption.id
+				}
+				btnList.push(btnItem)	
+			}
+
+			Dialog({
+				message: '请选择商品具体类型',
+				title: '温馨提醒',
+				selector: '#zan-dialog-tip',
+				buttons: btnList,
+			}).then(({ type }) => {
+				console.log('=== dialog with custom buttons ===', `type: ${type}`)
+			})
+
+			return
 		}
+
 		this.refreshProductItemBadge(item, item.badge + 1)
     this.addCartItem(item)
   },
