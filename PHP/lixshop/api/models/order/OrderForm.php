@@ -301,3 +301,4 @@ class OrderForm extends Model
         return date('Ymd', time()).time().mt_rand(1000,9999);
     }
 }
+

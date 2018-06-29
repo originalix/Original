@@ -13,10 +13,15 @@ var tools = {
     } else if (type == 2) {
       return '微信充值'
     }
+  },
+  discountText: function (discount) {
+    return discount / 10
   }
 }
 
 module.exports = {
   valueText: tools.valueText,
-  titleText: tools.titleText
+  titleText: tools.titleText,
+  discountText: tools.discountText,
 }
+
