@@ -64,31 +64,40 @@ Page({
 		console.log(item)
 
 		if (item.customOption.length > 0) {
-			console.log('存在可选值')
-			var btnList = []
-			for (var i=0; i<item.customOption.length; i++) {
-				var btnItem = {
-					'text': item.customOption.custom_option_key,
-					'type': item.customOption.id
-				}
-				btnList.push(btnItem)	
-			}
-
-			Dialog({
-				message: '请选择商品具体类型',
-				title: '温馨提醒',
-				selector: '#zan-dialog-tip',
-				buttons: btnList,
-			}).then(({ type }) => {
-				console.log('=== dialog with custom buttons ===', `type: ${type}`)
-			})
-
+			this.selectCustomOption(item)
 			return
 		}
 
 		this.refreshProductItemBadge(item, item.badge + 1)
     this.addCartItem(item)
   },
+	selectCustomOption (item) {
+			console.log('存在可选值')
+			var btnList = []
+			for (var i=0; i<item.customOption.length; i++) {
+				var btnItem = {
+					text: item.customOption[i].custom_option_key,
+					type: item.customOption[i].id
+				}
+				btnList.push(btnItem)	
+			}
+			console.log(btnList)
+
+			Dialog({
+				message: '请选择商品具体类型',
+				title: '温馨提醒',
+				selector: '#zan-dialog-tip',
+				buttons: btnList,
+				buttonsShowVertical: true,
+			}).then(({ type }) => {
+				console.log('=== dialog with custom buttons ===', `type: ${type}`)
+				item.selectOption = type
+				console.log('=== now item is')
+				console.log(item)
+				this.refreshProductItemBadge(item, item.badge + 1)
+    		this.addCartItem(item)
+			})
+	},
 	/*
 	 * 添加商品进入购物车
 	 */
@@ -121,11 +130,19 @@ Page({
 	},
 	isInCartList(item) {
 		var that = this;
-		let res = {'exist': false, 'idx': -1}
+		let res = {'exist': false, 'idx': -1, 'sameItem': 0, 'sameOption': 0}
 		for (var i=0; i<that.data.cartList.length; i++) {
-			if (item.id === that.data.cartList[i].id) {
-				res = {'exist': true, 'idx': i}
-				return res
+			var exitsItem = that.data.cartList[i]
+			if (item.id === exitsItem.id) {
+        res.sameItem += 1
+				// 当自定义属性相同时， 才判定为同种商品
+				if (item.selectOption === exitsItem.selectOption) {
+					// res = {'exist': true, 'idx': i}
+          res.exist = true
+          res.idx = i
+          res.sameOption += 1
+					return res
+				}
 			}
 		}
 		return res
@@ -157,7 +174,8 @@ Page({
 						'title': product.name,
 						'price': product.price,
 						'badge': that.checkBadgeInCartList(product.id),
-						'customOption': product.customOptionStock
+						'customOption': product.customOptionStock,
+						'selectOption': null
 					}	
 					product_li.push(productInfo)
 				}
