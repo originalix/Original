@@ -134,14 +134,14 @@ Page({
 		for (var i=0; i<that.data.cartList.length; i++) {
 			var exitsItem = that.data.cartList[i]
 			if (item.id === exitsItem.id) {
-        res.sameItem += 1
+        res.sameItem += exitsItem.badge
 				// 当自定义属性相同时， 才判定为同种商品
 				if (item.selectOption === exitsItem.selectOption) {
 					// res = {'exist': true, 'idx': i}
           res.exist = true
           res.idx = i
-          res.sameOption += 1
-					return res
+          res.sameOption += exitsItem.badge
+          return res
 				}
 			}
 		}
