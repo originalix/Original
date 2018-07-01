@@ -228,7 +228,11 @@ Page({
 		let sumPrice = 0.00
 		var expressP = 0.00
 		for (let i=0; i<list.length; i++) {
-			sumPrice += Number(list[i].price) * list[i].badge
+      if (list[i].selectCustom !== null) {
+        sumPrice += Number(list[i].selectCustom.price) * list[i].badge
+      } else {
+			  sumPrice += Number(list[i].price) * list[i].badge
+      }
 		}
 		console.log('price: ' + sumPrice.toFixed(2))
 
@@ -252,7 +256,7 @@ Page({
 		this.setData({
 			'price': sumPrice.toFixed(2),
 			expressPrice: expressP,
-			finalPrice: finalP,
+			finalPrice: finalP.toFixed(2),
 			no_express_price: sumPrice.toFixed(2)
 		}, function () {})
 	},
@@ -282,9 +286,14 @@ Page({
 		for (var i=0; i<this.data.productList.length; i++) {
 			let product = this.data.productList[i]
 			sumItemsCount += product.badge
+			let customId = null
+			if (product.selectCustomId !== null) {
+				customId = product.selectCustomId
+			}
 			let item = {
 				'product_id': product.id,
-				'count': product.badge
+				'count': product.badge,
+				'customId': customId
 			}
 			orderItems.push(item)
 		}

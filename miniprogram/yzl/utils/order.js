@@ -98,6 +98,9 @@ const createOrder = (params) => {
 		'express_time': params.express_time
 	}
 
+	console.log('订单请求参数: ->')
+	console.log(data)
+
 	wx.request({
 		url: config.service.createOrderUrl,
 		header: appInstance.requestToken,
