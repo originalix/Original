@@ -71,6 +71,10 @@ Page({
 		this.refreshProductItemBadge(item, item.badge + 1)
     this.addCartItem(item)
   },
+  /**
+   * 点击带customOption属性商品的点击事件
+   * @param {*} item 
+   */
 	selectCustomOption (item) {
 			console.log('存在可选值')
 			var btnList = []
@@ -103,7 +107,8 @@ Page({
 	 */
 	addCartItem: function (item) {
 		console.log('add cart item')
-		console.log(item)
+    console.log(item)
+    this.refreshItemByCustomOption(item)
 		var that = this
 		var list = that.data.cartList
 		const res = this.isInCartList(item)
@@ -155,7 +160,23 @@ Page({
 			}
 		}
 		return res
-	},
+  },
+  refreshItemByCustomOption (item) {
+    if (item.selectOption === null) {
+      return item
+    }
+
+    let customObj = {}
+    for (var i=0; i<item.customOption.length; i++) {
+      let obj = item.customOption[i]
+      if (obj.id === item.selectOption) {
+        customObj = obj
+        break
+      }
+    }
+    console.log(`=========>>>>>> custom Obj is : `)
+    console.log(customObj)
+  },
 	/**
 	 * tab的点击事件，刷新列表，重新从接口请求商品数据
 	 */
