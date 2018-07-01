@@ -273,7 +273,7 @@ Page({
 	/**
 	 *  创建订单函数
 	 */
-	createOrder() {
+	createOrder(paymentMethod) {
 		var that = this
 
 		if (this.data.isCreatedOrder === true) {
@@ -326,7 +326,11 @@ Page({
 					}, function () {})
 
 					let total_fee = res.real_amount * 100
-					that.createWxOrder(res.trade_no, total_fee)
+          if (paymentMethod === 'wxpay') {
+					  that.createWxOrder(res.trade_no, total_fee)
+          } else {
+            that.createChargePay(res.trade_no, res.real_amout)
+          }
 				}
 			},
 			'fail': function (error) {
@@ -378,8 +382,23 @@ Page({
 			}
 		})	
 	},
+  /**
+   *  检查余额是否够用
+   */
+  checkCharge () {
+		if (this.data.userInfo.charge < this.data.finalPrice) {
+			console.log('余额不足，请使用其他支付方式支付')
+		} else {
+			console.log('余额充足可以使用')
+		}
+  },
+  /**
+   *  点击余额支付的逻辑
+   */
+  createChargePay () {
+  },
 	/**
-	 *  显示微信支付弹窗
+	 *  显示支付ActionSheet弹窗
 	 */
 	showPayActionsheet () {
 		this.setData({
@@ -388,13 +407,22 @@ Page({
 		})
 	},
 	/**
-	 * 微信支付的点击事件
+	 * 支付ActionSheet的点击事件
 	 */
 	handlePayActionClick ({ detail }) {
 		const { index } = detail;
 		console.log(index)
 
-		// this.createOrder()
+    let paymentMethod = 'wxpay'
+    if (index === 0) {
+      // 余额支付 
+			paymentMethod = 'charge' 
+			this.checkCharge()
+			return
+    }
+
+    this.createOrder(paymentMethod)
+
 		this.setData({
 			payActionsheetShow: false,
 			isShowPayView: true
