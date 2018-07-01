@@ -28,7 +28,7 @@ Page({
 		const that = this
 		var defaultIdx = 0
 		wx.request({
-			url: config.service.getCategoryListUrl, 
+			url: config.service.getCategoryListUrl,
 			header: appInstance.requestToken,
 			success: function (res) {
 				console.log(res.data)
@@ -38,7 +38,7 @@ Page({
 				for (var i=0; i<categories.length; i++) {
 					console.log(categories[i])
 					if (categoryId == categories[i].id) {
-						defaultIdx = i	
+						defaultIdx = i
 					}
 					tlist.push(
 						{'id': categories[i].id, 'title': categories[i].category}
@@ -79,7 +79,7 @@ Page({
 					text: item.customOption[i].custom_option_key,
 					type: item.customOption[i].id
 				}
-				btnList.push(btnItem)	
+				btnList.push(btnItem)
 			}
 			console.log(btnList)
 
@@ -105,29 +105,38 @@ Page({
 		console.log('add cart item')
 		console.log(item)
 		var that = this
-		var list = that.data.cartList	
+		var list = that.data.cartList
 		const res = this.isInCartList(item)
 		console.log(res)
 		// 判断已经添加过商品
 		if (res.exist === true) {
 			// 产品badge +1 并更新购物车数组中单个item
-			list[res.idx].badge = item.badge
+      // list[res.idx].badge = item.badge
+      list[res.idx].badge = res.sameOption + 1
 			var targetItem = "cartList[" + res.idx + " ]"
 			that.setData({
-				targetItem: list[res.idx] 
+				targetItem: list[res.idx]
 			})
 			console.log('now cart list is : ')
 			console.log(list[res.idx])
 		} else {
-			// 添加产品进入list
-			list.push(item)			
+      // 如果之前已经有相同类型产品 那么使用sameOption值来确定购物车内badge值
+      if (res.sameItem > 0) {
+        item.badge = res.sameOption + 1
+      }
+      // 添加产品进入list
+			list.push(item)
 			that.setData({
 				cartList: list
 			}, function () {})
 		}
 		// 刷新cartlist
 		this.calculateCartCount()
-	},
+  },
+  /**
+   * 判断购物车内是否已经存在该商品
+   * @param {*} item 
+   */
 	isInCartList(item) {
 		var that = this;
 		let res = {'exist': false, 'idx': -1, 'sameItem': 0, 'sameOption': 0}
@@ -176,7 +185,7 @@ Page({
 						'badge': that.checkBadgeInCartList(product.id),
 						'customOption': product.customOptionStock,
 						'selectOption': null
-					}	
+					}
 					product_li.push(productInfo)
 				}
 				console.log(product_li);
@@ -186,7 +195,7 @@ Page({
 			}
 		})
 	},
-	/** 
+	/**
 	 *  加载商品列表时，同步badge
 	 */
 	checkBadgeInCartList(id) {
@@ -223,11 +232,11 @@ Page({
 		this.refreshProductItemBadge(currentItem, currentNum)
 		this.calculateCartCount()
   },
-	/* 
+	/*
 	*		传入一个产品，更新他的badge值
 	*/
 	refreshProductItemBadge(item, value) {
-		const that = this	
+		const that = this
 		const productList = that.data.productList
 
 		// 根据productid 查找到对应productList里的index
@@ -241,19 +250,19 @@ Page({
 					[targetItem]: item
 				}, function () {})
 			}
-		}		
+		}
 	},
 	/*
 	 * 传入购物车的列表index，刷新购物车item的badge值
 	 */
 	refreshCartItemBadge(idx, value) {
 		var that = this
-		var list = that.data.cartList	
+		var list = that.data.cartList
 		if (value != 0) {
 			list[idx].badge = value
 			var targetItem = "cartList[" + idx + " ]"
 			that.setData({
-				targetItem: list[idx] 
+				targetItem: list[idx]
 			})
 			console.log('now refresh cart list is : ')
 			console.log(list[idx])
@@ -286,7 +295,7 @@ Page({
 			'price': sumPrice.toFixed(2)
 		}, function () {})
 	},
-	/* 
+	/*
 	 *  清理购物车列表，清空按钮的点击事件
 	 */
 	clearCartList() {
@@ -309,7 +318,7 @@ Page({
 				}, function() {
 					that.calculateCartCount()
 				})
-			}	
+			}
 		})
 	},
 	/* 保存购物车的数据，传值到下个场景 */
