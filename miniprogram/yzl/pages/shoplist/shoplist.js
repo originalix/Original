@@ -95,7 +95,7 @@ Page({
 				buttonsShowVertical: true,
 			}).then(({ type }) => {
 				console.log('=== dialog with custom buttons ===', `type: ${type}`)
-				item.selectOption = type
+				item.selectCustomId = type
 				console.log('=== now item is')
 				console.log(item)
 				this.refreshProductItemBadge(item, item.badge + 1)
@@ -108,7 +108,10 @@ Page({
 	addCartItem: function (item) {
 		console.log('add cart item')
     console.log(item)
-    this.refreshItemByCustomOption(item)
+    let customOption = this.getCustomOptionByItem(item)
+    if (customOption !== null) {
+      item = this.refreshItemByCustomOption(item, customOption)
+    }
 		var that = this
 		var list = that.data.cartList
 		const res = this.isInCartList(item)
@@ -150,7 +153,7 @@ Page({
 			if (item.id === exitsItem.id) {
         res.sameItem += exitsItem.badge
 				// 当自定义属性相同时， 才判定为同种商品
-				if (item.selectOption === exitsItem.selectOption) {
+				if (item.selectCustomId === exitsItem.selectCustomId) {
 					// res = {'exist': true, 'idx': i}
           res.exist = true
           res.idx = i
@@ -161,21 +164,28 @@ Page({
 		}
 		return res
   },
-  refreshItemByCustomOption (item) {
-    if (item.selectOption === null) {
-      return item
+  getCustomOptionByItem (item) {
+    if (item.selectCustomId === null) {
+      return null
     }
 
-    let customObj = {}
+    let customObj = null
     for (var i=0; i<item.customOption.length; i++) {
       let obj = item.customOption[i]
-      if (obj.id === item.selectOption) {
+      if (obj.id === item.selectCustomId) {
         customObj = obj
         break
       }
     }
     console.log(`=========>>>>>> custom Obj is : `)
     console.log(customObj)
+    return customObj
+  },
+  refreshItemByCustomOption (item, customOption) {
+    // item.title = `${item.title} ${customOption.custom_option_key}`
+    // item.price = customOption.price
+    item.selectCustom = customOption
+    return item
   },
 	/**
 	 * tab的点击事件，刷新列表，重新从接口请求商品数据
@@ -205,7 +215,8 @@ Page({
 						'price': product.price,
 						'badge': that.checkBadgeInCartList(product.id),
 						'customOption': product.customOptionStock,
-						'selectOption': null
+            'selectCustomId': null,
+            'selectCustom': null
 					}
 					product_li.push(productInfo)
 				}
@@ -306,8 +317,12 @@ Page({
 		let sum = 0
 		let sumPrice = 0.00
 		for (let i=0; i<list.length; i++) {
-			sum += list[i].badge
-			sumPrice += Number(list[i].price) * list[i].badge
+      sum += list[i].badge
+      if (list[i].selectCustom !== null) {
+        sumPrice += Number(list[i].selectCustom.price) * list[i].badge
+      } else {
+			  sumPrice += Number(list[i].price) * list[i].badge
+      }
 		}
 		console.log('cartsum : ' + sum)
 		console.log('price: ' + sumPrice.toFixed(2))

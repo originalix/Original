@@ -398,7 +398,6 @@ Page({
 		var that = this
 		chargeUtils.getUserMe ({
 			'success': function (res) {
-				console.log(res)
 				that.setData({
 					userInfo: res
 				}, function () {
