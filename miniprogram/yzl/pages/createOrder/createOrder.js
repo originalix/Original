@@ -24,6 +24,8 @@ Page({
 		}],
 		payActionsheetShow: false,
 		payActions: [{
+			name: '余额支付'
+		}, {
 			name: '微信支付'
 		}],
 		isShowPayView: true,
@@ -388,8 +390,11 @@ Page({
 	/**
 	 * 微信支付的点击事件
 	 */
-	handlePayActionClick () {
-		this.createOrder()
+	handlePayActionClick ({ detail }) {
+		const { index } = detail;
+		console.log(index)
+
+		// this.createOrder()
 		this.setData({
 			payActionsheetShow: false,
 			isShowPayView: true
