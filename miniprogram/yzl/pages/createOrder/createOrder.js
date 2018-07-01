@@ -286,14 +286,14 @@ Page({
 		for (var i=0; i<this.data.productList.length; i++) {
 			let product = this.data.productList[i]
 			sumItemsCount += product.badge
-			let customId = null
+			let custom_option_key = null
 			if (product.selectCustomId !== null) {
-				customId = product.selectCustomId
+				custom_option_key = product.selectCustom.custom_option_key
 			}
 			let item = {
 				'product_id': product.id,
 				'count': product.badge,
-				'customId': customId
+				'custom_option_key': custom_option_key
 			}
 			orderItems.push(item)
 		}

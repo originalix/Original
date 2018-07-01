@@ -7,6 +7,7 @@ use yii\base\Model;
 use yii\web\HttpException;
 use api\models\order\OrderItem;
 use api\models\product\ProductInfo;
+use common\models\CustomOptionStock;
 
 class OrderItemForm extends Model
 {   
@@ -50,6 +51,12 @@ class OrderItemForm extends Model
         $imagePath = null;
         if (! empty($product->image)) {
             $imagePath = $product->image[0]->path;
+        }
+
+        // 若存在可选值 
+        if (! is_null($this->custom_option_key)) {
+            $custom_option = CustomOptionStock::findByProductIdAndKey($this->product_id, $this->custom_option_key);
+            $product->final_price = $custom_option->price; 
         }
         $model = new OrderItem();
         $model->attributes = [
