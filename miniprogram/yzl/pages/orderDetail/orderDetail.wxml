@@ -36,15 +36,29 @@
 			<!-- 商品面板 -->
 			<!-- card -->
 			<view wx:for="{{productList}}" wx:for-index="idx" wx:for-item="product" wx:key="idx">
-				<zan-card
-					card-class="test-card card-wrapper"
-					thumb="{{product.image}}"
-					price="{{product.price}}"
-					title="{{product.name}}"
-					num="{{product.count}}"
-					desc=""
-				>
-				</zan-card>
+        <view wx:if="{{product.custom_option_key === null}}">
+          <zan-card
+            card-class="test-card card-wrapper"
+            thumb="{{product.image}}"
+            price="{{product.price}}"
+            title="{{product.name}}"
+            num="{{product.count}}"
+            desc=""
+          >
+				  </zan-card>
+        </view>
+        <view wx:if="{{product.custom_option_key !== null}}">
+          <zan-card
+            card-class="test-card card-wrapper"
+            thumb="{{product.image}}"
+            price="{{product.price}}"
+            title="{{product.name}}"
+            num="{{product.count}}"
+            desc="{{product.custom_option_key}}"
+            status=""
+          >
+				  </zan-card>
+        </view>
 			</view>
 
 			<!-- 配送方式cell -->
