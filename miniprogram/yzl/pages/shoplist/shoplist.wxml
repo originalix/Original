@@ -80,9 +80,10 @@
 	                <wxc-cc class="cart-img-wrapper">
 	                  <image src="{{item.image}}" class="cart-cell-img" />
 	                </wxc-cc>
-                  <text class="cell-title">{{item.title}}<text wx:if="{{item.selectOption !== null}}"> {{item.selectOption}}</text></text>
+                  <text class="cell-title">{{item.title}}<text wx:if="{{item.selectCustom !== null}}"> {{item.selectCustom.custom_option_key}}</text></text>
 	                <text class="price-unit">￥</text>
-	                <text class="cell-price">{{item.price}}</text>
+	                <text class="cell-price" wx:if="{{item.selectCustom === null}}">{{item.price}}</text>
+	                <text class="cell-price" wx:if="{{item.selectCustom !== null}}">{{item.selectCustom.price}}</text>
 									<wxc-counter number="{{ item.badge }}" max="{{ cartMax }}" min="{{ cartMin }}" data-idx="{{idx}}" data-item="{{item}}"  bind:changenumber="onChangeNumber" color="#00dbf5" class="cell-counter"></wxc-counter>
 	              </view>
 	              <view class="line"></view>
