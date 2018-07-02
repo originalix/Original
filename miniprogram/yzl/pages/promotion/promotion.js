@@ -8,12 +8,18 @@ const Dialog = require('../../bower_components/zanui-weapp/dist/dialog/dialog')
 
 Page({
   data: {
-    product: {}
+    product: {},
+    productList: [],
+    cartList: [],
   },
   onLoad(option) {
     console.log(option)
     this.getPromotionDetail(option.id)
   },
+  /**
+   * 获取促销详情
+   * @param {*} id 促销id
+   */
   getPromotionDetail (id) {
     var that = this
     wx.showLoading({
@@ -35,6 +41,7 @@ Page({
           that.setData({
             product: response.data.product
           })
+          that.createProductList(response.data.product)
         }
       },
       fail: function (error) {
@@ -42,6 +49,27 @@ Page({
         console.log(error)
       }
     })
-
+  },
+  /**
+   * 模拟shoplist 创建商品数组
+   * @param {*} product 商品对象 
+   */
+  createProductList(product) {
+    let product_li = []
+    const productInfo = {
+      'id': product.id,
+      'image': product.image[0],
+      'title': product.name,
+      'price': product.final_price,
+      'badge': 1,
+      'customOption': product.customOptionStock,
+      'selectCustomId': null,
+      'selectCustom': null
+    }
+    product_li.push(productInfo)
+    this.setData({
+      productList: product_li
+    }) 
   }
+  
 })
