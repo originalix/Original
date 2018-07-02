@@ -1,8 +1,6 @@
 <view>
   <view class="header">
-    <view class="img-wrap">
-      <image  class="" src="http://img.netbian.com/file/20150311/018c085855710a01c71d88a48a3270fe.jpg" mode="aspectFill"></image>
-    </view> 
+    <image  class="img-wrap" src="https://lairoeaesdesign.files.wordpress.com/2015/07/mg_4000.jpg?w=960&h=640" mode="aspectFill"></image>
   </view>
   <view class="panel">
   

@@ -1,0 +1,14 @@
+page {
+  background-color: #efeff4;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+}
+
+.img-wrap {
+  width: 100%;
+  height: 701rpx;
+}
+
