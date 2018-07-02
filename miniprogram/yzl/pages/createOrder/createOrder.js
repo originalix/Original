@@ -287,7 +287,7 @@ Page({
       if (paymentMethod === 'wxpay') {
         that.createWxOrder(this.data.orderInfo.trade_no, total_fee)
       } else {
-        that.createChargePay(this.data.orderInfo.trade_no, total_fee)
+        that.confirmChargePay(this.data.orderInfo.trade_no, total_fee)
       }
       return
     }
@@ -339,7 +339,7 @@ Page({
           if (paymentMethod === 'wxpay') {
             that.createWxOrder(res.trade_no, total_fee)
           } else {
-            that.createChargePay(res.trade_no, res.real_amout)
+            that.confirmChargePay(res.trade_no, res.real_amout)
           }
         }
       },
@@ -416,11 +416,58 @@ Page({
     }
   },
   /**
+   *  确认余额支付的逻辑
+   */
+  confirmChargePay(trade_no, total_fee) {
+    console.log('使用余额支付，开始根据订单提示支付')
+
+    Dialog({
+      title: '提示',
+      message: `是否使用余额支付${total_fee % 100}元消费`,
+      buttons: [{
+        text: '取消',
+        type: 'cancel'
+      }, {
+        text: '确认',
+        color: 'red',
+        type: 'confirm'
+      }],
+      selector: '#zan-dialog-charge'
+    }).then(({type}) => {
+      if (type === 'confirm') {
+        this.createChargePay(trade_no, total_fee)
+      } else {
+
+      }
+    })
+  },
+  /**
    *  点击余额支付的逻辑
    */
   createChargePay(trade_no, total_fee) {
-    console.log('使用余额支付，开始根据订单提示支付')
-  },
+    orderUtils.createChargePay({
+      'trade_no': trade_no,
+      'total_fee': total_fee,
+      'success': function (res) {
+        if (res.code === 200) {
+          wx.showToast({
+            title: '支付成功',
+            icon: 'success',
+            duration: 1500
+          })
+        }
+      },
+      'fail': function (error) {
+        if (typeof error == 'string' || error instanceof String) {
+          wx.showToast({
+            title: error,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  }
   /**
    *  显示支付ActionSheet弹窗
    */

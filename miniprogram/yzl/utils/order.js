@@ -101,7 +101,7 @@ const createChargePay = (params) => {
       console.log(res)
       const code = res.data.code
       if (code === 200) {
-        const response = res.data.data
+        const response = res.data
         if (params.success !== undefined && typeof (params.success) === 'function') {
           params.success(response)
         }
@@ -255,5 +255,6 @@ module.exports = {
   createWxPay,
   createOrder,
   getOrderList,
-  getOrderDetail
+  getOrderDetail,
+  createChargePay,
 }
