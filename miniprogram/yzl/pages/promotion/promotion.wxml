@@ -20,7 +20,31 @@
   <view class="content">
     <text class="title">冬季棉衣</text>
   </view>
+
+  <view class="rules">
+    <wxc-list title="支付商品开团，邀请好友参与，成功发货，失败退款" desc="详细规则" mode="none" arrow="{{true}}"></wxc-list>
+  </view>
+
+  <view class="detail">
+    <text class="detail-title">商品详情</text>
+    <text class="detail-text">1元干洗羽绒服特价活动，每人限购一件。</text>
+  </view>
+
   <view class="fixed-view">
   
+  </view>
+
+  <!-- 底部fixed 显示提交订单 -->
+  <view class="bottom-fix"></view>
+  <view class="shop-cart-container shop-cart-border vertical-center">
+    <!-- [> 价格预估 <] -->
+    <!-- <view class="cart-price">
+      <text class="tip">合计：</text>
+      <text class="price-text">￥21.50</text>
+    </view> -->
+    <!-- [> 买单按钮 <] -->
+    <view class="payview">
+      <lix-btn type="danger" catchtap="showPayActionsheet" disabled="{{ isPayment }}">立即参团</lix-btn>
+    </view>
   </view>
 </view>

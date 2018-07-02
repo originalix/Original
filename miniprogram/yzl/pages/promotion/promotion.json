@@ -17,6 +17,7 @@
       "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
       "lix-btn": "../../components/create-order-btn/index",
       "zan-steps": "../../bower_components/zanui-weapp/dist/steps/index",
-      "wxc-label": "../../dist/packages/@minui/wxc-label/dist/index"
+      "wxc-label": "../../dist/packages/@minui/wxc-label/dist/index",
+      "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index"
     }
 }

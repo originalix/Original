@@ -25,6 +25,7 @@ page {
 
 .panel {
   background-color: #fff;
+  padding-top: 30rpx;
 }
 
 .final-price {
@@ -42,6 +43,7 @@ page {
 }
 
 .final-value {
+  font-weight: 900;
   margin-left: 20rpx;
   font-size: 53rpx;
   color: #ff5c5c;
@@ -78,11 +80,79 @@ page {
 }
 
 .content {
+  padding-bottom: 20rpx;
   background-color: #fff;
 }
 
 .title {
-  margin: 35rpx 0 30rpx 30rpx;
-  font-size: 40rpx;
+  margin: 35rpx 0 0 30rpx;
+  font-size: 20px;
   color: #353535;
+}
+
+.rules {
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.detail {
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.detail-title {
+  display: block;
+  margin-left: 30rpx;
+  color: #666666;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.detail-text {
+  margin: 20rpx;
+  color: #000;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.shop-cart-container {
+  background-color: #ffffff;
+  position: fixed;
+  display: flex;
+  vertical-align: center;
+  width: 100%;
+  bottom: 0;
+	z-index: 20;
+}
+
+.shop-cart-border {
+  border-top-style: solid;
+  border-top-width: 1rpx;
+  border-top-color: #e7eefe;
+}
+
+.cart-price {
+  flex: 2;
+  text-align: right;
+  margin-right: 30rpx;
+}
+
+.payview {
+  flex: 1;
+}
+
+.tip {
+  font-size: 35rpx;
+  color: #666666;
+}
+
+.price-text {
+  font-size: 35rpx;
+  color: #ff4444;
+}
+
+.bottom-fix {
+  display: block;
+  height: 58px;
+  background-color: rgba(255, 255, 255, 0);
 }
