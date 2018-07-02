@@ -125,13 +125,13 @@ Page({
     }
 		var that = this
 		var list = []
-		const res = this.isInCartList(item)
-		console.log(res)
     // 添加产品进入list
     list.push(item)
     that.setData({
       cartList: list
-    }, function () {})
+    }, function () {
+      that.pushToCreateOrderPage()
+    })
   },
   getCustomOptionByItem (item) {
     if (item.selectCustomId === null) {

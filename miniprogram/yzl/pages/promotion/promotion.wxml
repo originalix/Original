@@ -44,7 +44,7 @@
     </view> -->
     <!-- [> 买单按钮 <] -->
     <view class="payview">
-      <lix-btn type="danger" catchtap="showPayActionsheet" disabled="{{ isPayment }}">立即参团</lix-btn>
+      <lix-btn type="danger" catchtap="onClick" disabled="{{ isPayment }}">立即参团</lix-btn>
     </view>
   </view>
 	<zan-dialog id="zan-dialog-tip"></zan-dialog>
