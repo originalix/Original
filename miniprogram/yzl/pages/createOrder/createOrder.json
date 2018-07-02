@@ -15,6 +15,7 @@
       "lix-field": "../../components/create-order-field/index",
       "normal-cell": "../../components/create-order-cell/index",
       "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
-      "lix-btn": "../../components/create-order-btn/index"
+      "lix-btn": "../../components/create-order-btn/index",
+      "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index"
     }
 }

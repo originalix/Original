@@ -4,6 +4,8 @@ var orderUtils = require('../../utils/order.js');
 var chargeUtils = require('../../utils/charge.js')
 var appInstance = getApp()
 
+const Dialog = require('../../bower_components/zanui-weapp/dist/dialog/dialog')
+
 Page({
 	data: {
 		time: '',
@@ -386,8 +388,19 @@ Page({
    *  检查余额是否够用
    */
   checkCharge () {
-		if (this.data.userInfo.charge < this.data.finalPrice) {
+		console.log(this.data.userInfo.charge)
+		console.log(this.data.finalPrice)
+		let charge = parseFloat(this.data.userInfo.charge)
+		let price = this.data.finalPrice
+		if (charge < price) {
 			console.log('余额不足，请使用其他支付方式支付')
+      Dialog({
+        title: '温馨提醒',
+        message: '您的余额不足，请使用其他方式支付',
+        selector: '#zan-dialog-charge'
+      }).then((res) => {
+        console.log(res)
+      })
 		} else {
 			console.log('余额充足可以使用')
 		}
