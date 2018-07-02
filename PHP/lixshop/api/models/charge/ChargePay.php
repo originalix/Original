@@ -1,6 +1,6 @@
 <?php
 
-namespace api\models;
+namespace api\models\charge;
 
 use Yii;
 use yii\base\Model;
