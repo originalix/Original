@@ -47,4 +47,9 @@ class ChargeController extends BaseController
 
         return $model->create();
     }
+
+    public function actionPay()
+    {
+
+    }
 }
