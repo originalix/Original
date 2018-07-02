@@ -1,166 +1,122 @@
 <view>
-	<scroll-view scroll-y style="height: 100%">
-		<view class="separate bg-e5"></view>
-		<!-- 地址栏目 尚未添加地址状态 -->
-		<view 
-			hover
-			hover-start-time="50"
-			hover-stay-time="50"
-			hover-class="view-hover"
-			class="address-wrapper bg-white vertical-center"
-			bindtap="choseAddress"
-			block wx:if="{{! isChooseAddress}}"
-			>
-			<image class="add-icon" src="../../resource/img/add.png" />
-			<text class="font-30 text-bg-333">新增收货地址</text>
-			<wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
-		</view>
-		<view class="separate bg-e5"></view>
+  <scroll-view scroll-y style="height: 100%">
+    <view class="separate bg-e5"></view>
+    <!-- 地址栏目 尚未添加地址状态 -->
+    <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
+      bindtap="choseAddress" block wx:if="{{! isChooseAddress}}">
+      <image class="add-icon" src="../../resource/img/add.png" />
+      <text class="font-30 text-bg-333">新增收货地址</text>
+      <wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
+    </view>
+    <view class="separate bg-e5"></view>
 
-		<!-- 地址栏目 已存在地址状态 -->
-		<view 
-			hover
-			hover-start-time="50"
-			hover-stay-time="50"
-			hover-class="view-hover"
-			class="address-wrapper bg-white vertical-center"
-			bindtap="choseAddress"
-			block wx:if="{{isChooseAddress}}"
-			>
-			<view class="width-full">
-				<view class="vertical-center width-full">
-					<image src="../../resource/img/address-loca.png" class="loca-icon mg-30"/>
-					<text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
-					<text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
-				</view>
-				<text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
-			</view>
-			<image src="../../resource/img/right.png" class="arrow-icon"/>
-			</view>
-		<view class="separate bg-e5"></view>
+    <!-- 地址栏目 已存在地址状态 -->
+    <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
+      bindtap="choseAddress" block wx:if="{{isChooseAddress}}">
+      <view class="width-full">
+        <view class="vertical-center width-full">
+          <image src="../../resource/img/address-loca.png" class="loca-icon mg-30" />
+          <text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
+          <text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
+        </view>
+        <text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
+      </view>
+      <image src="../../resource/img/right.png" class="arrow-icon" />
+    </view>
+    <view class="separate bg-e5"></view>
 
-		<!-- 商品详情 -->
-		<view class="bg-white">
-			<!-- 店铺title -->
-			<view class="title bg-white vertical-center">
-				<image src="../../resource/img/icon-shop.png" class="shop-icon" />
-				<text class="font-30 text-bg-333">衣之恋优质干洗店</text>
-			</view>
-			<!-- 商品面板 -->
-			<!-- card -->
-			<view wx:for="{{productList}}" wx:for-index="idx" wx:for-item="product" wx:key="idx">
+    <!-- 商品详情 -->
+    <view class="bg-white">
+      <!-- 店铺title -->
+      <view class="title bg-white vertical-center">
+        <image src="../../resource/img/icon-shop.png" class="shop-icon" />
+        <text class="font-30 text-bg-333">衣之恋优质干洗店</text>
+      </view>
+      <!-- 商品面板 -->
+      <!-- card -->
+      <view wx:for="{{productList}}" wx:for-index="idx" wx:for-item="product" wx:key="idx">
         <view wx:if="{{product.selectCustomId === null}}">
-          <zan-card
-            card-class="test-card card-wrapper"
-            thumb="{{product.image}}"
-            price="{{product.price}}"
-            title="{{product.title}}"
-            num="{{product.badge}}"
-            desc=""
-          >
-				  </zan-card>
+          <zan-card card-class="test-card card-wrapper" thumb="{{product.image}}" price="{{product.price}}" title="{{product.title}}"
+            num="{{product.badge}}" desc="">
+          </zan-card>
         </view>
         <view wx:if="{{product.selectCustomId !== null}}">
-          <zan-card
-            card-class="test-card card-wrapper"
-            thumb="{{product.image}}"
-            price="{{product.selectCustom.price}}"
-            title="{{product.title}}"
-            num="{{product.badge}}"
-            desc="{{product.selectCustom.custom_option_key}}"
-            status=""
-          >
-				  </zan-card>
+          <zan-card card-class="test-card card-wrapper" thumb="{{product.image}}" price="{{product.selectCustom.price}}" title="{{product.title}}"
+            num="{{product.badge}}" desc="{{product.selectCustom.custom_option_key}}" status="">
+          </zan-card>
         </view>
-			</view>
+      </view>
 
-			<!-- 配送方式cell -->
-			<view bindtap="openActionSheet">
-				<normal-cell title="配送方式" value="{{ expressText }}" isLink></normal-cell>
-				<normal-cell title="店铺地址" value="济南市历下区文化东路万豪国际9号楼3单元402室" wx:if="{{expressType==1}}"></normal-cell>
-			</view>
-			<view class="separate bg-e5 separate-left"></view>
-			
-			<!-- 取件日期选择 -->
-			<view class="section">
-				<view class="section__title">取件日期</view>
-				<picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
-					<view class="picker text-bg-666">
-						{{date}}
-					</view>
-				</picker>
-			</view>
-			<view class="separate bg-e5 separate-left"></view>
+      <!-- 配送方式cell -->
+      <view bindtap="openActionSheet">
+        <normal-cell title="配送方式" value="{{ expressText }}" isLink></normal-cell>
+        <normal-cell title="店铺地址" value="济南市历下区文化东路万豪国际9号楼3单元402室" wx:if="{{expressType==1}}"></normal-cell>
+      </view>
+      <view class="separate bg-e5 separate-left"></view>
 
-			<!-- 取件时间选择 -->
-			<view class="section">
-				<view class="section__title">取件时间</view>
-				<picker mode="time" value="{{time}}" start="09:00" end="22:00" bindchange="bindTimeChange">
-					<view class="picker text-bg-666">
-						{{time}}
-					</view>
-				</picker>
-			</view>
-			<view class="separate bg-e5 separate-left"></view>
+      <!-- 取件日期选择 -->
+      <view class="section">
+        <view class="section__title">取件日期</view>
+        <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+          <view class="picker text-bg-666">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+      <view class="separate bg-e5 separate-left"></view>
 
-			<lix-field
-				title="留言"
-				placeholder="点击给商家留言"
-				focus="false"
-				value="{{ remark_value  }}"
-				bind:change="handleFieldChange"
-			>
-			</lix-field>
+      <!-- 取件时间选择 -->
+      <view class="section">
+        <view class="section__title">取件时间</view>
+        <picker mode="time" value="{{time}}" start="09:00" end="22:00" bindchange="bindTimeChange">
+          <view class="picker text-bg-666">
+            {{time}}
+          </view>
+        </picker>
+      </view>
+      <view class="separate bg-e5 separate-left"></view>
 
-			<normal-cell title="合计" value="￥{{price}}" isPrice></normal-cell>
-		</view>
+      <lix-field title="留言" placeholder="点击给商家留言" focus="false" value="{{ remark_value  }}" bind:change="handleFieldChange">
+      </lix-field>
 
-		<!-- 优惠模块cell -->
-		<view class="mgt-20 bg-white">
-			<normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
-		</view>
-		<!-- 商品金额cell -->
-		<view class="mgt-20 bg-white">
-			<normal-cell title="商品金额" value="￥{{no_express_price}}"></normal-cell>
-			<normal-cell title="运费" value="+￥{{expressPrice}}"></normal-cell>
-			<normal-cell title="会员折扣" value="{{userInfo.discount}}%"></normal-cell>
-		</view>
-	</scroll-view>
+      <normal-cell title="合计" value="￥{{price}}" isPrice></normal-cell>
+    </view>
 
-	<!-- 底部fixed 显示提交订单 -->
-	<view class="bottom-fix" wx:if="{{ isShowPayView  }}"></view>
-	<view class="shop-cart-container shop-cart-border vertical-center" wx:if="{{ isShowPayView }}">
-		<!-- [> 价格预估 <] -->
-		<view class="cart-price">
-			<text class="tip">合计：</text>
-			<text class="price-text">￥{{finalPrice}}</text>
-		</view>
-		<!-- [> 买单按钮 <] -->
-		<view class="payview">
-			<lix-btn type="{{submitBtnType}}" catchtap="showPayActionsheet" disabled="{{submitBtnType === 'not-order'}}" >{{ submitBtnText }}</lix-btn>
-		</view>
-	</view>
-	<view class="actionsheet-container">
-		<!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
-		<zan-actionsheet
-			show="{{ actionsheetShow }}"
-			actions="{{ actions }}"
-			cancel-with-mask="{{ cancelWithMask }}"
-			bind:actionclick="handleActionClick"
-		>
-		</zan-actionsheet>
-	</view>
-	<view class="actionsheet-container">
-		<!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
-		<zan-actionsheet
-			show="{{ payActionsheetShow }}"
-			actions="{{ payActions }}"
-			cancel-with-mask="{{ payActionsheetShow }}"
-			bind:cancel="closePayActionsheet"
-			bind:actionclick="handlePayActionClick"
-		>
-		</zan-actionsheet>
-	</view>
+    <!-- 优惠模块cell -->
+    <view class="mgt-20 bg-white">
+      <normal-cell title="优惠" value="暂不可用" isLink></normal-cell>
+    </view>
+    <!-- 商品金额cell -->
+    <view class="mgt-20 bg-white">
+      <normal-cell title="商品金额" value="￥{{no_express_price}}"></normal-cell>
+      <normal-cell title="运费" value="+￥{{expressPrice}}"></normal-cell>
+      <normal-cell title="会员折扣" value="{{userInfo.discount}}%"></normal-cell>
+    </view>
+  </scroll-view>
+
+  <!-- 底部fixed 显示提交订单 -->
+  <view class="bottom-fix" wx:if="{{ isShowPayView  }}"></view>
+  <view class="shop-cart-container shop-cart-border vertical-center" wx:if="{{ isShowPayView }}">
+    <!-- [> 价格预估 <] -->
+    <view class="cart-price">
+      <text class="tip">合计：</text>
+      <text class="price-text">￥{{finalPrice}}</text>
+    </view>
+    <!-- [> 买单按钮 <] -->
+    <view class="payview">
+      <lix-btn type="{{submitBtnType}}" catchtap="showPayActionsheet" disabled="{{submitBtnType === 'not-order'}}">{{ submitBtnText }}</lix-btn>
+    </view>
+  </view>
+  <view class="actionsheet-container">
+    <!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
+    <zan-actionsheet show="{{ actionsheetShow }}" actions="{{ actions }}" cancel-with-mask="{{ cancelWithMask }}" bind:actionclick="handleActionClick">
+    </zan-actionsheet>
+  </view>
+  <view class="actionsheet-container">
+    <!-- 监听自定义事件 cancel 和 actionclick，绑定回调函数 -->
+    <zan-actionsheet show="{{ payActionsheetShow }}" actions="{{ payActions }}" cancel-with-mask="{{ payActionsheetShow }}" bind:cancel="closePayActionsheet"
+      bind:actionclick="handlePayActionClick">
+    </zan-actionsheet>
+  </view>
   <zan-dialog id="zan-dialog-charge"></zan-dialog>
 </view>
-
