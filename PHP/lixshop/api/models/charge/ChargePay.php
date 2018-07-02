@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use common\models\Customer;
 use api\models\order\Order;
+use common\models\BalanceLog;
+use common\models\CreditLog;
 use yii\web\HttpException;
 use yii\db\Exception;
 
@@ -13,12 +15,28 @@ class ChargePay extends Model
 {
     public $trade_no;
     public $total_fee;
+    
+    public function rules()
+    {
+        return [
+            [['trade_no'], 'string', 'max' => 32],
+            [['total_fee'], 'number'],
+        ];
+    }
 
     /**
      *  使用余额支付的main函数
      */
     public function main()
     {
+        if (! $this->validate()) {
+            throw new HttpException(418, array_values($this->getFirstErrors())[0]);
+        }
+
+        // print_r($this->trade_no);
+        // print_r(Yii::$app->user->identity->id);
+        // exit;
+
         $order = Order::find()
           ->where([
             'trade_no' => $this->trade_no,
