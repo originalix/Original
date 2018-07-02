@@ -84,7 +84,7 @@ Page({
     })
   },
   go2PromotionPage(e) {
-    let promotionId = e.currentTarget.dataset.promotion.id
+    let promotionId = e.currentTarget.dataset.promotionId
     wx.navigateTo({
       url: '/pages/promotion/promotion?id=' + promotionId
     })
