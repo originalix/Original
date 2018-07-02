@@ -1,3 +1,16 @@
 <view>
-  <text>Hello World</text>
+  <view class="header">
+    <view class="img-wrap">
+      <image  class="" src="http://img.netbian.com/file/20150311/018c085855710a01c71d88a48a3270fe.jpg" mode="aspectFill"></image>
+    </view> 
+  </view>
+  <view class="panel">
+  
+  </view>
+  <view class="content">
+  
+  </view>
+  <view class="fixed-view">
+  
+  </view>
 </view>

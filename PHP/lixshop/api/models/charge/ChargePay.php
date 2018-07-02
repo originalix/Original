@@ -126,3 +126,4 @@ class ChargePay extends Model
         return $customer;
     }
 }
+

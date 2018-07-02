@@ -15,7 +15,8 @@
     "pages/error/error",
     "pages/myCard/myCard",
     "pages/myCredit/myCredit",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/promotion/promotion"
   ],
   "window":{
     "backgroundTextStyle":"black",

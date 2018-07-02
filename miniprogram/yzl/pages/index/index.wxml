@@ -78,7 +78,7 @@
             <text class="product-title">{{ promotions[0].product.name }}</text>
           </view>
           <view class="btn-view">
-            <button class="sale-btn" bindtap="pushToShopList">立即抢</button>
+            <button class="sale-btn" bindtap="go2PromotionPage" data-promotion="{{promotions[0]}}">立即抢</button>
           </view>
         </view>
       </view>
@@ -97,7 +97,7 @@
             <text class="product-title">{{ promotions[1].product.name }}</text>
           </view>
           <view class="btn-view">
-            <button class="sale-btn">立即抢</button>
+            <button class="sale-btn" bindtap="go2PromotionPage" data-promotion="{{promotions[1]}}">立即抢</button>
           </view>
         </view>
       </view>
