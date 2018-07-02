@@ -5,6 +5,7 @@ page {
 .header {
   position: relative;
   width: 100%;
+  height: 701rpx;
 }
 
 .img-wrap {
@@ -12,3 +13,76 @@ page {
   height: 701rpx;
 }
 
+.label {
+  margin-right: 20rpx;
+}
+
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+}
+
+.panel {
+  background-color: #fff;
+}
+
+.final-price {
+  display: inline-block;
+}
+
+.center-content {
+  display: inline-block;
+}
+
+.unit {
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: #ff5c5c;
+}
+
+.final-value {
+  margin-left: 20rpx;
+  font-size: 53rpx;
+  color: #ff5c5c;
+}
+
+.center-content {
+  margin-left: 20rpx;
+}
+
+.old-price {
+  display: block;
+  font-size: 20rpx;
+  color: #707070;
+  text-decoration: line-through;
+}
+
+.share-content {
+  display: inline-block;
+}
+
+.share-img {
+  display: block;
+  width: 45rpx;
+  height: 40rpx;
+}
+
+.share-content {
+  text-align: center;
+}
+
+.share-content text {
+  font-size: 25rpx;
+  color: #707070;
+}
+
+.content {
+  background-color: #fff;
+}
+
+.title {
+  margin: 35rpx 0 30rpx 30rpx;
+  font-size: 40rpx;
+  color: #353535;
+}

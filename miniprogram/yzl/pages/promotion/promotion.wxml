@@ -3,10 +3,22 @@
     <image  class="img-wrap" src="https://lairoeaesdesign.files.wordpress.com/2015/07/mg_4000.jpg?w=960&h=640" mode="aspectFill"></image>
   </view>
   <view class="panel">
-  
+    <view class="final-price">
+      <text class="unit">￥</text>
+      <text class="final-value">1.00</text>
+    </view> 
+    <view class="center-content">
+      <text class="old-price">￥33.0</text>
+      <wxc-label class="label" type="fill">99人拼团</wxc-label>
+      <wxc-label class="label" type="fill">拼团立省32元</wxc-label>
+    </view>
+    <!-- <view class="share-content">
+      <image class="share-img" src="../../resource/img/share.png" mode="aspectFill">分享</image>
+      <text>分享</text>
+    </view> -->
   </view>
   <view class="content">
-  
+    <text class="title">冬季棉衣</text>
   </view>
   <view class="fixed-view">
   
