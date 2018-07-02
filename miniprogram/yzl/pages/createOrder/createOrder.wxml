@@ -161,5 +161,6 @@
 		>
 		</zan-actionsheet>
 	</view>
+  <zan-dialog id="zan-dialog-charge"></zan-dialog>
 </view>
 
