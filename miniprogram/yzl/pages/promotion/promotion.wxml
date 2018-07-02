@@ -5,12 +5,12 @@
   <view class="panel">
     <view class="final-price">
       <text class="unit">￥</text>
-      <text class="final-value">1.00</text>
+      <text class="final-value">{{product.final_price}}</text>
     </view> 
     <view class="center-content">
-      <text class="old-price">￥33.0</text>
+      <text class="old-price">{{product.price}}</text>
       <wxc-label class="label" type="fill">99人拼团</wxc-label>
-      <wxc-label class="label" type="fill">拼团立省32元</wxc-label>
+      <wxc-label class="label" type="fill">拼团立省{{product.price - product.final_price}}元</wxc-label>
     </view>
     <!-- <view class="share-content">
       <image class="share-img" src="../../resource/img/share.png" mode="aspectFill">分享</image>
@@ -18,7 +18,7 @@
     </view> -->
   </view>
   <view class="content">
-    <text class="title">冬季棉衣</text>
+    <text class="title">{{product.name}}</text>
   </view>
 
   <view class="rules">
@@ -27,7 +27,7 @@
 
   <view class="detail">
     <text class="detail-title">商品详情</text>
-    <text class="detail-text">1元干洗羽绒服特价活动，每人限购一件。</text>
+    <text class="detail-text">{{product.meta_description}}</text>
   </view>
 
   <view class="fixed-view">
