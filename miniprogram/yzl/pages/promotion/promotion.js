@@ -70,6 +70,103 @@ Page({
     this.setData({
       productList: product_li
     }) 
-  }
-  
+  },
+  onClick () {
+    // 1、点击参团  判断有没有可选值
+    let item = this.data.productList[0]
+    if (item.customOption.length > 0) {
+      this.selectCustomOption(item)
+      return
+    }
+
+    this.addCartItem(item)
+    // 2、有可选值、选可选值、并结算
+    // 3、无可选值，直接跳到订单详情页
+  },
+  /**
+   * 点击带customOption属性商品的点击事件
+   * @param {*} item 
+   */
+	selectCustomOption (item) {
+			console.log('存在可选值')
+			var btnList = []
+			for (var i=0; i<item.customOption.length; i++) {
+				var btnItem = {
+					text: item.customOption[i].custom_option_key,
+					type: item.customOption[i].id
+				}
+				btnList.push(btnItem)
+			}
+			console.log(btnList)
+
+			Dialog({
+				message: '请选择商品具体类型',
+				title: '温馨提醒',
+				selector: '#zan-dialog-tip',
+				buttons: btnList,
+				buttonsShowVertical: true,
+			}).then(({ type }) => {
+				console.log('=== dialog with custom buttons ===', `type: ${type}`)
+				item.selectCustomId = type
+				console.log('=== now item is')
+				console.log(item)
+    		this.addCartItem(item)
+			})
+	},
+	/*
+	 * 添加商品进入购物车
+	 */
+	addCartItem: function (item) {
+		console.log('add cart item')
+    console.log(item)
+    let customOption = this.getCustomOptionByItem(item)
+    if (customOption !== null) {
+      item = this.refreshItemByCustomOption(item, customOption)
+    }
+		var that = this
+		var list = []
+		const res = this.isInCartList(item)
+		console.log(res)
+    // 添加产品进入list
+    list.push(item)
+    that.setData({
+      cartList: list
+    }, function () {})
+  },
+  getCustomOptionByItem (item) {
+    if (item.selectCustomId === null) {
+      return null
+    }
+
+    let customObj = null
+    for (var i=0; i<item.customOption.length; i++) {
+      let obj = item.customOption[i]
+      if (obj.id === item.selectCustomId) {
+        customObj = obj
+        break
+      }
+    }
+    console.log(`=========>>>>>> custom Obj is : `)
+    console.log(customObj)
+    return customObj
+  },
+  refreshItemByCustomOption (item, customOption) {
+    item.selectCustom = customOption
+    return item
+  },
+	/* 保存购物车的数据，传值到下个场景 */
+	saveCartParams() {
+		const that = this
+		try {
+			wx.setStorageSync('CART_LIST_DATA', that.data.cartList)
+		} catch (e) {
+			console.log(e)
+		}
+	},
+	pushToCreateOrderPage() {
+		this.saveCartParams()
+		wx.navigateTo({
+			url: '/pages/createOrder/createOrder'
+		})
+	}
 })

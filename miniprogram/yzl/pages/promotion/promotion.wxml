@@ -1,6 +1,6 @@
 <view>
   <view class="header">
-    <image  class="img-wrap" src="https://lairoeaesdesign.files.wordpress.com/2015/07/mg_4000.jpg?w=960&h=640" mode="aspectFill"></image>
+    <image  class="img-wrap" src="{{product.image[0]}}" mode="aspectFill"></image>
   </view>
   <view class="panel">
     <view class="final-price">
@@ -47,4 +47,5 @@
       <lix-btn type="danger" catchtap="showPayActionsheet" disabled="{{ isPayment }}">立即参团</lix-btn>
     </view>
   </view>
+	<zan-dialog id="zan-dialog-tip"></zan-dialog>
 </view>
