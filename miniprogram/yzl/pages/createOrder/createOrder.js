@@ -287,7 +287,7 @@ Page({
       if (paymentMethod === 'wxpay') {
         that.createWxOrder(this.data.orderInfo.trade_no, total_fee)
       } else {
-        that.confirmChargePay(this.data.orderInfo.trade_no, total_fee)
+        that.confirmChargePay(this.data.orderInfo.trade_no, this.data.orderInfo.real_amount)
       }
       return
     }
@@ -339,7 +339,7 @@ Page({
           if (paymentMethod === 'wxpay') {
             that.createWxOrder(res.trade_no, total_fee)
           } else {
-            that.confirmChargePay(res.trade_no, res.real_amout)
+            that.confirmChargePay(res.trade_no, res.real_amount)
           }
         }
       },
@@ -420,10 +420,11 @@ Page({
    */
   confirmChargePay(trade_no, total_fee) {
     console.log('使用余额支付，开始根据订单提示支付')
+    console.log(total_fee)
 
     Dialog({
       title: '提示',
-      message: `是否使用余额支付${total_fee % 100}元消费`,
+      message: `是否使用余额支付${total_fee}元消费`,
       buttons: [{
         text: '取消',
         type: 'cancel'
@@ -467,7 +468,7 @@ Page({
         }
       }
     })
-  }
+  },
   /**
    *  显示支付ActionSheet弹窗
    */
