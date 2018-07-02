@@ -40,13 +40,13 @@ Page({
     console.log(option)
     this.initializeStatus(option.status)
     this.getUserInfo()
-    this.getOrderDetail()
+    this.getOrderDetail(option.id)
   },
-  getOrderDetail () {
+  getOrderDetail (id) {
     // 根据id 获取订单详情
     var that = this
     orderUtils.getOrderDetail({
-      'id': option.id,
+      'id': id,
       'success': function (res) {
         console.log('获取订单详情成功回调')
         console.log(res)
@@ -241,6 +241,7 @@ Page({
    *  点击余额支付的逻辑
    */
   createChargePay(trade_no, total_fee) {
+    let that = this
     orderUtils.createChargePay({
       'trade_no': trade_no,
       'total_fee': total_fee,
@@ -250,6 +251,12 @@ Page({
             title: '支付成功',
             icon: 'success',
             duration: 1500
+          })
+          that.getOrderDetail(that.data.orderInfo.id)
+          // 更改按钮状态
+          that.setData({
+            submitBtnText: '已付款',
+            isPayment: true
           })
         }
       },
