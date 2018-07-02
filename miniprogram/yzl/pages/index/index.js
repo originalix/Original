@@ -83,9 +83,10 @@ Page({
       }
     })
   },
-  go2PromotionPage() {
+  go2PromotionPage(e) {
+    let promotionId = e.currentTarget.dataset.promotion.id
     wx.navigateTo({
-      url: '/pages/promotion/promotion'
+      url: '/pages/promotion/promotion?id=' + promotionId
     })
   }
 })

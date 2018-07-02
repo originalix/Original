@@ -7,5 +7,11 @@ var appInstance = getApp()
 const Dialog = require('../../bower_components/zanui-weapp/dist/dialog/dialog')
 
 Page({
-  data: {}
+  data: {},
+  onLoad(option) {
+    console.log(option)
+  },
+  getPromotionDetail (id) {
+
+  }
 })
