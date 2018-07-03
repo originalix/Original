@@ -1,9 +1,10 @@
 var tools = {
   valueText: function (type, value) {
+    value = parseInt(value)
     if (type == 1) {
-      return '-' + value
-    } else if (type == 2) {
       return '+' + value
+    } else if (type == 2) {
+      return '-' + value
     }
     return value
   },
