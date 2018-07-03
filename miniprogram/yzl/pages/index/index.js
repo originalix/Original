@@ -89,5 +89,10 @@ Page({
     wx.navigateTo({
       url: '/pages/promotion/promotion?id=' + promotionId
     })
+  },
+  go2AppointmentPage() {
+    wx.navigateTo({
+      url: '/pages/appointment/appointment'
+    })
   }
 })

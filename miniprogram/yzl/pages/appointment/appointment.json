@@ -1,0 +1,24 @@
+{
+  "navigationBarTitleText": "团购预约",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f2e",
+  "backgroundTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",
+    "zan-button": "../../bower_components/zanui-weapp/dist/btn/index",
+    "zan-icon": "../../bower_components/zanui-weapp/dist/icon/index",
+    "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index",
+    "zan-card": "../../bower_components/zanui-weapp/dist/card/index",
+    "wxc-input": "../../dist/packages/@minui/wxc-input/dist/index",
+    "lix-field": "../../components/create-order-field/index",
+    "normal-cell": "../../components/create-order-cell/index",
+    "zan-actionsheet": "../../bower_components/zanui-weapp/dist/actionsheet/index",
+    "lix-btn": "../../components/create-order-btn/index",
+    "zan-steps": "../../bower_components/zanui-weapp/dist/steps/index",
+    "wxc-label": "../../dist/packages/@minui/wxc-label/dist/index",
+    "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index"
+  }
+}
+

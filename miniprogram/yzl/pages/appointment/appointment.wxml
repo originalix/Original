@@ -1,0 +1,22 @@
+<view class="">
+  <view class="checkbox-wrap">
+    <view class="">
+      <text>购买平台：</text>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{items}}">
+          <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="upload-wrap">
+  </view>
+  <view class="textarea-wrap">
+  </view>
+  <view class="counter-wrap">
+  </view>
+  <view class="tips">
+  </view>
+  <view class="address-wrap">
+  </view>
+</view>
