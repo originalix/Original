@@ -59,7 +59,9 @@ var config = {
     // 发起余额支付
     chargePayAPI: `${base_host}/v1/charge/pay`,
     // 获取促销商品详情
-    promotionDetailAPI: `${base_host}/v1/promotion/detail`
+    promotionDetailAPI: `${base_host}/v1/promotion/detail`,
+    // 修改用户信息
+    editProfileInfoAPI: `${base_host}/v1/profile/info`
   }
 };
 

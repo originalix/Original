@@ -1,9 +1,25 @@
 <view class="">
-  <wxc-input type="text" title="姓名" placeholder="名字"></wxc-input>
-  <wxc-input type="number" title="联系电话" placeholder="请输入手机号"></wxc-input>
+  <wxc-input 
+    type="text"
+    title="姓名"
+    placeholder="请输入姓名"
+    value="{{nameValue}}"
+    bind:input="nameInput"
+    >
+  </wxc-input>
+  <wxc-input 
+    type="number"
+    title="联系电话"
+    placeholder="请输入手机号"
+    value="{{mobileValue}}"
+    bind:input="mobileInput"
+    >
+  </wxc-input>
   <view class="button-large-wrap"></view>
   <wxc-cc>
-    <wxc-button size="large" type="info" loading="{{false}}" value="提交"></wxc-button>
+    <view bindtap="submit">
+      <wxc-button size="large" type="info" loading="{{loading}}" value="提交"></wxc-button>
+    </view>
   </wxc-cc>
 </view>
 
