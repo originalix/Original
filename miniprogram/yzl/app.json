@@ -16,7 +16,8 @@
     "pages/myCard/myCard",
     "pages/myCredit/myCredit",
     "pages/share/share",
-    "pages/promotion/promotion"
+    "pages/promotion/promotion",
+    "pages/editInfo/editInfo"
   ],
   "window":{
     "backgroundTextStyle":"black",

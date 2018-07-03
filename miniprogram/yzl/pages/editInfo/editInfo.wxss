@@ -1,0 +1,6 @@
+.button-large-wrap {
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+}
+

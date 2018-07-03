@@ -19,6 +19,11 @@ Page({
 				slot: false,
 				src: '/resource/img/gift.png'
 			},
+      {
+        title: '完善用户信息',
+        slot: false,
+        src: '/resource/img/info.png'
+      }
 			// {
 				// title: '优惠券兑换',
 				// slot: false,
@@ -98,6 +103,10 @@ Page({
 			case 1:
 				this.go2ErrorPage()
 				break
+      case 2:
+        this.go2EditInfoPage()
+      default:
+        break
 		}
 	},
 	go2CouponExchangePage () {
@@ -130,5 +139,10 @@ Page({
 		wx.navigateTo({
 			url: '/pages/share/share?id=' + this.data.userInfo.id
 		})
-	}
+	},
+  go2EditInfoPage() {
+    wx.navigateTo({
+      url: '/pages/editInfo/editInfo'
+    })
+  }
 })
