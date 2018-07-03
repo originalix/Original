@@ -42,16 +42,53 @@
           <view class='uploadimgbox' wx:if="{{upFilesBtn}}">
               <image class='uploadbtn' bindtap='uploadFiles' src='./addimgsbtn.png'></image>
           </view>
-
       </view>
     </view>
     <view class="textarea-wrap">
+      <view class="page-section">
+        <view class="page-section-title">多张团购券，请用逗号分隔优惠码</view>
+        <view class="textarea-wrp">
+          <textarea auto-focus="true" style="height: 3em" />
+        </view>
+      </view>
     </view>
-    <view class="counter-wrap">
+    <view class="counter-wrap mgt-30">
+      <text class="title">衣物总数：</text>
+      <view class="bg-fff inline-b">
+        <wxc-counter number="0" max="{{10000}}" min="0" bind:changenumber="onChangeNumber"></wxc-counter>
+      </view>
     </view>
     <view class="tips">
+      <text class="tips-first">请您正确填写寄送衣物的总数，以免影响服务时效，谢谢您的配合！</text>
+      <text>团购券包含：</text>
+      <text>普通羽绒服（长/短） 普通呢子衣（长/短）运动鞋/皮鞋等洗涤。</text>
+      <text>不包含：</text>
+      <text>皮衣皮草 皮靴/雪地靴 奢侈品 真丝蚕丝 家纺类 婚纱礼服 包包类 娃娃类洗涤</text>
     </view>
     <view class="address-wrap">
+      <!-- 地址栏目 尚未添加地址状态 -->
+      <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
+        bindtap="choseAddress" block wx:if="{{! isChooseAddress}}">
+        <image class="add-icon" src="../../resource/img/add.png" />
+        <text class="font-30 text-bg-333">新增收货地址</text>
+        <wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
+      </view>
+      <view class="separate bg-e5"></view>
+
+      <!-- 地址栏目 已存在地址状态 -->
+      <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
+        bindtap="choseAddress" block wx:if="{{isChooseAddress}}">
+        <view class="width-full">
+          <view class="vertical-center width-full">
+            <image src="../../resource/img/address-loca.png" class="loca-icon mg-30" />
+            <text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
+            <text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
+          </view>
+          <text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
+        </view>
+        <image src="../../resource/img/right.png" class="arrow-icon" />
+      </view>
+      <view class="separate bg-e5"></view>
     </view>
   </view>
 </view>

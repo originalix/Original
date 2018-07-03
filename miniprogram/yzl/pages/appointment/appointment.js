@@ -32,6 +32,8 @@ Page({
     upFilesBtn:true,
     upFilesProgress:false,
     maxUploadLen:3,
+    address: {},
+    isChooseAddress: false,
   },
   radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
@@ -136,6 +138,42 @@ Page({
           // success
           console.log(arr)
       })
-  }
+  },
+    /**
+   *  选择地址事件
+   */
+  choseAddress() {
+    if (this.data.isCreatedOrder === true) {
+      wx.showToast({
+        title: '订单已创建，地址不能修改',
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    console.log('choseAddress')
+    var that = this
+    wx.chooseAddress({
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          address: res,
+          isChooseAddress: true,
+          submitBtnType: 'order'
+        }, function () {
+          console.log(that.data.isChooseAddress)
+        })
+      },
+      fail: function (res) {
+        console.log(res)
+        if (that.data.isChooseAddress === false) {
+          that.setData({
+            isChooseAddress: false,
+            submitBtnType: 'not-order'
+          })
+        }
+      }
+    })
+  },
 })
 
