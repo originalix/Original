@@ -323,6 +323,9 @@ class OrderForm extends Model
         }
 
         $sale_promotion = SalePromotion::findOne($this->promotion_id);
+        if (is_null($sale_promotion)) {
+            throw new HttpException(421, '团购商品不存在');
+        }
         $sale_promotion->sale_count += 1;
         $sale_promotion->save();
     }

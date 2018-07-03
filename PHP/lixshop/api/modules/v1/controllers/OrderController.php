@@ -17,7 +17,7 @@ class OrderController extends BaseController
      */
     public function actionCreate()
     {
-        // return Yii::$app->request->post();
+        // return json_encode(Yii::$app->request->post());
         $model = new OrderForm();
         if (! $model->load(Yii::$app->request->post(), '')) {
             throw new \yii\web\HttpException(420, '创建订单失败');
