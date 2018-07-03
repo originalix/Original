@@ -19,6 +19,31 @@
       </view>
     </view>
     <view class="upload-wrap">
+      <view class="optClass">
+          <view class='optName'></view>
+          <view class='optContent' ></view>
+      </view>
+      <view class="optClass" style='flex-wrap:wrap;'>
+          <view class='uploadimgbox' wx:for="{{upImgArr}}" wx:key="item">
+              <image class='uploadimg' src='{{item.path}}' data-presrc="{{item.path}}" bindtap='previewImg' mode='aspectFill'></image>
+              <cover-view class='progress' wx:if="{{upFilesProgress}}">
+                  {{item.progress}}%
+              </cover-view>
+              <cover-view class='delbtn' data-index="{{index}}" data-type="image" bindtap='delFile'>X</cover-view>
+          </view>
+          <view class='uploadimgbox' wx:for="{{upVideoArr}}" wx:key="item">
+              <video class='uploadimg' src="{{item.tempFilePath}}"  controls ></video>
+             <cover-view class='progress' wx:if="{{upFilesProgress}}">
+                  {{item.progress}}%
+              </cover-view>
+              <cover-view class='delbtn' data-index="{{index}}" data-type="video" bindtap='delFile'>X</cover-view>
+          </view>
+
+          <view class='uploadimgbox' wx:if="{{upFilesBtn}}">
+              <image class='uploadbtn' bindtap='uploadFiles' src='./addimgsbtn.png'></image>
+          </view>
+
+      </view>
     </view>
     <view class="textarea-wrap">
     </view>
