@@ -14,6 +14,7 @@ use common\models\CustomOptionStock;
 use common\models\Coupon;
 use common\models\CouponUsage;
 use common\models\Customer;
+use common\models\SalePromotion;
 
 class OrderForm extends Model
 {
@@ -46,13 +47,14 @@ class OrderForm extends Model
     public $express_type;
     public $express_date;
     public $express_time;
+    public $promotion_id = null;
 
     public function rules()
     {
         return [
             // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
             
-            [['increment_id', 'items_count', 'customer_id', 'coupon_id', 'express_type'], 'integer'],
+            [['increment_id', 'items_count', 'customer_id', 'coupon_id', 'express_type', 'promotion_id'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip', 'trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 50],
@@ -261,6 +263,8 @@ class OrderForm extends Model
             throw new HttpException(421, $e->getMessage());
         }
 
+        $this->calculatePromotion();
+
         return $order->attributes;
     }
 
@@ -307,6 +311,20 @@ class OrderForm extends Model
     protected function generatorTradeNo()
     {
         return date('Ymd', time()).time().mt_rand(1000,9999);
+    }
+
+    /**
+     *  创建订单时，增加团购数量
+     */
+    protected function calculatePromotion()
+    {
+        if (is_null($this->promotion_id)) {
+            return;
+        }
+
+        $sale_promotion = SalePromotion::findOne($this->promotion_id);
+        $sale_promotion->sale_count += 1;
+        $sale_promotion->save();
     }
 }
 
