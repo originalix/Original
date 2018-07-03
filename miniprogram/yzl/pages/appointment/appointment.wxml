@@ -1,22 +1,32 @@
 <view class="">
-  <view class="checkbox-wrap">
-    <view class="">
-      <text>购买平台：</text>
-      <checkbox-group bindchange="checkboxChange">
-        <label class="checkbox" wx:for="{{items}}">
-          <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-        </label>
-      </checkbox-group>
+  <view class="root-container">
+    <view class="checkbox-wrap">
+      <view class="mgt-30">
+        <text class="title">购买平台：</text>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{buyTypeItems}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="mgt-30">
+        <text class="title">团购券：</text>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{submitTypeItems}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+          </label>
+        </radio-group>
+      </view>
     </view>
-  </view>
-  <view class="upload-wrap">
-  </view>
-  <view class="textarea-wrap">
-  </view>
-  <view class="counter-wrap">
-  </view>
-  <view class="tips">
-  </view>
-  <view class="address-wrap">
+    <view class="upload-wrap">
+    </view>
+    <view class="textarea-wrap">
+    </view>
+    <view class="counter-wrap">
+    </view>
+    <view class="tips">
+    </view>
+    <view class="address-wrap">
+    </view>
   </view>
 </view>

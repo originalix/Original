@@ -8,35 +8,29 @@ const Dialog = require('../../bower_components/zanui-weapp/dist/dialog/dialog')
 
 Page({
   data: {
-    items: [{
-        name: 'USA',
-        value: '美国'
+    buyTypeItems: [{
+        name: 'DP',
+        value: '大众点评'
       },
       {
-        name: 'CHN',
-        value: '中国',
+        name: 'MT',
+        value: '美团',
         checked: 'true'
       },
-      {
-        name: 'BRA',
-        value: '巴西'
+    ],
+    submitTypeItems: [{
+      name: 'TXT',
+      value: '手动输入',
+      checked: 'true'
       },
       {
-        name: 'JPN',
-        value: '日本'
-      },
-      {
-        name: 'ENG',
-        value: '英国'
-      },
-      {
-        name: 'TUR',
-        value: '法国'
-      },
-    ]
+        name: 'PIC',
+        value: '上传截图',
+      }
+    ],
   },
-  checkboxChange: function(e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+  radioChange: function(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
   }
 })
 

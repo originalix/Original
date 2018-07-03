@@ -1,0 +1,23 @@
+.root-container {
+  font-size: 13px;
+  margin: 20rpx;
+}
+
+radio-group {
+  display: inline-block;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.mgt-30 {
+  margin-top: 30rpx;
+}
+
+radio-group label {
+  margin-left: 30rpx;
+}
+
