@@ -11,9 +11,13 @@ Page({
     product: {},
     productList: [],
     cartList: [],
+    promotion_id: null
   },
   onLoad(option) {
     console.log(option)
+    this.setData({
+      promotion_id: option.id
+    })
     this.getPromotionDetail(option.id)
   },
   /**
@@ -165,8 +169,12 @@ Page({
 	},
 	pushToCreateOrderPage() {
 		this.saveCartParams()
+    let url = '/pages/createOrder/createOrder'
+    if (this.data.promotion_id !== null) {
+      url = '/pages/createOrder/createOrder?promotionId=' + this.data.promotion_id
+    }
 		wx.navigateTo({
-			url: '/pages/createOrder/createOrder'
+			url: url
 		})
 	}
 })

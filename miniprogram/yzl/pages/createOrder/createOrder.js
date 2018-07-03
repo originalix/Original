@@ -50,9 +50,10 @@ Page({
     // 根据是否创建订单 显示提交按钮的文本  提交订单 or 去支付
     submitBtnText: '提交订单',
     // 用户信息
-    userInfo: {}
+    userInfo: {},
+    promotionId: null
   },
-  onLoad() {
+  onLoad(option) {
     // 获取购物车的商品数据
     var that = this
     try {
@@ -67,9 +68,22 @@ Page({
     } catch (e) {
       console.log(e)
     }
+    // 获取团购id
+    this.getPromotionId(option)
     this.initTimeAndDate()
     // this.calculatePrice()
     this.getUserInfo()
+  },
+  getPromotionId(option) {
+    if (option === undefined) {
+      return
+    }
+    if (option.promotionId === undefined) {
+      return
+    }
+    this.setData({
+      promotionId: option.promotionId
+    })
   },
   /**
    *  初始化配送日期、时间
@@ -182,7 +196,6 @@ Page({
   },
   /**
    *  打开配送方式选择的ActionSheet
-   */
   openActionSheet() {
     console.log('openActionSheet')
     this.setData({
@@ -325,6 +338,7 @@ Page({
       'express_type': this.data.expressType,
       'express_date': this.data.date,
       'express_time': this.data.time,
+      'promotion_id': this.data.promotionId,
       'success': function (res) {
         console.log('订单生成 成功的函数回调')
         if (res.trade_no !== undefined && res.real_amount !== undefined) {

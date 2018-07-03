@@ -142,7 +142,8 @@ const createOrder = (params) => {
     'tel_number': params.tel_number,
     'express_type': params.express_type,
     'express_date': params.express_date,
-    'express_time': params.express_time
+    'express_time': params.express_time,
+    'promotion_id': params.promotion_id,
   }
 
   console.log('订单请求参数: ->')
