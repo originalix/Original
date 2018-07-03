@@ -20,6 +20,12 @@ Page({
     })
     this.getPromotionDetail(option.id)
   },
+  onShareAppMessage: function (res) {
+		return {
+			title: '衣之恋火爆拼团',
+			path: '/page/promotion/promotion?id=' + this.data.promotion_id
+		}
+  },
   /**
    * 获取促销详情
    * @param {*} id 促销id

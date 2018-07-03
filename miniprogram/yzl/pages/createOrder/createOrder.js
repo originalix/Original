@@ -196,6 +196,7 @@ Page({
   },
   /**
    *  打开配送方式选择的ActionSheet
+   */
   openActionSheet() {
     console.log('openActionSheet')
     this.setData({
@@ -414,12 +415,12 @@ Page({
     console.log(this.data.finalPrice)
     let charge = parseFloat(this.data.userInfo.charge)
     let price = this.data.finalPrice
-    if (charge < price) {
+    if (charge > price) {
       console.log('余额不足，请使用其他支付方式支付')
       this.closePayActionsheet()
       Dialog({
         title: '温馨提醒',
-        message: '您的余额不足，请使用其他方式支付',
+        message: '您的余额不足，请充值后再使用',
         selector: '#zan-dialog-charge'
       }).then((res) => {
         console.log(res)
