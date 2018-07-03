@@ -19,7 +19,8 @@
     "zan-steps": "../../bower_components/zanui-weapp/dist/steps/index",
     "wxc-label": "../../dist/packages/@minui/wxc-label/dist/index",
     "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index",
-    "wxc-counter": "../../dist/packages/@minui/wxc-counter/dist/index"
+    "wxc-counter": "../../dist/packages/@minui/wxc-counter/dist/index",
+    "wxc-button": "../../dist/packages/@minui/wxc-button/dist/index"
   }
 }
 

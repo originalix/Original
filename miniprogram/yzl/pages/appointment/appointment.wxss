@@ -206,4 +206,5 @@ textarea {
 }
 .address-wrap {
   margin-top: 30rpx;
+  margin-bottom: 50rpx;
 }

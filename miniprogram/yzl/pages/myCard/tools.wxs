@@ -3,7 +3,7 @@ var tools = {
     if (discount === 100) {
       return '无折扣'
     }
-    return discount/100 + '折'
+    return discount/10 + '折'
   }
 }
 

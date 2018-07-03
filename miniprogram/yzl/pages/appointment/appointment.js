@@ -29,6 +29,7 @@ Page({
         value: '上传截图',
       }
     ],
+    submitType: 'TXT',
     upFilesBtn:true,
     upFilesProgress:false,
     maxUploadLen:3,
@@ -37,6 +38,12 @@ Page({
   },
   radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
+  },
+  submitTypeChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      submitType: e.detail.value,
+    })
   },
     // 预览图片
   previewImg: function (e) {
@@ -118,7 +125,7 @@ Page({
       _this.setData({
           upFilesProgress:true,
       })
-      upData['url'] = config.service.upFiles;
+      upData['url'] = config.service.chargePayAPI;
       upFiles.upFilesFun(_this, upData,function(res){
           if (res.index < upImgArr.length){
               upImgArr[res.index]['progress'] = res.progress
