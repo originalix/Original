@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use common\models\Attachment;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%appointment}}".
@@ -25,6 +26,21 @@ use common\models\Attachment;
  */
 class Appointment extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {        
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
+                'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
+                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
+            ],
+        ];   
+    }
+
     /**
      * @inheritdoc
      */
