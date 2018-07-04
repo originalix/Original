@@ -61,7 +61,11 @@ var config = {
     // 获取促销商品详情
     promotionDetailAPI: `${base_host}/v1/promotion/detail`,
     // 修改用户信息
-    editProfileInfoAPI: `${base_host}/v1/profile/info`
+    editProfileInfoAPI: `${base_host}/v1/profile/info`,
+    // 创建团购预约
+    appointmentCreateAPI: `${base_host}/v1/appointment/create`,
+    // 上传团购图片接口
+    appointmentImgAPI: `${base_host}/v1/image/appointment`,
   }
 };
 
