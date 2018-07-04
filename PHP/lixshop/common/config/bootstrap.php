@@ -9,4 +9,6 @@ Yii::setAlias('@baseurl', 'http://140.143.8.19/code-repo/PHP/lixshop');
 // Yii::setAlias('@baseurl', 'http://localhost/code-repo/PHP/lixshop');
 Yii::setAlias('@backendUrl', 'https://backend.yzl1030.com');
 // Yii::setAlias('@backendUrl', 'http://localhost/code-repo/PHP/lixshop/backend/web');
+Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/api/web/uploads');
 
+Yii::setAlias('@attachUrl', 'http://localhost/code-repo/PHP/lixshop/api/web/uploads');

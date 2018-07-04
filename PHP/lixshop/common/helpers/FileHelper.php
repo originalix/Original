@@ -40,6 +40,10 @@ class FileHelper extends BaseFileHelper {
             $uploadBasePath = Yii::getAlias('@uploads') . '/';
             $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
             $absolutePath = $uploadBasePath . $uploadPath;
+            // print_r('看看绝对路径');
+            // print_r($uploadBasePath);
+            // print_r($absolutePath);
+            // exit;
             self::dirCreate($absolutePath);
 
             $file = UploadedFile::getInstanceByName('image');
@@ -172,6 +176,8 @@ class FileHelper extends BaseFileHelper {
             if (is_dir($cur_dir)) {
                 continue;
             }
+            // print_r($cur_dir);
+            // exit;
             mkdir($cur_dir, 0777, true);
             chmod($cur_dir, 0777);
         }
