@@ -6,6 +6,8 @@ use Yii;
 use api\components\BaseController;
 use common\helpers\FileHelper;
 use yii\web\UploadedFile;
+use common\models\Attachment;
+use api\models\ImageForm;
 
 class ImageController extends BaseController
 {
@@ -29,5 +31,24 @@ class ImageController extends BaseController
        }
         Yii::warning('接收数据 ============= 接收到照片 ==============');
        return '获取到图片了';
+    }
+
+    public function actionAppointment()
+    {
+        if (! Yii::$app->request->isPost) {
+            throw new \yii\web\HttpException(418, '请求方法不允许');
+        }
+
+        $data = FileHelper::upload();
+        if ($data['status'] === false) {
+            throw new \yii\web\HttpException(419, '图片保存到服务器失败');
+        }
+
+        $type = 'appointment';
+        $type_id = Yii::$app->request->post('type_id');
+        $imageForm = new ImageForm($data, $type, $type_id);
+
+        
+        return $imageForm->saveImage();
     }
 }
