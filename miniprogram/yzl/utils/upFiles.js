@@ -114,7 +114,7 @@ var upFilesFun = (t, data, progress, success) =>{
             let uploaded = t.data.uploadedPathArr || [];
             var da = JSON.parse(res.data);
             // console.log(da)
-            if (da.code == 1001) {
+            if (da.code === 200) {
                 // ### 此处可能需要修改 以获取图片路径
                 uploaded.push(da.data)
 

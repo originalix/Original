@@ -194,7 +194,8 @@ Page({
           header: appInstance.requestToken,
           name: 'image',
           success: function (res) {
-            console.log(res)
+            let data = JSON.parse(res.data)
+            console.log(data)
           },
           fail: function (error) {
             console.log(error)
