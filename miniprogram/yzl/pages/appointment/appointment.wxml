@@ -91,7 +91,8 @@
       <view class="separate bg-e5"></view>
     </view>
     <wxc-cc class="submit-wrap">
-      <view class="" bindtap="subFormData" >
+      <!-- <view class="" bindtap="subFormData" > -->
+      <view class="" bindtap="chooseImage" >
         <wxc-button size="large" type="success" loading="{{false}}" value="提交预约"></wxc-button>
       </view>
     </wxc-cc>

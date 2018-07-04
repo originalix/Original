@@ -182,5 +182,26 @@ Page({
       }
     })
   },
+  chooseImage () {
+    wx.chooseImage({
+      count: 9,
+      success: function (res) {
+        console.log(res)
+        let tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: 'https://api.yzl1030.com/v1/image/upload',
+          filePath: tempFilePaths[0],
+          header: appInstance.requestToken,
+          name: 'image',
+          success: function (res) {
+            console.log(res)
+          },
+          fail: function (error) {
+            console.log(error)
+          }
+        })
+      }
+    })
+  }
 })
 
