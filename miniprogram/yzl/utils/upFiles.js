@@ -108,7 +108,7 @@ var upFilesFun = (t, data, progress, success) => {
       var data = res.data
       successNumber++;
       // console.log('success', successNumber)
-      // console.log('success',res)
+      console.log('success',res)
       // 把后台返回的地址链接存到一个数组
       let uploaded = t.data.uploadedPathArr || [];
       var da = JSON.parse(res.data);
@@ -127,7 +127,7 @@ var upFilesFun = (t, data, progress, success) => {
       // console.log('fail', filesPath[startIndex])
       // console.log('failstartIndex',startIndex)
       // console.log('fail', failNumber)
-      // console.log('fail', res)
+      console.log('fail', res)
     },
     complete: function(res) {
 

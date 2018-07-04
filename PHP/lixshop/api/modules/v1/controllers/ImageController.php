@@ -39,6 +39,7 @@ class ImageController extends BaseController
             throw new \yii\web\HttpException(418, '请求方法不允许');
         }
 
+
         $data = FileHelper::upload();
         if ($data['status'] === false) {
             throw new \yii\web\HttpException(419, '图片保存到服务器失败');
@@ -46,9 +47,16 @@ class ImageController extends BaseController
 
         $type = 'appointment';
         $type_id = Yii::$app->request->post('type_id');
+        if (is_null($type_id)) {
+            throw new \yii\web\HttpException(420, '缺少关键参数');
+        }
         $imageForm = new ImageForm($data, $type, $type_id);
 
         
-        return $imageForm->saveImage();
+        if ($imageForm->saveImage()) {
+            return $imageForm;
+        }
+
+        throw new \yii\web\HttpException(421, '图片存储失败');
     }
 }

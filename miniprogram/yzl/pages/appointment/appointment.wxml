@@ -55,7 +55,7 @@
     <view class="counter-wrap mgt-30">
       <text class="title">衣物总数：</text>
       <view class="bg-fff inline-b">
-        <wxc-counter number="0" max="{{10000}}" min="0" bind:changenumber="onChangeNumber"></wxc-counter>
+        <wxc-counter number="{{colthes_number}}" max="{{10000}}" min="0" bind:changenumber="handleCounter"></wxc-counter>
       </view>
     </view>
     <view class="tips">
@@ -91,10 +91,12 @@
       <view class="separate bg-e5"></view>
     </view>
     <wxc-cc class="submit-wrap">
-      <!-- <view class="" bindtap="subFormData" > -->
-      <view class="" bindtap="chooseImage" >
+      <view class="" bindtap="subFormData">
         <wxc-button size="large" type="success" loading="{{false}}" value="提交预约"></wxc-button>
       </view>
     </wxc-cc>
+    <view class="" bindtap="createAppointment">
+      <wxc-button size="large" type="success" loading="{{false}}" value="submit"></wxc-button>
+    </view>
   </view>
 </view>

@@ -11,12 +11,12 @@ Page({
   data: {
     buyTypeItems: [{
         name: '大众点评',
-        value: '大众点评'
+        value: '大众点评',
+        checked: 'true',
       },
       {
         name: '美团',
         value: '美团',
-        checked: 'true'
       },
     ],
     submitTypeItems: [{
@@ -34,9 +34,10 @@ Page({
     maxUploadLen: 3,
     address: {},
     isChooseAddress: false,
-    platform: null,
+    platform: '大众点评',
     enterType: 1,
     code: null,
+    colthes_number: 0
   },
   // 选择平台监听函数
   radioChange: function(e) {
@@ -60,6 +61,12 @@ Page({
       code: e.detail.value
     }, function () {
       console.log(that.data.code)
+    })
+  },
+  handleCounter: function (e) {
+    console.log('数字框发生改变，值为: ', e.detail.number)
+    this.setData({
+      clothesCount: e.detail.number
     })
   },
   // 预览图片
@@ -143,6 +150,11 @@ Page({
       upFilesProgress: true,
     })
     upData['url'] = config.service.appointmentImgAPI;
+    upData['formData'] = {
+    }
+    console.log(upImgArr)
+    console.log(upVideoArr)
+    // return
     upFiles.upFilesFun(_this, upData, function(res) {
       if (res.index < upImgArr.length) {
         upImgArr[res.index]['progress'] = res.progress
@@ -223,11 +235,19 @@ Page({
    *  创建团购预约
    */
   createAppointment () {
+    let that = this
+    wx.showLoading({
+      title: '加载中'
+    })
     let address = this.data.address
+    let code = this.data.code
+    if (this.data.enterType === 2) {
+      code = null
+    }
     let data = {
       'platform': this.data.platform,
       'enter_type': this.data.enterType,
-      'code': this.data.code,
+      'code': code,
       'clothes_count': this.data.clothesCount,
       'userName': address.userName,
       'province': address.provinceName,
@@ -241,14 +261,41 @@ Page({
       url: config.service.appointmentCreateAPI,
       header: appInstance.requestToken,
       data: data,
+      method: 'POST',
       success: function (res) {
         console.log(res)
+        wx.hideLoading()
+        if (res.data.code === 200) {
+          wx.showToast({
+            title: '预约成功',
+            icon: 'success',
+            duration: 1500
+          })
+          const data = res.data.data
+          that.uploadImg(that, data.id)
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1500
+          })
+        }
       },
       fail: function (error) {
         console.log(error)
+        wx.showToast({
+          title: error,
+          icon: 'none',
+          duration: 1500
+        })
       }
     })
-
+  },
+  uploadImg (t, id) {
+    if (t.data.enterType !== 2) {
+      return
+    }
+    t.subFormData()
   }
 })
 
