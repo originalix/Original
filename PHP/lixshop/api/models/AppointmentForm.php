@@ -59,7 +59,7 @@ class AppointmentForm extends Model
             throw new HttpException(433, '团购预约失败，请重试');
         }
 
-        return ture;
+        return $appointment;
     }
 }
 

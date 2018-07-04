@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use common\models\Attachment;
 use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "{{%appointment}}".
@@ -36,7 +37,7 @@ class Appointment extends \yii\db\ActiveRecord
                 'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',// 自己根据数据库字段修改
                 'updatedAtAttribute' => 'updated_at', // 自己根据数据库字段修改
-                'value' => new Expression('NOW()'), // 自己根据数据库字段修改
+                'value' => date('Y-m-d H:i:s'), // 自己根据数据库字段修改
             ],
         ];   
     }
@@ -108,7 +109,7 @@ class Appointment extends \yii\db\ActiveRecord
             'postal_code',
             'tel_number',
             'created_at',
-            'updated_at',
+            'updated_at'
         ];
     }
 

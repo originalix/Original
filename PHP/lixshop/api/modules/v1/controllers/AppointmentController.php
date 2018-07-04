@@ -20,5 +20,15 @@ class AppointmentController extends BaseController
 
         return $model->saveItem();
     }
+
+    public function actionView($id)
+    {
+        $model = Appointment::findOne($id);
+        if (is_null($model)) {
+            throw new HttpException(419, '没有数据');
+        }
+
+        return $model;
+    }
 }
 
