@@ -141,7 +141,7 @@ Page({
     })
   },
   // 上传文件
-  subFormData: function() {
+  subFormData: function(id) {
     let _this = this;
     let upData = {};
     let upImgArr = _this.data.upImgArr;
@@ -151,7 +151,9 @@ Page({
     })
     upData['url'] = config.service.appointmentImgAPI;
     upData['formData'] = {
+      'type_id': id 
     }
+    upData['name'] = 'image'
     console.log(upImgArr)
     console.log(upVideoArr)
     // return

@@ -1,3 +1,5 @@
+var appInstance = getApp()
+
 var chooseImage = (t, count) => {
   wx.chooseImage({
     count: count,
@@ -104,6 +106,7 @@ var upFilesFun = (t, data, progress, success) => {
     filePath: filesPath[startIndex],
     name: name,
     formData: formData,
+    header: appInstance.requestToken,
     success: function(res) {
       var data = res.data
       successNumber++;
