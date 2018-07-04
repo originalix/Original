@@ -47,6 +47,9 @@ class FileHelper extends BaseFileHelper {
             self::dirCreate($absolutePath);
 
             $file = UploadedFile::getInstanceByName('image');
+            if (is_null($file)) {
+                throw new \yii\web\HttpException(421, '未上传文件');
+            }
             $filename = self::generateUploadFileName($file->extension);
             $file->saveAs($absolutePath . $filename, false);
 
@@ -83,34 +86,45 @@ class FileHelper extends BaseFileHelper {
 
         $percent = 1;
 
-        foreach (self::$image_type as $type) {
-            $size = filesize($source) / 1024;
-            // 大于100kb才压缩图片 否则使用原图
-            if ($size > 100) {
-                switch ($type) {
-                    case self::THUMBNAIL_TYPE:
-                        $percent = 0.3;
-                        break;
-                    case self::BMIDDLE_TYPE:
-                        $percent = 0.5;
-                        break;
-                    case self::ORIGINAL_TYPE:
-                        $percent = 1;
-                        break;
-                }
-            }
+        // foreach (self::$image_type as $type) {
+        //     $size = filesize($source) / 1024;
+        //     // 大于100kb才压缩图片 否则使用原图
+        //     if ($size > 100) {
+        //         switch ($type) {
+        //             case self::THUMBNAIL_TYPE:
+        //                 $percent = 0.3;
+        //                 break;
+        //             case self::BMIDDLE_TYPE:
+        //                 $percent = 0.5;
+        //                 break;
+        //             case self::ORIGINAL_TYPE:
+        //                 $percent = 1;
+        //                 break;
+        //         }
+        //     }
 
-            $uploadBasePath = Yii::getAlias('@uploads');
-            $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
-            $absolutePath = $uploadBasePath . $uploadPath;
-            $absoluteUrl = Yii::getAlias('@attachUrl') . '/attachments/' . $type . '/' . date('Ym/d') . '/' . $filename;
+        //     $uploadBasePath = Yii::getAlias('@uploads');
+        //     $uploadPath = '/attachments/' . $type . '/' . date('Ym/d') . '/';
+        //     $absolutePath = $uploadBasePath . $uploadPath;
+        //     $absoluteUrl = Yii::getAlias('@attachUrl') . '/attachments/' . $type . '/' . date('Ym/d') . '/' . $filename;
 
-            self::dirCreate($absolutePath);
+        //     self::dirCreate($absolutePath);
 
-            $imageInfo = (new ImageCompress($source, $percent, $absoluteUrl))->compressImg($absolutePath . $filename);
+        //     $imageInfo = (new ImageCompress($source, $percent, $absoluteUrl))->compressImg($absolutePath . $filename);
 
-            $imageUrls[$type] = $imageInfo;
-        }
+        //     $imageUrls[$type] = $imageInfo;
+        // }
+        $uploadBasePath = Yii::getAlias('@uploads');
+        $uploadPath = '/attachments/' . 'origin' . '/' . date('Ym/d') . '/';
+        $absolutePath = $uploadBasePath . $uploadPath;
+        $absoluteUrl = Yii::getAlias('@attachUrl') . '/attachments/' . 'origin' . '/' . date('Ym/d') . '/' . $filename;
+
+        self::dirCreate($absolutePath);
+
+        $imageInfo = (new ImageCompress($source, $percent, $absoluteUrl))->compressImg($absolutePath . $filename);
+
+        // $imageUrls[$type] = $imageInfo;
+        $imageUrls = $imageInfo; 
 
         return $imageUrls;
     }
