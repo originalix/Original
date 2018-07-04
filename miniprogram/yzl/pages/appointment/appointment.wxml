@@ -18,7 +18,7 @@
         </radio-group>
       </view>
     </view>
-    <view class="upload-wrap" wx:if="{{submitType === 'PIC'}}">
+    <view class="upload-wrap" wx:if="{{enterType === 2}}">
       <view class="optClass">
           <view class='optName'></view>
           <view class='optContent' ></view>
@@ -44,11 +44,11 @@
           </view>
       </view>
     </view>
-    <view class="textarea-wrap" wx:if="{{submitType === 'TXT'}}">
+    <view class="textarea-wrap" wx:if="{{enterType === 1}}">
       <view class="page-section">
         <view class="page-section-title">多张团购券，请用逗号分隔优惠码</view>
         <view class="textarea-wrp">
-          <textarea auto-focus="true" style="height: 3em" />
+          <textarea auto-focus="true" bindinput="handleInput"/>
         </view>
       </view>
     </view>

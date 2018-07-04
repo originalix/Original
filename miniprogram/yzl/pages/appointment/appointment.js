@@ -10,39 +10,56 @@ const Dialog = require('../../bower_components/zanui-weapp/dist/dialog/dialog')
 Page({
   data: {
     buyTypeItems: [{
-        name: 'DP',
+        name: '大众点评',
         value: '大众点评'
       },
       {
-        name: 'MT',
+        name: '美团',
         value: '美团',
         checked: 'true'
       },
     ],
     submitTypeItems: [{
-        name: 'TXT',
+        name: 1,
         value: '手动输入',
         checked: 'true'
       },
       {
-        name: 'PIC',
+        name: 2,
         value: '上传截图',
       }
     ],
-    submitType: 'TXT',
     upFilesBtn: true,
     upFilesProgress: false,
     maxUploadLen: 3,
     address: {},
     isChooseAddress: false,
+    platform: null,
+    enterType: 1,
+    code: null,
   },
+  // 选择平台监听函数
   radioChange: function(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
-  },
-  submitTypeChange: function(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    console.log('radio发生change事件，携带value值为：', e.detail)
     this.setData({
-      submitType: e.detail.value,
+      platform: e.detail.value
+    })
+  },
+  // 选择输入类型监听函数
+  submitTypeChange: function(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail)
+    let enterValue = parseInt(e.detail.value)
+    this.setData({
+      enterType: enterValue,
+    })
+  },
+  handleInput: function (e) {
+    console.log('textarea发生输入，携带value值为：', e.detail.value)
+    let that = this
+    this.setData({
+      code: e.detail.value
+    }, function () {
+      console.log(that.data.code)
     })
   },
   // 预览图片
@@ -166,7 +183,6 @@ Page({
         that.setData({
           address: res,
           isChooseAddress: true,
-          submitBtnType: 'order'
         }, function() {
           console.log(that.data.isChooseAddress)
         })
@@ -176,7 +192,6 @@ Page({
         if (that.data.isChooseAddress === false) {
           that.setData({
             isChooseAddress: false,
-            submitBtnType: 'not-order'
           })
         }
       }
@@ -204,6 +219,9 @@ Page({
       }
     })
   },
+  /**
+   *  创建团购预约
+   */
   createAppointment () {
     let address = this.data.address
     let data = {
