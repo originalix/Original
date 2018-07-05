@@ -118,7 +118,7 @@
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="bottom-icon-layout" bindtap="go2GroupPage">
+      <view class="bottom-icon-layout" bindtap="go2ScopePage">
         <!-- <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/earth.png" class="bottom-icon-img" />
@@ -129,7 +129,7 @@
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="bottom-icon-layout" bindtap="go2ScopePage">
+      <view class="bottom-icon-layout" bindtap="go2PriceMenuPage">
         <!-- <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/price.png" class="bottom-icon-img" />
@@ -140,7 +140,7 @@
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="bottom-icon-layout" bindtap="go2PriceMenuPage">
+      <view class="bottom-icon-layout" bindtap="go2GroupPage">
         <!-- <navigator url="/pages/order/order" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/member.png" class="bottom-icon-img" />
