@@ -99,5 +99,20 @@ Page({
     wx.navigateTo({
       url: '/pages/introduce/introduce'
     })
+  },
+  go2GroupPage() {
+    wx.navigateTo({
+      url: '/pages/group/group'
+    })
+  },
+  go2ScopePage() {
+    wx.navigateTo({
+      url: '/pages/scope/scope'
+    })
+  },
+  go2PriceMenuPage() {
+    wx.navigateTo({
+      url: '/pages/priceMenu/priceMenu'
+    })
   }
 })

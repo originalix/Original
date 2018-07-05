@@ -118,35 +118,35 @@
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="bottom-icon-layout">
-        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
+      <view class="bottom-icon-layout" bindtap="go2GroupPage">
+        <!-- <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/earth.png" class="bottom-icon-img" />
           </view>
           <view class="bottom-icon-title"><text>服务范围</text></view>
-        </navigator>
+        <!-- </navigator> -->
       </view>
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="bottom-icon-layout">
-        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
+      <view class="bottom-icon-layout" bindtap="go2ScopePage">
+        <!-- <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/price.png" class="bottom-icon-img" />
           </view>
           <view class="bottom-icon-title"><text>价目中心</text></view>
-        </navigator>
+        <!-- </navigator> -->
       </view>
     </zan-col>
 
     <zan-col col="6" col-class="custom-zan-col">
-      <view class="bottom-icon-layout">
-        <navigator url="/pages/order/order" hover-class="other-navigator-hover">
+      <view class="bottom-icon-layout" bindtap="go2PriceMenuPage">
+        <!-- <navigator url="/pages/order/order" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
             <image src="../../resource/img/member.png" class="bottom-icon-img" />
           </view>
           <view class="bottom-icon-title"><text>团体洗衣</text></view>
-        </navigator>
+        <!-- </navigator> -->
       </view>
     </zan-col>
     

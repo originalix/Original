@@ -19,7 +19,10 @@
     "pages/promotion/promotion",
     "pages/editInfo/editInfo",
     "pages/appointment/appointment",
-    "pages/introduce/introduce"
+    "pages/introduce/introduce",
+    "pages/group/group",
+    "pages/scope/scope",
+    "pages/priceMenu/priceMenu"
   ],
   "window":{
     "backgroundTextStyle":"black",
