@@ -288,6 +288,7 @@ Page({
       'tel_number': address.telNumber,
       'images_arr': imgs
     }
+    console.log('请求参数: ', data);
     wx.request({
       url: config.service.appointmentCreateAPI,
       header: appInstance.requestToken,

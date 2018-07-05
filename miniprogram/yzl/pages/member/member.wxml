@@ -75,12 +75,12 @@
               icon-color="#69A0DD"
 							bind:click="makePhoneCall"
               title="客服电话"></wxc-list>
-      <wxc-list
-              class="item"
-              icon="feedback"
-              icon-color="#69A0DD"
-              mode="none"
-              title="意见反馈"></wxc-list>
+      <!-- <wxc-list -->
+              <!-- class="item" -->
+              <!-- icon="feedback" -->
+              <!-- icon-color="#69A0DD" -->
+              <!-- mode="none" -->
+              <!-- title="意见反馈"></wxc-list> -->
     </view>
   </view>
 </view>
