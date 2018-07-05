@@ -8,6 +8,7 @@ use yii\web\HttpException;
 use yii\db\Exception;
 use common\models\Customer;
 use common\models\Appointment;
+use common\models\Attachment;
 
 class AppointmentForm extends Model
 {
@@ -22,6 +23,7 @@ class AppointmentForm extends Model
     public $street;
     public $postal_code;
     public $tel_number;
+    public $images_arr = null;
 
     public function rules()
     {
@@ -31,6 +33,7 @@ class AppointmentForm extends Model
             [['created_at', 'updated_at'], 'safe'],
             [['platform', 'code', 'userName', 'county', 'street', 'postal_code', 'tel_number'], 'string', 'max' => 255],
             [['province', 'city'], 'string', 'max' => 32],
+            ['images_arr', 'each', 'rule' => ['integer']],
         ];
     }
 
@@ -55,8 +58,37 @@ class AppointmentForm extends Model
             'tel_number' => $this->tel_number,
         ]);
 
-        if (! $appointment->save()) {
-            throw new HttpException(433, '团购预约失败，请重试');
+        // 开启事务
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            if (! $appointment->save()) {
+                throw new HttpException(433, '团购预约失败，请重试');
+            }
+
+            if ($this->enter_type == 2) {
+                if (is_null($this->images_arr)) {
+                    throw new HttpException(432, '未找到上传图片，预约失败');
+                }
+
+                foreach($this->images_arr as $id) {
+                    $attachment = Attachment::findOne($id);
+                    if (is_null($attachment)) {
+                        throw new HttpException(431, '未找到对应图片，预约失败');
+                    }
+                    $attachment->type_id = $appointment->id;
+                    if (! $attachment->save()) {
+                        throw new HttpException(435, '图片保存失败，预约失败');
+                    }
+                }
+            }
+
+            // 事务结束
+            $transaction->commit();
+        } catch (Exception $e) {
+
+            $transaction->rollBack();
+            throw new HttpException(421, $e->getMessage());
         }
 
         return $appointment;

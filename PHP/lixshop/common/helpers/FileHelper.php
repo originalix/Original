@@ -66,8 +66,7 @@ class FileHelper extends BaseFileHelper {
                     'msg' => $file->error
                 ];
             }
-        } else {
-            return [
+        } else { return [
                 'status' => false,
                 'msg' => '未上传图片'
             ];

@@ -5,6 +5,7 @@ namespace api\models;
 use Yii;
 use common\models\Attachment;
 use yii\base\Model;
+use yii\web\HttpException;
 
 class ImageForm extends Model
 {
@@ -25,7 +26,15 @@ class ImageForm extends Model
 
     public function saveImage()
     {
-        return $this->attachment->save();
+        if (! $this->attachment->validate()) {
+            throw new HttpException(418, array_values($this->attachment->getFirstErrors())[0]);
+        }
+        // return $this->attachment->save();
+        if ($this->attachment->save()) {
+            return true;
+        }
+
+        throw new HttpException(418, array_values($this->attachment->getFirstErrors())[0]);
     }
 }
 
