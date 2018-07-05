@@ -108,12 +108,12 @@
   <zan-row>
     <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
-        <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
-          <view class="bottom-img-wrapper">
+        <!-- <navigator url="/pages/introduce/intro" open-type="switchTab" hover-class="other-navigator-hover"> -->
+          <view class="bottom-img-wrapper" bindtap="go2IntroducePage">
             <image src="../../resource/img/product.png" class="bottom-icon-img" />
           </view>
           <view class="bottom-icon-title"><text>服务介绍</text></view>
-        </navigator>
+        <!-- </navigator> -->
       </view>
     </zan-col>
 

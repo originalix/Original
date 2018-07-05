@@ -18,7 +18,8 @@
     "pages/share/share",
     "pages/promotion/promotion",
     "pages/editInfo/editInfo",
-    "pages/appointment/appointment"
+    "pages/appointment/appointment",
+    "pages/introduce/introduce"
   ],
   "window":{
     "backgroundTextStyle":"black",

@@ -94,5 +94,10 @@ Page({
     wx.navigateTo({
       url: '/pages/appointment/appointment'
     })
+  },
+  go2IntroducePage() {
+    wx.navigateTo({
+      url: '/pages/introduce/introduce'
+    })
   }
 })
