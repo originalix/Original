@@ -39,10 +39,9 @@ class ImageController extends BaseController
             throw new \yii\web\HttpException(418, '请求方法不允许');
         }
 
-
         $data = FileHelper::upload();
         if ($data['status'] === false) {
-            throw new \yii\web\HttpException(419, '图片保存到服务器失败');
+            throw new \yii\web\HttpException(419, $data['msg']);
         }
 
         $type = 'appointment';

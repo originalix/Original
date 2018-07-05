@@ -29,12 +29,12 @@ class ImageForm extends Model
         if (! $this->attachment->validate()) {
             throw new HttpException(418, array_values($this->attachment->getFirstErrors())[0]);
         }
-        return $this->attachment->save();
-        // if ($this->attachment->save()) {
-            // return true;
-        // }
+        // return $this->attachment->save();
+        if ($this->attachment->save()) {
+            return true;
+        }
 
-        // throw new HttpException(418, array_values($this->attachment->getFirstErrors())[0]);
+        throw new HttpException(418, array_values($this->attachment->getFirstErrors())[0]);
     }
 }
 
