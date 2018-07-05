@@ -62,6 +62,10 @@ class AppointmentForm extends Model
         $transaction = Yii::$app->db->beginTransaction();
 
         try {
+            if (! $appointment->save()) {
+                throw new HttpException(433, '团购预约失败，请重试');
+            }
+
             if ($this->enter_type == 2) {
                 if (is_null($this->images_arr)) {
                     throw new HttpException(432, '未找到上传图片，预约失败');
@@ -72,15 +76,11 @@ class AppointmentForm extends Model
                     if (is_null($attachment)) {
                         throw new HttpException(431, '未找到对应图片，预约失败');
                     }
-                    $attachment->type_id = $id;
+                    $attachment->type_id = $appointment->id;
                     if (! $attachment->save()) {
                         throw new HttpException(435, '图片保存失败，预约失败');
                     }
                 }
-            }
-
-            if (! $appointment->save()) {
-                throw new HttpException(433, '团购预约失败，请重试');
             }
 
             // 事务结束
