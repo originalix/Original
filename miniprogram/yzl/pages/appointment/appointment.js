@@ -141,7 +141,7 @@ Page({
     })
   },
   // 上传文件
-  subFormData: function(id) {
+  subFormData: function() {
     let _this = this;
     let upData = {};
     let upImgArr = _this.data.upImgArr;
@@ -151,7 +151,6 @@ Page({
     })
     upData['url'] = config.service.appointmentImgAPI;
     upData['formData'] = {
-      'type_id': id 
     }
     upData['name'] = 'image'
     console.log(upImgArr)
@@ -175,6 +174,14 @@ Page({
     }, function(arr) {
       // success
       console.log(arr)
+      console.log(upImgArr)
+      if (arr === undefined || arr.length < upImgArr.length) {
+        wx.showToast({
+          title: '图片上传失败，请重试，或者手动输入',
+          icon: 'none',
+          duration: 1500
+        })
+      }
     })
   },
   /**
@@ -266,16 +273,11 @@ Page({
       method: 'POST',
       success: function (res) {
         console.log(res)
-        wx.hideLoading()
         if (res.data.code === 200) {
-          wx.showToast({
-            title: '预约成功',
-            icon: 'success',
-            duration: 1500
-          })
           const data = res.data.data
           that.uploadImg(that, data.id)
         } else {
+          wx.hideLoading()
           wx.showToast({
             title: res.data.msg,
             icon: 'none',
@@ -293,11 +295,38 @@ Page({
       }
     })
   },
-  uploadImg (t, id) {
-    if (t.data.enterType !== 2) {
+  /**
+   * 上传图片函数
+   */
+  uploadImg () {
+    if (this.checkUploadImage() === false) {
+      wx.showToast({
+        title: '请添加图片后继续上传',
+        icon: 'none',
+        duration: 1500
+      })
       return
     }
-    t.subFormData()
+    this.subFormData()
+  },
+  /**
+   *  判断请求是否能进行下去
+   */
+  checkUploadImage () {
+    if (this.data.enterType !== 2) {
+      return true;
+    } 
+
+    let upImgArr = this.data.upImgArr;
+    if (upImgArr === undefined) {
+      return false
+    }
+
+    if (upImgArr.length < 1) {
+      return false
+    }
+
+    return true
   }
 })
 

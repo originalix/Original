@@ -47,9 +47,9 @@ class ImageController extends BaseController
 
         $type = 'appointment';
         $type_id = Yii::$app->request->post('type_id');
-        if (is_null($type_id)) {
-            throw new \yii\web\HttpException(420, '缺少关键参数');
-        }
+        // if (is_null($type_id)) {
+            // throw new \yii\web\HttpException(420, '缺少关键参数');
+        // }
         $imageForm = new ImageForm($data, $type, $type_id);
 
         

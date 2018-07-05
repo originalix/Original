@@ -109,7 +109,6 @@ var upFilesFun = (t, data, progress, success) => {
     header: appInstance.requestToken,
     success: function(res) {
       var data = res.data
-      successNumber++;
       // console.log('success', successNumber)
       console.log('success',res)
       // 把后台返回的地址链接存到一个数组
@@ -117,12 +116,15 @@ var upFilesFun = (t, data, progress, success) => {
       var da = JSON.parse(res.data);
       // console.log(da)
       if (da.code === 200) {
+        successNumber++;
         // ### 此处可能需要修改 以获取图片路径
         uploaded.push(da.data)
 
         t.setData({
           uploadedPathArr: uploaded
         })
+      } else {
+        failNumber++;
       }
     },
     fail: function(res) {
