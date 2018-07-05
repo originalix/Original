@@ -37,7 +37,9 @@ Page({
     platform: '大众点评',
     enterType: 1,
     code: null,
-    colthes_number: 0
+    colthes_number: 0,
+    isFinishUploaded: false,
+    uploadedImgs: []
   },
   // 选择平台监听函数
   radioChange: function(e) {
@@ -142,6 +144,9 @@ Page({
   },
   // 上传文件
   subFormData: function() {
+    wx.showLoading({
+      title: '上传图片中...'
+    })
     let _this = this;
     let upData = {};
     let upImgArr = _this.data.upImgArr;
@@ -172,6 +177,7 @@ Page({
       }
       //   console.log(res)
     }, function(arr) {
+      wx.hideLoading()
       // success
       console.log(arr)
       console.log(upImgArr)
@@ -180,6 +186,19 @@ Page({
           title: '图片上传失败，请重试，或者手动输入',
           icon: 'none',
           duration: 1500
+        })
+      } else {
+        let imgs = []
+        for (var i=0; i<arr.length; i++) {
+          imgs.push(arr[i].attachment.id)
+        }
+        console.log(imgs)
+        _this.setData({
+          uploadedImgs: imgs
+        }, function () {
+          console.log('imgs id列表', _this.data.uploadedImgs)
+          // 创建团购预约
+          _this.createAppointment()
         })
       }
     })
@@ -250,8 +269,10 @@ Page({
     })
     let address = this.data.address
     let code = this.data.code
+    let imgs = null
     if (this.data.enterType === 2) {
       code = null
+      imgs = this.data.uploadedImgs
     }
     let data = {
       'platform': this.data.platform,
@@ -265,6 +286,7 @@ Page({
       'street': address.detailInfo,
       'postal_code': address.postalCode,
       'tel_number': address.telNumber,
+      'images_arr': imgs
     }
     wx.request({
       url: config.service.appointmentCreateAPI,
@@ -275,7 +297,11 @@ Page({
         console.log(res)
         if (res.data.code === 200) {
           const data = res.data.data
-          that.uploadImg(that, data.id)
+          wx.showToast({
+            title: '预约成功',
+            icon: 'success',
+            duration: 1500
+          })
         } else {
           wx.hideLoading()
           wx.showToast({
@@ -308,6 +334,16 @@ Page({
       return
     }
     this.subFormData()
+  },
+  /**
+   * submit之后发起的函数
+   */
+  createRequest() {
+    if (this.data.enterType === 1) {
+      this.createAppointment()
+    } else {
+      this.uploadImg()
+    }
   },
   /**
    *  判断请求是否能进行下去
