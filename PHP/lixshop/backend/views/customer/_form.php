@@ -12,15 +12,16 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'wechat_openid')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'group')->textInput() ?>
+    <?= $form->field($model, 'discount')->textInput() ?>
 
-    <?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'favorite_product_count')->textInput() ?>
+    <?= $form->field($model, 'card_id')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'credit')->textInput() ?>
+    <?= $form->field($model, 'charge')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

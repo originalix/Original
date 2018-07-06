@@ -18,8 +18,9 @@ class CustomerSearch extends Customer
     public function rules()
     {
         return [
-            [['id', 'group', 'favorite_product_count'], 'integer'],
-            [['wechat_openid', 'mobile', 'created_at', 'updated_at', 'access_token', 'access_token_created_at'], 'safe'],
+            [['id', 'group', 'favorite_product_count', 'discount', 'credit'], 'integer'],
+            [['wechat_openid', 'mobile', 'created_at', 'updated_at', 'access_token', 'access_token_created_at', 'name', 'card_id'], 'safe'],
+            [['charge'], 'number'],
         ];
     }
 
@@ -65,11 +66,16 @@ class CustomerSearch extends Customer
             'updated_at' => $this->updated_at,
             'favorite_product_count' => $this->favorite_product_count,
             'access_token_created_at' => $this->access_token_created_at,
+            'charge' => $this->charge,
+            'discount' => $this->discount,
+            'credit' => $this->credit,
         ]);
 
         $query->andFilterWhere(['like', 'wechat_openid', $this->wechat_openid])
             ->andFilterWhere(['like', 'mobile', $this->mobile])
-            ->andFilterWhere(['like', 'access_token', $this->access_token]);
+            ->andFilterWhere(['like', 'access_token', $this->access_token])
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'card_id', $this->card_id]);
 
         return $dataProvider;
     }

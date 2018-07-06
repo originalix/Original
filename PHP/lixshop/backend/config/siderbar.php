@@ -44,7 +44,7 @@ return [
         'data' => [
             [
                 'title' => '订单管理',
-                'redirect' => '/home/index',
+                'redirect' => '../order/index',
             ],
             [
                 'title' => '优惠券',
