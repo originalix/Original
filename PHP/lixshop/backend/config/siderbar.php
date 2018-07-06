@@ -51,6 +51,10 @@ return [
                 'redirect' => '../coupon/index',
             ],
             [
+                'title' => '优惠券发放',
+                'redirect' => '../couponusage/index',
+            ],
+            [
                 'title' => '团购预约',
                 'redirect' => '../appointment/index',
             ],
