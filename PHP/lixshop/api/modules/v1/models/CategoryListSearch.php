@@ -25,6 +25,9 @@ class CategoryListSearch extends ProductCategory
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 200,
+            ],
         ]);
 
         return $dataProvider;
