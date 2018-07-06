@@ -49,7 +49,11 @@ return [
             [
                 'title' => '优惠券',
                 'redirect' => '../coupon/index',
-            ]
+            ],
+            [
+                'title' => '团购预约',
+                'redirect' => '../appointment/index',
+            ],
         ],
     ],
     [

@@ -3,17 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\SalesFlatOrder;
-use backend\models\OrderSearch;
+use common\models\Appointment;
+use backend\models\AppointmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\controllers\BaseController;
 
 /**
- * OrderController implements the CRUD actions for SalesFlatOrder model.
+ * AppointmentController implements the CRUD actions for Appointment model.
  */
-class OrderController extends BaseController
+class AppointmentController extends BaseController
 {
     /**
      * @inheritdoc
@@ -31,12 +31,12 @@ class OrderController extends BaseController
     }
 
     /**
-     * Lists all SalesFlatOrder models.
+     * Lists all Appointment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new OrderSearch();
+        $searchModel = new AppointmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +46,7 @@ class OrderController extends BaseController
     }
 
     /**
-     * Displays a single SalesFlatOrder model.
+     * Displays a single Appointment model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +59,13 @@ class OrderController extends BaseController
     }
 
     /**
-     * Creates a new SalesFlatOrder model.
+     * Creates a new Appointment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new SalesFlatOrder();
+        $model = new Appointment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +77,7 @@ class OrderController extends BaseController
     }
 
     /**
-     * Updates an existing SalesFlatOrder model.
+     * Updates an existing Appointment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +97,7 @@ class OrderController extends BaseController
     }
 
     /**
-     * Deletes an existing SalesFlatOrder model.
+     * Deletes an existing Appointment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +111,15 @@ class OrderController extends BaseController
     }
 
     /**
-     * Finds the SalesFlatOrder model based on its primary key value.
+     * Finds the Appointment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SalesFlatOrder the loaded model
+     * @return Appointment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SalesFlatOrder::findOne($id)) !== null) {
+        if (($model = Appointment::findOne($id)) !== null) {
             return $model;
         }
 
