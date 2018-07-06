@@ -54,6 +54,10 @@ return [
                 'title' => '团购预约',
                 'redirect' => '../appointment/index',
             ],
+            [
+                'title' => '火爆拼团',
+                'redirect' => '../promotion/index',
+            ],
         ],
     ],
     [
