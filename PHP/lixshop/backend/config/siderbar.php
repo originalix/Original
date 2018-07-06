@@ -47,12 +47,8 @@ return [
                 'redirect' => '../order/index',
             ],
             [
-                'title' => '优惠券',
-                'redirect' => '../coupon/index',
-            ],
-            [
-                'title' => '优惠券发放',
-                'redirect' => '../couponusage/index',
+                'title' => '充值订单管理',
+                'redirect' => '../chargeorder/index',
             ],
             [
                 'title' => '团购预约',
@@ -61,6 +57,14 @@ return [
             [
                 'title' => '火爆拼团',
                 'redirect' => '../promotion/index',
+            ],
+            [
+                'title' => '优惠券',
+                'redirect' => '../coupon/index',
+            ],
+            [
+                'title' => '优惠券发放',
+                'redirect' => '../couponusage/index',
             ],
         ],
     ],
