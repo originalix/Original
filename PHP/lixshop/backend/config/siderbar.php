@@ -18,6 +18,10 @@ return [
                 'title' => '产品信息管理',
                 'redirect' => '../productform/index',
             ],
+            [
+                'title' => '充值商品信息管理',
+                'redirect' => '../chargeproduct/index',
+            ],
             [   
                 'title' => '产品评论管理', 
                 'redirect' => '../review/index',
