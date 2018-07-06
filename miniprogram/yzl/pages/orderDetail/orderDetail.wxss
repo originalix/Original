@@ -1,9 +1,8 @@
 @import "../../dist/weui/weui.wxss"
 
 page {
-	display: block;
-	min-height: 100%;
-	background-color: #f8f8f8;
+  min-height: 100%;
+  background-color: #f8f8f8;
 }
 
 .vertical-center {

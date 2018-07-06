@@ -10,7 +10,23 @@ class MessageController extends BaseController
 {
     public function actionIndex()
     {
-        return $this->getAccessToken();
+        $access_token = $this->getAccessToken();
+
+        $client = new Client();
+		$res = $client->request('POST', 'https://api.weixin.qq.com/cgi-bin/message/custom/send', [
+            'query' => [
+                'access_token' => $access_token,
+            ],
+            'json' => [
+                'touser' => 'o5Xyo5fYi8wglGvFzlYCQVoFs4ds',
+                'msgtype' => 'text',
+                'test' => [
+                    'content' => 'hello world'
+                ]
+            ]
+        ]);
+        $data = json_decode($res->getBody()->getContents());
+        return $data;
     }
 
     protected function getAccessToken()

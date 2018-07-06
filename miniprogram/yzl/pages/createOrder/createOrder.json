@@ -2,7 +2,7 @@
     "navigationBarTitleText": "待付款的订单",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#f2e",
+    "backgroundColor": "#fff",
     "backgroundTextStyle": "black",
     "enablePullDownRefresh": false,
     "usingComponents": {
