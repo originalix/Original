@@ -63,8 +63,6 @@ return [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer', 
-            'viewPath' => '@api/mail', //根据实际情况配置
-            
             'useFileTransport' => false, 
         ],
     ],

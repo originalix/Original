@@ -151,5 +151,14 @@ class TestController extends BaseController
         // $mail->setHtmlBody('测试Html');
         return $mail->send();
     }
+
+    public function actionComponent()
+    {
+        //controller代码 
+        Yii::$app->mailer->compose('@app/mail/test', ['title' => '测试邮件发送哦哦哦']) 
+            ->setTo('77252102@qq.com') 
+            ->setSubject('Message subject') 
+            ->send(); 
+    }
 }
 
