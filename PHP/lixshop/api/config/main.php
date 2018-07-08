@@ -61,6 +61,12 @@ return [
             'showScriptName' => false,
             'rules' => require __DIR__ . '/restful.php',
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer', 
+            'viewPath' => '@api/mail', //根据实际情况配置
+            
+            'useFileTransport' => false, 
+        ],
     ],
     'modules' => require(__DIR__ . '/modules.php'),
     'params' => $params,

@@ -141,5 +141,15 @@ class TestController extends BaseController
         $order = date('Ymd',time()).time().mt_rand(1000,9999);
         return $order;
     }
+
+    public function actionSend()
+    {
+        $mail = Yii::$app->mailer->compose();
+        $mail->setTo('77252102@qq.com');
+        $mail->setSubject('邮件主题');
+        $mail->setTextBody('测试text');
+        // $mail->setHtmlBody('测试Html');
+        return $mail->send();
+    }
 }
 
