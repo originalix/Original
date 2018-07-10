@@ -7,6 +7,7 @@ use yii\base\Model;
 use yii\web\HttpException;
 use api\models\order\Order;
 use common\models\Appointment;
+use common\models\Attachment;
 
 class Mail extends Model
 {
@@ -37,12 +38,24 @@ class Mail extends Model
         }
 
         $appointment = Appointment::findOne($this->appointment_id);
-
+        $address = $appointment->userName . " " . $appointment->city . $appointment->county . $appointment->street;
+        $tel = " 电话: " . $appointment->tel_number;
         //controller代码 
-        $mail = Yii::$app->mailer->compose('@app/mail/order', ['order' => $order]) 
-            ->setTo('77252102@qq.com') 
-            ->setSubject('新订单通知 ' . $address . " 价格： " . $order->real_amount . "元" . $tel) 
-            ->send(); 
+        $mail = Yii::$app->mailer->compose('@app/mail/appointment', ['appointment' => $appointment]);
+        $mail->setTo('77252102@qq.com');
+        $mail->setSubject('新团购预约 ' . $address . $tel);
+        if ($appointment->enter_type == 2) {
+            $imgs = Attachment::find()->where([
+                'type' => 'appointment',
+                'type_id' => $appointment->id
+            ])
+            ->all();
+
+            foreach ($imgs as $img) {
+                $mail->attach($img->url);
+            }
+        }
+        $mail->send();
         return $appointment;
     }
 }

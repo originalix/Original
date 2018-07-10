@@ -20,7 +20,7 @@
         ?>
     </p>
     <p>衣服数量: <?= $appointment->clothes_count ?></p>
-    <p>顾客姓名: <?= $order->userName ?></p>
-    <p>详细地址： <?= $order->province . $order->city . $order->county . $order->street ?></p>
-    <p>联系电话：<?= $order->tel_number ?></p>
+    <p>顾客姓名: <?= $appointment->userName ?></p>
+    <p>详细地址： <?= $appointment->province . $appointment->city . $appointment->county . $appointment->street ?></p>
+    <p>联系电话：<?= $appointment->tel_number ?></p>
 </p>

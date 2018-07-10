@@ -161,6 +161,13 @@ class TestController extends BaseController
         return $model->sendOrderMessage();
     }
 
+    public function actionAppointment()
+    {
+        $model = new Mail();
+        $model->appointment_id = 2;
+        return $model->sendAppointmentMessage();
+    }
+
     public function actionQueue()
     {
         Yii::$app->queue->push(new SendMailJob([
