@@ -11,6 +11,7 @@ use common\models\Customer;
 use common\models\BalanceLog;
 use common\models\CreditLog;
 use api\utils\Code;
+use api\models\Mail;
 
 class WxcallbackController extends \yii\web\Controller
 {
@@ -159,6 +160,10 @@ class WxcallbackController extends \yii\web\Controller
         $order->order_status = 2;
         $order->txn_id = $txn_id;
         $order->save();
+        // 订单完成 发送邮件
+        $mail = new Mail();
+        $mail->order_id = $order->id;
+        $mail->sendOrderMessage(); 
         $this->writeLog($order->customer_id, $order->real_amount);
     }
 

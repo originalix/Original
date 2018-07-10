@@ -9,6 +9,7 @@ use yii\db\Exception;
 use common\models\Customer;
 use common\models\Appointment;
 use common\models\Attachment;
+use api\models\Mail;
 
 class AppointmentForm extends Model
 {
@@ -90,6 +91,11 @@ class AppointmentForm extends Model
             $transaction->rollBack();
             throw new HttpException(421, $e->getMessage());
         }
+
+        // 预约完成 发送邮件
+        $mail = new Mail();
+        $mail->appointment_id = $appointment->id;        
+        $mail->sendAppointmentMessage();
 
         return $appointment;
     }
