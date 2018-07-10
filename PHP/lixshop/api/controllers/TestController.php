@@ -13,6 +13,7 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use api\queues\SendMailJob;
 use api\models\Mail;
+use api\models\order\Order;
 
 class TestController extends BaseController
 {
@@ -156,7 +157,8 @@ class TestController extends BaseController
     public function actionComponent()
     {
         $model = new Mail();
-        return $model->send();
+        $model->order_id = 51;
+        return $model->sendOrderMessage();
     }
 
     public function actionQueue()

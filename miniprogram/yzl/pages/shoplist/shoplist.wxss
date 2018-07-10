@@ -272,3 +272,9 @@ zan-button.float-button > button {
   height: 2rpx;
   background-color: #e9ebf3;
 }
+
+.fix-view {
+  height: 70px;
+  background-color: clear;
+  width: 100%;
+}

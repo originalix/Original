@@ -40,6 +40,7 @@
           
         </zan-row>
         
+          <view class="fix-view"></view>
         <!-- <view class="bottom-fix"></view> -->
 				<view class="float-button-view" wx:if="{{ cartCount <= 0 }}">
           <zan-button type="large" class="float-button">预约取件</zan-button>
