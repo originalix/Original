@@ -11,7 +11,8 @@ use yii\data\ActiveDataProvider;
 use yii\web\Link;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-
+use api\queues\SendMailJob;
+use api\models\Mail;
 
 class TestController extends BaseController
 {
@@ -154,11 +155,15 @@ class TestController extends BaseController
 
     public function actionComponent()
     {
-        //controller代码 
-        Yii::$app->mailer->compose('@app/mail/test', ['title' => '测试邮件发送哦哦哦']) 
-            ->setTo('77252102@qq.com') 
-            ->setSubject('Message subject') 
-            ->send(); 
+        $model = new Mail();
+        return $model->send();
+    }
+
+    public function actionQueue()
+    {
+        Yii::$app->queue->push(new SendMailJob([
+            'order_id' => 1,
+        ]));
     }
 }
 
