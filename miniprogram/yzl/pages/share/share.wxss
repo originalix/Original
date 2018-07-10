@@ -1,7 +1,7 @@
 .share-bg {
 	position: relative;
-	height: 380px;
-	background: url("http://img.yzl1030.com/share_bg.png") no-repeat;
+	height: 760rpx;
+	background: url("http://img.yzl1030.com/share_bg1.jpg") no-repeat;
 	-webkit-background-size: 100%;
 	background-size: 100%;
 }
