@@ -45,14 +45,8 @@ class Mail extends Model
         $mail->setTo('77252102@qq.com');
         $mail->setSubject('新团购预约 ' . $address . $tel);
         if ($appointment->enter_type == 2) {
-            $imgs = Attachment::find()->where([
-                'type' => 'appointment',
-                'type_id' => $appointment->id
-            ])
-            ->all();
-
-            foreach ($imgs as $img) {
-                $mail->attach($img->url);
+            foreach ($appointment->images as $img) {
+                $mail->attach($img['url']);
             }
         }
         $mail->send();
