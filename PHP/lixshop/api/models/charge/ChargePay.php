@@ -10,6 +10,7 @@ use common\models\BalanceLog;
 use common\models\CreditLog;
 use yii\web\HttpException;
 use yii\db\Exception;
+use api\models\Mail;
 
 class ChargePay extends Model
 {
@@ -79,6 +80,11 @@ class ChargePay extends Model
             $transaction->rollBack();
             throw new HttpException(421, $e->getMessage()); 
         }
+
+        // 完成订单，发送邮件推送
+        $mail = new Mail();
+        $mail->order_id = $order->id;
+        $mail->sendOrderMessage();
 
         return $order->attributes;
     }

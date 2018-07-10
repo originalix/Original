@@ -164,7 +164,7 @@ class TestController extends BaseController
     public function actionAppointment()
     {
         $model = new Mail();
-        $model->appointment_id = 2;
+        $model->appointment_id = 34;
         return $model->sendAppointmentMessage();
     }
 

@@ -12,7 +12,6 @@ use api\filters\HttpApiAuth;
 use common\models\Customer;
 use common\models\BalanceLog;
 use api\utils\Code;
-use api\models\Mail;
 
 class ChargeOrderForm extends Model
 {
@@ -105,11 +104,6 @@ class ChargeOrderForm extends Model
             $transaction->rollBack();
             throw new HttpException(421, $e->getMessage());
         }
-
-        // 完成订单，发送邮件推送
-        $mail = new Mail();
-        $mail->order_id = $order->id;
-        $mail->sendOrderMessage();
 
         return $order->attributes;
     }
