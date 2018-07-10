@@ -415,7 +415,7 @@ Page({
     console.log(this.data.finalPrice)
     let charge = parseFloat(this.data.userInfo.charge)
     let price = this.data.finalPrice
-    if (charge > price) {
+    if (charge < price) {
       console.log('余额不足，请使用其他支付方式支付')
       this.closePayActionsheet()
       Dialog({
