@@ -17,7 +17,10 @@ Page({
 		cartList: [],
 		cartCount: 0,
 		price: 0.00,
-  },
+	},
+	onShow() {
+      wx.setStorageSync('currentCoupon', null)
+	},
   onLoad(option) {
 		console.log('option query is : ')
 		console.log(option.id)

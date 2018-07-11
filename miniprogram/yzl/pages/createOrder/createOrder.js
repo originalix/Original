@@ -52,20 +52,31 @@ Page({
     // 用户信息
     userInfo: {},
     promotionId: null,
-    couponInfo: {}
+    couponInfo: null,
+    couponValue: '无',
+    couponType: 0,
+    couponConditions: null,
+    conponDiscount: null
   },
   onReady() {
     console.log('小程序准备好咯')
   },
   onShow() {
     console.log('小程序即将显示')
+    var that = this
     try {
       let coupon = wx.getStorageSync('currentCoupon')
+      console.log('ccccc: ', coupon)
       if (coupon !== undefined || coupon !== null) {
-        this.setData({
-          couponInfo: coupon
+        that.setData({
+          couponInfo: coupon,
+          couponValue: coupon.coupon.coupon_name,
+          couponType: coupon.coupon.type,
+          couponConditions: coupon.coupon.conditions,
+          couponDiscount: coupon.coupon.discount
         }, function () {
           console.log('设置好的coupon信息', this.data.couponInfo)
+          that.calculatePrice() 
         })
       }
     } catch (e) {
@@ -287,6 +298,13 @@ Page({
     }
 
     var finalP = sumPrice + expressP
+
+    // 如果有优惠券折扣 则在总价上满减
+    var couponDiscount = this.data.couponDiscount
+    console.log('------> ', couponDiscount)
+    if (couponDiscount !== undefined && couponDiscount !== null) {
+      finalP =  finalP - couponDiscount
+    }
 
     // 如果有会员折扣 则在总价上打折
     var userDiscount = this.data.userInfo.discount
