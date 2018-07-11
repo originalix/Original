@@ -300,6 +300,7 @@ class OrderForm extends Model
             'express_type' => $this->express_type,
             'express_date' => $this->express_date,
             'express_time' => $this->express_time,
+            'coupon_id' => $this->coupon_id,
         ];
 
         $model->county = $this->county;

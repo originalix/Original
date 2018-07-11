@@ -40,6 +40,7 @@ use common\models\Coupon;
  * @property int $express_type 配送方式，0上门配送,1到店取送
  * @property string $express_date 配送日期
  * @property string $express_time 配送时段
+ * @property int $coupon_id 优惠券id
  */
 class SalesFlatOrder extends \yii\db\ActiveRecord
 {
@@ -72,7 +73,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group', 'express_type'], 'integer'],
+            [['increment_id', 'order_status', 'items_count', 'customer_id', 'customer_group', 'express_type', 'coupon_id'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['payment_method', 'trade_no', 'userName'], 'required'],
             [['order_remark'], 'string'],
@@ -121,6 +122,7 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
             'express_type' => '配送方式',
             'express_date' => '配送日期',
             'express_time' => '配送时段',
+            'coupon_id' => '优惠券关联id',
         ];
     }
 
@@ -131,6 +133,6 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
 
     public function getCoupon()
     {
-        return $this->hasOne(Coupon::className(), ['coupon_code' => 'coupon_code']);
+        return $this->hasOne(Coupon::className(), ['id' => 'coupon_id']);
     }
 }

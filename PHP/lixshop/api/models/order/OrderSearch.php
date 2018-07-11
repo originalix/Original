@@ -33,7 +33,7 @@ class OrderSearch extends Order
         }
 
         $query->with(['items']);
-
+        $query->with(['coupon']);
         $query->orderBy(['created_at' => SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
