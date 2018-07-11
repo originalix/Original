@@ -10,13 +10,16 @@ Page({
     loadText: '正在努力加载...',
     couponList: [],
     pageMeta: {},
-    type: 1
+    type: 1,
+    price: 0
   },
-  onLoad() {
+  onLoad(option) {
+    console.log(option)
     this.setData({
       couponList: [],
       loadmore: true,
-      loadText: '正在努力加载...'
+      loadText: '正在努力加载...',
+      price: option.price
     })
     this.getCouponList(this.data.type, 1)
   },
@@ -97,6 +100,18 @@ Page({
   },
   onClick(e) {
     let item = e.currentTarget.dataset.item 
+    console.log(item);
+    let price = parseFloat(this.data.price)
+    if (item.coupon.type === 2) {
+      if (item.coupon.conditions > price) {
+        wx.showToast({
+          title: '您挑选的商品未达到满减要求',
+          icon: 'none',
+          duration: 1500
+        })
+        return
+      }
+    }
     this.saveCouponData(item)
   },
   saveCouponData(data) {

@@ -309,7 +309,12 @@ Page({
     var couponDiscount = this.data.couponDiscount
     console.log('------> ', couponDiscount)
     if (couponDiscount !== undefined && couponDiscount !== null) {
-      finalP =  finalP - couponDiscount
+      var couponConditions = this.data.couponConditions
+      if (couponConditions !== undefined && couponConditions !== null) {
+        if (this.data.price >= couponConditions) {
+          finalP =  finalP - couponDiscount
+        }
+      }
     }
 
     this.setData({
@@ -584,8 +589,9 @@ Page({
   },
   // 跳转到优惠券页面
   go2CouponListPage() {
+    let price = this.data.price
     wx.navigateTo({
-      url: '/pages/couponList/couponList'
+      url: '/pages/couponList/couponList?price=' + price
     })
   }
 })

@@ -34,7 +34,8 @@ Page({
     // 根据是否创建订单 显示提交按钮的文本  提交订单 or 去支付
     submitBtnText: '去支付',
     isPayment: false,
-    userInfo: {}
+    userInfo: {},
+    couponValue: '无',
   },
   onLoad(option) {
     console.log(option)
@@ -50,9 +51,14 @@ Page({
       'success': function (res) {
         console.log('获取订单详情成功回调')
         console.log(res)
+        let couponValue = "无"
+        if (res.coupon !== undefined && res.coupon !== null) {
+          couponValue = res.coupon.coupon_name
+        }
         that.setData({
           productList: res.items,
-          orderInfo: res
+          orderInfo: res,
+          couponValue: couponValue
         })
       },
       'fail': function (error) {
