@@ -22,7 +22,8 @@
     "pages/introduce/introduce",
     "pages/group/group",
     "pages/scope/scope",
-    "pages/priceMenu/priceMenu"
+    "pages/priceMenu/priceMenu",
+    "pages/couponList/couponList"
   ],
   "window":{
     "backgroundTextStyle":"black",

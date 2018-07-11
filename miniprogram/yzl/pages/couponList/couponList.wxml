@@ -1,0 +1,34 @@
+<view>
+  <!-- 有订单的情况 -->
+  <view class="bg-white">
+    <view class="cell-container">
+      <view class="cell" wx:for="{{couponList}}" wx:for-item="item" wx:for-index="idx" wx:key="idx">
+        <view class="left coupon">
+          <view class="ver-center txt-center">
+            <view>
+              <text class="price-font font-36">￥</text>
+              <text class="price-font font-68">{{item.coupon.discount}}</text>
+            </view>
+            <text class="desc-font">{{item.coupon.coupon_description}}</text>
+          </view>
+        </view>
+        <view class="right">
+          <view class="ver-center">
+            <text class="title-font">{{item.coupon.coupon_name}}</text>
+            <text class="title-font font-24">有效期至：{{item.coupon.expiration_date}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- [> 没有订单的异常流 展示 <] -->
+    <view class="bg-f0" wx:if="{{noCoupon}}">
+      <wxc-abnor type="COUPON"></wxc-abnor>
+    </view>
+    <!-- [> [> 加载更多提示组件	 <] <] -->
+    <view class="bg-f0f2f5" wx:if="{{! noCoupon}}">
+      <wxc-loadmore is-end="{{! loadmore}}" text="{{loadText}}" icon="{{true}}"></wxc-loadmore>
+    </view>
+
+  </view>
+</view>

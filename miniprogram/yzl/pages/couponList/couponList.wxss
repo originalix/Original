@@ -1,0 +1,90 @@
+page {
+	background-color: #f0f2f5;
+}
+
+.bg-f0f2f5 {
+	background-color: #f0f2f5;
+}
+
+.vertical-center {
+	display: flex;
+	display: -webkit-flex;
+	aligin-items: center;
+}
+
+.ver-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.bg-white {
+	background-color: #fff;
+}
+
+.font-15 {
+	font-size: 15px;
+}
+
+.cell-container {
+	background-color: #f0f2f5;
+	padding: 20rpx;
+}
+
+.cell {
+	height: 200rpx;
+	width: 100%;
+	margin-bottom: 20rpx;
+	display: flex;
+}
+
+.left {
+	width: 34%;
+	height: 100%;
+}
+
+.coupon {
+	background: url('http://img.yzl1030.com/coupon1.png') no-repeat;
+	background-size: 100% 100%;
+}
+
+.right {
+	background-color: white;
+	width: 66%;
+	height: 100%;
+}
+
+.price-font {
+	color: white;
+	font-weight: 900;
+}
+
+.font-68 {
+	font-size: 68rpx;
+}
+
+.font-36 {
+	font-size: 36rpx;
+}
+
+.desc-font {
+	color: white;
+	font-size: 26rpx;
+}
+
+.txt-center {
+	width: 100%;
+	text-align: center;
+}
+
+.title-font {
+	font-size: 30rpx;
+	display: block;
+	margin-left: 20rpx;
+	margin-bottom: 15rpx;
+}
+
+.font-24 {
+	font-size: 24rpx;
+}
+
