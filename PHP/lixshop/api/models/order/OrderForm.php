@@ -122,6 +122,8 @@ class OrderForm extends Model
             }
         }
 
+        // $this->checkCoupon();
+
         // 查询会员折扣，并且按照折扣打折
         $customer = Customer::findOne(Yii::$app->user->identity->id);
         if ($customer->discount !== 100) {
@@ -244,7 +246,7 @@ class OrderForm extends Model
 
             // 开始记录优惠券使用情况
             if (! is_null ($this->couponUsage)) {
-                $this->couponUsage->times_used += 1;
+                $this->couponUsage->is_used = 2;
                 $coupon = $this->couponUsage->coupon;
                 $coupon->times_used += 1;
                 if (! $this->couponUsage->save()) {
