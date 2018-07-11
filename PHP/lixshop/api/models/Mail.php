@@ -25,7 +25,7 @@ class Mail extends Model
 
         //controller代码 
         $mail = Yii::$app->mailer->compose('@app/mail/order', ['order' => $order]) 
-            ->setTo('77252102@qq.com') 
+            ->setTo('1916555871@qq.com') 
             ->setSubject('新订单通知 ' . $address . " 价格： " . $order->real_amount . "元" . $tel) 
             ->send(); 
         return $order;
@@ -42,7 +42,7 @@ class Mail extends Model
         $tel = " 电话: " . $appointment->tel_number;
         //controller代码 
         $mail = Yii::$app->mailer->compose('@app/mail/appointment', ['appointment' => $appointment]);
-        $mail->setTo('77252102@qq.com');
+        $mail->setTo('1916555871@qq.com');
         $mail->setSubject('新团购预约 ' . $address . $tel);
         if ($appointment->enter_type == 2) {
             foreach ($appointment->images as $img) {
