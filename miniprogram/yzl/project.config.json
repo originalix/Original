@@ -33,13 +33,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "分享测试",
 					"pathName": "pages/index/index",
-					"query": "share_id=1",
+					"query": "share_id=14",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "wx3321acae41983595"

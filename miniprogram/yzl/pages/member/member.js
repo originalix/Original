@@ -35,6 +35,8 @@ Page({
 		cardCount: 0,
   },
 	onLoad () {
+	},
+	onShow() {
 		this.getProfile()
 	},
 	onShareAppMessage: function (res) {

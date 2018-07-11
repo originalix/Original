@@ -77,6 +77,14 @@ Page({
       method: 'GET',
       success: function (res) {
         console.log(res)
+        const code = res.data.code
+        if (code !== 200) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1500
+          })
+        }
       },
       fail: function (error) {
         console.log(error)
@@ -113,6 +121,11 @@ Page({
   go2PriceMenuPage() {
     wx.navigateTo({
       url: '/pages/priceMenu/priceMenu'
+    })
+  },
+  go2ChargePage(e) {
+    wx.navigateTo({
+      url: '/pages/charge/charge'
     })
   }
 })

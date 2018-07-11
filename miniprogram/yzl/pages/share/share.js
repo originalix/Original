@@ -25,7 +25,7 @@ Page({
 		}
 		return {
 			title: '衣之恋小程序分享',
-			path: '/page/index/index?share_id=' + this.data.uid
+			path: '/pages/index/index?share_id=' + this.data.uid
 		}
 	},
 	showDialog() {

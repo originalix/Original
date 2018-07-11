@@ -1,8 +1,8 @@
 <view>
   <swiper indicator-dots="{{indicatorDots}}"
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-height">
-    <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}">
-      <swiper-item>
+    <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}" wx:for-index="idx">
+      <swiper-item bindtap="go2ChargePage" data-idx="{{idx}}">
         <image src="{{item}}" class="slide-image slider-img" width="355" height="150"/>
       </swiper-item>
     </block>
