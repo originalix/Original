@@ -11,7 +11,7 @@
             if ($order->express_type === 1) {
                 echo '上门配送';
             } else {
-                echo '到点取送';
+                echo '到店取送';
             } 
         ?>
     </p>

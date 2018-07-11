@@ -299,17 +299,17 @@ Page({
 
     var finalP = sumPrice + expressP
 
+    // 如果有会员折扣 则在总价上打折
+    var userDiscount = this.data.userInfo.discount
+    if (userDiscount !== 100) {
+      finalP = finalP * (userDiscount / 100)
+    }
+
     // 如果有优惠券折扣 则在总价上满减
     var couponDiscount = this.data.couponDiscount
     console.log('------> ', couponDiscount)
     if (couponDiscount !== undefined && couponDiscount !== null) {
       finalP =  finalP - couponDiscount
-    }
-
-    // 如果有会员折扣 则在总价上打折
-    var userDiscount = this.data.userInfo.discount
-    if (userDiscount !== 100) {
-      finalP = finalP * (userDiscount / 100)
     }
 
     this.setData({

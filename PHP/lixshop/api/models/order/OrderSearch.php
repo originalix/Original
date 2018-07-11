@@ -73,6 +73,7 @@ class OrderSearch extends Order
             'customer_name',
             'remote_ip',
             'coupon_code',
+            'coupon',
             'payment_method',
             'order_remark',
             'txn_id',

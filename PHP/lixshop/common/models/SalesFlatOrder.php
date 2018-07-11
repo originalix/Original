@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\SalesFlatOrderItem;
+use common\models\Coupon;
 
 /**
  * This is the model class for table "{{%sales_flat_order}}".
@@ -126,5 +127,10 @@ class SalesFlatOrder extends \yii\db\ActiveRecord
     public function getItems()
     {
         return $this->hasMany(SalesFlatOrderItem::className(), ['order_id' => 'id']);
+    }
+
+    public function getCoupon()
+    {
+        return $this->hasOne(Coupon::className(), ['coupon_code' => 'coupon_code']);
     }
 }
