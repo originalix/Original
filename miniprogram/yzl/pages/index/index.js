@@ -1,6 +1,7 @@
 var config = require('../../config.js');
 var appInstance = getApp()
 var util = require('../../utils/util.js')
+var auth = require('../../utils/auth.js')
 
 Page({
   data: {
@@ -20,7 +21,16 @@ Page({
       this.recommendByShareId(option.share_id)
     }
   },
+  onPullDownRefresh(){
+    this.getIndexConfig()
+  },
   getIndexConfig() {
+    if (appInstance.accessToken.length < 1 || appInstance.accessToken === null) {
+      console.log('没有token return')
+      appInstance.accessToken = '12312312313'
+      appInstance.login()
+      return
+    }
     var that = this;
     wx.request({
       url: config.service.indexConfigUrl,

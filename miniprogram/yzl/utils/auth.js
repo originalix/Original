@@ -1,6 +1,6 @@
 var config = require('../config.js');
 
-const getOpenid = (code) => {
+const getOpenid = (code, callback) => {
   wx.request({
     url: config.service.loginUrl,
     data: {
@@ -27,7 +27,7 @@ const getOpenid = (code) => {
         })
       } else {
 
-        getAccessTokenFromServer(openid)
+        getAccessTokenFromServer(openid, callback)
       }
     },
     fail: function(error) {
@@ -35,14 +35,14 @@ const getOpenid = (code) => {
   });
 }
 
-const login = () => {
+const login = (callback) => {
   wx.showLoading({
     'title': '加载中'
   })
 
   wx.login({
     success(res) {
-      getOpenid(res.code)
+      getOpenid(res.code, callback)
     },
     fail(res) {
       
@@ -50,7 +50,7 @@ const login = () => {
   })
 }
 
-const getAccessTokenFromServer = (openid) => {
+const getAccessTokenFromServer = (openid, callback) => {
   wx.showLoading()
   wx.request({
     url: config.service.tokenUrl,
@@ -79,6 +79,7 @@ const getAccessTokenFromServer = (openid) => {
         try {
           wx.setStorageSync('access_token', access_token)
           wx.setStorageSync('openid', wechat_openid)
+          callback()
         } catch (e) {
 
         }
