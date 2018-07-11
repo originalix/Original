@@ -13,7 +13,12 @@ Page({
     type: 1
   },
   onLoad() {
-
+    this.setData({
+      couponList: [],
+      loadmore: true,
+      loadText: '正在努力加载...'
+    })
+    this.getCouponList(this.data.type, 1)
   },
   /**
    *  页面上拉触底事件的处理函数
@@ -81,7 +86,7 @@ Page({
         } else {
           that.setData({
             loadmore: false,
-            loadText: '到底啦~'
+            loadText: '到底啦~',
           })
         }
       },
@@ -89,5 +94,20 @@ Page({
         console.log('优惠券列表失败回调')
       }
     })
+  },
+  onClick(e) {
+    let item = e.currentTarget.dataset.item 
+    this.saveCouponData(item)
+  },
+  saveCouponData(data) {
+    try {
+      wx.setStorageSync('currentCoupon', data)
+      wx.navigateBack({
+        delata: 1
+      })
+      return
+    } catch (e) {
+
+    }
   }
 })

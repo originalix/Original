@@ -51,7 +51,26 @@ Page({
     submitBtnText: '提交订单',
     // 用户信息
     userInfo: {},
-    promotionId: null
+    promotionId: null,
+    couponInfo: {}
+  },
+  onReady() {
+    console.log('小程序准备好咯')
+  },
+  onShow() {
+    console.log('小程序即将显示')
+    try {
+      let coupon = wx.getStorageSync('currentCoupon')
+      if (coupon !== undefined || coupon !== null) {
+        this.setData({
+          couponInfo: coupon
+        }, function () {
+          console.log('设置好的coupon信息', this.data.couponInfo)
+        })
+      }
+    } catch (e) {
+    
+    }
   },
   onLoad(option) {
     // 获取购物车的商品数据
@@ -537,6 +556,12 @@ Page({
       'fail': function (error) {
         console.log('用户信息获取失败')
       }
+    })
+  },
+  // 跳转到优惠券页面
+  go2CouponListPage() {
+    wx.navigateTo({
+      url: '/pages/couponList/couponList'
     })
   }
 })

@@ -2,7 +2,7 @@
   <!-- 有订单的情况 -->
   <view class="bg-white">
     <view class="cell-container">
-      <view class="cell" wx:for="{{couponList}}" wx:for-item="item" wx:for-index="idx" wx:key="idx">
+      <view class="cell" wx:for="{{couponList}}" wx:for-item="item" wx:for-index="idx" wx:key="idx" bindtap="onClick" data-item="{{item}}">
         <view class="left coupon">
           <view class="ver-center txt-center">
             <view>
