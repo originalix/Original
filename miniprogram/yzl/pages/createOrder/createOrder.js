@@ -361,6 +361,11 @@ Page({
       orderItems.push(item)
     }
 
+    let couponId = null
+    if (this.data.couponInfo !== null && this.data.couponInfo !== undefined) {
+      couponId = this.data.couponInfo.coupon_id
+    }
+
     let address = this.data.address
     let data = {
       'items_count': sumItemsCount,
@@ -377,6 +382,7 @@ Page({
       'express_date': this.data.date,
       'express_time': this.data.time,
       'promotion_id': this.data.promotionId,
+      'coupon_id': couponId,
       'success': function (res) {
         console.log('订单生成 成功的函数回调')
         if (res.trade_no !== undefined && res.real_amount !== undefined) {

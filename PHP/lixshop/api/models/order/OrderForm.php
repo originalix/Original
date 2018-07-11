@@ -152,7 +152,7 @@ class OrderForm extends Model
         // $couponUsage = CouponUsage::findOne(1);
         $this->couponUsage = CouponUsage::find()->where(['customer_id' => $this->customer_id])
                         ->andWhere(['coupon_id' => $this->coupon_id])
-                        ->andWhere(['<', 'times_used', 1])
+                        ->andWhere(['is_used' => 1])
                         ->one();
 
         if (is_null($this->couponUsage)) {
