@@ -62,8 +62,29 @@ const getJSON = function (url) {
   return promise;
 };
 
-getJSON('https://api.yzl1030.com/test/ip').then(function(json) {
-  console.log('Contents: ', json);
-}, function(error) {
-  console.error('出错了', error);
+// Ajax使用示例
+// getJSON('https://api.yzl1030.com/test/ip').then(function(json) {
+//   console.log('Contents: ', json);
+// }, function(error) {
+//   console.error('出错了', error);
+// });
+
+// resolve的函数参数 可能是另一个Promise实例
+// const p1 = new Promise(function(resolve, reject) {
+//   setTimeout(() => reject(new Error('fail')), 3000);
+// });
+
+// const p2 = new Promise(function(resolve, reject) {
+//   setTimeout(() => resolve(p1), 1000);
+// });
+
+// p2
+//   .then(result => console.log(result))
+//   .catch(error => console.log(error));
+
+new Promise((resolve, reject) => {
+  resolve(1);
+  console.log(2);
+}).then(r => {
+  console.log(r);
 });
