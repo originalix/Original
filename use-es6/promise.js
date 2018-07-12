@@ -88,3 +88,29 @@ new Promise((resolve, reject) => {
 }).then(r => {
   console.log(r);
 });
+
+// getJSON('https://api.yzl1030.com/test/ip').then(function(json) {
+//   return json;
+// }).then(function(post) {
+//   // ...
+// });
+
+// catch的使用
+const promise1 = new Promise(function(resolve, reject) {
+  throw new Error('test');
+});
+
+// promise1.catch(function(error) {
+//   console.log(error);
+// });
+
+let thenable = {
+  then: function(resolve, reject) {
+    resolve(42);
+  }
+};
+
+let p1 = Promise.resolve(thenable);
+p1.then(function(value) {
+  console.log(value);
+});
