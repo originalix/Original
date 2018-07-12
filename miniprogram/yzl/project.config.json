@@ -39,7 +39,7 @@
 					"id": 0,
 					"name": "分享测试",
 					"pathName": "pages/index/index",
-					"query": "share_id=14",
+					"query": "shareid=14",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "wx3321acae41983595"

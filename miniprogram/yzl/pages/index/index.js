@@ -39,8 +39,8 @@ Page({
     this.getIndexConfig()
     console.log(`option query is : `)
     console.log(option)
-    if (option.share_id !== undefined) {
-      this.recommendByShareId(option.share_id)
+    if (option.shareid !== undefined) {
+      this.recommendByShareId(option.shareid)
     }
   },
   onPullDownRefresh(){

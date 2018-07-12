@@ -50,7 +50,7 @@
       <!-- 配送方式cell -->
       <view bindtap="openActionSheet">
         <normal-cell title="配送方式" value="{{ expressText }}" isLink></normal-cell>
-        <normal-cell title="店铺地址" value="济南市历下区文化东路万豪国际9号楼3单元402室" wx:if="{{expressType==1}}"></normal-cell>
+        <normal-cell title="店铺地址" value="济南市历下区文化东路76号万豪国际小区东门5号楼底商（7号楼门口）" wx:if="{{expressType==1}}"></normal-cell>
       </view>
       <view class="separate bg-e5 separate-left"></view>
 

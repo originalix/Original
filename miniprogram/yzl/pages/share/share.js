@@ -23,9 +23,10 @@ Page({
 		if (res.from === 'button') {
 			console.log('来自转发按钮')
 		}
+		console.log('path: -> ' + '/pages/index/index?shareid=' + this.data.uid)
 		return {
 			title: '衣之恋小程序分享',
-			path: '/pages/index/index?share_id=' + this.data.uid
+			path: '/pages/index/index?shareid=' + this.data.uid
 		}
 	},
 	showDialog() {
