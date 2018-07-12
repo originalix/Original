@@ -14,6 +14,28 @@ Page({
     promotions: [],
   },
   onLoad: function (option) {
+    if (appInstance.accessToken.length < 1) {
+      this.beforeAction(option)
+    } else {
+      this.initialiaze(option)
+    }
+  },
+  beforeAction (option) {
+    var that = this
+    var callback = function callback() {
+      const authInfo = auth.getAuthInfo()
+      console.log('beforeaction')
+      appInstance.accessToken = auth.getAuthInfo().accessToken
+      appInstance.requestToken = {
+        'Authorization': 'Bearer ' + auth.getAuthInfo().accessToken
+      }
+
+      console.log(appInstance.accessToken)
+      that.initialiaze(option)
+    }
+    auth.login(callback)
+  },
+  initialiaze(option) {
     this.getIndexConfig()
     console.log(`option query is : `)
     console.log(option)
@@ -25,12 +47,6 @@ Page({
     this.getIndexConfig()
   },
   getIndexConfig() {
-    if (appInstance.accessToken.length < 1 || appInstance.accessToken === null) {
-      console.log('没有token return')
-      appInstance.accessToken = '12312312313'
-      appInstance.login()
-      return
-    }
     var that = this;
     wx.request({
       url: config.service.indexConfigUrl,
