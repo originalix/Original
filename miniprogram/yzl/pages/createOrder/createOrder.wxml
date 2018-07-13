@@ -1,29 +1,6 @@
 <view>
   <scroll-view scroll-y style="height: 100%">
     <view class="separate bg-e5"></view>
-    <!-- 地址栏目 尚未添加地址状态 -->
-    <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
-      bindtap="choseAddress" block wx:if="{{! isChooseAddress}}">
-      <image class="add-icon" src="../../resource/img/add.png" />
-      <text class="font-30 text-bg-333">新增收货地址</text>
-      <wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
-    </view>
-    <view class="separate bg-e5"></view>
-
-    <!-- 地址栏目 已存在地址状态 -->
-    <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
-      bindtap="choseAddress" block wx:if="{{isChooseAddress}}">
-      <view class="width-full">
-        <view class="vertical-center width-full">
-          <image src="../../resource/img/address-loca.png" class="loca-icon mg-30" />
-          <text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
-          <text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
-        </view>
-        <text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
-      </view>
-      <image src="../../resource/img/right.png" class="arrow-icon" />
-    </view>
-    <view class="separate bg-e5"></view>
 
     <!-- 商品详情 -->
     <view class="bg-white">
@@ -76,7 +53,32 @@
       </view>
       <view class="separate bg-e5 separate-left"></view>
 
-      <lix-field title="留言" placeholder="点击给商家留言" focus="false" value="{{ remark_value  }}" bind:change="handleFieldChange">
+      <view class="separate bg-e5"></view>
+      <!-- 地址栏目 尚未添加地址状态 -->
+      <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
+        bindtap="choseAddress" block wx:if="{{! isChooseAddress}}">
+        <image class="add-icon" src="../../resource/img/add.png" />
+        <text class="font-30 text-bg-333">新增收货地址</text>
+        <wxc-icon size="28" color="#c8c8c8" type="arrow-right" class="flex-right arrow-layout"></wxc-icon>
+      </view>
+      <view class="separate bg-e5"></view>
+
+      <!-- 地址栏目 已存在地址状态 -->
+      <view hover hover-start-time="50" hover-stay-time="50" hover-class="view-hover" class="address-wrapper bg-white vertical-center"
+        bindtap="choseAddress" block wx:if="{{isChooseAddress}}">
+        <view class="width-full">
+          <view class="vertical-center width-full">
+            <image src="../../resource/img/address-loca.png" class="loca-icon mg-30" />
+            <text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
+            <text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
+          </view>
+          <text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>
+        </view>
+        <image src="../../resource/img/right.png" class="arrow-icon" />
+      </view>
+      <view class="separate bg-e5"></view>
+
+      <lix-field title="留言" placeholder="点击给商家留言" value="{{ remark_value  }}" bind:change="handleFieldChange">
       </lix-field>
 
       <normal-cell title="合计" value="￥{{price}}" isPrice></normal-cell>
