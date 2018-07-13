@@ -206,10 +206,21 @@ Page({
       this.closePayActionsheet()
       Dialog({
         title: '温馨提醒',
-        message: '您的余额不足，请使用其他方式支付',
-        selector: '#zan-dialog-charge'
-      }).then((res) => {
-        console.log(res)
+        message: '您的余额不足，请充值后再使用',
+        selector: '#zan-dialog-charge',
+        buttons: [{
+          text: '去充值',
+          color: 'red',
+          type: 'charge'
+        }, {
+          text: '确认',
+          type: 'confirm'
+        }]
+      }).then(({type}) => {
+        console.log(type)
+        if (type === 'charge') {
+          that.go2ChargePage()
+        }
       })
     } else {
       console.log('余额充足可以使用')
@@ -329,6 +340,11 @@ Page({
       'fail': function (error) {
         console.log('用户信息获取失败')
       }
+    })
+  },
+  go2ChargePage() {
+    wx.navigateTo({
+      url: '/pages/charge/charge'
     })
   }
 })

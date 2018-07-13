@@ -460,6 +460,7 @@ Page({
    *  检查余额是否够用
    */
   checkCharge() {
+    var that = this
     console.log(this.data.userInfo.charge)
     console.log(this.data.finalPrice)
     let charge = parseFloat(this.data.userInfo.charge)
@@ -470,9 +471,20 @@ Page({
       Dialog({
         title: '温馨提醒',
         message: '您的余额不足，请充值后再使用',
-        selector: '#zan-dialog-charge'
-      }).then((res) => {
-        console.log(res)
+        selector: '#zan-dialog-charge',
+        buttons: [{
+          text: '去充值',
+          color: 'red',
+          type: 'charge'
+        }, {
+          text: '确认',
+          type: 'confirm'
+        }]
+      }).then(({type}) => {
+        console.log(type)
+        if (type === 'charge') {
+          that.go2ChargePage()
+        }
       })
     } else {
       console.log('余额充足可以使用')
@@ -618,6 +630,11 @@ Page({
           })
         }
       }
+    })
+  },
+  go2ChargePage() {
+    wx.navigateTo({
+      url: '/pages/charge/charge'
     })
   }
 })
