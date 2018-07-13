@@ -192,6 +192,36 @@ Page({
    *  选择地址事件
    */
   choseAddress() {
+    wx.getSetting({
+      success: (res) => {
+        console.log(res)
+        if (!res.authSetting['scope.werun']) {
+          wx.showModal({
+            title: '提示',
+            content: '获取微信运动步数，需要开启计步权限',
+            success: function (res) {
+              if (res.confirm) {
+                //跳转去设置
+                wx.openSetting({
+                  success: function (res) {
+ 
+                  }
+                })
+              } else {
+                //不设置
+              }
+            }
+          })
+        }
+      }
+    })
+    return
+    wx.openSetting({
+      success: (res) => {
+        console.log(res)
+      }
+    })
+    return
     if (this.data.isCreatedOrder === true) {
       wx.showToast({
         title: '订单已创建，地址不能修改',
