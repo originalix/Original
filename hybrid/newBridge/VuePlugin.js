@@ -16,6 +16,7 @@ Plugins.install = function (Vue) {
                 })
             } else {
                 //开发环境调试代码
+                console.log('调用了Pulgin')
             }
         })
     }

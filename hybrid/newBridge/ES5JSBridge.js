@@ -1,37 +1,22 @@
-/**
- * ES6写法的JSBridge
- *
- * @export
- * @class JSBridge
- */
-export default class JSBridge {
-  constructor () {
+;
+(function (global) {
+  function JSBridge () {
     this.name = 'JSBridge'
     this.reset = true
-  }
+  };
 
-  /**
-   * 判断设备类型
-   *
-   * @returns
-   * @memberof JSBridge
-   */
-  device () {
+  JSBridge.prototype.device = function () {
     var u = navigator.userAgent
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1
     // eslint-disable-next-line
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
     return isAndroid
   }
-
   /**
+   * @param null
    * JSBridge初始化
-   *
-   * @param {*} callback
-   * @returns
-   * @memberof JSBridge
    */
-  _init (callback) {
+  JSBridge.prototype._init = function (callback) {
     if (window.WebViewJavascriptBridge) {
       // eslint-disable-next-line
       return callback(WebViewJavascriptBridge)
@@ -52,14 +37,11 @@ export default class JSBridge {
       document.documentElement.removeChild(WVJBIframe)
     }, 0)
   }
-
   /**
+   * @param null
    * JSBridge 安卓初始化回调接口
-   *
-   * @param {*} bridge
-   * @memberof JSBridge
    */
-  __init__ (bridge) {
+  JSBridge.prototype.__init__ = function (bridge) {
     var isAn = this.device()
     if (this.reset && isAn) {
       this.reset = false
@@ -75,13 +57,10 @@ export default class JSBridge {
   }
 
   /**
-   * 获取用户信息
-   *
-   * @param {*} data
-   * @param {*} callback
-   * @memberof JSBridge
+   * @param data-> null
+   * 获取用户信息   返回用户信息 token ，refreshToken 等等
    */
-  getUserInfo (data, callback) {
+  JSBridge.prototype.getUserInfo = function (data, callback) {
     this._init(function (bridge) {
       this.__init__(bridge)
       bridge.callHandler('getUserInfo', data, function (response) {
@@ -94,7 +73,11 @@ export default class JSBridge {
     }.bind(this))
   }
 
-  jsEcho (callback) {
+  /**
+   * native调用javascript的函数
+   * @param {*} callback 被原生调用后执行的函数
+   */
+  JSBridge.prototype.jsEcho = function (callback) {
     this._init(function (bridge) {
       this.__init__(bridge)
       bridge.registerHandler('JS Echo', function (data, responseCallback) {
@@ -103,4 +86,36 @@ export default class JSBridge {
       })
     }.bind(this))
   }
-}
+
+  /**
+   * 根据自己需求添加方法
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   */
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = JSBridge
+    // eslint-disable-next-line
+  } else if (typeof define === 'function' && (define.amd || define.cmd)) {
+    // eslint-disable-next-line
+    define(function () {
+      return JSBridge
+    })
+  } else {
+    global.JSBridge = JSBridge
+  };
+})(this)
