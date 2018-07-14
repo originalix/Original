@@ -11,7 +11,8 @@ Page({
     product: {},
     productList: [],
     cartList: [],
-    promotion_id: null
+    promotion_id: null,
+    sale_count: 0
   },
   onLoad(option) {
     console.log(option)
@@ -49,7 +50,8 @@ Page({
         if (code === 200) {
           const response = res.data
           that.setData({
-            product: response.data.product
+            product: response.data.product,
+            sale_count: response.data.sale_count
           })
           that.createProductList(response.data.product)
         }

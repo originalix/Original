@@ -9,7 +9,7 @@
     </view> 
     <view class="center-content">
       <text class="old-price">{{product.price}}</text>
-      <wxc-label class="label" type="fill">99人拼团</wxc-label>
+      <wxc-label class="label" type="fill">{{sale_count}}人拼团</wxc-label>
       <wxc-label class="label" type="fill">拼团立省{{product.price - product.final_price}}元</wxc-label>
     </view>
     <!-- <view class="share-content">
