@@ -92,7 +92,9 @@
     <view class="mgt-20 bg-white">
       <normal-cell title="商品金额" value="￥{{no_express_price}}"></normal-cell>
       <normal-cell title="运费" value="+￥{{expressPrice}}"></normal-cell>
-      <normal-cell title="会员折扣" value="{{userInfo.discount}}%"></normal-cell>
+      <normal-cell
+        wx:if="{{willDiscount === 1}}"
+        title="会员折扣" value="{{userInfo.discount}}%"></normal-cell>
       <normal-cell title="优惠券" value="{{couponDiscount}}%" wx:if="{{couponType === 1}}"></normal-cell>
       <normal-cell title="优惠券" value="-￥{{couponDiscount}}" wx:if="{{couponType === 2 && price > couponConditions}}"></normal-cell>
     </view>

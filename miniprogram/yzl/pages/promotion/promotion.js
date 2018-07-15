@@ -179,7 +179,7 @@ Page({
 		this.saveCartParams()
     let url = '/pages/createOrder/createOrder'
     if (this.data.promotion_id !== null) {
-      url = '/pages/createOrder/createOrder?promotionId=' + this.data.promotion_id
+      url = '/pages/createOrder/createOrder?promotionId=' + this.data.promotion_id + "&willDiscount=" + 0
     }
 		wx.navigateTo({
 			url: url

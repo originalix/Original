@@ -145,6 +145,7 @@ const createOrder = (params) => {
     'express_time': params.express_time,
     'promotion_id': params.promotion_id,
     'coupon_id': params.coupon_id,
+    'will_discount': params.will_discount,
   }
 
   console.log('订单请求参数: ->')

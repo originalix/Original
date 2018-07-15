@@ -56,7 +56,8 @@ Page({
     couponValue: '无',
     couponType: 0,
     couponConditions: null,
-    conponDiscount: null
+    conponDiscount: null,
+    willDiscount: 1
   },
   onReady() {
     console.log('小程序准备好咯')
@@ -112,7 +113,8 @@ Page({
       return
     }
     this.setData({
-      promotionId: option.promotionId
+      promotionId: option.promotionId,
+      willDiscount: 0
     })
   },
   /**
@@ -301,9 +303,12 @@ Page({
     var finalP = sumPrice + expressP
 
     // 如果有会员折扣 则在总价上打折
-    var userDiscount = this.data.userInfo.discount
-    if (userDiscount !== 100) {
-      finalP = finalP * (userDiscount / 100)
+    // 如果不允许打折 则不打折
+    if (this.data.willDiscount === 1) {
+      var userDiscount = this.data.userInfo.discount
+      if (userDiscount !== 100) {
+        finalP = finalP * (userDiscount / 100)
+      }
     }
 
     // 如果有优惠券折扣 则在总价上满减
@@ -389,6 +394,7 @@ Page({
       'express_time': this.data.time,
       'promotion_id': this.data.promotionId,
       'coupon_id': couponId,
+      'will_discount': this.data.willDiscount,
       'success': function (res) {
         console.log('订单生成 成功的函数回调')
         if (res.trade_no !== undefined && res.real_amount !== undefined) {
