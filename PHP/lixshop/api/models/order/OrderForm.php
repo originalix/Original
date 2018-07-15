@@ -127,7 +127,7 @@ class OrderForm extends Model
         // 查询会员折扣，并且按照折扣打折
         $customer = Customer::findOne(Yii::$app->user->identity->id);
         if ($customer->discount !== 100) {
-            $this->real_amount = $this->total_amount * ($customer->discount / 100);
+            $this->real_amount = $this->real_amount * ($customer->discount / 100);
         }
 
         // 计算折扣价格
