@@ -48,13 +48,14 @@ class OrderForm extends Model
     public $express_date;
     public $express_time;
     public $promotion_id = null;
+    public $will_discount;
 
     public function rules()
     {
         return [
             // [['items_count', 'total_amount', 'discount_amount', 'real_amount', 'payment_method', 'address_id', 'txn_type'], 'required', 'message' => '{attribute}未提交'],
             
-            [['increment_id', 'items_count', 'customer_id', 'coupon_id', 'express_type', 'promotion_id'], 'integer'],
+            [['increment_id', 'items_count', 'customer_id', 'coupon_id', 'express_type', 'promotion_id', 'will_discount'], 'integer'],
             [['total_amount', 'discount_amount', 'real_amount', 'express_amount'], 'number'],
             [['customer_name'], 'string', 'max' => 100],
             [['remote_ip', 'trade_no', 'userName', 'province', 'city', 'county', 'postal_code', 'tel_number'], 'string', 'max' => 50],
@@ -125,9 +126,11 @@ class OrderForm extends Model
         // $this->checkCoupon();
 
         // 查询会员折扣，并且按照折扣打折
-        $customer = Customer::findOne(Yii::$app->user->identity->id);
-        if ($customer->discount !== 100) {
-            $this->real_amount = $this->real_amount * ($customer->discount / 100);
+        if ($this->will_discount === 1) {
+            $customer = Customer::findOne(Yii::$app->user->identity->id);
+            if ($customer->discount !== 100) {
+                $this->real_amount = $this->real_amount * ($customer->discount / 100);
+            }
         }
 
         // 计算折扣价格

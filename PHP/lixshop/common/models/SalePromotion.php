@@ -13,6 +13,7 @@ use common\models\Product;
  * @property int $sale_count 已经团购数量
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $need_vip
  */
 class SalePromotion extends \yii\db\ActiveRecord
 {
@@ -30,7 +31,7 @@ class SalePromotion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'sale_count'], 'integer'],
+            [['product_id', 'sale_count', 'need_vip'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -41,7 +42,8 @@ class SalePromotion extends \yii\db\ActiveRecord
             'id',
             'product_id',
             'product',
-            'sale_count'
+            'sale_count',
+            'need_vip',
         ];
     }
 
@@ -54,6 +56,7 @@ class SalePromotion extends \yii\db\ActiveRecord
             'id' => 'ID',
             'product_id' => '产品id',
             'sale_count' => '已经团购数量',
+            'need_vip' => '是否是会员专享',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
