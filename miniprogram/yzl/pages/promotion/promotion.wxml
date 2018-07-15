@@ -27,7 +27,7 @@
 
   <view class="detail">
     <text class="detail-title">商品详情</text>
-    <text class="detail-text">{{product.meta_description}}</text>
+    <text class="detail-text">{{product.meta_title}}</text>
   </view>
 
   <view class="fixed-view">

@@ -34,7 +34,7 @@
       <!-- 取件日期选择 -->
       <view class="section">
         <view class="section__title">取件日期</view>
-        <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange" class="picker">
           <view class="picker text-bg-666">
             {{date}}
           </view>
@@ -45,7 +45,7 @@
       <!-- 取件时间选择 -->
       <view class="section">
         <view class="section__title">取件时间</view>
-        <picker mode="time" value="{{time}}" start="09:00" end="22:00" bindchange="bindTimeChange">
+        <picker mode="time" value="{{time}}" start="09:00" end="22:00" bindchange="bindTimeChange" class="picker">
           <view class="picker text-bg-666">
             {{time}}
           </view>

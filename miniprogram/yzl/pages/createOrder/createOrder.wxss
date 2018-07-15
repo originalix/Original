@@ -193,3 +193,7 @@ page {
 	margin-left: 15rpx;
 }
 
+.picker {
+  flex: 2;
+  text-align: right;
+}
