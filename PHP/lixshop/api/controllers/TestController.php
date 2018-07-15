@@ -157,7 +157,7 @@ class TestController extends BaseController
     public function actionComponent()
     {
         $model = new Mail();
-        $model->order_id = 51;
+        $model->order_id = 116;
         return $model->sendOrderMessage();
     }
 

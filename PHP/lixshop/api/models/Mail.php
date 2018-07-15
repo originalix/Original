@@ -5,9 +5,10 @@ namespace api\models;
 use Yii;
 use yii\base\Model;
 use yii\web\HttpException;
-use api\models\order\Order;
+use api\models\order\OrderSearch;
 use common\models\Appointment;
 use common\models\Attachment;
+use yii\data\ActiveDataProvider;
 
 class Mail extends Model
 {
@@ -19,13 +20,14 @@ class Mail extends Model
         if (is_null($this->order_id)) {
             return;
         }
-        $order = Order::findOne($this->order_id);
+        $order = OrderSearch::findOne($this->order_id);
         $address = $order->userName . " " . $order->city . $order->county . $order->street;
         $tel = " 电话: " . $order->tel_number;
 
         //controller代码 
         $mail = Yii::$app->mailer->compose('@app/mail/order', ['order' => $order]) 
             ->setTo('1916555871@qq.com') 
+            // ->setTo('77252102@qq.com')
             ->setSubject('新订单通知 ' . $address . " 价格： " . $order->real_amount . "元" . $tel) 
             ->send(); 
         return $order;
