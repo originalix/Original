@@ -126,7 +126,7 @@ Page({
 
     // 设置默认取件日期
     var today = util.getDateStr(0)
-    var endDate = util.getDateStr(3)
+    var endDate = util.getDateStr(365)
     if (hours < 22 && hours + 2 >= 22) {
       hours = 22
     } else if (hours >= 22) {

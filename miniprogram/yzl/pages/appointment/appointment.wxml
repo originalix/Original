@@ -62,8 +62,6 @@
       <text class="tips-first">请您正确填写寄送衣物的总数，以免影响服务时效，谢谢您的配合！</text>
       <text>团购券包含：</text>
       <text>普通羽绒服（长/短） 普通呢子衣（长/短）运动鞋/皮鞋等洗涤。</text>
-      <text>不包含：</text>
-      <text>皮衣皮草 皮靴/雪地靴 奢侈品 真丝蚕丝 家纺类 婚纱礼服 包包类 娃娃类洗涤</text>
     </view>
     <view class="address-wrap">
       <!-- 地址栏目 尚未添加地址状态 -->

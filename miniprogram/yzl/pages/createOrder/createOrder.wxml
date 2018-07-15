@@ -69,7 +69,7 @@
         <view class="width-full">
           <view class="vertical-center width-full">
             <image src="../../resource/img/address-loca.png" class="loca-icon mg-30" />
-            <text class="font-30 text-bg-05">收货人：{{address.userName}}</text>
+            <text class="font-30 text-bg-05">姓名：{{address.userName}}</text>
             <text class="font-26 text-bg-05 flex-right">{{address.telNumber}}</text>
           </view>
           <text class="font-26 text-bg-666 mg-75">收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}} {{address.detailInfo}}</text>

@@ -12,6 +12,7 @@ Page({
     duration: 1000,
     categories: [],
     promotions: [],
+    tips: ''
   },
   onLoad: function (option) {
     if (appInstance.accessToken.length < 1) {
@@ -62,7 +63,8 @@ Page({
             imgs.push(data.slideshow[i].url)
           }
           that.setData({
-            imgUrls: imgs
+            imgUrls: imgs,
+            tips: data.tips
           }, function () {})
         }
 

@@ -14,11 +14,16 @@
 
 .icon-title {
   display: block;
-  margin-top: 10px;
+  padding-top: 10px;
   height: 26px;
-  color: #c1c1c1;
+  color: #fff;
   font-size: 10px;
   text-align: center;
+  background-color: #63d8f2;
+}
+
+.bg-pink {
+  background-color: #f19c9a;
 }
 
 .swiper-height {
