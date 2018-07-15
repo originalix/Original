@@ -76,7 +76,7 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="go2PromotionPage" data-promotionId="{{promotions[0].id}}"> 
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}"> 
           <image src="{{ promotions[0].product.image[0] }}" class="icon-img-hot"/>
           <view>
             <text class='real-price'>￥{{ promotions[0].product.final_price }}</text><text class='old-price'>￥{{ promotions[0].product.price }}</text>
@@ -95,7 +95,7 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="go2PromotionPage" data-promotionId="{{promotions[1].id}}">
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}">
           <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
           <view>
             <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
@@ -171,3 +171,4 @@
     
   </zan-row>
 </view>
+<zan-dialog id="zan-dialog-charge"></zan-dialog>

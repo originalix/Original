@@ -3,6 +3,7 @@
   "usingComponents": {
     "zan-row": "../../bower_components/zanui-weapp/dist/row/index",
     "zan-col": "../../bower_components/zanui-weapp/dist/col/index",
-    "zan-noticebar": "../../bower_components/zanui-weapp/dist/noticebar/index"
+    "zan-noticebar": "../../bower_components/zanui-weapp/dist/noticebar/index",
+    "zan-dialog": "../../bower_components/zanui-weapp/dist/dialog/index"
   }
 }
