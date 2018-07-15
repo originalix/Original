@@ -32,6 +32,7 @@ class HomeController extends BaseController
             'categories' => $categories, 
             'promotions' => $salePromotions,
             'bottom' => $bottom,
+            'tips' => '您好，欢迎您使用衣之恋干洗小程序',
         ];
     }
 

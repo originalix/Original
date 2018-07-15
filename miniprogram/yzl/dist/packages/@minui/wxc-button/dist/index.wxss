@@ -56,8 +56,8 @@
         border-color: #ff5777;
     }
     .btn__beauty--true {
-        color: #ff5777;
-        background: transparent none;
+        color: #fff;
+        background: #ff5777;
         border-color: #ff5777;
     }
     .btn__primary--false {
