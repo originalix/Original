@@ -2,7 +2,7 @@
   "navigationBarTitleText": "团购预约",
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "backgroundColor": "#f2e",
+  "backgroundColor": "#fff",
   "backgroundTextStyle": "black",
   "enablePullDownRefresh": false,
   "usingComponents": {
