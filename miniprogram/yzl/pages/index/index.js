@@ -207,5 +207,23 @@ Page({
     wx.navigateTo({
       url: '/pages/charge/charge'
     })
+  },
+  go2SharePage() {
+    wx.navigateTo({
+      url: '/pages/share/share'
+    })
+  },
+  swiperClick(e) {
+    console.log(e)
+    let idx = e.currentTarget.dataset.idx
+    switch (idx) {
+      case 3:
+        this.go2SharePage()     
+        break;
+    
+      default:
+        this.go2ChargePage()
+        break;
+    }
   }
 })

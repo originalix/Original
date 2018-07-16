@@ -68,6 +68,8 @@
   border-right-style:solid;
   border-width: 1px;
   border-right-color: #dcdcdc;
+  border-bottom-style:solid;
+  border-bottom-color: #dcdcdc;
 }
 
 .category-bg-1 {
