@@ -346,6 +346,7 @@ Page({
 
     if (this.data.isCreatedOrder === true) {
       let total_fee = this.data.orderInfo.real_amount * 100
+      total_fee = total_fee < 1 ? 1 : total_fee;
       if (paymentMethod === 'wxpay') {
         that.createWxOrder(this.data.orderInfo.trade_no, total_fee)
       } else {
@@ -405,8 +406,10 @@ Page({
             submitBtnText: '去支付'
           }, function () {})
 
-          let total_fee = res.real_amount * 100
+          let total_fee = res.real_amount * 100;
+          total_fee = total_fee < 1 ? 1 : total_fee;
           if (paymentMethod === 'wxpay') {
+            console.log('total_fee: ', total_fee);
             that.createWxOrder(res.trade_no, total_fee)
           } else {
             that.confirmChargePay(res.trade_no, res.real_amount)
