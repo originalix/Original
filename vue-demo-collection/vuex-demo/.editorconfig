@@ -1,0 +1,26 @@
+# EditorConfig
+
+# 表明是最顶层的配置文件
+root = true
+# 正则*匹配所有文件
+[*]
+# 编码格式
+charset = utf-8
+# 定义换行符
+end_of_line = lf
+# 缩进空格数
+indent_size = 2
+# 缩进方式
+indent_style = space
+# 文件是否以空白行结尾
+# insert_final_newline = true
+# 是否去处行首行尾的空白字符
+trim_trailing_whitespace = true
+
+# 正则匹配以.md结尾的文件
+[*.md]
+
+# 保存文件时是否在结尾添加一个新行
+insert_final_newline = false
+# 在新行之前是否移除所有的空格字符
+trim_trailing_whitespace = false
