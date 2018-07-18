@@ -36,9 +36,11 @@ class Mail extends Model
     public function sendAppointmentMessage()
     {
         if (is_null($this->appointment_id)) {
+            Yii::warning('团购预约返回，没有传入appointment_id');
             return;
         }
 
+        Yii::warning('团购预约邮件发送开始，appointment_id: ' . $appointment->id);
         $appointment = Appointment::findOne($this->appointment_id);
         $address = $appointment->userName . " " . $appointment->city . $appointment->county . $appointment->street;
         $tel = " 电话: " . $appointment->tel_number;

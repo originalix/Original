@@ -83,6 +83,11 @@ class AppointmentForm extends Model
                     }
                 }
             }
+            // 预约完成 发送邮件
+            Yii::warning('开始发送邮件，appointmentId' . $appointment->id);
+            $mail = new Mail();
+            $mail->appointment_id = $appointment->id;        
+            $mail->sendAppointmentMessage();
 
             // 事务结束
             $transaction->commit();
@@ -92,10 +97,6 @@ class AppointmentForm extends Model
             throw new HttpException(421, $e->getMessage());
         }
 
-        // 预约完成 发送邮件
-        $mail = new Mail();
-        $mail->appointment_id = $appointment->id;        
-        $mail->sendAppointmentMessage();
 
         return $appointment;
     }

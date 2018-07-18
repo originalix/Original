@@ -60,7 +60,7 @@
       <lix-field title="留言" placeholder="" focus="false" disabled="true" value="{{ orderInfo.order_remark }}">
       </lix-field>
 
-      <normal-cell title="合计" value="￥{{orderInfo.total_amount}}" isPrice></normal-cell>
+      <normal-cell title="合计" value="￥{{orderInfo.real_amount}}" isPrice></normal-cell>
     </view>
 
     <!-- 优惠模块cell -->
@@ -69,7 +69,7 @@
     </view>
     <!-- 商品金额cell -->
     <view class="mgt-20 bg-white">
-      <normal-cell title="商品金额" value="￥{{orderInfo.total_amount}}"></normal-cell>
+      <normal-cell title="商品金额" value="￥{{orderInfo.real_amount}}"></normal-cell>
       <normal-cell title="运费" value="+￥{{orderInfo.express_amount}}"></normal-cell>
       <normal-cell title="会员折扣" value="{{userInfo.discount}}%"></normal-cell>
       <normal-cell title="优惠券" value="-￥{{orderInfo.coupon.discount}}" wx:if="{{orderInfo.coupon.type === 2}}"></normal-cell>

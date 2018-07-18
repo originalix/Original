@@ -92,8 +92,12 @@ class WxPay extends Model
         } 
 
         if ($postObj->return_code == 'FAIL') {
+            Yii::warning('支付错误，订单信息');
+            Yii::warning($data);
             throw new HttpException(422, $postObj->return_msg); 
         } else if ($postObj->result_code == 'FAIL') {
+            Yii::warning('支付错误，订单信息');
+            Yii::warning($data);
             throw new HttpException(421, $postObj->err_code_des);
         } else {
             $resignData = array(

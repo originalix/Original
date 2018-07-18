@@ -2,7 +2,7 @@
   <swiper indicator-dots="{{indicatorDots}}"
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-height">
     <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}" wx:for-index="idx">
-      <swiper-item bindtap="go2ChargePage" data-idx="{{idx}}">
+      <swiper-item bindtap="swiperClick" data-idx="{{idx}}">
         <image src="{{item}}" class="slide-image slider-img" width="355" height="150"/>
       </swiper-item>
     </block>
@@ -12,7 +12,7 @@
 <zan-noticebar
   wx:if="{{tips.length > 0}}"
   text="{{tips}}"
-  scrollable="true"
+  scrollable="{{true}}"
   left-icon="https://img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
 />
 
@@ -109,6 +109,90 @@
       </view>
     </zan-col>
   </zan-row>
+
+  <!-- another zan-row start -->
+  <zan-row wx:if="{{promotions.length > 1}}">
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}"> 
+          <image src="{{ promotions[0].product.image[0] }}" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥{{ promotions[0].product.final_price }}</text><text class='old-price'>￥{{ promotions[0].product.price }}</text>
+          </view>
+          <view>
+            <text class="product-title">{{ promotions[0].product.name }}</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">立即抢</button>
+          </view>
+        </view>
+      </view>
+    </zan-col>
+
+    <!-- col -->
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}">
+          <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
+          </view>
+          <view>
+            <text class="product-title">{{ promotions[1].product.name }}</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">拼团</button> </view>
+        </view>
+      </view>
+    </zan-col>
+  </zan-row>
+
+
+  <!-- another zan-row end -->
+
+  <!-- another zan-row start -->
+  <zan-row wx:if="{{promotions.length > 1}}">
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}"> 
+          <image src="{{ promotions[0].product.image[0] }}" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥{{ promotions[0].product.final_price }}</text><text class='old-price'>￥{{ promotions[0].product.price }}</text>
+          </view>
+          <view>
+            <text class="product-title">{{ promotions[0].product.name }}</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">立即抢</button>
+          </view>
+        </view>
+      </view>
+    </zan-col>
+
+    <!-- col -->
+    <zan-col col="12" col-class="custom-zan-col">
+      <view class="category-col-hot category-bg-4">
+        <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}">
+          <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
+          <view>
+            <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
+          </view>
+          <view>
+            <text class="product-title">{{ promotions[1].product.name }}</text>
+          </view>
+          <view class="btn-view">
+            <button class="sale-btn">拼团</button> </view>
+        </view>
+      </view>
+    </zan-col>
+  </zan-row>
+
+
+  <!-- another zan-row end -->
 
   <view class="seprate-10px"></view>
   
