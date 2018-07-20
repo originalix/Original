@@ -88,9 +88,43 @@ const getUserMe = (data) => {
 	})
 }
 
+/**
+ * 使用余额补差价
+ * @param {*} data 
+ */
+const paymentByCharge = (data) => {
+  wx.request({
+    url: config.service.chargePaymentAPI,
+    header: appInstance.requestToken,
+    data: {
+      'total_fee': data.total_fee
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log(res)
+			const code = res.data.code
+			if (code === 200) {
+				if (data.success !== undefined && typeof (data.success) === 'function') {
+					data.success(res.data.data)
+				}
+			} else {
+        if (data.fail !== undefined && typeof (data.fail) === 'function') {
+          data.fail(res.data.msg)
+        }
+			}
+    },
+    fail: function (error) {
+      if (data.fail !== undefined && typeof (data.fail) === 'function') {
+        data.fail('余额补差价失败 请重试')
+      }
+      console.log(error)
+    }
+  })
+}
+
 module.exports = {
 	getChargeList,
 	createChargeOrder,
-	getUserMe
+  getUserMe,
+  paymentByCharge,
 }
-

@@ -16,46 +16,50 @@ Page({
   onLoad() {
     this.getUserInfo()
   },
-	getUserInfo () {
-		var that = this
-		chargeUtils.getUserMe({
-			'success': function (res) {
+  getUserInfo() {
+    var that = this
+    chargeUtils.getUserMe({
+      'success': function (res) {
         let mobile = ""
         let name = ""
         if (res.mobile !== null) {
-          mobile = res.mobile 
+          mobile = res.mobile
         }
         if (res.name !== null) {
           name = res.name
         }
-				that.setData({
+        that.setData({
           userInfo: res,
           mobileValue: mobile,
           nameValue: name
-				}, function () {
-					console.log(this.data.userInfo)
-				})
-			},
-			'fail': function (error) {
-				console.log('用户信息获取失败')
-			}
-		})
-	},
+        }, function () {
+          console.log(this.data.userInfo)
+        })
+      },
+      'fail': function (error) {
+        console.log('用户信息获取失败')
+      }
+    })
+  },
   nameInput: function (e) {
-    const { value } = e.detail
+    const {
+      value
+    } = e.detail
     console.log(value)
     this.setData({
       nameValue: value
     })
   },
   mobileInput: function (e) {
-    const { value } = e.detail
+    const {
+      value
+    } = e.detail
     console.log(value)
     this.setData({
       mobileValue: value
     })
   },
-  submit () {
+  submit() {
     var that = this
     that.setData({
       loading: true
@@ -104,4 +108,3 @@ Page({
     })
   }
 })
-

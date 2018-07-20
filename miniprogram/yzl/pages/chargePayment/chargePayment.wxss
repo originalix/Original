@@ -8,3 +8,13 @@
   position: relative;
   margin: 20rpx 10rpx 0 10rpx;
 }
+
+.txt {
+  text-align: center;
+  padding: 20px;
+}
+
+.txt text {
+  font-size: 13px;
+  color: #2F4F4F;
+}
