@@ -39,6 +39,11 @@ class ChargeController extends BaseController
         return $card_pre.$card_no.$card_vc; 
     }
 
+    /**
+     * 创建充值订单
+     *
+     * @return void
+     */
     public function actionCreate()
     {
         $model = new ChargeOrderForm();
@@ -49,6 +54,11 @@ class ChargeController extends BaseController
         return $model->create();
     }
 
+    /**
+     * 发起余额支付
+     *
+     * @return void
+     */
     public function actionPay()
     {
         $model = new ChargePay();
@@ -57,5 +67,15 @@ class ChargeController extends BaseController
         }
 
         return $model->main();
+    }
+
+    /**
+     * 补差价类型的余额扣款
+     *
+     * @return void
+     */
+    public function actionPayment()
+    {
+        
     }
 }
