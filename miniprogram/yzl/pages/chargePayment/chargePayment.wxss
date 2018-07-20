@@ -1,0 +1,10 @@
+.button-large-wrap {
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.input-wrap {
+  position: relative;
+  margin: 20rpx 10rpx 0 10rpx;
+}

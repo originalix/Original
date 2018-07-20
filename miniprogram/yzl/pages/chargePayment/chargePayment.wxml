@@ -1,0 +1,12 @@
+<view class="">
+  <view class="input-wrap">
+    <wxc-input type="number" mode="wrapped" right="{{true}}" error="{{true}}" title="补差价金额" placeholder="询问收银员后输入"></wxc-input>
+  </view>
+  <view class="button-large-wrap"></view>
+  <wxc-cc>
+    <view bindtap="submit">
+      <wxc-button size="large" type="success" loading="{{loading}}" value="提交"></wxc-button>
+    </view>
+  </wxc-cc>
+</view>
+

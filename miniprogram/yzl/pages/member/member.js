@@ -23,7 +23,12 @@ Page({
         title: '完善用户信息',
         slot: false,
         src: '/resource/img/info.png'
-      }
+			},
+			{
+				title: '余额补差价',
+				slot: false,
+				src: '/resource/img/charge_price.png'
+			}
 			// {
 				// title: '优惠券兑换',
 				// slot: false,
@@ -106,7 +111,11 @@ Page({
 				this.go2ErrorPage()
 				break
       case 2:
-        this.go2EditInfoPage()
+				this.go2EditInfoPage()
+				break;
+			case 3:
+				this.go2ChargePaymentPage()
+				break;	
       default:
         break
 		}
@@ -146,5 +155,10 @@ Page({
     wx.navigateTo({
       url: '/pages/editInfo/editInfo'
     })
-  }
+	},
+	go2ChargePaymentPage() {
+		wx.navigateTo({
+			url: '/pages/chargePayment/chargePayment'
+		})
+	}
 })
