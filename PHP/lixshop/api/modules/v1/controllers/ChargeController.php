@@ -7,6 +7,7 @@ use api\components\BaseController;
 use api\models\charge\ChargeProductSearch;
 use api\models\charge\ChargeOrderForm;
 use api\models\charge\ChargePay;
+use api\models\charge\ChargePayment;
 use api\utils\Code;
 
 class ChargeController extends BaseController
@@ -76,6 +77,11 @@ class ChargeController extends BaseController
      */
     public function actionPayment()
     {
-        
+        $model = new ChargePayment();
+        if (! $model->load(Yii::$app->request->post(), '')) {
+            throw new \yii\web\HttpException(421, '余额支付发起失败');
+        }
+
+        return $model->main();
     }
 }
