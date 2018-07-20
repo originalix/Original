@@ -47,6 +47,7 @@ class Mail extends Model
         //controller代码 
         $mail = Yii::$app->mailer->compose('@app/mail/appointment', ['appointment' => $appointment]);
         $mail->setTo('1916555871@qq.com');
+        // $mail->setTo('77252102@qq.com');
         $mail->setSubject('新团购预约 ' . $address . $tel);
         if ($appointment->enter_type == 2) {
             foreach ($appointment->images as $img) {
