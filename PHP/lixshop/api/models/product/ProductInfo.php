@@ -51,6 +51,7 @@ class ProductInfo extends Product
             'reviw_rate_star_average',
             'review_count',
             'favorite_count',
+            'sale_count',
         ];
     }
 }

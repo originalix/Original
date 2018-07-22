@@ -39,6 +39,7 @@ use common\models\SalePromotion;
  * @property int $favorite_count 产品被收藏的次数
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $sale_count
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -73,7 +74,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['score', 'price', 'cost_price', 'final_price', 'reviw_rate_star_average'], 'number'],
-            [['status', 'min_sales_qty', 'is_in_stock', 'visibility', 'package_number', 'created_user_id', 'review_count', 'favorite_count'], 'integer'],
+            [['status', 'min_sales_qty', 'is_in_stock', 'visibility', 'package_number', 'created_user_id', 'review_count', 'favorite_count', 'sale_count'], 'integer'],
             [['meta_description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'url_key', 'meta_title', 'meta_keywords'], 'string', 'max' => 255],
@@ -111,6 +112,7 @@ class Product extends \yii\db\ActiveRecord
             'favorite_count' => '产品被收藏的次数',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'sale_count' => '产品销售数量',
         ];
     }
 

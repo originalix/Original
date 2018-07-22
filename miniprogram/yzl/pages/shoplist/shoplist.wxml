@@ -31,6 +31,9 @@
               <view class="shop-price">
                 <text>￥{{ item.price }}</text>
               </view>
+              <view class="shop-price">
+                <text>已售 369件</text>
+              </view>
 
               <view class="shop-badge shop-badge-text" wx:if="{{ item.badge > 0 }}">
                 <text>{{ item.badge }}</text>

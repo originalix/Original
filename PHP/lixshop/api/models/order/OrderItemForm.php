@@ -79,6 +79,8 @@ class OrderItemForm extends Model
              // exit;
              // return false;
         // }
+        $product->sale_count += $this->count;
+        $product->save();
 
         return $model->save();
     }
