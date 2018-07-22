@@ -23,7 +23,8 @@
     "pages/group/group",
     "pages/scope/scope",
     "pages/priceMenu/priceMenu",
-    "pages/couponList/couponList"
+    "pages/couponList/couponList",
+    "pages/chargePayment/chargePayment"
   ],
   "window":{
     "backgroundTextStyle":"black",

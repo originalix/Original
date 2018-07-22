@@ -58,6 +58,8 @@ var config = {
     shareAndGetCouponAPI: `${base_host}/v1/share/index`,
     // 发起余额支付
     chargePayAPI: `${base_host}/v1/charge/pay`,
+    // 发起余额补差价
+    chargePaymentAPI: `${base_host}/v1/charge/payment`,
     // 获取促销商品详情
     promotionDetailAPI: `${base_host}/v1/promotion/detail`,
     // 修改用户信息

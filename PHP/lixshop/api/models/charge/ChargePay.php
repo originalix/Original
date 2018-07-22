@@ -102,7 +102,7 @@ class ChargePay extends Model
         $log->customer_id = $customer->id;
         $log->type = 1;
         $log->amount = $real_amount;
-        $log->mark = '消费'.$real_amount.'元';
+        $log->mark = '余额支付 消费'.$real_amount.'元';
         $log->balance = $customer->charge;
         $log->save();
         
