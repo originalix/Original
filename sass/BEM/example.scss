@@ -1,0 +1,48 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(test) {
+    width: 100%;
+    background-color: $--color-white;
+
+    @include when(center) {
+        justify-content: center;
+    }
+
+    @include m(success) {
+        background-color: $--color-black;
+        font-size: 12px;
+
+        .lix-test__description {
+            color: $--color-white;
+        }
+    }
+
+    @include m(warning) {
+        background-color: $--color-black;
+        font-size: 12px;
+
+        .lix-test__description {
+            color: $--color-white;
+        }
+    }
+
+    @include e(content) {
+        display: table-cell;
+        padding: 0 8px;
+    }
+
+    @include e(title) {
+        font-size: 8px;
+        line-height: 10px;
+        
+        @include when(bold) {
+            font-weight: bold;
+        }
+    }
+}
+
+.lix-test-fade-enter,
+.lix-test-fade-leave-active {
+    opacity: 0;
+}
