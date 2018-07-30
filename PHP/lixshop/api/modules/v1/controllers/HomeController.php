@@ -40,7 +40,7 @@ class HomeController extends BaseController
             'promotions' => $salePromotions,
             'bottom' => $bottom,
             'tips' => '你好！欢迎来到衣之恋优质干洗互联网下单平台。本公司下单即可享受免费上门取送，会员充值价格更优惠，推荐好友即可享受10-30元减免！',
-            'share_count' => $referees_count,
+            'share_count' => intval($referees_count),
         ];
     }
 
