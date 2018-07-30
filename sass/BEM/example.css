@@ -1,0 +1,39 @@
+/* BEM support Func
+------------------------*/
+/* Lix Project Chalk Variables */
+/* Colors
+-------------------------- */
+/* BEM
+ -------------------------- */
+/* Lix Project Chalk Variables */
+/* Colors
+-------------------------- */
+.lix-test {
+  width: 100%;
+  background-color: #fff; }
+  .lix-test.is-center {
+    justify-content: center; }
+  .lix-test--success {
+    background-color: #000;
+    font-size: 12px; }
+    .lix-test--success .lix-test__description {
+      color: #fff; }
+  .lix-test--warning {
+    background-color: #000;
+    font-size: 12px; }
+    .lix-test--warning .lix-test__description {
+      color: #fff; }
+  .lix-test__content {
+    display: table-cell;
+    padding: 0 8px; }
+  .lix-test__title {
+    font-size: 8px;
+    line-height: 10px; }
+    .lix-test__title.is-bold {
+      font-weight: bold; }
+
+.lix-test-fade-enter,
+.lix-test-fade-leave-active {
+  opacity: 0; }
+
+/*# sourceMappingURL=example.css.map */

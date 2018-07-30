@@ -9,6 +9,7 @@ use common\models\Category;
 // use common\models\SalePromotion;
 use api\models\product\SalePromotion;
 use yii\data\ActiveDataProvider;
+use common\models\Referees;
 
 
 class HomeController extends BaseController
@@ -27,12 +28,19 @@ class HomeController extends BaseController
         // 服务介绍、服务范围、价目中心、团体洗衣
         $bottom = $this->getBottom();
 
+        // 推荐数量查询
+        $uid = Yii::$app->user->identity->id;
+        $referees_count = Referees::find()
+        ->where(['referees_id' => $uid])
+        ->count();
+
         return [
             'slideshow' => $slideShows, 
             'categories' => $categories, 
             'promotions' => $salePromotions,
             'bottom' => $bottom,
             'tips' => '你好！欢迎来到衣之恋优质干洗互联网下单平台。本公司下单即可享受免费上门取送，会员充值价格更优惠，推荐好友即可享受10-30元减免！',
+            'share_count' => $referees_count,
         ];
     }
 

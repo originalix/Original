@@ -219,7 +219,9 @@ Page({
 						'badge': that.checkBadgeInCartList(product.id),
 						'customOption': product.customOptionStock,
             'selectCustomId': null,
-            'selectCustom': null
+						'selectCustom': null,
+						'saleCount': product.sale_count,
+						'sku': product.sku,
 					}
 					product_li.push(productInfo)
 				}
