@@ -133,11 +133,11 @@ product/category (GET)
 15、底部背景色 (done)
 16、爆款不能打折(done)
 
-1、爆款 推荐数购买 5个 20个
-2、购买页面 显示运费 50块
-3、tabbar 充值按钮
-4、dialog 空白取消
-5、爆款分享 url问题
+1、爆款 推荐数购买 5个 20个 done
+2、购买页面 显示运费 50块 done
+3、tabbar 充值按钮 done
+4、dialog 空白取消 done
+5、爆款分享 url问题 done
 
 首页 冬装 会员专享
 二件 59

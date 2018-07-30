@@ -48,7 +48,7 @@ Page({
 		console.log(res)
 		return {
 			title: '衣之恋小程序分享',
-			path: '/page/myCharge/myCharge'
+			path: '/pages/myCharge/myCharge'
 		}
 	},
 	go2ChargePage () {
