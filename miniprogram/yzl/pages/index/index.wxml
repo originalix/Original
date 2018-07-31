@@ -98,7 +98,7 @@
         <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}" data-shareCount="{{promotions[1].share_count}}">
           <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
           <view>
-            <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
+            <text class='real-price'>￥{{ promotions[1].product.final_price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
           </view>
           <view>
             <text class="product-title">{{ promotions[1].product.name }}</text>
@@ -137,7 +137,7 @@
         <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[3].id}}" data-needVip="{{promotions[3].need_vip}}" data-shareCount="{{promotions[3].share_count}}">
           <image src="{{ promotions[3].product.image[0] }}" class="icon-img-hot"/>
           <view>
-            <text class='real-price'>￥{{ promotions[3].product.price }}</text><text class='old-price'>￥{{ promotions[3].product.price }}</text>
+            <text class='real-price'>￥{{ promotions[3].product.final_price }}</text><text class='old-price'>￥{{ promotions[3].product.price }}</text>
           </view>
           <view>
             <text class="product-title">{{ promotions[3].product.name }}</text>
@@ -179,7 +179,7 @@
         <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}" data-shareCount="{{promotions[1].share_count}}">
           <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
           <view>
-            <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
+            <text class='real-price'>￥{{ promotions[1].product.final_price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
           </view>
           <view>
             <text class="product-title">{{ promotions[1].product.name }}</text>

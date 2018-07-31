@@ -64,7 +64,7 @@
 }
 
 .category-col-hot {
-  height: 263px;
+  height: 293px;
   border-right-style:solid;
   border-width: 1px;
   border-right-color: #dcdcdc;
