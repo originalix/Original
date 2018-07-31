@@ -88,6 +88,7 @@ Page({
 				}
 				btnList.push(btnItem)
 			}
+			btnList.push( {text: '取消', type: 'cancel'} )
 			console.log(btnList)
 
 			Dialog({
@@ -96,7 +97,11 @@ Page({
 				selector: '#zan-dialog-tip',
 				buttons: btnList,
 				buttonsShowVertical: true,
+				showCancelButton: true,
 			}).then(({ type }) => {
+				if (type === 'cancel') {
+					return
+				}
 				console.log('=== dialog with custom buttons ===', `type: ${type}`)
 				item.selectCustomId = type
 				console.log('=== now item is')

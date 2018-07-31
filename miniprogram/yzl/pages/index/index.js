@@ -16,7 +16,8 @@ Page({
     categories: [],
     promotions: [],
     tips: '',
-		userInfo: {},
+    userInfo: {},
+    shareCount: 0,
   },
   onLoad: function (option) {
     if (appInstance.accessToken.length < 1) {
@@ -86,6 +87,12 @@ Page({
             promotions: data.promotions
           }, function () {})
         }
+        // 处理shareCount
+        if (data.share_count) {
+          that.setData({
+            shareCount: data.share_count
+          })
+        }
         console.log(data)
       }
     })
@@ -145,13 +152,16 @@ Page({
     console.log(e)
     let promotionId = e.currentTarget.dataset.promotionid
     let needVip = e.currentTarget.dataset.needvip
+    let needShareCount = e.currentTarget.dataset.sharecount
     console.log(needVip)
     if (needVip === 0) {
-      this.go2PromotionPage(promotionId)
+      // this.go2PromotionPage(promotionId)
+      this.promotionCheckShareCount(needShareCount, promotionId)
       return
     }
     if (this.data.userInfo.card_id !== null) {
-      this.go2PromotionPage(promotionId)
+      // this.go2PromotionPage(promotionId)
+      this.promotionCheckShareCount(needShareCount, promotionId)
       return
     }
     Dialog({
@@ -170,6 +180,36 @@ Page({
       console.log(type)
       if (type === 'charge') {
         that.go2ChargePage()
+      }
+    })
+  },
+  promotionCheckShareCount(needShareCount, promotionId) {
+    console.log('检查爆款分享参数')
+    console.log(needShareCount)
+    console.log(promotionId)
+    let that = this
+    let shareCount = this.data.shareCount
+    if (shareCount >= needShareCount) {
+      console.log('通过分享数量检测')
+      this.go2PromotionPage(promotionId)
+      return
+    }
+    Dialog({
+      title: '温馨提醒',
+      message: `完成${needShareCount}人的分享任务才可购买该优惠商品`,
+      selector: '#zan-dialog-charge',
+      buttons: [{
+        text: '去分享',
+        color: 'red',
+        type: 'charge'
+      }, {
+        text: '知道了',
+        type: 'confirm'
+      }]
+    }).then(({type}) => {
+      console.log(type)
+      if (type === 'charge') {
+        that.go2SharePage()
       }
     })
   },

@@ -76,7 +76,7 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}"> 
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}" data-shareCount="{{promotions[0].share_count}}"> 
           <image src="{{ promotions[0].product.image[0] }}" class="icon-img-hot"/>
           <view>
             <text class='real-price'>￥{{ promotions[0].product.final_price }}</text><text class='old-price'>￥{{ promotions[0].product.price }}</text>
@@ -95,7 +95,7 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}">
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}" data-shareCount="{{promotions[1].share_count}}">
           <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
           <view>
             <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
@@ -115,13 +115,13 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}"> 
-          <image src="{{ promotions[0].product.image[0] }}" class="icon-img-hot"/>
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[2].id}}" data-needVip="{{promotions[2].need_vip}}" data-shareCount="{{promotions[2].share_count}}"> 
+          <image src="{{ promotions[2].product.image[0] }}" class="icon-img-hot"/>
           <view>
-            <text class='real-price'>￥{{ promotions[0].product.final_price }}</text><text class='old-price'>￥{{ promotions[0].product.price }}</text>
+            <text class='real-price'>￥{{ promotions[2].product.final_price }}</text><text class='old-price'>￥{{ promotions[2].product.price }}</text>
           </view>
           <view>
-            <text class="product-title">{{ promotions[0].product.name }}</text>
+            <text class="product-title">{{ promotions[2].product.name }}</text>
           </view>
           <view class="btn-view">
             <button class="sale-btn">立即抢</button>
@@ -134,13 +134,13 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}">
-          <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[3].id}}" data-needVip="{{promotions[3].need_vip}}" data-shareCount="{{promotions[3].share_count}}">
+          <image src="{{ promotions[3].product.image[0] }}" class="icon-img-hot"/>
           <view>
-            <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>
+            <text class='real-price'>￥{{ promotions[3].product.price }}</text><text class='old-price'>￥{{ promotions[3].product.price }}</text>
           </view>
           <view>
-            <text class="product-title">{{ promotions[1].product.name }}</text>
+            <text class="product-title">{{ promotions[3].product.name }}</text>
           </view>
           <view class="btn-view">
             <button class="sale-btn">拼团</button> </view>
@@ -157,7 +157,7 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}"> 
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[0].id}}" data-needVip="{{promotions[0].need_vip}}" data-shareCount="{{promotions[0].share_count}}"> 
           <image src="{{ promotions[0].product.image[0] }}" class="icon-img-hot"/>
           <view>
             <text class='real-price'>￥{{ promotions[0].product.final_price }}</text><text class='old-price'>￥{{ promotions[0].product.price }}</text>
@@ -176,7 +176,7 @@
     <zan-col col="12" col-class="custom-zan-col">
       <view class="category-col-hot category-bg-4">
         <!-- <view class='center category-title-margin category-title'><text>洗衣</text></view> -->
-        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}">
+        <view class='center' bindtap="promotionClicked" data-promotionId="{{promotions[1].id}}" data-needVip="{{promotions[1].need_vip}}" data-shareCount="{{promotions[1].share_count}}">
           <image src="{{ promotions[1].product.image[0] }}" class="icon-img-hot"/>
           <view>
             <text class='real-price'>￥{{ promotions[1].product.price }}</text><text class='old-price'>￥{{ promotions[1].product.price }}</text>

@@ -24,7 +24,7 @@ Page({
   onShareAppMessage: function (res) {
 		return {
 			title: '衣之恋火爆拼团',
-			path: '/page/promotion/promotion?id=' + this.data.promotion_id
+			path: '/pages/promotion/promotion?id=' + this.data.promotion_id
 		}
   },
   /**
