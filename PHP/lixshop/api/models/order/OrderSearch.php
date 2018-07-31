@@ -16,15 +16,19 @@ class OrderSearch extends Order
 
     public function search()
     {
+        $uid = Yii::$app->user->identity->id;
         $query = static::find()->where([
             'customer_id' => Yii::$app->user->identity->id,
-        ]);
+        ])
+        ->andWhere(['<>', 'order_status', static::WAIT_PAY_ORDER])
+        ->orWhere('`order_status` = 1 AND TO_DAYS(now()) - TO_DAYS(`created_at`) <= 1 AND `customer_id` = ' . $uid);
 
         if ($this->type == static::WAIT_PAY_ORDER) {
             $query = static::find()->where([
                 'customer_id' => Yii::$app->user->identity->id,
                 'order_status' => static::WAIT_PAY_ORDER,
-            ]);
+            ])
+            ->andWhere('TO_DAYS(now()) - TO_DAYS(`created_at`) <= 1');
         } else if ($this->type == static::FINISHED_ORDER) {
             $query = static::find()->where([
                 'customer_id' => Yii::$app->user->identity->id,
