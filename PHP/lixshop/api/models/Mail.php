@@ -40,7 +40,7 @@ class Mail extends Model
             return;
         }
 
-        Yii::warning('团购预约邮件发送开始，appointment_id: ' . $appointment->id);
+        Yii::warning('团购预约邮件发送开始，appointment_id: ' . $this->appointment_id . ' ! 发送人id: ' . Yii::$app->user->identity->id);
         $appointment = Appointment::findOne($this->appointment_id);
         $address = $appointment->userName . " " . $appointment->city . $appointment->county . $appointment->street;
         $tel = " 电话: " . $appointment->tel_number;
