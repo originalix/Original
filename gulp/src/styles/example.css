@@ -1,0 +1,8 @@
+.title {
+    color: #fff;
+    background-color: #000;
+}
+
+::placeholder {
+    color: gray;
+}

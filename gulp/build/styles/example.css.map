@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles/example.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,uBAAuB;CAC1B;;AAED;IACI,YAAY;CACf;;AAFD;IACI,YAAY;CACf;;AAFD;IACI,YAAY;CACf;;AAFD;IACI,YAAY;CACf","file":"example.css","sourcesContent":[".title {\n    color: #fff;\n    background-color: #000;\n}\n\n::placeholder {\n    color: gray;\n}"]}

@@ -1,7 +1,9 @@
 $white-color: #fff;
+$black-color: #000;
 
 .title {
   color: $white-color;
+  background-color: $black-color;
 }
 
 ::placeholder {

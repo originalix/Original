@@ -1,0 +1,21 @@
+.title {
+    color: #fff;
+    background-color: #000;
+}
+
+::-webkit-input-placeholder {
+    color: gray;
+}
+
+:-ms-input-placeholder {
+    color: gray;
+}
+
+::-ms-input-placeholder {
+    color: gray;
+}
+
+::placeholder {
+    color: gray;
+}
+/*# sourceMappingURL=example.css.map */
