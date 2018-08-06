@@ -26,6 +26,9 @@ Page({
       this.initialiaze(option)
     }
   },
+  onShow() {
+    this.getUserInfo()
+  },
   beforeAction (option) {
     var that = this
     var callback = function callback() {
@@ -196,7 +199,7 @@ Page({
     }
     Dialog({
       title: '温馨提醒',
-      message: `完成${needShareCount}人的分享任务才可购买该优惠商品`,
+      message: `完成${needShareCount}人的分享任务才可购买该优惠商品, 您当前分享数量：${shareCount}。`,
       selector: '#zan-dialog-charge',
       buttons: [{
         text: '去分享',

@@ -15,6 +15,7 @@ use common\models\Coupon;
 use common\models\CouponUsage;
 use common\models\Customer;
 use common\models\SalePromotion;
+use common\models\Referees;
 
 class OrderForm extends Model
 {
@@ -334,6 +335,16 @@ class OrderForm extends Model
         }
         $sale_promotion->sale_count += 1;
         $sale_promotion->save();
+
+        // 如果分享数量有要求 下单完成后 删除原来的分享关系 重新计数
+        if ($sale_promotion->share_count > 0) {
+            $referees = Referees::find()
+                ->where(['referees_id' => Yii::$app->user->identity->id])
+                ->all();
+            foreach($referees as $refereesModel) {
+                $refereesModel->delete();
+            }
+        }
     }
 }
 

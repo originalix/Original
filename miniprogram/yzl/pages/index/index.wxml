@@ -198,7 +198,7 @@
   
   <!-- row -->
   <zan-row>
-    <zan-col col="5" col-class="custom-zan-col">
+    <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout">
         <!-- <navigator url="/pages/introduce/intro" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper" bindtap="go2IntroducePage">
@@ -209,7 +209,7 @@
       </view>
     </zan-col>
 
-    <zan-col col="5" col-class="custom-zan-col">
+    <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout" bindtap="go2ScopePage">
         <!-- <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
@@ -220,7 +220,7 @@
       </view>
     </zan-col>
 
-    <zan-col col="5" col-class="custom-zan-col">
+    <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout" bindtap="go2PriceMenuPage">
         <!-- <navigator url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
@@ -231,7 +231,7 @@
       </view>
     </zan-col>
 
-    <zan-col col="5" col-class="custom-zan-col">
+    <zan-col col="6" col-class="custom-zan-col">
       <view class="bottom-icon-layout" bindtap="go2GroupPage">
         <!-- <navigator url="/pages/order/order" hover-class="other-navigator-hover"> -->
           <view class="bottom-img-wrapper">
@@ -241,18 +241,6 @@
         <!-- </navigator> -->
       </view>
     </zan-col>
-
-    <zan-col col="4" col-class="custom-zan-col">
-      <view class="bottom-icon-layout" bindtap="go2ChargePage">
-        <!-- <navigator url="/pages/order/order" hover-class="other-navigator-hover"> -->
-          <view class="bottom-img-wrapper">
-            <image src="../../resource/img/charge.png" class="bottom-icon-img" />
-          </view>
-          <view class="bottom-icon-title"><text>充值</text></view>
-        <!-- </navigator> -->
-      </view>
-    </zan-col>
-    
   </zan-row>
 </view>
 <zan-dialog id="zan-dialog-charge"></zan-dialog>
