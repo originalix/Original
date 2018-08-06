@@ -27,6 +27,7 @@ Page({
     }
   },
   onShow() {
+    this.getIndexConfig()
     this.getUserInfo()
   },
   beforeAction (option) {
@@ -91,7 +92,8 @@ Page({
           }, function () {})
         }
         // 处理shareCount
-        if (data.share_count) {
+        if (data.share_count !== "undefined") {
+          console.log('更新分享参数！！！')
           that.setData({
             shareCount: data.share_count
           })
