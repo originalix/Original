@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
 use api\queues\SendMailJob;
 use api\models\Mail;
 use api\models\order\Order;
+use common\models\Referees;
 
 class TestController extends BaseController
 {
@@ -174,4 +175,17 @@ class TestController extends BaseController
             'order_id' => 1,
         ]));
     }
+    public function actionReferees()
+    {
+        $cur = 21;
+        for($i = 0; $i < 10; $i++) {
+            $obj = new Referees();
+            $obj->referees_id = 3;
+            $obj->customer_id = $cur + $i;
+            $obj->save();
+        }
+
+        return ['msg' => 'finish'];
+    }
 }
+
