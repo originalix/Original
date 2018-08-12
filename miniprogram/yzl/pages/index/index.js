@@ -184,6 +184,7 @@ Page({
     }).then(({type}) => {
       console.log(type)
       if (type === 'charge') {
+        console.log('即将进入分享页面')
         that.go2ChargePage()
       }
     })
@@ -201,7 +202,7 @@ Page({
     }
     Dialog({
       title: '温馨提醒',
-      message: `完成${needShareCount}人的分享任务才可购买该优惠商品, 您当前分享数量：${shareCount}。`,
+      message: `推荐${needShareCount}个有效关注，方可购买。 当前有效分享数：${shareCount}。`,
       selector: '#zan-dialog-charge',
       buttons: [{
         text: '去分享',
@@ -255,7 +256,7 @@ Page({
   },
   go2SharePage() {
     wx.navigateTo({
-      url: '/pages/share/share'
+      url: '/pages/share/share?id=' + this.data.userInfo.id
     })
   },
   swiperClick(e) {
