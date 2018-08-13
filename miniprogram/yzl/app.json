@@ -51,12 +51,6 @@
         "selectedIconPath": "/resource/img/tab_2_selected.png"
       },
       {
-        "pagePath": "pages/charge/charge",
-        "text": "充值",
-        "iconPath": "/resource/img/tab_4.png",
-        "selectedIconPath": "/resource/img/tab_4_selected.png"
-      },
-      {
         "pagePath": "pages/member/member",
         "text": "我的",
         "iconPath": "/resource/img/tab_3.png",

@@ -76,7 +76,7 @@ class HomeController extends BaseController
         $query->with('product');
         $query->orderBy(['updated_at' => SORT_DESC]);
         $dataProvider = new ActiveDataProvider([
-            'query' => $query
+            'query' => $query,
         ]);
 
         return $dataProvider->getModels();
