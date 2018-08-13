@@ -74,6 +74,7 @@ class HomeController extends BaseController
     {
         $query = SalePromotion::find();
         $query->with('product');
+        $query->orderBy(['updated_at' => SORT_DESC]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
