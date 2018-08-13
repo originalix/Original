@@ -62,6 +62,11 @@ class ChargePay extends Model
 
         $customer->charge -= $order->real_amount;
 
+        // 当余额少于30的时候 调整折扣回到100
+        if ($customer->charge <= 30.00) {
+            $customer->discount = 100;
+        }
+
         $transaction = Yii::$app->db->beginTransaction();
 
         try {
