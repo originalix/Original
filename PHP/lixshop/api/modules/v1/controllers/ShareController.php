@@ -17,6 +17,8 @@ class ShareController extends BaseController
     public function actionIndex($recommend_id)
     {
         $referees =  Customer::findOne($recommend_id);
+        Yii::warning('referees日志: ', $referees);
+        Yii::warning('referees->id: ', $recommend_id);
         if (is_null($referees)) {
             throw new HttpException(419, '推荐人不存在');
         }
@@ -27,13 +29,13 @@ class ShareController extends BaseController
             throw new HttpException(417, '推荐无效');
         }
 
-        $now_time = date("y-m-d");
+        /* $now_time = date("y-m-d");
         $created_time = date("y-m-d", strtotime(Yii::$app->user->identity->access_token_created_at));
         if (strtotime($now_time) != strtotime($created_time)) {
             //不是当天创建账户
             throw new HttpException(420, '已经是注册会员');
         }
-
+ */
         // 确定没有推荐关系
         $referees_record = Referees::find()
             ->where(['customer_id' => $uid])
