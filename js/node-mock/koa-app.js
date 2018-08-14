@@ -3,6 +3,7 @@ const Router = require('koa-router');
 
 const app = new Koa();
 const router = new Router();
+const Mock = require('mockjs');
 
 // logger
 app.use(async (ctx, next) => {
@@ -26,11 +27,17 @@ app.use(async (ctx, next) => {
 })
 
 router.get('/', (ctx, next) => {
-  ctx.body = { data: 'Hello World' };
+  ctx.body = {
+    data: 'Hello World'
+  };
 });
 
 router.get('/test', (ctx, next) => {
-  ctx.body = { data: 'Test' };  
+  ctx.body = Mock.mock({
+    'list|1-10': [{
+      'id|+1': 1
+    }]
+  });
 });
 
 app
