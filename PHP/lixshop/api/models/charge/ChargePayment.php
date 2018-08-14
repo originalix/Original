@@ -42,7 +42,7 @@ class ChargePayment extends Model
         if ($customer->charge <= 30.00) {
             $customer->discount = 100;
         }
-
+        
         $transaction = Yii::$app->db->beginTransaction();
 
         try {

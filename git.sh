@@ -10,7 +10,7 @@ pushFunc() {
         pushFunc $(readCommitMessage)
     else
         git add .
-        git commit -m "[$*]"
+        git commit -m ":construction:$*"
         git push -u origin
         git push -u os
     fi
