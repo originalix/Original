@@ -15,14 +15,17 @@ router.get('/koa', (ctx) => {
 });
 
 const category = Mock.mock({
-  'data|5-10': [{
+  'code': 200,
+  'msg': 'success',
+  'data|15-30': [{
     'id|+1': 1,
     'name': Random.first(),
     'spread': {
-      'title': Random.csentence(5, 10),
+      'title': Random.csentence(3, 6),
       'description': Random.csentence(15, 20),
-      'image': Random.image('264x84'),
-      'link': Random.url('http')
+      'image': Random.image('72x100'),
+      'link': Random.url('http'),
+      'bgcolor': 'black'
     },
     'items|5-10': [{
       'id|+1': 1,
@@ -38,11 +41,7 @@ const category = Mock.mock({
 });
 
 router.get('/category', (ctx) => {
-  ctx.body = {
-    'code': 200,
-    'msg': 'success',
-    category
-  }
+  ctx.body = category;
 }); 
 
 module.exports = router;
