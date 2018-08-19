@@ -52,13 +52,13 @@ const shopList = Mock.mock({
     'id|+1': 1,
     'title': Random.csentence(10, 20),
     'description': Random.csentence(40, 50),
-    'old-price': Random.natural(300, 5000),
-    'final-price': Random.natural(300, 5000),
+    'old_price': Random.natural(300, 5000),
+    'final_price': Random.natural(300, 5000),
     'image': Random.image('300x300', '#6495ED')
   }]
 });
 
-router.get('/shoplist', (ctx) => {
+router.get('/shoplist/:id', (ctx) => {
   ctx.body = shopList;
 });
 
