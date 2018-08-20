@@ -62,4 +62,22 @@ router.get('/shoplist/:id', (ctx) => {
   ctx.body = shopList;
 });
 
+const shopCart = Mock.mock({
+  'code': 200,
+  'msg': 'success',
+  'data|15-40': [{
+    'id|+1': 1,
+    'title': Random.csentence(5, 10),
+    'sku': Random.csentence(2, 6),
+    'image': Random.image('100x100', '#4682B4'),
+    'price': Random.natural(300, 5000),
+    'counter': Random.natural(1, 300),
+    'checked': Random.bool(),
+  }]
+});
+
+router.get('/cart', (ctx) => {
+  ctx.body = shopCart
+});
+
 module.exports = router;
