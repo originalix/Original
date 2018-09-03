@@ -9,17 +9,14 @@ function getData() {
 
 async function mockNetwork() {
   const data = await getData();
-  console.log('new work data --->: ', data);
+  // console.log('new work data --->: ', data);
   // data.then((res) => {
   //   console.log('use get data now');
   // });
   // console.log('get data end');
-  // return data;
+  return data;
 }
 
-// mockNetwork().then((response) => {
-  // console.log('mock network get data ---->: ', response);
-// });
-mockNetwork().catch((err) => {
-  console.log(err);
-})
+mockNetwork().then((response) => {
+  console.log('mock network get data ---->: ', response);
+});
