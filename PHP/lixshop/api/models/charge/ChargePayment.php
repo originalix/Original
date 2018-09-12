@@ -38,9 +38,10 @@ class ChargePayment extends Model
 
         $customer->charge -= $this->total_fee;
 
-        // 当余额少于30的时候 调整折扣回到100
-        if ($customer->charge <= 30.00) {
+        // 当余额少于10的时候 调整折扣回到100
+        if ($customer->charge <= 10.00) {
             $customer->discount = 100;
+            $customer->card_id = NULL;
         }
 
         $transaction = Yii::$app->db->beginTransaction();
