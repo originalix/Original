@@ -449,7 +449,7 @@ Page({
     // const total_fee1 = 3800
     orderUtils.getPayParams({
       'trade_no': trade_no,
-      'total_fee': total_fee,
+      'total_fee': Math.round(total_fee),
       'type': 1,
       'success': function (res) {
         that.createWxPay(res)

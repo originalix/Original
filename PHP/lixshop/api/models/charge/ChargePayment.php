@@ -43,7 +43,7 @@ class ChargePayment extends Model
             $customer->discount = 100;
             $customer->card_id = NULL;
         }
-
+        
         $transaction = Yii::$app->db->beginTransaction();
 
         try {
