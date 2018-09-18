@@ -15,6 +15,7 @@ use api\queues\SendMailJob;
 use api\models\Mail;
 use api\models\order\Order;
 use common\models\Referees;
+use api\utils\Code;
 
 class TestController extends BaseController
 {
@@ -186,6 +187,17 @@ class TestController extends BaseController
         }
 
         return ['msg' => 'finish'];
+    }
+
+    public function actionId($customer_id)
+    {
+        $code = new Code();
+        $card_no = $code->encodeID($customer_id, 5); 
+        $card_pre = '121'; 
+        $card_vc = substr(md5($card_pre.$card_no),0,2); 
+        $card_vc = strtoupper($card_vc); 
+        $card_id =  $card_pre.$card_no.$card_vc; 
+        return $card_id;
     }
 }
 
