@@ -65,6 +65,7 @@ Page({
 			'type': type,
 			'page': page,
 			'success': function (res) {
+				wx.stopPullDownRefresh();
 				console.log('订单列表获取成功回调')
 				console.log(res)
 				let list = that.data.orderList
@@ -93,6 +94,7 @@ Page({
 				}
 			},
 			'fail': function (error) {
+				wx.stopPullDownRefresh();
 				console.log('订单列表失败回调')
 			}
 		})

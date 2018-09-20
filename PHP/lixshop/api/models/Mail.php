@@ -9,6 +9,7 @@ use api\models\order\OrderSearch;
 use common\models\Appointment;
 use common\models\Attachment;
 use yii\data\ActiveDataProvider;
+use common\models\Customer;
 
 class Mail extends Model
 {
@@ -24,8 +25,10 @@ class Mail extends Model
         $address = $order->userName . " " . $order->city . $order->county . $order->street;
         $tel = " 电话: " . $order->tel_number;
 
+        $customer = Customer::findOne($order->customer_id);
+
         //controller代码 
-        $mail = Yii::$app->mailer->compose('@app/mail/order', ['order' => $order]) 
+        $mail = Yii::$app->mailer->compose('@app/mail/order', ['order' => $order, 'customer' => $customer]) 
             ->setTo('1916555871@qq.com') 
             // ->setTo('77252102@qq.com')
             ->setSubject('新订单通知 ' . $address . " 价格： " . $order->real_amount . "元" . $tel) 
