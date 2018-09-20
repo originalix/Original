@@ -8,6 +8,7 @@ use common\models\Customer;
 use common\models\BalanceLog;
 use yii\web\HttpException;
 use yii\db\Exception;
+use api\models\Mail;
 
 class ChargePayment extends Model
 {
@@ -74,6 +75,10 @@ class ChargePayment extends Model
         $log->mark = '余额补差价 消费'.$real_amount.'元';
         $log->balance = $customer->charge;
         $log->save();
+
+        // 完成订单，发送邮件推送
+        $mail = new Mail();
+        $mail->sendChargePayMail($customer->id, $real_amount);
         
         if (intval($real_amount) < 1) {
             return;
