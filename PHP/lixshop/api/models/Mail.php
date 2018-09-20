@@ -68,7 +68,7 @@ class Mail extends Model
         $mail = Yii::$app->mailer->compose('@app/mail/chargepay', ['customer' => $customer, 'real_amount' => $real_amount]) 
             // ->setTo('1916555871@qq.com')
             ->setTo('77252102@qq.com')
-            ->setSubject('余额补差价通知 ' . $customer->id . " 价格： " . $real_amount . "元" . " 姓名：" . $customer->name) 
+            ->setSubject('余额补差价通知 用户id: ' . $customer->id . " 价格： " . $real_amount . "元" . " 姓名：" . $customer->name) 
             ->send(); 
         return $customer;
     }
