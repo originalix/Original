@@ -145,6 +145,7 @@ Page({
    * 创建微信支付订单，微信支付统一下单接口
    */
   createWxOrder(trade_no, total_fee) {
+    console.log('total_fee ---> ', total_fee);
     var that = this
     orderUtils.getPayParams({
       'trade_no': trade_no,

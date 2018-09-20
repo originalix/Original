@@ -76,6 +76,7 @@ Page({
         'Authorization': 'Bearer ' + appInstance.accessToken
       },
       success: function (res) {
+        wx.stopPullDownRefresh();
         let data = res.data.data;
         // 处理轮播图赋值
         if (typeof (data.slideshow) != "undefined" && Array.isArray(data.slideshow)) {

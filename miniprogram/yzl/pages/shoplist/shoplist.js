@@ -18,6 +18,9 @@ Page({
 		cartCount: 0,
 		price: 0.00,
 	},
+	onPullDownRefresh() {
+		// this.getTab(categoryId)
+	},
 	onShow() {
       wx.setStorageSync('currentCoupon', null)
 	},
@@ -34,6 +37,7 @@ Page({
 			url: config.service.getCategoryListUrl,
 			header: appInstance.requestToken,
 			success: function (res) {
+				wx.stopPullDownRefresh()
 				console.log(res.data)
 				const categories = res.data.data
 				console.log(categories)

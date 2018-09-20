@@ -21,6 +21,15 @@
     <p>订单价格: <?= $order->total_amount ?></p>
     <p>实际支付价格: <?= $order->real_amount ?></p>
     <p>顾客姓名: <?= $order->userName ?></p>
+    <p>所剩余额：
+        <?php
+            if (is_null($customer->charge)) {
+                echo '未充值客户';
+            } else {
+                echo $customer->charge;
+            }
+        ?>
+    </p>
     <p>详细地址： <?= $order->province . $order->city . $order->county . $order->street ?></p>
     <p>联系电话：<?= $order->tel_number ?></p>
     <p>配送方式: 
