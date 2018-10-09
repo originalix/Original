@@ -291,8 +291,8 @@ Page({
     }
     console.log('price: ' + sumPrice.toFixed(2))
 
-    if (sumPrice < 30) {
-      expressP = 10.00
+    if (sumPrice < 50) {
+      expressP = 15.00
     }
 
     // 到店取送 不计算运费
