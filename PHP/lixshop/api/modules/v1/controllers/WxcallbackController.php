@@ -72,6 +72,7 @@ class WxcallbackController extends \yii\web\Controller
 				</xml>";
         }
 
+        Yii::warning('签名校验失败' . $reply, 'order');
 		echo $reply;
     }
 

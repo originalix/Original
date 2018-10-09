@@ -118,9 +118,9 @@ class OrderForm extends Model
             if ($this->total_amount > 30) {
                 $this->express_amount = 0.00;
             } else {
-                $this->express_amount = 10.00;
-                $this->total_amount += 10.00;
-                $this->real_amount += 10.00;
+                $this->express_amount = 15.00;
+                $this->total_amount += 15.00;
+                $this->real_amount += 15.00;
             }
         }
 

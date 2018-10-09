@@ -61,7 +61,7 @@
           <view class="cart-price">
             <text class="tip">预估价格￥</text>
 						<text class="price-text">{{price}}</text>
-            <view class="express-text">满30元免配送费</view>
+            <view class="express-text">满50元免配送费</view>
           </view>
           <!-- 买单按钮 -->
           <view class="payview">
