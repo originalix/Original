@@ -114,8 +114,8 @@ class OrderForm extends Model
         if ($this->express_type === 1) {
             $this->express_amount = 0.00;
         } else {
-            // 查看是否满足30元 否则需要邮费
-            if ($this->total_amount > 30) {
+            // 查看是否满足50元 否则需要邮费
+            if ($this->total_amount > 50) {
                 $this->express_amount = 0.00;
             } else {
                 $this->express_amount = 15.00;
