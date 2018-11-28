@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绑定数据</title>
+</head>
+<body>
+    <div>绑定数据测试：</div>
+    <div id="data"></div>
+</body>
+<script>
+  var obj = new Proxy({}, {
+    get: function(target, key, receiver) {
+      console.log(`getting ${key}!`);
+      console.log(target[key]);
+      return Reflect.get(target, key, receiver);
+    },
+    set: function(target, key, value, receiver) {
+      console.log(`setting ${key}!`);
+      console.log(value);
+      if (key === 'data') {
+        var data = document.getElementById('data');
+        console.log(data);
+       data.innerHTML = value;
+      }
+      return Reflect.set(target, key, value, receiver);
+    }
+  });
+
+  obj.data = '这是一个简单的数据绑定';
+</script>
+</html>

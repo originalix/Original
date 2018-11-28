@@ -8,6 +8,7 @@
 var obj = new Proxy({}, {
   get: function(target, key, receiver) {
     console.log(`getting ${key}!`);
+    console.log(target[key]);
     return Reflect.get(target, key, receiver);
   },
   set: function(target, key, value, receiver) {
