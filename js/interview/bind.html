@@ -9,6 +9,7 @@
 <body>
     <div>绑定数据测试：</div>
     <div id="data"></div>
+    <div id="num"></div>
 </body>
 <script>
   var obj = new Proxy({}, {
@@ -19,16 +20,13 @@
     },
     set: function(target, key, value, receiver) {
       console.log(`setting ${key}!`);
-      console.log(value);
-      if (key === 'data') {
-        var data = document.getElementById('data');
-        console.log(data);
-       data.innerHTML = value;
-      }
+      var element = document.getElementById(`${key}`);
+      element.innerHTML = value;
       return Reflect.set(target, key, value, receiver);
     }
   });
 
   obj.data = '这是一个简单的数据绑定';
+  obj.num = 2150;
 </script>
 </html>
