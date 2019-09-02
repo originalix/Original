@@ -3,7 +3,7 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f0f0f0",
-    "backgroundTextStyle": "black",
+    "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true,
     "usingComponents": {
       "zan-tab": "../../bower_components/zanui-weapp/dist/tab/index",

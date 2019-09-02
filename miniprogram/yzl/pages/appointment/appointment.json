@@ -3,7 +3,7 @@
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
   "backgroundColor": "#fff",
-  "backgroundTextStyle": "black",
+  "backgroundTextStyle": "dark",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "wxc-cc": "../../dist/packages/@minui/wxc-cc/dist/index",

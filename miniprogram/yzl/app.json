@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/shop/shop",
@@ -26,11 +26,11 @@
     "pages/couponList/couponList",
     "pages/chargePayment/chargePayment"
   ],
-  "window":{
-    "backgroundTextStyle":"black",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#63d8f2",
     "navigationBarTitleText": "衣之恋优质干洗",
-    "navigationBarTextStyle":"light",
+    "navigationBarTextStyle": "white",
     "navigationStyle": "default"
   },
   "tabBar": {
@@ -57,5 +57,6 @@
         "selectedIconPath": "/resource/img/tab_3_selected.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
