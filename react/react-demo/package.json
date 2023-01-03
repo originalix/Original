@@ -8,7 +8,7 @@
     "dsbridge": "^3.0.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start-js": "react-app-rewired start",
